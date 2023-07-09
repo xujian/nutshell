@@ -1,0 +1,30 @@
+{
+  "name": "nutshell",
+  "version": "1.0.0",
+  "description": "A Vue 3 UI library base on Nutui",
+  "main": "dist/nutshell.cjs.js",
+  "module": "dist/nutshell.esm.mjs",
+  "type": "module",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "clean": "node build/scripts/clean.js",
+    "dev": "cd ./dev && node ./scripts.buid.js dev && cd ..",
+    "build": "rollup -c rollup.config.js"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.4"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/xujian/netshell.git",
+  "author": "xujian",
+  "devDependencies": {
+    "rollup": "^3.26.2",
+    "rollup-plugin-typescript2": "^0.35.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "typescript": "~5.0.4"
+  }
+}

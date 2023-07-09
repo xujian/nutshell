@@ -1,0 +1,13 @@
+{
+  "name": "nutshell-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "ui",
+    "docs"
+  ],
+  "license": "MIT",
+  "description": "A Vue 3 UI library",
+  "repository": "https://github.com/xujian/netshell",
+  "author": "xujian"
+}
