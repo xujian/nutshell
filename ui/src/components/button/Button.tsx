@@ -1,7 +1,6 @@
 import { withDirectives, h } from 'vue'
 import { createComponent } from '../../utils/private/create'
 
-type ButtonTypes = 'plain' | 'primary' | 'danger' | 'warning'
 
 /**
  * <n-button>
@@ -17,11 +16,10 @@ export default createComponent({
   },
   emits: ['click'],
   setup (props, {slots, emit}) {
-    return () => {
-      return h('div', {
-        class: 'n-button'
-      }, h('div', {
-      }, props.label))
-    }
+    return () => (
+      <div class="n-button primary">
+        {props.label}
+      </div>
+    )
   }
 })

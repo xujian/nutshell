@@ -1,6 +1,6 @@
-import vue from 'rollup-plugin-vue'
-import typescript from 'rollup-plugin-typescript2'
 import dts from 'rollup-plugin-dts'
+import vueJsx from 'rollup-plugin-vue-jsx-compat'
+import esbuild from 'rollup-plugin-esbuild'
 
 export default [
   {
@@ -16,8 +16,12 @@ export default [
       }
     ],
     plugins: [
-      typescript(),
-      vue(),
+      // typescript(),
+      vueJsx(),
+      esbuild({
+        jsx: 'transform', // default, or 'preserve'
+        jsxFactory: 'vueJsxCompat',
+      }),
     ]
   },
   {
