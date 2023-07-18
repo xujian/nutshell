@@ -4,9 +4,12 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "declaration": true,
-    "outDir": "dist",
+    "declaration": true, //automatically generate declaration files
     "declarationDir": "dist",
+    "moduleResolution": "Node",
+    "outDir": "dist",
+    "removeComments": false,
+    "declarationMap": true,
     "baseUrl": ".",
     "jsx": "preserve",
     "jsxFactory": "h",
@@ -15,7 +18,7 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
   },
   "include": [
     "src/**/*.ts",

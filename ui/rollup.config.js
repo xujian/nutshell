@@ -16,7 +16,6 @@ export default [
       }
     ],
     plugins: [
-      // typescript(),
       vueJsx(),
       esbuild({
         jsx: 'transform', // default, or 'preserve'
@@ -28,6 +27,7 @@ export default [
     input: './dist/index.d.ts',
     output: {
       file: 'dist/nutshell.d.ts',
+      export: 'named',
       format: 'es',
     },
     plugins: [dts()]

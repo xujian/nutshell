@@ -13,7 +13,8 @@
   "scripts": {
     "clean": "node build/scripts/clean.js",
     "dev": "cd ./dev && node ./scripts.buid.js dev && cd ..",
-    "build": "rollup -c rollup.config.js"
+    "build": "tsc --pretty --emitDeclarationOnly && rollup -c rollup.config.js",
+    "build:types": "tsc --pretty --emitDeclarationOnly"
   },
   "peerDependencies": {
     "vue": "^3.3.4"
@@ -22,6 +23,10 @@
   "repository": "https://github.com/xujian/netshell.git",
   "author": "xujian",
   "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-typescript": "^7.22.5",
     "rollup": "^3.26.2",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-esbuild": "^5.0.0",
