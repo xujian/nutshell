@@ -2,14 +2,15 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import Nutshell from 'nutshell'
+import { Nutshell } from 'nutshell'
 
 import App from './App.vue'
 import router from './router'
 
 const app = createApp(App)
+const nutshell = Nutshell()
 
-app.use(Nutshell)
+app.use(nutshell)
 app.use(createPinia())
 app.use(router)
 

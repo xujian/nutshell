@@ -1,5 +1,5 @@
-import NButton from './Button'
+import NsButton from './Button'
 
 export {
-  NButton
+  NsButton
 }

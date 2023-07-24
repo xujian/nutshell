@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { NButton } from 'nutshell'
+import { NsButton } from 'nutshell'
 </script>
 
 <template>
   <main>
     <h1>This is a test of nutshell component</h1>
-    <n-button label="Nutshell Button"></n-button>
+    <ns-button
+      type="default" />
     <button>Native</button>
   </main>
 </template>
