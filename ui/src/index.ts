@@ -1,9 +1,2 @@
-import install from './install'
+export * from './framework'
 export * from './components'
-
-const Nutshell = {
-  version: '',
-  install,
-}
-
-export default Nutshell
