@@ -2,10 +2,16 @@
   "name": "nutshell",
   "version": "1.0.0",
   "description": "A Vue 3 UI library base on Nutui",
-  "main": "dist/nutshell.cjs.js",
-  "module": "dist/nutshell.esm.mjs",
   "type": "module",
-  "typings": "dist/nutshell.d.ts",
+  "main": "dist/nutshell.cjs.js",
+  "module": "dist/nutshell.js",
+  "moduleResolution": "node",
+  "exports": {
+    ".": {
+      "import": "./dist/nutshell.js",
+      "require": "./dist/nutshell.cjs.js"
+    }
+  },
   "files": [
     "dist",
     "src"
@@ -13,7 +19,7 @@
   "scripts": {
     "clean": "node build/scripts/clean.js",
     "dev": "cd ./dev && node ./scripts.buid.js dev && cd ..",
-    "build": "tsc --pretty --emitDeclarationOnly && rollup -c rollup.config.js",
+    "build": "yarn build:types && rollup -c rollup.config.js --watch",
     "build:types": "tsc --pretty --emitDeclarationOnly"
   },
   "peerDependencies": {
@@ -21,7 +27,7 @@
   },
   "license": "MIT",
   "repository": "https://github.com/xujian/netshell.git",
-  "author": "xujian",
+  "author": "nutshell team",
   "devDependencies": {
     "@babel/cli": "^7.22.9",
     "@babel/core": "^7.22.9",
@@ -32,5 +38,9 @@
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-vue-jsx-compat": "^0.0.6",
     "typescript": "~5.0.4"
+  },
+  "vetur": {
+    "tags": "dist/json/tags.json",
+    "attributes": "dist/json/attributes.json"
   }
 }

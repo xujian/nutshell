@@ -6,7 +6,7 @@
     "noFallthroughCasesInSwitch": true,
     "declaration": true, //automatically generate declaration files
     "declarationDir": "dist",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "outDir": "dist",
     "removeComments": false,
     "declarationMap": true,
@@ -15,10 +15,7 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
+    }
   },
   "include": [
     "src/**/*.ts",
