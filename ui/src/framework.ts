@@ -1,5 +1,6 @@
 import { App, ComponentPublicInstance, InjectionKey, reactive, inject as _inject } from 'vue'
 import { createTheme } from './composables/theme'
+import * as components from './components'
 
 export interface NutshellOptions {
   theme?: string,
@@ -15,7 +16,9 @@ export function Nutshell ({
 
   const install = (app: App) => {
     app.provide('provider', 'nutui')
-
+    for (const key in components) {
+      app.component(key, components[key])
+    }
     app.mixin({
       computed: {
         $n () {

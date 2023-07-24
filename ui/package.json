@@ -6,6 +6,7 @@
   "main": "dist/nutshell.cjs.js",
   "module": "dist/nutshell.js",
   "moduleResolution": "node",
+  "typings": "./dist/nutshell.d.ts",
   "exports": {
     ".": {
       "import": "./dist/nutshell.js",
@@ -20,9 +21,11 @@
     "clean": "node build/scripts/clean.js",
     "dev": "cd ./dev && node ./scripts.buid.js dev && cd ..",
     "build": "yarn build:types && rollup -c rollup.config.js --watch",
-    "build:types": "tsc --pretty --emitDeclarationOnly"
+    "build:types": "tsc --pretty --emitDeclarationOnly",
+    "patch": "cp -rf ../__patch/* ../node_modules"
   },
   "peerDependencies": {
+    "@tarojs/taro": "^3.6.8",
     "vue": "^3.3.4"
   },
   "license": "MIT",
@@ -42,5 +45,9 @@
   "vetur": {
     "tags": "dist/json/tags.json",
     "attributes": "dist/json/attributes.json"
+  },
+  "dependencies": {
+    "@nutui/nutui-taro": "^4.1.2",
+    "vue-router": "^4.2.4"
   }
 }
