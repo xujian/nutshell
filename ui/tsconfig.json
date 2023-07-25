@@ -15,6 +15,7 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
     "paths": {
+      "@nutui-types/*": ["../node_modules/@nutui/nutui-taro/dist/types/__VUE/*"]
     }
   },
   "include": [
