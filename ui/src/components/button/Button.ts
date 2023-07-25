@@ -1,6 +1,5 @@
 import { useProvider } from '../../shared'
 import { withDirectives, defineComponent, h, ExtractPropTypes, PropType, ExtractPublicPropTypes, ComponentObjectPropsOptions } from 'vue'
-// import { defineComponent } from '../../utils'
 
 /**
  * 按钮类型
@@ -29,15 +28,13 @@ export type ButtonProps = ExtractPublicPropTypes<typeof buttonProps>
 /**
  * 通用按钮组件 <ns-button>
  */
-const NsButton = defineComponent<ButtonProps>(
+export const NsButton = defineComponent<ButtonProps>(
   (props, {slots, emit, attrs}) => {
     console.log('attrs----', attrs)
     const provider = useProvider()
     return () => 
       h(provider, {
         ...props,
-        p: 1,
-        a: 2,
         ...attrs
       })
   }, {
@@ -48,4 +45,3 @@ const NsButton = defineComponent<ButtonProps>(
   }
 )
 
-export default NsButton

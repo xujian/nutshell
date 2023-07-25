@@ -1,6 +1,7 @@
 import { App, ComponentPublicInstance, InjectionKey, reactive, inject as _inject } from 'vue'
 import { createTheme } from './composables/theme'
 import * as components from './components'
+import '@nutui/nutui-taro/dist/style.css'
 
 export interface NutshellOptions {
   theme?: string,

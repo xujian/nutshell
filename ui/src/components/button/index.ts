@@ -1,5 +1,1 @@
-import NsButton from './Button'
-
-export {
-  NsButton
-}
+export * from './Button'

@@ -1,1 +1,5 @@
-export * from './button'
+import { button } from './button'
+
+export {
+  button
+}
