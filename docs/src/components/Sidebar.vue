@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <div class="sidebar-header">
-      <img :src="logo" />
+      <img src="/logo.svg" />
     </div>
     <nut-side-navbar class="sidebar">
       <nut-sub-side-navbar title="智能城市" ikey="6">
@@ -19,7 +19,6 @@
 </template>
 
 <script lang="ts" setup>
-import logo from '../../static/logo.svg'
 
 </script>
 
