@@ -7,9 +7,14 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    NutButton: typeof import('@nutui/nutui-taro')['Button']
+    AppHeader: typeof import('./src/components/AppHeader.vue')['default']
+    NutConfigProvider: typeof import('@nutui/nutui-taro')['ConfigProvider']
+    NutSideNavbar: typeof import('@nutui/nutui-taro')['SideNavbar']
+    NutSideNavbarItem: typeof import('@nutui/nutui-taro')['SideNavbarItem']
+    NutSubSideNavbar: typeof import('@nutui/nutui-taro')['SubSideNavbar']
     NutToast: typeof import('@nutui/nutui-taro')['Toast']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Sidebar: typeof import('./src/components/Sidebar.vue')['default']
   }
 }

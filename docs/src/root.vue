@@ -1,30 +1,29 @@
 <template>
-  <view class="index">
-    <view>
-      <img src="" alt="">
-    </view>
-    {{ msg }} <Dongdong />
-    <view class="btn">
-      <ns-button />
-      <nut-button type="primary" @click="handleClick('text', msg2, true)">点我</nut-button>
+  <nut-config-provider 
+    tag="div"
+    :theme="`dark`" class="root flex flex-row">
+    <sidebar />
+    <app-header />
+    <view class="main flex-col">
+      <router-view></router-view>
     </view>
     <nut-toast :msg="msg2" v-model:visible="show" :type="type" :cover="cover"/>
-  </view>
+  </nut-config-provider>
 </template>
 
 <script>
 import { reactive, toRefs } from 'vue';
-import { Dongdong } from '@nutui/icons-vue-taro';
 import { Nutshell } from 'nutshell'
 
+/**
+ * Entry point / 入口页
+ */
 export default {
   name: 'Index',
   components: {
-    Dongdong
   },
   setup() {
     const state = reactive({
-      msg: 'NutUI',
       msg2: 'OK',
       type: 'text',
       show: false,
@@ -47,10 +46,13 @@ export default {
 </script>
 
 <style lang="scss">
-.index {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+.index-page {
+  font-size: 12px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+.sidebar {
+  width: 240px;
 }
 </style>

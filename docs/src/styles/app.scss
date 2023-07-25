@@ -1,0 +1,13 @@
+@import 'theme.scss';
+@import 'layout.scss';
+@import 'flex.scss';
+
+* {
+  font-size: 12px;
+}
+
+:root,
+page {
+  --nut-primary-color: #fa2c19;
+  --nut-primary-color-end: #fa6419;
+}

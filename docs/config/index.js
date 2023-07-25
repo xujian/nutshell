@@ -1,20 +1,22 @@
 import Components from 'unplugin-vue-components/webpack';
 import NutUIResolver from '@nutui/nutui-taro/dist/resolver';
+const path = require('path')
 
 const config = {
-  projectName: 'docs',
+  projectName: 'nutshell-docs',
   date: '2023-7-24',
   designWidth (input) {
+    console.log('config/index designWidth()-------input', input.file)
     if (input?.file?.replace(/\\+/g, '/').indexOf('@nutui') > -1) {
       return 375
     }
-    return 750
+    return 375
   },
   deviceRatio: {
     640: 2.34 / 2,
     750: 1,
     828: 1.81 / 2,
-    375: 2 / 1
+    375: 1 / 1
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
@@ -35,7 +37,10 @@ const config = {
   cache: {
     enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
   },
-  sass:{
+  sass: {
+    resource: [
+      path.resolve(__dirname, '..', 'src/styles/theme.scss')
+    ],
     data: `@import "@nutui/nutui-taro/dist/styles/variables.scss";`
   },
   mini: {
