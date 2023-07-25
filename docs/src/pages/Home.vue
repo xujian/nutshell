@@ -5,6 +5,7 @@ import { NsButton } from 'nutshell'
 <template>
   <main>
     <h1>This is a test of nutshell component</h1>
+    <ns-input />
     <ns-button
       type="primary"
       label="Press" />
