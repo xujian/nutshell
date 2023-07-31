@@ -4,3 +4,8 @@ node_modules/
 ui/dist/
 docs/dist/
 yarn.lock
+ui/.eslintrc-auto-import.json
+ui/auto-imports.d.ts
+ui/yarn-error.log
+runtime-core.d.ts
+expo/desktop/.eslintrc-auto-import.json
