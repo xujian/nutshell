@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "workspaces": [
     "ui",
-    "docs"
+    "docs",
+    "expo/desktop",
+    "expo/mobile"
   ],
   "license": "MIT",
   "description": "A Vue 3 UI library",
