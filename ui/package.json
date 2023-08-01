@@ -15,7 +15,7 @@
   ],
   "exports": {
     ".": "./dist/index.js",
-    "./taro": "./dist/taro/nutshell.js"
+    "./taro": "./dist/taro/index.js"
   },
   "scripts": {
     "clean": "node build/scripts/clean.js",
