@@ -31,3 +31,10 @@ export const useProvider = () => {
   const provider = getProvider(providerName)
   return provider
 }
+
+export const prepareProvider = (app, providerName: string) => {
+  const provider = getProvider(providerName)
+  provider.then(({default: p}) => {
+    p.prepare(app)
+  })
+}

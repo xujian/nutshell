@@ -1,18 +1,39 @@
-import { h, ComponentObjectPropsOptions, ExtractPublicPropTypes, PropType, defineComponent } from 'vue'
-import { useProvider } from '../../shared'
+import { ExtractPublicPropTypes, PropType } from 'vue'
+import { define } from '../../utils'
 
 /**
  * 输入框类型
  */
-export type InputType = 'text' 
-  | 'password' 
-  | 'number' 
+export type InputType = 'text'
+  | 'url'
+  | 'date'
+  | 'file'
+  | 'text'
+  | 'time'
+  | 'week'
+  | 'color'
+  | 'digit'
+  | 'email'
+  | 'image'
+  | 'month'
+  | 'radio'
+  | 'range'
+  | 'reset'
+  | 'button'
+  | 'hidden'
+  | 'number'
+  | 'search'
+  | 'submit'
+  | 'checkbox'
+  | 'password'
+  | 'textarea'
+  | 'datetime-local'
 
 const inputProps = {
   type: {
     type: String as PropType<InputType>,
     required: false,
-    default: 'plain'
+    default: 'text'
   },
   label: {
     type: String,
@@ -27,19 +48,13 @@ export type InputProps = ExtractPublicPropTypes<typeof inputProps>
 /**
  * 输入框 <ns-input>
  */
-export const NsInput = defineComponent<InputProps>(
+export const NsInput = define<InputProps>(
   (props, {slots, emit, attrs}) => {
-    console.log('attrs----', attrs)
-    const provider = useProvider()
-    return () => 
-      h(provider, {
-        ...props,
-        ...attrs
-      })
+    return {
+      ...props,
+    }
   }, {
     name: 'NsInput',
-    inheritAttrs: true,
-    props: inputProps as ComponentObjectPropsOptions<InputProps>,
-    emits: ['click', 'focus'],
+    emits: ['change', 'focus'],
   }
 )

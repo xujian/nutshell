@@ -3,24 +3,25 @@
   "version": "1.0.0",
   "description": "A Vue 3 UI library base on Nutui",
   "type": "module",
-  "main": "dist/nutshell.cjs.js",
-  "module": "dist/nutshell.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "sass": "dist/styles/nutshell.scss",
+  "style": "dist/styles/nutshell.scss",
   "moduleResolution": "node",
-  "typings": "./dist/nutshell.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/nutshell.js",
-      "require": "./dist/nutshell.cjs.js"
-    }
-  },
+  "typings": "./dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./taro": "./dist/taro/nutshell.js"
+  },
   "scripts": {
     "clean": "node build/scripts/clean.js",
     "dev": "cd ./dev && node ./scripts.buid.js dev && cd ..",
-    "build": "yarn build:types && rollup -c rollup.config.js --watch",
+    "start": "rollup -c rollup.config.js --watch",
+    "build": "yarn build:types && rollup -c rollup.config.js",
     "build:types": "tsc --pretty --emitDeclarationOnly",
     "patch": "cp -rf ../__patch/* ../node_modules"
   },
@@ -36,11 +37,17 @@
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-typescript": "^7.22.5",
+    "@nutui/nutui": "^4.1.2",
+    "@rollup/plugin-alias": "^5.0.0",
     "rollup": "^3.26.2",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-esbuild": "^5.0.0",
+    "rollup-plugin-scss": "^4.0.0",
     "rollup-plugin-vue-jsx-compat": "^0.0.6",
-    "typescript": "~5.0.4"
+    "typescript": "~5.1.6",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-vue-components": "^0.25.1"
   },
   "vetur": {
     "tags": "dist/json/tags.json",
@@ -48,6 +55,7 @@
   },
   "dependencies": {
     "@nutui/nutui-taro": "^4.1.2",
+    "ant-design-vue": "4.x",
     "vue-router": "^4.2.4"
   }
 }

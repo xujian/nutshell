@@ -15,18 +15,16 @@ const dummy = (name: string) => {
 
 // provider 所需要的特别处理过程
 export const prepare = (app) => {
-  console.log('----PROVIDER nutui prepare', app)
-  // app.use(ConfigProvider)
 }
 
-const NutuiProvider: CoreProvider = {
-  render: (props) => {
+const AntdvProvider: CoreProvider = {
+  render: (props: any) => {
     const { parent } = getCurrentInstance()
     const name = parent.type.name.slice(2).toLowerCase()
     const component = components[name] || makeDummy(name)
-    return h(component, props)
+    return h(component, {...props})
   },
-  prepare
+  prepare,
 }
 
-export default NutuiProvider
+export default AntdvProvider
