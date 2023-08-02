@@ -34,7 +34,11 @@ export const useProvider = () => {
 
 export const prepareProvider = (app, providerName: string) => {
   const provider = getProvider(providerName)
-  provider.then(({default: p}) => {
-    p.prepare(app)
-  })
+  if (provider instanceof Promise) {
+    provider.then(({default: p}) => {
+      p.prepare(app)
+    })
+  } else {
+    provider.prepare(app)
+  }
 }

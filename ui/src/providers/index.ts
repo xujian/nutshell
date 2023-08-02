@@ -1,11 +1,11 @@
-const nutuiProvider: Promise<{default: CoreProvider}> = import(
-  /* name: 'provider.nutui' */
-  './nutui')
-const antdvProvider: Promise<{default: CoreProvider}> = import(
-  /* name: 'provider.antdv' */
-  './antdv')
+// const nutuiProvider: Promise<{default: CoreProvider}> = import(
+//   /* name: 'provider.nutui' */
+//   './nutui')
+// const antdvProvider: Promise<{default: CoreProvider}> = import(
+//   /* name: 'provider.antdv' */
+//   './antdv')
 
-// import nutui from './nutui'
+import nutui from './nutui'
 // import antdv from './antdv'
 import { VNode } from 'vue'
 
@@ -18,18 +18,30 @@ export interface CoreProvider {
   prepare: (app) => void
 }
 
-const providers = {
-  nutui: nutuiProvider,
-  antdv: antdvProvider
-}
+/**
+ * 似乎不能按需加载
+ */
+// const providers = {
+//   nutui,
+//   antdv: antdvProvider
+// }
 
 export interface ImportedProvider {
   default: CoreProvider
 }
 
-export const getProvider: (name: string) => Promise<ImportedProvider>
+export const getProvider: (name: string) => CoreProvider | Promise<ImportedProvider> 
   = (name: string) => {
-    return providers[name || 'nutui']!
+    if (name === 'nutui') {
+      return nutui
+    } else if (name === 'antdv') {
+      return import(
+        /* name: 'provider.antdv' */
+        './antdv') as Promise<{default: CoreProvider}>
+    } else {
+      return nutui
+    }
+    // return providers[name || 'nutui']!
   }
 
-export default providers
+// export default providers

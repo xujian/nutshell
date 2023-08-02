@@ -1,7 +1,5 @@
 import { useProvider } from '../../shared'
-import { DefineComponent } from 'vue';
-import { defineAsyncComponent, ref } from 'vue';
-import { h } from 'vue'
+import { ref, h } from 'vue'
 import { ComponentOptions, EmitsOptions, RenderFunction, SetupContext, SlotsType,
   defineComponent } from 'vue'
 
@@ -34,15 +32,19 @@ export function define<
       ctx: SetupContext<E, S>
     ) => {
     // the real setup
-    console.log('define--------------------------------setupWrapped', {...props}, ctx)
+    // console.log('define--------------------------------setupWrapped', {...props}, ctx)
     const providing  = useProvider()
     const setupResult = setup(props, ctx)
     const { slots } = ctx
     const defaultSlot = slots.default || props.label
     const render = ref((props) => h('div'))
-    providing.then(({default: provider}) => {
-      render.value = provider.render
-    })
+    if (providing instanceof Promise) {
+      providing.then(({default: provider}) => {
+        render.value = provider.render
+      })
+    } else {
+      render.value = providing.render
+    }
     return () => h(render.value, {
       ...setupResult,
       ...props
