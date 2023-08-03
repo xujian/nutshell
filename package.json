@@ -2,6 +2,9 @@
   "name": "nutshell-monorepo",
   "private": true,
   "version": "1.0.0",
+  "scripts": {
+    "copyUIFile": "node copyUIFile.js"
+  },
   "workspaces": [
     "ui",
     "docs",
