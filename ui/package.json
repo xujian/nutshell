@@ -18,12 +18,12 @@
     "./taro": "./dist/taro/index.js"
   },
   "scripts": {
+    "patch": "node buid/patch.js",
     "clean": "node build/scripts/clean.js",
     "dev": "cd ./dev && node ./scripts.buid.js dev && cd ..",
     "start": "rollup -c rollup.config.js --watch",
     "build": "yarn build:types && rollup -c rollup.config.js",
-    "build:types": "tsc --pretty --emitDeclarationOnly",
-    "patch": "cp -rf ../__patch/* ../node_modules"
+    "build:types": "tsc --pretty --emitDeclarationOnly"
   },
   "peerDependencies": {
     "@tarojs/taro": "^3.6.8",

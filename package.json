@@ -3,7 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "patch": "node patch.js"
   },
   "workspaces": [
     "ui",
