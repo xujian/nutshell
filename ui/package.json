@@ -18,7 +18,7 @@
     "./taro": "./dist/taro/index.js"
   },
   "scripts": {
-    "patch": "node buid/patch.js",
+    "patch": "node build/patch.js",
     "clean": "node build/scripts/clean.js",
     "dev": "cd ./dev && node ./scripts.buid.js dev && cd ..",
     "start": "rollup -c rollup.config.js --watch",

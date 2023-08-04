@@ -1,10 +1,11 @@
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
-const sourceDir = './__patch'
-const targetDir = './node_modules'
+const sourceDir = '../__patch'
+const targetDir = '../node_modules'
 
 copyFile(sourceDir, targetDir)
+console.log('Patch completed.')
 
 // copy 文件方法
 function copyFile(sourceDir, targetDir) {
