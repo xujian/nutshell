@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "copyUIFile": "node copyUIFile.js"
+    "patch": "node patch.js"
   },
   "workspaces": [
     "ui",
