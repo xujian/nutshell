@@ -35,7 +35,8 @@ export default defineConfig({
     Components({
       resolvers: [
         NsResolver
-      ]
+      ],
+      dts: true,
     }),
     // AutoImport({
     //   dts: true,
