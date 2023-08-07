@@ -1,5 +1,6 @@
+import { Props } from 'ant-design-vue/es/form/useForm'
 import { define } from '../../utils'
-import { withDirectives, h, ExtractPropTypes, PropType, ExtractPublicPropTypes, ComponentObjectPropsOptions, EmitsOptions, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
 
 /**
  * 按钮类型
@@ -11,12 +12,15 @@ export type ButtonType = 'default'
   | 'danger'
   | 'success'
 
-const buttonProps = {
+const props = {
   type: {
     type: String as PropType<ButtonType>,
     required: false,
     default: 'plain'
   },
+  /**
+   * 显示的文字
+   */
   label: {
     type: String,
     required: false,
@@ -36,22 +40,20 @@ export interface ButtonSlots extends SlotsType {
   default: never,
 }
 
-export type ButtonProps = ExtractPublicPropTypes<typeof buttonProps>
+export type ButtonProps = ExtractPublicPropTypes<typeof props>
 
 /**
  * 通用按钮组件 <ns-button>
  */
-export const NsButton = define<ButtonProps, ButtonEmits, string, ButtonSlots>(
-  // 提供 setup(), options 给 define()
-  // 返回 NsButton 的组件定义
-  // define() 对 props 重新编排后, 返回具体的组件绘制过程
-  (props, {slots, emit, attrs}) => { // setup ()
-    return {
-      ...props,
-      ...attrs
-    }
-  }, {
+export const NsButton = define<ButtonProps, ButtonEmits, ButtonSlots>({
     name: 'NsButton',
-    emits
+    props,
+    emits,
+    setup (props, ctx) {
+      // 对参数做前期的处理
+      return {
+        props
+      }
+    }
   }
 )

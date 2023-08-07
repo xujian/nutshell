@@ -1,4 +1,4 @@
-import { ExtractPublicPropTypes, PropType } from 'vue'
+import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../utils'
 
 /**
@@ -29,7 +29,7 @@ export type InputType = 'text'
   | 'textarea'
   | 'datetime-local'
 
-const inputProps = {
+const props = {
   type: {
     type: String as PropType<InputType>,
     required: false,
@@ -42,19 +42,28 @@ const inputProps = {
   }
 }
 
-export type InputProps = ExtractPublicPropTypes<typeof inputProps>
+export interface InputEmits extends ObjectEmitsOptions {
+  change?: (value: string | number) => void
+}
+
+const emits = {
+  change: (value: string | number) => {}
+}
+
+export type InputProps = ExtractPublicPropTypes<typeof props>
 
 
 /**
  * 输入框 <ns-input>
  */
-export const NsInput = define<InputProps>(
-  (props, {slots, emit, attrs}) => {
-    return {
-      ...props,
-    }
-  }, {
+export const NsInput = define({
     name: 'NsInput',
-    emits: ['change', 'focus'],
+    props,
+    emits,
+    setup (props, ctx) {
+      return {
+        props
+      }
+    }
   }
 )
