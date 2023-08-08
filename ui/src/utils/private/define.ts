@@ -3,76 +3,70 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   ComponentOptionsWithObjectProps, ComponentPropsOptions, 
   ComputedOptions, DefineComponent, 
   ExtractDefaultPropTypes, ExtractPropTypes, 
-  MethodOptions, EmitsOptions, SetupContext, SlotsType, ObjectEmitsOptions } from 'vue'
+  MethodOptions, EmitsOptions, SetupContext, SlotsType, ObjectEmitsOptions, RenderFunction } from 'vue'
 import { ref, h } from 'vue'
 import { defineComponent } from 'vue'
+import { EmitsToProps, Prettify } from './helpers'
 
-export type ComponentOptions<
-  Props,
-  Emits extends EmitsOptions = {},
-  Slots extends SlotsType = {}
-> = ComponentOptionsWithObjectProps<
-  ComponentObjectPropsOptions<Props>, {}, {}, {}, {}, {}, {}, Emits, string, {}, string, Slots, Props
->
-
-type EmitsToProps<T extends EmitsOptions> = T extends string[]
-  ? {
-    [K in string & `on${Capitalize<T[number]>}`]?: (...args: any[]) => any;
-  }
-  : T extends ObjectEmitsOptions
-      ? {
-        [K in string & `on${Capitalize<string & keyof T>}`]?: K extends `on${infer C}`
-          ? T[Uncapitalize<C>] extends null
-            ? (...args: any[]) => any
-            : (...args: T[Uncapitalize<C>] extends (...args: infer P) => any
-              ? P
-              : never
-            ) => any : never;
-        }
-      : {}
-
-type ResolveProps<PropsOrPropOptions, E extends EmitsOptions> = 
-  Readonly<
-    PropsOrPropOptions extends ComponentPropsOptions
-      ? ExtractPropTypes<PropsOrPropOptions>
-      : PropsOrPropOptions
-    > & ({} extends E
-        ? {} 
-        : EmitsToProps<E>)
 /**
  * 通用的组件定义
  */
-export type NutshellComponent<
-  Props,
+// export type NutshellComponent< // This is overload 4
+//   PropsOptions extends ComponentObjectPropsOptions,
+//   Emits extends EmitsOptions = {},
+//   Slots extends SlotsType = {}
+// > = DefineComponent<
+//   ComponentPropsOptions<PropsOptions>, 
+//   {}, // RawBindings
+//   {}, // D
+//   {},
+//   {}, 
+//   ComponentOptionsMixin, // Mixins
+//   ComponentOptionsMixin, // Extends
+//   Emits,
+//   string, // E
+//   Slots
+// >
+
+/**
+ * define() 所需要的参数
+ */
+export type Options<
+  PropsOptions extends ComponentObjectPropsOptions,
   Emits extends EmitsOptions = {},
   Slots extends SlotsType = {}
-> = DefineComponent<
-  ComponentPropsOptions<Props>, 
-  {}, // RawBindings
-  {}, // D
-  ComputedOptions,
-  MethodOptions, 
+> = ComponentOptionsWithObjectProps<
+  PropsOptions,
+  {},
+  {},
+  {},
+  {},
   ComponentOptionsMixin, // Mixins
   ComponentOptionsMixin, // Extends
   Emits,
-  string, // E
-  ExtractDefaultPropTypes<Props>, // PublicProps
-  ResolveProps<ComponentPropsOptions<Props>, Emits>, // PublicProps
+  string,
+  {},
+  string,
   Slots
 >
 
 /**
  * Our private defineComponent
+ * 简化并专门化参数定义
  * 定义组件
- * @param setup 
  * @param options 
  */
 export function define<
-  Props extends Record<string, any>,
-  E extends EmitsOptions, 
-  S extends SlotsType = {}
+  /** 组件属性的定义 */
+  PropsOptions extends Readonly<ComponentObjectPropsOptions>,
+  /** 组件事件的定义 */
+  Emits extends ObjectEmitsOptions = ObjectEmitsOptions, 
+  /** 组件 SLOT 的定义 */
+  Slots extends SlotsType = {},
+  // 从 PropsOptions 抽取组件的实际属性
+  // Props = Prettify<Readonly<ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>>>
 > (
-  options: ComponentOptions<Props>
+  options: Options<PropsOptions, Emits, Slots>,
 ) {
   /*
    * 底层代码的所有努力，都是为了铺陈组件的时候
@@ -81,17 +75,18 @@ export function define<
    * 2. 符合直觉 intuisive
    * 3. DX 对开发友好
    */
-  const setup = (
-      props: Props, 
-      ctx: SetupContext<E, S>
-    ) => {
+  const setup = function (
+      this: void,
+      props,
+      ctx: SetupContext<Emits, Slots>
+    ) {
     // the real setup
     // console.log('define--------------------------------setupWrapped', {...props}, ctx)
-    const { setup } = options
+    const { setup: setupOriginal } = options
     const providing  = useProvider()
-    const setupResult = setup(props, ctx)
+    const setupResult = setupOriginal(props, ctx)
     const { slots, emit } = ctx
-    const defaultSlot = slots.default || props.label
+    const defaultSlot = slots.default
     const render = ref((props) => h('div'))
     if (providing instanceof Promise) {
       providing.then(({default: provider}) => {
@@ -107,23 +102,26 @@ export function define<
     }, defaultSlot)
   }
 
-  const optionsSythesized = {
+  const optionsSythesized: Options<PropsOptions, Emits, Slots> = {
     inheritAttrs: true,
     name: options.name,
     props: options.props,
-    setup,
+    setup
   }
 
+  /**
+   * 用 Vue 原生的 defineComponent()
+   */
   return defineComponent<
-    ComponentPropsOptions<Props>,
+    PropsOptions,
     {}, // RawBindings,
     {}, // D
     {}, // C
     {}, // M
     ComponentOptionsMixin,
     ComponentOptionsMixin,
-    E,
+    Emits,
     string,
-    S
+    Slots
   >(optionsSythesized)
 }

@@ -1,6 +1,5 @@
-import { Props } from 'ant-design-vue/es/form/useForm'
 import { define } from '../../utils'
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
 
 /**
  * 按钮类型
@@ -45,7 +44,7 @@ export type ButtonProps = ExtractPublicPropTypes<typeof props>
 /**
  * 通用按钮组件 <ns-button>
  */
-export const NsButton = define<ButtonProps, ButtonEmits, ButtonSlots>({
+export const NsButton = define({
     name: 'NsButton',
     props,
     emits,
