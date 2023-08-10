@@ -1,4 +1,4 @@
-import { InputProps } from '@/components/input'
+import { InputProps } from '../../../../components'
 import { h } from 'vue'
 
 

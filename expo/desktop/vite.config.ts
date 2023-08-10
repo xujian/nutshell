@@ -23,6 +23,9 @@ export default defineConfig({
   define: {
     'process.env': process.env
   },
+  build: {
+    minify: false,
+  },
   css: {
     preprocessorOptions: {
       scss: {

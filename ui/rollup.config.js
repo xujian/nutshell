@@ -1,8 +1,10 @@
+import path from 'path'
 import dts from 'rollup-plugin-dts'
 import vueJsx from 'rollup-plugin-vue-jsx-compat'
 import esbuild from 'rollup-plugin-esbuild'
 import AutoImport from 'unplugin-auto-import/rollup'
 import copy from 'rollup-plugin-copy'
+// import alias from '@rollup/plugin-alias'
 // import NutUIResolver from '@nutui/nutui/dist/resolver'
 // import path from 'path'
 

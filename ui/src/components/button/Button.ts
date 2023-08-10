@@ -1,5 +1,7 @@
+import { useSizeProps } from '../../composables/size'
 import { define } from '../../utils'
 import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
+import { useDimensionProps } from '../../composables/dimensions'
 
 /**
  * 按钮类型
@@ -14,7 +16,6 @@ export type ButtonType = 'default'
 const props = {
   type: {
     type: String as PropType<ButtonType>,
-    required: false,
     default: 'plain'
   },
   /**
@@ -22,9 +23,22 @@ const props = {
    */
   label: {
     type: String,
-    required: false,
-    default: 'Button'
-  }
+  },
+  /**
+   * 按钮底色
+   */
+  color: {
+    type: String,
+  },
+  /**
+   * 禁用
+   */
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  ...useSizeProps(),
+  ...useDimensionProps(),
 }
 
 export interface ButtonEmits extends ObjectEmitsOptions {

@@ -15,7 +15,7 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
     "paths": {
-      "@/*": ["src/*"],
+      // "@/*": ["src/*"],
       "@nutui-types/*": ["../node_modules/@nutui/nutui/dist/types/__VUE/*"]
     }
   },

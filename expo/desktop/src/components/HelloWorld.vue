@@ -1,14 +1,25 @@
 <script setup lang="ts">
 defineProps<{
-  msg: string
+  msg: string,
+  xujianok?: string
 }>()
+
+const onClick = (...args: any[]) => {
+  console.log('ns-button-------onClick', args)
+}
 </script>
 
 <template>
   <div class="greetings">
     <h1>Nutshell Desktop Expo</h1>
-    <ns-button type="info" label="Press" />
+    <ns-button type="primary"
+      size="sm"
+      width="100"
+      color="#ff9900"
+      disabled
+      label="Press" @click="onClick" />
     <ns-input type="text" label="客户名称" placeholder="客户名称" />
+    {{msg}}
   </div>
 </template>
 

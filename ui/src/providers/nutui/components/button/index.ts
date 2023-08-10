@@ -3,9 +3,13 @@ import { h } from 'vue'
 import type { ButtonEmits, ButtonProps } from 'src/components'
 
 export const button = (props: ButtonProps & ButtonEmits) => {
+  const { type, label, width, color, disabled,
+    maxWidth, height, maxHeight, minWidth, minHeight,
+    click,
+    ...p } = props
   return h(NutButton, {
     type: props.type as never,
-    label: props.label,
+    label, color, disabled,
     onClick: (e) => {props.click()}
   }, props.label)
 }
