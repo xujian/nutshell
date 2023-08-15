@@ -1,0 +1,17 @@
+@use '../variables/design';
+
+:root {
+  --ns-border-radius: 4px;
+}
+
+@each $name, $value in design.$borders {
+  #{'.ns-border-'}#{$name} {
+    border: #{$value};
+  }
+}
+
+@each $name, $value in design.$rounded {
+  #{'.ns-rounded-'}#{$name} {
+    border-radius: #{$value};
+  } 
+}

@@ -1,10 +1,15 @@
-import { InputProps } from '../../../../components'
 import { h } from 'vue'
-
+import { InputProps } from '../../../../components'
 
 export const input = (props: InputProps) => {
+  const classes = [
+    'ns-border-auto',
+    'ns-rounded-auto'
+  ].join(' ')
   return h(NutInput, {
+    class: classes,
     type: props.type,
-    label: props.label
+    label: props.label,
+    border: false,
   })
 }

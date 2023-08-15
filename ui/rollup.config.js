@@ -1,9 +1,11 @@
-import path from 'path'
 import dts from 'rollup-plugin-dts'
 import vueJsx from 'rollup-plugin-vue-jsx-compat'
 import esbuild from 'rollup-plugin-esbuild'
 import AutoImport from 'unplugin-auto-import/rollup'
 import copy from 'rollup-plugin-copy'
+import scss from 'rollup-plugin-scss'
+import postcss from 'rollup-plugin-postcss'
+import { resolve } from 'path'
 // import alias from '@rollup/plugin-alias'
 // import NutUIResolver from '@nutui/nutui/dist/resolver'
 // import path from 'path'
@@ -131,5 +133,31 @@ export default [
       format: 'es',
     },
     plugins: [dts()]
+  },
+  {
+    input: './src/styles/main.scss',
+    output: {
+      file: 'nutshell.css',
+      format: 'es'
+    },
+    plugins: [
+      postcss({
+        use: ['sass'],
+        extract: resolve('./dist/nutshell.css'),
+      })
+    ]
+  },
+  {
+    input: './src/providers/nutui/nutui.scss',
+    output: {
+      file: 'nutui.css',
+      format: 'es'
+    },
+    plugins: [
+      postcss({
+        use: ['sass'],
+        extract: resolve('./dist/nutui.css'),
+      })
+    ]
   }
 ]
