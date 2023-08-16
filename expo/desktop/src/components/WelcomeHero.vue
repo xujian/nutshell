@@ -10,15 +10,19 @@ const onClick = (...args: any[]) => {
 </script>
 
 <template>
-  <div class="greetings">
+  <div class="welcome">
     <h1>Nutshell Desktop Expo</h1>
+    <div>
     <ns-button type="primary"
       size="sm"
       width="100"
       color="#ff9900"
       disabled
       label="Press" @click="onClick" />
-    <ns-input type="text" label="客户名称" placeholder="客户名称" />
+    </div>
+    <div>
+      <ns-input type="text" label="客户名称" placeholder="客户名称" />
+    </div>
     {{msg}}
   </div>
 </template>

@@ -12,5 +12,6 @@ declare module 'vue' {
     NsInput: typeof import('nutshell')['NsInput']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    WelcomeHero: typeof import('./src/components/WelcomeHero.vue')['default']
   }
 }
