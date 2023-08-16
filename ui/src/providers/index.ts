@@ -14,7 +14,7 @@ import { VNode } from 'vue'
  * 
  */
 export interface CoreProvider {
-  render: (props) => VNode,
+  render: (props, ctx) => VNode,
   prepare: (app) => void
 }
 

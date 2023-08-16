@@ -1,6 +1,6 @@
 <template>
   <main class="home-page">
-    <welcome-hero msg="You did it!" />
+    <welcome-hero />
   </main>
 </template>
 <script setup lang="ts">

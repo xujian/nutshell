@@ -3,6 +3,7 @@ import { InputProps } from '../../../../components'
 
 export const input = (props: InputProps) => {
   const classes = [
+    'ns-input',
     'ns-border-auto',
     'ns-rounded-auto'
   ].join(' ')

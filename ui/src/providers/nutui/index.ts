@@ -20,11 +20,12 @@ export const prepare = (app) => {
 }
 
 const NutuiProvider: CoreProvider = {
-  render: (props) => {
+  render: (props, ctx) => {
     const { parent } = getCurrentInstance()
-    const name = parent.type.name.slice(2).toLowerCase()
+    const name = parent.type.name.slice(2).toLowerCase() // NsButton -> button
     const component = components[name] || makeDummy(name)
-    return h(component, props)
+    const { slots } = ctx
+    return h(component, props, slots.default)
   },
   prepare
 }

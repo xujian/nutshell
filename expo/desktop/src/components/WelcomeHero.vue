@@ -1,9 +1,4 @@
 <script setup lang="ts">
-defineProps<{
-  msg: string,
-  xujianok?: string
-}>()
-
 const onClick = (...args: any[]) => {
   console.log('ns-button-------onClick', args)
 }
@@ -12,18 +7,19 @@ const onClick = (...args: any[]) => {
 <template>
   <div class="welcome">
     <h1>Nutshell Desktop Expo</h1>
-    <div>
-    <ns-button type="primary"
-      size="sm"
-      width="100"
-      color="#ff9900"
-      disabled
-      label="Press" @click="onClick" />
-    </div>
-    <div>
-      <ns-input type="text" label="客户名称" placeholder="客户名称" />
-    </div>
-    {{msg}}
+    <ns-row>
+      <ns-col span="12">
+        <ns-button type="primary"
+          size="sm"
+          width="100"
+          color="#ff9900"
+          disabled
+          label="Press" @click="onClick" />
+      </ns-col>
+      <ns-col span="12">
+        <ns-input type="text" label="客户名称" placeholder="客户名称" />
+    </ns-col>
+  </ns-row>
   </div>
 </template>
 
