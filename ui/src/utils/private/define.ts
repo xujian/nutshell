@@ -31,7 +31,7 @@ import { EmitsToProps, Prettify } from './helpers'
 /**
  * define() 所需要的参数
  */
-export type Options<
+export type DefineFunctionOptions<
   PropsOptions extends ComponentObjectPropsOptions,
   Emits extends EmitsOptions = {},
   Slots extends SlotsType = {}
@@ -48,7 +48,17 @@ export type Options<
   {},
   string,
   Slots
->
+> & {
+  setup?: (
+    this: void,
+    props: LooseRequired<
+      Props & Prettify<UnwrapMixinsType<IntersectionMixin<Mixin> & IntersectionMixin<Extends>, 'P'>>
+    >, 
+    ctx: SetupContext<E, S>
+  ) => { 
+    props: Props
+  }
+}
 
 /**
  * Our private defineComponent
@@ -66,7 +76,7 @@ export function define<
   // 从 PropsOptions 抽取组件的实际属性
   // Props = Prettify<Readonly<ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>>>
 > (
-  options: Options<PropsOptions, Emits, Slots>,
+  options: DefineFunctionOptions<PropsOptions, Emits, Slots>,
 ) {
   /*
    * 底层代码的所有努力，都是为了铺陈组件的时候
@@ -84,7 +94,7 @@ export function define<
     // console.log('define--------------------------------setupWrapped', {...props}, ctx)
     const { setup: setupOriginal } = options
     const providing  = useProvider()
-    const setupResult = setupOriginal(props, ctx)
+    const { props: propsReturns } = setupOriginal(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
     const render = ref((props) => h('div'))
@@ -96,7 +106,7 @@ export function define<
       render.value = providing.render
     }
     return () => h(render.value, {
-      ...setupResult,
+      ...propsReturns,
       ...props,
       ...options.emits,
     }, defaultSlot)
