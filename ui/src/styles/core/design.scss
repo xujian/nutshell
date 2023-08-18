@@ -1,7 +1,7 @@
 @use '../variables/design';
 
 :root {
-  --ns-border-radius: 4px;
+  --ns-border-radius: 8px;
 }
 
 @each $name, $value in design.$borders {

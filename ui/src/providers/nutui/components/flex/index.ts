@@ -1,7 +1,7 @@
-import { row } from './row'
-import { col } from './col'
+import { Row } from './row'
+import { Col } from './col'
 
 export {
-  row,
-  col
+  Row,
+  Col
 }

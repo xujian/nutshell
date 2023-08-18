@@ -1,10 +1,11 @@
-import { button } from './button'
-import { input } from './input'
-import { row, col } from './flex'
+import { Button } from './button'
+import { Input, DateInput } from './input'
+import { Row, Col } from './flex'
 
 export {
-  button,
-  input,
-  row,
-  col,
+  Button,
+  Input,
+  DateInput,
+  Row,
+  Col,
 }

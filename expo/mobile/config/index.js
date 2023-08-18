@@ -1,7 +1,6 @@
-import Components from 'unplugin-vue-components/webpack';
-import NutUIResolver from '@nutui/nutui-taro/dist/resolver';
+import Components from 'unplugin-vue-components/webpack'
+import NutUIResolver from '@nutui/nutui-taro/dist/resolver'
 
-import AutoImportPlugin from 'unplugin-auto-import/webpack'
 const nsRegex = /^Ns[A-Z][\w]+/
 const NutshellResolver = (name) => {
   console.log('NutshellResolver....................mame=', name)

@@ -7,7 +7,7 @@ const onClick = (...args: any[]) => {
 <template>
   <div class="welcome">
     <h1>Nutshell Desktop Expo</h1>
-    <ns-row>
+    <ns-row gutter="8">
       <ns-col span="12">
         <ns-button type="primary"
           size="sm"
@@ -18,8 +18,11 @@ const onClick = (...args: any[]) => {
       </ns-col>
       <ns-col span="12">
         <ns-input type="text" label="客户名称" placeholder="客户名称" />
-    </ns-col>
-  </ns-row>
+      </ns-col>
+      <ns-col span="12">
+        <ns-date-input label="选择日期" />
+      </ns-col>
+    </ns-row>
   </div>
 </template>
 

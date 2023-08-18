@@ -2,7 +2,7 @@ import { h } from 'vue'
 // import { Button } from '@nutui/nutui-taro'
 import type { ButtonEmits, ButtonProps } from 'src/components'
 
-export const button = (props: ButtonProps & ButtonEmits) => {
+export const Button = (props: ButtonProps & ButtonEmits) => {
   const { type, label, width, color, disabled,
     maxWidth, height, maxHeight, minWidth, minHeight,
     click,
