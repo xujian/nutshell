@@ -37,7 +37,7 @@ export type DefineFunctionOptions<
   Emits extends EmitsOptions = {},
   Slots extends SlotsType = {},
   Props = Prettify<Readonly<ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>>>
-> = ComponentOptionsWithObjectProps<
+> = Omit<ComponentOptionsWithObjectProps<
   PropsOptions,
   {},
   {},
@@ -50,7 +50,8 @@ export type DefineFunctionOptions<
   {},
   string,
   Slots
-> & {
+>, 'setup'> & {
+  // 改写 setup() 的定义
   setup?: (
     this: void,
     props: Props, 
@@ -59,6 +60,7 @@ export type DefineFunctionOptions<
     props: Props
   }
 }
+
 
 /**
  * Our private defineComponent
@@ -97,7 +99,7 @@ export function define<
     const { props: propsReturns } = setupOriginal(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
-    const render = ref((props) => h('div'))
+    const render = ref((props, ctx) => h('div'))
     if (providing instanceof Promise) {
       providing.then(({default: provider}) => {
         render.value = provider.render
