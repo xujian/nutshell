@@ -1,0 +1,87 @@
+{
+  "eslint.enable": true,
+  "eslint.validate": [],
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "files.exclude": {
+    "**/nutshell.css": true,
+    "**/nutui.css": true,
+    "**/auto-imports.d.ts": true,
+  },
+  "workbench.colorCustomizations": {
+    "[Shades of Purple]": {
+      "editor.background": "#060f3d",
+      "tab.border": "#060f3d",
+      "tab.activeBackground": "#060f3d",
+      "tab.activeBorder": "#060f3d",
+      "tab.activeBorderTop": "#060f3d",
+      "tab.inactiveBackground": "#060f3d",
+      "tab.activeModifiedBorder": "#060f3d",
+      "sideBar.background": "#060f3d",
+      "sideBar.border": "#060f3d",
+      "sideBar.foreground": "#0091ff",
+      "sideBarSectionHeader.border": "#060f3d",
+      "focusBorder": "#060f3d",
+      "sideBarSectionHeader.background": "#060f3d",
+      "activityBar.background": "#060f3d",
+      "activityBar.foreground": "#ff009d",
+      "activityBar.activeBorder": "#ff009d",
+      "activityBar.inactiveForeground": "#ff009d",
+      "scrollbarSlider.background": "#00569d66",
+      "activityBar.border": "#060f3d",
+      "activityBar.activeBackground": "#060f3d",
+      "editorGroup.border": "#060f3d",
+      "editorGroupHeader.noTabsBackground": "#060f3d",
+      "editorGroupHeader.tabsBackground": "#060f3d",
+      "editorGroupHeader.tabsBorder": "#060f3d",
+      "editorWidget.background": "#060f3d",
+      "editorHoverWidget.background": "#001163",
+      "editorHoverWidget.border": "#002aff",
+      "editorSuggestWidget.background": "#001163",
+      "editorSuggestWidget.border": "#002aff",
+      "editorSuggestWidget.focusHighlightForeground": "#00ff73",
+      "editorSuggestWidget.selectedBackground": "#ff009d",
+      "editorGutter.background": "#060f3d",
+      "editor.lineHighlightBackground": "#08165a",
+      "editor.lineHighlightBorder": "#060f3d",
+      "titleBar.activeBackground": "#060f3d",
+      "titleBar.inactiveBackground": "#060f3d",
+      "quickInput.background": "#001163",
+      "quickInputList.focusBackground": "#ff009d",
+      "quickInputTitle.background": "#ff0000",
+      "quickInput.foreground": "#00ff73",
+      "input.background": "#060f3d",
+    }
+  },
+  "editor.semanticTokenColorCustomizations": {
+    "rules": {
+      "keyword.void": {
+        "foreground": "#ffff99",
+        "fontStyle": "underline"
+      }  
+    },
+      },
+  "editor.tokenColorCustomizations": {
+    "[Shades of Purple]": {
+      "comments": {
+        "foreground": "#00ffae",
+        "fontStyle": ""
+      },
+      "textMateRules": [
+        {
+          "name": "types",
+          "scope": "entity.name.type",
+          "settings": {
+            "fontStyle": "bold underline",
+            "foreground": "#ff0000"
+          },
+        },
+        {
+          "scope": "string.unquoted",
+          "settings": {
+              "foreground": "#21e2d2"
+          }
+        },
+      ]
+    }
+  }
+}
