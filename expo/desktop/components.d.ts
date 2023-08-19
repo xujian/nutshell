@@ -9,7 +9,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     NsButton: typeof import('nutshell')['NsButton']
+    NsCol: typeof import('nutshell')['NsCol']
+    NsDateInput: typeof import('nutshell')['NsDateInput']
     NsInput: typeof import('nutshell')['NsInput']
+    NsRow: typeof import('nutshell')['NsRow']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     WelcomeHero: typeof import('./src/components/WelcomeHero.vue')['default']

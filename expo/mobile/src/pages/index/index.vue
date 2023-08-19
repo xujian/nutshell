@@ -5,7 +5,8 @@
     </view>
     {{ msg }}
     <view class="btn">
-      <ns-button type="primary" label="Press"></ns-button>
+      <ns-button type="primary" label="2"
+        @click="onClick" @change="onChange"></ns-button>
       <nut-button type="primary" @click="handleClick('text', msg2, true)">点我</nut-button>
     </view>
     <nut-toast :msg="msg2" v-model:visible="show" :type="type" :cover="cover"/>
@@ -16,6 +17,7 @@
 import { reactive, toRefs } from 'vue'
 
 export default {
+  
   name: 'Index',
   components: {
   },
@@ -35,9 +37,14 @@ export default {
       state.cover = cover;
     };
 
+    const onClick = (...args) => {
+      console.log('on click .........', args)
+    }
+
     return {
       ...toRefs(state),
-      handleClick
+      handleClick,
+      onClick
     }
   }
 }

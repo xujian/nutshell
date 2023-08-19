@@ -9,3 +9,6 @@ ui/auto-imports.d.ts
 ui/yarn-error.log
 runtime-core.d.ts
 expo/desktop/.eslintrc-auto-import.json
+**/nutui.css
+**/nutshell.css
+**/components.d.ts

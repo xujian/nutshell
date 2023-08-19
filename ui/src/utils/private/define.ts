@@ -30,11 +30,13 @@ import { EmitsToProps, Prettify } from './helpers'
 
 /**
  * define() 所需要的参数
+ * let TS refers only Props, Emits, Slots
  */
 export type DefineFunctionOptions<
   PropsOptions extends ComponentObjectPropsOptions,
   Emits extends EmitsOptions = {},
-  Slots extends SlotsType = {}
+  Slots extends SlotsType = {},
+  Props = Prettify<Readonly<ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>>>
 > = ComponentOptionsWithObjectProps<
   PropsOptions,
   {},
@@ -51,10 +53,8 @@ export type DefineFunctionOptions<
 > & {
   setup?: (
     this: void,
-    props: LooseRequired<
-      Props & Prettify<UnwrapMixinsType<IntersectionMixin<Mixin> & IntersectionMixin<Extends>, 'P'>>
-    >, 
-    ctx: SetupContext<E, S>
+    props: Props, 
+    ctx: SetupContext<Emits, Slots>
   ) => { 
     props: Props
   }
