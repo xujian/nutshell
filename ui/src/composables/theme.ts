@@ -2,9 +2,23 @@ export type ThemeOptions = false | {
 
 }
 
+export type HexColor = `#${string}`
+
+interface BaseColors {
+  background: HexColor
+  surface: HexColor
+  text: HexColor
+  primary: HexColor
+  secondary: HexColor
+  accent: HexColor
+  positive: HexColor
+  negtive: HexColor
+}
+
 export type Theme = {
   name: string
-  primary: string
+  dark: boolean,
+  colors: BaseColors
 }
 
 export function createTheme (name: string) {
