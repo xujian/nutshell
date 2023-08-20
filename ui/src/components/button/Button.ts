@@ -1,7 +1,7 @@
-import { useSizeProps } from '../../composables/size'
+import { useSizeProps } from '../../props'
 import { define } from '../../utils'
 import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
-import { useDimensionProps } from '../../composables/dimensions'
+import { useDimensionProps } from '../../props'
 
 /**
  * 按钮类型
