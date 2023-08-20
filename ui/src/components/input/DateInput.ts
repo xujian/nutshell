@@ -1,5 +1,6 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../utils'
+import { usePlatform } from '../../composables'
 
 const props = {
   label: {
@@ -28,6 +29,8 @@ export const NsDateInput = define({
     props,
     emits,
     setup (props, ctx) {
+      const platform = usePlatform()
+      console.log('DateInput.ts................platform:', platform)
       return {
         props
       }

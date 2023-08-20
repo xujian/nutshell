@@ -1,6 +1,6 @@
 export {
-  createDevice, useDevice, DeviceSymbol
+  createPlatform, usePlatform, PlatformSymbol
 } from './device'
 export type {
-  DeviceInstance
+  PlatformInstance
 } from './device'

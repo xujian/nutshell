@@ -3,7 +3,7 @@ import { InjectionKey, inject } from 'vue'
 /**
  * 用户设备、浏览器及系统环境
  */
-export interface DeviceInstance {
+export interface PlatformInstance {
   android: boolean,
   ios: boolean,
   chrome: boolean,
@@ -15,7 +15,7 @@ export interface DeviceInstance {
   dingding?: boolean,
 }
 
-function getDevice (): DeviceInstance {
+function getPlatform (): PlatformInstance {
   const userAgent = window.navigator.userAgent
 
   function match (regexp: RegExp) {
@@ -40,16 +40,16 @@ function getDevice (): DeviceInstance {
   }
 }
 
-export function createDevice () {
-  const device = getDevice()
-  return device
+export function createPlatform () {
+  const platform = getPlatform()
+  return platform
 }
 
-export const DeviceSymbol: InjectionKey<DeviceInstance>
-  = Symbol.for('nutshell:device')
+export const PlatformSymbol: InjectionKey<PlatformInstance>
+  = Symbol.for('nutshell:platform')
 
 
-export function useDevice () {
-  const device = inject(DeviceSymbol)
-  return device
+export function usePlatform () {
+  const platform = inject(PlatformSymbol)
+  return platform
 }
