@@ -8,6 +8,8 @@
  * })
  */
 
+import { InjectionKey, inject } from 'vue'
+
 /**
  * Event names:
  * 
@@ -25,7 +27,17 @@ export type BusOffFn<T = any> = (event: string, fn: BusListener<T>) => void
 export type BusOnceFn<T = any> = (event: string, fn: BusListener<T>) => void
 export type BusEmitFn<T = any> = (event: string, payload: T) => void
 
-export function useBus () {
+export type BusInstance = {
+  on: BusOnFn,
+  off: BusOffFn,
+  once: BusOnceFn,
+  emit: BusEmitFn
+}
+
+export const BusSymbol: InjectionKey<BusInstance>
+  = Symbol.for('nutshell:platform')
+
+export function createBus (): BusInstance {
 
   const on: BusOnFn = (event, fn) => {
     const listeners = book.get(event) || []
@@ -50,4 +62,13 @@ export function useBus () {
       listener.call(undefined, payload)
     })
   }
+
+  return {
+    on, off, once, emit
+  }
+}
+
+export function useBus () {
+  const bus = inject(BusSymbol)
+  return bus
 }
