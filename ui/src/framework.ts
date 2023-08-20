@@ -1,7 +1,7 @@
 import { App, ComponentPublicInstance, InjectionKey, reactive, inject as _inject } from 'vue'
 import { createTheme } from './composables/theme'
 import { prepareProvider } from './shared'
-import { DeviceSymbol, createDevice } from './composables'
+import { BusSymbol, PlatformSymbol, createBus, createPlatform } from './composables'
 
 export interface NutshellOptions {
   theme?: string,
@@ -14,12 +14,14 @@ export function Nutshell ({
 }: NutshellOptions = {}) {
 
   const theming = createTheme('default')
-  const device = createDevice()
+  const bus = createBus()
+  const platform = createPlatform()
 
   // for app.use()
   const install = (app: App) => {
     app.provide('provider', provider)
-    app.provide(DeviceSymbol, device)
+    app.provide(PlatformSymbol, platform)
+    app.provide(BusSymbol, bus)
     prepareProvider(app, provider)
     // for (const key in components) {
     //   // app.component(key, components[key])
