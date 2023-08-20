@@ -1,0 +1,17 @@
+@use '../tools/functions' as *;
+
+$fonts: () !default;
+$fonts: map-deep-merge(
+  (
+    root: 16px,
+    auto: 0.75rem,          // 12px
+    xxs: 0.6666666667rem,   // 10px
+    xs: .75rem,             // 12px
+    sm: .875rem,            // 16rem
+    md: 1.25rem,            // 20px
+    lg: 1.5rem,             // 24px
+    xl: 2.5rem              // 40px
+  ),
+  $fonts
+)
+
