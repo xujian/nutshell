@@ -35,7 +35,7 @@ export type BusInstance = {
 }
 
 export const BusSymbol: InjectionKey<BusInstance>
-  = Symbol.for('nutshell:platform')
+  = Symbol.for('nutshell:bus')
 
 export function createBus (): BusInstance {
 
