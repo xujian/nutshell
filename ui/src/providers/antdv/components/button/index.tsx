@@ -1,9 +1,9 @@
 import { h } from 'vue'
-import { Button } from 'ant-design-vue'
+import { Button as AntButton } from 'ant-design-vue'
 import { ButtonType as AntdvButtonType } from 'ant-design-vue/es/button'
 import type { ButtonProps, ButtonType } from '../../../../components'
 
-export const button = (props: ButtonProps, ctx) => {
+export const Button = (props: ButtonProps, ctx) => {
   type TypeMappings = {
     [key in ButtonType]: AntdvButtonType
   }
@@ -17,6 +17,6 @@ export const button = (props: ButtonProps, ctx) => {
   }
   const buttonType = typeMappings[props.type]
   return (
-    <Button type={buttonType}>{props.label}</Button>
+    <AntButton type={buttonType}>{props.label}</AntButton>
   )
 }

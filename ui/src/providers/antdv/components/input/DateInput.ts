@@ -1,7 +1,10 @@
 import { h, ref } from 'vue'
+import { DatePicker } from 'ant-design-vue'
 import { defineComponent } from 'vue'
 
-// 这是一个复合组件
+/**
+ * Antdv DateInput
+ */
 export const DateInput = defineComponent({
   name: 'DateInput',
   setup: (props, ctx) => {
@@ -12,26 +15,18 @@ export const DateInput = defineComponent({
     ].join(' ')
     const visible = ref(false)
     const open = () => {
-      console.log('DateInput.......open')
+      console.log('DateInput.Antdv......open')
       visible.value = true
     },
     close = () => {
-      console.log('DateInput.......close')
+      console.log('DateInput.Antdv......close')
       visible.value = false
     }
-    return () => h('div', {
+    return () => 
+      h(DatePicker, {
         class: classes,
-      }, [
-        h(NutCell, {
-          title: '选择日期',
-          onClick: open
-        }),
-        h(NutCalendar, {
-          class: classes,
-          visible: visible.value,
-          onClose: close,
-          defaultValue: '2023-08-17',
-        })
-      ])
+        visible: visible.value,
+        onClose: close,
+      })
   }
 })

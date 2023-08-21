@@ -1,5 +1,7 @@
-import { button } from './button'
+import { Button } from './button'
+import { DateInput } from './input'
 
 export {
-  button
+  Button,
+  DateInput
 }
