@@ -101,11 +101,11 @@ export function define<
     const defaultSlot = slots.default
     const render = ref((props, ctx) => h('div'))
     if (providing instanceof Promise) {
-      providing.then(({default: provider}) => {
-        render.value = provider.render
+      providing.then((provider) => {
+        render.value = provider.render.bind(provider)
       })
     } else {
-      render.value = providing.render
+      render.value = providing.render.bind(providing)
     }
     return () => h(render.value, {
       ...propsReturns,
@@ -114,7 +114,7 @@ export function define<
     }, defaultSlot)
   }
 
-  const optionsSythesized: Options<PropsOptions, Emits, Slots> = {
+  const optionsSythesized = {
     inheritAttrs: true,
     name: options.name,
     props: options.props,

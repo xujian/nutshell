@@ -10,7 +10,7 @@ import './styles/main.scss'
 
 const app = createApp(App)
 const nutshell = Nutshell({
-  // provider: 'antdv'
+  provider: 'antdv'
 })
 app.use(nutshell)
 

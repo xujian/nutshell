@@ -1,5 +1,5 @@
 import { h, defineComponent, inject } from 'vue'
-import { getProvider } from '../providers'
+import { CoreProvider, getProvider } from '../providers'
 
 /**
  * Provider 体系的设计
@@ -19,23 +19,25 @@ import { getProvider } from '../providers'
  * 3. 找不到时 fallback 到 "尚未实现"
  */
 
-interface Provider {
+export const ProviderSymbol: InjectionKey<CoreProvider | Promise<CoreProvider>>
+  = Symbol.for('nutshell:provider')
 
+export const createProvider = (name: string): CoreProvider | Promise<CoreProvider> => {
+  const provider = getProvider(name)
+  return provider
 }
 
 /**
  * Global Provider
  */
-export const useProvider = () => {
-  const providerName = inject('provider') as string
-  const provider = getProvider(providerName)
+export const useProvider = (): CoreProvider | Promise<CoreProvider> => {
+  const provider = inject(ProviderSymbol) as CoreProvider | Promise<CoreProvider>
   return provider
 }
 
-export const prepareProvider = (app, providerName: string) => {
-  const provider = getProvider(providerName)
+export const prepareProvider = (app, provider) => {
   if (provider instanceof Promise) {
-    provider.then(({default: p}) => {
+    provider.then((p) => {
       p.prepare(app)
     })
   } else {

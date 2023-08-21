@@ -18,10 +18,13 @@ export const prepare = (app) => {
 }
 
 const AntdvProvider: CoreProvider = {
-  render: (props: any) => {
+  render (props: any, ctx) {
     const { parent } = getCurrentInstance()
     const name = parent.type.name.slice(2).toLowerCase()
-    const component = components[name] || makeDummy(name)
+    let component = components[name]
+    if (!component) {
+      return this.fallback.render(props, ctx)
+    }
     return h(component, {...props})
   },
   prepare,
