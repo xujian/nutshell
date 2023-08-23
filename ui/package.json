@@ -60,6 +60,7 @@
   "dependencies": {
     "@nutui/nutui-taro": "^4.1.2",
     "ant-design-vue": "4.x",
+    "dayjs": "^1.11.9",
     "vue-router": "^4.2.4"
   }
 }

@@ -1,124 +1,171 @@
 <script setup lang="ts">
-import type { TableColumnsType } from 'ant-design-vue'
 import { ref } from 'vue'
 import axios from 'axios'
+import dayjs from 'dayjs'
 
+/**
+ * Format table cell
+ * 表格单元的格式器
+ * 1. 字典查找
+ * 2. API查找
+ * 3. 时间格式化
+ * 4. 手机号码脱敏
+ * 5. chip/chips
+ * 6. 条件样式
+ * 7. 就是要格式化
+ * 
+ * 方案:
+ * 1. 需要定义一组 <ns-table-cell />?
+ * 2. 定义一组数据格式化函数?
+ */
+
+/**
+ * 
+ */
 const onClick = (...args: any[]) => {
   console.log('ns-button-------onClick', args)
 }
 
-const columns =[
-  { title: '部门', dataIndex: 'deptName', width: '100px' },
+function formatDateTime (input: number | string) {
+  if (!input) return ''
+  const timeValue = dayjs(+input)
+  return timeValue.format('YYYY-MM-DD HH:MM')
+}
+
+function formatRangedDateTime (input: number | string) {
+  if (!input) return ''
+  const timeValue = dayjs(+input),
+    date = timeValue.format('YYYY-MM-DD'),
+    hour = timeValue.hour()
+  const time = hour === 9
+    ? '09:00-10:00'
+    : `${hour}:00-${hour + 2}:00`
+  return `${date} ${time}`
+}
+
+const columns = [
   {
-    title: '签单笔数',
-    dataIndex: 'orderCount',
-    width: '100px',
-    align: 'right',
+    title: '序号',
+    width: 70,
+    dataIndex: 'no',
+    align: 'center',
+    fixed: 'left',
+  },
+  { title: '姓名', dataIndex: 'name', width: 120, fixed: 'left' },
+  { title: '手机号码', dataIndex: 'phone', width: 130 },
+  {
+    title: '创建用户',
+    dataIndex: 'userId',
+    width: 120,
   },
   {
-    title: '签单金额(万元)',
-    dataIndex: 'preLoanAmountSum',
-    width: '140px',
-    align: 'right',
-    type: 'decimal'
+    title: '当前跟进用户',
+    dataIndex: 'followerId',
+    width: 120,
   },
-  { title: '放款笔数', dataIndex: 'loanCount', width: '140px', align: 'right' },
+  { title: '客户阶段', dataIndex: 'stage', width: 90 },
+  { title: '邀约上门时间', dataIndex: 'inviteStart', width: 200 },
+  { title: '邀约提交人员', dataIndex: 'submitUserId', width: 120 },
+  { title: '邀约提交时间', dataIndex: 'inputDate', width: 160 },
+  { title: '协助谈单人员', dataIndex: 'userIds', width: 180 },
+  { title: '是否确认', dataIndex: 'isDoor', width: 120 },
+  { title: '客户人数', dataIndex: 'num', width: 120 },
+  { title: '确定上门时间', dataIndex: 'confirmStart', width: 200 },
+  { title: '确定提交人员', dataIndex: 'confirmUserId', width: 160 },
   {
-    title: '放款金额(万元)',
-    dataIndex: 'realLoanAmountSum',
-    width: '140px',
-    align: 'right',
-  },
-  {
-    title: '笔均放款金额(万元)',
-    dataIndex: 'avgRealLoanAmount',
-    width: '160px',
-    align: 'right',
-  },
-  {
-    title: '收入金额(元)',
-    dataIndex: 'confirmedFeeIncomeSum',
-    width: '140px',
-    align: 'right',
+    title: '确定提交时间',
+    dataIndex: 'confirmDate',
+    width: 160,
   },
   {
-    title: '支出金额(元)',
-    dataIndex: 'confirmedFeeCostSum',
-    width: '140px',
-    align: 'right',
-  },
-  {
-    title: '净收金额(元)',
-    dataIndex: 'netReceivedAmount',
-    width: '140px',
-    align: 'right',
-  },
-  {
-    title: '笔均净收金额(元)',
-    dataIndex: 'avgNetReceivedAmount',
-    width: '160px',
-    align: 'right',
-  },
-  {
-    title: '人均签单笔数',
-    dataIndex: 'perOrderCount',
-    width: '140px',
-    align: 'right',
-  },
-  {
-    title: '人均签单金额(万元)',
-    dataIndex: 'perPreLoanAmount',
-    width: '160px',
-    align: 'right',
-  },
-  {
-    title: '人均放款笔数',
-    dataIndex: 'perLoanCount',
-    width: '140px',
-    align: 'right',
-  },
-  {
-    title: '人均放款金额(万元)',
-    dataIndex: 'perRealLoanAmount',
-    width: '160px',
-    align: 'right',
-  },
-  {
-    title: '人均收入金额(元)',
-    dataIndex: 'perConfirmedFeeIncome',
-    width: '160px',
-    align: 'right',
-  },
-  {
-    title: '人均支出金额(元)',
-    dataIndex: 'perConfirmedFeeCost',
-    width: '160px',
-    align: 'right',
-  },
-  {
-    title: '人均净收金额(元)',
-    dataIndex: 'perNetReceivedAmount',
-    width: '160px',
-    align: 'right',
-  },
-  {
-    title: '',
-    key: 'operation',
+    title: '操作',
+    dataIndex: 'operation',
     fixed: 'right',
     width: 80,
   },
 ]
 
-const tableData = ref([])
+const tableData = ref<any[]>([])
+
+const columnsOfUserId = [
+  'followerId',
+  'userId',
+  'confirmUserId',
+  'submitUserId',
+  'userIds'
+]
 
 function fetchTableData () {
-  axios.get('/json/table-data.json').then(response => {
-    tableData.value = response.data
+  axios.get('/json/table-data-visits.json')
+    .then(response => response.data)
+    // pipes to translate keys to labels
+    .then(data => data.map(
+      (d: any, index: number) => ({
+        ...d,
+        no: index + 1,
+        phone: JSON.parse(d.phone)?.['mask'] || '',
+        inviteStart: formatRangedDateTime(d.inviteStart),
+        inviteEnd: formatRangedDateTime(d.inviteEnd),
+        confirmStart: formatRangedDateTime(d.confirmStart),
+        confirmEnd: formatRangedDateTime(d.confirmEnd),
+        confirmDate: formatDateTime(d.confirmDate),
+        inputDate: formatDateTime(d.inputDate),
+      })))
+    .then(source => translate('stage', source, 'stage'))
+    .then(data => lookupNamesFromId(data, columnsOfUserId))
+    .then(result => {
+      console.log('.........then result', result)
+      tableData.value = result
+    })
+}
+
+async function translate (dict: string, source: any[], field: string) {
+  const response = await axios.get(`/dicts/${dict}.json`),
+    entries = response.data
+  return source.map(s => {
+    const word = s[field],
+      meaning = entries.find((e: any) => e.value === word)
+    s[field] = meaning?.label || word
+    return s
   })
 }
 
-fetchTableData()
 
+/**
+ * 批量从 user id 反查姓名
+ * @param source 原始数据
+ * @param columns 要转译的字段组
+ */
+async function lookupNamesFromId (source: any[], columns: string[]) {
+  const nameServiceUrl = '/cas/sysUser/getFullNameById'
+  // 汇总所有字段的 user id
+  // 去重后发送到后端接口查询
+  const fields = columns.map(column => ({
+    name: column,
+    ids: source.map(row => row[column]
+      ?.split(',') || [])
+      .reduce((a, b) => [...a, ...b]),
+  }))
+  const flatIds = fields.map(field => field.ids)
+      .reduce((a, b) => [...a, ...b]),
+    distinctIds = Array.from(new Set(flatIds))
+      .filter(a => !!a)
+  // return await axios.post(nameServiceUrl, distinctIds)
+  return axios.get('/json/name-service.json')
+    .then(response => response.data)
+    .then(result => source.map(row => ({
+      ...row,
+      ...columns.map(column => ({ // 用查询到的LABEL覆盖掉原有的ID
+          [column]: row[column] // 有逗号分隔的ID
+            ?.split(',')
+            .map((id: string) => result[id] ?? '')
+            .join(',')
+          })
+        ).reduce((a, b) => ({...a, ...b}))
+    })))
+}
+
+fetchTableData()
 </script>
 
 <template>
