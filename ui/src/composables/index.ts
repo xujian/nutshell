@@ -11,4 +11,7 @@ export {
   createBus
 } from './bus'
 
-
+export type {
+  HexColor,
+  Color,
+} from './theme'
