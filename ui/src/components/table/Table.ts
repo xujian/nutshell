@@ -1,6 +1,8 @@
-import { ExtractPublicPropTypes, PropType } from 'vue'
-import type { TableColumnsType } from 'ant-design-vue'
+import { ExtractPublicPropTypes, PropType, ref, toRefs, useSlots } from 'vue'
 import { define } from '../../utils'
+import { h } from 'vue'
+import { NsChip } from '../chip'
+import { watch } from 'vue'
 
 export type TableRow = {
   [key: string]: string | number
@@ -20,7 +22,7 @@ const props = {
    * Columns Customization 列配置
    */
   columns: {
-    type: Object as PropType<TableColumnsType>,
+    type: Object as PropType<any[]>,
   }
 }
 
@@ -29,7 +31,7 @@ export type TableProps = ExtractPublicPropTypes<typeof props>
 export const NsTable = define({
   name: 'NsTable',
   props,
-  setup (props, ctx) {
+  setup (props: TableProps, ctx) {
     return {
       props
     }

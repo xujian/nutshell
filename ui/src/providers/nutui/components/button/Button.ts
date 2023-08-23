@@ -11,5 +11,7 @@ export const Button = (props: ButtonProps & ButtonEmits) => {
     type: props.type as never,
     label, color, disabled,
     onClick: (e) => {props.click()}
-  }, props.label)
+  }, {
+    default: () => props.label
+  })
 }
