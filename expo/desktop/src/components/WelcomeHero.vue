@@ -165,6 +165,20 @@ async function lookupNamesFromId (source: any[], columns: string[]) {
     })))
 }
 
+function getStageStyle (value: string) {
+  const styles: Record<string, string> = {
+    intention: 'color: #2dab49;background: rgba(45, 171, 73, 0.1);',
+    door: 'color: #4185e1;background: rgba(65, 133, 225, 0.1);',
+    submitOrder: 'color: #efc50d;background: rgba(242, 205, 43, 0.1);',
+    confirmOrder: 'color: #7734d3;background: rgba(198, 162, 248, 0.1);',
+    loan: 'color: #f96188;background: rgba(252, 149, 176, 0.1);',
+    finishOrder: 'color: #fd6433;background: rgba(255, 169, 142, 0.1);',
+    end: 'color: #767676;background: rgba(205, 205, 205, 0.1);',
+    clue: 'color: #1AC095;background: rgba(44, 192, 154, 0.1);',
+  }
+  return styles[value] ?? styles.intention
+}
+
 fetchTableData()
 </script>
 
@@ -179,6 +193,7 @@ fetchTableData()
           color="#ff9900"
           disabled
           label="Press" @click="onClick" />
+        <ns-chip label="线索"></ns-chip>
       </ns-col>
       <ns-col span="12">
         <ns-input type="text" label="客户名称" placeholder="客户名称" />
@@ -187,31 +202,13 @@ fetchTableData()
         <ns-date-input label="选择日期" />
       </ns-col>
     </ns-row>
-    <ns-table :data-source="tableData" :columns="columns"></ns-table>
+    <ns-table :data-source="tableData" :columns="columns">
+      <ns-table-column type="chip"
+        match="stage"
+        :style="(model: string) => getStageStyle(model)" />
+    </ns-table>
   </div>
 </template>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
 </style>
