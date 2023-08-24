@@ -3,7 +3,7 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   ComponentOptionsWithObjectProps, ComponentPropsOptions, 
   ComputedOptions, DefineComponent, 
   ExtractDefaultPropTypes, ExtractPropTypes, 
-  MethodOptions, EmitsOptions, SetupContext, SlotsType, ObjectEmitsOptions, RenderFunction } from 'vue'
+  MethodOptions, EmitsOptions, SetupContext, SlotsType, ObjectEmitsOptions, RenderFunction, toRefs } from 'vue'
 import { ref, h } from 'vue'
 import { defineComponent } from 'vue'
 import { EmitsToProps, Prettify } from './helpers'
@@ -57,7 +57,7 @@ export type DefineFunctionOptions<
     props: Props, 
     ctx: SetupContext<Emits, Slots>
   ) => { 
-    props: Props
+    props?: Partial<Props>
   }
 }
 
@@ -96,7 +96,7 @@ export function define<
     // console.log('define--------------------------------setupWrapped', {...props}, ctx)
     const { setup: setupOriginal } = options
     const providing  = useProvider()
-    const { props: propsReturns } = setupOriginal(props, ctx)
+    const { props: extraProps } = setupOriginal(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
     const render = ref((props, ctx) => h('div'))
@@ -108,8 +108,8 @@ export function define<
       render.value = providing.render.bind(providing)
     }
     return () => h(render.value, {
-      ...propsReturns,
       ...props,
+      ...extraProps,
       ...options.emits,
     }, defaultSlot)
   }

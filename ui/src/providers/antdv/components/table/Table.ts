@@ -11,7 +11,7 @@ export const Table = defineComponent({
     const { slots } = ctx
     return () => h(AntdvTable, {
       class: classes,
-      dataSource: props.dataSource,
+      dataSource: props.rows,
       columns: props.columns,
       scroll: {x: 1200}
     }, slots.default)

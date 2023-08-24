@@ -19,6 +19,10 @@ import dayjs from 'dayjs'
  * 2. 定义一组数据格式化函数?
  */
 
+const buttonLabel = ref('Press')
+setTimeout(() => {
+  buttonLabel.value = 'Press Me'
+}, 5e3)
 /**
  * 
  */
@@ -68,7 +72,7 @@ const columns = [
   { title: '邀约提交人员', dataIndex: 'submitUserId', width: 120 },
   { title: '邀约提交时间', dataIndex: 'inputDate', width: 160 },
   { title: '协助谈单人员', dataIndex: 'userIds', width: 180 },
-  { title: '是否确认', dataIndex: 'isDoor', width: 120 },
+  { title: '是否确认', dataIndex: 'userIds', width: 120 },
   { title: '客户人数', dataIndex: 'num', width: 120 },
   { title: '确定上门时间', dataIndex: 'confirmStart', width: 200 },
   { title: '确定提交人员', dataIndex: 'confirmUserId', width: 160 },
@@ -167,14 +171,14 @@ async function lookupNamesFromId (source: any[], columns: string[]) {
 
 function getStageStyle (value: string) {
   const styles: Record<string, string> = {
-    intention: 'color: #2dab49;background: rgba(45, 171, 73, 0.1);',
-    door: 'color: #4185e1;background: rgba(65, 133, 225, 0.1);',
+    线索: 'color: #2dab49;background: rgba(45, 171, 73, 0.1);',
+    上门: 'color: #4185e1;background: rgba(65, 133, 225, 0.1);',
     submitOrder: 'color: #efc50d;background: rgba(242, 205, 43, 0.1);',
     confirmOrder: 'color: #7734d3;background: rgba(198, 162, 248, 0.1);',
     loan: 'color: #f96188;background: rgba(252, 149, 176, 0.1);',
     finishOrder: 'color: #fd6433;background: rgba(255, 169, 142, 0.1);',
-    end: 'color: #767676;background: rgba(205, 205, 205, 0.1);',
-    clue: 'color: #1AC095;background: rgba(44, 192, 154, 0.1);',
+    终止: 'color: #767676;background: rgba(205, 205, 205, 0.1);',
+    结单: 'color: #1AC095;background: rgba(44, 192, 154, 0.1);',
   }
   return styles[value] ?? styles.intention
 }
@@ -192,7 +196,7 @@ fetchTableData()
           width="100"
           color="#ff9900"
           disabled
-          label="Press" @click="onClick" />
+          :label="buttonLabel" @click="onClick" />
         <ns-chip label="线索"></ns-chip>
       </ns-col>
       <ns-col span="12">
@@ -205,7 +209,7 @@ fetchTableData()
     <ns-table :data-source="tableData" :columns="columns">
       <ns-table-column type="chip"
         match="stage"
-        :style="(model: string) => getStageStyle(model)" />
+        :extraStyle="(model: string) => getStageStyle(model)" />
     </ns-table>
   </div>
 </template>
