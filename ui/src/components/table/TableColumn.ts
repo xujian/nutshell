@@ -1,6 +1,11 @@
 import { ExtractPublicPropTypes, PropType } from 'vue'
-import type { TableColumnsType } from 'ant-design-vue'
 import { define } from '../../utils'
+
+export type TableColumnCustomizationType = 
+  'chip' | 
+  'date' | 
+  'decimal' | 
+  'button'
 
 const props = {
   /**
@@ -9,6 +14,9 @@ const props = {
   match: {
     type: String,
   },
+  type: {
+    type: String as PropType<TableColumnCustomizationType>,
+  }
 }
 
 export type TableColumnProps = ExtractPublicPropTypes<typeof props>
@@ -18,7 +26,6 @@ export const NsTableColumn = define({
   props,
   setup (props, ctx) {
     return {
-      props
     }
   }
 })
