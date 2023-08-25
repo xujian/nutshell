@@ -32,7 +32,6 @@ export const NsDateInput = define({
       const platform = usePlatform()
       console.log('DateInput.ts................platform:', platform)
       return {
-        props
       }
     }
   }

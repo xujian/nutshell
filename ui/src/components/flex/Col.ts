@@ -29,7 +29,6 @@ export const NsCol = define({
   props,
   setup (props, ctx) {
     return {
-      props
     }
   }
 })

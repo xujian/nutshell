@@ -30,7 +30,6 @@ export const NsRow = define({
   setup (props, ctx) {
     const { slots } = ctx
     return {
-      props, 
     }
   }
 })

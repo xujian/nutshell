@@ -65,7 +65,6 @@ export const NsButton = define({
     setup (props, ctx) {
       // 对参数做前期的处理
       return {
-        props
       }
     }
   }
