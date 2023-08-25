@@ -49,7 +49,6 @@ export const NsTable = define({
     function getCustomizedColumns () {
       const { default: defaultSlot } = useSlots(),
         children = defaultSlot()
-      debugger
       // 获取全体 <ns-table-column> 之后, 对原始 columns props 做修改
       return children.map(child => child.props as TableColumnProps)
     }
@@ -57,7 +56,7 @@ export const NsTable = define({
     /**
      * 读取全体子组件
      * 例如 <ns-table-column />
-     * 合并进columns
+     * 合并进 columns
      * 并作为属性传递给 provider
      */
     function buildFinalColumns (customizedColumns) {
@@ -69,7 +68,6 @@ export const NsTable = define({
         } else {
           if (customization.type === 'chip') {
             const style = customization.extraStyle
-            debugger
             column.customRender = (({text, record, index}) => h(NsChip, {
               label: text as string,
               ...style && {
