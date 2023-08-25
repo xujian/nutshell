@@ -206,7 +206,7 @@ fetchTableData()
         <ns-date-input label="选择日期" />
       </ns-col>
     </ns-row>
-    <ns-table :data-source="tableData" :columns="columns">
+    <ns-table :rows="tableData" :columns="columns">
       <ns-table-column type="chip"
         match="stage"
         :extraStyle="(model: string) => getStageStyle(model)" />
