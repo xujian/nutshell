@@ -1,5 +1,6 @@
 import { ExtractPublicPropTypes, PropType } from 'vue'
 import { define } from '../../../utils'
+import { Color } from '../../../composables'
 
 const props = {
   /**
@@ -7,6 +8,9 @@ const props = {
    */
   match: {
     type: String,
+  },
+  color: {
+    type: String as PropType<Color>,
   },
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,

@@ -57,6 +57,7 @@ const columns = [
   },
   { title: '姓名', dataIndex: 'name', width: 120, fixed: 'left' },
   { title: '手机号码', dataIndex: 'phone', width: 130 },
+  { title: '客户等级', dataIndex: 'grade', width: 150 },
   {
     title: '创建用户',
     dataIndex: 'userId',
@@ -210,6 +211,9 @@ fetchTableData()
       <ns-table-column-chip
         match="stage"
         :extraStyle="(model: string) => getStageStyle(model)" />
+      <ns-table-column-rating
+        color="#ff8400"
+        match="grade" />
     </ns-table>
   </div>
 </template>
