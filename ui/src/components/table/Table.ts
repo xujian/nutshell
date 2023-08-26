@@ -2,7 +2,6 @@ import { ExtractPublicPropTypes, PropType, computed, ref, toRefs, useSlots } fro
 import { define } from '../../utils'
 import { h } from 'vue'
 import { NsChip } from '../chip'
-import { watch } from 'vue'
 import { TableColumnProps } from './TableColumn'
 
 /**
@@ -23,7 +22,7 @@ export type TableColumnDefinition = {
   customRender: (options: any) => void
 }
 
-const props = {
+export const tableProps = {
   /**
    * 行数据
    */
@@ -39,11 +38,11 @@ const props = {
   }
 }
 
-export type TableProps = ExtractPublicPropTypes<typeof props>
+export type TableProps = ExtractPublicPropTypes<typeof tableProps>
 
 export const NsTable = define({
   name: 'NsTable',
-  props,
+  props: tableProps,
   setup (props: TableProps, ctx) {
 
     function getCustomizedColumns () {
