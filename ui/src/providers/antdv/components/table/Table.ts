@@ -1,7 +1,8 @@
 import { defineComponent, h, watch } from 'vue'
 import { Table as AntdvTable, TableColumnProps } from 'ant-design-vue'
-import { NsChip, tableProps } from '../../../../components'
-import { ColumnsType } from 'ant-design-vue/es/table'
+import { TableProps, tableProps } from '../../../../components'
+import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
+import columnCustomRenders from './columns'
 
 export const Table = defineComponent({
   name: 'AntdvTableProvider',
@@ -15,26 +16,22 @@ export const Table = defineComponent({
     // 开始处理 custom columns
     // 并将处理后的结果合并进 props.columns
     function buildFinalColumns (customColumns) {
-      const result: TableColumnDefinition[] = props.columns.map(column => {
+      return props.columns.map(column => {
+        const result: ColumnType<any> = {
+          ...column,
+        }
         const field = column.dataIndex,
           customization = customColumns.find(c => c.props.match === field)
         if (!customization) {
-          return column
+          return result
         }
-        if (customization.name === 'chip') {
-          const style = customization.props.extraStyle
-          column.customRender = (({text, record, index}) => h(NsChip, {
-            label: text as string,
-            ...style && {
-                style: typeof style === 'string'
-                  ? style
-                  : style(text, record)
-            }
-          }, () => text))
+        const render = columnCustomRenders[customization.name]
+        if (!render) {
+          return result
         }
-        return column
+        result.customRender = render(customization.props)
+        return result
       })
-      return result
     }
 
     const columns = buildFinalColumns(props.customColumns)

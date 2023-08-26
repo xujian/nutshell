@@ -1,7 +1,6 @@
 import { ExtractPublicPropTypes, PropType, VNode, RendererNode, RendererElement,
   computed, ref, toRefs, useSlots } from 'vue'
 import { define } from '../../utils'
-import { readonly } from 'vue'
 
 /**
  * 填充表格的数据
@@ -13,16 +12,16 @@ export type TableRow = {
 export type TableRows = TableRow[]
 
 export type TableColumnSlot = VNode<RendererNode, RendererElement, {
-  [key]: string
+  [key: string]: string
 }>
 
 export type TableColumnDefinition = {
   title: string,
   dataIndex: string,
   width: number | string,
-  align: string,
-  fixed: string,
-  customRender: (options: any) => void
+  align?: 'left' | 'right' | 'center',
+  fixed?: boolean,
+  customRender?: (options: any) => void
 }
 
 export const tableProps = {
