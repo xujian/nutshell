@@ -57,6 +57,7 @@ const columns = [
   },
   { title: '姓名', dataIndex: 'name', width: 120, fixed: 'left' },
   { title: '手机号码', dataIndex: 'phone', width: 130 },
+  { title: '跟进', dataIndex: 'id', width: 130 },
   { title: '客户等级', dataIndex: 'grade', width: 150 },
   {
     title: '创建用户',
@@ -184,6 +185,10 @@ function getStageStyle (value: string) {
   return styles[value] ?? styles.intention
 }
 
+const onTableColumnButtonClick = (props: any) => {
+  console.log('*******onTableColumnButtonClick.........model:', props)
+}
+
 fetchTableData()
 </script>
 
@@ -196,7 +201,6 @@ fetchTableData()
           size="sm"
           width="100"
           color="#ff9900"
-          disabled
           :label="buttonLabel" @click="onClick" />
         <ns-chip label="线索"></ns-chip>
       </ns-col>
@@ -209,11 +213,17 @@ fetchTableData()
     </ns-row>
     <ns-table :rows="tableData" :columns="columns">
       <ns-table-column-chip
-        match="stage"
+        match="客户阶段"
         :extraStyle="(model: string) => getStageStyle(model)" />
       <ns-table-column-rating
         color="#ff8400"
-        match="grade" />
+        match="客户等级" />
+      <ns-table-column-button
+        match="跟进"
+        label="跟进"
+        size="xs"
+        @click="onTableColumnButtonClick"
+      />
     </ns-table>
   </div>
 </template>

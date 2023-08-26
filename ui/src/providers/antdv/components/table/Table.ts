@@ -20,8 +20,7 @@ export const Table = defineComponent({
         const result: ColumnType<any> = {
           ...column,
         }
-        const field = column.dataIndex,
-          customization = customColumns.find(c => c.props.match === field)
+        const customization = customColumns.find(c => c.props.match === column.title)
         if (!customization) {
           return result
         }
@@ -29,7 +28,7 @@ export const Table = defineComponent({
         if (!render) {
           return result
         }
-        result.customRender = render(customization.props)
+        result.customRender = render(customization.props, customization.component)
         return result
       })
     }

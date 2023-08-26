@@ -46,7 +46,7 @@ export interface ButtonEmits extends ObjectEmitsOptions {
 }
 
 const emits = {
-  click: () => {}
+  click: undefined
 }
 
 export interface ButtonSlots extends SlotsType {
