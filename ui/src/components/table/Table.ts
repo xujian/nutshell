@@ -1,8 +1,7 @@
-import { ExtractPublicPropTypes, PropType, computed, ref, toRefs, useSlots } from 'vue'
+import { ExtractPublicPropTypes, PropType, VNode, RendererNode, RendererElement,
+  computed, ref, toRefs, useSlots } from 'vue'
 import { define } from '../../utils'
-import { h } from 'vue'
-import { NsChip } from '../chip'
-import { TableColumnProps } from './TableColumn'
+import { readonly } from 'vue'
 
 /**
  * 填充表格的数据
@@ -12,6 +11,10 @@ export type TableRow = {
 }
 
 export type TableRows = TableRow[]
+
+export type TableColumnSlot = VNode<RendererNode, RendererElement, {
+  [key]: string
+}>
 
 export type TableColumnDefinition = {
   title: string,
@@ -35,6 +38,10 @@ export const tableProps = {
    */
   columns: {
     type: Object as PropType<TableColumnDefinition[]>,
+  },
+  customColumns: {
+    type: Array,
+    require: false,
   }
 }
 
@@ -45,52 +52,35 @@ export const NsTable = define({
   props: tableProps,
   setup (props: TableProps, ctx) {
 
+    function getColumnName (slot: TableColumnSlot) {
+      const functionName = slot.type['name']
+      return functionName.slice('NsTableColumn'.length).toLowerCase()
+    }
+
     function getCustomizedColumns () {
       const { default: defaultSlot } = useSlots(),
-        children = defaultSlot()
-      // 获取全体 <ns-table-column> 之后, 对原始 columns props 做修改
-      return children.map(child => child.props as TableColumnProps)
+        children = defaultSlot() as TableColumnSlot[]
+      // 获取全体 <ns-table-column-x>
+      return children.map(child => ({
+        name: getColumnName(child),
+        props: child.props as TableColumnProps
+      }))
     }
 
     /**
      * 读取全体子组件
-     * 例如 <ns-table-column />
-     * 合并进 columns
-     * 并作为属性传递给 provider
+     * 例如 <ns-table-column-chip />
+     * 并作为属性传递给 provider 最终处理
      */
-    function buildFinalColumns (customizedColumns) {
-      const result: TableColumnDefinition[] = props.columns.map(column => {
-        const field = column.dataIndex,
-          customization = customizedColumns.find(c => c.match === field)
-        if (!customization) {
-          return column
-        } else {
-          if (customization.type === 'chip') {
-            const style = customization.extraStyle
-            column.customRender = (({text, record, index}) => h(NsChip, {
-              label: text as string,
-              ...style && {
-                  style: typeof style === 'string'
-                    ? style
-                    : style(text, record)
-              }
-            }, () => text))
-          }
-          return column
-        }
-      })
-      return result
-    }
 
-    const customizedColumns = getCustomizedColumns()
-    const columns = computed(() => buildFinalColumns(customizedColumns))
+    const customColumns = getCustomizedColumns()
 
     return {
       // 只返回修改后的属性
       // 将会和原有 props 合并
       // 并作为最终 props 交给 provider
       props: {
-        columns: columns.value
+        customColumns,
       }
     }
   }

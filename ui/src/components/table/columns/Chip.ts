@@ -1,11 +1,5 @@
 import { ExtractPublicPropTypes, PropType } from 'vue'
-import { define } from '../../utils'
-
-export type TableColumnCustomizationType = 
-  'chip' | 
-  'date' | 
-  'decimal' | 
-  'button'
+import { define } from '../../../utils'
 
 export type TableColumnStyleGetter = (value: string, record: Record<string, any>) => string 
 
@@ -19,21 +13,18 @@ const props = {
   match: {
     type: String,
   },
-  type: {
-    type: String as PropType<TableColumnCustomizationType>,
-  },
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
   }
 }
 
-export type TableColumnProps = ExtractPublicPropTypes<typeof props>
+export type TableColumnChipProps = ExtractPublicPropTypes<typeof props>
 
 /**
  * 自定义的表格列样式
  */
-export const NsTableColumn = define({
-  name: 'NsTableColumn',
+export const NsTableColumnChip = define({
+  name: 'NsTableColumnChip',
   props,
   setup (props, ctx) {
     return {

@@ -207,7 +207,7 @@ fetchTableData()
       </ns-col>
     </ns-row>
     <ns-table :rows="tableData" :columns="columns">
-      <ns-table-column type="chip"
+      <ns-table-column-chip
         match="stage"
         :extraStyle="(model: string) => getStageStyle(model)" />
     </ns-table>
