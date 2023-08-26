@@ -159,5 +159,18 @@ export default [
         extract: resolve('./dist/nutui.css'),
       })
     ]
+  },
+  {
+    input: './src/providers/antdv/antdv.scss',
+    output: {
+      file: 'antdv.css',
+      format: 'es'
+    },
+    plugins: [
+      postcss({
+        use: ['sass'],
+        extract: resolve('./dist/antdv.css'),
+      })
+    ]
   }
 ]

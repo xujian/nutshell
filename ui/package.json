@@ -17,7 +17,8 @@
     ".": "./dist/index.js",
     "./taro": "./dist/taro/index.js",
     "./nutshell.css": "./dist/nutshell.css",
-    "./nutui.css": "./dist/nutui.css"
+    "./nutui.css": "./dist/nutui.css",
+    "./antdv.css": "./dist/antdv.css"
   },
   "scripts": {
     "patch": "node build/patch.js",
