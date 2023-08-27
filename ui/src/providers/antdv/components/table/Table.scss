@@ -4,5 +4,8 @@
       font-size: 15px;
       margin-inline-end: 4px;
     }
+    tr>th, tr>td, tfoot>tr>th, tfoot>tr>td {
+      padding: 6px 6px;
+    }
   }
 }
