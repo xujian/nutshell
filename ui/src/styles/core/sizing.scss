@@ -1,0 +1,7 @@
+@use '../variables/sizing';
+
+:root {
+  @each $name, $value in sizing.$size {
+    #{'--ns-'}#{$name}: #{$value}
+  }
+}
