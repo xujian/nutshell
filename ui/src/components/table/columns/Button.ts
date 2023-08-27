@@ -1,8 +1,7 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../../utils'
-import { Color } from '../../../composables'
-import { Size } from '../../../props/size'
 import { EmitsToProps } from '../../../utils/private/helpers'
+import { TableColumnStyleDefination, useButtonProps } from '../../../components'
 
 const props = {
   /**
@@ -11,16 +10,7 @@ const props = {
   match: {
     type: String,
   },
-  label: {
-    type: String,
-  },
-  color: {
-    type: String as PropType<Color>,
-  },
-  size: {
-    type: String as PropType<Size>,
-    default: 'sm',
-  },
+  ...useButtonProps(),
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
   }

@@ -1,9 +1,8 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../../utils'
-import { Color } from '../../../composables'
 import { Size } from '../../../props/size'
 import { EmitsToProps } from '../../../utils/private/helpers'
-import { TableColumnStyleDefination } from '../../../components'
+import { TableColumnStyleDefination, useIconProps } from '../../../components'
 
 const props = {
   /**
@@ -12,16 +11,7 @@ const props = {
   match: {
     type: String,
   },
-  source: {
-    type: String,
-  },
-  color: {
-    type: String as PropType<Color>,
-  },
-  size: {
-    type: String as PropType<Size>,
-    default: 'sm',
-  },
+  ...useIconProps(),
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
   }

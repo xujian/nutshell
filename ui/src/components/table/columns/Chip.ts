@@ -1,5 +1,6 @@
 import { ExtractPublicPropTypes, PropType } from 'vue'
 import { define } from '../../../utils'
+import { useChipProps } from '../../../components'
 
 export type TableColumnStyleGetter = (value: string, record: Record<string, any>) => string 
 
@@ -13,6 +14,7 @@ const props = {
   match: {
     type: String,
   },
+  ...useChipProps(),
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
   }

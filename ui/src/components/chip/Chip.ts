@@ -1,3 +1,4 @@
+import { buildProps } from '../../utils/private/props'
 import { Color } from '../../composables'
 import { useSizeProps } from '../../props'
 import { define } from '../../utils'
@@ -13,9 +14,9 @@ export type ChipType = 'default'
   | 'danger'
   | 'success'
 
-const props = {
+export const useChipProps = buildProps({
   type: {
-    type: String as PropTtype<ChipType>,
+    type: String as PropType<ChipType>,
   },
   /**
    * 文字
@@ -35,6 +36,10 @@ const props = {
   textColor: {
     type: String as PropType<Color>,
   },
+})
+
+const props = {
+  ...useChipProps(),
   ...useSizeProps(),
 }
 

@@ -2,6 +2,8 @@ import { useSizeProps } from '../../props'
 import { define } from '../../utils'
 import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
 import { useDimensionProps } from '../../props'
+import { buildProps } from '../../utils/private/props'
+import { Color } from '../../composables/theme'
 
 /**
  * 按钮类型
@@ -13,7 +15,7 @@ export type ButtonType = 'default'
   | 'danger'
   | 'success'
 
-const props = {
+export const useButtonProps = buildProps({
   type: {
     type: String as PropType<ButtonType>,
     default: 'plain'
@@ -28,8 +30,9 @@ const props = {
    * 按钮底色
    */
   color: {
-    type: String,
+    type: String as PropType<Color>,
   },
+  ...useSizeProps(),
   /**
    * 禁用
    */
@@ -37,7 +40,10 @@ const props = {
     type: Boolean,
     default: false,
   },
-  ...useSizeProps(),
+})
+
+const buttonProps = {
+  ...useButtonProps(),
   ...useDimensionProps(),
 }
 
@@ -53,14 +59,14 @@ export interface ButtonSlots extends SlotsType {
   default: never,
 }
 
-export type ButtonProps = ExtractPublicPropTypes<typeof props>
+export type ButtonProps = ExtractPublicPropTypes<typeof buttonProps>
 
 /**
  * 通用按钮组件 <ns-button>
  */
 export const NsButton = define({
     name: 'NsButton',
-    props,
+    props: buttonProps,
     emits,
     setup (props, ctx) {
       // 对参数做前期的处理

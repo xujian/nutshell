@@ -1,10 +1,11 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../utils'
 import { Color } from '../../composables'
-import { Size } from '../../props/size'
+import { Size, useSizeProps } from '../../props/size'
 import { EmitsToProps } from '../../utils/private/helpers'
+import { buildProps } from '../../utils/private/props'
 
-const props = {
+export const useIconProps = buildProps({
   /**
    * SVG或图片URI
    */
@@ -17,10 +18,11 @@ const props = {
   color: {
     type: String as PropType<Color>,
   },
-  size: {
-    type: String as PropType<Size>,
-    default: 'sm',
-  },
+  ...useSizeProps(),
+})
+
+const props = {
+  ...useIconProps(),
 }
 
 export interface IconEmits extends ObjectEmitsOptions {
