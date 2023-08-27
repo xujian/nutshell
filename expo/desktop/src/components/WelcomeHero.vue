@@ -57,7 +57,8 @@ const columns = [
   },
   { title: '姓名', dataIndex: 'name', width: 120, fixed: 'left' },
   { title: '手机号码', dataIndex: 'phone', width: 130 },
-  { title: '跟进', dataIndex: 'id', width: 130 },
+  { title: '呼叫', dataIndex: 'phone', width: 60 },
+  { title: '跟进', dataIndex: 'id', width: 80 },
   { title: '客户等级', dataIndex: 'grade', width: 150 },
   {
     title: '创建用户',
@@ -185,6 +186,10 @@ function getStageStyle (value: string) {
   return styles[value] ?? styles.intention
 }
 
+const onTableColumnIconClick = (props: any) => {
+  console.log('*******onTableColumnIconClick.........model:', props)
+}
+
 const onTableColumnButtonClick = (props: any) => {
   console.log('*******onTableColumnButtonClick.........model:', props)
 }
@@ -203,6 +208,7 @@ fetchTableData()
           color="#ff9900"
           :label="buttonLabel" @click="onClick" />
         <ns-chip label="线索"></ns-chip>
+        <ns-icon source="/icons/call.svg" />
       </ns-col>
       <ns-col span="12">
         <ns-input type="text" label="客户名称" placeholder="客户名称" />
@@ -212,6 +218,11 @@ fetchTableData()
       </ns-col>
     </ns-row>
     <ns-table :rows="tableData" :columns="columns">
+      <ns-table-column-icon
+        source="/icons/call.svg"
+        color="#00cc00"
+        match="呼叫"
+        @click="onTableColumnIconClick" />
       <ns-table-column-chip
         match="客户阶段"
         :extraStyle="(model: string) => getStageStyle(model)" />
