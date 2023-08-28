@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <div class="sidebar-header">
-      <img src="/logo.svg" />
+      <img class="logo" src="/logo.svg" />
     </div>
     <nut-side-navbar class="sidebar">
       <nut-sub-side-navbar title="智能城市" ikey="6">
@@ -22,8 +22,14 @@
 
 </script>
 
-<style>
-.sidebar-header {
-  padding: 0.25rem;
+<style lang="scss">
+.sidebar {
+  .sidebar-header {
+    padding: 0.25rem;
+  }
+  .logo {
+    height: 48px;
+    width: 48px;
+  }
 }
 </style>

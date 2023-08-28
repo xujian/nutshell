@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { Nutshell } from 'nutshell'
+import '@nutui/nutui/dist/style.css'
 import '@/styles/app.scss'
 
 import router from './router'
