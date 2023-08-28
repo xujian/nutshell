@@ -1,5 +1,6 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../utils'
+import { useModelValuePropsForInput } from '../../props'
 
 /**
  * 输入框类型
@@ -39,7 +40,8 @@ const props = {
     type: String,
     required: false,
     default: ''
-  }
+  },
+  ...useModelValuePropsForInput(),
 }
 
 export interface InputEmits extends ObjectEmitsOptions {
