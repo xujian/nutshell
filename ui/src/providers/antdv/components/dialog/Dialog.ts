@@ -1,0 +1,29 @@
+import { defineComponent, h } from 'vue'
+import { DialogProps, dialogProps } from '../../../../components/dialog'
+import { Modal as AntdvModal } from 'ant-design-vue'
+
+export const Dialog = defineComponent({
+  name: 'AntdvDialogProvider',
+  props: dialogProps,
+  setup (props: DialogProps, ctx) {
+    const classes = [
+      'ns-dialog',
+    ].join(' ')
+    const { slots, emit } = ctx
+
+    return () => h(AntdvModal, {
+      class: classes,
+      open: props.modelValue,
+      title: props.title,
+      width: props.width,
+      height: props.height,
+      keyboard: true,
+      'onUpdate:open': (value: boolean) => {
+        console.log('antdv modal.......onUpdate:open', value, Object.keys(props), props['onUpdate:modelValue'])
+        props['onUpdate:modelValue']?.(value)
+      }
+    }, {
+      default: slots.default
+    })
+  }
+})

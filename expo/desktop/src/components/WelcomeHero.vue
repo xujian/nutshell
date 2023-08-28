@@ -19,6 +19,9 @@ import dayjs from 'dayjs'
  * 2. 定义一组数据格式化函数?
  */
 
+const dialogVisible = ref(false)
+const inputValue = ref<string>('Text input')
+
 const buttonLabel = ref('Press')
 setTimeout(() => {
   buttonLabel.value = 'Press Me'
@@ -27,7 +30,12 @@ setTimeout(() => {
  * 
  */
 const onClick = (...args: any[]) => {
+  dialogVisible.value = true
   console.log('ns-button-------onClick', args)
+}
+
+const onDialogClose = (value: boolean) => {
+  console.log('closeDialog..............,', value)
 }
 
 function formatDateTime (input: number | string) {
@@ -211,7 +219,7 @@ fetchTableData()
         <ns-icon source="/icons/call.svg" />
       </ns-col>
       <ns-col span="12">
-        <ns-input type="text" label="客户名称" placeholder="客户名称" />
+        <ns-input type="text" label="客户名称" placeholder="客户名称" v-model="inputValue" />
       </ns-col>
       <ns-col span="12">
         <ns-date-input label="选择日期" />
@@ -236,6 +244,10 @@ fetchTableData()
         @click="onTableColumnButtonClick"
       />
     </ns-table>
+    <h2>Now {{ inputValue }}</h2>
+    <ns-dialog v-model="dialogVisible" title="呼叫用户">
+      <h2>Dialog</h2>
+    </ns-dialog>
   </div>
 </template>
 
