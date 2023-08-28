@@ -1,6 +1,6 @@
 import { ExtractPublicPropTypes, PropType } from 'vue'
 import { define } from '../../../utils'
-import { useChipProps } from '../../../components'
+import { useChipProps } from '../../../components/chip'
 
 export type TableColumnStyleGetter = (value: string, record: Record<string, any>) => string 
 

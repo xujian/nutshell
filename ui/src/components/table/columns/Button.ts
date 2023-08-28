@@ -1,7 +1,8 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../../utils'
 import { EmitsToProps } from '../../../utils/private/helpers'
-import { TableColumnStyleDefination, useButtonProps } from '../../../components'
+import { TableColumnStyleDefination } from '../../../components/table'
+import { useButtonProps } from '../../../components/button'
 
 const props = {
   /**
