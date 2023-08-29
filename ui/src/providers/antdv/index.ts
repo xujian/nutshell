@@ -21,7 +21,7 @@ const AntdvProvider: CoreProvider = {
     if (!component) {
       return this.fallback.render(props, ctx)
     }
-    return h(component, {...props})
+    return h(component, {...props}, ctx.slots)
   },
   prepare,
 }
