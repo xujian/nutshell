@@ -1,11 +1,27 @@
-import { App, ComponentPublicInstance, InjectionKey, reactive, inject as _inject } from 'vue'
+import { App, ComponentPublicInstance, InjectionKey, reactive, inject } from 'vue'
 import { createTheme } from './composables/theme'
 import { ProviderSymbol, createProvider, prepareProvider } from './shared'
 import { BusSymbol, PlatformSymbol, createBus, createPlatform } from './composables'
+import services from './services'
 
 export interface NutshellOptions {
   theme?: string,
   provider?: string,
+}
+
+export type DollarNutshell = {
+  [key: string]: any
+}
+
+export const NutshellSymbol: InjectionKey<DollarNutshell>
+  = Symbol.for('nutshell:nutshell')
+
+/**
+ * 返回 $n 供应用程序使用
+ */
+export function useNutshell () {
+  const $n = inject(NutshellSymbol)
+  return $n
 }
 
 export function Nutshell ({
@@ -20,10 +36,16 @@ export function Nutshell ({
 
   // for app.use()
   const install = (app: App) => {
+    const $n: DollarNutshell = {}
+    app.config.globalProperties.$n = $n
+    app.provide(NutshellSymbol, $n)
     app.provide('provider', provider)
     app.provide(PlatformSymbol, platform)
     app.provide(BusSymbol, bus)
     app.provide(ProviderSymbol, theProvider)
+    for (const service of services) {
+      service.install($n, app)
+    }
     prepareProvider(app, theProvider)
     // for (const key in components) {
     //   // app.component(key, components[key])

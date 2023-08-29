@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import dayjs from 'dayjs'
+import { useNutshell } from 'nutshell'
 
 /**
  * Format table cell
@@ -21,6 +22,7 @@ import dayjs from 'dayjs'
 
 const dialogVisible = ref(false)
 const inputValue = ref<string>('Text input')
+const $n = useNutshell()
 
 const buttonLabel = ref('Press')
 setTimeout(() => {
@@ -32,6 +34,12 @@ setTimeout(() => {
 const onClick = (...args: any[]) => {
   dialogVisible.value = true
   console.log('ns-button-------onClick', args)
+}
+
+const onOpenDialogButtonClick = () => {
+  $n.dialog({
+    title: '客户',
+  })
 }
 
 const onDialogClose = (value: boolean) => {
@@ -215,6 +223,11 @@ fetchTableData()
           width="100"
           color="#ff9900"
           :label="buttonLabel" @click="onClick" />
+        <ns-button type="primary"
+          size="sm"
+          width="100"
+          color="#ff9900"
+          label="Open Dialog" @click="onOpenDialogButtonClick" />
         <ns-chip label="线索"></ns-chip>
         <ns-icon source="/icons/call.svg" />
       </ns-col>
@@ -247,6 +260,7 @@ fetchTableData()
     <h2>Now {{ inputValue }}</h2>
     <ns-dialog v-model="dialogVisible" title="呼叫用户">
       <h2>Dialog</h2>
+      <p>Dialog content</p>
     </ns-dialog>
   </div>
 </template>

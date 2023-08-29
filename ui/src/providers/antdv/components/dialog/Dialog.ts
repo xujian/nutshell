@@ -21,9 +21,20 @@ export const Dialog = defineComponent({
       'onUpdate:open': (value: boolean) => {
         console.log('antdv modal.......onUpdate:open', value, Object.keys(props), props['onUpdate:modelValue'])
         props['onUpdate:modelValue']?.(value)
-      }
-    }, {
-      default: slots.default
-    })
+      },
+      onOK: () => {
+        console.log('on ok')
+        props['onUpdate:modelValue']?.(false)
+        props['onHide']?.()
+      },
+      onCancel: () => {
+        console.log('on cancel')
+        props['onClose']?.()
+      },
+      onClose: () => {
+        console.log('on close')
+        props['onClose']?.()
+      },
+    }, slots)
   }
 })

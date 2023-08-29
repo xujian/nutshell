@@ -12,11 +12,17 @@ export const dialogProps = {
 }
 
 export interface DialogEmits extends ObjectEmitsOptions {
-  'update:modelValue'?: (value: boolean) => void
+  'update:modelValue'?: (value: boolean) => void,
+  show?: () => void,
+  hide?: () => void,
+  close?: () => void,
 }
 
 const dialogEmits: DialogEmits = {
-  'update:modelValue': undefined
+  'update:modelValue': undefined,
+  'show': undefined,
+  'hide': undefined,
+  'close': undefined,
 }
 
 export interface DialogSlots extends SlotsType {
@@ -25,6 +31,14 @@ export interface DialogSlots extends SlotsType {
 
 export type DialogProps = ExtractPublicPropTypes<typeof dialogProps> & EmitsToProps<DialogEmits>
 
+/**
+ * NsDialog 弹窗组件
+ * Static Dialog Component
+ * Usage:
+ * <ns-dialog v-model="xDialogVisible">
+ *   ...
+ * </ns-dialog>
+ */
 export const NsDialog = define({
   name: 'NsDialog',
   props: dialogProps,
@@ -34,3 +48,7 @@ export const NsDialog = define({
     }
   }
 })
+
+// 另见
+// $n.dialog(options: DialogOptions)
+// 
