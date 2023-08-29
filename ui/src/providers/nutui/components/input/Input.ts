@@ -11,7 +11,7 @@ export const Input = (props: InputProps) => {
   console.log('input.........h NutInput', props.modelValue)
   return h(NutInput, {
     class: classes,
-    type: props.type,
+    // type: props.type,
     border: false,
     value: props.modelValue,
     'onUpdate:value': (value: number | string) => {

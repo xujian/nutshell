@@ -34,7 +34,7 @@ import { EmitsToProps, Prettify } from './helpers'
  */
 export type DefineFunctionOptions<
   PropsOptions extends ComponentObjectPropsOptions,
-  Emits extends EmitsOptions = {},
+  Emits extends ObjectEmitsOptions = {},
   Slots extends SlotsType = {},
   Props = Prettify<Readonly<ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>>>
 > = Omit<ComponentOptionsWithObjectProps<

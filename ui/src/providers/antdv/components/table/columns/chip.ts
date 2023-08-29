@@ -4,10 +4,10 @@ import { h } from 'vue'
 /**
  * Table custom column: chip
  * @param column 
- * @param custom 
+ * @param props 
  */
-export default function chip (custom: TableColumnChipProps) {
-  const style = custom.extraStyle
+export default function chip (props: TableColumnChipProps) {
+  const style = props.extraStyle
   return ({text, record, index}) => h(NsChip, {
     label: text as string,
     ...style && {

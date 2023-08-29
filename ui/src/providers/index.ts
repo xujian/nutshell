@@ -10,6 +10,16 @@ import nutui from './nutui'
 import { VNode } from 'vue'
 
 /**
+ * Provider 的能力
+ * prepare () 初始化所需要的资源
+ * render (props) 依据属性渲染组件
+ * // 交互能力
+ * dialog (options) 弹出普通对话框
+ * toast () 弹出普通消息
+ * 
+ */
+
+/**
  * Provider Fallbacks
  * Provider 降级的逻辑
  * 1. 仅 Prime Provider实现所有组件
@@ -46,7 +56,7 @@ export interface ImportedProvider {
   default: CoreProvider
 }
 
-export const getProvider: (name: string) => CoreProvider | Promise<Provider> 
+export const getProvider: (name: string) => CoreProvider | Promise<CoreProvider> 
   = (name: string) => {
     let result = providers[name]
     if (typeof result === 'function') {

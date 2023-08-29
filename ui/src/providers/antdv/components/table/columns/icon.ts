@@ -6,9 +6,8 @@ import { h } from 'vue'
  * @param column 
  * @param custom 
  */
-export default function button (
+export default function icon (
     props: TableColumnIconProps,
-    component: TableColumnIcon
   ) {
   return ({text, record, index}) => h(NsIcon, {
     source: props.source,

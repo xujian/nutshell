@@ -1,4 +1,4 @@
-import { h, defineComponent, inject } from 'vue'
+import { h, defineComponent, inject, InjectionKey } from 'vue'
 import { CoreProvider, getProvider } from '../providers'
 
 /**

@@ -8,7 +8,6 @@ import { h } from 'vue'
  */
 export default function button (
     props: TableColumnButtonProps,
-    component: TableColumnButton
   ) {
   // TableColumnButton 内部还是一个NsButtton
   // 需要传递出 click 事件
@@ -19,7 +18,6 @@ export default function button (
     onClick: () => {
       const value = text,
         row = record
-      console.log('table/columns/button..............', value, component)
       props.onClick({value, row})
     }
   }, () => text)

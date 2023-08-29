@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import { ExtractPublicPropTypes, PropType } from 'vue'
 import { define } from '../../utils'
 
 const JUSTIFY = ['start', 'end', 'center'] as const

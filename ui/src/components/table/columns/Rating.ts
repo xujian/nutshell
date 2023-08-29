@@ -13,7 +13,7 @@ const props = {
     type: String as PropType<Color>,
   },
   extraStyle: {
-    type: [String, Function] as PropType<TableColumnStyleDefination>,
+    type: [String, Function],
   }
 }
 

@@ -17,9 +17,9 @@ export const Button = (props: ButtonProps & ButtonEmits) => {
     maxWidth, height, maxHeight, minWidth, minHeight,
     ...p } = props
   return h(NutButton, {
-    type: props.type as never,
-    label, color, disabled,
-    size: sizeMapping[props.size],
+    // type: props.type as never,
+    disabled,
+    // size: sizeMapping[props.size],
     onClick: props.onClick
   }, {
     default: () => props.label

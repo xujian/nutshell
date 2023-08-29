@@ -23,7 +23,7 @@ export type TableCellModel = {
   /**
    * 所在行
    */
-  row: Racord<string, unknown>,
+  row: Record<string, unknown>,
   /**
    * 行号
    */
@@ -83,7 +83,7 @@ export const NsTable = define({
       // 获取全体 <ns-table-column-x>
       return children.map(child => ({
         name: getColumnName(child),
-        props: child.props as TableColumnProps,
+        props: child.props,
         component: child,
       }))
     }

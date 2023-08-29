@@ -7,10 +7,10 @@ import { h } from 'vue'
  * @param column 
  * @param custom 
  */
-export default function rating (custom: TableColumnRatingProps) {
-  const color = custom.color
+export default function rating (props: TableColumnRatingProps) {
+  const color = props.color
   const style = [
-    color && `color:${custom.color}`
+    color && `color:${props.color}`
   ].join(' ')
   return ({text, record, index}) => h(AntdvRate, {
     value: +text || 0,

@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { Nutshell } from 'nutshell'
+import 'nutshell/nutui.css'
 import './app.scss'
 
 const app = createApp({

@@ -2,7 +2,7 @@ import { h } from 'vue'
 import type { ColProps } from '../../../../components'
 
 export const Col = (props: ColProps, ctx) => {
-  const { align, justify, span } = props
+  const { align, justify } = props
   const { slots } = ctx
   const classes = [
     'ns-col'
@@ -11,6 +11,6 @@ export const Col = (props: ColProps, ctx) => {
     class: classes,
     ...align && {align},
     ...justify && {justify},
-    ...span && {span},
+    // ...span && {span},
   }, slots.default)
 }

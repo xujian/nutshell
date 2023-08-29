@@ -1,6 +1,6 @@
+import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
 import { useSizeProps } from '../../props'
 import { define } from '../../utils'
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
 import { useDimensionProps } from '../../props'
 import { buildProps } from '../../utils/private/props'
 import { Color } from '../../composables/theme'
