@@ -5,21 +5,7 @@ import { useDimensionProps } from '../../props'
 import { buildProps } from '../../utils/private/props'
 import { Color } from '../../composables/theme'
 
-/**
- * 按钮类型
- */
-export type ButtonType = 'default' 
-  | 'primary'
-  | 'info' 
-  | 'warning'
-  | 'danger'
-  | 'success'
-
-export const useButtonProps = buildProps({
-  type: {
-    type: String as PropType<ButtonType>,
-    default: 'plain'
-  },
+export const useButtonProps = () => ({
   /**
    * 显示的文字
    */

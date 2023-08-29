@@ -1,9 +1,9 @@
 import { h } from 'vue'
-// import { Button } from '@nutui/nutui-taro'
-import type { ButtonEmits, ButtonProps } from 'src/components'
+import type { ButtonEmits, ButtonProps } from '../../../../components'
 import { Size } from '../../../../props/size'
+import { ButtonSize } from '@nutui/nutui-taro/dist/types/__VUE/button/type'
 
-const sizeMapping: Record<Size, string> = {
+const sizeMapping: Record<Size, ButtonSize> = {
   auto: 'normal',
   xs: 'mini',
   sm: 'small',
@@ -12,14 +12,19 @@ const sizeMapping: Record<Size, string> = {
   xl: 'large'
 }
 
+const getSize = (size: Size): ButtonSize => {
+  if (!size) return 'normal'
+  return sizeMapping[size]
+}
+
 export const Button = (props: ButtonProps & ButtonEmits) => {
   const { type, label, width, color, disabled,
     maxWidth, height, maxHeight, minWidth, minHeight,
     ...p } = props
   return h(NutButton, {
-    // type: props.type as never,
     disabled,
-    // size: sizeMapping[props.size],
+    color: props.color,
+    size: getSize(props.size),
     onClick: props.onClick
   }, {
     default: () => props.label

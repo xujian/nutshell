@@ -2,20 +2,33 @@ export type ThemeOptions = false | {
 
 }
 
+const brands = [
+  'primary',
+  'secondary',
+  'accent',
+  'warning',
+  'positive',
+  'negtive',
+] as const
+
+const essentials = [
+  'background',
+  'surface',
+  'text',
+  'stroke'
+]
+
+export type BrandColor = typeof brands[number]
+
 export type HexColor = `#${string}`
 export type RgbColor = `rgb(${string})`
 export type RgbaColor = `rgba(${string})`
-export type Color = HexColor | RgbColor | RgbaColor
+export type Color = BrandColor | HexColor | RgbColor | RgbaColor
 
-interface BaseColors {
-  background: HexColor
-  surface: HexColor
-  text: HexColor
-  primary: HexColor
-  secondary: HexColor
-  accent: HexColor
-  positive: HexColor
-  negtive: HexColor
+type BaseColors = {
+  [k in BrandColor]: HexColor
+} & {
+  [k in typeof essentials[number]]: HexColor
 }
 
 export type Theme = {

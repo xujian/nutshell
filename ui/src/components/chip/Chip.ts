@@ -4,20 +4,7 @@ import { useSizeProps } from '../../props'
 import { define } from '../../utils'
 import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
 
-/**
- * 按钮类型
- */
-export type ChipType = 'default' 
-  | 'primary'
-  | 'info' 
-  | 'warning'
-  | 'danger'
-  | 'success'
-
 export const useChipProps = buildProps({
-  type: {
-    type: String as PropType<ChipType>,
-  },
   /**
    * 文字
    */

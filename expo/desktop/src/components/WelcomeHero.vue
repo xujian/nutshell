@@ -218,15 +218,15 @@ fetchTableData()
     <h1>Nutshell Desktop Expo</h1>
     <ns-row :gutter="8">
       <ns-col span="12">
-        <ns-button type="primary"
+        <ns-button
           size="sm"
           width="100"
-          color="#ff9900"
+          color="primary"
           :label="buttonLabel" @click="onClick" />
-        <ns-button type="primary"
+        <ns-button
           size="sm"
           width="100"
-          color="#ff9900"
+          color="negtive"
           label="Open Dialog" @click="onOpenDialogButtonClick" />
         <ns-chip label="线索"></ns-chip>
         <ns-icon source="/icons/call.svg" />
