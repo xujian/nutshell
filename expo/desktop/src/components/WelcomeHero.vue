@@ -37,9 +37,9 @@ const onClick = (...args: any[]) => {
 }
 
 const onOpenDialogButtonClick = () => {
-  $n.dialog({
-    title: '客户',
-  })
+  // $n.dialog({
+  //   title: '客户',
+  // })
   $n.toast('客户信息已保存')
 }
 
@@ -222,7 +222,7 @@ fetchTableData()
         <ns-button
           size="sm"
           width="100"
-          color="primary"
+          color="#ff9900"
           :label="buttonLabel" @click="onClick" />
         <ns-button
           size="sm"
@@ -242,7 +242,7 @@ fetchTableData()
     <ns-table :rows="tableData" :columns="columns">
       <ns-table-column-icon
         source="/icons/call.svg"
-        color="#00cc00"
+        color="accent"
         match="呼叫"
         @click="onTableColumnIconClick" />
       <ns-table-column-chip
@@ -254,6 +254,7 @@ fetchTableData()
       <ns-table-column-button
         match="跟进"
         label="跟进"
+        color="accent"
         size="xs"
         @click="onTableColumnButtonClick"
       />

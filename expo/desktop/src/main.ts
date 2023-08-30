@@ -4,9 +4,9 @@ import { Nutshell } from 'nutshell'
 
 import App from './App.vue'
 import router from './router'
-import 'nutshell/nutshell.css'
 import 'nutshell/nutui.css'
 import 'nutshell/antdv.css'
+import 'nutshell/nutshell.css'
 import './styles/main.scss'
 
 const app = createApp(App)
