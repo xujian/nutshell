@@ -1,6 +1,5 @@
 import { h } from 'vue'
 import { InputProps } from '../../../../components'
-import { Input as NutInput } from 'ant-design-vue'
 
 export const Input = (props: InputProps) => {
   const classes = [
