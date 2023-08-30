@@ -39,6 +39,28 @@ const NutTypeResolver = (name) => {
   }
 }
 
+// 只用来解析 Taro
+const OnlyTaroResolver = (name) => {
+  if (name === 'Taro') {
+    return {
+      name: 'Taro',
+      from: '@tarojs/taro',
+    }
+  }
+}
+
+// 返回一个假的Taro 
+// 避免 Desktio/H5 引入整个Taro包
+// 见 provider/nutui/service/toast.ts
+const PsuedoTaroResolver = (name) => {
+  if (name === 'Taro') {
+    return {
+      name: 'Taro',
+      from: 'nutshell',
+    }
+  }
+}
+
 const NutTaroResolver = (name) => {
   if (nutRegex.test(name)) {
     return {
@@ -73,7 +95,8 @@ export default [
         },
         resolvers: [
           NutResolver,
-          NutTypeResolver
+          NutTypeResolver,
+          PsuedoTaroResolver
         ]
       }),
       copy({
@@ -104,7 +127,7 @@ export default [
     plugins: [
       AutoImport({
         dirs: [
-          'src/providers/nutui',
+          'src/providers/nutui/**',
         ],
         dts: true,
         include: [
@@ -114,7 +137,8 @@ export default [
           enabled: true,
         },
         resolvers: [
-          NutTaroResolver
+          NutTaroResolver,
+          OnlyTaroResolver
         ]
       }),
       vueJsx(),

@@ -1,4 +1,3 @@
-import Taro from '@tarojs/taro'
 import { DEAULT_TOAST_DURATION, ToastOptions, ToastType } from '../../../services/toast'
 
 const iconMapping: Record<ToastType, string> = {
