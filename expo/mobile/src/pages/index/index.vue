@@ -5,15 +5,16 @@
     </view>
     {{ msg }}
     <view class="btn">
-      <ns-button type="primary" label="2"
-        @click="onClick" @change="onChange"></ns-button>
-      <nut-button type="primary" @click="handleClick('text', msg2, true)">点我</nut-button>
+      <ns-button type="primary" label="停止"
+        @click="onClick"></ns-button>
+      <nut-button color="primary" @click="onButtonClick">自动轮呼</nut-button>
+      <ns-chip color="primary" label="线索"></ns-chip>
     </view>
-    <nut-toast :msg="msg2" v-model:visible="show" :type="type" :cover="cover"/>
   </view>
 </template>
 
 <script>
+import { useNutshell } from 'nutshell/taro'
 import { reactive, toRefs } from 'vue'
 
 export default {
@@ -22,6 +23,9 @@ export default {
   components: {
   },
   setup() {
+    const $n = useNutshell()
+    $n.toast('数据已保存')
+
     const state = reactive({
       msg: 'EXPO',
       msg2: 'OK',
@@ -30,11 +34,8 @@ export default {
       cover: false
     });
 
-    const handleClick = (type, msg, cover = false) => {
-      state.show = true;
-      state.msg2 = msg;
-      state.type = type;
-      state.cover = cover;
+    const onButtonClick = () => {
+      $n.toast('自动轮呼已启动')
     };
 
     const onClick = (...args) => {
@@ -43,7 +44,7 @@ export default {
 
     return {
       ...toRefs(state),
-      handleClick,
+      onButtonClick,
       onClick
     }
   }

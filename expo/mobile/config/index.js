@@ -1,6 +1,10 @@
 import Components from 'unplugin-vue-components/webpack'
 import NutUIResolver from '@nutui/nutui-taro/dist/resolver'
 
+/**
+ * 这是一个微信小程序应用
+ * 使用自定义的 unplugin-vue-components resolver
+ */
 const nsRegex = /^Ns[A-Z][\w]+/
 const NutshellResolver = (name) => {
   console.log('NutshellResolver....................mame=', name)

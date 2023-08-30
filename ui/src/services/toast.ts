@@ -2,9 +2,18 @@ import { App } from 'vue'
 import { ProviderSymbol } from '../shared'
 import { DollarNutshell } from '../framework'
 
+export const DEAULT_TOAST_DURATION: number = 4
+export type ToastType = 'info' | 'success' | 'error' | 'warning'
+
 export type ToastOptions = {
-  title: string,
-  message: string,
+  /**
+   * Toast 形式 'success' | 'error' | 'warning'
+   */
+  type?: string,
+  /**
+   * 停留时间
+   */
+  duration?: number,
 }
 
 /**

@@ -18,7 +18,7 @@ const nutRegex = /^Nut[A-Z].*$/
 const nutTypeRegex = /^Nut[\w]+Type$/
 
 const NutResolver = (name) => {
-  console.log('rollup.config.js-----------NutResolver......name===', name)
+  // console.log('rollup.config.js-----------NutResolver......name===', name)
   if (nutRegex.test(name) && !name.endsWith('Type')) {
     const resolved = name.slice(3)
     return {
