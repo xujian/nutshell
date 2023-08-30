@@ -1,12 +1,12 @@
 import { App } from 'vue'
-import Dialog from './Dialog'
+import dialog from './dialog'
 
 export type Service = {
   install ($n: any, app: App)
 }
 
 const services: Service[] = [
-  Dialog
+  dialog
 ]
 
 export default services
