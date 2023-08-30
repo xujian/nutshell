@@ -5,44 +5,11 @@ const antdvToImport: () => Promise<{default: CoreProvider}> = () => import(
   /* name: 'provider.antdv' */
   './antdv')
 
+import { AppContext } from 'vue'
 import nutui from './nutui'
 // import antdv from './antdv'
 import { VNode } from 'vue'
-
-/**
- * Provider 的能力
- * prepare () 初始化所需要的资源
- * render (props) 依据属性渲染组件
- * // 交互能力
- * dialog (options) 弹出普通对话框
- * toast () 弹出普通消息
- * 
- */
-
-/**
- * Provider Fallbacks
- * Provider 降级的逻辑
- * 1. 仅 Prime Provider实现所有组件
- * 2. 现阶段 Prime Provider 是 Nutui
- * 3. PC端也用Nutui的组件
- * 4. 假如项目设置了 provider = 'antdv'
- * 5. 则优先试用 Antdv Provider
- * 6. 某组件在 Antdv 未实现时
- * 2. 依据策略实用 Prime Provider (Nutui Provider)
- */
-
-/**
- * Nutshell Core Provider
- * 
- */
-export interface CoreProvider {
-  render: (props, ctx) => VNode,
-  prepare: (app) => void,
-  /**
-   * 降级到 Prime Provider
-   */
-  fallback?: CoreProvider
-}
+import { CoreProvider } from '../shared'
 
 /**
  * 似乎不能按需加载

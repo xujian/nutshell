@@ -1,6 +1,8 @@
-import { h, defineComponent, inject, InjectionKey } from 'vue'
-import { CoreProvider, getProvider } from '../providers'
-
+import { h, defineComponent, inject, InjectionKey, App } from 'vue'
+import { getProvider } from '../providers'
+import { DialogInstance, DialogOptions } from '../services/dialog'
+import type { ToastOptions } from '../services/toast'
+import type { LoadingOptions } from '../services/loading'
 /**
  * Provider 体系的设计
  * 本组件库的组件不直接产生最终UI
@@ -19,6 +21,46 @@ import { CoreProvider, getProvider } from '../providers'
  * 3. 找不到时 fallback 到 "尚未实现"
  */
 
+
+/**
+ * Provider 的能力
+ * prepare () 初始化所需要的资源
+ * render (props) 依据属性渲染组件
+ * // 交互能力
+ * dialog(options) 弹出普通对话框
+ * toast(message, options) 弹出普通消息
+ * loading(options) 弹出 loading
+ */
+
+/**
+ * Provider Fallbacks
+ * Provider 降级的逻辑
+ * 1. 仅 Prime Provider实现所有组件
+ * 2. 现阶段 Prime Provider 是 Nutui
+ * 3. PC端也用Nutui的组件
+ * 4. 假如项目设置了 provider = 'antdv'
+ * 5. 则优先试用 Antdv Provider
+ * 6. 某组件在 Antdv 未实现时
+ * 2. 依据策略实用 Prime Provider (Nutui Provider)
+ */
+
+/**
+ * Nutshell Core Provider
+ * 
+ */
+export interface CoreProvider {
+  app: App,
+  prepare: (app) => void,
+  render (props: Record<string, any>, ctx: AppContext): VNode,
+  dialog (options: DialogOptions): DialogInstance,
+  toast (message: string, options: ToastOptions): void,
+  loading (options: LoadingOptions): void,
+  /**
+   * 降级到 Prime Provider
+   */
+  fallback?: CoreProvider
+}
+
 export const ProviderSymbol: InjectionKey<CoreProvider | Promise<CoreProvider>>
   = Symbol.for('nutshell:provider')
 
@@ -36,11 +78,7 @@ export const useProvider = (): CoreProvider | Promise<CoreProvider> => {
 }
 
 export const prepareProvider = (app, provider) => {
-  if (provider instanceof Promise) {
-    provider.then((p) => {
+  Promise.resolve(provider).then(p => {
       p.prepare(app)
-    })
-  } else {
-    provider.prepare(app)
-  }
+  })
 }

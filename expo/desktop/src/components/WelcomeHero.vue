@@ -40,6 +40,7 @@ const onOpenDialogButtonClick = () => {
   $n.dialog({
     title: '客户',
   })
+  $n.toast('客户信息已保存')
 }
 
 const onDialogClose = (value: boolean) => {

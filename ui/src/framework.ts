@@ -38,15 +38,14 @@ export function Nutshell ({
   const install = (app: App) => {
     const $n: DollarNutshell = {}
     app.config.globalProperties.$n = $n
+    app.provide(ProviderSymbol, theProvider)
     app.provide(NutshellSymbol, $n)
-    app.provide('provider', provider)
     app.provide(PlatformSymbol, platform)
     app.provide(BusSymbol, bus)
-    app.provide(ProviderSymbol, theProvider)
+    prepareProvider(app, theProvider)
     for (const service of services) {
       service.install($n, app)
     }
-    prepareProvider(app, theProvider)
     // for (const key in components) {
     //   // app.component(key, components[key])
     // }

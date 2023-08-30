@@ -1,5 +1,6 @@
-import { getCurrentInstance, h } from 'vue'
-import { CoreProvider } from '..'
+import { getCurrentInstance, h, App } from 'vue'
+import { CoreProvider } from '../../shared'
+import { dialog, toast, loading } from './services'
 import * as components from './components'
 
 const makeDummy = (name: string) => {
@@ -14,12 +15,14 @@ const dummy = (name: string) => {
 }
 
 // provider 所需要的特别处理过程
-export const prepare = (app) => {
-  console.log('----PROVIDER nutui prepare', app)
+function prepare (app: App) {
+  this.app = app
   // app.use(ConfigProvider)
 }
 
-const NutuiProvider: CoreProvider = {
+const nutuiProvider: CoreProvider = {
+  app: null,
+  prepare,
   render (props, ctx) {
     const { parent } = getCurrentInstance()
     const name = parent.type.name.slice(2) //.toLowerCase() // NsButton -> Button
@@ -27,7 +30,9 @@ const NutuiProvider: CoreProvider = {
     const { slots } = ctx
     return h(component, props, slots.default)
   },
-  prepare
+  dialog,
+  toast,
+  loading
 }
 
-export default NutuiProvider
+export default nutuiProvider
