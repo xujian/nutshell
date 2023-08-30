@@ -1,6 +1,7 @@
 .ns-button {
   &.nut-button--default {
-    background-color: var(--ns-surface);
-    color: var(--ns-text);
+    background-color: var(--ns-accent);
+    color: #fff;
+    border: none;
   }
 }

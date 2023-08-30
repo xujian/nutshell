@@ -6,15 +6,25 @@ $brand: map-deep-merge(
   (
     primary: #003293,
     secondary: #0057ff,
+    accent: #0057ff,
+    positive: #21ba45,
+    negtive: #c10015,
+    warning: #c10015,
+  ),
+  $brand
+);
+
+// (2) Essential Colors
+$essential: () !default;
+$essential: map-deep-merge(
+  (
     background: #fff,
     surface: #ccc,
     text: #333,
     stroke: '#999',
-    accent: #0057ff,
-    positive: #21ba45,
-    negtive: #c10015,
   ),
-  $brand
-)
+  $essential
+);
+
 
 // (2) Static Color Values

@@ -4,4 +4,15 @@
   @each $name, $value in colors.$brand {
     #{'--ns-'}#{$name}: #{$value}
   }
+  @each $name, $value in colors.$essential {
+    #{'--ns-'}#{$name}: #{$value}
+  }
 }
+
+@each $name, $value in colors.$brand {
+  #{'.bg-'}#{$name} {
+    background-color: var(--ns-#{$name}) !important;
+    color: #fff !important;
+  }
+}
+
