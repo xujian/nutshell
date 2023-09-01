@@ -1,0 +1,23 @@
+.ns-form-item {
+  &.ant-form-item {
+    background-color: #f7f8fa;
+    border-radius: 4px;
+    max-width: 400px;
+    .ant-form-item-label {
+      label {
+        min-height: 32px;
+        padding-left: 8px;
+        &:after {
+          content: '';
+        }
+      }
+    }
+    .ant-input {
+      border: none;
+      background-color: #f7f8fa;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

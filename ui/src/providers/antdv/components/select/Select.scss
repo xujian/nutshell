@@ -1,0 +1,19 @@
+.ns-select {
+  &.ant-select {
+    .ant-select-selector {
+      border-color: var(--ns-stroke);
+    }
+  }
+}
+
+.ns-form-item {
+  &.ant-form-item {
+    background-color: #f7f8fa;
+    .ant-select {
+      .ant-select-selector {
+        border: none;
+        background-color: #f7f8fa;
+      }
+    }
+  }
+}
