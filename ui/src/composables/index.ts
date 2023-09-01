@@ -8,7 +8,8 @@ export type {
 
 export {
   BusSymbol,
-  createBus
+  createBus,
+  useBus,
 } from './bus'
 
 export type {
