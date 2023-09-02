@@ -22,7 +22,7 @@ const onHambergerClick = () => {
     text-align: center;
   }
   h1 {
-    font-size: 24px;
+    font-size: 16px;
     line-height: 48px;
     margin: 0;
     cursor: default;

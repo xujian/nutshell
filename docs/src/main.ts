@@ -1,5 +1,3 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -14,7 +12,8 @@ import './styles/main.scss'
 const app = createApp(App)
 
 const nutshell = Nutshell({
-  provider: 'antdv'
+  provider: 'antdv',
+  theme: 'denim'
 })
 app.use(nutshell)
 

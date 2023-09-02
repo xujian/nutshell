@@ -3,9 +3,14 @@
   "eslint.validate": [],
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
   "files.exclude": {
+    "**/dist": true,
     "**/nutshell.css": true,
+    "**/antdv.css": true,
     "**/nutui.css": true,
     "**/auto-imports.d.ts": true,
+    "**/node_modules": true,
+    "**/yarn-error.log": true,
+    "**/.eslintrc-auto-import.json": true,
   },
   "workbench.colorCustomizations": {
     "[Shades of Purple]": {
@@ -72,15 +77,21 @@
           "scope": "entity.name.type",
           "settings": {
             "fontStyle": "bold underline",
-            "foreground": "#ff0000"
           },
         },
         {
-          "scope": "string.unquoted",
+          "scope": "variable.other.readwrite.ts",
           "settings": {
-              "foreground": "#21e2d2"
+              "foreground": "#ff00c8"
           }
         },
+        {
+          "scope": "entity.other.attribute-name.html",
+          "settings": {
+            "fontStyle": "",
+            "foreground": "#ffbb00"
+          },
+        }
       ]
     }
   }

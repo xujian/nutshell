@@ -11,7 +11,7 @@ const toggleNav = () => {
 </script>
 <template>
   <div class="app-layout grid master-layout">
-    <nav class="app-nav">
+    <nav class="app-nav flex flex-col align-center">
       <app-nav></app-nav>
     </nav>
     <header class="app-header">
@@ -37,7 +37,6 @@ const toggleNav = () => {
     "nav footer";
   .app-nav {
     grid-area: nav;
-    display: flex;
   }
   .app-header {
     grid-area: header;
@@ -58,7 +57,7 @@ const toggleNav = () => {
     transform: translate3d(400px, 0, 0);
   }
 }
-@media screen and (max-width: 475px) {
+@media screen and (max-width: 639px) {
   .app-layout {
     grid-template-areas: 
       "header"
