@@ -49,6 +49,9 @@ const toggleNav = () => {
   }
   .app-footer {
     grid-area: footer;
+    background-image: url(/images/mountains.svg);
+    background-repeat: no-repeat;
+    background-position: right bottom;
   }
   .app-drawer {
     position: fixed;
@@ -61,6 +64,7 @@ const toggleNav = () => {
 }
 @media screen and (max-width: 639px) {
   .app-layout {
+    grid-template-columns: 1fr;
     grid-template-areas: 
       "header"
       "main"
