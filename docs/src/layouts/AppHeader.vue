@@ -4,6 +4,7 @@
       <i class="fi fi-rr-menu-burger"></i>
     </a>
     <h1>Nutshell</h1>
+    <div class="spacer"></div>
   </div>
 </template>
 <script lang="ts" setup>

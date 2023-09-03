@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import AppNav from './AppNav.vue'
 import AppHeader from './AppHeader.vue'
+import AppFooter from './AppFooter.vue'
 
 const navOpen = ref(true)
 
@@ -14,13 +15,15 @@ const toggleNav = () => {
     <nav class="app-nav flex flex-col align-center">
       <app-nav></app-nav>
     </nav>
-    <header class="app-header">
+    <header class="app-header flex flex row align-around">
       <app-header></app-header>
     </header>
     <section role="main" class="app-main">
       <router-view />
     </section>
-    <footer class="app-footer">Footer</footer>
+    <footer class="app-footer flex row align-end">
+      <app-footer></app-footer>
+    </footer>
     <aside class="app-drawer">Drawer</aside>
   </div>
 </template>
@@ -43,7 +46,6 @@ const toggleNav = () => {
   }
   .app-main {
     grid-area: main;
-    padding: 10px;
   }
   .app-footer {
     grid-area: footer;

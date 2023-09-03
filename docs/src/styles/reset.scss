@@ -34,7 +34,8 @@ html:focus-within {
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
+  line-height: 1.25;
+  font-size: 12px;
 }
 
 /* A elements that don't have a class get default styles */
@@ -71,4 +72,8 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+h6 {
+  font-size: 12px;
 }
