@@ -1,0 +1,11 @@
+.ns-form-item {
+  &.ant-form-item {
+    border-radius: 4px;
+    max-width: 400px;
+    .ant-picker {
+      width: 100%;
+      border: none;
+      background-color: #f7f8fa;
+    }
+  }
+}

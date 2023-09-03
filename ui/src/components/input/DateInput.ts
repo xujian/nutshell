@@ -1,13 +1,17 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../utils'
 import { usePlatform } from '../../composables'
+import { useModelValuePropsForInput } from '../../props/model'
+import { useFieldProps } from '../../props'
 
-const props = {
+export const dateInputProps = {
   label: {
     type: String,
     required: false,
     default: ''
-  }
+  },
+  ...useModelValuePropsForInput(),
+  ...useFieldProps(),
 }
 
 export interface DateInputEmits extends ObjectEmitsOptions {
@@ -26,7 +30,7 @@ export type DateInputProps = ExtractPublicPropTypes<typeof props>
  */
 export const NsDateInput = define({
     name: 'NsDateInput',
-    props,
+    props: dateInputProps,
     emits,
     setup (props, ctx) {
       const platform = usePlatform()

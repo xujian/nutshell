@@ -8,7 +8,7 @@ export type ModelValueProps<T = any> = {
 export const useModelValuePropsForBoolean = buildProps({
   modelValue: {
     type: Boolean,
-    default: false,
+    default: '',
   },
   'onUpdate:modelValue': {
     type: Function as PropType<(value: boolean) => void>,
@@ -18,7 +18,7 @@ export const useModelValuePropsForBoolean = buildProps({
 export const useModelValuePropsForInput = buildProps({
   modelValue: {
     type: [Number, String],
-    default: false,
+    default: '',
   },
   'onUpdate:modelValue': {
     type: Function as PropType<(value: number | string) => void>,

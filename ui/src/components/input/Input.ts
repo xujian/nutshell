@@ -1,11 +1,13 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../utils'
-import { useModelValuePropsForInput } from '../../props'
+import { useFieldProps, useModelValuePropsForInput } from '../../props'
+import { FullValidationRule, PropsWithLabel, ValidationRule, formatRules } from '../../props/field'
 
 /**
  * 输入框类型
  */
-export type InputType = 'text'
+export type InputType = 
+  'text'
   | 'url'
   | 'date'
   | 'file'
@@ -30,18 +32,14 @@ export type InputType = 'text'
   | 'textarea'
   | 'datetime-local'
 
-const props = {
+export const inputProps = {
   type: {
     type: String as PropType<InputType>,
     required: false,
     default: 'text'
   },
-  label: {
-    type: String,
-    required: false,
-    default: ''
-  },
   ...useModelValuePropsForInput(),
+  ...useFieldProps(),
 }
 
 export interface InputEmits extends ObjectEmitsOptions {
@@ -52,19 +50,23 @@ const emits = {
   change: (value: string | number) => {}
 }
 
-export type InputProps = ExtractPublicPropTypes<typeof props>
-
+export type InputProps = ExtractPublicPropTypes<typeof inputProps>
 
 /**
  * 输入框 <ns-input>
  */
 export const NsInput = define({
     name: 'NsInput',
-    props,
+    props: inputProps,
     emits,
     setup (props, ctx) {
+      const finalRules = formatRules(props.rules as ValidationRule[], props as PropsWithLabel)
+      console.log('INput.tes.......1.', finalRules)
       return {
-        props
+        props: {
+          name: props.name,
+          rules: finalRules as FullValidationRule[]
+        }
       }
     }
   }

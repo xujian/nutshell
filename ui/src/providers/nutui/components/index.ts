@@ -3,6 +3,7 @@ import { Input, DateInput } from './input'
 import { Row, Col } from './flex'
 import { Chip } from './chip'
 import { Icon } from './icon'
+import { Select } from './select'
 
 export {
   Button,
@@ -12,4 +13,5 @@ export {
   Col,
   Chip,
   Icon,
+  Select,
 }
