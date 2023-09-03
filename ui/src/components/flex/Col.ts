@@ -9,7 +9,7 @@ type AlignValue = typeof ALIGN[number]
 
 const props = {
   gutter: {
-    type: Number,
+    type: [Number, String],
     default: 10,
   },
   justify: {
@@ -19,6 +19,10 @@ const props = {
   align: {
     type: String as PropType<AlignValue>,
     default: 'center'
+  },
+  span: {
+    type: [Number, String],
+    default: 12
   }
 }
 

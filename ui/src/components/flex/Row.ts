@@ -9,8 +9,8 @@ type AlignValue = typeof ALIGN[number]
 
 const props = {
   gutter: {
-    type: Number,
-    default: 10,
+    type: [Number, String],
+    default: 0,
   },
   justify: {
     type: String as PropType<JustifyValue>,
