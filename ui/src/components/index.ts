@@ -5,10 +5,11 @@ export * from './select'
 export * from './flex'
 export * from './chip'
 export * from './icon'
+export * from './dialog'
+export * from './dropdown'
 // move table to the last for
 // table uses other basic components
 export * from './table'
-export * from './dialog'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -19,6 +20,7 @@ import { NsChip } from './chip'
 import { NsIcon } from './icon'
 import { NsTable } from './table'
 import { NsDialog } from './dialog'
+import { NsDropdown } from './dropdown'
 
 const components = {
   NsApp,
@@ -31,6 +33,7 @@ const components = {
   NsIcon,
   NsTable,
   NsDialog,
+  NsDropdown,
 }
 
 export default components
