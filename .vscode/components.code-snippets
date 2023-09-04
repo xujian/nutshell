@@ -1,0 +1,61 @@
+{
+  "新建组件": {
+    "prefix": ["nsc", "nutshell"],
+    "body": [
+      "import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'"
+      "import { define } from '../../utils'"
+      "",
+      "export const ${2}Props = {"
+      "\tlabel: {"
+      "\t\ttype: String"
+      "\t}"
+      "}"
+      ""
+      "export type ${1}Props = ExtractPublicPropTypes<typeof ${2}Props>"
+      ""
+      "export interface ${1}Emits extends ObjectEmitsOptions {"
+      "}"
+      ""
+      "const emits: ${1}Emits = {"
+      "}"
+      ""
+      "export interface ${1}Slots extends SlotsType {"
+      "\tdefault: never,"
+      "}"
+      "",
+      "$BLOCK_COMMENT_START*"
+      " * ${1} 组件 <ns-${2}>"
+      " $BLOCK_COMMENT_END"
+      "export const Ns${1:$TM_FILENAME_BASE} = define({"
+      "\tname: 'Ns${1}',"
+      "\tprops: ${2}Props,"
+      "\temits,"
+      "\tsetup (props, ctx) {"
+      "\t\treturn {"
+      "\t\t}"
+      "\t}"
+      "})"
+      "// 需要增加 import 到 ./index.ts, ../components.ts"
+    ],
+    "description": "新建组件"
+  },
+
+  "新建 provider": {
+    "prefix": ["nsp", "nutshell-provider"],
+    "body": [
+      "import { h, SetupContext } from 'vue'",
+      "import { ${2:$TM_FILENAME_BASE} as Antdv${2} } from 'ant-design-vue'",
+      "import { ${1}Props } from '../../../../components'"
+      "",
+      "export const ${1:$TM_FILENAME_BASE} = (props: ${1}Props, ctx: SetupContext) => {",
+      "",
+      "\treturn h(Antdv${2}, {",
+      "\t\tclass: 'ns-${3}',",
+      "\t}, () => '')",
+      "}",
+      "// + import => ./index.ts, ../components.ts"
+      ""
+    ],
+    "description": "新建组件"
+  }
+}
