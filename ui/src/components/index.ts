@@ -10,6 +10,7 @@ export * from './dropdown'
 // move table to the last for
 // table uses other basic components
 export * from './table'
+export * from './tabs'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -21,6 +22,7 @@ import { NsIcon } from './icon'
 import { NsTable } from './table'
 import { NsDialog } from './dialog'
 import { NsDropdown } from './dropdown'
+import { NsTabs, NsTabsPane } from './tabs'
 
 const components = {
   NsApp,
@@ -34,6 +36,8 @@ const components = {
   NsTable,
   NsDialog,
   NsDropdown,
+  NsTabs,
+  NsTabsPane,
 }
 
 export default components

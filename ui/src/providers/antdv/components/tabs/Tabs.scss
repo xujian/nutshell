@@ -1,0 +1,29 @@
+.ns-tabs {
+  &.ant-tabs {
+    color: var(--ns-text);
+    .ant-tabs-nav {
+      &::before {
+      border-color: var(--ns-border-color);
+      }
+    }
+  }
+  &.ant-tabs-card {
+    .ant-tabs-nav {
+      margin: 0;
+      .ant-tabs-tab-active {
+        background-color: var(--ns-background);
+        border-color: var(--ns-broder-color);
+        border-bottom-color: var(--ns-background);
+      }
+    }
+  }
+  .ant-tabs-content-holder {
+    background-color: var(--ns-background);
+    padding: 12px;
+    border-radius: 0 0 8px 8px;
+    border-color: var(--ns-border-color);
+    border-style: solid;
+    border-width: 1px;
+    border-top: none;
+  }
+}
