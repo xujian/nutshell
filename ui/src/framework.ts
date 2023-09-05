@@ -2,6 +2,7 @@ import { App, ComponentPublicInstance, InjectionKey, reactive, inject } from 'vu
 import { createTheme } from './composables/theme'
 import { ProviderSymbol, createProvider, prepareProvider } from './shared'
 import { BusSymbol, PlatformSymbol, createBus, createPlatform } from './composables'
+import directives from './directives'
 import services from './services'
 
 export interface NutshellOptions {
@@ -44,7 +45,10 @@ export function Nutshell ({
     app.provide(BusSymbol, bus)
     prepareProvider(app, theProvider)
     for (const service of services) {
-      service.install($n, app)
+      service.install(app, $n)
+    }
+    for (const directive of directives) {
+      directive.install(app, $n)
     }
     // for (const key in components) {
     //   // app.component(key, components[key])
