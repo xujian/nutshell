@@ -1,0 +1,74 @@
+[
+  {
+      "id": "1681808587018",
+      "type": "loankit_customer_stage",
+      "value": "intention",
+      "label": "意向",
+      "sort": "2",
+      "description": "居间客户阶段",
+      "remarks": ""
+  },
+  {
+      "id": "1681808595885",
+      "type": "loankit_customer_stage",
+      "value": "door",
+      "label": "上门",
+      "sort": "3",
+      "description": "居间客户阶段",
+      "remarks": ""
+  },
+  {
+      "id": "1681808603637",
+      "type": "loankit_customer_stage",
+      "value": "submitOrder",
+      "label": "签单",
+      "sort": "4",
+      "description": "居间客户阶段",
+      "remarks": ""
+  },
+  {
+      "id": "1681808612040",
+      "type": "loankit_customer_stage",
+      "value": "confirmOrder",
+      "label": "做单",
+      "sort": "5",
+      "description": "居间客户阶段",
+      "remarks": ""
+  },
+  {
+      "id": "1681808648406",
+      "type": "loankit_customer_stage",
+      "value": "loan",
+      "label": "放款",
+      "sort": "6",
+      "description": "居间客户阶段",
+      "remarks": ""
+  },
+  {
+      "id": "1684223748641",
+      "type": "loankit_customer_stage",
+      "value": "finishOrder",
+      "label": "结单",
+      "sort": "7",
+      "description": "居间客户阶段",
+      "remarks": ""
+  },
+  {
+      "id": "1684223763370",
+      "type": "loankit_customer_stage",
+      "value": "end",
+      "label": "终止",
+      "sort": "8",
+      "description": "居间客户阶段",
+      "remarks": ""
+  },
+  {
+      "id": "1688630232207",
+      "type": "loankit_customer_stage",
+      "value": "clue",
+      "label": "线索",
+      "sort": "1",
+      "description": "居间客户阶段",
+      "remarks": ""
+  }
+]
