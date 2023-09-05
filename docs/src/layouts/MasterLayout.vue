@@ -15,7 +15,7 @@ const toggleNav = () => {
     <nav class="app-nav flex flex-col align-center">
       <app-nav></app-nav>
     </nav>
-    <header class="app-header flex flex row align-around">
+    <header class="app-header flex flex row align-center align-around">
       <app-header></app-header>
     </header>
     <section role="main" class="app-main">
@@ -29,26 +29,39 @@ const toggleNav = () => {
 </template>
 <style lang="scss">
 .app-layout {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: 64px 1fr 200px;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   margin: 0;
-  grid-template-areas: 
-    "nav header"
-    "nav main"
-    "nav footer";
   .app-nav {
-    grid-area: nav;
+    position: fixed;
+    width: 200px;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    transition: transform .5s;
   }
   .app-header {
-    grid-area: header;
+    position: fixed;
+    height: 48px;
+    left: 200px;
+    right: 0;
+    transition: left .5s;
+    z-index: 2
   }
   .app-main {
-    grid-area: main;
+    margin-top: 48px;
+    margin-left: 200px;
+    will-change: margin-left;
+    transition: margin-left .5s;
+    flex-grow: 1;
+    padding: 12px;
   }
   .app-footer {
-    grid-area: footer;
+    height: 80px;
+    margin-left: 200px;
+    will-change: margin-left;
+    transition: margin-left .5s;
+    right: 0;
     background-image: url(/images/mountains.svg);
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -59,21 +72,20 @@ const toggleNav = () => {
     height: 100vh;
     background-color: blue;
     right: 0;
+    will-change: transform;
     transform: translate3d(400px, 0, 0);
   }
 }
 @media screen and (max-width: 639px) {
   .app-layout {
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-      "header"
-      "main"
-      "footer";
     .app-nav {
-      position: fixed;
-      height: 100vh;
-      left: 0;
       transform: translate3d(-200px, 0, 0);
+    }
+    .app-header {
+      left: 0;
+    }
+    .app-main, .app-footer {
+      margin-left: 0;
     }
   }
 }
