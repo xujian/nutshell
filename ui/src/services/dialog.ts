@@ -1,5 +1,6 @@
 import { h, inject, ref, App } from 'vue'
 import { ProviderSymbol } from '../shared'
+import { DollarNutshell } from '../framework'
 
 export type DialogOptions = {
   title: string,
@@ -18,7 +19,7 @@ export type DialogInstance = {
  *  $n.dialog(options: DialogOptions)
  */
 export default {
-  install ($n: any, app: App) {
+  install (app: App, $n: DollarNutshell) {
     $n.dialog = (options: DialogOptions) => {
       const provider = app._context.provides[ProviderSymbol as symbol]
       Promise.resolve(provider).then(p => {

@@ -23,7 +23,7 @@ export type ToastOptions = {
  *  $n.dialog(options: ToastOptions)
  */
 export default {
-  install ($n: DollarNutshell, app: App) {
+  install (app: App, $n: DollarNutshell) {
     const provider = app._context.provides[ProviderSymbol as symbol]
     $n.toast = (message: string, options: ToastOptions) => {
       Promise.resolve(provider).then(p => {
