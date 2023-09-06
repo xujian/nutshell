@@ -1,5 +1,5 @@
 import { getCurrentInstance, h, App } from 'vue'
-import { CoreProvider } from '../../shared'
+import { CoreVendor } from '../../shared'
 import { dialog, toast, loading } from './services'
 import * as components from './components'
 
@@ -14,13 +14,13 @@ const dummy = (name: string) => {
   }, `NS-${name} 尚未实现`)
 }
 
-// provider 所需要的特别处理过程
+// vendor 所需要的特别处理过程
 function prepare (app: App) {
   this.app = app
   // app.use(ConfigProvider)
 }
 
-const nutuiProvider: CoreProvider = {
+const nutuiVendor: CoreVendor = {
   app: null,
   prepare,
   render (props, ctx) {
@@ -35,4 +35,4 @@ const nutuiProvider: CoreProvider = {
   loading
 }
 
-export default nutuiProvider
+export default nutuiVendor

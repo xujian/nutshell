@@ -1,13 +1,13 @@
 import { App, ComponentPublicInstance, InjectionKey, reactive, inject } from 'vue'
 import { createTheme } from './composables/theme'
-import { ProviderSymbol, createProvider, prepareProvider } from './shared'
+import { VendorSymbol, createVendor, prepareVendor } from './shared'
 import { BusSymbol, PlatformSymbol, createBus, createPlatform } from './composables'
 import directives from './directives'
 import services from './services'
 
 export interface NutshellOptions {
   theme?: string,
-  provider?: string,
+  vendor?: string,
 }
 
 export type DollarNutshell = {
@@ -27,10 +27,10 @@ export function useNutshell () {
 
 export function Nutshell ({
   theme = 'default', 
-  provider = 'nutui',
+  vendor = 'nutui',
 }: NutshellOptions = {}) {
 
-  const theProvider = createProvider(provider)
+  const theVendor = createVendor(vendor)
   const theming = createTheme('default')
   const bus = createBus()
   const platform = createPlatform()
@@ -39,11 +39,11 @@ export function Nutshell ({
   const install = (app: App) => {
     const $n: DollarNutshell = {}
     app.config.globalProperties.$n = $n
-    app.provide(ProviderSymbol, theProvider)
+    app.provide(VendorSymbol, theVendor)
     app.provide(NutshellSymbol, $n)
     app.provide(PlatformSymbol, platform)
     app.provide(BusSymbol, bus)
-    prepareProvider(app, theProvider)
+    prepareVendor(app, theVendor)
     for (const service of services) {
       service.install(app, $n)
     }

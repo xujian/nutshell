@@ -91,7 +91,7 @@ export const NsTable = define({
     /**
      * 读取全体子组件
      * 例如 <ns-table-column-chip />
-     * 并作为属性传递给 provider 最终处理
+     * 并作为属性传递给 vendor 最终处理
      */
 
     const customColumns = getCustomizedColumns()
@@ -99,9 +99,9 @@ export const NsTable = define({
     return {
       // 只返回修改后的属性
       // 将会和原有 props 合并
-      // 并作为最终 props 交给 provider
+      // 并作为最终 props 交给 vendor
       props: {
-        // 对 customColumns 的处理在 provider/components/table
+        // 对 customColumns 的处理在 vendors/components/table
         customColumns,
       }
     }

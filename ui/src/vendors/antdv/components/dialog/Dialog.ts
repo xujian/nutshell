@@ -3,7 +3,7 @@ import { DialogProps, dialogProps } from '../../../../components/dialog'
 import { Modal as AntdvModal } from 'ant-design-vue'
 
 export const Dialog = defineComponent({
-  name: 'AntdvDialogProvider',
+  name: 'AntdvDialogVendor',
   props: dialogProps,
   setup (props: DialogProps, ctx) {
     const classes = [

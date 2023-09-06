@@ -6,7 +6,7 @@ import columnCustomRenders from './columns'
 import { MarginProps } from '../../../../utils'
 
 export const Table = defineComponent({
-  name: 'AntdvTableProvider',
+  name: 'AntdvTableVendor',
   props: tableProps, //! must have props to enable reactive
   setup (props: TableProps & MarginProps, ctx) {
     const classes = [

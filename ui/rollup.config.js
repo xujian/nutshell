@@ -51,7 +51,7 @@ const OnlyTaroResolver = (name) => {
 
 // 返回一个假的Taro 
 // 避免 Desktio/H5 引入整个Taro包
-// 见 provider/nutui/service/toast.ts
+// 见 vendors/nutui/service/toast.ts
 const PsuedoTaroResolver = (name) => {
   if (name === 'Taro') {
     return {
@@ -84,7 +84,7 @@ export default [
     plugins: [
       AutoImport({
         dirs: [
-          'src/providers/nutui/**',
+          'src/vendors/nutui/**',
         ],
         dts: true,
         include: [
@@ -127,7 +127,7 @@ export default [
     plugins: [
       AutoImport({
         dirs: [
-          'src/providers/nutui/**',
+          'src/vendors/nutui/**',
         ],
         dts: true,
         include: [
@@ -172,7 +172,7 @@ export default [
     ]
   },
   {
-    input: './src/providers/nutui/nutui.scss',
+    input: './src/vendors/nutui/nutui.scss',
     output: {
       file: 'nutui.css',
       format: 'es'
@@ -185,7 +185,7 @@ export default [
     ]
   },
   {
-    input: './src/providers/antdv/antdv.scss',
+    input: './src/vendors/antdv/antdv.scss',
     output: {
       file: 'antdv.css',
       format: 'es'

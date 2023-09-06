@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import { ProviderSymbol } from '../shared'
+import { VendorSymbol } from '../shared'
 import { DollarNutshell } from '../framework'
 
 export type LoadingOptions = {
@@ -14,8 +14,8 @@ export type LoadingOptions = {
 export default {
   install (app: App, $n: DollarNutshell) {
     $n.loading = (options: LoadingOptions) => {
-      const provider = app._context.provides[ProviderSymbol as symbol]
-      Promise.resolve(provider).then(p => {
+      const vendor = app._context.provides[VendorSymbol as symbol]
+      Promise.resolve(vendor).then(p => {
         p.loading(options)
       })
     }

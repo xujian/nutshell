@@ -1,11 +1,11 @@
 import { inject, InjectionKey, App, VNode } from 'vue'
-import { getProvider } from '../providers'
+import { getVendor } from '../vendors'
 import { DialogInstance, DialogOptions } from '../services/dialog'
 import type { ToastOptions } from '../services/toast'
 import type { LoadingOptions } from '../services/loading'
 import { SetupContext } from 'vue'
 /**
- * Provider 体系的设计
+ * Vendor 体系的设计
  * 本组件库的组件不直接产生最终UI
  * 而是使用第三方组件
  * 基本的地方是组件选用的是 @nutui/nutui-taro
@@ -16,15 +16,15 @@ import { SetupContext } from 'vue'
  */
 
 /**
- * 所有组件在渲染时进入唯一的provider适配过程
- * 1. 首先适配 provider name
+ * 所有组件在渲染时进入唯一的 vendor 适配过程
+ * 1. 首先适配 vendor name
  * 2. 然后适配 component name
  * 3. 找不到时 fallback 到 "尚未实现"
  */
 
 
 /**
- * Provider 的能力
+ * Vendor的能力
  * prepare () 初始化所需要的资源
  * render (props) 依据属性渲染组件
  * // 交互能力
@@ -34,22 +34,22 @@ import { SetupContext } from 'vue'
  */
 
 /**
- * Provider Fallbacks
- * Provider 降级的逻辑
- * 1. 仅 Prime Provider实现所有组件
- * 2. 现阶段 Prime Provider 是 Nutui
+ * VendorFallbacks
+ * Vendor降级的逻辑
+ * 1. 仅 Prime Vendor实现所有组件
+ * 2. 现阶段 Prime Vendor是 Nutui
  * 3. PC端也用Nutui的组件
- * 4. 假如项目设置了 provider = 'antdv'
- * 5. 则优先试用 Antdv Provider
+ * 4. 假如项目设置了 vendor = 'antdv'
+ * 5. 则优先试用 Antdv Vendor
  * 6. 某组件在 Antdv 未实现时
- * 2. 依据策略实用 Prime Provider (Nutui Provider)
+ * 2. 依据策略实用 Prime Vendor(Nutui Vendor)
  */
 
 /**
- * Nutshell Core Provider
+ * Nutshell Core Vendor
  * 
  */
-export interface CoreProvider {
+export interface CoreVendor {
   app: App,
   prepare: (app) => void,
   render (props: Record<string, any>, ctx: SetupContext): VNode,
@@ -57,29 +57,29 @@ export interface CoreProvider {
   toast (message: string, options: ToastOptions): void,
   loading (options: LoadingOptions): void,
   /**
-   * 降级到 Prime Provider
+   * 降级到 Prime Vendor
    */
-  fallback?: CoreProvider
+  fallback?: CoreVendor
 }
 
-export const ProviderSymbol: InjectionKey<CoreProvider | Promise<CoreProvider>>
-  = Symbol.for('nutshell:provider')
+export const VendorSymbol: InjectionKey<CoreVendor | Promise<CoreVendor>>
+  = Symbol.for('nutshell:vendor')
 
-export const createProvider = (name: string): CoreProvider | Promise<CoreProvider> => {
-  const provider = getProvider(name)
-  return provider
+export const createVendor= (name: string): CoreVendor | Promise<CoreVendor> => {
+  const vendor = getVendor(name)
+  return vendor
 }
 
 /**
- * Global Provider
+ * Global Vendor
  */
-export const useProvider = (): CoreProvider | Promise<CoreProvider> => {
-  const provider = inject(ProviderSymbol) as CoreProvider | Promise<CoreProvider>
-  return provider
+export const useVendor= (): CoreVendor | Promise<CoreVendor> => {
+  const vendor = inject(VendorSymbol) as CoreVendor | Promise<CoreVendor>
+  return vendor
 }
 
-export const prepareProvider = (app, provider) => {
-  Promise.resolve(provider).then(p => {
+export const prepareVendor= (app, vendor) => {
+  Promise.resolve(vendor).then(p => {
       p.prepare(app)
   })
 }

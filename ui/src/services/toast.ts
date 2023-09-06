@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import { ProviderSymbol } from '../shared'
+import { VendorSymbol } from '../shared'
 import { DollarNutshell } from '../framework'
 
 export const DEAULT_TOAST_DURATION: number = 4
@@ -24,9 +24,9 @@ export type ToastOptions = {
  */
 export default {
   install (app: App, $n: DollarNutshell) {
-    const provider = app._context.provides[ProviderSymbol as symbol]
+    const vendor = app._context.provides[VendorSymbol as symbol]
     $n.toast = (message: string, options: ToastOptions) => {
-      Promise.resolve(provider).then(p => {
+      Promise.resolve(vendor).then(p => {
         p.toast(message, options)
       })
     }

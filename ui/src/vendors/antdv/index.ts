@@ -1,5 +1,5 @@
 import { getCurrentInstance, h, App } from 'vue'
-import { CoreProvider } from '../../shared'
+import { CoreVendor } from '../../shared'
 import * as components from './components'
 import { dialog, toast, loading } from './services'
 
@@ -10,12 +10,12 @@ const dummy = (name: string) => {
   }, `NS-${name} 尚未实现`)
 }
 
-// provider 所需要的特别处理过程
+// vendor 所需要的特别处理过程
 function prepare (app: App) {
   this.app = app
 }
 
-const antdvProvider: CoreProvider = {
+const antdvVendor: CoreVendor = {
   app: null,
   prepare,
   render (props: any, ctx) {
@@ -32,4 +32,4 @@ const antdvProvider: CoreProvider = {
   loading
 }
 
-export default antdvProvider
+export default antdvVendor

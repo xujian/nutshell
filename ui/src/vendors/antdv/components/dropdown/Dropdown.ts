@@ -3,7 +3,7 @@ import { DropdownProps, dropdownProps } from '../../../../components/dropdown'
 import { DropdownButton as AntdvDropdownButton, Menu as AntdvMenu, MenuItem as AntdvMenuItem } from 'ant-design-vue'
 
 export const Dropdown = defineComponent({
-  name: 'AntdvDropdownProvider',
+  name: 'AntdvDropdownVendor',
   props: dropdownProps,
   setup (props: DialogProps, ctx) {
     const classes = [

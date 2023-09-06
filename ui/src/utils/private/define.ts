@@ -1,4 +1,4 @@
-import { useProvider } from '../../shared'
+import { useVendor } from '../../shared'
 import { ComponentObjectPropsOptions, ComponentOptionsMixin, 
   ComponentOptionsWithObjectProps, ComponentPropsOptions, 
   ComputedOptions, DefineComponent, 
@@ -62,7 +62,7 @@ export type DefineFunctionOptions<
 }
 
 /**
- * 传给 provider 的属性里加了一些字段
+ * 传给 vendor 的属性里加了一些字段
  */
 export type MarginProps = {
   classes: string[]
@@ -108,18 +108,18 @@ export function define<
     ) {
     // the real setup
     const { setup: setupOriginal } = options
-    const providing  = useProvider()
+    const v = useVendor()
     const { props: extraProps } = setupOriginal(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
     const render = ref((props, ctx) => h('div'))
 
-    if (providing instanceof Promise) {
-      providing.then((provider) => {
-        render.value = provider.render.bind(provider)
+    if (v instanceof Promise) {
+      v.then((vendor) => {
+        render.value = vendor.render.bind(vendor)
       })
     } else {
-      render.value = providing.render.bind(providing)
+      render.value = v.render.bind(v)
     }
     if (props.name === 'client') {
       console.log('define----', props, extraProps);
