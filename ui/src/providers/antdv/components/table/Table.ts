@@ -3,13 +3,15 @@ import { Table as AntdvTable, TableColumnProps } from 'ant-design-vue'
 import { TableProps, tableProps } from '../../../../components'
 import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
+import { MarginProps } from '../../../../utils'
 
 export const Table = defineComponent({
   name: 'AntdvTableProvider',
   props: tableProps, //! must have props to enable reactive
-  setup (props: TableProps, ctx) {
+  setup (props: TableProps & MarginProps, ctx) {
     const classes = [
-      'ns-table',
+      'ns-table', 
+      ...props.classes ?? [],
     ].join(' ')
     const { slots } = ctx
 
