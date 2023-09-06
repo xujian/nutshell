@@ -5,6 +5,7 @@
   <h1>Nutshell</h1>
   <div class="spacer"></div>
   <ns-dropdown class="theme-dropdown" label="配色主题"
+    @change="onDropdownChange"
     :items="[
       { label: 'Klein', value: 'klein' },
       { label: 'Present', value: 'present' },
@@ -14,11 +15,15 @@
 import { useNutshell, useBus } from 'nutshell'
 const $bus = useBus()
 const onHambergerClick = () => {
-  $bus.emit('nav.hide')
+  $bus.emit('nav:hide')
+}
+const onDropdownChange = (item: any) => {
+  $bus.emit('theme:change', item.key)
 }
 </script>
 <style lang="scss">
 .app-header {
+  background-color: var(--ns-header-background, transparent);
   .hamberger {
     width: 48px;
     height: 48px;

@@ -169,7 +169,7 @@ const onTableColumnButtonClick = (props: any) => {
 fetchTableData()
 </script>
 <template>
-  <ns-table :rows="tableData" :columns="columns">
+  <ns-table :rows="tableData" :columns="columns" class="no-border">
     <ns-table-column-icon
       source="/icons/call.svg"
       color="accent"

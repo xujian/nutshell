@@ -3,7 +3,6 @@
     <img src="/logo.svg" alt="" class="svg" />
   </div>
   <a-menu class="nav"
-    theme="dark"
     mode="inline"
     :items="menuData">
   </a-menu>
@@ -115,18 +114,23 @@ const menuData = [
     key: 'utils'
   },
   {
-    label: '最新成果',
+    label: '实验室',
     key: 'labs'
   }
 ]
 </script>
 <style lang="scss">
 .app-nav {
+  background-color: var(--ns-nav-background, transparent);
   .nav {
     width: 100%;
-    background-color: transparent;
+    height: 100vh;
     user-select: none;
-    &.ant-menu-dark {
+    &.ant-menu,
+    &.ant-menu-dark,
+    &.ant-menu-light {
+      color: var(--ns-text);
+      background-color: transparent;
       .ant-menu-item-selected {
         background-color: var(--ns-primary);
       }

@@ -9,6 +9,7 @@
   position: relative;
   height: 400px;
   overflow: hidden;
+  margin: -12px -12px 12px -12px;
   &:before {
     content: "";
     position: absolute;
@@ -21,7 +22,6 @@
     background-position: 50% 50%;
     background-size: cover;
     transform: translate3d(0, -64%, 0);
-    z-index: -1;
   }
   h1 {
     font-size: 60px;
