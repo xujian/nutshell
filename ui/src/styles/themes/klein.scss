@@ -11,16 +11,22 @@ $klein: map-deep-merge(
     brand: (
       primary: #003293,
       secondary: #b5109f,
+      neutral: #888,
       accent: #0057ff,
       positive: #21ba45,
       negtive: #c10015,
       warning: #c16a00,
     ),
-    essential: (
-      background: #333,
+    abstract: (
+      background: #151e3d,
       paper: #003293,
       surface: #003293,
       text: #eee,
       border-color: '#0057ff',
+    ),
+    layout: (
+      header: #333,
+      nav: #003293,
+      footer: #003293,
     ),
   ), $klein);

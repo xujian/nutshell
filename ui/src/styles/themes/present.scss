@@ -9,18 +9,24 @@ $present: () !default;
 $present: map-deep-merge(
   (
     brand: (
-      primary: #ff6a00,
+      primary: #017FFF,
       secondary: #b5109f,
+      neutral: #888,
       accent: #ff6a00,
       positive: #21ba45,
       negtive: #c10015,
       warning: #c16a00,
     ),
-    essential: (
-      background: #333,
-      paper: #ff964b,
+    abstract: (
+      background: #f6f9fd,
+      paper: rgb(206, 206, 206),
       surface: #ab4700,
-      text: #eee,
-      border-color: #ff6a00,
+      text: #333,
+      stroke: #017FFF,
+    ),
+    layout: (
+      nav-background: #d1d6dd,
+      footer-background: #003293,
+      footer-text: #fff,
     ),
   ), $present);

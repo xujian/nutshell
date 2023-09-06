@@ -8,17 +8,26 @@ $base: map-deep-merge(
     brand: (
       primary: #003293,
       secondary: #b5109f,
+      neutral: #888,
       accent: #0057ff,
       positive: #21ba45,
       negtive: #c10015,
       warning: #c16a00,
     ),
-    essential: (
+    abstract: (
       background: #333,
       paper: #003293,
       surface: #003293,
       text: #eee,
       border-color: '#0057ff',
+    ),
+    layout: (
+      header-background: transparent,
+      header-text: #333,
+      nav-background: transparent,
+      nav-text: #fff,
+      footer-background: transparent,
+      footer-text: #fff,
     ),
   ), $base);
 

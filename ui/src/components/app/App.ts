@@ -1,10 +1,12 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions, defineComponent, h } from 'vue'
+import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions, defineComponent, h, onMounted, ref } from 'vue'
 import { Color } from '../../composables/theme'
+import { useBus } from '../../composables'
+import { onBeforeUnmount } from 'vue'
 
 const appProps = {
   theme: {
     type: String,
-    default: 'incumbent'
+    default: 'present'
   }
 }
 
@@ -22,8 +24,26 @@ export const NsApp = defineComponent({
     const { slots } = ctx
     const classes = [
       'ns-app',
-      `app-theme-${props.theme}`,
     ].join(' ')
+
+    const theme = ref('present')
+    const body = document.body
+    body.setAttribute('data-theme', theme.value)
+
+    const $bus = useBus()
+
+    const handleThemeChange = (value: string) => {
+      theme.value = value
+      body.setAttribute('data-theme', theme.value)
+    }
+
+    onMounted(() => {
+      $bus.on('theme:change', handleThemeChange)
+    })
+
+    onBeforeUnmount(() => {
+      $bus.off('theme:change', handleThemeChange)
+    })
   
     return () => h('div', {
       class: classes,
