@@ -13,25 +13,26 @@
   &:before {
     content: "";
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
-    background-image: url(/images/gradient-circle-green.svg);
+    background-image: url(/motions/clouds/motion.svg);
     background-repeat: no-repeat;
-    background-position: 50% 50%;
     background-size: cover;
-    transform: translate3d(0, -64%, 0);
   }
   h1 {
-    font-size: 60px;
-    background: -webkit-linear-gradient(315deg, var(--ns-primary) 25%, var(--ns-secondary));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    z-index: 2;
+    font-size: 80px;
+    color: #ffffff99;
+    // background: -webkit-linear-gradient(315deg, var(--ns-primary) 25%, var(--ns-secondary));
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
   }
   .subline {
-    color: #004cff;
+    color: #b4b4b488;
+    z-index: 2;
   }
 }
 </style>
