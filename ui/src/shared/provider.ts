@@ -1,8 +1,9 @@
-import { h, defineComponent, inject, InjectionKey, App } from 'vue'
+import { inject, InjectionKey, App, VNode } from 'vue'
 import { getProvider } from '../providers'
 import { DialogInstance, DialogOptions } from '../services/dialog'
 import type { ToastOptions } from '../services/toast'
 import type { LoadingOptions } from '../services/loading'
+import { SetupContext } from 'vue'
 /**
  * Provider 体系的设计
  * 本组件库的组件不直接产生最终UI
@@ -51,7 +52,7 @@ import type { LoadingOptions } from '../services/loading'
 export interface CoreProvider {
   app: App,
   prepare: (app) => void,
-  render (props: Record<string, any>, ctx: AppContext): VNode,
+  render (props: Record<string, any>, ctx: SetupContext): VNode,
   dialog (options: DialogOptions): DialogInstance,
   toast (message: string, options: ToastOptions): void,
   loading (options: LoadingOptions): void,
