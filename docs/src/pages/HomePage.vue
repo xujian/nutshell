@@ -8,6 +8,18 @@ const tabs = [
   { label: '2024', value: '2024'},
 ]
 const activeTab = ref('2023')
+
+const variants: string[] = ['solid', 'outlined', 'soft', 'plain'],
+  colors = [
+  'primary',
+  'secondary',
+  'neutral',
+  'accent',
+  'positive',
+  'negtive',
+  'warning',
+]
+
 </script>
 
 <template>
@@ -28,6 +40,16 @@ const activeTab = ref('2023')
     </template>
     <complex-table />
   </ns-card>
+  <p>&nbsp;</p>
+  <div class="buttons">
+    <ns-row v-for="(variant) in variants" :key="variant">
+      <ns-button v-for="(color) in colors"
+        :key="color"
+        :color="color" 
+        :variant="variant" label="创建订单"></ns-button>
+    </ns-row>
+  </div>
+  <p>&nbsp;</p>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
@@ -59,3 +81,10 @@ const activeTab = ref('2023')
   <p>&nbsp;</p>
   <p>&nbsp;</p>
 </template>
+<style lang="scss">
+.buttons {
+  .ns-button {
+    margin: 6px;
+  }
+}
+</style>
