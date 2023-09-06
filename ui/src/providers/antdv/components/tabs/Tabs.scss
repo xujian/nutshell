@@ -12,8 +12,9 @@
       margin: 0;
       .ant-tabs-tab-active {
         background-color: var(--ns-background);
-        border-color: var(--ns-broder-color);
+        border-color: var(--ns-border-color);
         border-bottom-color: var(--ns-background);
+        color: var(--ns-text-active, --ns-text);
       }
     }
   }

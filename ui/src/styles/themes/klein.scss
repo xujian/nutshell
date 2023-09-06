@@ -1,10 +1,13 @@
+@forward '../variables';
 @use '../tools/functions' as *;
 
-// (1) Semantic Colors
-$base: () !default;
-$base: map-deep-merge(
+/**
+ * 高饱和度(Klein blue theme)
+ **/
+
+$klein: () !default;
+$klein: map-deep-merge(
   (
-    name: 'base',
     brand: (
       primary: #003293,
       secondary: #b5109f,
@@ -20,7 +23,4 @@ $base: map-deep-merge(
       text: #eee,
       border-color: '#0057ff',
     ),
-  ), $base);
-
-
-// (2) Static Color Values
+  ), $klein);

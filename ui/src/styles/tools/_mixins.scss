@@ -1,0 +1,18 @@
+@use '../tools/functions' as *;
+
+@mixin build-theme ($theme) {
+  @each $name, $value in map-get($theme, 'brand') {
+    #{'--ns-'}#{$name}: #{$value};
+  }
+
+  @each $name, $value in map-get($theme, 'essential') {
+    #{'--ns-'}#{$name}: #{$value};
+  }
+
+  @each $name, $value in map-get($theme, 'brand') {
+    #{'.bg-'}#{$name} {
+      background-color: var(--ns-#{$name}) !important;
+      color: #fff !important;
+    }
+  }
+}

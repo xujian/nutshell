@@ -5,7 +5,7 @@
 @use './colors';
 
 $radius-root: 4px !default;
-$border-color-root: map-get(colors.$brand, 'stroke') !default;
+// $border-color-root: map-get(colors.brand, 'stroke') !default;
 
 $borders: () !default;
 $borders: map-deep-merge(
@@ -21,12 +21,12 @@ $borders: map-deep-merge(
   $borders
 );
 
-@each $name, $value in $borders {
-  $borders: map-deep-merge(
-    $borders,
-    ($name: $value 'solid' $border-color-root)
-  )
-}
+// @each $name, $value in $borders {
+//   $borders: map-deep-merge(
+//     $borders,
+//     ($name: $value 'solid' $border-color-root)
+//   )
+// }
 
 $rounded: () !default;
 $rounded: map-deep-merge(

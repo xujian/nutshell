@@ -1,0 +1,26 @@
+@forward '../variables';
+@use '../tools/functions' as *;
+
+/**
+ * Saas 系统现用主题
+ **/
+
+$present: () !default;
+$present: map-deep-merge(
+  (
+    brand: (
+      primary: #ff6a00,
+      secondary: #b5109f,
+      accent: #ff6a00,
+      positive: #21ba45,
+      negtive: #c10015,
+      warning: #c16a00,
+    ),
+    essential: (
+      background: #333,
+      paper: #ff964b,
+      surface: #ab4700,
+      text: #eee,
+      border-color: #ff6a00,
+    ),
+  ), $present);

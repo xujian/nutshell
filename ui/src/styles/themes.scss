@@ -1,0 +1,11 @@
+@use './tools/mixins' as *;
+@use './themes/klein' as *;
+@use './themes/present' as *;
+
+[data-theme=klein] {
+  @include build-theme($klein)
+}
+
+[data-theme=present] {
+  @include build-theme($present)
+}

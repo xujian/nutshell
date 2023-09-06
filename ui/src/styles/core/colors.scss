@@ -1,18 +1,6 @@
+@use '../tools/mixins' as *;
 @use '../variables/colors';
 
 :root {
-  @each $name, $value in colors.$brand {
-    #{'--ns-'}#{$name}: #{$value}
-  }
-  @each $name, $value in colors.$essential {
-    #{'--ns-'}#{$name}: #{$value}
-  }
+  @include build-theme(colors.$base);
 }
-
-@each $name, $value in colors.$brand {
-  #{'.bg-'}#{$name} {
-    background-color: var(--ns-#{$name}) !important;
-    color: #fff !important;
-  }
-}
-
