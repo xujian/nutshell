@@ -24,7 +24,58 @@ const menuData = [
       {
         label: '色表',
         key: 'palletes'
+      },
+      {
+        label: '派生风格',
+        key: 'variants'
       }
+    ]
+  },
+  {
+    
+    label: '设计规范',
+    key: 'specifications',
+    children: [
+      {
+        label: '字型',
+        key: 'typographics'
+      },
+      {
+        label: '尺寸',
+        key: 'sizes'
+      },
+      {
+        label: '间距',
+        key: 'spacings'
+      },
+      {
+        label: '交互状态',
+        key: 'states'
+      },
+      {
+        label: '形状',
+        key: 'shapes'
+      },
+      {
+        label: '阴影',
+        key: 'shadows'
+      },
+      {
+        label: '形状',
+        key: 'shapes'
+      },
+      {
+        label: '半透明',
+        key: 'opacities'
+      },
+      {
+        label: '渐变',
+        key: 'gradients'
+      },
+      {
+        label: '动效',
+        key: 'motions'
+      },
     ]
   },
   {
