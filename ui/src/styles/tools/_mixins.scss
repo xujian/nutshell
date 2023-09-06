@@ -1,4 +1,5 @@
 @use '../tools/functions' as *;
+@use "sass:color";
 
 @mixin build-theme ($theme) {
 
@@ -15,9 +16,28 @@
   }
 
   @each $name, $value in map-get($theme, 'brand') {
-    #{'.bg-'}#{$name} {
-      background-color: var(--ns-#{$name}) !important;
-      color: #fff !important;
+    .color-#{$name} {
+      background-color: var(--ns-#{$name});
+      border-color: var(--ns-#{$name});
+      color: #fff;
+      &.variant-outlined {
+        background-color: transparent;
+        border-color: $value;
+        color: $value
+      }
+      &.variant-soft {
+        background-color: color.adjust($value, $alpha: -0.25);
+        border-color: color.adjust($value, $lightness: +50%);
+        color: color.adjust($value, $lightness: +75%, $alpha: -0.4)
+      }
+      &.variant-plain {
+        background-color: transparent;
+        border-color: transparent;
+        color: $value;
+        &:hover {
+          background-color: #00000033;
+        }
+      }
     }
   }
 }

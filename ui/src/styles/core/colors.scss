@@ -4,3 +4,6 @@
 :root {
   @include build-theme(colors.$base);
 }
+
+@each $name, $value in map-get(colors.$base, 'brand') {
+}

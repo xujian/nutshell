@@ -1,5 +1,5 @@
 import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
-import { useSizeProps } from '../../props'
+import { useSizeProps, useVariantProps } from '../../props'
 import { define } from '../../utils'
 import { useDimensionProps } from '../../props'
 import { buildProps } from '../../utils/private/props'
@@ -31,6 +31,7 @@ export const useButtonProps = () => ({
 const buttonProps = {
   ...useButtonProps(),
   ...useDimensionProps(),
+  ...useVariantProps(),
 }
 
 export interface ButtonEmits extends ObjectEmitsOptions {

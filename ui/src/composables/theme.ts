@@ -5,6 +5,7 @@ export type ThemeOptions = false | {
 export const BRAND = [
   'primary',
   'secondary',
+  'neutral',
   'accent',
   'positive',
   'negtive',
@@ -42,4 +43,8 @@ export function createTheme (name: string) {
     name: 'default',
     primary: 'cobalt'
   }
+}
+
+export function useTheme () {
+  
 }

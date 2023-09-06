@@ -3,6 +3,7 @@ import type { ButtonEmits, ButtonProps } from '../../../../components'
 import { Size } from '../../../../props/size'
 import { ButtonSize } from '@nutui/nutui-taro/dist/types/__VUE/button/type'
 import { BRAND, BrandColor } from '../../../../composables/theme'
+import { MarginProps } from '../../../../utils'
 
 const sizeMapping: Record<Size, ButtonSize> = {
   auto: 'normal',
@@ -18,12 +19,13 @@ const getSize = (size: Size): ButtonSize => {
   return sizeMapping[size]
 }
 
-export const Button = (props: ButtonProps & ButtonEmits) => {
+export const Button = (props: ButtonProps & ButtonEmits & MarginProps) => {
   const { color } = props
   const colorIsBrand = BRAND.includes(color as BrandColor)
   const classes = [
     'ns-button',
-    colorIsBrand ? `bg-${color}` : ''
+    ...(props.classes ?? []),
+    colorIsBrand ? `color-${color}` : ''
   ].join(' ')
   const { type, label, width, disabled,
     maxWidth, height, maxHeight, minWidth, minHeight,

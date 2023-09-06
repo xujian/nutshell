@@ -4,8 +4,8 @@ $size: () !default;
 $size: map-deep-merge(
   (
     icon-size: 16px,
-    button-height: 20px,
-    input-height: 20px,
+    button-height: 24px,
+    input-height: 24px,
   ),
   $size
 )
