@@ -1,6 +1,9 @@
 .ns-table {
-  border-color: var(--ns-table-border, var(--ns-stroke));
+  border-color: var(--ns-table-border-color, var(--ns-stroke, var(--ns-stroke)));
   border-style: solid;
   border-radius: var(--ns-table-border-radius, var(--ns-border-radius));
   overflow: hidden;
+  &.no-table {
+    border-width: 0;
+  }
 }

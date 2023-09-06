@@ -1,13 +1,13 @@
 .ns-dropdown {
   .ant-btn-default {
-    background-color: var(--ns-surface);
+    background-color: var(--ns-primary);
     border-color: var(--ns-border-color);
     color: var(--ns-text);
   }
   &.ant-dropdown {
     .ant-dropdown-menu {
-      background-color: var(--ns-surface);
-      border-color: var(--ns-border-color);
+      background-color: var(--ns-primary);
+      border-color: var(--ns-stroke);
       border-width: 1px;
       .ant-dropdown-menu-item {
         color: var(--ns-text);

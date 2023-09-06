@@ -1,11 +1,16 @@
 @use '../tools/functions' as *;
 
 @mixin build-theme ($theme) {
+
   @each $name, $value in map-get($theme, 'brand') {
     #{'--ns-'}#{$name}: #{$value};
   }
 
-  @each $name, $value in map-get($theme, 'essential') {
+  @each $name, $value in map-get($theme, 'abstract') {
+    #{'--ns-'}#{$name}: #{$value};
+  }
+  
+  @each $name, $value in map-get($theme, 'layout') {
     #{'--ns-'}#{$name}: #{$value};
   }
 

@@ -3,7 +3,7 @@
     color: var(--ns-text);
     .ant-tabs-nav {
       &::before {
-      border-color: var(--ns-border-color);
+      border-color: var(--ns-stroke);
       }
     }
   }
@@ -12,7 +12,7 @@
       margin: 0;
       .ant-tabs-tab-active {
         background-color: var(--ns-background);
-        border-color: var(--ns-border-color);
+        border-color: var(--ns-stroke);
         border-bottom-color: var(--ns-background);
         color: var(--ns-text-active, --ns-text);
       }
@@ -22,7 +22,7 @@
     background-color: var(--ns-background);
     padding: 12px;
     border-radius: 0 0 8px 8px;
-    border-color: var(--ns-border-color);
+    border-color: var(--ns-stroke);
     border-style: solid;
     border-width: 1px;
     border-top: none;

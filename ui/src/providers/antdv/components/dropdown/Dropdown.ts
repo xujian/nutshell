@@ -17,19 +17,18 @@ export const Dropdown = defineComponent({
       width: props.width,
       height: props.height,
       arrow: true,
-      'onUpdate:open': (value: boolean) => {
-        console.log('antdv modal.......onUpdate:open', value, Object.keys(props), props['onUpdate:modelValue'])
-        props['onUpdate:modelValue']?.(value)
-      },
     }, {
       default: () => props.label,
       overlay: () => h(AntdvMenu, {
-        class: 'ns-dropdown'
-        }, () => props.items.map(item => h(AntdvMenuItem, {
-            key: item.value,
-          }, item.label)
-        )
-      )
+        class: 'ns-dropdown',
+        onClick: (item) => {
+          console.log('---------NsDropdown, menu onClick', item)
+          emit('change', item)
+        }
+      }, () => props.items.map(item => h(AntdvMenuItem, {
+          key: item.value,
+        }, () => item.label)
+      ))
     })
   }
 })
