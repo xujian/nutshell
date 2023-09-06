@@ -13,7 +13,7 @@ import { EmitsToProps, Prettify } from './helpers'
  */
 // export type NutshellComponent< // This is overload 4
 //   PropsOptions extends ComponentObjectPropsOptions,
-//   Emits extends EmitsOptions = {},
+//   Emits extends ObjectEmitsOptions = {},
 //   Slots extends SlotsType = {}
 // > = DefineComponent<
 //   ComponentPropsOptions<PropsOptions>, 
@@ -61,6 +61,20 @@ export type DefineFunctionOptions<
   }
 }
 
+/**
+ * 传给 provider 的属性里加了一些字段
+ */
+export type MarginProps = {
+  classes: string[]
+}
+
+const buildClasses = (props: any): string[] => {
+  const { variant } = props
+  if (!variant) {
+    return []
+  }
+  return [`variant-${variant}`]
+}
 
 /**
  * Our private defineComponent
@@ -72,7 +86,7 @@ export function define<
   /** 组件属性的定义 */
   PropsOptions extends Readonly<ComponentObjectPropsOptions>,
   /** 组件事件的定义 */
-  Emits extends ObjectEmitsOptions = ObjectEmitsOptions, 
+  Emits extends ObjectEmitsOptions, 
   /** 组件 SLOT 的定义 */
   Slots extends SlotsType = {},
   // 从 PropsOptions 抽取组件的实际属性
@@ -93,13 +107,13 @@ export function define<
       ctx: SetupContext<Emits, Slots>
     ) {
     // the real setup
-    // console.log('define--------------------------------setupWrapped', {...props}, ctx)
     const { setup: setupOriginal } = options
     const providing  = useProvider()
     const { props: extraProps } = setupOriginal(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
     const render = ref((props, ctx) => h('div'))
+
     if (providing instanceof Promise) {
       providing.then((provider) => {
         render.value = provider.render.bind(provider)
@@ -107,10 +121,14 @@ export function define<
     } else {
       render.value = providing.render.bind(providing)
     }
+    if (props.name === 'client') {
+      console.log('define----', props, extraProps);
+    }
     return () => h(render.value, {
       ...props,
       ...extraProps,
       ...options.emits,
+      classes: buildClasses(props),
     }, defaultSlot)
   }
 
