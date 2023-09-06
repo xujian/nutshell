@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import axios from 'axios'
 import dayjs from 'dayjs'
 import { useNutshell } from 'nutshell'
+import { onMounted } from 'vue'
+import { reactive } from 'vue'
 
 /**
  * Format table cell
@@ -20,11 +22,28 @@ import { useNutshell } from 'nutshell'
  * 2. 定义一组数据格式化函数?
  */
 
+const form = ref()
+const formData = reactive({
+  client: '陈旭军',
+  selectedCity: '110100',
+  registerDate: '2023-09-01',
+})
 const dialogVisible = ref(false)
-const inputValue = ref<string>('Text input')
+const registerDate = ref<string>('2023-09-01')
 const $n = useNutshell()
 
 const buttonLabel = ref('Press')
+const cities = ref<any[]>([])
+
+onMounted(async () => {
+  axios.get('/json/cities.json')
+    .then(response => response.data)
+    .then(data => data.map(d => ({value: d.id, label: d.name})))
+    .then(data => {
+      cities.value = data
+    })
+})
+
 setTimeout(() => {
   buttonLabel.value = 'Press Me'
 }, 5e3)
@@ -37,9 +56,9 @@ const onClick = (...args: any[]) => {
 }
 
 const onOpenDialogButtonClick = () => {
-  // $n.dialog({
-  //   title: '客户',
-  // })
+  $n.dialog({
+    title: '客户',
+  })
   $n.toast('客户信息已保存')
 }
 
@@ -217,28 +236,43 @@ fetchTableData()
 <template>
   <div class="welcome">
     <h1>Nutshell Desktop Expo</h1>
-    <ns-row :gutter="8">
-      <ns-col span="12">
-        <ns-button
-          size="sm"
-          width="100"
-          color="#ff9900"
-          :label="buttonLabel" @click="onClick" />
-        <ns-button
-          size="sm"
-          width="100"
-          color="negtive"
-          label="Open Dialog" @click="onOpenDialogButtonClick" />
-        <ns-chip label="线索"></ns-chip>
-        <ns-icon source="/icons/call.svg" />
-      </ns-col>
-      <ns-col span="12">
-        <ns-input type="text" label="客户名称" placeholder="客户名称" v-model="inputValue" />
-      </ns-col>
-      <ns-col span="12">
-        <ns-date-input label="选择日期" />
-      </ns-col>
-    </ns-row>
+    <a-form ref="form" name="welcome" autocomplete="off"
+      :model="formData">
+      <ns-row gutter="0">
+        <ns-col span="24">
+          <ns-button
+            size="sm"
+            width="100"
+            color="#ff9900"
+            :label="buttonLabel" @click="onClick" />
+          <ns-button
+            size="sm"
+            width="100"
+            color="negtive"
+            label="Open Dialog" @click="onOpenDialogButtonClick" />
+          <ns-chip label="线索"></ns-chip>
+          <ns-icon source="/icons/call.svg" />
+        </ns-col>
+        <ns-col span="24">
+          <ns-input name="client" type="text" label="客户名称"
+            placeholder="客户名称"
+            v-model="formData.client"
+            :rules="['required']" />
+        </ns-col>
+        <ns-col span="24">
+          <ns-date-input name="registerDate" label="选择日期"
+            v-model="registerDate"
+            :rules="['required']" />
+        </ns-col>
+        <ns-col span="24">
+          <ns-select name="registerLocation"
+            :options="cities" label="注册地区" searchable
+            v-model="formData.selectedCity"
+            :rules="['required']"
+          ></ns-select>
+        </ns-col>
+      </ns-row>
+    </a-form>
     <ns-table :rows="tableData" :columns="columns">
       <ns-table-column-icon
         source="/icons/call.svg"
@@ -259,7 +293,7 @@ fetchTableData()
         @click="onTableColumnButtonClick"
       />
     </ns-table>
-    <h2>Now {{ inputValue }}</h2>
+    <h2>Now {{ formData.client }} [{{ formData.selectedCity }}]</h2>
     <ns-dialog v-model="dialogVisible" title="呼叫用户">
       <h2>Dialog</h2>
       <p>Dialog content</p>
