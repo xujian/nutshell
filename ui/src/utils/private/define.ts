@@ -68,12 +68,22 @@ export type MarginProps = {
   classes: string[]
 }
 
+export const marginProps = {
+  classes: Array as PropType<String[]>,
+  default: []
+}
+
 const buildClasses = (props: any): string[] => {
-  const { variant } = props
-  if (!variant) {
-    return []
+  const { variant, color } = props
+  const result: string[] = []
+  if (variant) {
+    result.push(`variant-${variant}`)
   }
-  return [`variant-${variant}`]
+  if (color) {
+    result.push(`color-${variant}`)
+  }
+  console.log('define----++++++', result);
+  return result
 }
 
 /**
@@ -92,7 +102,7 @@ export function define<
   // 从 PropsOptions 抽取组件的实际属性
   // Props = Prettify<Readonly<ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>>>
 > (
-  options: DefineFunctionOptions<PropsOptions, Emits, Slots>,
+  options: DefineFunctionOptions<PropsOptions & MarginProps, Emits, Slots>,
 ) {
   /*
    * 底层代码的所有努力，都是为了铺陈组件的时候
@@ -121,9 +131,10 @@ export function define<
     } else {
       render.value = v.render.bind(v)
     }
-    if (props.name === 'client') {
+    if (props.name?.startsWith('client')) {
       console.log('define----', props, extraProps);
     }
+
     return () => h(render.value, {
       ...props,
       ...extraProps,
@@ -143,7 +154,7 @@ export function define<
    * 用 Vue 原生的 defineComponent()
    */
   return defineComponent<
-    PropsOptions,
+    PropsOptions & MarginProps,
     {}, // RawBindings,
     {}, // D
     {}, // C

@@ -4,8 +4,6 @@ import { InputProps } from '../../../../components'
 export const Input = (props: InputProps) => {
   const classes = [
     'ns-input',
-    'ns-border-auto',
-    'ns-rounded-auto'
   ].join(' ')
   console.log('input.........h NutInput', props.modelValue)
   return h(NutInput, {

@@ -7,8 +7,6 @@ export const DateInput = defineComponent({
   setup: (props, ctx) => {
     const classes = [
       'ns-date-input',
-      'ns-border-auto',
-      'ns-rounded-auto'
     ].join(' ')
     const visible = ref(false)
     const open = () => {

@@ -1,9 +1,11 @@
 import { h, ref } from 'vue'
 import { FormItem as AntFormItem, Input as AntInput } from 'ant-design-vue'
 import { defineComponent } from 'vue'
-import { InputType, inputProps } from '../../../../components/input'
+import { InputType, inputProps, InputProps } from '../../../../components/input'
 import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from './rules'
+import { MarginProps } from '../../../../utils'
+import { marginProps } from '../../../../utils/private/define'
 
 export type AntInputType = 
   'number' | 'button' | 'time' | 'reset' | 'submit' 
@@ -21,18 +23,22 @@ const inputTypeMapping: Record<InputType, AntInputType> = {
  */
 export const Input = defineComponent({
   name: 'Input',
-  props: inputProps,
-  setup: (props, ctx) => {
+  props: {
+    ...inputProps,
+    ...marginProps,
+  },
+  setup: (props: InputProps & MarginProps, ctx) => {
     const classes = [
       'ns-input',
-    ].join(' ')
+    ]
 
     const rules = transformRules(props.rules as FullValidationRule[])
+    console.log('Ant---Input.........///', props.classes)
 
     return () => 
       h(AntFormItem, {
         name: props.name,
-        class: 'ns-form-item',
+        class: ['ns-form-item'].concat(props.classes),
         label: props.label,
         rules,
       }, () => h(AntInput, {

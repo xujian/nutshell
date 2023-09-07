@@ -1,6 +1,6 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../utils'
-import { useFieldProps, useModelValuePropsForInput } from '../../props'
+import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { FullValidationRule, PropsWithLabel, ValidationRule, formatRules } from '../../props/field'
 
 /**
@@ -38,6 +38,7 @@ export const inputProps = {
     required: false,
     default: 'text'
   },
+  ...useVariantProps(),
   ...useModelValuePropsForInput(),
   ...useFieldProps(),
 }
