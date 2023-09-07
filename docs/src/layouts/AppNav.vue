@@ -100,6 +100,11 @@ const menuData = computed(() =>[
             label: '按钮 button',
             title: '按钮',
             key: '/components/button'
+          },
+          {
+            label: '标签 chip',
+            title: '标签',
+            key: '/components/chip'
           }
         ]
       },
@@ -114,6 +119,10 @@ const menuData = computed(() =>[
           {
             label: '下拉选框 select',
             key: '/components/select'
+          },
+          {
+            label: '日期选择 date-input',
+            key: '/components/date-input'
           }
         ]
       },
@@ -127,7 +136,7 @@ const menuData = computed(() =>[
           },
           {
             label: '表格 table',
-            key: 'table'
+            key: '/components/table'
           }
         ]
       },
@@ -138,11 +147,11 @@ const menuData = computed(() =>[
           {
             label: '弹窗 dialog',
             title: '按钮',
-            key: 'dialog'
+            key: '/interactive/dialog'
           },
           {
-            label: '弹出消息 toast',
-            key: 'toast'
+            label: '消息 toast',
+            key: '/interactive/toast'
           }
         ]
       },
