@@ -11,7 +11,7 @@
 }
 
 @each $name, $value in design.$rounded {
-  #{'.rounded-'}#{$name} {
+  #{'.r-'}#{$name} {
     border-radius: #{$value};
   } 
 }
