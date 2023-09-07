@@ -8,6 +8,7 @@
     @change="onDropdownChange"
     :items="[
       { label: 'Klein', value: 'klein' },
+      { label: 'Gunmetal', value: 'gunmetal' },
       { label: 'Present', value: 'present' },
     ]"/>
 </template>

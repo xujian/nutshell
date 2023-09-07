@@ -1,9 +1,14 @@
 @use './tools/mixins' as *;
 @use './themes/klein' as *;
+@use './themes/gunmetal' as *;
 @use './themes/present' as *;
 
 [data-theme=klein] {
   @include build-theme($klein)
+}
+
+[data-theme=gunmetal] {
+  @include build-theme($gunmetal)
 }
 
 [data-theme=present] {

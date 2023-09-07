@@ -1,0 +1,32 @@
+@forward '../variables';
+@use '../tools/functions' as *;
+
+/**
+ * 
+ **/
+
+$gunmetal: () !default;
+$gunmetal: map-deep-merge(
+  (
+    brand: (
+      primary: #d1d6dd,
+      secondary: #d1d6dd,
+      neutral: #999999,
+      accent: #836753,
+      positive: #65926f,
+      negtive: #a1797e,
+      warning: #755b3b,
+    ),
+    abstract: (
+      background: #1c1d20,
+      paper: #3e4046,
+      surface: #d1d6dd,
+      text: #ffffff,
+      stroke: #ffffff77,
+    ),
+    layout: (
+      nav-background: #d1d6dd33,
+      footer-background: #505050,
+      footer-text: #fff,
+    ),
+  ), $gunmetal);
