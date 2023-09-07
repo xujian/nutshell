@@ -3,14 +3,21 @@
     <img src="/logo.svg" alt="" class="svg" />
   </div>
   <a-menu class="nav"
+    @click="onMenuClick"
     mode="inline"
     :items="menuData">
   </a-menu>
 </template>
 <script lang="ts" setup>
-import { h } from 'vue'
+import { computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
-const menuData = [
+const router = useRouter()
+const onMenuClick = (item: any) => {
+  router.push(item.key)
+}
+
+const menuData = computed(() =>[
   {
     label: '总述',
     key: 'overview',
@@ -23,11 +30,10 @@ const menuData = [
     label: '视觉风格',
     key: 'themes',
     children: [
+
       {
-        label: h('a', {
-            href: '/palettes'
-          }, '色表'),
-          key: 'palettes'
+        label: '色表',
+        key: 'palettes'
       },
       {
         label: '派生风格',
@@ -91,11 +97,9 @@ const menuData = [
         key: 'ui',
         children: [
           {
-            label: h('a', {
-                href: '/components/button'
-              }, '按钮 button'),
+            label: '按钮 button',
             title: '按钮',
-            key: 'button'
+            key: '/components/button'
           }
         ]
       },
@@ -104,14 +108,12 @@ const menuData = [
         key: 'form',
         children: [
           {
-            label: h('a', {
-                href: '/components/input'
-              }, '文本输入框 iunput'),
-            key: 'input'
+            label: '文本输入框 input',
+            key: '/components/input'
           },
           {
-            label: '选择框 select',
-            key: 'select'
+            label: '下拉选框 select',
+            key: '/components/select'
           }
         ]
       },
@@ -176,7 +178,7 @@ const menuData = [
     label: '实验室',
     key: 'labs'
   }
-]
+])
 </script>
 <style lang="scss">
 .app-nav {
@@ -211,6 +213,9 @@ const menuData = [
     .ant-menu-light.ant-menu-inline .ant-menu-item {
       height: 32px;
       font-size: 12px;
+    }
+    .ant-menu-item-selected {
+      color: #fff;
     }
   }
   .logo {

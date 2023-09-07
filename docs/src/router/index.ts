@@ -1,9 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MasterLayout from '../layouts/MasterLayout.vue'
-import HomePage from '../pages/HomePage.vue'
-import PalettesPage from '../pages/themes/PalettesPage.vue'
-import ButtonPage from '../pages/components/ButtonPage.vue'
-import InputPage from '../pages/components/InputPage.vue'
+
+const HomePage = () => import('../pages/HomePage.vue')
+const AboutPage = () => import('../pages/AboutPage.vue')
+const PalettesPage = () => import('../pages/themes/PalettesPage.vue')
+const ButtonPage = () => import('../pages/components/ButtonPage.vue')
+const InputPage = () => import('../pages/components/InputPage.vue')
+const SelectPage = () => import('../pages/components/SelectPage.vue')
+const NotFoundPage = () => import('../pages/NotFoundPage.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,16 +36,27 @@ const router = createRouter({
           path: '/components/input',
           name: 'components-input',
           component: InputPage,
+        },
+        {
+          path: '/components/select',
+          name: 'components-select',
+          component: SelectPage,
         },  
         {
           path: '/about',
           name: 'about',
-          // route level code-splitting
-          // this generates a separate chunk (About.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import('../pages/AboutPage.vue')
-        }
+          component: () => AboutPage
+        },
+        {
+          path: '/404',
+          name: 'not-found',
+          component: NotFoundPage
+        },
       ]
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/404'
     },
   ]
 })
