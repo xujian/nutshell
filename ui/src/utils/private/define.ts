@@ -80,9 +80,8 @@ const buildClasses = (props: any): string[] => {
     result.push(`variant-${variant}`)
   }
   if (color) {
-    result.push(`color-${variant}`)
+    result.push(`color-${color}`)
   }
-  console.log('define----++++++', result);
   return result
 }
 
@@ -130,9 +129,6 @@ export function define<
       })
     } else {
       render.value = v.render.bind(v)
-    }
-    if (props.name?.startsWith('client')) {
-      console.log('define----', props, extraProps);
     }
 
     return () => h(render.value, {
