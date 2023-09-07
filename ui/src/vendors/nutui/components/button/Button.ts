@@ -2,7 +2,7 @@ import { h } from 'vue'
 import type { ButtonEmits, ButtonProps } from '../../../../components'
 import { Size } from '../../../../props/size'
 import { ButtonSize } from '@nutui/nutui-taro/dist/types/__VUE/button/type'
-import { BRAND, BrandColor } from '../../../../composables/theme'
+import { BRANDS, BrandColor } from '../../../../composables/theme'
 import { MarginProps } from '../../../../utils'
 
 const sizeMapping: Record<Size, ButtonSize> = {
@@ -21,12 +21,13 @@ const getSize = (size: Size): ButtonSize => {
 
 export const Button = (props: ButtonProps & ButtonEmits & MarginProps) => {
   const { color } = props
-  const colorIsBrand = BRAND.includes(color as BrandColor)
+  const colorIsBrand = BRANDS.includes(color as BrandColor)
   const classes = [
     'ns-button',
+    props.size ? `size-${props.size}` : '',
     ...(props.classes ?? []),
     colorIsBrand ? `color-${color}` : ''
-  ].join(' ')
+  ]
   const { type, label, width, disabled,
     maxWidth, height, maxHeight, minWidth, minHeight,
     ...p } = props

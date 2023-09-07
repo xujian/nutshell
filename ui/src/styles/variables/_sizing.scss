@@ -1,11 +1,17 @@
 @use '../tools/functions' as *;
 
-$size: () !default;
-$size: map-deep-merge(
+// 小型组件的尺寸控制
+// 图标、按钮、CHIP、输入框等等
+// xs, sm, md, lg, xl 五档
+
+$sizing: () !default;
+$sizing: map-deep-merge(
   (
-    icon-size: 16px,
-    button-height: 24px,
-    input-height: 24px,
+    xs: 20px,
+    sm: 24px,
+    md: 30px,
+    lg: 40px,
+    xl: 48px,
   ),
-  $size
+  $sizing
 )

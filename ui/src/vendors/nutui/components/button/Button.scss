@@ -1,0 +1,20 @@
+.ns-button {
+  &.nut-button--mini {
+    height: var(--ns-size-xs);
+  }
+  &.v-button--small {
+    height: var(--ns-size-sm);
+  }
+  &.nut-button--normal {
+    height: var(--ns-size-md);
+  }
+  &.nut-button--large {
+    width: auto;
+    height: var(--ns-size-lg);
+    padding: 0 24px;
+    &.size-xl {
+      height: var(--ns-size-xl);
+      padding: 0 48px;
+    }
+  }
+}
