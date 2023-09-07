@@ -1,5 +1,6 @@
-import { ExtractPublicPropTypes, PropType } from 'vue'
+import { ExtractPublicPropTypes, PropType, h } from 'vue'
 import { define } from '../../utils'
+import { defineComponent } from 'vue'
 
 const JUSTIFY = ['start', 'end', 'center'] as const
 type JustifyValue = typeof JUSTIFY[number]
@@ -28,11 +29,17 @@ const props = {
 
 export type ColProps = ExtractPublicPropTypes<typeof props>
 
-export const NsCol = define({
+export const NsCol = defineComponent({
   name: 'NsCol',
   props,
-  setup (props, ctx) {
-    return {
-    }
+  setup (props, { slots }) {
+    return () => h('div', {
+      class: [
+        'flex',
+        'flex-col',
+        `justify-${props.justify}`,
+        `align-${props.align}`,
+      ]
+    }, slots)
   }
 })

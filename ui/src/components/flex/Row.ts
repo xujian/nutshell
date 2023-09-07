@@ -1,5 +1,6 @@
-import { ExtractPublicPropTypes, PropType } from 'vue'
+import { ExtractPublicPropTypes, PropType, defineComponent } from 'vue'
 import { define } from '../../utils'
+import { h } from 'vue'
 
 const JUSTIFY = ['start', 'end', 'center'] as const
 type JustifyValue = typeof JUSTIFY[number]
@@ -14,22 +15,28 @@ const props = {
   },
   justify: {
     type: String as PropType<JustifyValue>,
-    default: 'center'
+    default: 'start'
   },
   align: {
     type: String as PropType<AlignValue>,
-    default: 'center'
+    default: 'start'
   }
 }
 
 export type RowProps = ExtractPublicPropTypes<typeof props>
 
-export const NsRow = define({
+export const NsRow = defineComponent({
   name: 'NsRow',
   props,
   setup (props, ctx) {
     const { slots } = ctx
-    return {
-    }
+    return () => h('div', {
+      class: [
+        'flex',
+        'flex-row',
+        `justify-${props.justify}`,
+        `align-${props.align}`,
+      ]
+    }, slots)
   }
 })
