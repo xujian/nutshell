@@ -1,0 +1,21 @@
+@use '../tools/functions' as *;
+
+$space-root: 4px !default;
+
+/**
+ * 间距控制
+ * padding, margin 
+ **/
+
+$spacing: () !default;
+$spacing: map-deep-merge(
+  (
+    0: 0px,
+    xs: 4px,
+    sm: 8px,
+    md: 16px,
+    lg: 24px,
+    xl: 32px
+  ),
+  $spacing
+);

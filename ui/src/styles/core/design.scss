@@ -5,13 +5,13 @@
 }
 
 @each $name, $value in design.$borders {
-  #{'.ns-border-'}#{$name} {
+  #{'.border-'}#{$name} {
     border: #{$value};
   }
 }
 
 @each $name, $value in design.$rounded {
-  #{'.ns-rounded-'}#{$name} {
+  #{'.rounded-'}#{$name} {
     border-radius: #{$value};
   } 
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="home-hero flex flex-col align-center justify-center">
+  <div class="home-hero rounded-md flex flex-col align-center justify-center mb-lg">
     <h1>Nutshell</h1>
     <p class="subline">前端标准组件库</p>
   </div>
@@ -9,7 +9,6 @@
   position: relative;
   height: 400px;
   overflow: hidden;
-  margin: -12px -12px 12px -12px;
   &:before {
     content: "";
     position: absolute;

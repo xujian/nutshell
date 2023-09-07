@@ -1,0 +1,57 @@
+@use '../tools/functions' as *;
+@use '../variables/spacing' as *;
+
+:root {
+  @each $name, $value in $spacing {
+    #{'--ns-spacing-'}#{$name}: #{$value};
+  }
+}
+
+@each $name, $value in $spacing {
+  #{'.m-'}#{$name} {
+    margin: var(--ns-spacing-#{$name});
+  }
+  #{'.mx-'}#{$name} {
+    margin-left: var(--ns-spacing-#{$name});
+    margin-right: var(--ns-spacing-#{$name});
+  }
+  #{'.my-'}#{$name} {
+    margin-top: var(--ns-spacing-#{$name});
+    margin-bottom: var(--ns-spacing-#{$name});
+  }
+  #{'.ml-'}#{$name} {
+    margin-left: var(--ns-spacing-#{$name});
+  }
+  #{'.mr-'}#{$name} {
+    margin-right: var(--ns-spacing-#{$name});
+  }
+  #{'.mt-'}#{$name} {
+    margin-top: var(--ns-spacing-#{$name});
+  }
+  #{'.mb-'}#{$name} {
+    margin-bottom: var(--ns-spacing-#{$name});
+  }
+  #{'.p-'}#{$name} {
+    padding: var(--ns-spacing-#{$name});
+  }
+  #{'.px-'}#{$name} {
+    padding-left: var(--ns-spacing-#{$name});
+    padding-right: var(--ns-spacing-#{$name});
+  }
+  #{'.py-'}#{$name} {
+    padding-top: var(--ns-spacing-#{$name});
+    padding-bottom: var(--ns-spacing-#{$name});
+  }
+  #{'.pl-'}#{$name} {
+    padding-left: var(--ns-spacing-#{$name});
+  }
+  #{'.pr-'}#{$name} {
+    padding-right: var(--ns-spacing-#{$name});
+  }
+  #{'.pt-'}#{$name} {
+    padding-top: var(--ns-spacing-#{$name});
+  }
+  #{'.pb-'}#{$name} {
+    padding-bottom: var(--ns-spacing-#{$name});
+  }
+}

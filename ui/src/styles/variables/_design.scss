@@ -2,7 +2,7 @@
  * Varibles about design system
  **/
 @use '../tools/functions' as *;
-@use './colors';
+@use './spacing';
 
 $radius-root: 4px !default;
 // $border-color-root: map-get(colors.brand, 'stroke') !default;
@@ -21,25 +21,17 @@ $borders: map-deep-merge(
   $borders
 );
 
-// @each $name, $value in $borders {
-//   $borders: map-deep-merge(
-//     $borders,
-//     ($name: $value 'solid' $border-color-root)
-//   )
-// }
-
 $rounded: () !default;
 $rounded: map-deep-merge(
   (
     0: 0,
     none: 0,
     auto: var(--ns-border-radius),
-    sm: $radius-root,
-    md: $radius-root * 2,
-    lg: $radius-root * 4,
+    xs: $radius-root,
+    sm: $radius-root * 2,
+    md: $radius-root * 4,
+    lg: $radius-root * 6,
     xl: $radius-root * 8,
   ),
   $rounded
 )
-
-
