@@ -5,5 +5,9 @@
   @include build-theme(colors.$base);
 }
 
+.color-white {
+  background-color: #ffffff;
+}
+
 @each $name, $value in map-get(colors.$base, 'brand') {
 }

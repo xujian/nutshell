@@ -2,7 +2,7 @@ export type ThemeOptions = false | {
 
 }
 
-export const BRAND = [
+export const BRANDS = [
   'primary',
   'secondary',
   'neutral',
@@ -19,7 +19,7 @@ export const ESSENTIAL = [
   'stroke'
 ]
 
-export type BrandColor = typeof BRAND[number]
+export type BrandColor = typeof BRANDS[number]
 
 export type HexColor = `#${string}`
 export type RgbColor = `rgb(${string})`

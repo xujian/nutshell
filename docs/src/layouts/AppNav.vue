@@ -8,6 +8,8 @@
   </a-menu>
 </template>
 <script lang="ts" setup>
+import { h } from 'vue'
+
 const menuData = [
   {
     label: '总述',
@@ -18,12 +20,14 @@ const menuData = [
     key: 'configurations',
   },
   {
-    label: '色彩主题',
+    label: '视觉风格',
     key: 'themes',
     children: [
       {
-        label: '色表',
-        key: 'palletes'
+        label: h('a', {
+            href: '/palettes'
+          }, '色表'),
+          key: 'palettes'
       },
       {
         label: '派生风格',
@@ -87,7 +91,9 @@ const menuData = [
         key: 'ui',
         children: [
           {
-            label: '按钮 button',
+            label: h('a', {
+                href: '/components/button'
+              }, '按钮 button'),
             title: '按钮',
             key: 'button'
           }
@@ -98,7 +104,9 @@ const menuData = [
         key: 'form',
         children: [
           {
-            label: '文本输入框 iunput',
+            label: h('a', {
+                href: '/components/input'
+              }, '文本输入框 iunput'),
             key: 'input'
           },
           {
@@ -172,6 +180,7 @@ const menuData = [
 </script>
 <style lang="scss">
 .app-nav {
+  overflow-y: auto;
   background-color: var(--ns-nav-background, transparent);
   .nav {
     width: 100%;
@@ -188,10 +197,20 @@ const menuData = [
       &.ant-menu-inline .ant-menu-sub.ant-menu-inline {
         background-color: transparent;
       }
+      .ant-menu-item:hover:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected), 
+      .ant-menu-submenu-title:hover:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected) {
+        color: var(--ns-text);
+      }
     }
     .ant-menu-item {
       border-radius: 20px;
       color: var(--ns-text);
+    }
+    .ant-menu-submenu>.ant-menu-submenu-title,
+    .ant-menu-inline .ant-menu-item,
+    .ant-menu-light.ant-menu-inline .ant-menu-item {
+      height: 32px;
+      font-size: 12px;
     }
   }
   .logo {
