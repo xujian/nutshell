@@ -1,0 +1,13 @@
+@use '../variables/fonts' as *;
+
+:root {
+  @each $name, $value in $fonts {
+    #{'--ns-font-'}#{$name}: #{$value}
+  }
+}
+
+@each $name, $value in $fonts {
+  #{'.font-'}#{$name} {
+    font-size: var(--ns-font-#{$name});
+  }
+}

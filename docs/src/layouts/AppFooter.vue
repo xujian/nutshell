@@ -1,5 +1,5 @@
 <template>
-  <h6>前端团队</h6>
+  <h6>UI & 前端团队</h6>
 </template>
 <style lang="scss">
 .app-footer {

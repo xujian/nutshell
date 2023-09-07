@@ -1,5 +1,6 @@
 import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
 import { Color } from '../../composables/theme'
+import { useVariantProps } from '../../props'
 
 export const cardProps = {
   title: {
@@ -7,7 +8,8 @@ export const cardProps = {
   },
   color: {
     type: String as PropType<Color>,
-  }
+  },
+  ...useVariantProps(),
 }
 
 export type CardProps = ExtractPublicPropTypes<typeof cardProps>
@@ -45,7 +47,8 @@ export const NsCard = defineComponent({
       'ns-card',
       'flex',
       'flex-col',
-      props.color ? `bg-${props.color}` : ''
+      props.color ? `color-${props.color}` : '',
+      props.variant ? `variant-${props.variant}` : '',
     ].join(' ')
 
     const title = props.title

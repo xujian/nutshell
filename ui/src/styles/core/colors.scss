@@ -10,4 +10,7 @@
 }
 
 @each $name, $value in map-get(colors.$base, 'brand') {
+  #{'.text-'}#{$name} {
+    color: var(--ns-#{$name})
+  }
 }

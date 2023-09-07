@@ -27,4 +27,14 @@
     padding: 0;
     min-height: 100px;
   }
+  &.variant-outlined {
+    border-color: var(--ns-stroke);
+    border-width: 1px;
+    border-style: solid;
+  }
+  &.variant-soft {
+    border-color: var(--ns-neutral);
+    border-width: 1px;
+    border-style: solid;
+  }
 }

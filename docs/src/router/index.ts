@@ -6,12 +6,14 @@ const AboutPage = () => import('../pages/AboutPage.vue')
 const PalettesPage = () => import('../pages/themes/PalettesPage.vue')
 const ButtonPage = () => import('../pages/components/ButtonPage.vue')
 const ChipPage = () => import('../pages/components/ChipPage.vue')
+const CardPage = () => import('../pages/components/CardPage.vue')
 const InputPage = () => import('../pages/components/InputPage.vue')
 const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
 const TablePage = () => import('../pages/components/TablePage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
+const FontPage = () => import('../pages/tokens/FontPage.vue')
 const NotFoundPage = () => import('../pages/NotFoundPage.vue')
 
 const router = createRouter({
@@ -43,6 +45,11 @@ const router = createRouter({
           component: ChipPage,
         },
         {
+          path: '/components/card',
+          name: 'components-card',
+          component: CardPage,
+        },
+        {
           path: '/components/input',
           name: 'components-input',
           component: InputPage,
@@ -71,6 +78,11 @@ const router = createRouter({
           path: '/interactive/toast',
           name: 'interactive-toast',
           component: ToastPage,
+        },
+        {
+          path: '/tokens/font',
+          name: 'tokens-toast',
+          component: FontPage,
         },
         {
           path: '/about',

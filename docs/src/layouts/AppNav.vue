@@ -28,63 +28,58 @@ const menuData = computed(() =>[
   },
   {
     label: '视觉风格',
-    key: 'themes',
+    key: 'theming',
     children: [
-
       {
-        label: '色表',
-        key: 'palettes'
+        label: '色表 palettes',
+        key: '/palettes'
       },
       {
-        label: '派生风格',
-        key: 'variants'
+        label: '派生风格 variants',
+        key: '/variants'
       }
     ]
   },
   {
     
     label: '设计规范',
-    key: 'specifications',
+    key: 'tokens',
     children: [
       {
-        label: '字型',
-        key: 'typographics'
+        label: '字型 font',
+        key: '/tokens/font'
       },
       {
-        label: '尺寸',
-        key: 'sizes'
+        label: '尺寸 sizing',
+        key: '/tokens/sizes'
       },
       {
-        label: '间距',
-        key: 'spacings'
+        label: '间距 spacing',
+        key: '/tokens/spacings'
       },
       {
-        label: '交互状态',
-        key: 'states'
+        label: '交互状态 state',
+        key: '/tokens/state'
       },
       {
-        label: '形状',
-        key: 'shapes'
+        label: '形状 shape',
+        key: '/tokens/shapes'
       },
       {
-        label: '阴影',
-        key: 'shadows'
+        label: '阴影 shadow',
+        key: '/tokens/shadow'
       },
       {
-        label: '形状',
-        key: 'shapes'
+        label: '半透明 opacity',
+        key: '/tokens/opacities'
       },
       {
-        label: '半透明',
-        key: 'opacities'
+        label: '渐变 gradient',
+        key: '/tokens/gradients'
       },
       {
-        label: '渐变',
-        key: 'gradients'
-      },
-      {
-        label: '动效',
-        key: 'motions'
+        label: '动效 motions',
+        key: '/tokens/motion'
       },
     ]
   },
@@ -105,6 +100,11 @@ const menuData = computed(() =>[
             label: '标签 chip',
             title: '标签',
             key: '/components/chip'
+          },
+          {
+            label: '卡片 card',
+            title: '卡片',
+            key: '/components/card'
           }
         ]
       },
