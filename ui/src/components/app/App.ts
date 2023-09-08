@@ -1,5 +1,5 @@
 import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions, defineComponent, h, onMounted, ref } from 'vue'
-import { Color } from '../../composables/theme'
+import { useTheme } from '../../composables'
 import { useBus } from '../../composables'
 import { onBeforeUnmount } from 'vue'
 
@@ -26,15 +26,15 @@ export const NsApp = defineComponent({
       'ns-app',
     ].join(' ')
 
-    const theme = ref('present')
+    const { theme, setTheme } = useTheme()
     const body = document.body
-    body.setAttribute('data-theme', theme.value)
+    body.setAttribute('data-theme', theme)
 
     const $bus = useBus()
 
     const handleThemeChange = (value: string) => {
-      theme.value = value
-      body.setAttribute('data-theme', theme.value)
+      setTheme(value)
+      body.setAttribute('data-theme', value)
     }
 
     onMounted(() => {

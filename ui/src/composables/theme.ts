@@ -2,6 +2,8 @@ export type ThemeOptions = false | {
 
 }
 
+const DEFAULT_THEME = 'present'
+
 export const BRANDS = [
   'primary',
   'secondary',
@@ -46,5 +48,9 @@ export function createTheme (name: string) {
 }
 
 export function useTheme () {
-  
+  const theme = localStorage.getItem('theme') || DEFAULT_THEME,
+    setTheme = (name: string) => {
+      localStorage.setItem('theme', name)
+    }
+  return { theme, setTheme }
 }

@@ -16,3 +16,7 @@ export type {
   HexColor,
   Color,
 } from './theme'
+
+export {
+  useTheme,
+} from './theme'
