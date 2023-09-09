@@ -1,0 +1,17 @@
+.ns-rating {
+  .ant-rate {
+    font-size: 12px;
+    .ant-rate-star {
+      &.ant-rate-star-full {
+        .anticon {
+          color: var(--ns-neutral)
+        }
+      }
+      &.ant-rate-star-full {
+        .anticon {
+          color: var(--ns-accent)
+        }
+      }
+    }
+  }
+}

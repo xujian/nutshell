@@ -1,8 +1,10 @@
 export * from './app'
 export * from './button'
 export * from './input'
+export * from './form'
 export * from './select'
 export * from './checkbox'
+export * from './rating'
 export * from './flex'
 export * from './chip'
 export * from './icon'
@@ -16,9 +18,11 @@ export * from './card'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
+import { NsForm } from './form'
 import { NsInput } from './input'
 import { NsSelect } from './select'
 import { NsCheckbox } from './checkbox'
+import { NsRating } from './rating'
 import { NsRow, NsCol } from './flex'
 import { NsChip } from './chip'
 import { NsIcon } from './icon'
@@ -32,8 +36,10 @@ const components = {
   NsApp,
   NsButton,
   NsInput,
+  NsForm,
   NsSelect,
   NsCheckbox,
+  NsRating,
   NsRow,
   NsCol,
   NsChip,

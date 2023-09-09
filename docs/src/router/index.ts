@@ -9,6 +9,7 @@ const DropdownPage = () => import('../pages/components/DropdownPage.vue')
 const ChipPage = () => import('../pages/components/ChipPage.vue')
 const CardPage = () => import('../pages/components/CardPage.vue')
 const InputPage = () => import('../pages/components/InputPage.vue')
+const FormPage = () => import('../pages/components/FormPage.vue')
 const CheckboxPage = () => import('../pages/components/CheckboxPage.vue')
 const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
@@ -60,6 +61,11 @@ const router = createRouter({
           path: '/components/card',
           name: 'components-card',
           component: CardPage,
+        },
+        {
+          path: '/components/form',
+          name: 'components-form',
+          component: FormPage,
         },
         {
           path: '/components/input',
