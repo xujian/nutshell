@@ -1,0 +1,25 @@
+.ns-form {
+  &.ant-form {
+    &.variant-outlined, .variant-outlined {
+      .ant-form-item-control {
+        border-color: var(--ns-stroke);
+      }
+      .ant-form-item-control-input {
+        border-color: var(--ns-stroke);
+      }
+    }
+    &.variant-plain {
+      .ant-form-item-label {
+        >label {
+          background-color: transparent;
+        }
+      }
+      .ant-form-item-control-input {
+        background-color: transparent;
+      }
+      .ant-input {
+        background-color: var(--ns-surface);
+      }
+    }
+  }
+}

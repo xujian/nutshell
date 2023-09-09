@@ -1,7 +1,7 @@
 <template>
   <h1 class="my-lg">表单 &lt;ns-form&gt;</h1>
   <h2>新建意向客户</h2>
-  <ns-form name="client">
+  <ns-form name="client" variant="outlined">
     <h3 class="mt-xl mb-lg">基础信息</h3>
     <ns-input name="name"
       label="客户姓名"

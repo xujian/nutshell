@@ -1,5 +1,6 @@
 import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define } from '../../utils'
+import { useVariantProps } from '../../props'
 
 export const formProps = {
   name: {
@@ -8,6 +9,7 @@ export const formProps = {
   modelValue: {
     type: Object,
   },
+  ...useVariantProps(),
   'onUpdate:modelValue': {
     type: Function as PropType<(value: Record<string, any>) => void>
   }
