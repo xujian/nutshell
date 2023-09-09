@@ -1,4 +1,5 @@
 import { Input, DateInput } from './input'
+import { Checkbox } from './checkbox'
 import { Table } from './table'
 import { Dialog } from './dialog'
 import { Select } from './select'
@@ -12,5 +13,6 @@ export {
   Dialog,
   Select,
   Dropdown,
-  Tabs
+  Tabs,
+  Checkbox
 }

@@ -4,8 +4,8 @@ import { defineComponent } from 'vue'
 import { InputType, inputProps, InputProps } from '../../../../components/input'
 import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from './rules'
-import { MarginProps } from '../../../../utils'
-import { marginProps } from '../../../../utils/private/define'
+import type { MarginProps } from '../../../../utils'
+import { marginProps } from '../../../../utils'
 
 export type AntInputType = 
   'number' | 'button' | 'time' | 'reset' | 'submit' 

@@ -5,9 +5,11 @@ const HomePage = () => import('../pages/HomePage.vue')
 const AboutPage = () => import('../pages/AboutPage.vue')
 const PalettesPage = () => import('../pages/themes/PalettesPage.vue')
 const ButtonPage = () => import('../pages/components/ButtonPage.vue')
+const DropdownPage = () => import('../pages/components/DropdownPage.vue')
 const ChipPage = () => import('../pages/components/ChipPage.vue')
 const CardPage = () => import('../pages/components/CardPage.vue')
 const InputPage = () => import('../pages/components/InputPage.vue')
+const CheckboxPage = () => import('../pages/components/CheckboxPage.vue')
 const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
 const TablePage = () => import('../pages/components/TablePage.vue')
@@ -38,6 +40,16 @@ const router = createRouter({
           path: '/components/button',
           name: 'components-button',
           component: ButtonPage,
+        },
+        {
+          path: '/components/dropdown',
+          name: 'components-dropdown',
+          component: DropdownPage,
+        },
+        {
+          path: '/components/checkbox',
+          name: 'components-checkbox',
+          component: CheckboxPage,
         },
         {
           path: '/components/chip',
