@@ -1,5 +1,5 @@
 <template>
-  <div class="logo">
+  <div class="logo" @click="goHome">
     <img src="/logo.svg" alt="" class="svg" />
   </div>
   <a-menu class="nav"
@@ -13,11 +13,16 @@ import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
+
+const goHome = () => {
+  router.push('/')
+}
+
 const onMenuClick = (item: any) => {
   router.push(item.key)
 }
 
-const menuData = computed(() =>[
+const menuData = computed(() => [
   {
     label: '总述',
     key: 'overview',
@@ -84,6 +89,10 @@ const menuData = computed(() =>[
     ]
   },
   {
+    label: '开发规范',
+    key: '/develop',
+  },
+  {
     label: '组件',
     key: 'components',
     children: [
@@ -93,17 +102,18 @@ const menuData = computed(() =>[
         children: [
           {
             label: '按钮 button',
-            title: '按钮',
             key: '/components/button'
           },
           {
+            label: '下拉菜单 dropdown',
+            key: '/components/dropdown'
+          },
+          {
             label: '标签 chip',
-            title: '标签',
             key: '/components/chip'
           },
           {
             label: '卡片 card',
-            title: '卡片',
             key: '/components/card'
           }
         ]
@@ -113,6 +123,10 @@ const menuData = computed(() =>[
         key: 'form',
         children: [
           {
+            label: '表单 form',
+            key: '/components/form'
+          },
+          {
             label: '文本输入框 input',
             key: '/components/input'
           },
@@ -121,8 +135,12 @@ const menuData = computed(() =>[
             key: '/components/select'
           },
           {
-            label: '日期选择 date-input',
+            label: '日期输入 date-input',
             key: '/components/date-input'
+          },
+          {
+            label: '复选框 checkbox',
+            key: '/components/checkbox'
           }
         ]
       },
@@ -146,7 +164,6 @@ const menuData = computed(() =>[
         children: [
           {
             label: '弹窗 dialog',
-            title: '按钮',
             key: '/interactive/dialog'
           },
           {
@@ -178,6 +195,10 @@ const menuData = computed(() =>[
   {
     label: 'Composables',
     key: 'composables'
+  },
+  {
+    label: 'Services',
+    key: 'services'
   },
   {
     label: '附带工具',
@@ -231,6 +252,13 @@ const menuData = computed(() =>[
     margin: 1em;
     width: 40px;
     height: 40px;
+    cursor: pointer;
+    transform: rotate(0deg);
+    will-change: transform;
+    transition: transform 1s;
+    &:hover {
+      transform: rotate(180deg);
+    }
   }
 }
 </style>

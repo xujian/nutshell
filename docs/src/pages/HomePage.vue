@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import ComplexTable from '@/components/ComplexTable.vue'
 import HomeHero from '@/components/HomeHero.vue'
+import type { NsApp } from 'nutshell'
 
 const tabs = [
   { label: '2023', value: '2023'},
