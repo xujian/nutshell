@@ -1,0 +1,48 @@
+.ns-form {
+  &.ant-form {
+    .ant-form-item {
+      border-radius: var(--ns-border-radius);
+      .ant-form-item-label {
+        min-width: 100px;
+        >label {
+          border-color: transparent;
+          border-width: 1px;
+          border-style: solid;
+          border-right: none;
+          min-width: 100px;
+          text-align: right;
+          min-height: 32px;
+          padding-right: 8px;
+          box-sizing: border-box;
+          justify-content: end;
+          color: var(--ns-text);
+          &:after {
+            content: '';
+          }
+          &.ant-form-item-required {
+            padding-right: 6px;
+            &::before {
+              position: absolute;
+              line-height: 32px;
+              right: 2px;
+              top: 2px;
+            }
+          }
+        }
+      }
+    }
+    .ant-form-item-control {
+      border-color: transparent;
+      border-width: 1px;
+      border-style: solid;
+      border-left: none;
+      border-radius: var(--ns-border-radius);
+      background-color: var(--ns-surface);
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+    color: var(--ns-text);
+  }
+}

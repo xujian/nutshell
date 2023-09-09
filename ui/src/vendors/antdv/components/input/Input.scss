@@ -1,68 +1,24 @@
 .ns-form-item {
-  &.ant-form-item {
-    border-radius: var(--ns-border-radius);
-    max-width: 400px;
-    .ant-form-item-label {
-      >label {
-        border-color: transparent;
-        border-width: 1px;
-        border-style: solid;
-        border-right: none;
-        min-width: 100px;
-        text-align: right;
-        min-height: 32px;
-        padding-right: 8px;
-        box-sizing: border-box;
-        justify-content: end;
-        background-color: var(--ns-surface);
-        border-radius: var(--ns-border-radius) 0 0 var(--ns-border-radius) ;
-        &:after {
-          content: '';
-        }
-        &.ant-form-item-required {
-          padding-right: 6px;
-          &::before {
-            position: absolute;
-            line-height: 32px;
-            right: 2px;
-            top: 2px;
-          }
-        }
-      }
+  .ant-input {
+    border: none;
+    background-color: transparent;
+    &:focus {
+      background-color: #00000022;
+      outline: none;
+      box-shadow: none;
     }
-    .ant-input {
-      border: none;
-      background-color: transparent;
-      &:focus {
-        background-color: #00000022;
-        outline: none;
-        box-shadow: none;
-      }
-    }
-    .ant-form-item-control-input {
-      border-color: transparent;
-      border-width: 1px;
-      border-style: solid;
-      border-left: none;
-      border-radius: 0 var(--ns-border-radius) var(--ns-border-radius) 0;
-      background-color: var(--ns-surface);
-      &:focus {
-        outline: none;
-        box-shadow: none;
-      }
-    }
-    .ant-form-item-explain-error {
-      text-align: left;
-      &::before {
-        display: inline-block;
-        vertical-align: text-bottom;
-        content: "";
-        width: 16px;
-        height: 16px;
-        left: 0;
-        top: 2px;
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="%23ff4d4f" stroke-width=".857"/><path d="M7.36 4.328l.236 5.268h.812l.237-5.268H7.359zm.636 5.873a.706.706 0 0 0-.523.206.656.656 0 0 0-.227.525c0 .206.072.381.227.525a.714.714 0 0 0 .523.216.813.813 0 0 0 .545-.206.718.718 0 0 0 .217-.535.68.68 0 0 0-.217-.525.737.737 0 0 0-.545-.206z" fill="%23ff4d4f"/></svg>') center no-repeat;
-      }
+  }
+  .ant-form-item-explain-error {
+    text-align: left;
+    &::before {
+      display: inline-block;
+      vertical-align: text-bottom;
+      content: "";
+      width: 16px;
+      height: 16px;
+      left: 0;
+      top: 2px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="%23ff4d4f" stroke-width=".857"/><path d="M7.36 4.328l.236 5.268h.812l.237-5.268H7.359zm.636 5.873a.706.706 0 0 0-.523.206.656.656 0 0 0-.227.525c0 .206.072.381.227.525a.714.714 0 0 0 .523.216.813.813 0 0 0 .545-.206.718.718 0 0 0 .217-.535.68.68 0 0 0-.217-.525.737.737 0 0 0-.545-.206z" fill="%23ff4d4f"/></svg>') center no-repeat;
     }
   }
   &.variant-outlined {
