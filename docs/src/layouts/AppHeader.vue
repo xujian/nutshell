@@ -9,6 +9,7 @@
     :items="[
       { label: 'Klein', value: 'klein' },
       { label: 'Gunmetal', value: 'gunmetal' },
+      { label: 'Valentine', value: 'valentine' },
       { label: 'Present', value: 'present' },
     ]"/>
 </template>
@@ -34,7 +35,6 @@ const onDropdownChange = (item: any) => {
   h1 {
     font-size: 16px;
     line-height: 48px;
-    margin: 0;
     cursor: default;
   }
   .theme-dropdown {
