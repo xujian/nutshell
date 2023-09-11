@@ -13,7 +13,7 @@ const app = createApp(App)
 
 const nutshell = Nutshell({
   vendor: 'antdv',
-  theme: 'denim'
+  theme: 'present'
 })
 app.use(nutshell)
 
