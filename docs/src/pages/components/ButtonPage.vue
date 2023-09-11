@@ -15,13 +15,23 @@
       :key="color"
       :color="color" 
       :variant="variant" label="创建订单"></ns-button>
-    </ns-row>
+  </ns-row>
+  <p>&nbsp;</p>
+  <code-view :code="code" />
+  <code-editor :code="code" />
 </template>
 
 <script lang="ts" setup>
+import { CodeEditor, CodeView } from '../../components/code'
 import { colors, sizes, variants } from '../../props'
 
 const label = '提交'
+
+const code = `
+<template>
+  <div></div>
+</template>
+`
 
 </script>
 
