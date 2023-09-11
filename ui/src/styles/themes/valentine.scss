@@ -1,0 +1,32 @@
+@forward '../variables';
+@use '../tools/functions' as *;
+
+/**
+ * Saas 系统现用主题
+ **/
+
+$valentine: () !default;
+$valentine: map-deep-merge(
+  (
+    brand: (
+      primary: #1d242c,
+      secondary: #0176c3,
+      neutral: #999999,
+      accent: #ff6a00,
+      positive: #21ba45,
+      negtive: #c10015,
+      warning: #c16a00,
+    ),
+    abstract: (
+      background: #fafafa,
+      paper: #fafafa,
+      surface: #d1d6dd,
+      text: #333,
+      stroke: #017FFF,
+    ),
+    layout: (
+      nav-background: #d1d6dd,
+      footer-background: #003293,
+      footer-text: #fff,
+    ),
+  ), $valentine);

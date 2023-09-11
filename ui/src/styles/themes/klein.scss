@@ -9,24 +9,24 @@ $klein: () !default;
 $klein: map-deep-merge(
   (
     brand: (
-      primary: #003293,
-      secondary: #b5109f,
+      primary: #0014d4,
+      secondary: #0dc167,
       neutral: #999999,
-      accent: #0057ff,
-      positive: #21ba45,
+      accent: #ff6800,
+      positive: #008e36,
       negtive: #c10015,
-      warning: #c16a00,
+      warning: #985400,
     ),
     abstract: (
-      background: #151e3d,
+      background: #020c6b,
       paper: #003293,
       surface: #003293,
       text: #eee,
-      border-color: '#0057ff',
+      stroke: '#ffffff88',
     ),
     layout: (
       header: #333,
       nav: #003293,
-      footer: #003293,
+      footer: #0055ff,
     ),
   ), $klein);

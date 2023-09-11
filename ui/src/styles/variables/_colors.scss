@@ -15,11 +15,22 @@ $base: map-deep-merge(
       warning: #c16a00,
     ),
     abstract: (
+      /**
+       * 主背景色
+       */
       background: #333,
+      /**
+       * 材质色
+       */
       paper: #003293,
+      /**
+       * 小物体背景色
+       */
       surface: #003293,
       text: #eee,
-      border-color: '#0057ff',
+      hilight: #888,
+      subtitle: #ccc,
+      stroke: '#0057ff',
     ),
     layout: (
       header-background: transparent,

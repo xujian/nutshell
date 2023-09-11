@@ -2,6 +2,7 @@
 @use './themes/klein' as *;
 @use './themes/gunmetal' as *;
 @use './themes/present' as *;
+@use './themes/valentine' as *;
 
 [data-theme=klein] {
   @include build-theme($klein)
@@ -9,6 +10,10 @@
 
 [data-theme=gunmetal] {
   @include build-theme($gunmetal)
+}
+
+[data-theme=valentine] {
+  @include build-theme($valentine)
 }
 
 [data-theme=present] {
