@@ -20,10 +20,12 @@
     padding: 1em;
     padding-left: 0;
     border-left: 1px solid var(--ns-stroke);
+    background-color: #00000022;
   }
   .preview {
     width: 50%;
     padding: 1em;
+    background-image: url(/svg/slash.svg);
   }
 }
 </style>
