@@ -18,7 +18,7 @@ const toggleNav = () => {
     <header class="app-header flex flex row align-center align-around">
       <app-header></app-header>
     </header>
-    <section role="main" class="app-main">
+    <section role="main" class="app-main p-lg">
       <router-view />
     </section>
     <footer class="app-footer flex row align-end">
@@ -29,13 +29,14 @@ const toggleNav = () => {
 </template>
 <style lang="scss">
 .app-layout {
+  --layout-nav-width: 240px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
   .app-nav {
     position: fixed;
-    width: 200px;
+    width: var(--layout-nav-width);
     will-change: transform;
     transform: translate3d(0, 0, 0);
     transition: transform .5s;
@@ -44,22 +45,21 @@ const toggleNav = () => {
     background-color: #ffffff11;
     position: fixed;
     height: 48px;
-    left: 200px;
+    left: var(--layout-nav-width);
     right: 0;
     transition: left .5s;
     z-index: 2
   }
   .app-main {
     margin-top: 48px;
-    margin-left: 200px;
+    margin-left: var(--layout-nav-width);
     will-change: margin-left;
     transition: margin-left .5s;
     flex-grow: 1;
-    padding: 12px;
   }
   .app-footer {
     height: 80px;
-    margin-left: 200px;
+    margin-left: var(--layout-nav-width);
     will-change: margin-left;
     transition: margin-left .5s;
     right: 0;
@@ -80,7 +80,7 @@ const toggleNav = () => {
 @media screen and (max-width: 639px) {
   .app-layout {
     .app-nav {
-      transform: translate3d(-200px, 0, 0);
+      transform: translate3d(calc(var(--layout-nav-width) * -1), 0, 0);
     }
     .app-header {
       left: 0;
