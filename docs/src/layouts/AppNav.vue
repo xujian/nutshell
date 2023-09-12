@@ -135,6 +135,10 @@ const menuData = computed(() => [
             key: '/components/select'
           },
           {
+            label: '级联选框 cascading-select',
+            key: '/components/cascading-select'
+          },
+          {
             label: '日期输入 date-input',
             key: '/components/date-input'
           },

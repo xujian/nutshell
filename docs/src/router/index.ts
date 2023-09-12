@@ -13,6 +13,7 @@ const FormPage = () => import('../pages/components/FormPage.vue')
 const CheckboxPage = () => import('../pages/components/CheckboxPage.vue')
 const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
+const CascadingSelectPage = () => import('../pages/components/CascadingSelectPage.vue')
 const TablePage = () => import('../pages/components/TablePage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
@@ -81,6 +82,11 @@ const router = createRouter({
           path: '/components/select',
           name: 'components-select',
           component: SelectPage,
+        },
+        {
+          path: '/components/cascading-select',
+          name: 'components-cascading-select',
+          component: CascadingSelectPage,
         },
         {
           path: '/components/table',

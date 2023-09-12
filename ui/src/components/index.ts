@@ -20,7 +20,7 @@ import { NsApp } from './app'
 import { NsButton } from './button'
 import { NsForm } from './form'
 import { NsInput } from './input'
-import { NsSelect } from './select'
+import { NsSelect, NsCascadingSelect } from './select'
 import { NsCheckbox } from './checkbox'
 import { NsRating } from './rating'
 import { NsRow, NsCol } from './flex'
@@ -38,6 +38,7 @@ const components = {
   NsInput,
   NsForm,
   NsSelect,
+  NsCascadingSelect,
   NsCheckbox,
   NsRating,
   NsRow,

@@ -1,7 +1,9 @@
 .ns-select {
   &.ant-select {
+    color: var(--ns-text);
     .ant-select-selector {
       border-color: var(--ns-stroke);
+      color: var(--ns-text);
     }
     .ant-select-clear {
       border-radius: 6px;
@@ -11,6 +13,7 @@
 
 .ns-form-item {
   &.ant-form-item {
+    color: var(--ns-text);
     .ant-select {
       .ant-select-selector {
         border: none;
@@ -18,5 +21,18 @@
         height: 30px;
       }
     }
+  }
+}
+
+.ns-select-dropdown {
+  &.ant-select-dropdown {
+    background-color: var(--ns-surface);
+    .ant-select-item {
+      color: var(--ns-text);
+    }
+  }
+  .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled),
+  .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled):hover {
+    background-color: var(--ns-accent);
   }
 }

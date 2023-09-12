@@ -1,0 +1,18 @@
+.ns-cascading-select {
+  &.ant-select {
+    .ant-select-selector {
+      border-color: var(--ns-stroke);
+      color: var(--na-text);
+    }
+    .ant-select-clear {
+      border-radius: 6px;
+    }
+  }
+}
+
+.ns-select-dropdown {
+  .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled),
+  .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled):hover {
+    background-color: var(--ns-accent);
+  }
+}
