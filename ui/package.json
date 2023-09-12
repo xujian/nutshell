@@ -26,7 +26,10 @@
     "dev": "cd ./dev && node ./scripts.buid.js dev && cd ..",
     "start": "rollup -c rollup.config.js --watch",
     "build": "yarn build:types && rollup -c rollup.config.js",
-    "build:types": "tsc --pretty --emitDeclarationOnly"
+    "build:types": "tsc --pretty --emitDeclarationOnly",
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview"
   },
   "peerDependencies": {
     "@tarojs/taro": "^3.6.8",
@@ -40,8 +43,11 @@
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-typescript": "^7.22.5",
+    "@histoire/plugin-vue": "^0.16.1",
+    "@vitejs/plugin-vue": "^4.0.0",
     "@nutui/nutui": "^4.1.2",
     "@rollup/plugin-alias": "^5.0.0",
+    "histoire": "^0.16.1",
     "postcss": "^8.4.27",
     "rollup": "^3.26.2",
     "rollup-plugin-copy": "^3.4.0",
