@@ -3,7 +3,7 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   ComponentOptionsWithObjectProps, ComponentPropsOptions, 
   ComputedOptions, DefineComponent, 
   ExtractDefaultPropTypes, ExtractPropTypes, 
-  MethodOptions, EmitsOptions, SetupContext, SlotsType, ObjectEmitsOptions, RenderFunction, toRefs } from 'vue'
+  MethodOptions, EmitsOptions, SetupContext, SlotsType, ObjectEmitsOptions, RenderFunction, toRefs, PropType } from 'vue'
 import { ref, h } from 'vue'
 import { defineComponent } from 'vue'
 import { EmitsToProps, Prettify } from './helpers'
@@ -67,6 +67,8 @@ export type DefineFunctionOptions<
 export type MarginProps = {
   classes: string[]
 }
+
+export type WithMarginProps<T = {}> = T & MarginProps
 
 export const marginProps = {
   classes: Array as PropType<String[]>,

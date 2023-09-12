@@ -1,7 +1,7 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define } from '../../utils'
 import { useDimensionProps, useModelValuePropsForBoolean } from '../../props'
-import { EmitsToProps } from 'src/utils/private/helpers'
+import { EmitsToProps } from '../../utils/private/helpers'
 
 export const dialogProps = {
   title: {

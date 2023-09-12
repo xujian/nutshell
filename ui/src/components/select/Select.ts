@@ -2,7 +2,7 @@ import { ExtractPublicPropTypes } from 'vue'
 import { define } from '../../utils'
 import { PropType } from 'vue'
 import { useFieldProps, useModelValuePropsForInput } from '../../props'
-import { formatRules } from '../../props/field'
+import { PropsWithLabel, ValidationRule, formatRules } from '../../props/field'
 
 export type SelectOption = {
   value: string | number,

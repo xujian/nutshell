@@ -1,19 +1,22 @@
-import { defineComponent, h, watch } from 'vue'
-import { Table as AntdvTable, TableColumnProps } from 'ant-design-vue'
+import { defineComponent, h } from 'vue'
+import { Table as AntdvTable } from 'ant-design-vue'
 import { TableProps, tableProps } from '../../../../components'
 import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
-import { MarginProps } from '../../../../utils'
+import { marginProps } from '../../../../utils'
+import type { MarginProps } from '../../../../utils'
 
 export const Table = defineComponent({
   name: 'AntdvTableVendor',
-  props: tableProps, //! must have props to enable reactive
-  setup (props: TableProps & MarginProps, ctx) {
+  props: {
+    ...tableProps, //! must have props to enable reactive
+    ...marginProps
+  },
+  setup (props, { slots }) {
     const classes = [
       'ns-table', 
-      ...props.classes ?? [],
+      ...props.classes,
     ].join(' ')
-    const { slots } = ctx
 
     // 开始处理 custom columns
     // 并将处理后的结果合并进 props.columns

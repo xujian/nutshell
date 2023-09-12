@@ -5,7 +5,7 @@ import { DropdownButton as AntdvDropdownButton, Menu as AntdvMenu, MenuItem as A
 export const Dropdown = defineComponent({
   name: 'AntdvDropdownVendor',
   props: dropdownProps,
-  setup (props: DialogProps, ctx) {
+  setup (props: DropdownProps, ctx) {
     const classes = [
       'ns-dropdown',
     ].join(' ')

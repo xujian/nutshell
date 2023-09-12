@@ -1,7 +1,7 @@
 import { h, ref } from 'vue'
 import { FormItem as AntFormItem, Input as AntInput } from 'ant-design-vue'
 import { defineComponent } from 'vue'
-import { InputType, inputProps, InputProps } from '../../../../components/input'
+import { InputType, inputProps, type InputProps } from '../../../../components/input'
 import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from './rules'
 import type { MarginProps } from '../../../../utils'
@@ -14,10 +14,6 @@ export type AntInputType =
   | 'email' | 'week' | 'month' 
   | 'tel' | 'datetime-local' | 'file' | 'password'
 
-const inputTypeMapping: Record<InputType, AntInputType> = {
-
-}
-
 /**
  * Antdv DateInput
  */
@@ -27,9 +23,10 @@ export const Input = defineComponent({
     ...inputProps,
     ...marginProps,
   },
-  setup: (props: InputProps & MarginProps, ctx) => {
+  setup: (props, ctx) => {
     const classes = [
       'ns-input',
+      ...props.classes
     ]
 
     const rules = transformRules(props.rules as FullValidationRule[])
@@ -38,7 +35,10 @@ export const Input = defineComponent({
     return () => 
       h(AntFormItem, {
         name: props.name,
-        class: ['ns-form-item'].concat(props.classes),
+        class: [
+          'ns-form-item',
+          ...props.classes
+        ],
         label: props.label,
         rules,
       }, () => h(AntInput, {

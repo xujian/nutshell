@@ -22,7 +22,7 @@ const emits = {
   change: (value: string | number) => {}
 }
 
-export type DateInputProps = ExtractPublicPropTypes<typeof props>
+export type DateInputProps = ExtractPublicPropTypes<typeof dateInputProps>
 
 
 /**

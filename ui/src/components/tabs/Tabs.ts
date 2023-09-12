@@ -11,7 +11,7 @@ export type TabsVariant = 'line' | 'card'
 
 export const tabsProps = {
   items: {
-    type: Array as PropType<Tab[]>
+    type: Array as PropType<TabData[]>
   },
   variant: {
     type: String as PropType<TabsVariant>,

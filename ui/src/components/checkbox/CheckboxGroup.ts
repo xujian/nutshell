@@ -15,7 +15,7 @@ export const checkboxGroupProps = {
     type: Function as PropType<(value: string[]) => void>
   },
   options: {
-    type: Array as PropType<CheckboxOption[]>,
+    type: Array as PropType<CheckboxGroupOption[]>,
   }
 }
 
