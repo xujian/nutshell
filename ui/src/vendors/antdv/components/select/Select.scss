@@ -30,6 +30,9 @@
     .ant-select-item {
       color: var(--ns-text);
     }
+    .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+      background-color: var(--ns-accent);
+    }
   }
   .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled),
   .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled):hover {
