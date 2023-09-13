@@ -1,32 +1,44 @@
-.ns-app {
-  .ant-form-item {
-    border-radius: var(--ns-border-radius);
-    .ant-form-item-label {
+.ns-form-item {
+  border-radius: var(--ns-border-radius);
+  .ant-form-item-label {
+    min-width: 100px;
+    >label {
+      display: inline-flex;
+      align-items: center;
+      border-color: transparent;
+      border-width: 1px;
+      border-style: solid;
       min-width: 100px;
-      >label {
-        border-color: transparent;
-        border-width: 1px;
-        border-style: solid;
-        min-width: 100px;
-        text-align: right;
-        min-height: 32px;
-        padding-right: 8px;
-        box-sizing: border-box;
-        justify-content: end;
-        color: var(--ns-text);
-        &:after {
-          content: '';
-        }
-        &.ant-form-item-required {
-          padding-right: 6px;
-          &::before {
-            position: absolute;
-            line-height: 32px;
-            right: 2px;
-            top: 2px;
-          }
+      text-align: right;
+      min-height: 32px;
+      padding-right: 8px;
+      box-sizing: border-box;
+      justify-content: end;
+      color: var(--ns-text);
+      &:after {
+        content: '';
+        position: relative;
+        margin-block: 0;
+        margin-inline-start: 2px;
+        margin-inline-end: 8px;
+      }
+      &.ant-form-item-required {
+        padding-right: 6px;
+        &::before {
+          position: absolute;
+          line-height: 32px;
+          right: 2px;
+          top: 2px;
         }
       }
+    }
+  }
+  .ant-form-item-explain-error {
+    font-size: var(--ns-font-xs);
+    &::before {
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
     }
   }
   .ant-form-item-control-input {
