@@ -1,0 +1,9 @@
+.ns-chips {
+  .ns-chip {
+    margin: 0 2px;
+    cursor: pointer;
+    &.selected {
+      background-color: var(--ns-primary);
+    }
+  }
+}

@@ -23,3 +23,12 @@ export const useModelValuePropsForInput = buildProps({
     type: Function as PropType<(value: number | string) => void>,
   }
 })
+
+export const useModelValuePropsForStringArray = buildProps({
+  modelValue: {
+    type: Array as PropType<string[]>,
+  },
+  'onUpdate:modelValue': {
+    type: Function as PropType<(value: string[]) => void>,
+  }
+})
