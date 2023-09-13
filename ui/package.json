@@ -44,9 +44,9 @@
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-typescript": "^7.22.5",
     "@histoire/plugin-vue": "^0.16.1",
-    "@vitejs/plugin-vue": "^4.0.0",
     "@nutui/nutui": "^4.1.2",
     "@rollup/plugin-alias": "^5.0.0",
+    "@vitejs/plugin-vue": "^4.0.0",
     "histoire": "^0.16.1",
     "postcss": "^8.4.27",
     "rollup": "^3.26.2",
@@ -69,6 +69,7 @@
     "ant-design-vue": "4.x",
     "dayjs": "^1.11.9",
     "tippy.js": "^6.3.7",
+    "validator": "^13.11.0",
     "vue-router": "^4.2.4",
     "vue-tippy": "v6"
   }
