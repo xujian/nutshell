@@ -38,6 +38,9 @@ export const inputProps = {
     required: false,
     default: 'text'
   },
+  maxlength: {
+    type: Number,
+  },
   ...useVariantProps(),
   ...useModelValuePropsForInput(),
   ...useFieldProps(),

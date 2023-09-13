@@ -30,7 +30,6 @@ export const Input = defineComponent({
     ]
 
     const rules = transformRules(props.rules as FullValidationRule[])
-    console.log('Ant---Input.........///', props.classes)
 
     return () => 
       h(AntFormItem, {

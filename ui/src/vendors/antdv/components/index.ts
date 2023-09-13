@@ -4,9 +4,10 @@ import { Checkbox, CheckboxGroup } from './checkbox'
 import { Rating } from './rating'
 import { Table } from './table'
 import { Dialog } from './dialog'
-import { Select, CascadingSelect } from './select'
+import { Select, CascadingSelect, MultipleSelect } from './select'
 import { Dropdown } from './dropdown'
 import { Tabs } from './tabs'
+import { Chips } from './chip'
 
 export {
   Form,
@@ -16,9 +17,11 @@ export {
   Dialog,
   Select,
   CascadingSelect,
+  MultipleSelect,
   Rating,
   Dropdown,
   Tabs,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  Chips
 }

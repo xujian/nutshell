@@ -19,12 +19,12 @@ export * from './card'
 import { NsApp } from './app'
 import { NsButton } from './button'
 import { NsForm } from './form'
-import { NsInput } from './input'
-import { NsSelect, NsCascadingSelect } from './select'
+import { NsInput, NsDateInput, NsMobileInput, NsIdInput } from './input'
+import { NsSelect, NsCascadingSelect, NsMultipleSelect } from './select'
 import { NsCheckbox } from './checkbox'
 import { NsRating } from './rating'
 import { NsRow, NsCol } from './flex'
-import { NsChip } from './chip'
+import { NsChip, NsChips } from './chip'
 import { NsIcon } from './icon'
 import { NsTable } from './table'
 import { NsDialog } from './dialog'
@@ -36,14 +36,19 @@ const components = {
   NsApp,
   NsButton,
   NsInput,
+  NsDateInput,
+  NsMobileInput,
+  NsIdInput,
   NsForm,
   NsSelect,
+  NsMultipleSelect,
   NsCascadingSelect,
   NsCheckbox,
   NsRating,
   NsRow,
   NsCol,
   NsChip,
+  NsChips,
   NsIcon,
   NsTable,
   NsDialog,
