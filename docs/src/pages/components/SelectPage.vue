@@ -11,6 +11,16 @@
       :color="'primary'" 
       :variant="variant" label="创建订单"></ns-select>
     </ns-row>
+    <p>&nbsp;</p>
+    <h2>多项选择</h2>
+    <ns-row>
+      <ns-multiple-select
+        v-model="multipleValue"
+        :options="cities"
+        :key="'primary'"
+        :color="'primary'" 
+        label="客户区域"></ns-multiple-select>
+    </ns-row>
 </template>
 
 <script lang="ts" setup>
@@ -19,6 +29,8 @@ import axios from 'axios'
 import { variants } from '../../props'
 
 const value = ref('')
+const multipleValue = ref([])
+
 const cities = ref<any[]>([])
 onMounted(async () => {
   axios.get('/json/cities.json')
