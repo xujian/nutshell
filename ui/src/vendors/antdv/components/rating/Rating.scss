@@ -1,4 +1,8 @@
 .ns-rating {
+  .ant-form-item-control-input {
+    background-color: transparent;
+    border-color: transparent !important;
+  }
   .ant-rate {
     font-size: 12px;
     .ant-rate-star {
