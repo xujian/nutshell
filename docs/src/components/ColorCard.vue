@@ -1,9 +1,9 @@
 <template>
-  <div class="color-card r-md color-white p-sm">
+  <div class="color-card r-md p-sm">
     <div class="paint r-sm" :class="[`color-${props.color?.name}`]"></div>
     <div class="info p-sm">
       <h3>{{props.color?.label}}</h3>
-      <p class="text-neutral">{{props.color?.name}}</p>
+      <p class="text-caption">{{props.color?.name}}</p>
     </div>
   </div>
 </template>
@@ -20,6 +20,7 @@ const props = defineProps({
 <style lang="scss">
 .color-card {
   display: inline-block;
+  background-color: var(--ns-white---90);
   width: 200px;
   .paint {
     height: 100px;
