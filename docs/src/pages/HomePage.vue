@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import ComplexTable from '@/components/ComplexTable.vue'
 import HomeHero from '@/components/HomeHero.vue'
-import type { NsApp } from 'nutshell'
+import LatestReleases from '@/components/LatestReleases.vue'
 
 const tabs = [
   { label: '2023', value: '2023'},
@@ -29,10 +29,14 @@ const variants: string[] = ['solid', 'outlined', 'soft', 'plain'],
     <ns-tabs v-model="activeTab" :items="tabs" variant="card">
     </ns-tabs>
     <p>&nbsp;</p>
+    <h2>最新特性</h2>
+    <p>&nbsp;</p>
+    <latest-releases />
+    <p>&nbsp;</p>
     <ns-button label="创建" v-tooltip="'点击查看详情点击查看详情'"></ns-button>
   </div>
   <p>&nbsp;</p>
-  <ns-card title="待办任务">
+  <ns-card title="待办任务" class="no-padding">
     <template #header>
       <ns-chip label="政策"></ns-chip>
     </template>

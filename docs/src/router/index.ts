@@ -15,6 +15,7 @@ const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
 const CascadingSelectPage = () => import('../pages/components/CascadingSelectPage.vue')
 const TablePage = () => import('../pages/components/TablePage.vue')
+const ListPage = () => import('../pages/components/ListPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
 const FontPage = () => import('../pages/tokens/FontPage.vue')
@@ -92,6 +93,11 @@ const router = createRouter({
           path: '/components/table',
           name: 'components-table',
           component: TablePage,
+        },
+        {
+          path: '/components/list',
+          name: 'components-list',
+          component: ListPage,
         },
         {
           path: '/interactive/dialog',

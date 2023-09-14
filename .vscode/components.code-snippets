@@ -41,7 +41,7 @@
   },
 
   "新建 vendor": {
-    "prefix": ["nsp", "nutshell-vendor"],
+    "prefix": ["nsv", "nutshell-vendor"],
     "body": [
       "import { h, SetupContext } from 'vue'",
       "import { ${2:$TM_FILENAME_BASE} as Antdv${2} } from 'ant-design-vue'",

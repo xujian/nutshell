@@ -1,0 +1,31 @@
+.ns-list {
+  border-color: var(--ns-stroke);
+  border-style: solid;
+  border-width: var(--ns-border-with-md);
+  overflow: hidden;
+  .list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom-color: var(--ns-stroke);
+    border-bottom-style: solid;
+    border-bottom-width: var(--ns-border-with-md);
+    padding: 0 1em;
+    &:last-child{
+      border-bottom: none;
+    }
+    &:hover {
+      background-color: var(--ns-hover);
+    }
+    .list-item-section {
+      padding: 1em;
+      flex-grow: 0;
+    }
+    .list-item-section-main {
+      flex-grow: 1;
+    }
+    .caption {
+      color: var(--ns-caption);
+    }
+  }
+}

@@ -154,7 +154,7 @@ const menuData = computed(() => [
         children: [
           {
             label: '列表 list',
-            key: 'list'
+            key: '/components/list'
           },
           {
             label: '表格 table',

@@ -15,6 +15,7 @@ export * from './dropdown'
 export * from './table'
 export * from './tabs'
 export * from './card'
+export * from './list'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -31,6 +32,7 @@ import { NsDialog } from './dialog'
 import { NsDropdown } from './dropdown'
 import { NsTabs, NsTabsPane } from './tabs'
 import { NsCard } from './card'
+import { NsList } from './list'
 
 const components = {
   NsApp,
@@ -56,6 +58,7 @@ const components = {
   NsTabs,
   NsTabsPane,
   NsCard,
+  NsList
 }
 
 export default components
