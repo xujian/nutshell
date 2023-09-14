@@ -1,6 +1,6 @@
 <template>
   <ns-card title="新建意向客户">
-    <ns-form name="client" variant="outlined">
+    <ns-form name="client" variant="outlined" autocomplete="off">
       <h3 class="mt-xl mb-lg">基础信息</h3>
       <ns-input name="name"
         label="客户姓名"
@@ -17,23 +17,26 @@
         v-model="formData.mobile" />
       <h3 class="mt-xl mb-lg">基础信息</h3>
       <ns-rating label="意向等级"
+        name="intention"
         v-model="formData.intention" />
       <ns-chips label="客户标签"
+        name="tags"
         :options="chipsOptions"
         v-model="formData.tags" />
     </ns-form>
+    {{ formData.mobile }}
   </ns-card>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { onMounted, reactive } from 'vue'
 import type { LabelValuePair } from 'nutshell'
 
 const formData = reactive({
   name: '',
   id: '',
   marrage: '',
-  mobile: '',
+  mobile: '18676768200',
   intention: 2,
   tags: []
 })
@@ -53,4 +56,12 @@ const marrageOptions: LabelValuePair[] = [
   { label: '离异', value: 'divorced' },
   { label: '丧偶', value: 'widowed' },
 ]
+
+onMounted(() => {
+  setTimeout(() => {
+    formData.id = '132'
+    formData.mobile = '189'
+    console.log('+++')
+  }, 2000)
+})
 </script>

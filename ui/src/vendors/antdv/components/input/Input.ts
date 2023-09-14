@@ -30,6 +30,7 @@ export const Input = defineComponent({
     ]
 
     const rules = transformRules(props.rules as FullValidationRule[])
+    console.log('antdv-input.............rules', rules)
 
     return () => 
       h(AntFormItem, {
@@ -45,6 +46,7 @@ export const Input = defineComponent({
         name: props.name,
         value: props.modelValue,
         'onUpdate:value': (value: number | string) => {
+          console.log('antdv-input.............onUpdate:value', value)
           props['onUpdate:modelValue']?.(value)
         }
       })

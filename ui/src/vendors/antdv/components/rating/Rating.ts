@@ -13,13 +13,13 @@ export const Rating = (props: RatingProps & MarginProps, ctx: SetupContext) => {
     ],
     label: props.label,
   },
-    h(AntdvRating, {
+    () => h(AntdvRating, {
       class: 'ns-rating-control',
       value: props.modelValue,
       'onUpdate:value': (value: number) => {
         props['onUpdate:modelValue']?.(value)
       }
-    }, null)
+    })
   )
 }
 // + import => ./index.ts, ../components.ts

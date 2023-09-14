@@ -4,7 +4,7 @@ import { useFieldProps } from '../../props'
 import { defineComponent } from 'vue'
 import { h } from 'vue'
 import { NsInput } from './Input'
-import isIdentityCard from 'validator/lib/isIdentityCard'
+import mergeWith from 'lodash/mergeWith'
 
 export const idInputProps = {
   ...useModelValuePropsForInput(),
@@ -23,10 +23,7 @@ export type IdInputProps = ExtractPublicPropTypes<typeof idInputProps>
 
 const defaultProps = {
   maxlength: 18,
-  rules: [{
-    method: (value: string) => isIdentityCard(value, 'zh-CN'),
-    message: '格式不正确'
-  }]
+  rules: ['id']
 }
 
 
@@ -37,10 +34,13 @@ export const NsIdInput = defineComponent({
   name: 'NsIdInput',
   props: idInputProps,
   setup: (props) => {
-    const mergedProps = computed(() => ({
-      ...defaultProps,
-      ...props,
-    }))
+    const mergedProps = computed(() => mergeWith(
+      defaultProps,
+      props, (to, from) => {
+        if (!from) {
+          return to
+        }
+      }))
     console.log('--------NsIdInput.......', mergedProps.value)
     return () => h(NsInput, mergedProps.value)
   }

@@ -1,15 +1,10 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType, computed } from 'vue'
+import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType, computed, reactive } from 'vue'
 import { useModelValuePropsForInput } from '../../props/model'
 import { useFieldProps } from '../../props'
 import { defineComponent } from 'vue'
 import { h } from 'vue'
-import { NsInput } from './Input'
-import isMobilePhone from 'validator/lib/isMobilePhone'
-
-export const mobileInputProps = {
-  ...useModelValuePropsForInput(),
-  ...useFieldProps(),
-}
+import { InputProps, NsInput, inputProps } from './Input'
+import mergeWith from 'lodash/mergeWith'
 
 export interface MobileInputEmits extends ObjectEmitsOptions {
   change?: (value: string | number) => void
@@ -19,14 +14,10 @@ const emits = {
   change: (value: string | number) => {}
 }
 
-export type MobileInputProps = ExtractPublicPropTypes<typeof mobileInputProps>
-
 const defaultProps = {
   type: 'numric',
   maxlength: 11,
-  rules: [
-    (value: string) => isMobilePhone(value, 'zh-CN')
-  ]
+  rules: ['mobile']
 }
 
 
@@ -34,13 +25,22 @@ const defaultProps = {
  * 手机号输入框 <ns-mobile-input>
  */
 export const NsMobileInput = defineComponent({
-  name: 'NsIdInput',
-  props: mobileInputProps,
+  name: 'NsMobileInput',
+  props: inputProps,
   setup: (props) => {
-    const mergedProps = computed(() => ({
-      ...defaultProps,
-      ...props,
-    }))
+    const mergedProps = computed({
+      get: () => mergeWith(
+        defaultProps,
+        props, (to, from) => {
+          console.log('mergeWith---', to, from)
+          return from ?? to
+        }),
+      set (newValue: InputProps) {
+        console.log('()()()()()()', newValue.modelValue)
+        props['onUpdate:modelValue']?.(newValue.modelValue)
+      }
+    })
+    console.log('+++', mergedProps.value)
     return () => h(NsInput, mergedProps.value)
   }
 })

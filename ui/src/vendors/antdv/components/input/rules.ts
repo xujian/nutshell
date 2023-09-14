@@ -13,7 +13,12 @@ export const transformRules = (rules: FullValidationRule[]) => {
       })
     } else {
       result.push({
-        validator: r.method,
+        validator: (rule: any, value: string) => {
+          if (value && !r.method?.(value)) {
+            return Promise.reject(r.message)
+          }
+          return Promise.resolve()
+        },
         message: r.message,
         trigger: r.trigger ?? 'blur'
       })

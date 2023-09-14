@@ -1,18 +1,30 @@
 import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
 import { InputProps } from '../components/input'
+import isIdentityCard from 'validator/lib/isIdentityCard'
+import isMobilePhone from 'validator/lib/isMobilePhone'
 
 const quickValidationMethods: string[] = [
   'required',
   'numeric',
-  'email'
+  'email',
+  /**
+   * 身份证号
+   */
+  'id',
+  /**
+   * 手机号
+   */
+  'mobile'
 ]
 
 export type QuickValidationMethod = typeof quickValidationMethods[number]
 
 const quickRuleMapping: Record<QuickValidationMethod, (v: string) => boolean> = {
   required: v => !!v,
-  numeric: v => /^\d+$/.test(v)
+  numeric: v => /^\d+$/.test(v),
+  id: v => isIdentityCard(v, 'zh-CN'),
+  mobile: v => isMobilePhone(v, 'zh-CN'),
 }
 
 export type FunctionValidationMethod = (value: string) => boolean
@@ -20,7 +32,7 @@ export type ValidationTrigger = 'blur' | 'change'
 
 export type FullValidationRule = {
   name: QuickValidationMethod | 'function' | 'custom',
-  method: QuickValidationMethod | FunctionValidationMethod,
+  method: FunctionValidationMethod,
   message?: string,
   trigger?: ValidationTrigger
 }
