@@ -28,9 +28,15 @@ $base: map-deep-merge(
        */
       surface: #003293,
       text: #eee,
-      hilight: #888,
+      caption: #ffffff99,
+      highlight: #888,
       subtitle: #ccc,
       stroke: '#0057ff',
+    ),
+    states: (
+      hover: #ffffff66,
+      active: #ffffff44,
+      focus: #ffffff33,
     ),
     layout: (
       header-background: transparent,

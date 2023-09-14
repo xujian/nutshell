@@ -15,6 +15,10 @@
     #{'--ns-'}#{$name}: #{$value};
   }
 
+  @each $name, $value in map-get($theme, 'states') {
+    #{'--ns-'}#{$name}: #{$value};
+  }
+
   @each $name, $value in map-get($theme, 'brand') {
     .color-#{$name} {
       background-color: var(--ns-#{$name});

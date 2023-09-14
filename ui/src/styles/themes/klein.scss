@@ -24,6 +24,11 @@ $klein: map-deep-merge(
       text: #eee,
       stroke: '#ffffff88',
     ),
+    states: (
+      hover: #ffffff33,
+      active: #ffffff22,
+      focus: #ffffff11,
+    ),
     layout: (
       header: #333,
       nav: #003293,

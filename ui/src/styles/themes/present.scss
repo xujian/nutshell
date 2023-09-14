@@ -22,7 +22,13 @@ $present: map-deep-merge(
       paper: rgb(206, 206, 206),
       surface: #d1d6dd,
       text: #333,
-      stroke: #017FFF,
+      caption: #33333399,
+      stroke: #99999999,
+    ),
+    states: (
+      hover: #00000011,
+      active: #00000022,
+      focus: #00000033,
     ),
     layout: (
       nav-background: #d1d6dd,

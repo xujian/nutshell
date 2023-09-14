@@ -24,6 +24,11 @@ $gunmetal: map-deep-merge(
       text: #ffffff,
       stroke: #ffffff77,
     ),
+    states: (
+      hover: #ffffff66,
+      active: #ffffff44,
+      focus: #ffffff33,
+    ),
     layout: (
       nav-background: #d1d6dd33,
       footer-background: #505050,

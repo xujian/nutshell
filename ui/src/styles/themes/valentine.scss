@@ -24,6 +24,11 @@ $valentine: map-deep-merge(
       text: #333,
       stroke: #017FFF,
     ),
+    states: (
+      hover: #ffffff66,
+      active: #ffffff44,
+      focus: #ffffff33,
+    ),
     layout: (
       nav-background: #d1d6dd,
       footer-background: #003293,
