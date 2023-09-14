@@ -61,7 +61,9 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
       return {
         name: rule, 
         method,
-        message: `请输入${props.label}`,
+        message: rule === 'required'
+          ? `请输入${props.label}`
+          : '格式错误',
         trigger: 'blur'
       }
     }

@@ -30,7 +30,6 @@
 
 <script lang="ts" setup>
 import { onMounted, reactive } from 'vue'
-import type { LabelValuePair } from 'nutshell'
 
 const formData = reactive({
   name: '',
@@ -41,7 +40,7 @@ const formData = reactive({
   tags: []
 })
 
-const chipsOptions: LabelValuePair[] = [
+const chipsOptions = [
   { label: '有车', value: 'YC' },
   { label: '保单', value: 'BD' },
   { label: '有经营公司', value: 'YJYGS' },
@@ -50,7 +49,7 @@ const chipsOptions: LabelValuePair[] = [
   { label: '黑名单', value: 'HMD' },
 ]
 
-const marrageOptions: LabelValuePair[] = [
+const marrageOptions = [
   { label: '未婚', value: 'married' },
   { label: '已婚', value: 'unmarried' },
   { label: '离异', value: 'divorced' },
@@ -64,4 +63,5 @@ onMounted(() => {
     console.log('+++')
   }, 2000)
 })
+
 </script>
