@@ -40,7 +40,7 @@
   // 无内边距
   &.no-padding {
     .card-body {
-      margin: 0 calc(var(--ns-spacing-md) * -1);
+      margin: 0 calc(var(--ns-spacing-lg) * -1);
     }
   }
 }
