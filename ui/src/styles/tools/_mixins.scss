@@ -41,14 +41,17 @@ $alphas: (
 
   @each $name, $value in map-get($theme, 'brand') {
     #{'--ns-'}#{$name}: #{$value};
-    @each $t, $v in $tints {
-      #{'--ns-'}#{$name}#{'-'}#{$t}: color.mix(#ffffff, $value, $weight: $v);
-    }
-    @each $s, $v in $shades {
-      #{'--ns-'}#{$name}#{'--'}#{$s}: color.mix(#000000, $value, $weight: $v);
-    }
+    // ALPHA 透明度
     @each $a, $v in $alphas {
-      #{'--ns-'}#{$name}#{'---'}#{$a}: color.adjust($value, $alpha: $v);
+      #{'--ns-'}#{$name}#{'-'}#{$a}: color.adjust($value, $alpha: $v);
+    }
+    // TINT 加入白色
+    @each $t, $v in $tints {
+      #{'--ns-'}#{$name}#{'--'}#{$t}: color.mix(#ffffff, $value, $weight: $v);
+    }
+    // SHADE 加入黑色
+    @each $s, $v in $shades {
+      #{'--ns-'}#{$name}#{'---'}#{$s}: color.mix(#000000, $value, $weight: $v);
     }
   }
 

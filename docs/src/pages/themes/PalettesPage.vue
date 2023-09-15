@@ -5,19 +5,19 @@
       <color-card :color="c"></color-card>
     </ns-col>
     <ns-col class="shades py-md">
-      <ns-row class="tints-row r-sm mb-xs">
+      <ns-row class="alphas-row r-sm mb-xs">
         <div class="color"
           v-for="n of shades" :key="n"
           v-tooltip="`${c.name}-${n}`"
           :style="{backgroundColor: `var(--ns-${c.name}-${n})`}"></div>
       </ns-row>
-      <ns-row class="shades-row r-sm mb-xs">
+      <ns-row class="tints-row r-sm mb-xs">
         <div class="color"
           v-for="n of shades" :key="n"
-          v-tooltip="`${c.name}-${n}`"
+          v-tooltip="`${c.name}--${n}`"
           :style="{backgroundColor: `var(--ns-${c.name}--${n})`}"></div>
       </ns-row>
-      <ns-row class="alphas-row r-sm mb-xs">
+      <ns-row class="shades-row r-sm mb-xs">
         <div class="color"
           v-for="n of shades" :key="n"
           v-tooltip="`${c.name}---${n}`"
