@@ -1,0 +1,10 @@
+version: "3"
+services:
+  client:
+    image: nginx:latest
+    container_name: ux-nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./www:/var/www
+    ports:
+      - 80:80
