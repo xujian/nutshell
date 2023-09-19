@@ -13,7 +13,10 @@ export const transformRules = (rules: FullValidationRule[]) => {
       })
     } else {
       result.push({
-        validator: (rule: any, value: string) => {
+        validator (rule: any, value: string) {
+          if (!value) {
+            return Promise.resolve()
+          }
           if (!r.method?.(value)) {
             return Promise.reject(r.message)
           }

@@ -1,10 +1,17 @@
 <template>
   <ns-card title="新建意向客户">
-    <ns-form name="client" variant="outlined" autocomplete="off">
+    <ns-form
+      name="client" variant="outlined" autocomplete="off"
+      v-model="formData">
       <h3 class="mt-xl mb-lg">基础信息</h3>
-      <ns-input name="name"
+      <ns-input
+        name="name"
         label="客户姓名"
-        v-model="formData.name" />
+        v-model="formData.name"
+        :rules="['required', {
+          method: (v: string) => v?.length > 1,
+          message: '最少两个字'
+        }]" />
       <ns-id-input name="id"
         label="证件号码"
         v-model="formData.id" />
@@ -24,7 +31,6 @@
         :options="chipsOptions"
         v-model="formData.tags" />
     </ns-form>
-    {{ formData.mobile }}
   </ns-card>
 </template>
 

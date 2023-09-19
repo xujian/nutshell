@@ -9,10 +9,8 @@ export const Form = (props: FormProps & MarginProps, { slots }: SetupContext) =>
   return h(AntdvForm, {
     class: ['ns-form'].concat(props.classes),
     name: props.name,
-    modelValue: props.modelValue,
-    'oUpdate:modelValue': (value: any) => {
-      props['onUpdate:modelValue']?.(value)
-    }
+    autocomplete: 'off',
+    model: props.modelValue,
   }, slots)
 }
 // + import => ./index.ts, ../components.ts

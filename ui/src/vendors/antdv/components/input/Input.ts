@@ -34,16 +34,16 @@ export const Input = defineComponent({
 
     return () => 
       h(AntFormItem, {
-        name: props.name,
         class: [
           'ns-form-item',
           ...props.classes
         ],
         label: props.label,
+        name: props.name,
         rules,
       }, () => h(AntInput, {
         type: props.type as AntInputType,
-        name: props.name,
+        maxlength: props.maxlength,
         value: props.modelValue,
         'onUpdate:value': (value: number | string) => {
           console.log('antdv-input.............onUpdate:value', value)
