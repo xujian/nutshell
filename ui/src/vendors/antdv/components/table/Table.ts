@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue'
+import { computed, defineComponent, h } from 'vue'
 import { Table as AntdvTable } from 'ant-design-vue'
 import { TableProps, tableProps } from '../../../../components'
 import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
@@ -6,13 +6,20 @@ import columnCustomRenders from './columns'
 import { marginProps } from '../../../../utils'
 import type { MarginProps } from '../../../../utils'
 
+const numberColumnConfig = {
+  title: '序号',
+  width: 40,
+  dataIndex: '__no',
+  align: 'center'
+}
+
 export const Table = defineComponent({
   name: 'AntdvTableVendor',
   props: {
     ...tableProps, //! must have props to enable reactive
     ...marginProps
   },
-  setup (props, { slots }) {
+  setup (props, { slots, attrs }) {
     const classes = [
       'ns-table', 
       ...props.classes,
@@ -38,11 +45,26 @@ export const Table = defineComponent({
       })
     }
 
-    const columns = buildFinalColumns(props.customColumns)
+    let columns = buildFinalColumns(props.customColumns)
+
+    // 给原始行数据增加序号列
+    const rows = computed(() => props.rows.map((row, index: number) => ({
+      ...props.hasNumberColumn && {
+        __no: index + 1
+      },
+      ...row,
+    })))
+
+    if (props.hasNumberColumn) {
+      columns = [
+        numberColumnConfig,
+        ...columns
+      ]
+    }
 
     return () => h(AntdvTable, {
       class: classes,
-      dataSource: props.rows as object[],
+      dataSource: rows.value,
       columns: columns as ColumnsType,
       scroll: {x: 1200}
     }, slots.default)

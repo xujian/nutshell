@@ -2,6 +2,7 @@
   .ant-table {
     background-color: transparent;
     color: var(--ns-text);
+    border-radius: var(--ns-table-border-radius, var(--ns-border-radius));
     .ant-rate-star {
       font-size: 15px;
       margin-inline-end: 4px;

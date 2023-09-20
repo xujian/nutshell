@@ -59,6 +59,10 @@ export const tableProps = {
   columns: {
     type: Object as PropType<TableColumnDefinition[]>,
   },
+  hasNumberColumn: {
+    type: Boolean,
+    default: false,
+  },
   customColumns: {
     type: Array,
     require: false,
