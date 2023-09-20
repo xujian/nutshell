@@ -27,21 +27,12 @@ export interface CardSlots extends SlotsType {
   footer: never,
 }
 
-export const cardSlots = {
-  default: () => {},
-  corner: () => {},
-  header: () => {},
-  footer: () => {},
-}
-
 /**
  * 卡片组件 <ns-card>
  */
 export const NsCard = defineComponent({
   name: 'NsCard',
   props: cardProps,
-  emits,
-  cardSlots,
   setup (props, { slots }) {
     const classes = [
       'ns-card',
@@ -59,7 +50,7 @@ export const NsCard = defineComponent({
 
     const titleAfter = h('div', {
       class: 'title-after spacer'
-    }, slots.header?.())
+    }, () => slots.header?.())
 
     const corner = h('div', {
       class: 'card-corner'
@@ -75,9 +66,9 @@ export const NsCard = defineComponent({
       corner,
     ])
 
-    const body = h('div', {
+    const body = () => h('div', {
       class: 'card-body flex-grow'
-    }, slots.default?.())
+    }, slots.default())
 
     return () => h('div', {
       class: classes
@@ -85,7 +76,7 @@ export const NsCard = defineComponent({
       props.title
         ? header
         : '',
-      body
+      body()
     ])
   }
 })
