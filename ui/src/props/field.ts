@@ -23,8 +23,9 @@ export type QuickValidationMethod = typeof quickValidationMethods[number]
 const quickRuleMapping: Record<QuickValidationMethod, (v: string) => boolean> = {
   required: v => !!v,
   numeric: v => /^\d+$/.test(v),
-  id: v => isIdentityCard(v, 'zh-CN'),
-  mobile: v => isMobilePhone(v, 'zh-CN'),
+    // 假值不调用具体校验方法
+  id: v => !!v && isIdentityCard(v, 'zh-CN'),
+  mobile: v => !!v && isMobilePhone(v, 'zh-CN'),
 }
 
 export type FunctionValidationMethod = (value: string) => boolean
