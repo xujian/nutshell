@@ -1,6 +1,5 @@
 import { h } from 'vue'
-import { NsInput } from './Input'
-import { InputProps } from 'ant-design-vue'
+import { InputProps, NsInput } from './Input'
 
 const defaultProps = {
   maxlength: 18,

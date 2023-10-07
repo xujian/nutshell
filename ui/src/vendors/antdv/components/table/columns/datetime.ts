@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { NsButton, TableColumnButtonEmits, TableColumnButtonProps } from '../../../../../components'
+import { NsButton, TableColumnDatetimeEmits, TableColumnDatetimeProps } from '../../../../../components'
 import { h } from 'vue'
 
 /**

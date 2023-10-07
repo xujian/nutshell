@@ -1,5 +1,5 @@
 import { h } from 'vue'
-import { InputProps, NsInput, inputProps } from './Input'
+import { InputProps, NsInput } from './Input'
 
 const defaultProps = {
   type: 'numeric',
