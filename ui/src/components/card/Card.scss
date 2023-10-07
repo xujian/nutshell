@@ -3,26 +3,31 @@
   background-color: #ffffff;
   padding: var(--ns-spacing-lg);
   overflow: hidden;
-  .card-header {
+  .card-header, .card-title {
     padding: 12px 0;
-    h3.card-title {
-      font-size: 16px;
-      display: inline-block;
-      position: relative;
-      &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 8px;
-        background: #4d85ff;
-        opacity: .4;
-        bottom: -2px;
-        left: 0;
-      }
+    .title {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
     }
-    .title-after {
-      padding-left: 1em;
+  }
+  h3.title-label {
+    font-size: 16px;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 8px;
+      background: #4d85ff;
+      opacity: .4;
+      bottom: -2px;
+      left: 0;
     }
+  }
+  .title-after {
+    padding-left: 1em;
+
   }
   .card-body {
     min-height: 100px;

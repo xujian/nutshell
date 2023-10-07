@@ -42,10 +42,14 @@ export const NsCard = defineComponent({
       props.variant ? `variant-${props.variant}` : '',
     ].join(' ')
 
-    const title = props.title
-      ? h('h3', {
-          class: 'card-title'
-        }, props.title)
+    const label = props.title
+      ? h('div', {
+          class: 'title'
+        },
+        h('h3', {
+            class: 'title-label'
+          }, props.title)
+        )
       : ''
 
     const titleAfter = h('div', {
@@ -53,7 +57,7 @@ export const NsCard = defineComponent({
     }, () => slots.header?.())
 
     const corner = h('div', {
-      class: 'card-corner'
+      class: 'title-corner'
     }, [
       slots.corner?.()
     ])
@@ -61,7 +65,7 @@ export const NsCard = defineComponent({
     const header = h('div', {
       class: 'card-header flex flex-row align-center',
     }, [
-      title,
+      label,
       titleAfter,
       corner,
     ])

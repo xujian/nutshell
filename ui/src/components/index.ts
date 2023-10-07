@@ -31,7 +31,7 @@ import { NsTable } from './table'
 import { NsDialog } from './dialog'
 import { NsDropdown } from './dropdown'
 import { NsTabs, NsTabsPane } from './tabs'
-import { NsCard } from './card'
+import { NsCard, NsCardTitle } from './card'
 import { NsList } from './list'
 
 const components = {
@@ -58,6 +58,7 @@ const components = {
   NsTabs,
   NsTabsPane,
   NsCard,
+  NsCardTitle,
   NsList
 }
 
