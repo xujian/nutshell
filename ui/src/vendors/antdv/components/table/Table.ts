@@ -10,7 +10,6 @@ const numberColumnConfig = {
   title: '序号',
   width: 40,
   dataIndex: '__no',
-  align: 'center'
 }
 
 export const Table = defineComponent({
