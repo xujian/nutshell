@@ -1,5 +1,6 @@
 .ns-form-item {
   border-radius: var(--ns-border-radius);
+  display: inline-block;
   .ant-form-item-label {
     min-width: 100px;
     >label {
@@ -47,11 +48,17 @@
     border-width: 1px;
     border-style: solid;
     border-radius: var(--ns-border-radius);
-    background-color: var(--ns-surface);
+    background-color: var(--ns-fill);
     &:focus {
       outline: none;
       box-shadow: none;
     }
+  }
+}
+
+.ns-form-item {
+  &.variant-solid {
+    background-color: var(--ns-fill);
   }
 }
 

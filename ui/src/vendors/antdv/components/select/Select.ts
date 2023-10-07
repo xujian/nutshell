@@ -21,7 +21,10 @@ export const Select = defineComponent({
     console.log('///////////////', rules)
     return () => h(AntFormItem, {
         name: props.name,
-        class: 'ns-form-item',
+        class: [
+          'ns-form-item',
+          props.variant ? `variant-${props.variant}` : '',
+        ],
         label: props.label,
         rules
       }, () => h(AntSelect, {

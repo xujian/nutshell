@@ -1,7 +1,7 @@
 import { ExtractPublicPropTypes } from 'vue'
 import { define } from '../../utils'
 import { PropType } from 'vue'
-import { useFieldProps, useModelValuePropsForInput } from '../../props'
+import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { PropsWithLabel, ValidationRule, formatRules } from '../../props/field'
 
 export type SelectOption = {
@@ -18,6 +18,7 @@ export const selectProps = {
   options: {
     type: Array as PropType<SelectOption[]>,
   },
+  ...useVariantProps(),
   ...useModelValuePropsForInput(),
   ...useFieldProps(),
   /**

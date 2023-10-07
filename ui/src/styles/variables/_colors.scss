@@ -24,9 +24,13 @@ $base: map-deep-merge(
        */
       paper: #003293,
       /**
-       * 小物体背景色
+       * 一般性容器背景色
        */
       surface: #003293,
+      /**
+       * 小物体填充色
+       */
+      fill: #003293,
       text: #eee,
       caption: #ffffff99,
       highlight: #888,

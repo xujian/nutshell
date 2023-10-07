@@ -30,13 +30,14 @@ export const Input = defineComponent({
     ]
 
     const rules = transformRules(props.rules as FullValidationRule[])
-    console.log('antdv-input.............rules', rules)
+    console.log('antdv-input.............rules', rules, props.name, props.variant)
 
     return () => 
       h(AntFormItem, {
         class: [
           'ns-form-item',
-          ...props.classes
+          ...props.classes,
+          props.variant ? `variant-${props.variant}` : '',
         ],
         label: props.label,
         name: props.name,
