@@ -116,5 +116,8 @@ export const useFieldProps = buildProps({
    */
   rules: {
     type: Array as PropType<ValidationRule[]>
-  }
+  },
+  placeholder: {
+    type: String,
+  },
 })
