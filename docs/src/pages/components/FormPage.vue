@@ -4,21 +4,24 @@
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h2>用户输入校验</h2>
-  <ns-form>
-    <ns-input name="clientName" v-model="userName" label="客户名称" :rules="['required']" />
-    <ns-select name="clientLocation" v-model="userLocation"
+  <ns-form name="validation" v-model="validationFormDate">
+    <ns-input name="clientName" v-model="validationFormDate.clientName" label="客户名称" :rules="['required']" />
+    <ns-select name="clientLocation" v-model="validationFormDate.clientLocation"
       :options="cities"
       label="区域" :rules="['required']" />
   </ns-form>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, reactive } from 'vue'
 import axios from 'axios'
 import RegularForm from '../../examples/RegularForm.vue'
 
-const userName = ref('')
-const userLocation = ref('')
+const validationFormDate = reactive({
+  clientName: '',
+  clientLocation: '',
+})
+
 const cities = ref<any[]>([])
 
 onMounted(async () => {

@@ -15,7 +15,7 @@
       <ns-id-input name="id"
         label="证件号码"
         v-model="formData.id" />
-      <ns-select name="marriage"
+      <ns-select name="marrage"
         label="婚姻状态"
         v-model="formData.marrage"
         :options="marrageOptions" />
