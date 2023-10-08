@@ -18,7 +18,6 @@ export const Select = defineComponent({
     } = props
   
     const rules = transformRules(props.rules as FullValidationRule[])
-    console.log('///////////////', rules)
     return () => h(AntFormItem, {
         name: props.name,
         class: [
@@ -37,6 +36,7 @@ export const Select = defineComponent({
         'onUpdate:value': (value: number | string) => {
           props['onUpdate:modelValue']?.(value)
         },
+        placeholder: props.placeholder,
         popupClassName: 'ns-select-dropdown'
       })
     )

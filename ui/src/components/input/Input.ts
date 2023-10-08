@@ -65,7 +65,6 @@ export const NsInput = define({
     emits,
     setup (props, ctx) {
       const finalRules = formatRules(props.rules as ValidationRule[], props as PropsWithLabel)
-      console.log('INput.tes.......1.', finalRules)
       return {
         props: {
           name: props.name,

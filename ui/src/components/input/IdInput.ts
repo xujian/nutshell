@@ -11,8 +11,13 @@ const defaultProps = {
  * 证件号输入框 <ns-id-input>
  */
 export const NsIdInput = (props: InputProps) => {
+  const rules = [
+    ...props.rules || [],
+    ...defaultProps.rules
+  ]
   return h(NsInput, {
-    ...defaultProps,
-    ...props
+    ...props,
+    maxlength: defaultProps.maxlength,
+    rules
   })
 }

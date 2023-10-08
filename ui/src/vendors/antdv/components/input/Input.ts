@@ -46,6 +46,7 @@ export const Input = defineComponent({
         type: props.type as AntInputType,
         maxlength: props.maxlength,
         value: props.modelValue,
+        placeholder: props.placeholder,
         'onUpdate:value': (value: number | string) => {
           console.log('antdv-input.............onUpdate:value', value)
           props['onUpdate:modelValue']?.(value)
