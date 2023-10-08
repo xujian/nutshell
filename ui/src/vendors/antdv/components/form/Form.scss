@@ -24,7 +24,6 @@
         margin-inline-end: 8px;
       }
       &.ant-form-item-required {
-        padding-right: 6px;
         &::before {
           position: absolute;
           line-height: 32px;
@@ -33,6 +32,9 @@
         }
       }
     }
+  }
+  .ant-form-item-explain {
+    position: absolute;
   }
   .ant-form-item-explain-error {
     font-size: var(--ns-font-xs);
