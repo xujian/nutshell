@@ -13,9 +13,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@uxda/nutshell": "^1.0.0",
     "axios": "^1.4.0",
     "dayjs": "^1.11.9",
-    "nutshell": "^1.0.0",
     "pinia": "^2.1.4",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"

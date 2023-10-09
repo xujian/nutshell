@@ -11,7 +11,7 @@ const NsResolver = (name: string) => {
   if (nsRegex.test(name)) {
     return {
       name: name,
-      from: 'nutshell'
+      from: '@uxda/nutshell'
     }
   }
 }

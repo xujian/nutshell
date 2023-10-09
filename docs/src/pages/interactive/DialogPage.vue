@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { useNutshell } from 'nutshell'
+import { useNutshell } from '@uxda/nutshell'
 
 const $n = useNutshell()
 

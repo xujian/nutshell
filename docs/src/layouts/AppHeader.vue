@@ -14,7 +14,7 @@
     ]"/>
 </template>
 <script lang="ts" setup>
-import { useNutshell, useBus } from 'nutshell'
+import { useBus } from '@uxda/nutshell'
 const $bus = useBus()
 const onHambergerClick = () => {
   $bus.emit('nav:hide')

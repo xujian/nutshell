@@ -56,7 +56,7 @@ const PsuedoTaroResolver = (name) => {
   if (name === 'Taro') {
     return {
       name: 'Taro',
-      from: 'nutshell',
+      from: '@uxda/nutshell',
     }
   }
 }

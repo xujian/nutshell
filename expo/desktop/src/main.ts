@@ -1,12 +1,12 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { Nutshell } from 'nutshell'
+import { Nutshell } from '@uxda/nutshell'
 
 import App from './App.vue'
 import router from './router'
-import 'nutshell/nutui.css'
-import 'nutshell/antdv.css'
-import 'nutshell/nutshell.css'
+import '@uxda/nutshell/nutui.css'
+import '@uxda/nutshell/antdv.css'
+import '@uxda/nutshell/nutshell.css'
 import './styles/main.scss'
 
 const app = createApp(App)

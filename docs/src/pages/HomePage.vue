@@ -29,7 +29,7 @@ const variants: string[] = ['solid', 'outlined', 'soft', 'plain'],
     <ns-tabs v-model="activeTab" :items="tabs" variant="card">
     </ns-tabs>
     <p>&nbsp;</p>
-    <h2>最新特性</h2>
+    <h2>最新进展</h2>
     <p>&nbsp;</p>
     <latest-releases />
     <p>&nbsp;</p>

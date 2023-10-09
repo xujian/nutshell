@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import dayjs from 'dayjs'
-import { useNutshell } from 'nutshell'
+import { useNutshell } from '@uxda/nutshell'
 import { onMounted } from 'vue'
 import { reactive } from 'vue'
 
