@@ -26,5 +26,11 @@ export default {
         p.dialog(options)
       })
     }
+    $n.confirm = (message: string, onOk: () => void) => {
+      const vendor = app._context.provides[VendorSymbol as symbol]
+      Promise.resolve(vendor).then(p => {
+        p.confirm(message, onOk)
+      })
+    }
   }
 }

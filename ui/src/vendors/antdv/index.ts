@@ -1,7 +1,7 @@
 import { getCurrentInstance, h, App } from 'vue'
 import { CoreVendor } from '../../shared'
 import * as components from './components'
-import { dialog, toast, loading } from './services'
+import { dialog, confirm, toast, loading } from './services'
 
 // fallback for component not implemented
 const dummy = (name: string) => {
@@ -28,6 +28,7 @@ const antdvVendor: CoreVendor = {
     return h(component, {...props}, ctx.slots)
   },
   dialog,
+  confirm,
   toast,
   loading
 }

@@ -4,6 +4,9 @@ import { VendorSymbol, createVendor, prepareVendor } from './shared'
 import { BusSymbol, PlatformSymbol, createBus, createPlatform } from './composables'
 import directives from './directives'
 import services from './services'
+import { DialogOptions } from './services/dialog'
+import { ToastOptions } from './services/toast'
+import { LoadingOptions } from './services/loading'
 
 export interface NutshellOptions {
   theme?: string,
@@ -11,7 +14,10 @@ export interface NutshellOptions {
 }
 
 export type DollarNutshell = {
-  [key: string]: any
+  dialog?: (options: DialogOptions) => void,
+  confirm?: (message: string, onOk: () => void) => void
+  toast?: (message: string, options: ToastOptions) => void
+  loading?: (options: LoadingOptions) => void
 }
 
 export const NutshellSymbol: InjectionKey<DollarNutshell>
