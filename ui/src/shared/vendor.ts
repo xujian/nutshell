@@ -54,6 +54,7 @@ export interface CoreVendor {
   prepare: (app) => void,
   render (props: Record<string, any>, ctx: SetupContext): VNode,
   dialog (options: DialogOptions): DialogInstance,
+  confirm (message: string, onOk: () => void): void,
   toast (message: string, options: ToastOptions): void,
   loading (options: LoadingOptions): void,
   /**
