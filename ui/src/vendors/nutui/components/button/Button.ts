@@ -31,14 +31,31 @@ export const Button = (props: ButtonProps & ButtonEmits & MarginProps) => {
   const { type, label, width, disabled,
     maxWidth, height, maxHeight, minWidth, minHeight,
     ...p } = props
+  
+  const isStaticImage = (url: string) =>
+    url.endsWith('.svg')
+    || url.endsWith('.png')
+    || url.endsWith('.jpg')
+    || url.endsWith('.jpeg')
+
+  const icon = props.icon
+    ? isStaticImage(props.icon)
+      ? h('img', {
+        src: props.icon,
+        class: 'icon',
+      })
+      : null
+    : null
 
   return h(NutButton, {
     class: classes,
     disabled,
+    shape: 'suqare',
     ...!colorIsBrand && {color},
     size: getSize(props.size),
     onClick: props.onClick
   }, {
-    default: () => props.label
+    default: () => props.label,
+    ...icon && {icon}
   })
 }

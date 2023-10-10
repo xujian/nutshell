@@ -1,4 +1,6 @@
 .ns-button {
+  border-radius: var(--ns-border-radius-xs);
+  padding: 0 16px;
   &.nut-button--mini {
     height: var(--ns-size-xs);
   }
@@ -16,5 +18,9 @@
       height: var(--ns-size-xl);
       padding: 0 48px;
     }
+  }
+  .icon {
+    width: 16px;
+    height: 16px;
   }
 }

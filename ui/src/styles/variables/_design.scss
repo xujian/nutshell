@@ -4,7 +4,7 @@
 @use '../tools/functions' as *;
 @use './spacing';
 
-$radius-root: 4px !default;
+$border-radius-root: 4px !default;
 // $border-color-root: map-get(colors.brand, 'stroke') !default;
 
 $borders: () !default;
@@ -27,11 +27,11 @@ $rounded: map-deep-merge(
     0: 0,
     none: 0,
     auto: var(--ns-border-radius),
-    xs: $radius-root,
-    sm: $radius-root * 2,
-    md: $radius-root * 4,
-    lg: $radius-root * 6,
-    xl: $radius-root * 8,
+    xs: $border-radius-root,
+    sm: $border-radius-root * 2,
+    md: $border-radius-root * 4,
+    lg: $border-radius-root * 6,
+    xl: $border-radius-root * 8,
   ),
   $rounded
 )

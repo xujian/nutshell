@@ -10,6 +10,12 @@
   }
 }
 
+:root {
+  @each $name, $value in design.$rounded {
+    #{'--ns-border-radius-'}#{$name}: #{$value};
+  }
+}
+
 @each $name, $value in design.$rounded {
   #{'.r-'}#{$name} {
     border-radius: #{$value};

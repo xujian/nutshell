@@ -18,6 +18,9 @@ export const useButtonProps = () => ({
   color: {
     type: String as PropType<Color>,
   },
+  icon: {
+    type: String
+  },
   ...useSizeProps(),
   /**
    * 禁用
