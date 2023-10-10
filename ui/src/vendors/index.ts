@@ -1,15 +1,13 @@
+import nutui from './nutui'
+// import antdv from './antdv'
+import { CoreVendor } from '../shared'
+
 // const nutuiVendor: Promise<{default: CoreVendor}> = import(
 //   /* name: 'vendor.nutui' */
 //   './nutui')
 const antdvToImport: () => Promise<{default: CoreVendor}> = () => import(
   /* name: 'vendor.antdv' */
   './antdv')
-
-import { AppContext } from 'vue'
-import nutui from './nutui'
-// import antdv from './antdv'
-import { VNode } from 'vue'
-import { CoreVendor } from '../shared'
 
 /**
  * 似乎不能按需加载
