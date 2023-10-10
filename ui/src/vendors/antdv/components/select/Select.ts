@@ -9,6 +9,8 @@ export const Select = defineComponent({
   props: selectProps,
   setup (props, ctx) {
 
+    const { emit } = ctx
+
     const classes = [
       'ns-select',
     ].join(' ')
@@ -35,6 +37,9 @@ export const Select = defineComponent({
         value: props.modelValue,
         'onUpdate:value': (value: number | string) => {
           props['onUpdate:modelValue']?.(value)
+        },
+        'onChange': (value: string) => {
+          emit('change', value)
         },
         placeholder: props.placeholder,
         popupClassName: 'ns-select-dropdown'

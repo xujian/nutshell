@@ -1,4 +1,4 @@
-import { ExtractPublicPropTypes } from 'vue'
+import { ExtractPublicPropTypes, ObjectEmitsOptions } from 'vue'
 import { define } from '../../utils'
 import { PropType } from 'vue'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
@@ -39,12 +39,22 @@ export const selectProps = {
 
 export type SelectProps = ExtractPublicPropTypes<typeof selectProps>
 
+export interface SelectEmits extends ObjectEmitsOptions {
+  change?: (value: string | number) => void
+}
+
+const emits: SelectEmits = {
+  change: (value: string | number) => {}
+}
+
+
 /**
  * 下拉选框
  */
 export const NsSelect = define({
   name: 'NsSelect',
   props: selectProps,
+  emits,
   setup (props, ctx) {
     const rules = formatRules(props.rules as ValidationRule[], props as PropsWithLabel)
     return {
