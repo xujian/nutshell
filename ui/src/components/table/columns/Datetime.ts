@@ -13,7 +13,10 @@ const props = {
   },
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
-  }
+  },
+    formatValue: {
+      type: String,
+    },
 }
 
 export interface TableColumnDatetimeEmits extends ObjectEmitsOptions {
