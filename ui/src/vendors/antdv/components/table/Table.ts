@@ -65,7 +65,8 @@ export const Table = defineComponent({
       class: classes,
       dataSource: rows.value,
       columns: columns as ColumnsType,
-      scroll: {x: 1200}
+      scroll: {x: 1200},
+      pagination: false,
     }, slots.default)
   }
 })
