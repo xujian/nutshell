@@ -12,7 +12,7 @@ const NutshellResolver = (name) => {
     console.log('NutshellResolver....................matched=', name)
     return {
       name: name,
-      from: 'nutshell/taro'
+      from: '@uxda/nutshell/taro'
     }
   }
 }
