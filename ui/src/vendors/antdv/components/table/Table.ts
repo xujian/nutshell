@@ -39,7 +39,7 @@ export const Table = defineComponent({
         if (!render) {
           return result
         }
-        result.customRender = render(customization.props, customization.component)
+        result.customRender = render(customization.props, { slots: customization.component.children })
         return result
       })
     }

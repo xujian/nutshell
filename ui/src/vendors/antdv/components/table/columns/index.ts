@@ -3,6 +3,7 @@ import rating from './rating'
 import button from './button'
 import icon from './icon'
 import datetime from './datetime'
+import custom from './custom'
 
 export default {
   chip,
@@ -10,4 +11,5 @@ export default {
   button,
   icon,
   datetime,
+  custom
 }
