@@ -5,8 +5,6 @@ import { dateInputProps } from '../../../../components'
 import { transformRules } from './rules'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
-import { computed } from 'vue'
-import { ComputedRef } from 'vue'
 import { FullValidationRule } from '../../../../props/field'
 
 /**
@@ -29,7 +27,10 @@ export const DateInput = defineComponent({
       visible.value = false
     }
     const rules = transformRules(props.rules as FullValidationRule[])
-    const value: Ref<Dayjs> = ref<Dayjs>(dayjs(props.modelValue))
+    const value: Ref<Dayjs> = ref<Dayjs>(props.modelValue
+        ? dayjs(props.modelValue)
+        : dayjs()
+      )
 
     return () => h(AntFormItem, {
       name: props.name,
