@@ -52,7 +52,7 @@
     "@tarojs/taro": "3.6.8",
     "@tarojs/plugin-html": "3.6.8",
     "@tarojs/plugin-framework-vue3": "3.6.8",
-    "nutshell": "^1.0.0",
+    "@uxda/nutshell": "^1.0.0",
     "vue": "^3.2.40",
     "@nutui/nutui-taro": "^4.0.4",
     "@nutui/icons-vue-taro": "^0.0.9"

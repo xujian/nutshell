@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { useNutshell } from 'nutshell/taro'
+import { useNutshell } from '@uxda/nutshell/taro'
 import { reactive, toRefs } from 'vue'
 
 export default {
