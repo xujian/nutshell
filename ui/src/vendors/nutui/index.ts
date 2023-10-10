@@ -31,6 +31,7 @@ const nutuiVendor: CoreVendor = {
     return h(component, props, slots.default)
   },
   dialog,
+  confirm: (message: string, onOk: () => void) => {},
   toast,
   loading
 }
