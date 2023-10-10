@@ -4,6 +4,8 @@ import { DialogInstance, DialogOptions } from '../services/dialog'
 import type { ToastOptions } from '../services/toast'
 import type { LoadingOptions } from '../services/loading'
 import { SetupContext } from 'vue'
+import { VendorSymbol } from './symbols'
+
 /**
  * Vendor 体系的设计
  * 本组件库的组件不直接产生最终UI
@@ -62,9 +64,6 @@ export interface CoreVendor {
    */
   fallback?: CoreVendor
 }
-
-export const VendorSymbol: InjectionKey<CoreVendor | Promise<CoreVendor>>
-  = Symbol.for('nutshell:vendor')
 
 export const createVendor= (name: string): CoreVendor | Promise<CoreVendor> => {
   const vendor = getVendor(name)

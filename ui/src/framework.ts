@@ -1,6 +1,7 @@
 import { App, ComponentPublicInstance, InjectionKey, reactive, inject } from 'vue'
 import { createTheme } from './composables/theme'
-import { VendorSymbol, createVendor, prepareVendor } from './shared'
+import { VendorSymbol } from './shared/symbols'
+import { createVendor, prepareVendor } from './shared'
 import { BusSymbol, PlatformSymbol, createBus, createPlatform } from './composables'
 import directives from './directives'
 import services from './services'

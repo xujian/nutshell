@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import { VendorSymbol } from '../shared/vendor'
+import { VendorSymbol } from '../shared/symbols'
 import { DollarNutshell } from '../framework'
 
 export const DEAULT_TOAST_DURATION: number = 4

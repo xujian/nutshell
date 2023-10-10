@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import { VendorSymbol } from '../shared'
+import { VendorSymbol } from '../shared/symbols'
 import { DollarNutshell } from '../framework'
 
 export type LoadingOptions = {
