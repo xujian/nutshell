@@ -24,14 +24,15 @@ export default defineConfig({
     Components({
       resolvers: [
         AntDesignVueResolver({
-          importStyle: false, // css in js
+          importStyle: false // css in js
         }),
         NsResolver
-      ],
-    }),
+      ]
+    })
   ],
   server: {
     port: 2024,
+    open: true,
     host: '0.0.0.0'
   },
   resolve: {
