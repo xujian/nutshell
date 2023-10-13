@@ -3,10 +3,11 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   ComponentOptionsWithObjectProps, ComponentPropsOptions, 
   ComputedOptions, DefineComponent, 
   ExtractDefaultPropTypes, ExtractPropTypes, 
-  MethodOptions, EmitsOptions, SetupContext, SlotsType, ObjectEmitsOptions, RenderFunction, toRefs, PropType } from 'vue'
+  MethodOptions, EmitsOptions, SetupContext, SlotsType, ObjectEmitsOptions, RenderFunction, toRefs, PropType, defineExpose, getCurrentInstance } from 'vue'
 import { ref, h } from 'vue'
 import { defineComponent } from 'vue'
 import { EmitsToProps, Prettify } from './helpers'
+import { Ref } from 'vue'
 
 /**
  * 通用的组件定义
@@ -54,10 +55,12 @@ export type DefineFunctionOptions<
   // 改写 setup() 的定义
   setup?: (
     this: void,
-    props: Props, 
+    props: Props,
     ctx: SetupContext<Emits, Slots>
   ) => { 
-    props?: Partial<Props>
+    props?: Partial<Props>,
+    methods?: Record<string, any>,
+    vendorRef?: Ref,
   }
 }
 
@@ -65,7 +68,7 @@ export type DefineFunctionOptions<
  * 传给 vendor 的属性里加了一些字段
  */
 export type MarginProps = {
-  classes: string[]
+  classes: string[],
 }
 
 export type WithMarginProps<T = {}> = T & MarginProps
@@ -120,7 +123,7 @@ export function define<
     // the real setup
     const { setup: setupOriginal } = options
     const v = useVendor()
-    const { props: extraProps } = setupOriginal(props, ctx)
+    const { props: extraProps, methods, vendorRef } = setupOriginal(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
     const render = ref((props, ctx) => h('div'))
@@ -132,13 +135,24 @@ export function define<
     } else {
       render.value = v.render.bind(v)
     }
+  
+    // defineExpose({
+    //   ...methods
+    // })
 
-    return () => h(render.value, {
+    const vm = getCurrentInstance() as any
+    console.log('()()()()()()()', vm)
+    vm.render = () => h(render.value, {
       ...props,
       ...extraProps,
       ...options.emits,
       classes: buildClasses(props),
+      vendorRef,
     }, defaultSlot)
+
+    return {
+      ...methods,
+    }
   }
 
   const optionsSythesized = {

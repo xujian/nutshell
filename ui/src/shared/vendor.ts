@@ -1,4 +1,4 @@
-import { inject, InjectionKey, App, VNode } from 'vue'
+import { inject, InjectionKey, App, VNode, Ref } from 'vue'
 import { getVendor } from '../vendors'
 import { DialogInstance, DialogOptions } from '../services/dialog'
 import type { ToastOptions } from '../services/toast'
@@ -54,7 +54,7 @@ import { VendorSymbol } from './symbols'
 export interface CoreVendor {
   app: App,
   prepare: (app) => void,
-  render (props: Record<string, any>, ctx: SetupContext): VNode,
+  render (props: Record<string, any>, ctx: SetupContext, ref?: Ref): VNode,
   dialog (options: DialogOptions): DialogInstance,
   confirm (message: string, onOk: () => void): void,
   toast (message: string, options: ToastOptions): void,

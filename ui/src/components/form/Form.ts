@@ -1,4 +1,4 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ExtractPropTypes, ref, defineExpose, onMounted } from 'vue'
 import { define } from '../../utils'
 import { useVariantProps } from '../../props'
 
@@ -15,7 +15,7 @@ export const formProps = {
   }
 }
 
-export type FormProps = ExtractPublicPropTypes<typeof formProps>
+export type FormProps = ExtractPropTypes<typeof formProps>
 
 export interface FormEmits extends ObjectEmitsOptions {
 }
@@ -35,7 +35,27 @@ export const NsForm = define({
   props: formProps,
   emits,
   setup (props, ctx) {
+    const vendorRef = ref(null)
+
+    function validate (): boolean {
+      console.log('NsForm......s.etup........vendor.....', vendorRef.value)
+      return vendorRef.value.validate()
+    }
+    
+    onMounted(() => {
+      setTimeout(() => {
+        console.log('[][][][][][][][][][][][][]VALIDATE1', vendorRef.value)
+        vendorRef.value.validate()
+      }, 5000)
+    })
+
     return {
+      methods: {
+        validate
+      },
+      props: {
+      },
+      vendorRef
     }
   }
 })
