@@ -4,7 +4,7 @@ import { EmitsToProps } from '../../../utils/private/helpers'
 import { TableColumnStyleDefination } from '../../../components/table'
 import { useButtonProps } from '../../../components/button'
 
-const props = {
+export const props = {
   /**
    * 列名
    */
@@ -16,6 +16,7 @@ const props = {
   },
   format: {
     type: String,
+    default: "YYYY-MM-DD HH:mm:ss",
   },
 }
 
