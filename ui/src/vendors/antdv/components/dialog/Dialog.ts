@@ -2,6 +2,10 @@ import { defineComponent, h } from 'vue'
 import { DialogProps, dialogProps } from '../../../../components/dialog'
 import { Modal as AntdvModal } from 'ant-design-vue'
 
+const buttonTypesMap = {
+  negtive: 'danger'
+}
+
 export const Dialog = defineComponent({
   name: 'AntdvDialogVendor',
   props: dialogProps,
@@ -17,6 +21,9 @@ export const Dialog = defineComponent({
       title: props.title,
       width: props.width,
       height: props.height,
+      okText: props.okText || '确定',
+      okType: props.okColor ? buttonTypesMap[props.okColor] || 'primary' : 'primary',
+      cancelText: props.cancelText,
       keyboard: true,
       'onUpdate:open': (value: boolean) => {
         console.log('antdv modal.......onUpdate:open', value, Object.keys(props), props['onUpdate:modelValue'])

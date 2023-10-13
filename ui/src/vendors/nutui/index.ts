@@ -2,6 +2,7 @@ import { getCurrentInstance, h, App } from 'vue'
 import { CoreVendor } from '../../shared'
 import { dialog, toast, loading } from './services'
 import * as components from './components'
+import { ConfirmOptions } from '../../../src/services/dialog'
 
 const makeDummy = (name: string) => {
   return () => dummy(name.toUpperCase())
@@ -31,7 +32,7 @@ const nutuiVendor: CoreVendor = {
     return h(component, props, slots.default)
   },
   dialog,
-  confirm: (message: string, onOk: () => void) => {},
+  confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => {},
   toast,
   loading
 }

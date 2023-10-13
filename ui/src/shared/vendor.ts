@@ -1,6 +1,6 @@
 import { inject, InjectionKey, App, VNode, Ref } from 'vue'
 import { getVendor } from '../vendors'
-import { DialogInstance, DialogOptions } from '../services/dialog'
+import { ConfirmOptions, DialogInstance, DialogOptions } from '../services/dialog'
 import type { ToastOptions } from '../services/toast'
 import type { LoadingOptions } from '../services/loading'
 import { SetupContext } from 'vue'
@@ -56,7 +56,7 @@ export interface CoreVendor {
   prepare: (app) => void,
   render (props: Record<string, any>, ctx: SetupContext, ref?: Ref): VNode,
   dialog (options: DialogOptions): DialogInstance,
-  confirm (message: string, onOk: () => void): void,
+  confirm (message: string, onOk: () => void, options: ConfirmOptions): void,
   toast (message: string, options: ToastOptions): void,
   loading (options: LoadingOptions): void,
   /**

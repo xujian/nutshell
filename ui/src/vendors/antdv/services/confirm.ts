@@ -1,19 +1,22 @@
 import { h, ref } from 'vue'
 import { createApp } from 'vue'
 import { App } from 'vue'
-import { DialogOptions } from '../../../services/dialog'
+import { ConfirmOptions, DialogOptions } from '../../../services/dialog'
 import { NsDialog } from '../../../components'
 
-function confirm (message: string, onOk: () => void) {
+
+
+function confirm (message: string, onOk: () => void, options?: ConfirmOptions, ) {
   const container = document.createElement('div')
   document.body.appendChild(container)
   const visible = ref(true)
   const dialog = createApp({
     name: 'NsDynamicDialog',
     setup: () => () => h(NsDialog, {
-      title: '确认',
-      okText: '确定',
-      cancelText: '取消',
+      title: options?.title || '确认',
+      okText: options?.okText || '确定',
+      okColor: options?.okColor || 'negtive',
+      cancelText: options?.cancelText || '取消',
       modelValue: visible.value,
       'onUpdate:modelValue': (value: boolean) => {
         visible.value = value

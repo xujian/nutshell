@@ -3,8 +3,19 @@ import { VendorSymbol } from '../shared/symbols'
 import { DollarNutshell } from '../framework'
 
 export type DialogOptions = {
-  title: string,
-  message: string,
+  title?: string,
+  message?: string,
+  okText?: string,
+  cancelText?: string,
+  okColor?: string
+}
+
+export type ConfirmOptions = {
+  title?: string,
+  message?: string,
+  okText?: string,
+  cancelText?: string,
+  okColor?: string
 }
 
 export type DialogInstance = {
@@ -26,10 +37,10 @@ export default {
         p.dialog(options)
       })
     }
-    $n.confirm = (message: string, onOk: () => void) => {
+    $n.confirm = (message: string, onOk: () => void, options?: DialogOptions) => {
       const vendor = app._context.provides[VendorSymbol as symbol]
       Promise.resolve(vendor).then(p => {
-        p.confirm(message, onOk)
+        p.confirm(message, onOk, options)
       })
     }
   }

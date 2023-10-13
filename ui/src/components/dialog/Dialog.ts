@@ -7,6 +7,15 @@ export const dialogProps = {
   title: {
     type: String,
   },
+  okText: {
+    type: String,
+  },
+  okColor: {
+    type: String,
+  },
+  cancelText: {
+    type: String
+  },
   ...useModelValuePropsForBoolean(),
   ...useDimensionProps(),
 }
