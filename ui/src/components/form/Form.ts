@@ -35,11 +35,10 @@ export const NsForm = define({
   props: formProps,
   emits,
   setup (props, ctx) {
-    // const vendorRef = ref(null)
+    const vendorRef = ref(null)
 
     function validate (): boolean {
-      console.log('NsForm......s.etup........vendor.....', props.ref.value)
-      return props.ref.value.validate()
+      return vendorRef.value.validate()
     }
 
     return {
@@ -48,7 +47,7 @@ export const NsForm = define({
       },
       props: {
       },
-      // vendorRef
+      vendorRef
     }
   }
 })

@@ -69,6 +69,7 @@ export type DefineFunctionOptions<
  */
 export type MarginProps = {
   classes: string[],
+  vendorRef: Ref,
 }
 
 export type WithMarginProps<T = {}> = T & MarginProps
@@ -141,7 +142,6 @@ export function define<
     // })
 
     const vm = getCurrentInstance() as any
-    console.log('()()()()()()()', vm)
     vm.render = () => h(render.value, {
       ...props,
       ...extraProps,
