@@ -40,12 +40,12 @@ export const Button = (props: ButtonProps & ButtonEmits & MarginProps) => {
 
   const icon = props.icon
     ? isStaticImage(props.icon)
-      ? h('img', {
+      ? () => h('img', {
         src: props.icon,
         class: 'icon',
       })
-      : null
-    : null
+      : () => null
+    : () => null
 
   return h(NutButton, {
     class: classes,
