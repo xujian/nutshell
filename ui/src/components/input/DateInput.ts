@@ -10,7 +10,13 @@ export const dateInputProps = {
     required: false,
     default: ''
   },
-  ...useModelValuePropsForInput(),
+  modelValue: {
+    type: String,
+    default: '',
+  },
+  'onUpdate:modelValue': {
+    type: Function as PropType<(value: string) => void>,
+  },
   ...useFieldProps(),
 }
 

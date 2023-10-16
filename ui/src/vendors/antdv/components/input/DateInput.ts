@@ -1,4 +1,4 @@
-import { h, ref, defineComponent, Ref } from 'vue'
+import { h, ref, defineComponent, Ref, computed } from 'vue'
 import { FormItem as AntFormItem, DatePicker } from 'ant-design-vue'
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
 import { dateInputProps } from '../../../../components'
@@ -27,9 +27,9 @@ export const DateInput = defineComponent({
       visible.value = false
     }
     const rules = transformRules(props.rules as FullValidationRule[])
-    const value: Ref<Dayjs> = ref<Dayjs>(props.modelValue
-        ? dayjs(props.modelValue)
-        : dayjs()
+    const value: Ref<Dayjs> = computed<Dayjs>(() => props.modelValue
+        ? dayjs(props.modelValue) || dayjs()
+        : null
       )
 
     return () => h(AntFormItem, {
@@ -41,11 +41,15 @@ export const DateInput = defineComponent({
         class: classes,
         visible: visible.value,
         onClose: close,
+        placeholder: props.placeholder,
         locale,
         value: value.value,
         'onUpdate:value': (value: Dayjs) => {
-          console.log('2222', value)
-          props['onUpdate:modelValue']?.(value.valueOf())
+          console.log('<><><><><', value)
+          const val = value === null
+            ? ''
+            : value.format('YYYY-MM-DD')
+          props['onUpdate:modelValue']?.(val)
         }
       })
     )

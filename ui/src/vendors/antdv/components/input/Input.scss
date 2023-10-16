@@ -1,11 +1,16 @@
 .ns-form-item {
   .ant-input {
-    border: none;
+    border-width: 1px;
+    border-color: transparent;
+    border-style: solid;
     background-color: transparent;
+    &:hover {
+      border-color: var(--ns-accent);
+    }
     &:focus {
-      background-color: #00000022;
+      border-color: var(--ns-accent);
+      box-shadow: 0 0 2px 1px color-mix(in srgb, var(--ns-accent) 30%, transparent);
       outline: none;
-      box-shadow: none;
     }
   }
   .ant-form-item-explain-error {
