@@ -1,6 +1,8 @@
 import { PropType, computed } from 'vue'
 import { buildProps } from '../utils/private/props'
 
+type ModelModifiers = Record<string, boolean>
+
 export type ModelValueProps<T = any> = {
   modelValue: T,
 }
@@ -11,6 +13,10 @@ export const useModelValuePropsForBoolean = buildProps({
   },
   'onUpdate:modelValue': {
     type: Function as PropType<(value: boolean) => void>,
+  },
+  modelModifiers: {
+    type: Object as PropType<ModelModifiers>,
+    default: () => ({})
   }
 })
 
@@ -21,6 +27,10 @@ export const useModelValuePropsForInput = buildProps({
   },
   'onUpdate:modelValue': {
     type: Function as PropType<(value: number | string) => void>,
+  },
+  modelModifiers: {
+    type: Object as PropType<ModelModifiers>,
+    default: () => ({})
   }
 })
 
