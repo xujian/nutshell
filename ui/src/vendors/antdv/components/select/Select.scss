@@ -26,12 +26,12 @@
 
 .ns-select-dropdown {
   &.ant-select-dropdown {
-    background-color: var(--ns-surface);
+    background-color: var(--ns-fill);
     .ant-select-item {
       color: var(--ns-text);
     }
     .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
-      background-color: var(--ns-accent);
+      // background-color: var(--ns-accent);
     }
   }
   .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled),
