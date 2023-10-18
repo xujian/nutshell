@@ -19,7 +19,7 @@ export const dateInputProps = {
     type: Function as PropType<(value: string) => void>,
   },
    'disabledDate': {
-     type: Function as (currentDate: Dayjs) => boolean
+     type: Function as PropType<(currentDate: Dayjs) => boolean>
    },
   ...useFieldProps(),
 }
