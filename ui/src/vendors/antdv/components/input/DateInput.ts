@@ -1,4 +1,4 @@
-import { h, ref, defineComponent, Ref, computed } from 'vue'
+import {h, ref, defineComponent, Ref, computed, toRaw} from 'vue'
 import { FormItem as AntFormItem, DatePicker } from 'ant-design-vue'
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
 import { dateInputProps } from '../../../../components'
@@ -14,6 +14,7 @@ export const DateInput = defineComponent({
   name: 'DateInput',
   props: dateInputProps,
   setup: (props, ctx) => {
+      console.log(toRaw(props))
     const classes = [
       'ns-date-input',
     ].join(' ')
@@ -50,7 +51,8 @@ export const DateInput = defineComponent({
             ? ''
             : value.format('YYYY-MM-DD')
           props['onUpdate:modelValue']?.(val)
-        }
+        },
+        disabledDate: props.disabledDate,
       })
     )
   }

@@ -3,6 +3,7 @@ import { define } from '../../utils'
 import { usePlatform } from '../../composables'
 import { useModelValuePropsForInput } from '../../props/model'
 import { useFieldProps } from '../../props'
+import { Dayjs } from 'dayjs'
 
 export const dateInputProps = {
   label: {
@@ -17,6 +18,9 @@ export const dateInputProps = {
   'onUpdate:modelValue': {
     type: Function as PropType<(value: string) => void>,
   },
+   'disabledDate': {
+     type: Function as (currentDate: Dayjs) => boolean
+   },
   ...useFieldProps(),
 }
 

@@ -12,6 +12,13 @@
           method: (v: string) => v?.length > 1,
           message: '最少两个字'
         }]" />
+      <ns-date-input
+          v-model="formData.divorceDate"
+          name="divorceDate"
+          class="divorce-date"
+          label="离婚日期"
+          placeholder="请输入离婚日期"
+          :disabled-date="disabledDateOfPicker" />
       <ns-id-input name="id"
         label="证件号码"
         v-model="formData.id" />
@@ -36,6 +43,7 @@
 
 <script lang="ts" setup>
 import { onMounted, reactive } from 'vue'
+import dayjs from "dayjs";
 
 const formData = reactive({
   name: '',
@@ -43,7 +51,8 @@ const formData = reactive({
   marrage: '',
   mobile: '18676768200',
   intention: 2,
-  tags: []
+  tags: [],
+  divorceDate: null,
 })
 
 const chipsOptions = [
@@ -61,6 +70,10 @@ const marrageOptions = [
   { label: '离异', value: 'divorced' },
   { label: '丧偶', value: 'widowed' },
 ]
+
+function disabledDateOfPicker(current: any) {
+  return current && dayjs().isBefore(current, 'day')
+}
 
 onMounted(() => {
   setTimeout(() => {
