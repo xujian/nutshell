@@ -16,6 +16,12 @@
       :color="color" 
       :variant="variant" label="创建订单"></ns-button>
   </ns-row>
+  <ns-row class="with-icon" align="center">
+    <ns-button class="my-xs"
+      color="primary"
+      icon="https://cdn.ddjf.com/static/images/ai-approve-mini/scan.png" 
+      label="证件识别"></ns-button>
+  </ns-row>
   <p>&nbsp;</p>
   <code-view :code="code" />
   <code-editor :code="code" />

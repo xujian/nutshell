@@ -10,6 +10,10 @@
 <script lang="ts" setup>
 const releases = [
   {
+    title: 'Color tints/shades/alphas',
+    caption: ''
+  },
+  {
     title: '列表组件',
     caption: '<ns-list>'
   },
@@ -48,6 +52,18 @@ const releases = [
   {
     title: '代码框及代码编辑器',
     caption: '<ns-code>/<ns-code-editor>'
+  },
+  {
+    title: '星星框',
+    caption: '<ns-rating>'
+  },
+  {
+    title: '优化表单及输入框样式',
+    caption: ''
+  },
+  {
+    title: '复选框及复选框组',
+    caption: '<ns-checkbox>, <ns-checkbox-group>'
   },
 ]
 </script>

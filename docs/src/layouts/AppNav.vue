@@ -145,7 +145,11 @@ const menuData = computed(() => [
           {
             label: '复选框 checkbox',
             key: '/components/checkbox'
-          }
+          },
+          {
+            label: '星星输入框 rating-input',
+            key: '/components/rating-input'
+          },
         ]
       },
       {
@@ -210,7 +214,13 @@ const menuData = computed(() => [
   },
   {
     label: '实验室',
-    key: 'labs'
+    key: 'labs',
+    children: [
+      {
+        label: '大量数据表格',
+        key: '/labs/table-perf'
+      }
+    ]
   }
 ])
 </script>
