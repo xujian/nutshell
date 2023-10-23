@@ -18,9 +18,9 @@ export const dateInputProps = {
   'onUpdate:modelValue': {
     type: Function as PropType<(value: string) => void>,
   },
-   'disabledDate': {
-     type: Function as PropType<(currentDate: Dayjs) => boolean>
-   },
+  disabledDate: {
+    type: Function as PropType<(currentDate: Dayjs) => boolean>
+  },
   ...useFieldProps(),
 }
 
