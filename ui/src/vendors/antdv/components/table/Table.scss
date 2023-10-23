@@ -1,50 +1,11 @@
+@import 'vxe-table/lib/style.css';
+
 .ns-table {
-  .ant-table {
-    background-color: transparent;
-    color: var(--ns-text);
-    border-radius: var(--ns-table-border-radius, var(--ns-border-radius));
-    .ant-rate-star {
-      font-size: 15px;
-      margin-inline-end: 4px;
-    }
-    tr>th, tr>td, tfoot>tr>th, tfoot>tr>td {
-      padding: 6px 6px;
-    }
-  }
-  .ant-table-thead {
-    >tr {
-      >th {
-        color: var(--ns-text);
-        background-color: transparent;
-      }
-    }
-  }
-  .ant-table-cell-fix-left,
-  .ant-table-cell-fix-right {
-    background-color: transparent;
-  }
-  .ant-table-tbody >tr.ant-table-row:hover>td, 
-  .ant-table-tbody >tr >td.ant-table-cell-row-hover {
-    background-color: #ffffff33;
-  }
-  .ant-table:not(.ant-table-bordered) {
-    .ant-table-tbody {
-      >tr.ant-table-row:hover>td:first-child,
-      >tr >td.ant-table-cell-row-hover:first-child,
-      >tr.ant-table-row.ant-table-row-selected>td:first-child,
-      >tr.ant-table-row:hover>td:last-child,
-      >tr >td.ant-table-cell-row-hover:last-child,
-      >tr.ant-table-row.ant-table-row-selected>td:first-child {
-        border-radius: 0;
-      }
-    }
-  }
-  .ant-table-thead {
-    >tr {
-      >th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
-        display: none;
-      }
-    }
+  --vxe-table-column-padding-default: var(--table-cell-padding);
+  width: 100%;
+  .vxe-table--body {
+    height: 100%;
+    width: 100%;
   }
   &.variant-primary {
     .ant-table {

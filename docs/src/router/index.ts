@@ -12,6 +12,7 @@ const InputPage = () => import('../pages/components/InputPage.vue')
 const FormPage = () => import('../pages/components/FormPage.vue')
 const CheckboxPage = () => import('../pages/components/CheckboxPage.vue')
 const DateInputPage = () => import('../pages/components/DateInputPage.vue')
+const RatingInputPage = () => import('../pages/components/RatingInputPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
 const CascadingSelectPage = () => import('../pages/components/CascadingSelectPage.vue')
 const TablePage = () => import('../pages/components/TablePage.vue')
@@ -19,6 +20,7 @@ const ListPage = () => import('../pages/components/ListPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
 const FontPage = () => import('../pages/tokens/FontPage.vue')
+const TablePerfPage = () => import('../pages/labs/TablePerfPage.vue')
 const NotFoundPage = () => import('../pages/NotFoundPage.vue')
 
 const router = createRouter({
@@ -85,6 +87,11 @@ const router = createRouter({
           component: SelectPage,
         },
         {
+          path: '/components/rating-input',
+          name: 'components-rating-input',
+          component: RatingInputPage,
+        },
+        {
           path: '/components/cascading-select',
           name: 'components-cascading-select',
           component: CascadingSelectPage,
@@ -118,6 +125,11 @@ const router = createRouter({
           path: '/about',
           name: 'about',
           component: () => AboutPage
+        },
+        {
+          path: '/labs/table-perf',
+          name: 'table-perf',
+          component: TablePerfPage
         },
         {
           path: '/404',

@@ -10,5 +10,5 @@ export default function custom (
     props: TableColumnCustomProps, ctx: { slots: any}
   ) {
     return ({text, record, index}) => h('div', {
-    }, ctx.slots.content(record))
+    }, ctx.slots && ctx.slots.content?.(record))
 }

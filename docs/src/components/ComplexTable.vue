@@ -5,44 +5,47 @@ import dayjs from 'dayjs'
 
 const columns = [
   {
+    type: 'checkbox'
+  },
+  {
     title: '序号',
     width: 70,
-    dataIndex: 'no',
+    field: 'no',
     align: 'center',
     fixed: 'left',
   },
-  { title: '姓名', dataIndex: 'name', width: 120, fixed: 'left' },
-  { title: '手机号码', dataIndex: 'phone', width: 130 },
-  { title: '呼叫', dataIndex: 'phone', width: 60 },
-  { title: '跟进', dataIndex: 'id', width: 80 },
-  { title: '客户等级', dataIndex: 'grade', width: 150 },
+  { title: '姓名', field: 'name', width: 110, fixed: 'left' },
+  { title: '手机号码', field: 'phone', width: 130 },
+  { title: '呼叫', field: 'phone', width: 60 },
+  { title: '跟进', field: 'id', width: 80 },
+  { title: '客户等级', field: 'grade', width: 150 },
   {
     title: '创建用户',
-    dataIndex: 'userId',
+    field: 'userId',
     width: 120,
   },
   {
     title: '当前跟进用户',
-    dataIndex: 'followerId',
+    field: 'followerId',
     width: 120,
   },
-  { title: '客户阶段', dataIndex: 'stage', width: 90 },
-  { title: '邀约上门时间', dataIndex: 'inviteStart', width: 200 },
-  { title: '邀约提交人员', dataIndex: 'submitUserId', width: 120 },
-  { title: '邀约提交时间', dataIndex: 'inputDate', width: 160 },
-  { title: '协助谈单人员', dataIndex: 'userIds', width: 180 },
-  { title: '是否确认', dataIndex: 'userIds', width: 120 },
-  { title: '客户人数', dataIndex: 'num', width: 120 },
-  { title: '确定上门时间', dataIndex: 'confirmStart', width: 200 },
-  { title: '确定提交人员', dataIndex: 'confirmUserId', width: 160 },
+  { title: '客户阶段', field: 'stage', width: 90 },
+  { title: '邀约上门时间', field: 'inviteStart', width: 200 },
+  { title: '邀约提交人员', field: 'submitUserId', width: 120 },
+  { title: '邀约提交时间', field: 'inputDate', width: 160 },
+  { title: '协助谈单人员', field: 'userIds', width: 180 },
+  { title: '是否确认', field: 'userIds', width: 120 },
+  { title: '客户人数', field: 'num', width: 120 },
+  { title: '确定上门时间', field: 'confirmStart', width: 200 },
+  { title: '确定提交人员', field: 'confirmUserId', width: 160 },
   {
     title: '确定提交时间',
-    dataIndex: 'confirmDate',
+    field: 'confirmDate',
     width: 160,
   },
   {
     title: '操作',
-    dataIndex: 'operation',
+    field: 'operation',
     fixed: 'right',
     width: 80,
   },
@@ -188,5 +191,10 @@ fetchTableData()
       size="xs"
       @click="onTableColumnButtonClick"
     />
+    <ns-table-column-custom match="操作">
+      <template #content="record">
+        <a href="javascript:void(0);" v-if="record.stage === '线索'">删除</a>
+      </template>
+    </ns-table-column-custom>
   </ns-table>
 </template>

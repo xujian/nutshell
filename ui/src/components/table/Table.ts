@@ -36,9 +36,12 @@ export type TableColumnSlot = VNode<RendererNode, RendererElement, {
   [key: string]: string
 }>
 
+export type TableColumnType = 'checkbox'
+
 export type TableColumnDefinition = {
+  type?: TableColumnType,
   title: string,
-  dataIndex: string,
+  field: string,
   width: number | string,
   align?: 'left' | 'right' | 'center',
   fixed?: boolean,
@@ -58,6 +61,10 @@ export const tableProps = {
    */
   columns: {
     type: Object as PropType<TableColumnDefinition[]>,
+  },
+  rowKey: {
+    type: String,
+    default: 'id'
   },
   hasNumberColumn: {
     type: Boolean,
@@ -82,8 +89,9 @@ export const NsTable = define({
     }
 
     function getCustomizedColumns () {
-      const { default: defaultSlot } = useSlots(),
-        children = defaultSlot() as TableColumnSlot[]
+      const { default: defaultSlot } = useSlots()
+      if (!defaultSlot) return []
+      const children = defaultSlot() as TableColumnSlot[]
       // 获取全体 <ns-table-column-x>
       return children.map(child => ({
         name: getColumnName(child),

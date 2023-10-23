@@ -1,7 +1,7 @@
 .ns-list {
   border-color: var(--ns-stroke);
   border-style: solid;
-  border-width: var(--ns-border-with-md);
+  border-width: 1px;
   overflow: hidden;
   .list-item {
     display: flex;
@@ -9,7 +9,7 @@
     align-items: center;
     border-bottom-color: var(--ns-stroke);
     border-bottom-style: solid;
-    border-bottom-width: var(--ns-border-with-md);
+    border-bottom-width: 1px;
     padding: 0 1em;
     &:last-child{
       border-bottom: none;
@@ -26,6 +26,8 @@
     }
     .caption {
       color: var(--ns-caption);
+      line-height: 1.5em;
+      min-height: 1.5em;
     }
   }
 }

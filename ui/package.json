@@ -1,6 +1,6 @@
 {
   "name": "@uxda/nutshell",
-  "version": "1.0.14",
+  "version": "1.0.20",
   "description": "A Vue 3 UI library base on Nutui",
   "type": "module",
   "main": "dist/index.js",
@@ -72,6 +72,7 @@
     "lodash": "^4.17.21",
     "tippy.js": "^6.3.7",
     "validator": "^13.11.0",
-    "vue-tippy": "v6"
+    "vue-tippy": "v6",
+    "vxe-table": "^4.5.13"
   }
 }

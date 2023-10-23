@@ -2,6 +2,7 @@ import { getCurrentInstance, h, App } from 'vue'
 import { CoreVendor } from '../../shared'
 import * as components from './components'
 import { dialog, confirm, toast, loading } from './services'
+import VXETable from 'vxe-table'
 
 // fallback for component not implemented
 const dummy = (name: string) => {
@@ -13,6 +14,7 @@ const dummy = (name: string) => {
 // vendor 所需要的特别处理过程
 function prepare (app: App) {
   this.app = app
+  app.use(VXETable)
 }
 
 const antdvVendor: CoreVendor = {
