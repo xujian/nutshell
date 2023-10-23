@@ -6,20 +6,12 @@ import type { MarginProps } from '../../../../utils'
 
 export const Rating = (props: RatingProps & MarginProps, ctx: SetupContext) => {
 
-  return h(AntFormItem, {
-    class: [
-      'ns-rating',
-      'ns-form-item',
-    ],
-    label: props.label,
-  },
-    () => h(AntdvRating, {
-      class: 'ns-rating-control',
-      value: props.modelValue,
-      'onUpdate:value': (value: number) => {
-        props['onUpdate:modelValue']?.(value)
-      }
-    })
-  )
+  return h(AntdvRating, {
+    class: ['ns-rating'],
+    value: props.modelValue,
+    'onUpdate:value': (value: number) => {
+      props['onUpdate:modelValue']?.(value)
+    }
+  })
 }
 // + import => ./index.ts, ../components.ts

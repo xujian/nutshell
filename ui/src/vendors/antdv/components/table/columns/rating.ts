@@ -1,4 +1,4 @@
-import { TableColumnRatingProps } from '../../../../../components'
+import { NsRating, TableColumnRatingProps } from '../../../../../components'
 import { Rate as AntdvRate } from 'ant-design-vue'
 import { h } from 'vue'
 
@@ -12,7 +12,7 @@ export default function rating (props: TableColumnRatingProps) {
   const style = [
     color && `color:${props.color}`
   ].join(' ')
-  return ({text, record, index}) => h(AntdvRate, {
+  return ({text, record, index}) => h(NsRating, {
     value: +text || 0,
     style,
   }, () => text)

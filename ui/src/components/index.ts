@@ -23,7 +23,7 @@ import { NsForm } from './form'
 import { NsInput, NsDateInput, NsMobileInput, NsIdInput } from './input'
 import { NsSelect, NsCascadingSelect, NsMultipleSelect } from './select'
 import { NsCheckbox } from './checkbox'
-import { NsRating } from './rating'
+import { NsRating, NsRatingInput } from './rating'
 import { NsRow, NsCol } from './flex'
 import { NsChip, NsChips } from './chip'
 import { NsIcon } from './icon'
@@ -47,6 +47,7 @@ const components = {
   NsCascadingSelect,
   NsCheckbox,
   NsRating,
+  NsRatingInput,
   NsRow,
   NsCol,
   NsChip,
