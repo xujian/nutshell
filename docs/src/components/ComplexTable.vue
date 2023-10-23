@@ -3,54 +3,6 @@ import { ref } from 'vue'
 import axios from 'axios'
 import dayjs from 'dayjs'
 
-const columns = [
-  {
-    type: 'checkbox'
-  },
-  {
-    title: '序号',
-    width: 70,
-    field: 'no',
-    align: 'center',
-    fixed: 'left',
-  },
-  { title: '姓名', field: 'name', width: 110, fixed: 'left' },
-  { title: '手机号码', field: 'phone', width: 130 },
-  { title: '呼叫', field: 'phone', width: 60 },
-  { title: '跟进', field: 'id', width: 80 },
-  { title: '客户等级', field: 'grade', width: 150 },
-  {
-    title: '创建用户',
-    field: 'userId',
-    width: 120,
-  },
-  {
-    title: '当前跟进用户',
-    field: 'followerId',
-    width: 120,
-  },
-  { title: '客户阶段', field: 'stage', width: 90 },
-  { title: '邀约上门时间', field: 'inviteStart', width: 200 },
-  { title: '邀约提交人员', field: 'submitUserId', width: 120 },
-  { title: '邀约提交时间', field: 'inputDate', width: 160 },
-  { title: '协助谈单人员', field: 'userIds', width: 180 },
-  { title: '是否确认', field: 'userIds', width: 120 },
-  { title: '客户人数', field: 'num', width: 120 },
-  { title: '确定上门时间', field: 'confirmStart', width: 200 },
-  { title: '确定提交人员', field: 'confirmUserId', width: 160 },
-  {
-    title: '确定提交时间',
-    field: 'confirmDate',
-    width: 160,
-  },
-  {
-    title: '操作',
-    field: 'operation',
-    fixed: 'right',
-    width: 80,
-  },
-]
-
 const tableData = ref<any[]>([])
 
 const columnsOfUserId = [
@@ -172,28 +124,43 @@ const onTableColumnButtonClick = (props: any) => {
 fetchTableData()
 </script>
 <template>
-  <ns-table :rows="tableData" :columns="columns" class="no-border">
-    <ns-table-column-icon
+  <ns-table :rows="tableData" class="no-border">
+    <ns-table-column type="checkbox" fixed="left" />
+    <ns-table-column type="number" label="序号" width="50" align="center" fixed="left" />
+    <ns-table-column field="name" label="姓名" width="110" fixed="left" />
+    <ns-table-column field="phone" label="手机号码" width="120" />
+    <ns-table-column-icon field="phone" label="呼叫" width="60"
       source="/icons/call.svg"
-      color="accent"
-      match="呼叫"
       @click="onTableColumnIconClick" />
-    <ns-table-column-chip
-      match="客户阶段"
-      :extraStyle="(model: string) => getStageStyle(model)" />
-    <ns-table-column-rating
-      color="#ff8400"
-      match="客户等级" />
     <ns-table-column-button
-      match="跟进"
+      field="id"
+      width="80"
       label="跟进"
       color="accent"
       size="xs"
       @click="onTableColumnButtonClick"
     />
-    <ns-table-column-custom match="操作">
-      <template #content="record">
-        <a href="javascript:void(0);" v-if="record.stage === '线索'">删除</a>
+    <ns-table-column-rating field="grade"
+      color="#ff8400" label="客户等级" width="150" />
+    <ns-table-column field="userId" label="创建用户" width="120" />
+    <ns-table-column field="followerId" label="当前跟进用户" width="120" />
+    <ns-table-column-chip
+      field="stage"
+      width="80"
+      label="客户阶段"
+      :extraStyle="(model: string) => getStageStyle(model)" />
+    <ns-table-column-datetime field="inviteStart" label="邀约时间" width="170" />
+    <ns-table-column field="submitUserId" label="邀约提交人员" width="180" />
+    <ns-table-column-datetime field="inputDate" label="邀约提交时间" width="170" />
+    <ns-table-column field="userIds" label="协助谈单人员" width="180" />
+    <ns-table-column field="userIds" label="是否确认" width="180" />
+    <ns-table-column field="num" label="客户人数" width="100" />
+    <ns-table-column-datetime field="confirmStart" label="确定上门时间" width="200" />
+    <ns-table-column field="confirmUserId" label="确定提交人员" width="160" />
+    <ns-table-column-datetime field="confirmDate" label="确定提交时间" width="170" />
+    <ns-table-column-custom field="id" width="100px" fixed="right">
+      <template #content="row">
+        <a href="javascript:void(0);" v-if="row.stage === '线索'">删除</a>
       </template>
     </ns-table-column-custom>
   </ns-table>

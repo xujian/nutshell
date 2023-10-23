@@ -1,16 +1,20 @@
 import { SetupContext, computed, defineComponent, h,VNode } from 'vue'
-// import { Table as AntdvTable } from 'ant-design-vue'
-import { VxeTable, VxeColumn, VxeTableSlots } from 'vxe-table'
-import { TableProps, tableProps } from '../../../../components'
+import { VxeTable, VxeColumn, VxeTableSlots, VxeColumnProps, VxeColumnPropTypes, VxeColumnSlotTypes } from 'vxe-table'
+import { TableProps, tableProps, TableColumnType } from '../../../../components'
 // import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
 import { MarginProps, marginProps } from '../../../../utils'
 
-const numberColumnConfig = {
-  title: '序号',
-  width: 40,
-  dataIndex: '__no',
-  align: 'center'
+type ColumnConfig = {
+  props: VxeColumnProps,
+  slots: {
+    default?: ({row}) => VNode
+  }
+}
+
+const columnTypeMapping: {[key: string]: VxeColumnSlotTypes} = {
+  checkbox: 'checkbox',
+  number: 'seq'
 }
 
 export const Table = (props: TableProps & MarginProps, { slots }: SetupContext) => {
@@ -24,40 +28,38 @@ export const Table = (props: TableProps & MarginProps, { slots }: SetupContext) 
    * 为 VxeTable 构造volumns
    * @param customColumns
    */
-  function buildFinalColumns (customColumns): VNode[] {
+  function buildFinalColumns (columns): VNode[] {
     const result: VNode[] = []
     for (const column of props.columns) {
-      if (!column.field) continue
-      const colummConfig = {
+      const { props } = column
+      const colummConfig: ColumnConfig = {
         props: {
-          field: column.field,
-          width: column.width,
-          title: column.title,
-          align: column.align,
-          fixed: column.fixed,
+          ...props.field && {field: props.field},
+          width: props.width,
+          title: props.label,
+          align: props.align,
+          fixed: props.fixed as VxeColumnPropTypes.Fixed,
         },
         slots: {}
       }
-      if (!column.type) {
+      if (column.type) {
+        // 输出 <vxe-column type=checkbox> 以及其他
+        const t = columnTypeMapping[column.type]
+        colummConfig.props.type = t
       }
-      const customization = customColumns.find(
-        c => c.props.match === column.title
-      )
-      if (customization) {
-        console.log('-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=', customization)
-        const predefinedColumn = columnCustomRenders[customization.name]
+      if (column.name) { // 带有name 调用 columns/之下的渲染器
+        const predefinedColumn = columnCustomRenders[column.name]
         if (predefinedColumn) {
-          const predefinedColumnRender = predefinedColumn(customization.props, {slots})
-          console.log('-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=1', predefinedColumnRender)
+          const predefinedColumnRender = predefinedColumn(props, {slots})
           colummConfig.slots = {
             // 所有 ns-table-column-xxx 都用 template 来实现
             // button/rating 使用组件库核心组件
             // 不用 VXE 提供的现成列
             default: ({row}) => h('div', {
-                class: `table-column-${customization.name}`
+                class: `table-column-${column.name}`
               },
               predefinedColumnRender({
-                text: row[column.field],
+                text: row[props.field],
                 record: row,
               })
             )
@@ -70,19 +72,11 @@ export const Table = (props: TableProps & MarginProps, { slots }: SetupContext) 
     return result
   }
 
-  let columns = buildFinalColumns(props.customColumns)
-
-  // 给原始行数据增加序号列
   const rows = computed(() => props.rows.map((row, index: number) => ({
-    ...props.hasNumberColumn && {
-      __no: index + 1
-    },
     ...row,
   })))
 
-  // 处理 checkbox 列 （构造 rowSelection 数据）
-  const hasCheckboxColumn = props.columns.some(c => c.type === 'checkbox'),
-    selected = []
+  let columns = buildFinalColumns(props.columns)
 
   return h(VxeTable, {
     class: classes,

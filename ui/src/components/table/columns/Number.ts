@@ -1,27 +1,27 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../../utils'
 import { EmitsToProps } from '../../../utils/private/helpers'
-import { TableColumnStyleDefination, useTableColumnProps } from '../../'
+import { TableColumnStyleDefination, useTableColumnProps } from '../..'
 
 const props = {
   ...useTableColumnProps(),
 }
 
-export interface TableColumnCustomEmits extends ObjectEmitsOptions {
+export interface TableColumnNumberEmits extends ObjectEmitsOptions {
   click?: () => void
 }
 
-const emits: TableColumnCustomEmits = {
+const emits: TableColumnNumberEmits = {
   click: undefined
 }
 
-export type TableColumnCustomProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnCustomEmits>
+export type TableColumnNumberProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnNumberEmits>
 
 /**
  * 自定义的表格列样式
  */
-export const NsTableColumnCustom = define({
-  name: 'NsTableColumnCustom',
+export const NsTableColumnNumber = define({
+  name: 'NsTableColumnNumber',
   props,
   emits,
   setup (props, ctx) {

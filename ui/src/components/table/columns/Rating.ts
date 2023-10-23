@@ -1,20 +1,13 @@
 import { ExtractPublicPropTypes, PropType } from 'vue'
 import { define } from '../../../utils'
 import { Color } from '../../../composables'
+import { useTableColumnProps } from '../..'
 
 const props = {
-  /**
-   * 列名
-   */
-  match: {
-    type: String,
-  },
+  ...useTableColumnProps(),
   color: {
     type: String as PropType<Color>,
   },
-  extraStyle: {
-    type: [String, Function],
-  }
 }
 
 export type TableColumnRatingProps = ExtractPublicPropTypes<typeof props>

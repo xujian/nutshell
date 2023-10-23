@@ -1,20 +1,12 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../../utils'
 import { EmitsToProps } from '../../../utils/private/helpers'
-import { TableColumnStyleDefination } from '../../../components/table'
+import { TableColumnStyleDefination, useTableColumnProps } from '../../'
 import { useButtonProps } from '../../../components/button'
 
 const props = {
-  /**
-   * 列名
-   */
-  match: {
-    type: String,
-  },
+  ...useTableColumnProps(),
   ...useButtonProps(),
-  extraStyle: {
-    type: [String, Function] as PropType<TableColumnStyleDefination>,
-  }
 }
 
 export interface TableColumnButtonEmits extends ObjectEmitsOptions {

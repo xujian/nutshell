@@ -1,22 +1,14 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../../utils'
 import { EmitsToProps } from '../../../utils/private/helpers'
-import { TableColumnStyleDefination } from '../../../components/table'
+import { TableColumnStyleDefination, useTableColumnProps } from '../..'
 import { useButtonProps } from '../../../components/button'
 
 export const props = {
-  /**
-   * 列名
-   */
-  match: {
-    type: String,
-  },
-  extraStyle: {
-    type: [String, Function] as PropType<TableColumnStyleDefination>,
-  },
+  ...useTableColumnProps(),
   format: {
     type: String,
-    default: "YYYY-MM-DD HH:mm:ss",
+    default: "YYYY-MM-DD HH:mm",
   },
 }
 

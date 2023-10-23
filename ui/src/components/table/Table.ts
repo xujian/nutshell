@@ -36,15 +36,12 @@ export type TableColumnSlot = VNode<RendererNode, RendererElement, {
   [key: string]: string
 }>
 
-export type TableColumnType = 'checkbox'
+export type TableColumnType = 'checkbox' | 'number'
 
 export type TableColumnDefinition = {
   type?: TableColumnType,
-  title: string,
-  field: string,
-  width: number | string,
-  align?: 'left' | 'right' | 'center',
-  fixed?: boolean,
+  name?: string,
+  props: TableColumnProps,
   customRender?: (options: any) => void
 }
 
@@ -60,7 +57,7 @@ export const tableProps = {
    * Columns Customization 列配置
    */
   columns: {
-    type: Object as PropType<TableColumnDefinition[]>,
+    type: Array as PropType<TableColumnDefinition[]>,
   },
   rowKey: {
     type: String,
@@ -95,6 +92,7 @@ export const NsTable = define({
       // 获取全体 <ns-table-column-x>
       return children.map(child => ({
         name: getColumnName(child),
+        type: child.props.type,
         props: child.props,
         component: child,
       }))
@@ -106,7 +104,7 @@ export const NsTable = define({
      * 并作为属性传递给 vendor 最终处理
      */
 
-    const customColumns = getCustomizedColumns()
+    const columns = getCustomizedColumns()
 
     return {
       // 只返回修改后的属性
@@ -114,7 +112,7 @@ export const NsTable = define({
       // 并作为最终 props 交给 vendor
       props: {
         // 对 customColumns 的处理在 vendors/components/table
-        customColumns,
+        columns,
       }
     }
   }

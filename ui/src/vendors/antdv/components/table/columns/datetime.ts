@@ -18,7 +18,7 @@ export default function datetime (
         })
     const formatRangedDateTime = (input: number | string): string => {
     if (!input) return ''
-    const timeValue = dayjs(+input),
+    const timeValue = dayjs(input),
       date = timeValue.format(props.format)
     return `${date}`
   }

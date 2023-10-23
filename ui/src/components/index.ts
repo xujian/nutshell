@@ -27,7 +27,7 @@ import { NsRating, NsRatingInput } from './rating'
 import { NsRow, NsCol } from './flex'
 import { NsChip, NsChips } from './chip'
 import { NsIcon } from './icon'
-import { NsTable } from './table'
+import { NsTable, NsTableColumn } from './table'
 import { NsDialog } from './dialog'
 import { NsDropdown } from './dropdown'
 import { NsTabs, NsTabsPane } from './tabs'
@@ -54,6 +54,7 @@ const components = {
   NsChips,
   NsIcon,
   NsTable,
+  NsTableColumn,
   NsDialog,
   NsDropdown,
   NsTabs,
