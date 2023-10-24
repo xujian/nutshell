@@ -52,6 +52,12 @@ const emits: TableColumnEmits = {
 
 export type TableColumnProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnEmits>
 
+export type TableColumnComponentProps = {
+  text: string,
+  record: Record<string, any>,
+  index: number
+}
+
 /**
  * 表格列
  */

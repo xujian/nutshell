@@ -56,9 +56,12 @@ export const Table = (props: TableProps & MarginProps, { slots }: SetupContext) 
             // button/rating 使用组件库核心组件
             // 不用 VXE 提供的现成列
             default: ({row}) => h('div', {
-                class: `table-column-${column.name}`
+                class: [
+                  'table-column',
+                  `table-column-${column.name}`
+                ]
               },
-              predefinedColumnRender({
+              h(predefinedColumnRender, {
                 text: row[props.field],
                 record: row,
               })

@@ -3,6 +3,7 @@ import rating from './rating'
 import button from './button'
 import icon from './icon'
 import datetime from './datetime'
+import crypto from './crypto'
 import custom from './custom'
 
 export default {
@@ -11,5 +12,6 @@ export default {
   button,
   icon,
   datetime,
+  crypto,
   custom
 }

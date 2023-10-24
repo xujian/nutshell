@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import dayjs from 'dayjs'
+import { CryptoSecret } from '@uxda/nutshell'
 
 const tableData = ref<any[]>([])
 
@@ -49,7 +50,6 @@ function fetchTableData () {
       (d: any, index: number) => ({
         ...d,
         no: index + 1,
-        phone: JSON.parse(d.phone)?.['mask'] || '',
         inviteStart: formatRangedDateTime(d.inviteStart),
         inviteEnd: formatRangedDateTime(d.inviteEnd),
         confirmStart: formatRangedDateTime(d.confirmStart),
@@ -122,13 +122,19 @@ const onTableColumnButtonClick = (props: any) => {
 }
 
 fetchTableData()
+
+const decryptPhoneNumber = async (data: CryptoSecret) => {
+  return Promise.resolve('18618477654')
+  // 调用远端接口解密手机号
+}
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border">
     <ns-table-column type="checkbox" fixed="left" />
     <ns-table-column type="number" label="序号" width="50" align="center" fixed="left" />
     <ns-table-column field="name" label="姓名" width="110" fixed="left" />
-    <ns-table-column field="phone" label="手机号码" width="120" />
+    <ns-table-column-crypto field="phone" label="手机号码" width="140"
+      @decrypt="decryptPhoneNumber" />
     <ns-table-column-icon field="phone" label="呼叫" width="60"
       source="/icons/call.svg"
       @click="onTableColumnIconClick" />
