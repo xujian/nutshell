@@ -1,7 +1,7 @@
 import { ExtractPublicPropTypes, PropType } from 'vue'
 import { define } from '../../../utils'
 import { Color } from '../../../composables'
-import { useTableColumnProps } from '../..'
+import { useTableColumnProps } from '../../table/TableColumn'
 
 const props = {
   ...useTableColumnProps(),
