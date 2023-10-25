@@ -56,7 +56,6 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-scss": "^4.0.0",
     "rollup-plugin-vue-jsx-compat": "^0.0.6",
-    "typescript": "~5.2.0",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1"
   },
@@ -71,6 +70,7 @@
     "dayjs": "^1.11.9",
     "lodash": "^4.17.21",
     "tippy.js": "^6.3.7",
+    "typescript": "5.2.2",
     "validator": "^13.11.0",
     "vue-tippy": "v6",
     "vxe-table": "^4.5.13"
