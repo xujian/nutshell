@@ -1,6 +1,8 @@
 import { DEAULT_TOAST_DURATION, ToastOptions, ToastType } from '../../../services/toast'
 
-const iconMapping: Record<ToastType, string> = {
+type NutuiToastType = 'success' | 'error' | 'none' | 'loading' | undefined
+
+const iconMapping: Record<ToastType, NutuiToastType> = {
   info: 'none',
   success: 'success',
   error: 'error',
@@ -12,7 +14,7 @@ function toast (message: string, options: ToastOptions = {}) {
   Taro['showToast']?.({
     title: message,
     duration: duration * 1000,
-    icon: iconMapping[type]
+    icon: iconMapping[type as ToastType]
   })
 }
 
