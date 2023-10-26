@@ -1,10 +1,11 @@
-import { inject, InjectionKey, App, VNode, Ref } from 'vue'
+import { inject, App, VNode } from 'vue'
 import { getVendor } from '../vendors'
 import { ConfirmOptions, DialogInstance, DialogOptions } from '../services/dialog'
 import type { ToastOptions } from '../services/toast'
 import type { LoadingOptions } from '../services/loading'
 import { SetupContext } from 'vue'
 import { VendorSymbol } from './symbols'
+import { DefineComponent } from 'vue'
 
 /**
  * Vendor 体系的设计
@@ -48,13 +49,25 @@ import { VendorSymbol } from './symbols'
  */
 
 /**
+ * 
+ */
+export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
+
+/**
+ * Vendor Function Component
+ */
+export type VendorRenderFunction = (props: any, ctx: SetupContext) => VNode
+
+export type VendorComponent = VendorRenderFunction | DefineComponent
+
+/**
  * Nutshell Core Vendor
  * 
  */
 export interface CoreVendor {
-  app: App,
-  prepare: (app) => void,
-  render (props: Record<string, any>, ctx: SetupContext, ref?: Ref): VNode,
+  app: App | null,
+  prepare: (app: App) => void,
+  render: VendorRenderFunction,
   dialog (options: DialogOptions): DialogInstance,
   confirm (message: string, onOk: () => void, options: ConfirmOptions): void,
   toast (message: string, options: ToastOptions): void,
@@ -78,7 +91,7 @@ export const useVendor= (): CoreVendor | Promise<CoreVendor> => {
   return vendor
 }
 
-export const prepareVendor= (app, vendor) => {
+export const prepareVendor= (app: App, vendor: CoreVendor) => {
   Promise.resolve(vendor).then(p => {
       p.prepare(app)
   })

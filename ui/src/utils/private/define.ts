@@ -1,17 +1,15 @@
-import { useVendor } from '../../shared'
 import { ComponentObjectPropsOptions, ComponentOptionsMixin, 
-  ComponentOptionsWithObjectProps, ComponentPropsOptions, 
-  ComputedOptions, DefineComponent, 
-  ExtractDefaultPropTypes, ExtractPropTypes, 
-  MethodOptions, EmitsOptions, SetupContext, SlotsType, ObjectEmitsOptions, RenderFunction, toRefs, PropType, defineExpose, getCurrentInstance } from 'vue'
-import { ref, h } from 'vue'
-import { defineComponent } from 'vue'
-import { EmitsToProps, Prettify } from './helpers'
-import { Ref } from 'vue'
-import { VNode } from 'vue'
+  ComponentOptionsWithObjectProps, DefineComponent, 
+  SetupContext, SlotsType, ObjectEmitsOptions, PropType,
+  Ref, ref, h, VNode,
+  defineComponent, 
+EmitsOptions,
+ComponentPropsOptions} from 'vue'
+import { EmitsToProps, ResolveProps } from './helpers'
+import { VendorRenderFunction, useVendor } from '../../shared'
+import { FunctionalComponent } from 'vue'
 
-export type VendorRenderFunction = (props: Props, ctx: SetupContext, ref?: Ref) => VNode
-
+export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
 /**
  * 通用的组件定义
  */
@@ -37,35 +35,40 @@ export type VendorRenderFunction = (props: Props, ctx: SetupContext, ref?: Ref) 
  * let TS refers only Props, Emits, Slots
  */
 export type DefineFunctionOptions<
-  PropsOptions extends ComponentObjectPropsOptions,
+  PropsOptions extends ComponentPropsOptions,
   Emits extends ObjectEmitsOptions = {},
   Slots extends SlotsType = {},
-  Props = ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>
+  Props = ResolveProps<PropsOptions, Emits>
 > = Omit<ComponentOptionsWithObjectProps<
-  PropsOptions,
-  {},
-  {},
-  {},
-  {},
-  ComponentOptionsMixin, // Mixins
-  ComponentOptionsMixin, // Extends
-  Emits,
-  string,
-  {},
-  string,
-  Slots
->, 'setup'> & {
+      PropsOptions,
+      {},
+      {},
+      {},
+      {},
+      ComponentOptionsMixin, // Mixins
+      ComponentOptionsMixin, // Extends
+      Emits,
+      string,
+      {},
+      string,
+      Slots
+    >, 'setup'
+  > & {
   // 改写 setup() 的定义
   setup: (
     this: void,
-    props: Props,
+    props: Props & MarginProps,
     ctx: SetupContext<Emits, Slots>
-  ) => { 
+  ) => {
     props?: Partial<Props>,
     methods?: Record<string, any>,
     vendorRef?: Ref,
   }
 }
+
+// export type DefineFunction = (
+//   options: DefineFunctionOptions
+// ) => DefineComponent
 
 /**
  * 传给 vendor 的属性里加了一些字段
@@ -102,13 +105,13 @@ const buildClasses = (props: any): string[] => {
  */
 export function define<
   /** 组件属性的定义 */
-  PropsOptions extends Readonly<ComponentObjectPropsOptions>,
+  PropsOptions extends ComponentPropsOptions,
   /** 组件事件的定义 */
   Emits extends ObjectEmitsOptions, 
   /** 组件 SLOT 的定义 */
   Slots extends SlotsType = {},
   // 从 PropsOptions 抽取组件的实际属性
-  Props = ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>
+  Props = ResolveProps<PropsOptions, Emits>
 > (
   options: DefineFunctionOptions<PropsOptions, Emits, Slots>,
 ) {
@@ -122,7 +125,7 @@ export function define<
   const setup = function (
       this: void,
       props: Props & MarginProps,
-      ctx: SetupContext<Emits, Slots>
+      ctx: Omit<SetupContext<Emits, Slots>, 'expose'>
     ) {
     // the real setup
     const { setup: setupOriginal } = options
@@ -130,7 +133,8 @@ export function define<
     const { props: extraProps, methods, vendorRef } = setupOriginal(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
-    const render = ref<VendorRenderFunction>((props: Props, ctx: SetupContext) => h('div'))
+    const render: Ref<FunctionalComponent<Props, EmitsOptions, any>>
+      = ref((props: Props, ctx: Omit<SetupContext, 'expose'>) => h('div'))
 
     if (v instanceof Promise) {
       v.then((vendor) => {
@@ -140,8 +144,9 @@ export function define<
       render.value = v.render.bind(v)
     }
 
-    const vm = getCurrentInstance() as any
-    vm.render = () => h(render.value, {
+    // const vm = getCurrentInstance() as any
+    // vm.render = () => h(render.value, {
+    return () => h(render.value, {
       ...props,
       ...extraProps,
       ...options.emits,
@@ -150,26 +155,25 @@ export function define<
     }, defaultSlot)
   }
 
-  const optionsSythesized = {
-    inheritAttrs: true,
-    name: options.name,
-    props: options.props,
-    setup
-  }
-
   /**
    * 用 Vue 原生的 defineComponent()
+   * 使用 override (5)
    */
   return defineComponent<
-    PropsOptions & MarginProps,
+    PropsOptions,
     {}, // RawBindings,
     {}, // D
     {}, // C
     {}, // M
     ComponentOptionsMixin,
     ComponentOptionsMixin,
-    Emits,
-    string,
+    Emits, // E extends EmitsOptions = {}, 
+    string, // EE extends string = string, 
     Slots
-  >(optionsSythesized)
+  >({
+    inheritAttrs: true,
+    name: options.name,
+    props: options.props,
+    setup
+  })
 }
