@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "outDir": "dist",
     "removeComments": false,
+    "strict": true,
     "declarationMap": true,
     "baseUrl": ".",
     "jsx": "preserve",

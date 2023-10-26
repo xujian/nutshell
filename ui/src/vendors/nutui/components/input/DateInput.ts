@@ -1,8 +1,8 @@
-import { h, ref } from 'vue'
+import { DefineComponent, h, ref } from 'vue'
 import { defineComponent } from 'vue'
 
 // 这是一个复合组件
-export const DateInput = defineComponent({
+export const DateInput: DefineComponent = defineComponent({
   name: 'DateInput',
   setup: (props, ctx) => {
     const classes = [

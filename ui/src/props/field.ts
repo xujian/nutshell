@@ -51,38 +51,43 @@ export type PropsWithLabel = {
   label: StringConstructor,
 }
 
-export type FormatRuleFunction = (rules: ValidationRule[] | undefined, props: PropsWithLabel) => FullValidationRule[]
+export type FormatRuleFunction = (
+  rules: ValidationRule[] | undefined,
+  props: PropsWithLabel
+) => FullValidationRule[]
 
 export const formatRules: FormatRuleFunction = (rules, props) => {
   if (!rules) return []
   if (!Array.isArray(rules)) return []
-  return rules.map(rule => {
+  const result: FullValidationRule[] = []
+  rules.forEach(rule => {
     if (typeof rule === 'string' && quickValidationMethods.includes(rule)) {
       const method = quickRuleMapping[rule]
-      return {
+      result.push({
         name: rule, 
         method,
         message: rule === 'required'
           ? `请输入${props.label}`
           : '格式错误',
         trigger: 'blur'
-      }
+      })
     }
     if (typeof rule === 'function') {
-      return {
+      result.push({
         name: 'function',
         method: rule, 
         message: '格式错误',
         trigger: 'blur'
-      }
+      })
     }
     if (typeof rule === 'object') {
-      return {
+      result.push({
         ...rule,
         name: 'custom',
-      }
+      })
     }
   })
+  return result
 }
 
 /**

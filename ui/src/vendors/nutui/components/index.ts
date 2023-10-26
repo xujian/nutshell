@@ -16,3 +16,5 @@ const components: Record<string, VendorComponent> = {
   Icon,
   Select,
 }
+
+export default components

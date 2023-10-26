@@ -1,8 +1,10 @@
 import { defineComponent, h } from 'vue'
 import { DialogProps, dialogProps } from '../../../../components/dialog'
 import { Modal as AntdvModal } from 'ant-design-vue'
+import { Color } from '../../../../composables'
+import { LegacyButtonType } from 'ant-design-vue/es/button/buttonTypes'
 
-const buttonTypesMap = {
+const buttonTypesMap: Record<string, LegacyButtonType> = {
   negtive: 'danger'
 }
 

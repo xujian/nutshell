@@ -1,4 +1,4 @@
-import { NsChip, TableColumnChipProps } from '../../../../../components'
+import { NsChip, TableColumnChipProps, TableColumnComponentProps } from '../../../../../components'
 import { h } from 'vue'
 
 /**
@@ -8,7 +8,7 @@ import { h } from 'vue'
  */
 export default function chip (props: TableColumnChipProps) {
   const style = props.extraStyle
-  return ({text, record, index}) => h(NsChip, {
+  return ({text, record, index}: TableColumnComponentProps) => h(NsChip, {
     label: text as string,
     ...style && {
         style: typeof style === 'string'

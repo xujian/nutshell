@@ -1,4 +1,4 @@
-import { NsIcon, TableColumnIconEmits, TableColumnIconProps } from '../../../../../components'
+import { NsIcon, TableColumnComponentProps, TableColumnIconEmits, TableColumnIconProps } from '../../../../../components'
 import { h } from 'vue'
 
 /**
@@ -9,7 +9,7 @@ import { h } from 'vue'
 export default function icon (
     props: TableColumnIconProps,
   ) {
-  return ({text, record, index}) => h(NsIcon, {
+  return ({text, record, index}: TableColumnComponentProps) => h(NsIcon, {
     source: props.source,
     color: props.color,
     onClick: () => {

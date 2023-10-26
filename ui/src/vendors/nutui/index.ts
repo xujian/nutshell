@@ -1,7 +1,7 @@
 import { getCurrentInstance, h, App } from 'vue'
 import { CoreVendor } from '../../shared'
 import { dialog, toast, loading } from './services'
-import * as components from './components'
+import components from './components'
 import { ConfirmOptions } from '../../../src/services/dialog'
 
 const makeDummy = (name: string) => {
@@ -15,18 +15,15 @@ const dummy = (name: string) => {
   }, `NS-${name} 尚未实现`)
 }
 
-// vendor 所需要的特别处理过程
-function prepare (app: App) {
-  this.app = app
-  // app.use(ConfigProvider)
-}
-
 const nutuiVendor: CoreVendor = {
   app: null,
-  prepare,
+  prepare (app: App) {
+    this.app = app
+    // app.use(ConfigProvider)
+  },
   render (props, ctx) {
-    const { parent } = getCurrentInstance()
-    const name = parent.type.name.slice(2) //.toLowerCase() // NsButton -> Button
+    const { parent } = getCurrentInstance()!
+    const name = parent?.type?.name?.slice(2)! //.toLowerCase() // NsButton -> Button
     const component = components[name] || makeDummy(name)
     const { slots } = ctx
     return h(component, props, slots.default)
