@@ -8,6 +8,9 @@ import { ref, h } from 'vue'
 import { defineComponent } from 'vue'
 import { EmitsToProps, Prettify } from './helpers'
 import { Ref } from 'vue'
+import { VNode } from 'vue'
+
+export type VendorRenderFunction = (props: Props, ctx: SetupContext, ref?: Ref) => VNode
 
 /**
  * 通用的组件定义
@@ -37,7 +40,7 @@ export type DefineFunctionOptions<
   PropsOptions extends ComponentObjectPropsOptions,
   Emits extends ObjectEmitsOptions = {},
   Slots extends SlotsType = {},
-  Props = Prettify<Readonly<ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>>>
+  Props = ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>
 > = Omit<ComponentOptionsWithObjectProps<
   PropsOptions,
   {},
@@ -53,7 +56,7 @@ export type DefineFunctionOptions<
   Slots
 >, 'setup'> & {
   // 改写 setup() 的定义
-  setup?: (
+  setup: (
     this: void,
     props: Props,
     ctx: SetupContext<Emits, Slots>
@@ -105,9 +108,9 @@ export function define<
   /** 组件 SLOT 的定义 */
   Slots extends SlotsType = {},
   // 从 PropsOptions 抽取组件的实际属性
-  // Props = Prettify<Readonly<ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>>>
+  Props = ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>
 > (
-  options: DefineFunctionOptions<PropsOptions & MarginProps, Emits, Slots>,
+  options: DefineFunctionOptions<PropsOptions, Emits, Slots>,
 ) {
   /*
    * 底层代码的所有努力，都是为了铺陈组件的时候
@@ -118,7 +121,7 @@ export function define<
    */
   const setup = function (
       this: void,
-      props,
+      props: Props & MarginProps,
       ctx: SetupContext<Emits, Slots>
     ) {
     // the real setup
@@ -127,7 +130,7 @@ export function define<
     const { props: extraProps, methods, vendorRef } = setupOriginal(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
-    const render = ref((props, ctx) => h('div'))
+    const render = ref<VendorRenderFunction>((props: Props, ctx: SetupContext) => h('div'))
 
     if (v instanceof Promise) {
       v.then((vendor) => {
@@ -136,10 +139,6 @@ export function define<
     } else {
       render.value = v.render.bind(v)
     }
-  
-    // defineExpose({
-    //   ...methods
-    // })
 
     const vm = getCurrentInstance() as any
     vm.render = () => h(render.value, {
@@ -149,10 +148,6 @@ export function define<
       classes: buildClasses(props),
       vendorRef,
     }, defaultSlot)
-
-    return {
-      ...methods,
-    }
   }
 
   const optionsSythesized = {
