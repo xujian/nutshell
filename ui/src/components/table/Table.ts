@@ -1,5 +1,5 @@
 import { ExtractPublicPropTypes, PropType, VNode, RendererNode, RendererElement,
-  computed, ref, toRefs, useSlots } from 'vue'
+  useSlots } from 'vue'
 import { define } from '../../utils'
 
 /**
@@ -81,7 +81,8 @@ export const NsTable = define({
   setup (props: TableProps, ctx) {
 
     function getColumnName (slot: TableColumnSlot) {
-      const functionName = slot.type['name']
+      const slotType = slot.type as any,
+        functionName = slotType.name
       return functionName.slice('NsTableColumn'.length).toLowerCase()
     }
 
@@ -92,7 +93,7 @@ export const NsTable = define({
       // 获取全体 <ns-table-column-x>
       return children.map(child => ({
         name: getColumnName(child),
-        type: child.props.type,
+        type: child.props?.type,
         props: child.props,
         component: child,
       }))

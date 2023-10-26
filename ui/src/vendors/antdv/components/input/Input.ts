@@ -26,7 +26,7 @@ export const Input = defineComponent({
   setup: (props, ctx) => {
     const classes = [
       'ns-input',
-      ...props.classes
+      ...props.classes || []
     ]
 
     const rules = transformRules(props.rules as FullValidationRule[])
@@ -35,7 +35,7 @@ export const Input = defineComponent({
       h(AntFormItem, {
         class: [
           'ns-form-item',
-          ...props.classes,
+          ...props.classes || [],
           props.variant ? `variant-${props.variant}` : '',
         ],
         label: props.label,

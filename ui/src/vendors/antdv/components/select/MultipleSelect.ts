@@ -3,6 +3,7 @@ import { defineComponent, h } from 'vue'
 import { Select as AntSelect, FormItem as AntFormItem } from 'ant-design-vue'
 import { transformRules } from '../input/rules'
 import { FullValidationRule } from '../../../../props/field'
+import { SelectValue } from 'ant-design-vue/es/select'
 
 export const MultipleSelect = defineComponent({
   name: 'AntdvMultipleSelect',
@@ -32,8 +33,8 @@ export const MultipleSelect = defineComponent({
         allowClear: clearable,
         showSearch: searchable,
         value: props.modelValue,
-        'onUpdate:value': (value: string[]) => {
-          props['onUpdate:modelValue']?.(value)
+        'onUpdate:value': (value: SelectValue) => {
+          props['onUpdate:modelValue']?.(value as string[])
         },
         popupClassName: 'ns-select-dropdown'
       })

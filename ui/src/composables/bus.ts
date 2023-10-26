@@ -69,6 +69,6 @@ export function createBus (): BusInstance {
 }
 
 export function useBus () {
-  const bus = inject(BusSymbol)
+  const bus = inject(BusSymbol)!
   return bus
 }

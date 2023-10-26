@@ -1,5 +1,6 @@
 import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define } from '../../utils'
+import { Color } from '../../composables/theme'
 
 export const ratingProps = {
   label: {
@@ -10,6 +11,9 @@ export const ratingProps = {
   },
   'onUpdate:modelValue': {
     type: Function as PropType<(value: number | string) => void>
+  },
+  color: {
+    type: String as PropType<Color>,
   }
 }
 

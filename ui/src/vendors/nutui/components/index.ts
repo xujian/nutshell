@@ -4,8 +4,9 @@ import { Row, Col } from './flex'
 import { Chip } from './chip'
 import { Icon } from './icon'
 import { Select } from './select'
+import { VendorComponent } from '../../../shared'
 
-export {
+const components: Record<string, VendorComponent> = {
   Button,
   Input,
   DateInput,

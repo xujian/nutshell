@@ -21,17 +21,17 @@ export const dialogProps = {
 }
 
 export interface DialogEmits extends ObjectEmitsOptions {
-  'update:modelValue'?: (value: boolean) => void,
-  show?: () => void,
-  hide?: () => void,
-  close?: () => void,
+  'update:modelValue': (value: boolean) => void,
+  show: () => void,
+  hide: () => void,
+  close: () => void,
 }
 
 const dialogEmits: DialogEmits = {
-  'update:modelValue': undefined,
-  'show': undefined,
-  'hide': undefined,
-  'close': undefined,
+  'update:modelValue': (value: boolean) => void 0,
+  'show': () => void 0,
+  'hide': () => void 0,
+  'close': () => void 0,
 }
 
 export interface DialogSlots extends SlotsType {

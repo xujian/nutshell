@@ -13,11 +13,11 @@ export const props = {
 }
 
 export interface TableColumnDatetimeEmits extends ObjectEmitsOptions {
-  click?: () => void
+  click: () => void
 }
 
 const emits: TableColumnDatetimeEmits = {
-  click: undefined
+  click: () => void 0
 }
 
 export type TableColumnDatetimeProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnDatetimeEmits>

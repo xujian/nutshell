@@ -3,6 +3,7 @@ import { defineComponent, h } from 'vue'
 import { Cascader as AntCascader, FormItem as AntFormItem } from 'ant-design-vue'
 import { transformRules } from '../input/rules'
 import { FullValidationRule } from '../../../../props/field'
+import { ValueType } from 'ant-design-vue/es/vc-cascader/Cascader'
 
 export const CascadingSelect = defineComponent({
   name: 'AntdvCascadingSelect',
@@ -32,8 +33,8 @@ export const CascadingSelect = defineComponent({
         allowClear: clearable,
         showSearch: searchable,
         value: props.modelValue,
-        'onUpdate:value': (value: string[]) => {
-          props['onUpdate:modelValue']?.(value)
+        'onUpdate:value': (value: ValueType) => {
+          props['onUpdate:modelValue']?.(value as string[])
         },
         popupClassName: 'ns-select-dropdown'
       })

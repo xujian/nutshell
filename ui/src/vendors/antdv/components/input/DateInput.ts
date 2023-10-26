@@ -28,9 +28,9 @@ export const DateInput = defineComponent({
       visible.value = false
     }
     const rules = transformRules(props.rules as FullValidationRule[])
-    const value: Ref<Dayjs> = computed<Dayjs>(() => props.modelValue
+    const value: Ref<string | Dayjs | undefined> = computed(() => props.modelValue
         ? dayjs(props.modelValue) || dayjs()
-        : null
+        : undefined
       )
 
     return () => h(AntFormItem, {
@@ -45,11 +45,10 @@ export const DateInput = defineComponent({
         placeholder: props.placeholder,
         locale,
         value: value.value,
-        'onUpdate:value': (value: Dayjs) => {
-          console.log('<><><><><', value)
+        'onUpdate:value': (value: string | Dayjs) => {
           const val = value === null
             ? ''
-            : value.format('YYYY-MM-DD')
+            : (typeof value === 'string' ? dayjs(value) : value).format('YYYY-MM-DD')
           props['onUpdate:modelValue']?.(val)
         },
         disabledDate: props.disabledDate,

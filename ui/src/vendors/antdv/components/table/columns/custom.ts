@@ -1,4 +1,4 @@
-import { TableColumnCustomEmits, TableColumnCustomProps } from '../../../../../components'
+import { TableColumnComponentProps, TableColumnCustomProps } from '../../../../../components'
 import { h } from 'vue'
 
 /**
@@ -9,6 +9,6 @@ import { h } from 'vue'
 export default function custom (
     props: TableColumnCustomProps, ctx: { slots: any}
   ) {
-    return ({text, record, index}) => h('div', {
+    return ({text, record, index}: TableColumnComponentProps) => h('div', {
     }, ctx.slots && ctx.slots.content?.(record))
 }

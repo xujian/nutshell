@@ -2,7 +2,7 @@ import { Directive, App } from 'vue'
 import VueTippy from 'vue-tippy'
 import { DollarNutshell } from '../../framework'
 
-function getPositionClass(modifiers) {
+function getPositionClass(modifiers: any) {
   if (modifiers.top) {
       return 'top'
   } else if (modifiers.bottom) {

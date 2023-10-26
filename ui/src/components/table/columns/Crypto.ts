@@ -19,11 +19,11 @@ const props = {
 }
 
 export interface TableColumnCryptoEmits extends ObjectEmitsOptions {
-  decrypted?: () => void
+  decrypted: () => void
 }
 
 const emits: TableColumnCryptoEmits = {
-  decrypted: undefined
+  decrypted: () => void 0
 }
 
 export type TableColumnCryptoProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnCryptoEmits>

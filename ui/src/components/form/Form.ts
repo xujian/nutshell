@@ -35,10 +35,10 @@ export const NsForm = define({
   props: formProps,
   emits,
   setup (props, ctx) {
-    const vendorRef = ref(null)
+    const vendorRef = ref()
 
     function validate (): boolean {
-      return vendorRef.value.validate()
+      return !!vendorRef.value && vendorRef.value.validate()
     }
 
     return {
@@ -51,4 +51,3 @@ export const NsForm = define({
     }
   }
 })
-// 需要增加 import 到 ./index.ts, ../components.ts

@@ -38,7 +38,7 @@ const buttonProps = {
 }
 
 export interface ButtonEmits extends ObjectEmitsOptions {
-  click?: () => void
+  click: () => void
 }
 
 const emits = {

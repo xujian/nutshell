@@ -72,7 +72,7 @@ export const NsCard = defineComponent({
 
     const body = () => h('div', {
       class: 'card-body flex-grow'
-    }, slots.default())
+    }, slots.default?.())
 
     return () => h('div', {
       class: classes

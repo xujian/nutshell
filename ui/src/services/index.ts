@@ -5,7 +5,7 @@ import loading from './loading'
 import { DollarNutshell } from '../framework'
 
 export type Service = {
-  install (app: App, $n: DollarNutshell)
+  install (app: App, $n: DollarNutshell): void
 }
 
 const services: Service[] = [

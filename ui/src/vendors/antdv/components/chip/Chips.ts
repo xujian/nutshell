@@ -1,4 +1,4 @@
-import { h, SetupContext } from 'vue'
+import { FunctionalComponent, h, SetupContext } from 'vue'
 import { FormItem as AntFormItem } from 'ant-design-vue'
 import { ChipsProps, NsChip } from '../../../../components'
 import { LabelValuePair } from '../../../../shared/models'
@@ -22,17 +22,15 @@ export const Chips = (props: ChipsProps, ctx: SetupContext) => {
       'ns-form-item',
     ],
     label: props.label,
-  }, () => options.map(o => h(NsChip, {
-      class: [
-        ...props.modelValue.includes(o.value)
-          ? ['selected']
-          : []
-      ],
-      color: props.modelValue.includes(o.value) ? 'primary' : 'neutral',
-      variant: props.modelValue.includes(o.value) ? '' : 'outlined',
-      onClick: () => onItemClick(o),
-      label: o.label,
-    }))
+  }, () => options.map(o => {
+      const on = props.modelValue && props.modelValue.includes(o.value)
+      return h(NsChip, {
+        class: on ? ['selected'] : [],
+        color: on ? 'primary' : 'neutral',
+        label: o.label,
+        onClick: () => onItemClick(o),
+      }, null)
+    })
   )
 }
 // + import => ./index.ts, ../components.ts

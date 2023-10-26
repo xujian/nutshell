@@ -78,8 +78,8 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
     }
     if (typeof rule === 'object') {
       return {
+        ...rule,
         name: 'custom',
-        ...rule
       }
     }
   })

@@ -37,7 +37,7 @@ export const dropdownProps = {
 }
 
 export interface DropdownEmits extends ObjectEmitsOptions {
-  click?: () => void
+  click: () => void
 }
 
 const emits = {

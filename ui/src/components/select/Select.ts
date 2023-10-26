@@ -40,7 +40,7 @@ export const selectProps = {
 export type SelectProps = ExtractPublicPropTypes<typeof selectProps>
 
 export interface SelectEmits extends ObjectEmitsOptions {
-  change?: (value: string | number) => void
+  change: (value: string | number) => void
 }
 
 const emits: SelectEmits = {

@@ -5,28 +5,28 @@ import { EmitsToProps } from '../../../utils/private/helpers'
 import { useTableColumnProps } from '../../table/TableColumn'
 import { useIconProps } from '../../../components/icon'
 
-const props = {
+const iconProps = {
   ...useTableColumnProps(),
   ...useIconProps(),
 }
 
 export interface TableColumnIconEmits extends ObjectEmitsOptions {
-  click?: () => void
+  click: () => void
 }
 
-const emits: TableColumnIconEmits = {
-  click: undefined
+const iconEmits: TableColumnIconEmits = {
+  click: () => void 0
 }
 
-export type TableColumnIconProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnIconEmits>
+export type TableColumnIconProps = ExtractPublicPropTypes<typeof iconProps> & EmitsToProps<TableColumnIconEmits>
 
 /**
  * 自定义的表格列: 单个图标
  */
 export const NsTableColumnIcon = define({
   name: 'NsTableColumnIcon',
-  props,
-  emits,
+  iconProps,
+  iconEmits,
   setup (props, ctx) {
     return {
     }

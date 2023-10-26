@@ -6,11 +6,6 @@ import { useFieldProps } from '../../props'
 import { Dayjs } from 'dayjs'
 
 export const dateInputProps = {
-  label: {
-    type: String,
-    required: false,
-    default: ''
-  },
   modelValue: {
     type: String,
     default: '',
@@ -25,7 +20,7 @@ export const dateInputProps = {
 }
 
 export interface DateInputEmits extends ObjectEmitsOptions {
-  change?: (value: string | number) => void
+  change: (value: string | number) => void
 }
 
 const emits = {

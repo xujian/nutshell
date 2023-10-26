@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { NsButton, TableColumnDatetimeEmits, TableColumnDatetimeProps, props as defaultProps } from '../../../../../components'
+import { TableColumnComponentProps, TableColumnDatetimeProps, props as defaultProps } from '../../../../../components'
 import { h } from 'vue'
 
 /**
@@ -22,7 +22,7 @@ export default function datetime (
       date = timeValue.format(props.format)
     return `${date}`
   }
-  return ({text, record, index}) => h('div', {
+  return ({text, record, index}: TableColumnComponentProps) => h('div', {
     class: ['number', 'datetime'],
   }, formatRangedDateTime(text))
 }

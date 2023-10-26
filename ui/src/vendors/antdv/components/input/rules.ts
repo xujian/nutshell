@@ -1,9 +1,10 @@
+import { Rule } from 'ant-design-vue/es/form'
 import { FullValidationRule } from '../../../../props/field'
 
 export const transformRules = (rules: FullValidationRule[]) => {
   // 标准校验格式转换为 Antdv 格式
   if (!rules) return []
-  const result = []
+  const result: Rule[] = []
   rules.forEach(r => {
     if (r.name === 'required') {
       result.push({

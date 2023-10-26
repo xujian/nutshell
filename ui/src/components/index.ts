@@ -10,12 +10,12 @@ export * from './chip'
 export * from './icon'
 export * from './dialog'
 export * from './dropdown'
-// move table to the last for
-// table uses other basic components
-export * from './table'
 export * from './tabs'
 export * from './card'
 export * from './list'
+// move table to the last for
+// table uses other basic components
+export * from './table'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -27,12 +27,12 @@ import { NsRating, NsRatingInput } from './rating'
 import { NsRow, NsCol } from './flex'
 import { NsChip, NsChips } from './chip'
 import { NsIcon } from './icon'
-import { NsTable, NsTableColumn } from './table'
 import { NsDialog } from './dialog'
 import { NsDropdown } from './dropdown'
 import { NsTabs, NsTabsPane } from './tabs'
 import { NsCard, NsCardTitle } from './card'
 import { NsList } from './list'
+import { NsTable, NsTableColumn } from './table'
 
 const components = {
   NsApp,
@@ -53,7 +53,6 @@ const components = {
   NsChip,
   NsChips,
   NsIcon,
-  NsTable,
   NsTableColumn,
   NsDialog,
   NsDropdown,
@@ -61,7 +60,8 @@ const components = {
   NsTabsPane,
   NsCard,
   NsCardTitle,
-  NsList
+  NsList,
+  NsTable,
 }
 
 export default components

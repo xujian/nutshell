@@ -26,11 +26,11 @@ const props = {
 }
 
 export interface IconEmits extends ObjectEmitsOptions {
-  click?: () => void
+  click: () => void
 }
 
 const emits: IconEmits = {
-  click: undefined
+  click: () => void 0
 }
 
 export type IconProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<IconEmits>

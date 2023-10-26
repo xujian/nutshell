@@ -47,10 +47,10 @@ export const inputProps = {
 }
 
 export interface InputEmits extends ObjectEmitsOptions {
-  change?: (value: string | number) => void
+  change: (value: string | number) => void
 }
 
-const emits = {
+const inputEmits = {
   change: (value: string | number) => {}
 }
 
@@ -62,9 +62,9 @@ export type InputProps = ExtractPublicPropTypes<typeof inputProps>
 export const NsInput = define({
     name: 'NsInput',
     props: inputProps,
-    emits,
+    inputEmits,
     setup (props, ctx) {
-      const finalRules = formatRules(props.rules as ValidationRule[], props as PropsWithLabel)
+      const finalRules = formatRules(props.rules as ValidationRule[], props)
       return {
         props: {
           name: props.name,

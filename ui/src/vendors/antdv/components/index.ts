@@ -8,8 +8,9 @@ import { Select, CascadingSelect, MultipleSelect } from './select'
 import { Dropdown } from './dropdown'
 import { Tabs } from './tabs'
 import { Chips } from './chip'
+import { VendorComponent } from '../../../shared'
 
-export {
+const components: Record<string, VendorComponent>  = {
   Form,
   Input,
   DateInput,
@@ -26,3 +27,5 @@ export {
   CheckboxGroup,
   Chips
 }
+
+export default components

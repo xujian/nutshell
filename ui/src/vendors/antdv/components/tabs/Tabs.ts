@@ -9,7 +9,7 @@ export const Tabs = (props: TabsProps, { emit }: SetupContext) => {
     type: props.variant === 'card' ? 'card' : 'line',
     activeKey: props.modelValue,
     'onUpdate:activeKey': (value) => emit('update:modelValue', value)
-  }, () => props.items.map(
+  }, () => props.items?.map(
       item => h(AntdvTabPane, {
         class: 'na-tabs-pane',
         tab: item.label,

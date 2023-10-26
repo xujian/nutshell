@@ -1,7 +1,8 @@
-import { h } from 'vue'
+import { h, SetupContext } from 'vue'
 import type { ColProps } from '../../../../components'
+import { VendorRenderFunction } from '../../../../shared'
 
-export const Col = (props: ColProps, ctx) => {
+export const Col: VendorRenderFunction = (props: ColProps, ctx: SetupContext) => {
   const { align, justify, span, gutter } = props
   const { slots } = ctx
   const classes = [

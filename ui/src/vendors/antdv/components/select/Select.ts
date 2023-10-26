@@ -3,6 +3,7 @@ import { defineComponent, h } from 'vue'
 import { Select as AntSelect, FormItem as AntFormItem } from 'ant-design-vue'
 import { transformRules } from '../input/rules'
 import { FullValidationRule } from '../../../../props/field'
+import { SelectValue } from 'ant-design-vue/es/select'
 
 export const Select = defineComponent({
   name: 'AntdvSelect',
@@ -35,10 +36,10 @@ export const Select = defineComponent({
         allowClear: clearable,
         showSearch: searchable,
         value: props.modelValue,
-        'onUpdate:value': (value: number | string) => {
-          props['onUpdate:modelValue']?.(value)
+        'onUpdate:value': (value: SelectValue) => {
+          props['onUpdate:modelValue']?.(value as string | number)
         },
-        'onChange': (value: string) => {
+        'onChange': (value: SelectValue) => {
           emit('change', value)
         },
         placeholder: props.placeholder,

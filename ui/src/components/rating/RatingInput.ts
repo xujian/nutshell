@@ -13,7 +13,7 @@ export const ratingInputProps = {
   }
 }
 
-export type RatingInputProps = ExtractPublicPropTypes<typeof ratingProps>
+export type RatingInputProps = ExtractPublicPropTypes<typeof ratingInputProps>
 
 export interface RatingInputEmits extends ObjectEmitsOptions {
 }
