@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import dayjs from 'dayjs'
-import { CryptoSecret } from '@uxda/nutshell'
+import type { CryptoSecret } from '@uxda/nutshell'
 
 const tableData = ref<any[]>([])
 
@@ -130,7 +130,7 @@ const decryptPhoneNumber = async (data: CryptoSecret) => {
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border">
-    <ns-table-column type="checkbox" fixed="left" />
+    <ns-table-column class="" type="checkbox" fixed="left" />
     <ns-table-column type="number" label="序号" width="50" align="center" fixed="left" />
     <ns-table-column field="name" label="姓名" width="110" fixed="left" />
     <ns-table-column-crypto field="phone" label="手机号码" width="140"

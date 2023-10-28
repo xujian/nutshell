@@ -40,8 +40,8 @@ export interface DropdownEmits extends ObjectEmitsOptions {
   click: () => void
 }
 
-const emits = {
-  click: undefined
+const emits: DropdownEmits = {
+  click: () => void 0
 }
 
 export type DropdownProps = ExtractPublicPropTypes<typeof dropdownProps>

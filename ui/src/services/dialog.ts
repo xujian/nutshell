@@ -1,13 +1,14 @@
 import { h, inject, ref, App } from 'vue'
 import { VendorSymbol } from '../shared/symbols'
 import { DollarNutshell } from '../framework'
+import { Color } from '../composables'
 
 export type DialogOptions = {
   title?: string,
   message?: string,
   okText?: string,
   cancelText?: string,
-  okColor?: string
+  okColor?: Color
 }
 
 export type ConfirmOptions = {
@@ -15,7 +16,7 @@ export type ConfirmOptions = {
   message?: string,
   okText?: string,
   cancelText?: string,
-  okColor?: string
+  okColor?: Color
 }
 
 export type DialogInstance = {

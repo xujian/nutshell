@@ -98,7 +98,9 @@ type MixinToOptionTypes<T> = T extends ComponentOptionsBase<infer P, infer B, in
 type ExtractMixin<T> = {
     Mixin: MixinToOptionTypes<T>;
 }[T extends ComponentOptionsMixin ? 'Mixin' : never];
-type IntersectionMixin<T> = IsDefaultMixinComponent<T> extends true ? OptionTypesType : UnionToIntersection<ExtractMixin<T>>;
+type IntersectionMixin<T> = IsDefaultMixinComponent<T> extends true
+  ? OptionTypesType 
+  : UnionToIntersection<ExtractMixin<T>>;
 type UnwrapMixinsType<T, Type extends OptionTypesKeys> = T extends OptionTypesType ? T[Type] : never;
 type EnsureNonVoid<T> = T extends void ? {} : T;
 type ComponentPublicInstanceConstructor<T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>, Props = any, RawBindings = any, D = any, C extends ComputedOptions = ComputedOptions, M extends MethodOptions = MethodOptions> = {
@@ -589,7 +591,16 @@ export interface ComponentOptionsBase<
   I extends ComponentInjectOptions = {}, 
   II extends string = string, S extends SlotsType = {}
 > extends LegacyOptions<Props, D, C, M, Mixin, Extends, I, II>, ComponentInternalOptions, ComponentCustomOptions {
-    setup?: (this: void, props: LooseRequired<Props & Prettify<UnwrapMixinsType<IntersectionMixin<Mixin> & IntersectionMixin<Extends>, 'P'>>>, ctx: SetupContext<E, S>) => Promise<RawBindings> | RawBindings | RenderFunction | void;
+    setup?: (
+      this: void, 
+      props: LooseRequired<
+        Props & Prettify<
+          UnwrapMixinsType<
+            IntersectionMixin<Mixin> & IntersectionMixin<Extends>, 'P'
+          >
+        >
+      >,
+      ctx: SetupContext<E, S>) => Promise<RawBindings> | RawBindings | RenderFunction | void;
     name?: string;
     template?: string | object;
     render?: Function;

@@ -12,12 +12,24 @@ export interface DimensionProps {
 }
 
 export const useDimensionProps = buildProps({
-  height: [Number, String],
-  maxHeight: [Number, String],
-  maxWidth: [Number, String],
-  minHeight: [Number, String],
-  minWidth: [Number, String],
-  width: [Number, String],
+  height: {
+    type: [Number, String],
+  },
+  maxHeight: {
+    type: [Number, String],
+  },
+  maxWidth: {
+    type: [Number, String],
+  },
+  minHeight: {
+    type: [Number, String],
+  },
+  minWidth: {
+    type: [Number, String],
+  },
+  width: {
+    type: [Number, String],
+  },
 })
 
 export function useDimension (props: DimensionProps) {

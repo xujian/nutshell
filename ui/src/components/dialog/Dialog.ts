@@ -1,7 +1,8 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
+import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType, SlotsType } from 'vue'
 import { define } from '../../utils'
 import { useDimensionProps, useModelValuePropsForBoolean } from '../../props'
 import { EmitsToProps } from '../../utils/private/helpers'
+import { Color } from '../../composables/theme'
 
 export const dialogProps = {
   title: {
@@ -11,7 +12,7 @@ export const dialogProps = {
     type: String,
   },
   okColor: {
-    type: String,
+    type: String as PropType<Color>,
   },
   cancelText: {
     type: String
@@ -38,7 +39,7 @@ export interface DialogSlots extends SlotsType {
   default: never,
 }
 
-export type DialogProps = ExtractPublicPropTypes<typeof dialogProps> & EmitsToProps<DialogEmits>
+export type DialogProps = ExtractPublicPropTypes<typeof dialogProps> & Partial<EmitsToProps<DialogEmits>>
 
 /**
  * NsDialog 弹窗组件

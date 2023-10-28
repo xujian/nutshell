@@ -3,11 +3,10 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   SetupContext, SlotsType, ObjectEmitsOptions, PropType,
   Ref, ref, h, VNode,
   defineComponent, 
-EmitsOptions,
+EmitsOptions, FunctionalComponent,
 ComponentPropsOptions} from 'vue'
-import { EmitsToProps, ResolveProps } from './helpers'
+import { EmitsToProps, PropsFromOptions, ResolveProps } from './helpers'
 import { VendorRenderFunction, useVendor } from '../../shared'
-import { FunctionalComponent } from 'vue'
 
 export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
 /**
@@ -34,35 +33,52 @@ export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
  * define() 所需要的参数
  * let TS refers only Props, Emits, Slots
  */
+// export type DefineFunctionOptions<
+//   PropsOptions extends ComponentPropsOptions,
+//   Emits extends ObjectEmitsOptions = {},
+//   Slots extends SlotsType = {},
+//   Props = ResolveProps<PropsOptions, Emits>
+// > = Omit<ComponentOptionsWithObjectProps<
+//       PropsOptions,
+//       {},
+//       {},
+//       {},
+//       {},
+//       ComponentOptionsMixin, // Mixins
+//       ComponentOptionsMixin, // Extends
+//       Emits,
+//       string,
+//       {},
+//       string,
+//       Slots
+//     >, 'setup'
+//   > & {
+//   // 改写 setup() 的定义
+//   setup: (
+//     this: void,
+//     props: Props & MarginProps,
+//     ctx: SetupContext<Emits, Slots>
+//   ) => {
+//     props?: Partial<Props>,
+//     methods?: Record<string, any>,
+//     vendorRef?: Ref,
+//   }
+// }
+
 export type DefineFunctionOptions<
-  PropsOptions extends ComponentPropsOptions,
+  PropsOptions extends ComponentObjectPropsOptions,
   Emits extends ObjectEmitsOptions = {},
   Slots extends SlotsType = {},
-  Props = ResolveProps<PropsOptions, Emits>
-> = Omit<ComponentOptionsWithObjectProps<
-      PropsOptions,
-      {},
-      {},
-      {},
-      {},
-      ComponentOptionsMixin, // Mixins
-      ComponentOptionsMixin, // Extends
-      Emits,
-      string,
-      {},
-      string,
-      Slots
-    >, 'setup'
-  > & {
-  // 改写 setup() 的定义
-  setup: (
-    this: void,
-    props: Props & MarginProps,
-    ctx: SetupContext<Emits, Slots>
-  ) => {
+  Props = PropsFromOptions<PropsOptions, Emits>
+> = {
+  name: string,
+  props: PropsOptions,
+  emits?: Emits,
+  slots?: Slots,
+  setup: (props: Props, ctx: SetupContext) => {
     props?: Partial<Props>,
     methods?: Record<string, any>,
-    vendorRef?: Ref,
+    vendorRef?: Ref
   }
 }
 
@@ -81,8 +97,10 @@ export type MarginProps = {
 export type WithMarginProps<T = {}> = T & MarginProps
 
 export const marginProps = {
-  classes: Array as PropType<String[]>,
-  default: []
+  classes: {
+    type: Array as PropType<String[]>,
+    default: []
+  }
 }
 
 const buildClasses = (props: any): string[] => {
@@ -105,13 +123,13 @@ const buildClasses = (props: any): string[] => {
  */
 export function define<
   /** 组件属性的定义 */
-  PropsOptions extends ComponentPropsOptions,
+  PropsOptions extends ComponentObjectPropsOptions,
   /** 组件事件的定义 */
   Emits extends ObjectEmitsOptions, 
   /** 组件 SLOT 的定义 */
   Slots extends SlotsType = {},
   // 从 PropsOptions 抽取组件的实际属性
-  Props = ResolveProps<PropsOptions, Emits>
+  Props = PropsFromOptions<PropsOptions, Emits>
 > (
   options: DefineFunctionOptions<PropsOptions, Emits, Slots>,
 ) {
@@ -124,7 +142,7 @@ export function define<
    */
   const setup = function (
       this: void,
-      props: Props & MarginProps,
+      props: Props,
       ctx: Omit<SetupContext<Emits, Slots>, 'expose'>
     ) {
     // the real setup
@@ -155,25 +173,31 @@ export function define<
     }, defaultSlot)
   }
 
+  const optionsSyth: ComponentOptionsWithObjectProps<
+    PropsOptions, {}, {}, {}, {}, 
+    ComponentOptionsMixin, ComponentOptionsMixin,
+    Emits, string, {}, string, Slots
+  > = {
+    inheritAttrs: true,
+    name: options.name,
+    props: options.props,
+    setup,
+  }
+
   /**
    * 用 Vue 原生的 defineComponent()
    * 使用 override (5)
    */
   return defineComponent<
     PropsOptions,
-    {}, // RawBindings,
-    {}, // D
-    {}, // C
-    {}, // M
-    ComponentOptionsMixin,
-    ComponentOptionsMixin,
+    {}, 
+    {}, 
+    {}, 
+    {},
+    ComponentOptionsMixin, ComponentOptionsMixin,
     Emits, // E extends EmitsOptions = {}, 
     string, // EE extends string = string, 
-    Slots
-  >({
-    inheritAttrs: true,
-    name: options.name,
-    props: options.props,
-    setup
-  })
+    Slots,
+    {}, string
+  >(optionsSyth)
 }

@@ -1,6 +1,8 @@
 import { ComponentObjectPropsOptions, ComponentPropsOptions, EmitsOptions, ExtractPropTypes, ObjectEmitsOptions } from 'vue'
 
-
+export type LooseRequired<T> = {
+  [P in keyof (T & Required<T>)]: T[P];
+};
 export type Prettify<T> = { [K in keyof T]: T[K] } & {}
 
 export type EmitsToProps<T extends EmitsOptions> = T extends string[]
@@ -21,6 +23,21 @@ export type EmitsToProps<T extends EmitsOptions> = T extends string[]
     : {};
 
 export type ResolveProps<
-  PropsOrPropOptions, 
-  E extends ObjectEmitsOptions
-> = Readonly<ExtractPropTypes<PropsOrPropOptions>> & ({} extends E ? {} : EmitsToProps<E>);
+  PropsOptions, 
+  Emits extends ObjectEmitsOptions
+> = LooseRequired<
+      ExtractPropTypes<PropsOptions>
+    > & (
+      {} extends Emits
+        ? {}
+        : Partial<EmitsToProps<Emits>>
+    )
+
+export type PropsFromOptions<PropsOptions, Emits extends EmitsOptions> =
+  LooseRequired<
+    Prettify<
+      Readonly<
+        ExtractPropTypes<PropsOptions> & EmitsToProps<Emits>
+      >
+    >
+  >
