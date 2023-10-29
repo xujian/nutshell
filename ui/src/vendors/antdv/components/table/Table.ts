@@ -1,5 +1,5 @@
 import { SetupContext, computed, defineComponent, h,VNode } from 'vue'
-import { VxeTable, VxeColumn, VxeTableSlots, VxeColumnProps, VxeColumnPropTypes, VxeColumnSlotTypes } from 'vxe-table'
+import { VxeTable, VxeColumn, VxeTableSlots, VxeColumnProps, VxeColumnPropTypes } from 'vxe-table'
 import { TableProps, tableProps, TableColumnType } from '../../../../components'
 // import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
@@ -8,16 +8,16 @@ import { MarginProps, marginProps } from '../../../../utils'
 type ColumnConfig = {
   props: VxeColumnProps,
   slots: {
-    default?: ({row}) => VNode
+    default?: ({row}: {row: any}) => VNode
   }
 }
 
-const columnTypeMapping: {[key: string]: VxeColumnSlotTypes} = {
+const columnTypeMapping: {[key: string]: VxeColumnPropTypes.Type} = {
   checkbox: 'checkbox',
   number: 'seq'
 }
 
-export const Table = (props: TableProps & MarginProps, { slots }: SetupContext) => {
+export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
 
   const classes = [
     'ns-table', 
@@ -28,9 +28,9 @@ export const Table = (props: TableProps & MarginProps, { slots }: SetupContext) 
    * 为 VxeTable 构造volumns
    * @param customColumns
    */
-  function buildFinalColumns (columns): VNode[] {
+  function buildFinalColumns (): VNode[] {
     const result: VNode[] = []
-    for (const column of props.columns) {
+    for (const column of props.columns!) {
       const { props } = column
       const colummConfig: ColumnConfig = {
         props: {
@@ -50,7 +50,7 @@ export const Table = (props: TableProps & MarginProps, { slots }: SetupContext) 
       if (column.name) { // 带有name 调用 columns/之下的渲染器
         const predefinedColumn = columnCustomRenders[column.name]
         if (predefinedColumn) {
-          const predefinedColumnRender = predefinedColumn(props, {slots})
+          const predefinedColumnRender = predefinedColumn(props, ctx)
           colummConfig.slots = {
             // 所有 ns-table-column-xxx 都用 template 来实现
             // button/rating 使用组件库核心组件
@@ -63,8 +63,8 @@ export const Table = (props: TableProps & MarginProps, { slots }: SetupContext) 
               },
               h(predefinedColumnRender, {
                 text: row[props.field],
-                record: row,
-              })
+                record: row
+              }, ctx.slots)
             )
           }
         }
@@ -75,11 +75,11 @@ export const Table = (props: TableProps & MarginProps, { slots }: SetupContext) 
     return result
   }
 
-  const rows = computed(() => props.rows.map((row, index: number) => ({
+  const rows = computed(() => props?.rows?.map((row, index: number) => ({
     ...row,
   })))
 
-  let columns = buildFinalColumns(props.columns)
+  let columns = buildFinalColumns()
 
   return h(VxeTable, {
     class: classes,

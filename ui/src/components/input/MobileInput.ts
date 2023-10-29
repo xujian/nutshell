@@ -1,8 +1,8 @@
 import { h } from 'vue'
-import { InputProps, NsInput } from './Input'
+import { InputProps, InputType, NsInput } from './Input'
 
-const defaultProps = {
-  type: 'numeric',
+const defaultProps: Partial<InputProps> = {
+  type: 'number',
   maxlength: 11,
   rules: ['mobile']
 }

@@ -1,10 +1,11 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
+import { DefineComponent, ExtractPublicPropTypes, ObjectEmitsOptions, PropType, RendererElement, RendererNode, SetupContext, VNode } from 'vue'
 import { define } from '../../utils'
 import { EmitsToProps } from '../../utils/private/helpers'
 import { TableColumnStyleDefination } from '../../components/table'
 
 export type NsTableColumnType = 'normal' | 'number' | 'checkbox'
 export type NsTableColumnAlign = 'left' | 'center' | 'right'
+export type NsTableColumnFixed = 'left' | 'right'
 
 export const useTableColumnProps = () => ({
   /**
@@ -25,6 +26,10 @@ export const useTableColumnProps = () => ({
   align: {
     type: String as PropType<NsTableColumnAlign>,
     default: 'center'
+  },
+  fixed: {
+    type: String as PropType<NsTableColumnFixed>,
+    default: 'left'
   },
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
@@ -55,8 +60,13 @@ export type TableColumnProps = ExtractPublicPropTypes<typeof props> & EmitsToPro
 export type TableColumnComponentProps = {
   text: string,
   record: Record<string, any>,
-  index: number
+  index?: number
 }
+
+export type CustomColumnFunctionalRender = ({ text, record, index }: TableColumnComponentProps) => VNode<RendererNode, RendererElement>
+
+export type CustomColumnRender =
+  (props: TableColumnProps, ctx?: SetupContext) => CustomColumnFunctionalRender | DefineComponent<TableColumnComponentProps>
 
 /**
  * 表格列

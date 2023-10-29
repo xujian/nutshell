@@ -4,7 +4,7 @@ import { EmitsToProps } from '../../../utils/private/helpers'
 import { TableColumnStyleDefination, useTableColumnProps } from '../..'
 import { useButtonProps } from '../../../components/button'
 
-export const props = {
+export const props: Record<string, any> = {
   ...useTableColumnProps(),
   format: {
     type: String,

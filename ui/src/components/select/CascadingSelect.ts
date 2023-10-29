@@ -53,7 +53,7 @@ export const NsCascadingSelect = define({
   name: 'NsCascadingSelect',
   props: cascadingSelectProps,
   setup (props, ctx) {
-    const rules = formatRules(props.rules as ValidationRule[], props as PropsWithLabel)
+    const rules = formatRules(props.rules as ValidationRule[], props)
     return {
       props: {
         rules

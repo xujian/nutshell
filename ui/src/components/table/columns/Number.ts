@@ -8,11 +8,11 @@ const props = {
 }
 
 export interface TableColumnNumberEmits extends ObjectEmitsOptions {
-  click?: () => void
+  click: () => void
 }
 
 const emits: TableColumnNumberEmits = {
-  click: undefined
+  click: () => void 0
 }
 
 export type TableColumnNumberProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnNumberEmits>

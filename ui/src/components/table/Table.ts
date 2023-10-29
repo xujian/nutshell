@@ -1,6 +1,8 @@
 import { ExtractPublicPropTypes, PropType, VNode, RendererNode, RendererElement,
   useSlots } from 'vue'
 import { define } from '../../utils'
+import { EmitsToProps } from 'src/utils/private/helpers'
+import { TableColumnEmits, TableColumnProps } from './TableColumn'
 
 /**
  * 填充表格的数据
@@ -39,8 +41,8 @@ export type TableColumnSlot = VNode<RendererNode, RendererElement, {
 export type TableColumnType = 'checkbox' | 'number'
 
 export type TableColumnDefinition = {
-  type?: TableColumnType,
   name?: string,
+  type?: TableColumnType,
   props: TableColumnProps,
   customRender?: (options: any) => void
 }
@@ -78,9 +80,9 @@ export type TableProps = ExtractPublicPropTypes<typeof tableProps>
 export const NsTable = define({
   name: 'NsTable',
   props: tableProps,
-  setup (props: TableProps, ctx) {
+  setup (props, ctx) {
 
-    function getColumnName (slot: TableColumnSlot) {
+    function getColumnName (slot: TableColumnSlot): string {
       const slotType = slot.type as any,
         functionName = slotType.name
       return functionName.slice('NsTableColumn'.length).toLowerCase()
@@ -93,8 +95,8 @@ export const NsTable = define({
       // 获取全体 <ns-table-column-x>
       return children.map(child => ({
         name: getColumnName(child),
-        type: child.props?.type,
-        props: child.props,
+        type: child.props?.type as TableColumnType,
+        props: child.props as never as TableColumnProps,
         component: child,
       }))
     }

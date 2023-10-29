@@ -14,7 +14,7 @@ const sizeMapping: Record<Size, ButtonSize> = {
   xl: 'large'
 }
 
-const getSize = (size: Size): ButtonSize => {
+const getSize = (size?: Size): ButtonSize => {
   if (!size) return 'normal'
   return sizeMapping[size]
 }

@@ -3,7 +3,7 @@ import { define } from '../../../utils'
 import { Size } from '../../../props/size'
 import { EmitsToProps } from '../../../utils/private/helpers'
 import { useTableColumnProps } from '../../table/TableColumn'
-import { useIconProps } from '../../../components/icon'
+import { IconProps, useIconProps } from '../../../components/icon'
 
 const iconProps = {
   ...useTableColumnProps(),
@@ -25,8 +25,8 @@ export type TableColumnIconProps = ExtractPublicPropTypes<typeof iconProps> & Em
  */
 export const NsTableColumnIcon = define({
   name: 'NsTableColumnIcon',
-  iconProps,
-  iconEmits,
+  props: iconProps,
+  emits: iconEmits,
   setup (props, ctx) {
     return {
     }

@@ -11,7 +11,7 @@ const buttonTypesMap: Record<string, LegacyButtonType> = {
 export const Dialog = defineComponent({
   name: 'AntdvDialogVendor',
   props: dialogProps,
-  setup (props: DialogProps, ctx) {
+  setup (props, ctx) {
     const classes = [
       'ns-dialog',
     ].join(' ')

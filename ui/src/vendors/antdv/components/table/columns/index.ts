@@ -5,8 +5,12 @@ import icon from './icon'
 import datetime from './datetime'
 import crypto from './crypto'
 import custom from './custom'
+import { DefineComponent, VNode } from 'vue'
+import { CustomColumnRender } from '../../../../../components/table/TableColumn'
 
-export default {
+
+
+const columnCustomRenders: Record<string, CustomColumnRender> = {
   chip,
   rating,
   button,
@@ -15,3 +19,5 @@ export default {
   crypto,
   custom
 }
+
+export default columnCustomRenders

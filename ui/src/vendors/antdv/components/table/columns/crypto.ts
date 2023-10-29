@@ -1,5 +1,5 @@
-import { defineComponent, h, ref, Fragment } from 'vue'
-import { TableColumnCryptoProps } from '../../../../../components'
+import { defineComponent, h, ref, Fragment, PropType, SetupContext } from 'vue'
+import { CryptoSecret, TableColumnComponentProps, TableColumnCryptoProps } from '../../../../../components'
 
 /**
  * Table custom column: button
@@ -19,13 +19,13 @@ export default function crypto (
         type: String,
       },
       record: {
-        type: Object,
+        type: Object as PropType<CryptoSecret>,
       },
       index: {
         type: Number
       }
     },
-    setup: (props, ctx) => {
+    setup: (props, ctx: SetupContext) => {
       if (!props.text) return () => ''
       let data: Record<string, string> = {}
       try {
@@ -42,6 +42,7 @@ export default function crypto (
         class: [`icon-${state.value}`],
         onClick () {
           if (!attrs.onDecrypt) return
+          if (!props.record) return
           if (state.value === 'masked') {
             attrs.onDecrypt.call(null, props.record).then((answer: string) => {
               if (answer) {

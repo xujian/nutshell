@@ -48,7 +48,7 @@ export type ValidationRule = FullValidationRule | FunctionValidationMethod | Qui
 
 export type PropsWithLabel = {
   [x: string]: any,
-  label: StringConstructor,
+  label?: string,
 }
 
 export type FormatRuleFunction = (

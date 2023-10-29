@@ -6,6 +6,7 @@ import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from './rules'
 import type { MarginProps } from '../../../../utils'
 import { marginProps } from '../../../../utils'
+import { VendorComponent } from 'src/shared'
 
 export type AntInputType = 
   'number' | 'button' | 'time' | 'reset' | 'submit' 

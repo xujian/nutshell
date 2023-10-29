@@ -33,7 +33,7 @@ export type ResolveProps<
         : Partial<EmitsToProps<Emits>>
     )
 
-export type PropsFromOptions<PropsOptions, Emits extends EmitsOptions> =
+export type ExtractProps<PropsOptions, Emits extends EmitsOptions> =
   LooseRequired<
     Prettify<
       Readonly<

@@ -18,7 +18,7 @@ export default function button (
     onClick: () => {
       const value = text,
         row = record
-      props.onClick({value, row})
+      props.onClick?.({value, row})
     }
   }, () => text)
 }

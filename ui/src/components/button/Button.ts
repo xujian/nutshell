@@ -4,6 +4,7 @@ import { define } from '../../utils'
 import { useDimensionProps } from '../../props'
 import { buildProps } from '../../utils/private/props'
 import { Color } from '../../composables/theme'
+import { EmitsToProps } from 'src/utils/private/helpers'
 
 export const useButtonProps = () => ({
   /**
@@ -49,7 +50,7 @@ export interface ButtonSlots extends SlotsType {
   default: never,
 }
 
-export type ButtonProps = ExtractPublicPropTypes<typeof buttonProps>
+export type ButtonProps = ExtractPublicPropTypes<typeof buttonProps> & EmitsToProps<ButtonEmits>
 
 /**
  * 通用按钮组件 <ns-button>

@@ -45,7 +45,7 @@ export const NsMultipleSelect = define({
   name: 'NsMultipleSelect',
   props: multipleSelectProps,
   setup (props, ctx) {
-    const rules = formatRules(props.rules as ValidationRule[], props as PropsWithLabel)
+    const rules = formatRules(props.rules as ValidationRule[], props)
     return {
       props: {
         rules

@@ -25,7 +25,7 @@ export const Dropdown = defineComponent({
           console.log('---------NsDropdown, menu onClick', item)
           emit('change', item)
         }
-      }, () => props.items.map(item => h(AntdvMenuItem, {
+      }, () => props?.items?.map(item => h(AntdvMenuItem, {
           key: item.value,
         }, () => item.label)
       ))

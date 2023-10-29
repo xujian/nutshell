@@ -5,7 +5,7 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   defineComponent, 
 EmitsOptions, FunctionalComponent,
 ComponentPropsOptions} from 'vue'
-import { EmitsToProps, PropsFromOptions, ResolveProps } from './helpers'
+import { EmitsToProps, ExtractProps, ResolveProps } from './helpers'
 import { VendorRenderFunction, useVendor } from '../../shared'
 
 export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
@@ -69,7 +69,7 @@ export type DefineFunctionOptions<
   PropsOptions extends ComponentObjectPropsOptions,
   Emits extends ObjectEmitsOptions = {},
   Slots extends SlotsType = {},
-  Props = PropsFromOptions<PropsOptions, Emits>
+  Props = ExtractProps<PropsOptions, Emits>
 > = {
   name: string,
   props: PropsOptions,
@@ -129,7 +129,7 @@ export function define<
   /** 组件 SLOT 的定义 */
   Slots extends SlotsType = {},
   // 从 PropsOptions 抽取组件的实际属性
-  Props = PropsFromOptions<PropsOptions, Emits>
+  Props = ExtractProps<PropsOptions, Emits>
 > (
   options: DefineFunctionOptions<PropsOptions, Emits, Slots>,
 ) {

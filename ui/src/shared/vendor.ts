@@ -91,7 +91,7 @@ export const useVendor= (): CoreVendor | Promise<CoreVendor> => {
   return vendor
 }
 
-export const prepareVendor= (app: App, vendor: CoreVendor) => {
+export const prepareVendor= (app: App, vendor: CoreVendor | Promise<CoreVendor>) => {
   Promise.resolve(vendor).then(p => {
       p.prepare(app)
   })
