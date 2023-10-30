@@ -1,4 +1,4 @@
-import { App, ComponentPublicInstance, InjectionKey, reactive, inject } from 'vue'
+import { App, InjectionKey, inject } from 'vue'
 import { createTheme } from './composables/theme'
 import { VendorSymbol } from './shared/symbols'
 import { createVendor, prepareVendor } from './shared'

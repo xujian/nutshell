@@ -4,7 +4,9 @@ export * from './composables'
 export * from './directives'
 export * from './shared/models'
 
-const Taro = {}
+const Taro = {
+  showToast (options: any) {}
+}
 
 export {
   Taro

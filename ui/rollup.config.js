@@ -34,7 +34,7 @@ const NutTypeResolver = (name) => {
     const dir = name.slice(3, -4).toLowerCase()  //NutButtonType => button/type
     return {
       name: NutButtonType,
-      from: `@nutui/nutui/dist/types/__VUE/${dir}/type`,
+      from: `@nutui/nutui/dist/types/__VUE/${dir}`,
     }
   }
 }
@@ -95,7 +95,7 @@ export default [
         },
         resolvers: [
           NutResolver,
-          NutTypeResolver,
+          // NutTypeResolver,
           PsuedoTaroResolver
         ]
       }),
