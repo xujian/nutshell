@@ -1,7 +1,7 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../../utils'
 import { EmitsToProps } from '../../../utils/private/helpers'
-import { TableColumnStyleDefination, useTableColumnProps } from '../..'
+import { useTableColumnProps } from '../TableColumn'
 import { useButtonProps } from '../../../components/button'
 
 export const props: Record<string, any> = {
