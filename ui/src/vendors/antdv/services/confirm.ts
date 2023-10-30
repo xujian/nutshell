@@ -3,10 +3,11 @@ import { createApp } from 'vue'
 import { App } from 'vue'
 import { ConfirmOptions, DialogOptions } from '../../../services/dialog'
 import { NsDialog } from '../../../components'
+import { CoreVendor } from 'src/shared'
 
 
 
-function confirm (message: string, onOk: () => void, options?: ConfirmOptions, ) {
+function confirm (this: CoreVendor, message: string, onOk: () => void, options?: ConfirmOptions) {
   const container = document.createElement('div')
   document.body.appendChild(container)
   const visible = ref(true)
@@ -34,8 +35,10 @@ function confirm (message: string, onOk: () => void, options?: ConfirmOptions, )
       }, message)
     })
   })
-  dialog.config.globalProperties = this.app.config.globalProperties
-  Object.assign(dialog._context, this.app._context)
+  if (this.app) {
+    dialog.config.globalProperties = this.app.config.globalProperties
+    Object.assign(dialog._context, this.app._context)
+  }
   const vm = dialog.mount(container)
 
   const hide = () => {

@@ -1,6 +1,6 @@
-import { getCurrentInstance, h, App } from 'vue'
-import { CoreVendor } from '../../shared'
-import * as components from './components'
+import { getCurrentInstance, h, App, FunctionalComponent } from 'vue'
+import { CoreVendor, VendorComponent } from '../../shared'
+import components from './components'
 import { dialog, confirm, toast, loading } from './services'
 import VXETable from 'vxe-table'
 
@@ -11,21 +11,20 @@ const dummy = (name: string) => {
   }, `NS-${name} 尚未实现`)
 }
 
-// vendor 所需要的特别处理过程
-function prepare (app: App) {
-  this.app = app
-  app.use(VXETable)
-}
-
 const antdvVendor: CoreVendor = {
   app: null,
-  prepare,
+  prepare (app: App) {
+    this.app = app
+    app.use(VXETable)
+  },
   render (props: any, ctx) {
-    const { parent } = getCurrentInstance()
-    const name = parent.type.name.slice(2)
-    let component = components[name]
+    const { parent } = getCurrentInstance() as any
+    const name = parent.type.name.slice(2) as keyof typeof components
+    let component = components[name] as FunctionalComponent
     if (!component) {
-      return this.fallback.render(props, ctx)
+      if (this.fallback) {
+        return this.fallback.render(props, ctx)
+      }
     }
     return h(component, {...props}, ctx.slots)
   },

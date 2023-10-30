@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import { App } from 'vue'
 import { DialogOptions } from '../../../services/dialog'
 import { NsDialog } from '../../../components'
+import { CoreVendor } from '../../../shared/vendor'
 
 
 function createDialog (options: DialogOptions, app: App) {
@@ -34,8 +35,8 @@ function createDialog (options: DialogOptions, app: App) {
 }
 
 
-function dialog (options: DialogOptions) {
-  const instance = createDialog(options, this.app)
+function dialog (this: CoreVendor, options: DialogOptions) {
+  const instance = createDialog(options, this.app!)
   const hide = () => {
     },
     destory = () => {
