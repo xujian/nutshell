@@ -4,7 +4,7 @@ import { define } from '../../utils'
 import { useDimensionProps } from '../../props'
 import { buildProps } from '../../utils/private/props'
 import { Color } from '../../composables/theme'
-import { EmitsToProps } from 'src/utils/private/helpers'
+import { EmitsToProps } from '../../utils/private/helpers'
 
 export const useButtonProps = () => ({
   /**

@@ -2,7 +2,7 @@ import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../utils'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { FullValidationRule, PropsWithLabel, ValidationRule, formatRules } from '../../props/field'
-import { EmitsToProps } from 'src/utils/private/helpers'
+import { EmitsToProps } from '../../utils/private/helpers'
 
 /**
  * 输入框类型

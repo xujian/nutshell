@@ -1,7 +1,7 @@
 import { ExtractPublicPropTypes, PropType, VNode, RendererNode, RendererElement,
   useSlots } from 'vue'
 import { define } from '../../utils'
-import { EmitsToProps } from 'src/utils/private/helpers'
+import { EmitsToProps } from '../../utils/private/helpers'
 import { TableColumnEmits, TableColumnProps } from './TableColumn'
 
 /**
