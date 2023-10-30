@@ -1,4 +1,4 @@
-import { NsButton, TableColumnButtonProps, TableColumnComponentProps } from '../../../../../components'
+import { NsButton, TableColumnButtonProps, TableColumnData } from '../../../../../components'
 import { h } from 'vue'
 
 /**
@@ -11,14 +11,12 @@ export default function button (
   ) {
   // TableColumnButton 内部还是一个NsButtton
   // 需要传递出 click 事件
-  return ({text, record, index}: TableColumnComponentProps) => h(NsButton, {
+  return ({value, row, index}: TableColumnData) => h(NsButton, {
     label: props.label,
     size: props.size || 'sm',
     color: 'primary',
     onClick: () => {
-      const value = text,
-        row = record
-      props.onClick?.({value, row})
+      props.onClick?.({value, row, index})
     }
-  }, () => text)
+  }, () => value)
 }

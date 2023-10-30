@@ -1,9 +1,9 @@
-import { SetupContext, computed, defineComponent, h,VNode } from 'vue'
-import { VxeTable, VxeColumn, VxeTableSlots, VxeColumnProps, VxeColumnPropTypes } from 'vxe-table'
-import { TableProps, tableProps, TableColumnType } from '../../../../components'
+import { SetupContext, computed, h,VNode } from 'vue'
+import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes } from 'vxe-table'
+import { TableProps } from '../../../../components'
 // import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
-import { MarginProps, marginProps } from '../../../../utils'
+import { MarginProps } from '../../../../utils'
 
 type ColumnConfig = {
   props: VxeColumnProps,
@@ -55,15 +55,15 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
             // 所有 ns-table-column-xxx 都用 template 来实现
             // button/rating 使用组件库核心组件
             // 不用 VXE 提供的现成列
-            default: ({row}) => h('div', {
+            default: ({row}: {row: Record<string, any>}) => h('div', {
                 class: [
                   'table-column',
                   `table-column-${column.name}`
                 ]
               },
               h(predefinedColumnRender, {
-                text: row[props.field],
-                record: row
+                value: row[props.field!] as string,
+                row
               }, ctx.slots)
             )
           }

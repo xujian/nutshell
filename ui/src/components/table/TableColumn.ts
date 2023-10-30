@@ -48,25 +48,25 @@ const props = {
 }
 
 export interface TableColumnEmits extends ObjectEmitsOptions {
-  click: () => void
+  click: ({value, row, index}: TableColumnData) => void
 }
 
 const emits: TableColumnEmits = {
-  click: () => void 0
+  click: ({value, row, index}: TableColumnData) => void 0
 }
 
 export type TableColumnProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnEmits>
 
-export type TableColumnComponentProps = {
-  text: string,
-  record: Record<string, any>,
+export type TableColumnData = {
+  value: string,
+  row: Record<string, any>,
   index?: number
 }
 
-export type CustomColumnFunctionalRender = ({ text, record, index }: TableColumnComponentProps) => VNode<RendererNode, RendererElement>
+export type CustomColumnFunctionalRender = ({ value, row, index }: TableColumnData) => VNode<RendererNode, RendererElement>
 
 export type CustomColumnRender =
-  (props: TableColumnProps, ctx?: SetupContext) => CustomColumnFunctionalRender | DefineComponent<TableColumnComponentProps>
+  (props: TableColumnProps, ctx?: SetupContext) => CustomColumnFunctionalRender | DefineComponent<TableColumnData>
 
 /**
  * 表格列

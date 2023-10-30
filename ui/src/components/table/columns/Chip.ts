@@ -3,7 +3,7 @@ import { define } from '../../../utils'
 import { useChipProps } from '../../../components/chip'
 import { useTableColumnProps } from '../TableColumn'
 
-export type TableColumnStyleGetter = (value: string, record: Record<string, any>) => string 
+export type TableColumnStyleGetter = (value: string, row: Record<string, any>) => string 
 
 export type TableColumnStyleDefination = 
   string | TableColumnStyleGetter

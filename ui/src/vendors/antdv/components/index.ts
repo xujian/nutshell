@@ -10,7 +10,7 @@ import { Tabs } from './tabs'
 import { Chips } from './chip'
 import { VendorComponent } from '../../../shared'
 
-const components: Record<string, VendorComponent>  = {
+const components = {
   Form,
   Input,
   DateInput,

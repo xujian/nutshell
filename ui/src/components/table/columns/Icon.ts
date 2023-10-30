@@ -2,7 +2,7 @@ import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../../utils'
 import { Size } from '../../../props/size'
 import { EmitsToProps } from '../../../utils/private/helpers'
-import { useTableColumnProps } from '../../table/TableColumn'
+import { TableColumnData, useTableColumnProps } from '../../table/TableColumn'
 import { IconProps, useIconProps } from '../../../components/icon'
 
 const iconProps = {
@@ -11,11 +11,11 @@ const iconProps = {
 }
 
 export interface TableColumnIconEmits extends ObjectEmitsOptions {
-  click: () => void
+  click: ({value, row, index}: TableColumnData) => void
 }
 
 const iconEmits: TableColumnIconEmits = {
-  click: () => void 0
+  click: ({value, row, index}: TableColumnData) => void 0
 }
 
 export type TableColumnIconProps = ExtractPublicPropTypes<typeof iconProps> & EmitsToProps<TableColumnIconEmits>

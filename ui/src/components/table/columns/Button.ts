@@ -1,7 +1,7 @@
 import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../../utils'
 import { EmitsToProps } from '../../../utils/private/helpers'
-import { useTableColumnProps } from '../../table/TableColumn'
+import { TableColumnData, useTableColumnProps } from '../../table/TableColumn'
 import { useButtonProps } from '../../../components/button'
 
 const props = {
@@ -10,11 +10,11 @@ const props = {
 }
 
 export interface TableColumnButtonEmits extends ObjectEmitsOptions {
-  click: () => void
+  click: ({value, row, index}: TableColumnData) => void
 }
 
 const emits: TableColumnButtonEmits = {
-  click: () => void 0
+  click: ({value, row, index}: TableColumnData) => void 0
 }
 
 export type TableColumnButtonProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnButtonEmits>

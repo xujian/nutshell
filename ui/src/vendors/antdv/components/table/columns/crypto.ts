@@ -1,5 +1,5 @@
-import { defineComponent, h, ref, Fragment, PropType, SetupContext } from 'vue'
-import { CryptoSecret, TableColumnComponentProps, TableColumnCryptoProps } from '../../../../../components'
+import { defineComponent, h, ref, Fragment, PropType, SetupContext, VNode } from 'vue'
+import { CryptoSecret, CustomColumnFunctionalRender, CustomColumnRender, TableColumnCryptoProps, TableColumnData, TableColumnProps } from '../../../../../components'
 
 /**
  * Table custom column: button
@@ -13,23 +13,12 @@ export default function crypto (
   // 手机号脱敏
   // 这是带有状态的 table column, 所以用 defineComponent 定义
   // 不能用 functional component
-  return defineComponent({
-    props: {
-      text: {
-        type: String,
-      },
-      record: {
-        type: Object as PropType<CryptoSecret>,
-      },
-      index: {
-        type: Number
-      }
-    },
-    setup: (props, ctx: SetupContext) => {
-      if (!props.text) return () => ''
+  const component = defineComponent<TableColumnData, {}, string, {}>(
+    (props: TableColumnData, ctx: SetupContext) => {
+      if (!props.value) return h('div')
       let data: Record<string, string> = {}
       try {
-        data = JSON.parse(props.text)
+        data = JSON.parse(props.value)
       } catch (e) {
         return () => ''
       }
@@ -37,31 +26,47 @@ export default function crypto (
 
       const content = ref(data.mask),
         state = ref('masked')
-      
-      const icon = h('i', {
-        class: [`icon-${state.value}`],
-        onClick () {
-          if (!attrs.onDecrypt) return
-          if (!props.record) return
-          if (state.value === 'masked') {
-            attrs.onDecrypt.call(null, props.record).then((answer: string) => {
-              if (answer) {
-                content.value = answer
-                state.value = 'decrypted'
-              }
-            })
-          } else {
-            state.value = 'masked'
-            content.value = data.mask
-          }
+
+      const onIconClick = () => {
+        if (!attrs.onDecrypt) return
+        if (!props.row) return
+        if (state.value === 'masked') {
+          attrs.onDecrypt.call(null, data as CryptoSecret).then((answer: string) => {
+            if (answer) {
+              content.value = answer
+              state.value = 'decrypted'
+            }
+          })
+        } else {
+          state.value = 'masked'
+          content.value = data.mask
         }
+      }
+      
+      const icon = () => h('i', {
+        class: ['icon', `icon-${state.value}`],
+        onClick: onIconClick
       })
 
-      return () => h(Fragment, {}, [
+      return h(Fragment, {}, [
           h('label', {class: 'number'}, content.value.replace(/\*/g, '∗')),
-          icon
+          icon()
         ]
       )
+    }, {
+    props: {
+      value: {
+        type: String,
+      },
+      row: {
+        type: Object as PropType<Record<string, any>>,
+      },
+      index: {
+        type: Number,
+        require: false,
+      }
     }
   })
+
+  return component
 }

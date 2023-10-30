@@ -1,4 +1,4 @@
-import { TableColumnComponentProps, TableColumnCustomProps } from '../../../../../components'
+import { TableColumnData, TableColumnCustomProps } from '../../../../../components'
 import { SetupContext, h } from 'vue'
 
 /**
@@ -9,6 +9,6 @@ import { SetupContext, h } from 'vue'
 export default function custom (
     props: TableColumnCustomProps, ctx?: SetupContext
   ) {
-    return ({text, record, index}: TableColumnComponentProps) => h('div', {
-    }, ctx?.slots && ctx.slots.content?.(record))
+    return ({value, row, index}: TableColumnData) => h('div', {
+    }, ctx?.slots && ctx.slots.content?.(row))
 }

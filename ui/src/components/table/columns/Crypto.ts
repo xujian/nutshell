@@ -2,6 +2,7 @@ import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../../utils'
 import { EmitsToProps } from '../../../utils/private/helpers'
 import { useTableColumnProps } from '../TableColumn'
+import { TableColumn } from 'ant-design-vue'
 
 
 export type CryptoSecret = {

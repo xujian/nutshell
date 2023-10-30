@@ -5,10 +5,7 @@ import icon from './icon'
 import datetime from './datetime'
 import crypto from './crypto'
 import custom from './custom'
-import { DefineComponent, VNode } from 'vue'
 import { CustomColumnRender } from '../../../../../components/table/TableColumn'
-
-
 
 const columnCustomRenders: Record<string, CustomColumnRender> = {
   chip,
