@@ -20,9 +20,9 @@ export default function crypto (
     try {
       data = JSON.parse(value)
     } catch (e) {
-      return () => ''
+      return ''
     }
-    if (!data.mask) return () => ''
+    if (!data.mask) return ''
 
     const content = ref(data.mask),
       state = ref('masked')

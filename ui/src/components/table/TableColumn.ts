@@ -5,7 +5,7 @@ import { TableColumnStyleDefination } from '../../components/table'
 
 export type NsTableColumnType = 'normal' | 'number' | 'checkbox'
 export type NsTableColumnAlign = 'left' | 'center' | 'right'
-export type NsTableColumnFixed = 'left' | 'right'
+export type NsTableColumnFixed = undefined | 'left' | 'right'
 
 export const useTableColumnProps = () => ({
   /**
@@ -29,7 +29,7 @@ export const useTableColumnProps = () => ({
   },
   fixed: {
     type: String as PropType<NsTableColumnFixed>,
-    default: 'left'
+    default: undefined
   },
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
