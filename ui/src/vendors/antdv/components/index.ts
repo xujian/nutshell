@@ -7,8 +7,7 @@ import { Dialog } from './dialog'
 import { Select, CascadingSelect, MultipleSelect } from './select'
 import { Dropdown } from './dropdown'
 import { Tabs } from './tabs'
-import { Chips } from './chip'
-import { VendorComponent } from '../../../shared'
+import { Chips } from './chips'
 
 const components = {
   Form,
