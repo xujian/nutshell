@@ -56,7 +56,7 @@ export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
 /**
  * Vendor Function Component
  */
-export type VendorRenderFunction = (props: any, ctx: SetupContext) => VNode
+export type VendorRenderFunction = (props: any, ctx: Omit<SetupContext, 'expose'>) => VNode
 
 export type VendorComponent = VendorRenderFunction | DefineComponent
 

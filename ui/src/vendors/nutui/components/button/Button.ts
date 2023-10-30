@@ -56,6 +56,6 @@ export const Button = (props: ButtonProps & ButtonEmits & MarginProps) => {
     onClick: props.onClick
   }, {
     default: () => props.label,
-    ...icon && {icon}
+    icon
   })
 }
