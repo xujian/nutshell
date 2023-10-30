@@ -23,23 +23,23 @@ export const dialogProps = {
 
 export interface DialogEmits extends ObjectEmitsOptions {
   'update:modelValue': (value: boolean) => void,
-  show: () => void,
-  hide: () => void,
-  close: () => void,
+  show (): void,
+  hide (): void,
+  close (): void,
 }
 
-const dialogEmits: DialogEmits = {
+export const dialogEmits: DialogEmits = {
   'update:modelValue': (value: boolean) => void 0,
-  'show': () => void 0,
-  'hide': () => void 0,
-  'close': () => void 0,
+  show () {},
+  hide () {},
+  close () {},
 }
 
 export interface DialogSlots extends SlotsType {
   default: never,
 }
 
-export type DialogProps = ExtractPublicPropTypes<typeof dialogProps> & Partial<EmitsToProps<DialogEmits>>
+export type DialogProps = ExtractPublicPropTypes<typeof dialogProps> & EmitsToProps<DialogEmits>
 
 /**
  * NsDialog 弹窗组件

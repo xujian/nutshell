@@ -63,7 +63,7 @@ export type TableColumnData = {
   index?: number
 }
 
-export type CustomColumnFunctionalRender = ({ value, row, index }: TableColumnData) => VNode<RendererNode, RendererElement>
+export type CustomColumnFunctionalRender = ({ value, row, index }: TableColumnData) => any
 
 export type CustomColumnRender =
   (props: TableColumnProps, ctx?: SetupContext) => CustomColumnFunctionalRender | DefineComponent<TableColumnData>

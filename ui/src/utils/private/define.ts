@@ -125,7 +125,7 @@ export function define<
   /** 组件属性的定义 */
   PropsOptions extends ComponentObjectPropsOptions,
   /** 组件事件的定义 */
-  Emits extends ObjectEmitsOptions, 
+  Emits extends ObjectEmitsOptions = {}, 
   /** 组件 SLOT 的定义 */
   Slots extends SlotsType = {},
   // 从 PropsOptions 抽取组件的实际属性

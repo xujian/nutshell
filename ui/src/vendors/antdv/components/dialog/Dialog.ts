@@ -1,5 +1,5 @@
 import { defineComponent, h } from 'vue'
-import { DialogProps, dialogProps } from '../../../../components/dialog'
+import { type DialogProps, dialogProps, dialogEmits, type DialogEmits } from '../../../../components/dialog'
 import { Modal as AntdvModal } from 'ant-design-vue'
 import { Color } from '../../../../composables'
 import { LegacyButtonType } from 'ant-design-vue/es/button/buttonTypes'
@@ -8,14 +8,13 @@ const buttonTypesMap: Record<string, LegacyButtonType> = {
   negtive: 'danger'
 }
 
-export const Dialog = defineComponent({
-  name: 'AntdvDialogVendor',
-  props: dialogProps,
-  setup (props, ctx) {
+export const Dialog = defineComponent<DialogProps, DialogEmits>(
+  (props, ctx) => {
     const classes = [
       'ns-dialog',
     ].join(' ')
-    const { slots, emit } = ctx
+    const { slots, emit } = ctx,
+      { onHide, onClose } = props
 
     return () => h(AntdvModal, {
       class: classes,
@@ -34,16 +33,21 @@ export const Dialog = defineComponent({
       onOK: () => {
         console.log('on ok')
         props['onUpdate:modelValue']?.(false)
-        props['onHide']?.()
+        props.onHide?.()
       },
       onCancel: () => {
         console.log('on cancel')
-        props['onClose']?.()
+        props.onClose?.()
       },
       onClose: () => {
         console.log('on close')
-        props['onClose']?.()
+        props.onClose?.()
       },
     }, slots)
+  },
+  {
+    name: 'AntdvDialogVendor',
+    props: dialogProps,
+    emits: dialogEmits,
   }
-})
+)

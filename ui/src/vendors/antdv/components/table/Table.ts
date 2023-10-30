@@ -1,6 +1,6 @@
 import { SetupContext, computed, h,VNode } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes } from 'vxe-table'
-import { TableProps } from '../../../../components'
+import { CustomColumnFunctionalRender, TableProps } from '../../../../components'
 // import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
 import { MarginProps } from '../../../../utils'
@@ -47,23 +47,23 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
         const t = columnTypeMapping[column.type]
         colummConfig.props.type = t
       }
-      if (column.name) { // 带有name 调用 columns/之下的渲染器
+      if (column.name) { // 带有 name 调用 columns/之下的渲染器
         const predefinedColumn = columnCustomRenders[column.name]
         if (predefinedColumn) {
-          const predefinedColumnRender = predefinedColumn(props, ctx)
+          const predefinedColumnRender = predefinedColumn(props, ctx) as CustomColumnFunctionalRender
           colummConfig.slots = {
             // 所有 ns-table-column-xxx 都用 template 来实现
             // button/rating 使用组件库核心组件
             // 不用 VXE 提供的现成列
-            default: ({row}: {row: Record<string, any>}) => h('div', {
+            default: ({row}) => h('div', {
                 class: [
                   'table-column',
                   `table-column-${column.name}`
                 ]
               },
               h(predefinedColumnRender, {
-                value: row[props.field!] as string,
-                row
+                value: row[column.name!],
+                row,
               }, ctx.slots)
             )
           }

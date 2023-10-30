@@ -1,4 +1,4 @@
-import { TableColumnData, TableColumnCustomProps } from '../../../../../components'
+import { TableColumnData, TableColumnCustomProps, CustomColumnRender, CustomColumnFunctionalRender } from '../../../../../components'
 import { SetupContext, h } from 'vue'
 
 /**
@@ -8,7 +8,8 @@ import { SetupContext, h } from 'vue'
  */
 export default function custom (
     props: TableColumnCustomProps, ctx?: SetupContext
-  ) {
-    return ({value, row, index}: TableColumnData) => h('div', {
-    }, ctx?.slots && ctx.slots.content?.(row))
+  ): CustomColumnFunctionalRender {
+    return ({value, row}: TableColumnData) => h('div', 
+      {},
+      ctx?.slots && ctx.slots.content?.(row))
 }

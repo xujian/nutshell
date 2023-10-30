@@ -32,6 +32,14 @@ export const chipProps = {
   ...useSizeProps(),
 }
 
+export interface ChipEmits extends ObjectEmitsOptions {
+  click (): void,
+}
+
+export const chipEmits: ChipEmits = {
+  click () {},
+}
+
 export type ChipProps = ExtractPublicPropTypes<typeof chipProps>
 
 /**
@@ -40,6 +48,7 @@ export type ChipProps = ExtractPublicPropTypes<typeof chipProps>
 export const NsChip = define({
     name: 'NsChip',
     props: chipProps,
+    emits: chipEmits,
     setup (props, ctx) {
       // 对参数做前期的处理
       return {

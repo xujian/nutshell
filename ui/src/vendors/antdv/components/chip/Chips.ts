@@ -29,7 +29,7 @@ export const Chips = (props: ChipsProps, ctx: SetupContext) => {
         color: on ? 'primary' : 'neutral',
         label: o.label,
         onClick: () => onItemClick(o),
-      }, null)
+      })
     })
   )
 }
