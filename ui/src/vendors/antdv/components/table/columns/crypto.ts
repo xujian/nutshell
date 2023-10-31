@@ -1,6 +1,6 @@
-import { defineComponent, h, ref, Fragment, PropType, SetupContext, VNode, ObjectEmitsOptions } from 'vue'
-import { CryptoSecret, CustomColumnFunctionalRender, CustomColumnRender, TableColumnCryptoProps, TableColumnData, TableColumnProps } from '../../../../../components'
-import { EmitsOptions } from 'vue'
+import { h, ref, Fragment, defineComponent } from 'vue'
+import { CryptoSecret, CustomColumnFunctionalRender, TableColumnCryptoProps, TableColumnData } from '../../../../../components'
+import { SetupContext } from 'vue'
 
 /**
  * Table custom column: button
@@ -14,15 +14,15 @@ export default function crypto (
   // 手机号脱敏
   // 这是带有状态的 table column, 所以用 defineComponent 定义
   // 不能用 functional component
-  const render: CustomColumnFunctionalRender = ({value, row, index}) => {
-    if (!value) return h('div')
+  const setup = ({value, row, index}: TableColumnData, ctx: SetupContext) => {
+    if (!value) return () => h('div', {}, [])
     let data: Record<string, string> = {}
     try {
       data = JSON.parse(value)
     } catch (e) {
-      return ''
+      return () => h('div', {}, [])
     }
-    if (!data.mask) return ''
+    if (!data.mask) return () => h('div', {}, [])
 
     const content = ref(data.mask),
       state = ref('masked')
@@ -48,13 +48,18 @@ export default function crypto (
       onClick: onIconClick
     })
 
-    const result = h('div', {}, [
+    return () => h(Fragment, {}, [
         h('label', {class: 'number'}, content.value.replace(/\*/g, '∗')),
         icon()
       ]
     )
-    return result
   }
 
-  return render
+  return defineComponent(
+    setup,
+    {
+      name: 'TableColumnCryptoInterior',
+      inheritAttrs: false,
+      props: ['value', 'row', 'index'],
+  })
 }
