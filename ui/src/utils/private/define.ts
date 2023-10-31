@@ -5,86 +5,9 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   defineComponent, 
 EmitsOptions, FunctionalComponent,
 ComponentPropsOptions} from 'vue'
-import { EmitsToProps, ExtractProps, ResolveProps } from './helpers'
+import { Prettify, LooseRequired } from '@vue/shared'
+import { ResolveProps } from './helpers'
 import { VendorRenderFunction, useVendor } from '../../shared'
-
-export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
-/**
- * 通用的组件定义
- */
-// export type NutshellComponent< // This is overload 4
-//   PropsOptions extends ComponentObjectPropsOptions,
-//   Emits extends ObjectEmitsOptions = {},
-//   Slots extends SlotsType = {}
-// > = DefineComponent<
-//   ComponentPropsOptions<PropsOptions>, 
-//   {}, // RawBindings
-//   {}, // D
-//   {},
-//   {}, 
-//   ComponentOptionsMixin, // Mixins
-//   ComponentOptionsMixin, // Extends
-//   Emits,
-//   string, // E
-//   Slots
-// >
-
-/**
- * define() 所需要的参数
- * let TS refers only Props, Emits, Slots
- */
-// export type DefineFunctionOptions<
-//   PropsOptions extends ComponentPropsOptions,
-//   Emits extends ObjectEmitsOptions = {},
-//   Slots extends SlotsType = {},
-//   Props = ResolveProps<PropsOptions, Emits>
-// > = Omit<ComponentOptionsWithObjectProps<
-//       PropsOptions,
-//       {},
-//       {},
-//       {},
-//       {},
-//       ComponentOptionsMixin, // Mixins
-//       ComponentOptionsMixin, // Extends
-//       Emits,
-//       string,
-//       {},
-//       string,
-//       Slots
-//     >, 'setup'
-//   > & {
-//   // 改写 setup() 的定义
-//   setup: (
-//     this: void,
-//     props: Props & MarginProps,
-//     ctx: SetupContext<Emits, Slots>
-//   ) => {
-//     props?: Partial<Props>,
-//     methods?: Record<string, any>,
-//     vendorRef?: Ref,
-//   }
-// }
-
-export type DefineFunctionOptions<
-  PropsOptions extends ComponentObjectPropsOptions,
-  Emits extends ObjectEmitsOptions = {},
-  Slots extends SlotsType = {},
-  Props = ExtractProps<PropsOptions, Emits>
-> = {
-  name: string,
-  props: PropsOptions,
-  emits?: Emits,
-  slots?: Slots,
-  setup: (props: Props, ctx: SetupContext) => {
-    props?: Partial<Props>,
-    methods?: Record<string, any>,
-    vendorRef?: Ref
-  }
-}
-
-// export type DefineFunction = (
-//   options: DefineFunctionOptions
-// ) => DefineComponent
 
 /**
  * 传给 vendor 的属性里加了一些字段
@@ -129,9 +52,22 @@ export function define<
   /** 组件 SLOT 的定义 */
   Slots extends SlotsType = {},
   // 从 PropsOptions 抽取组件的实际属性
-  Props = ExtractProps<PropsOptions, Emits>
+  Props = ResolveProps<PropsOptions, Emits>
 > (
-  options: DefineFunctionOptions<PropsOptions, Emits, Slots>,
+  options: {
+    name: string,
+    props: PropsOptions,
+    emits?: Emits,
+    slots?: Slots,
+    setup: (
+      props: Props,
+      ctx: Omit<SetupContext, 'expose'>
+    ) => {
+      props?: Partial<Props>,
+      methods?: Record<string, any>,
+      vendorRef?: Ref
+    }
+  },
 ) {
   /*
    * 底层代码的所有努力，都是为了铺陈组件的时候
@@ -142,8 +78,8 @@ export function define<
    */
   const setup = function (
       this: void,
-      props: Props,
-      ctx: Omit<SetupContext<Emits, Slots>, 'expose'>
+      props: LooseRequired<Props>,
+      ctx: Omit<SetupContext, 'expose'>
     ) {
     // the real setup
     const { setup: setupOriginal } = options
@@ -181,6 +117,7 @@ export function define<
     inheritAttrs: true,
     name: options.name,
     props: options.props,
+    // @ts-ignore
     setup,
   }
 
@@ -194,7 +131,8 @@ export function define<
     {}, 
     {}, 
     {},
-    ComponentOptionsMixin, ComponentOptionsMixin,
+    ComponentOptionsMixin,
+    ComponentOptionsMixin,
     Emits, // E extends EmitsOptions = {}, 
     string, // EE extends string = string, 
     Slots,

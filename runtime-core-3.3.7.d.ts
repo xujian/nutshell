@@ -756,13 +756,18 @@ type MergedComponentOptionsOverride = {
     errorCaptured?: MergedHook<ErrorCapturedHook>;
 };
 type OptionTypesKeys = 'P' | 'B' | 'D' | 'C' | 'M' | 'Defaults';
-type OptionTypesType<P = {}, B = {}, D = {}, C extends ComputedOptions = {}, M extends MethodOptions = {}, Defaults = {}> = {
-    P: P;
-    B: B;
-    D: D;
-    C: C;
-    M: M;
-    Defaults: Defaults;
+type OptionTypesType<
+  P = {}, B = {}, D = {}, 
+  C extends ComputedOptions = {}, 
+  M extends MethodOptions = {}, 
+  Defaults = {}
+> = {
+  P: P;
+  B: B;
+  D: D;
+  C: C;
+  M: M;
+  Defaults: Defaults;
 };
 
 export interface InjectionKey<T> extends Symbol {
@@ -1165,7 +1170,10 @@ export declare function watch<T, Immediate extends Readonly<boolean> = false>(so
 export declare function watch<T extends object, Immediate extends Readonly<boolean> = false>(source: T, cb: WatchCallback<T, Immediate extends true ? T | undefined : T>, options?: WatchOptions<Immediate>): WatchStopHandle;
 
 type PublicProps = VNodeProps & AllowedComponentProps & ComponentCustomProps;
-type ResolveProps<PropsOrPropOptions, E extends EmitsOptions> = Readonly<PropsOrPropOptions extends ComponentPropsOptions ? ExtractPropTypes<PropsOrPropOptions> : PropsOrPropOptions> & ({} extends E ? {} : EmitsToProps<E>);
+type ResolveProps<PropsOrPropOptions, E extends EmitsOptions> = 
+  Readonly<
+    PropsOrPropOptions extends ComponentPropsOptions
+      ? ExtractPropTypes<PropsOrPropOptions> : PropsOrPropOptions> & ({} extends E ? {} : EmitsToProps<E>);
 
 export type DefineComponent<
   PropsOrPropOptions = {}, 
