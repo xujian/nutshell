@@ -64,7 +64,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
               h(predefinedColumnRender, {
                 value: row[column.props.field!],
                 row,
-              }, ctx.slots)
+              }, column.slots || {} )
             )
           }
         }

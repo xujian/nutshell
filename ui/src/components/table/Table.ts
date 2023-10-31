@@ -1,5 +1,6 @@
 import { ExtractPublicPropTypes, PropType, VNode, RendererNode, RendererElement,
-  useSlots } from 'vue'
+  useSlots, 
+VNodeNormalizedChildren} from 'vue'
 import { define } from '../../utils'
 import { EmitsToProps } from '../../utils/private/helpers'
 import { TableColumnEmits, TableColumnProps } from './TableColumn'
@@ -44,6 +45,7 @@ export type TableColumnDefinition = {
   name?: string,
   type?: TableColumnType,
   props: TableColumnProps,
+  slots?: VNodeNormalizedChildren,
   customRender?: (options: any) => void
 }
 
@@ -88,16 +90,16 @@ export const NsTable = define({
       return functionName.slice('NsTableColumn'.length).toLowerCase()
     }
 
-    function getCustomizedColumns () {
+    function getCustomizedColumns (): TableColumn[] {
       const { default: defaultSlot } = useSlots()
       if (!defaultSlot) return []
-      const children = defaultSlot() as TableColumnSlot[]
+      const slots = defaultSlot() as TableColumnSlot[]
       // 获取全体 <ns-table-column-x>
-      return children.map(child => ({
-        name: getColumnName(child),
-        type: child.props?.type as TableColumnType,
-        props: child.props as never as TableColumnProps,
-        component: child,
+      return slots.map(slot => ({
+        name: getColumnName(slot),
+        type: slot.props?.type as TableColumnType,
+        props: slot.props as never as TableColumnProps,
+        slots: slot.children,
       }))
     }
 

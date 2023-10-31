@@ -164,9 +164,9 @@ const decryptPhoneNumber = async (data: CryptoSecret) => {
     <ns-table-column-datetime field="confirmStart" label="确定上门时间" width="200" />
     <ns-table-column field="confirmUserId" label="确定提交人员" width="160" />
     <ns-table-column-datetime field="confirmDate" label="确定提交时间" width="170" />
-    <ns-table-column-custom field="id" width="100px" fixed="right">
+    <ns-table-column-custom field="id" width="100px" fixed="right" label="操作">
       <template #content="row">
-        <a href="javascript:void(0);" v-if="row.stage === '线索'">删除</a>
+        <a href="javascript:void(0);" class="text-sm" v-if="row.stage === '线索'">删除</a>
       </template>
     </ns-table-column-custom>
   </ns-table>

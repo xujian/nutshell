@@ -7,9 +7,15 @@ import { SetupContext, h } from 'vue'
  * @param custom 
  */
 export default function custom (
-    props: TableColumnCustomProps, ctx?: SetupContext
+    props: TableColumnCustomProps
   ): CustomColumnFunctionalRender {
-    return ({value, row}: TableColumnData) => h('div', 
-      {},
-      ctx?.slots && ctx.slots.content?.(row))
+    return ({value, row}: TableColumnData, ctx?: SetupContext) => {
+      console.log('000', ctx?.slots, value)
+      return h('div', 
+        {
+          class: 'table-column-custom-content'
+        },
+        ctx?.slots && ctx.slots.content?.(row)
+      )
+    }
 }
