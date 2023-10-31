@@ -32,12 +32,16 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     const result: VNode[] = []
     for (const column of props.columns!) {
       const { props } = column
+
+      // NsTableColumn 的属性 转换为-> VxeColumn 的属性
       const colummConfig: ColumnConfig = {
         props: {
           ...props.field && {field: props.field},
           width: props.width,
           title: props.label,
           align: props.align,
+          sortable: props.sortable,
+          filters: props.filterable,
           fixed: props.fixed as VxeColumnPropTypes.Fixed,
         },
         slots: {}

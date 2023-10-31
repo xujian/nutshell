@@ -31,6 +31,19 @@ export const useTableColumnProps = () => ({
     type: String as PropType<NsTableColumnFixed>,
     default: undefined
   },
+  /**
+   * 列可排序
+   */
+  sortable: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * 列可筛选
+   */
+  filterable: {
+    type: Array as PropType<TableColumnFilterOptions>,
+  },
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
     require: false,
@@ -55,15 +68,30 @@ const emits: TableColumnEmits = {
   click: ({value, row, index}: TableColumnData) => void 0
 }
 
+/**
+ * 表格列标准属性
+ */
 export type TableColumnProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnEmits>
 
+/**
+ * 表格列数据
+ */
 export type TableColumnData = {
   value: string,
   row: Record<string, any>,
   index?: number
 }
 
-export type CustomColumnFunctionalRender = ({ value, row, index }: TableColumnData) => any
+/**
+ * 列筛选选项
+ */
+export type TableColumnFilterOptions = {
+  label: string,
+  value: string | number
+}[]
+
+export type CustomColumnFunctionalRender = 
+  ({ value, row, index }: TableColumnData) => any
 
 export type CustomColumnRender =
   (props: TableColumnProps, ctx?: SetupContext) => CustomColumnFunctionalRender | DefineComponent<TableColumnData>

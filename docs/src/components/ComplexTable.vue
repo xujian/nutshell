@@ -127,12 +127,27 @@ const decryptPhoneNumber = async (data: CryptoSecret) => {
   return Promise.resolve('18618477654')
   // 调用远端接口解密手机号
 }
+
+const stageFilterableOptions = [
+  {
+    label: '线索',
+    value: '线索',
+  },
+  {
+    label: '上门',
+    value: '上门',
+  },
+  {
+    label: '终止',
+    value: '终止',
+  },
+]
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border">
     <ns-table-column class="" type="checkbox" fixed="left" />
     <ns-table-column type="number" label="序号" width="50" align="center" fixed="left" />
-    <ns-table-column field="name" label="姓名" width="110" fixed="left" />
+    <ns-table-column field="name" label="姓名" sortable width="110" fixed="left" />
     <ns-table-column-crypto field="phone" label="手机号码" width="140"
       @decrypt="decryptPhoneNumber" />
     <ns-table-column-icon field="phone" label="呼叫" width="60"
@@ -152,8 +167,9 @@ const decryptPhoneNumber = async (data: CryptoSecret) => {
     <ns-table-column field="followerId" label="当前跟进用户" width="120" />
     <ns-table-column-chip
       field="stage"
-      width="80"
+      width="100"
       label="客户阶段"
+      :filterable="stageFilterableOptions"
       :extraStyle="(model: string) => getStageStyle(model)" />
     <ns-table-column-datetime field="inviteStart" label="邀约时间" width="170" />
     <ns-table-column field="submitUserId" label="邀约提交人员" width="180" />
@@ -164,7 +180,7 @@ const decryptPhoneNumber = async (data: CryptoSecret) => {
     <ns-table-column-datetime field="confirmStart" label="确定上门时间" width="200" />
     <ns-table-column field="confirmUserId" label="确定提交人员" width="160" />
     <ns-table-column-datetime field="confirmDate" label="确定提交时间" width="170" />
-    <ns-table-column-custom field="id" width="100px" fixed="right" label="操作">
+    <ns-table-column-custom field="id" width="60px" fixed="right" label="操作">
       <template #content="row">
         <a href="javascript:void(0);" class="text-sm" v-if="row.stage === '线索'">删除</a>
       </template>
