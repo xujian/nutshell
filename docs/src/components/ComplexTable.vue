@@ -142,10 +142,16 @@ const stageFilterableOptions = [
     value: '终止',
   },
 ]
+
+const selectedRows = ref<any[]>([])
+
+const onTableRowSelected = (selected: any[]) => {
+  selectedRows.value = selected
+}
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border">
-    <ns-table-column class="" type="checkbox" fixed="left" />
+    <ns-table-column-checkbox @change="onTableRowSelected" field="id" fixed="left" />
     <ns-table-column type="number" label="序号" width="50" align="center" fixed="left" />
     <ns-table-column field="name" label="姓名" sortable width="110" fixed="left" />
     <ns-table-column-crypto field="phone" label="手机号码" width="140"

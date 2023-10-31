@@ -10,7 +10,6 @@ export default function custom (
     props: TableColumnCustomProps
   ): CustomColumnFunctionalRender {
     return ({value, row}: TableColumnData, ctx?: SetupContext) => {
-      console.log('000', ctx?.slots, value)
       return h('div', 
         {
           class: 'table-column-custom-content'
