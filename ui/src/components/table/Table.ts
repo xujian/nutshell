@@ -90,10 +90,10 @@ export const NsTable = define({
       return functionName.slice('NsTableColumn'.length).toLowerCase()
     }
 
-    function getCustomizedColumns (): TableColumn[] {
+    function getCustomizedColumns (): TableColumnDefinition[] {
       const { default: defaultSlot } = useSlots()
       if (!defaultSlot) return []
-      const slots = defaultSlot() as TableColumnSlot[]
+      const slots = defaultSlot()
       // 获取全体 <ns-table-column-x>
       return slots.map(slot => ({
         name: getColumnName(slot),
