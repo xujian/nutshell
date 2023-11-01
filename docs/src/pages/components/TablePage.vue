@@ -1,15 +1,13 @@
 <template>
   <h1 class="my-lg">数据表格 &lt;ns-table&gt;</h1>
-  <h2 class="my-md">Variants</h2>
-  <ns-row class="variants" align="center">
-    <complex-table />
-  </ns-row>
+  <h3>全特性表格</h3>
+  <p>&nbsp;</p>
+  <complex-table />
 </template>
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import { variants } from '../../props'
 
 const cities = ref<any[]>([])
 onMounted(async () => {
