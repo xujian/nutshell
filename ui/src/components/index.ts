@@ -29,7 +29,7 @@ import { NsChip, NsChips } from './chip'
 import { NsIcon } from './icon'
 import { NsDialog } from './dialog'
 import { NsDropdown } from './dropdown'
-import { NsTabs, NsTabsPane } from './tabs'
+import { NsTabs, NsTabsItem } from './tabs'
 import { NsCard, NsCardTitle } from './card'
 import { NsList } from './list'
 import { NsTable, NsTableColumn } from './table'
@@ -57,7 +57,7 @@ const components = {
   NsDialog,
   NsDropdown,
   NsTabs,
-  NsTabsPane,
+  NsTabsItem,
   NsCard,
   NsCardTitle,
   NsList,
