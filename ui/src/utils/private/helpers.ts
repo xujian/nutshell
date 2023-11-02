@@ -1,4 +1,4 @@
-import { ComponentObjectPropsOptions, ComponentPropsOptions, EmitsOptions, ExtractPropTypes, ObjectEmitsOptions } from 'vue'
+import { AllowedComponentProps, ComponentObjectPropsOptions, ComponentPropsOptions, EmitsOptions, ExtractPropTypes, ExtractPublicPropTypes, ObjectEmitsOptions } from 'vue'
 import { Prettify, LooseRequired } from '@vue/shared'
 
 export type EmitsToProps<T extends EmitsOptions> = T extends string[]
@@ -29,3 +29,15 @@ export type ResolveProps<
       ? {}
       : EmitsToProps<Emits>
   )
+
+
+  /**
+   * 将 PropsOptions 转换为组件属性的 type
+   * 并加上 Emits 事件属性
+   * 以及组件的通用属性
+   */
+  export type MakePropsType<
+    PropsOptions extends ComponentObjectPropsOptions, Emits extends ObjectEmitsOptions = {}
+  > = ExtractPublicPropTypes<PropsOptions>
+      & EmitsToProps<Emits>
+      & AllowedComponentProps
