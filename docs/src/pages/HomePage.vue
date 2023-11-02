@@ -21,6 +21,19 @@ const variants: string[] = ['solid', 'outlined', 'soft', 'plain'],
   'warning',
 ]
 
+const description = 'This is a description.';
+const current = ref<number>(0)
+const items = ref<any>([
+  {
+    title: 'Finished'
+  },
+  {
+    title: 'In Progress'
+  },
+  {
+    title: 'Waiting'
+  },
+])
 </script>
 
 <template>
@@ -53,6 +66,18 @@ const variants: string[] = ['solid', 'outlined', 'soft', 'plain'],
         :color="color" 
         :variant="variant" label="创建订单"></ns-button>
     </ns-row>
+  </div>
+  <div class="steps">
+    <ns-stepper v-model="current" :items="items">
+      <template #progressDot="{ index, status, prefixCls }">
+        <a-popover>
+          <template #content>
+            <span>step {{ index }} status: {{ status }}</span>
+          </template>
+          <span :class="`${prefixCls}-icon-dot`"></span>
+        </a-popover>
+      </template>
+    </ns-stepper>
   </div>
   <p>&nbsp;</p>
   <p>&nbsp;</p>

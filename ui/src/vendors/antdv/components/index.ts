@@ -8,6 +8,7 @@ import { Select, CascadingSelect, MultipleSelect } from './select'
 import { Dropdown } from './dropdown'
 import { Tabs } from './tabs'
 import { Chips } from './chip'
+import { Stepper } from './stepper'
 
 const components = {
   Form,
@@ -24,7 +25,8 @@ const components = {
   Tabs,
   Checkbox,
   CheckboxGroup,
-  Chips
+  Chips,
+  Stepper
 }
 
 export default components

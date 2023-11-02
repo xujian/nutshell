@@ -42,13 +42,13 @@ const toggleNav = () => {
     transition: transform .5s;
   }
   .app-header {
-    background-color: #ffffff11;
+    background-color: #fff;
     position: fixed;
     height: 48px;
     left: var(--layout-nav-width);
     right: 0;
     transition: left .5s;
-    z-index: 2
+    z-index: 100
   }
   .app-main {
     margin-top: 48px;
