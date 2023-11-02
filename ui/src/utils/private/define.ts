@@ -1,23 +1,23 @@
 import { ComponentObjectPropsOptions, ComponentOptionsMixin, 
-  ComponentOptionsWithObjectProps, DefineComponent, 
+  ComponentOptionsWithObjectProps, 
   SetupContext, SlotsType, ObjectEmitsOptions, PropType,
-  Ref, ref, h, VNode,
+  Ref, ref, h,
   defineComponent, 
 EmitsOptions, FunctionalComponent,
-ComponentPropsOptions} from 'vue'
-import { Prettify, LooseRequired } from '@vue/shared'
-import { ResolveProps } from './helpers'
-import { VendorRenderFunction, useVendor } from '../../shared'
+getCurrentInstance} from 'vue'
+import { LooseRequired } from '@vue/shared'
+import { MakePropsType } from './helpers'
+import { useVendor } from '../../shared'
 
-/**
- * 传给 vendor 的属性里加了一些字段
- */
-export type MarginProps = {
-  classes: string[],
-  vendorRef: Ref,
-}
+  /**
+   * 传给 vendor 的属性里加了一些字段
+   */
+  export type MarginProps = {
+    classes: string[],
+    vendorRef: Ref,
+  }
 
-export type WithMarginProps<T = {}> = T & MarginProps
+  export type WithMarginProps<T = {}> = T & MarginProps
 
 export const marginProps = {
   classes: {
@@ -52,7 +52,7 @@ export function define<
   /** 组件 SLOT 的定义 */
   Slots extends SlotsType = {},
   // 从 PropsOptions 抽取组件的实际属性
-  Props = ResolveProps<PropsOptions, Emits>
+  Props = MakePropsType<PropsOptions, Emits>
 > (
   options: {
     name: string,
@@ -98,15 +98,22 @@ export function define<
       render.value = v.render.bind(v)
     }
 
-    // const vm = getCurrentInstance() as any
-    // vm.render = () => h(render.value, {
-    return () => h(render.value, {
+    const vm = getCurrentInstance() as any
+    vm.render = () => h(render.value, {
+    // return () => h(render.value, {
       ...props,
       ...extraProps,
       ...options.emits,
       classes: buildClasses(props),
       vendorRef,
     }, defaultSlot)
+
+    /**
+     * 使组件可执行 method (expose)
+     */
+    return {
+      ...methods
+    }
   }
 
   const optionsSyth: ComponentOptionsWithObjectProps<
