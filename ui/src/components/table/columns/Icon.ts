@@ -1,9 +1,7 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
-import { define } from '../../../utils'
-import { Size } from '../../../props/size'
-import { EmitsToProps } from '../../../utils/private/helpers'
+import { ObjectEmitsOptions } from 'vue'
+import { define, MakePropsType } from '../../../utils'
 import { TableColumnData, useTableColumnProps } from '../../table/TableColumn'
-import { IconProps, useIconProps } from '../../../components/icon'
+import { useIconProps } from '../../../components/icon'
 
 const iconProps = {
   ...useTableColumnProps(),
@@ -18,7 +16,7 @@ const iconEmits: TableColumnIconEmits = {
   click: ({value, row, index}: TableColumnData) => void 0
 }
 
-export type TableColumnIconProps = ExtractPublicPropTypes<typeof iconProps> & EmitsToProps<TableColumnIconEmits>
+export type TableColumnIconProps = MakePropsType<typeof iconProps, TableColumnIconEmits>
 
 /**
  * 自定义的表格列: 单个图标

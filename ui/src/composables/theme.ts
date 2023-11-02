@@ -14,24 +14,25 @@ export const BRANDS = [
   'warning',
 ] as const
 
-export const ESSENTIAL = [
+export const ESSENTIALS = [
   'background',
   'surface',
   'text',
   'stroke'
-]
+] as const
 
 export type BrandColor = typeof BRANDS[number]
+export type EssentialColor = typeof BRANDS[number]
 
 export type HexColor = `#${string}`
 export type RgbColor = `rgb(${string})`
 export type RgbaColor = `rgba(${string})`
-export type Color = BrandColor | HexColor | RgbColor | RgbaColor
+export type Color = BrandColor | EssentialColor | HexColor | RgbColor | RgbaColor
 
 type BaseColors = {
   [k in BrandColor]: HexColor
 } & {
-  [k in typeof ESSENTIAL[number]]: HexColor
+  [k in typeof ESSENTIALS[number]]: HexColor
 }
 
 export type Theme = {
@@ -53,4 +54,17 @@ export function useTheme () {
       localStorage.setItem('theme', name)
     }
   return { theme, setTheme }
+}
+
+/**
+ * 生成 background color 样式
+ */
+export function buildFillStyle (fill?: Color): { backgroundColor?: string} {
+  if (!fill) return {}
+  return {
+    backgroundColor: 
+      BRANDS.includes(fill as typeof BRANDS[number]) || ESSENTIALS.includes(fill as typeof ESSENTIALS[number])
+        ? `var(--${fill})`
+        : fill
+  }
 }

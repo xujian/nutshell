@@ -1,7 +1,7 @@
 import { useFieldProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
-import { define } from '../../utils'
+import { MakePropsType, define } from '../../utils'
 import { LabelValuePair } from '../../shared/models'
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
+import { PropType } from 'vue'
 
 export const chipsProps = {
   ...useModelValuePropsForStringArray(),
@@ -13,7 +13,7 @@ export const chipsProps = {
   ...useFieldProps(),
 }
 
-export type ChipsProps = ExtractPublicPropTypes<typeof chipsProps>
+export type ChipsProps = MakePropsType<typeof chipsProps>
 
 /**
  * 标签条组 <ns-chips>

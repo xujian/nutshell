@@ -1,8 +1,8 @@
+import { PropType, ObjectEmitsOptions } from 'vue'
 import { buildProps } from '../../utils/private/props'
 import { Color } from '../../composables'
 import { useSizeProps, useVariantProps } from '../../props'
-import { define } from '../../utils'
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
+import { MakePropsType, define } from '../../utils'
 
 export const useChipProps = buildProps({
   /**
@@ -40,7 +40,7 @@ export const chipEmits: ChipEmits = {
   click () {},
 }
 
-export type ChipProps = ExtractPublicPropTypes<typeof chipProps>
+export type ChipProps = MakePropsType<typeof chipProps, ChipEmits>
 
 /**
  * 标签条 <ns-chip>

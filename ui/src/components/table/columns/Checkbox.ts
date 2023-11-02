@@ -1,8 +1,6 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
-import { define } from '../../../utils'
-import { EmitsToProps } from '../../../utils/private/helpers'
-import { TableColumnData, useTableColumnProps } from '../../table/TableColumn'
-import { useButtonProps } from '../../../components/button'
+import { ObjectEmitsOptions, PropType } from 'vue'
+import { define, MakePropsType } from '../../../utils'
+import { useTableColumnProps } from '../../table/TableColumn'
 
 const props = {
   ...useTableColumnProps(),
@@ -17,7 +15,7 @@ export interface TableColumnCheckboxEmits extends ObjectEmitsOptions {
 const emits: TableColumnCheckboxEmits = {
 }
 
-export type TableColumnCheckboxProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnCheckboxEmits>
+export type TableColumnCheckboxProps = MakePropsType<typeof props, TableColumnCheckboxEmits>
 
 /**
  * 自定义的表格列样式

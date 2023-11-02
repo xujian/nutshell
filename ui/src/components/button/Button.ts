@@ -1,10 +1,8 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { useSizeProps, useVariantProps } from '../../props'
-import { define } from '../../utils'
+import { define, MakePropsType } from '../../utils'
 import { useDimensionProps } from '../../props'
-import { buildProps } from '../../utils/private/props'
 import { Color } from '../../composables/theme'
-import { EmitsToProps } from '../../utils/private/helpers'
 
 export const useButtonProps = () => ({
   /**
@@ -50,7 +48,7 @@ export interface ButtonSlots extends SlotsType {
   default: never,
 }
 
-export type ButtonProps = ExtractPublicPropTypes<typeof buttonProps> & EmitsToProps<ButtonEmits>
+export type ButtonProps = MakePropsType<typeof buttonProps, ButtonEmits>
 
 /**
  * 通用按钮组件 <ns-button>

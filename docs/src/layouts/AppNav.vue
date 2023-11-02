@@ -115,6 +115,10 @@ const menuData = computed(() => [
           {
             label: '卡片 card',
             key: '/components/card'
+          },
+          {
+            label: 'Tabs tabs',
+            key: '/components/tabs'
           }
         ]
       },

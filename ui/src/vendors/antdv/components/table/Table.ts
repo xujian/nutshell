@@ -48,7 +48,8 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       const colummConfig: ColumnConfig = {
         props: {
           ...props.field && {field: props.field},
-          width: props.width,
+          width: props.fixed ? props.width : undefined,
+          minWidth: props.fixed ? undefined : props.width,
           title: props.label,
           align: props.align,
           sortable: props.sortable,

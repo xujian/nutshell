@@ -1,5 +1,5 @@
-import { ExtractPublicPropTypes, PropType } from 'vue'
-import { define } from '../../../utils'
+import { PropType } from 'vue'
+import { MakePropsType, define } from '../../../utils'
 import { Color } from '../../../composables'
 import { useTableColumnProps } from '../../table/TableColumn'
 
@@ -10,7 +10,7 @@ const props = {
   },
 }
 
-export type TableColumnRatingProps = ExtractPublicPropTypes<typeof props>
+export type TableColumnRatingProps = MakePropsType<typeof props>
 
 /**
  * 自定义的表格列样式

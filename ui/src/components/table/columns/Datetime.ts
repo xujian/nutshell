@@ -1,8 +1,6 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
-import { define } from '../../../utils'
-import { EmitsToProps } from '../../../utils/private/helpers'
+import { ObjectEmitsOptions } from 'vue'
+import { define, MakePropsType } from '../../../utils'
 import { useTableColumnProps } from '../TableColumn'
-import { useButtonProps } from '../../../components/button'
 
 export const props: Record<string, any> = {
   ...useTableColumnProps(),
@@ -20,7 +18,7 @@ const emits: TableColumnDatetimeEmits = {
   click: () => void 0
 }
 
-export type TableColumnDatetimeProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnDatetimeEmits>
+export type TableColumnDatetimeProps = MakePropsType<typeof props, TableColumnDatetimeEmits>
 
 /**
  * 显示日期时间的表格列

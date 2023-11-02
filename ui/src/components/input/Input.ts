@@ -1,8 +1,7 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
-import { define } from '../../utils'
+import { ObjectEmitsOptions, PropType } from 'vue'
+import { define, MakePropsType } from '../../utils'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
-import { FullValidationRule, PropsWithLabel, ValidationRule, formatRules } from '../../props/field'
-import { EmitsToProps } from '../../utils/private/helpers'
+import { FullValidationRule, ValidationRule, buildStyles, formatRules } from '../../props/field'
 
 /**
  * 输入框类型
@@ -58,7 +57,7 @@ const inputEmits: InputEmits = {
   change: (value: string | number) => {}
 }
 
-export type InputProps = ExtractPublicPropTypes<typeof inputProps> & EmitsToProps<InputEmits>
+export type InputProps = MakePropsType<typeof inputProps, InputEmits>
 
 /**
  * 输入框 <ns-input>
@@ -71,6 +70,7 @@ export const NsInput = define({
       const finalRules = formatRules(props.rules as ValidationRule[], props)
       return {
         props: {
+          style: buildStyles(props),
           rules: finalRules as FullValidationRule[]
         }
       }

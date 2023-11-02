@@ -1,5 +1,5 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ExtractPropTypes, ref, defineExpose, onMounted } from 'vue'
-import { define } from '../../utils'
+import { PropType, ObjectEmitsOptions, SlotsType, ref } from 'vue'
+import { define, MakePropsType } from '../../utils'
 import { useVariantProps } from '../../props'
 
 export const formProps = {
@@ -15,8 +15,6 @@ export const formProps = {
   }
 }
 
-export type FormProps = ExtractPropTypes<typeof formProps>
-
 export interface FormEmits extends ObjectEmitsOptions {
 }
 
@@ -26,6 +24,8 @@ const emits: FormEmits = {
 export interface FormSlots extends SlotsType {
   default: never,
 }
+
+export type FormProps = MakePropsType<typeof formProps, FormEmits>
 
 /**
  * 表单 <ns-form>

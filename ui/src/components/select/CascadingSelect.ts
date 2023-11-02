@@ -1,8 +1,7 @@
-import { ExtractPublicPropTypes } from 'vue'
-import { define } from '../../utils'
+import { MakePropsType, define } from '../../utils'
 import { PropType } from 'vue'
 import { useFieldProps } from '../../props'
-import { PropsWithLabel, ValidationRule, formatRules } from '../../props/field'
+import { ValidationRule, formatRules } from '../../props/field'
 
 export type CascadingSelectOption = {
   value: string | number,
@@ -44,7 +43,7 @@ export const cascadingSelectProps = {
   }
 }
 
-export type CascadingSelectProps = ExtractPublicPropTypes<typeof cascadingSelectProps>
+export type CascadingSelectProps = MakePropsType<typeof cascadingSelectProps>
 
 /**
  * 下拉选框

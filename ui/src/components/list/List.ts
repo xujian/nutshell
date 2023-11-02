@@ -1,5 +1,6 @@
+import { MakePropsType } from 'src/utils'
 import { h } from 'vue'
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, defineComponent } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent } from 'vue'
 
 export type ListRow = {
   title: string,
@@ -26,8 +27,6 @@ export const listProps = {
   }
 }
 
-export type ListProps = ExtractPublicPropTypes<typeof listProps>
-
 export interface ListEmits extends ObjectEmitsOptions {
 }
 
@@ -37,6 +36,8 @@ const emits: ListEmits = {
 export interface ListSlots extends SlotsType {
   default: never,
 }
+
+export type ListProps = MakePropsType<typeof listProps, ListEmits>
 
 /**
  * 列表 <ns-list>

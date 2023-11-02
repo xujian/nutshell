@@ -1,18 +1,20 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
-import { Color } from '../../composables/theme'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
+import { Color, buildFillStyle } from '../../composables/theme'
 import { useVariantProps } from '../../props'
+import { MakePropsType } from '../../utils'
 
 export const cardProps = {
   title: {
     type: String
   },
-  color: {
+  /**
+   * 填色
+   */
+  fill: {
     type: String as PropType<Color>,
   },
   ...useVariantProps(),
 }
-
-export type CardProps = ExtractPublicPropTypes<typeof cardProps>
 
 export interface CardEmits extends ObjectEmitsOptions {
 }
@@ -27,6 +29,8 @@ export interface CardSlots extends SlotsType {
   footer: never,
 }
 
+export type CardProps = MakePropsType<typeof cardProps, CardEmits>
+
 /**
  * 卡片组件 <ns-card>
  */
@@ -38,9 +42,11 @@ export const NsCard = defineComponent({
       'ns-card',
       'flex',
       'flex-col',
-      props.color ? `color-${props.color}` : '',
+      props.fill ? `fill-${props.fill}` : '',
       props.variant ? `variant-${props.variant}` : '',
     ].join(' ')
+
+    const style = buildFillStyle(props.fill)
 
     const label = props.title
       ? h('div', {
@@ -75,7 +81,8 @@ export const NsCard = defineComponent({
     }, slots.default?.())
 
     return () => h('div', {
-      class: classes
+      class: classes,
+      style,
     }, [
       props.title
         ? header
@@ -84,4 +91,3 @@ export const NsCard = defineComponent({
     ])
   }
 })
-// 需要增加 import 到 ./index.ts, ../components.ts

@@ -1,8 +1,7 @@
-import { ExtractPublicPropTypes } from 'vue'
-import { define } from '../../utils'
+import { MakePropsType, define } from '../../utils'
 import { PropType } from 'vue'
 import { useFieldProps, useModelValuePropsForStringArray } from '../../props'
-import { PropsWithLabel, ValidationRule, formatRules } from '../../props/field'
+import { ValidationRule, formatRules } from '../../props/field'
 
 export type MultipleSelectOption = {
   value: string | number,
@@ -36,7 +35,7 @@ export const multipleSelectProps = {
   }
 }
 
-export type MultipleSelectProps = ExtractPublicPropTypes<typeof multipleSelectProps>
+export type MultipleSelectProps = MakePropsType<typeof multipleSelectProps>
 
 /**
  * 下拉选框

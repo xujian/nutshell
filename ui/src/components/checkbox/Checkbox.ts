@@ -1,5 +1,5 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
-import { define } from '../../utils'
+import { ObjectEmitsOptions, SlotsType } from 'vue'
+import { MakePropsType, define } from '../../utils'
 import { useModelValuePropsForBoolean, useVariantProps } from '../../props'
 
 export const checkboxProps = {
@@ -10,8 +10,6 @@ export const checkboxProps = {
   ...useVariantProps(),
 }
 
-export type CheckboxProps = ExtractPublicPropTypes<typeof checkboxProps>
-
 export interface CheckboxEmits extends ObjectEmitsOptions {
 }
 
@@ -21,6 +19,8 @@ const emits: CheckboxEmits = {
 export interface CheckboxSlots extends SlotsType {
   default: never,
 }
+
+export type CheckboxProps = MakePropsType<typeof checkboxProps, CheckboxEmits>
 
 /**
  * 复选框组件 <ns-checkbox>

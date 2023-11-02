@@ -1,6 +1,6 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
+import { ObjectEmitsOptions } from 'vue'
 import { define } from '../../../utils'
-import { EmitsToProps } from '../../../utils/private/helpers'
+import { EmitsToProps, MakePropsType } from '../../../utils/private/helpers'
 import { TableColumnData, useTableColumnProps } from '../../table/TableColumn'
 import { useButtonProps } from '../../../components/button'
 
@@ -17,7 +17,7 @@ const emits: TableColumnButtonEmits = {
   click: ({value, row, index}: TableColumnData) => void 0
 }
 
-export type TableColumnButtonProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnButtonEmits>
+export type TableColumnButtonProps = MakePropsType<typeof props, TableColumnButtonEmits>
 
 /**
  * 自定义的表格列样式

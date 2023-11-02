@@ -1,5 +1,4 @@
-import { ExtractPublicPropTypes, PropType } from 'vue'
-import { define } from '../../../utils'
+import { MakePropsType, define } from '../../../utils'
 import { useChipProps } from '../../../components/chip'
 import { useTableColumnProps } from '../TableColumn'
 
@@ -13,7 +12,7 @@ const props = {
   ...useChipProps(),
 }
 
-export type TableColumnChipProps = ExtractPublicPropTypes<typeof props>
+export type TableColumnChipProps = MakePropsType<typeof props>
 
 /**
  * 自定义的表格列样式

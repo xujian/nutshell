@@ -1,8 +1,9 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions } from 'vue'
+import { ObjectEmitsOptions } from 'vue'
 import { define } from '../../utils'
 import { PropType } from 'vue'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
-import { PropsWithLabel, ValidationRule, formatRules } from '../../props/field'
+import { ValidationRule, buildStyles, formatRules } from '../../props/field'
+import { MakePropsType } from 'src/utils/private/helpers'
 
 export type SelectOption = {
   value: string | number,
@@ -37,8 +38,6 @@ export const selectProps = {
   }
 }
 
-export type SelectProps = ExtractPublicPropTypes<typeof selectProps>
-
 export interface SelectEmits extends ObjectEmitsOptions {
   change: (value: string | number) => void
 }
@@ -47,6 +46,7 @@ const emits: SelectEmits = {
   change: (value: string | number) => {}
 }
 
+export type SelectProps = MakePropsType<typeof selectProps, SelectEmits>
 
 /**
  * 下拉选框
@@ -59,6 +59,7 @@ export const NsSelect = define({
     const rules = formatRules(props.rules as ValidationRule[], props)
     return {
       props: {
+        style: buildStyles(props),
         rules
       }
     }

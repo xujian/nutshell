@@ -1,8 +1,9 @@
 import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
-import { InputProps } from '../components/input'
 import isIdentityCard from 'validator/lib/isIdentityCard'
 import isMobilePhone from 'validator/lib/isMobilePhone'
+import { Color } from '../composables/theme'
+import { MakePropsType } from '../utils'
 
 const quickValidationMethods: string[] = [
   'required',
@@ -102,10 +103,7 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
  * ]" />
  */
 
-/**
- * 给输入框加上标题和校验规则
- */
-export const useFieldProps = buildProps({
+const fieldProps = {
   /**
    * 标题
    */
@@ -125,4 +123,21 @@ export const useFieldProps = buildProps({
   placeholder: {
     type: String,
   },
-})
+  fill: {
+    type: String as PropType<Color>,
+  }
+}
+
+/**
+ * 给输入框加上标题和校验规则
+ */
+export const useFieldProps = buildProps(fieldProps)
+
+export type FieldProps = MakePropsType<typeof fieldProps> 
+
+export const buildStyles = (props: FieldProps) => {
+  const style = {
+    ...props.fill && { '--ns-fill': props.fill }
+  }
+  return style
+}
