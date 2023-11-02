@@ -4,18 +4,28 @@
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h2>用户输入校验</h2>
-  <ns-form name="validation" v-model="validationFormDate">
-    <ns-input name="clientName" v-model="validationFormDate.clientName" label="客户名称" :rules="['required']" />
+  <p>&nbsp;</p>
+  <ns-form name="validation" v-model="validationFormDate" ref="formRef">
+    <ns-input name="clientName" 
+      v-model="validationFormDate.clientName" 
+      label="客户名称" 
+      :rules="['required']" 
+      fill="white" />
     <ns-select name="clientLocation" v-model="validationFormDate.clientLocation"
       :options="cities"
-      label="区域" :rules="['required']" />
+      label="区域" :rules="['required']"
+      fill="white" />
   </ns-form>
+  <ns-button label="提交" @click="onFormSubmit"></ns-button>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, ref, reactive } from 'vue'
 import axios from 'axios'
+import { NsForm } from '@uxda/nutshell'
 import RegularForm from '../../examples/RegularForm.vue'
+
+const formRef = ref(null)
 
 const validationFormDate = reactive({
   clientName: '',
@@ -23,6 +33,10 @@ const validationFormDate = reactive({
 })
 
 const cities = ref<any[]>([])
+
+const onFormSubmit = () => {
+  formRef.value?.validate()
+}
 
 onMounted(async () => {
   axios.get('/json/cities.json')
