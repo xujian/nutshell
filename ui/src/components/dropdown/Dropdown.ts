@@ -1,7 +1,6 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions } from 'vue'
-import { useSizeProps } from '../../props'
-import { define } from '../../utils'
-import { useDimensionProps } from '../../props'
+import { PropType, ObjectEmitsOptions } from 'vue'
+import { useSizeProps, useDimensionProps } from '../../props'
+import { MakePropsType, define } from '../../utils'
 import { Color } from '../../composables/theme'
 
 export type DropdownItem = {
@@ -44,7 +43,7 @@ const emits: DropdownEmits = {
   click: () => void 0
 }
 
-export type DropdownProps = ExtractPublicPropTypes<typeof dropdownProps>
+export type DropdownProps = MakePropsType<typeof dropdownProps, DropdownEmits>
 
 /**
  * 下拉菜单组件 <ns-dropdown>

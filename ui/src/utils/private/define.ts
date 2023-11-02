@@ -2,9 +2,9 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   ComponentOptionsWithObjectProps, 
   SetupContext, SlotsType, ObjectEmitsOptions, PropType,
   Ref, ref, h,
-  defineComponent, 
-EmitsOptions, FunctionalComponent,
-getCurrentInstance} from 'vue'
+  defineComponent,
+  EmitsOptions, FunctionalComponent,
+  getCurrentInstance} from 'vue'
 import { LooseRequired } from '@vue/shared'
 import { MakePropsType } from './helpers'
 import { useVendor } from '../../shared'

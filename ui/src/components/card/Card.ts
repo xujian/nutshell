@@ -1,6 +1,7 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
 import { Color, buildFillStyle } from '../../composables/theme'
 import { useVariantProps } from '../../props'
+import { MakePropsType } from '../../utils'
 
 export const cardProps = {
   title: {
@@ -15,8 +16,6 @@ export const cardProps = {
   ...useVariantProps(),
 }
 
-export type CardProps = ExtractPublicPropTypes<typeof cardProps>
-
 export interface CardEmits extends ObjectEmitsOptions {
 }
 
@@ -29,6 +28,8 @@ export interface CardSlots extends SlotsType {
   header: never,
   footer: never,
 }
+
+export type CardProps = MakePropsType<typeof cardProps, CardEmits>
 
 /**
  * 卡片组件 <ns-card>

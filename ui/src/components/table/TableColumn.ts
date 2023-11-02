@@ -1,6 +1,5 @@
-import { DefineComponent, ExtractPublicPropTypes, ObjectEmitsOptions, PropType, RendererElement, RendererNode, SetupContext, VNode } from 'vue'
-import { define } from '../../utils'
-import { EmitsToProps } from '../../utils/private/helpers'
+import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext } from 'vue'
+import { define, MakePropsType } from '../../utils'
 import { TableColumnStyleDefination } from '../../components/table'
 
 export type NsTableColumnType = 'normal' | 'number' | 'checkbox'
@@ -71,7 +70,7 @@ const emits: TableColumnEmits = {
 /**
  * 表格列标准属性
  */
-export type TableColumnProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnEmits>
+export type TableColumnProps = MakePropsType<typeof props, TableColumnEmits>
 
 /**
  * 表格列数据

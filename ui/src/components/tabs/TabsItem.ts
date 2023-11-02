@@ -1,5 +1,5 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
-import { define } from '../../utils'
+import { ObjectEmitsOptions, SlotsType } from 'vue'
+import { MakePropsType, define } from '../../utils'
 import { TabData } from './Tabs'
 
 /*
@@ -24,8 +24,6 @@ export const tabsItemProps = {
   }
 }
 
-export type TabsItemProps = ExtractPublicPropTypes<typeof tabsItemProps>
-
 export interface TabsItemEmits extends ObjectEmitsOptions {
   click: (item: TabData) => void
 }
@@ -38,6 +36,8 @@ export interface TabsItemSlots extends SlotsType {
   default: never,
   tab: never
 }
+
+export type TabsItemProps = MakePropsType<typeof tabsItemProps, TabsItemEmits>
 
 /**
  * TabsItem 组件 <ns-tabs-pane>,

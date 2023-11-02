@@ -1,7 +1,6 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, ComponentObjectPropsOptions, defineComponent, h, onMounted, ref } from 'vue'
+import { defineComponent, h, onMounted, onBeforeUnmount } from 'vue'
 import { useTheme } from '../../composables'
 import { useBus } from '../../composables'
-import { onBeforeUnmount } from 'vue'
 
 const appProps = {
   theme: {

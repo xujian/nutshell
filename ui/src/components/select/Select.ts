@@ -1,8 +1,8 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions } from 'vue'
+import { ObjectEmitsOptions } from 'vue'
 import { define } from '../../utils'
 import { PropType } from 'vue'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
-import { PropsWithLabel, ValidationRule, buildStyles, formatRules } from '../../props/field'
+import { ValidationRule, buildStyles, formatRules } from '../../props/field'
 import { MakePropsType } from 'src/utils/private/helpers'
 
 export type SelectOption = {

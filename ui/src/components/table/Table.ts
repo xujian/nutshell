@@ -1,9 +1,8 @@
-import { ExtractPublicPropTypes, PropType, VNode, RendererNode, RendererElement,
+import { PropType, VNode, RendererNode, RendererElement,
   useSlots, 
-VNodeNormalizedChildren} from 'vue'
-import { define } from '../../utils'
-import { EmitsToProps } from '../../utils/private/helpers'
-import { TableColumnEmits, TableColumnProps } from './TableColumn'
+  VNodeNormalizedChildren} from 'vue'
+import { define, MakePropsType } from '../../utils'
+import { TableColumnProps } from './TableColumn'
 
 /**
  * 填充表格的数据
@@ -77,7 +76,7 @@ export const tableProps = {
   }
 }
 
-export type TableProps = ExtractPublicPropTypes<typeof tableProps>
+export type TableProps = MakePropsType<typeof tableProps>
 
 export const NsTable = define({
   name: 'NsTable',

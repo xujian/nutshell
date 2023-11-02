@@ -1,8 +1,6 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
-import { define } from '../../utils'
+import { PropType, ObjectEmitsOptions, SlotsType, useSlots } from 'vue'
+import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForInput } from '../../props'
-import { useSlots } from 'vue'
-import { EmitsToProps } from 'src/utils/private/helpers'
 
 export type TabData = {
   label: string,
@@ -41,7 +39,7 @@ export interface TabsSlots extends SlotsType {
   default: never,
 }
 
-export type TabsProps = ExtractPublicPropTypes<typeof tabsProps> & EmitsToProps<TabsEmits>
+export type TabsProps = MakePropsType<typeof tabsProps, TabsEmits>
 
 /**
  * Tabs 组件 <ns-tabs>

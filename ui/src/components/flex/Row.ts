@@ -1,6 +1,5 @@
-import { ExtractPublicPropTypes, PropType, defineComponent } from 'vue'
-import { define } from '../../utils'
-import { h } from 'vue'
+import {PropType, defineComponent, h } from 'vue'
+import { MakePropsType } from '../../utils'
 
 const JUSTIFY = ['start', 'end', 'center', 'around', 'between'] as const
 type JustifyValue = typeof JUSTIFY[number]
@@ -23,7 +22,7 @@ const props = {
   }
 }
 
-export type RowProps = ExtractPublicPropTypes<typeof props>
+export type RowProps = MakePropsType<typeof props>
 
 export const NsRow = defineComponent({
   name: 'NsRow',

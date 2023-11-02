@@ -1,5 +1,5 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
-import { define } from '../../utils'
+import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { MakePropsType, define } from '../../utils'
 
 export const ratingInputProps = {
   label: {
@@ -13,8 +13,6 @@ export const ratingInputProps = {
   }
 }
 
-export type RatingInputProps = ExtractPublicPropTypes<typeof ratingInputProps>
-
 export interface RatingInputEmits extends ObjectEmitsOptions {
 }
 
@@ -24,6 +22,8 @@ const emits: RatingInputEmits = {
 export interface RatingInputSlots extends SlotsType {
   default: never,
 }
+
+export type RatingInputProps = MakePropsType<typeof ratingInputProps, RatingInputEmits>
 
 /**
  * Rating <ns-rating-input>

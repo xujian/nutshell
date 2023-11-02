@@ -1,9 +1,9 @@
-import { ExtractPublicPropTypes, PropType } from 'vue'
+import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
-import { InputProps } from '../components/input'
 import isIdentityCard from 'validator/lib/isIdentityCard'
 import isMobilePhone from 'validator/lib/isMobilePhone'
 import { Color } from '../composables/theme'
+import { MakePropsType } from '../utils'
 
 const quickValidationMethods: string[] = [
   'required',
@@ -133,7 +133,7 @@ const fieldProps = {
  */
 export const useFieldProps = buildProps(fieldProps)
 
-export type FieldProps = ExtractPublicPropTypes<typeof fieldProps> 
+export type FieldProps = MakePropsType<typeof fieldProps> 
 
 export const buildStyles = (props: FieldProps) => {
   const style = {

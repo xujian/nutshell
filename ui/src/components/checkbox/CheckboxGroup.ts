@@ -1,5 +1,5 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
-import { define } from '../../utils'
+import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { MakePropsType, define } from '../../utils'
 
 export type CheckboxGroupOption = {
   label: string,
@@ -19,8 +19,6 @@ export const checkboxGroupProps = {
   }
 }
 
-export type CheckboxGroupProps = ExtractPublicPropTypes<typeof checkboxGroupProps>
-
 export interface CheckboxGroupEmits extends ObjectEmitsOptions {
 }
 
@@ -30,6 +28,8 @@ const emits: CheckboxGroupEmits = {
 export interface CheckboxGroupSlots extends SlotsType {
   default: never,
 }
+
+export type CheckboxGroupProps = MakePropsType<typeof checkboxGroupProps, CheckboxGroupEmits>
 
 /**
  * 复选框组 <ns-checkbox-group>

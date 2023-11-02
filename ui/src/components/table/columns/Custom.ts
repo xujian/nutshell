@@ -1,6 +1,5 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
-import { define } from '../../../utils'
-import { EmitsToProps } from '../../../utils/private/helpers'
+import { ObjectEmitsOptions } from 'vue'
+import { define, MakePropsType } from '../../../utils'
 import { useTableColumnProps } from '../TableColumn'
 
 const props = {
@@ -15,7 +14,7 @@ const emits: TableColumnCustomEmits = {
   click: () => void 0
 }
 
-export type TableColumnCustomProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnCustomEmits>
+export type TableColumnCustomProps = MakePropsType<typeof props, TableColumnCustomEmits>
 
 /**
  * 自定义的表格列样式

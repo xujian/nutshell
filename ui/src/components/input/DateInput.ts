@@ -1,9 +1,8 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
-import { define } from '../../utils'
-import { usePlatform } from '../../composables'
-import { useModelValuePropsForInput } from '../../props/model'
-import { useFieldProps } from '../../props'
+import { ObjectEmitsOptions, PropType } from 'vue'
 import { Dayjs } from 'dayjs'
+import { MakePropsType, define } from '../../utils'
+import { usePlatform } from '../../composables'
+import { useFieldProps } from '../../props'
 
 export const dateInputProps = {
   modelValue: {
@@ -27,7 +26,7 @@ const emits = {
   change: (value: string | number) => {}
 }
 
-export type DateInputProps = ExtractPublicPropTypes<typeof dateInputProps>
+export type DateInputProps = MakePropsType<typeof dateInputProps, DateInputEmits>
 
 
 /**

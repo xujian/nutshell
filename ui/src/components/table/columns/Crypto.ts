@@ -1,8 +1,6 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
-import { define } from '../../../utils'
-import { EmitsToProps } from '../../../utils/private/helpers'
+import { ObjectEmitsOptions, PropType } from 'vue'
+import { define, MakePropsType } from '../../../utils'
 import { useTableColumnProps } from '../TableColumn'
-import { TableColumn } from 'ant-design-vue'
 
 
 export type CryptoSecret = {
@@ -27,7 +25,7 @@ const emits: TableColumnCryptoEmits = {
   decrypted: () => void 0
 }
 
-export type TableColumnCryptoProps = ExtractPublicPropTypes<typeof props> & EmitsToProps<TableColumnCryptoEmits>
+export type TableColumnCryptoProps = MakePropsType<typeof props, TableColumnCryptoEmits>
 
 /**
  * 自定义的表格列样式

@@ -1,5 +1,4 @@
-import { ExtractPublicPropTypes, PropType, h } from 'vue'
-import { define } from '../../utils'
+import { PropType, h } from 'vue'
 import { defineComponent } from 'vue'
 import { MakePropsType } from 'src/utils/private/helpers'
 

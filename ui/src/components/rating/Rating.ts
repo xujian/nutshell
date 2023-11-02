@@ -1,5 +1,5 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'
-import { define } from '../../utils'
+import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { MakePropsType, define } from '../../utils'
 import { Color } from '../../composables/theme'
 
 export const ratingProps = {
@@ -17,8 +17,6 @@ export const ratingProps = {
   }
 }
 
-export type RatingProps = ExtractPublicPropTypes<typeof ratingProps>
-
 export interface RatingEmits extends ObjectEmitsOptions {
 }
 
@@ -28,6 +26,8 @@ const emits: RatingEmits = {
 export interface RatingSlots extends SlotsType {
   default: never,
 }
+
+export type RatingProps = MakePropsType<typeof ratingProps, RatingEmits>
 
 /**
  * Rating <ns-rating>
