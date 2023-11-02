@@ -73,6 +73,9 @@ export const tableProps = {
   customColumns: {
     type: Array,
     require: false,
+  },
+  maxHeight: {
+    type: String,
   }
 }
 

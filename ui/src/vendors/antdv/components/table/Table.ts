@@ -128,6 +128,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     ref: tableRef,
     class: classes,
     data: rows.value,
+    maxHeight: props.maxHeight,
     // columns: columns as ColumnsType,
     rowConfig: {
       isHover: true
