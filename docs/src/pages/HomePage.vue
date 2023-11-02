@@ -54,7 +54,7 @@ const items = ref<any>([
       <ns-chip label="政策"></ns-chip>
     </template>
     <template #corner>
-      <ns-chip label="政策"></ns-chip>
+      <ns-chip label="政策1"></ns-chip>
     </template>
     <complex-table />
   </ns-card>
