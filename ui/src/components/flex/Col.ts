@@ -1,6 +1,7 @@
 import { ExtractPublicPropTypes, PropType, h } from 'vue'
 import { define } from '../../utils'
 import { defineComponent } from 'vue'
+import { MakePropsType } from 'src/utils/private/helpers'
 
 const JUSTIFY = ['start', 'end', 'center'] as const
 type JustifyValue = typeof JUSTIFY[number]
@@ -24,10 +25,17 @@ const props = {
   span: {
     type: [Number, String],
     default: 12
+  },
+  /**
+   * 在 <ns-row> 内占据的空间
+   */
+  grow: {
+    type: Number,
+    default: 0
   }
 }
 
-export type ColProps = ExtractPublicPropTypes<typeof props>
+export type ColProps = MakePropsType<typeof props>
 
 export const NsCol = defineComponent({
   name: 'NsCol',
@@ -37,6 +45,7 @@ export const NsCol = defineComponent({
       class: [
         'flex',
         'flex-col',
+        ...props.grow ? ['flex-grow'] : [],
         `justify-${props.justify}`,
         `align-${props.align}`,
       ]

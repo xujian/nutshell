@@ -2,7 +2,7 @@ import { ExtractPublicPropTypes, PropType, defineComponent } from 'vue'
 import { define } from '../../utils'
 import { h } from 'vue'
 
-const JUSTIFY = ['start', 'end', 'center'] as const
+const JUSTIFY = ['start', 'end', 'center', 'around', 'between'] as const
 type JustifyValue = typeof JUSTIFY[number]
 
 const ALIGN = ['start', 'end', 'center'] as const
