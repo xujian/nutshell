@@ -3,10 +3,9 @@ import { Steps as AntdvSteps } from 'ant-design-vue'
 import { StepsProps } from '../../../../components'
 import type { MarginProps } from '../../../../utils'
 
-export const Stepper = (props: StepsProps & MarginProps, ctx: SetupContext) => {
+export const Stepper = (props: StepsProps & MarginProps, ctx: SetupContext, emits: any) => {
   const { slots } = ctx
-
-  
+  console.log(slots, 222)
 
   return h(AntdvSteps, {
     class: ['ns-stepper'],
