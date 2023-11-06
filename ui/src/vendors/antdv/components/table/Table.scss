@@ -7,6 +7,9 @@
     height: 100%;
     width: 100%;
   }
+  .vxe-body--column {
+    vertical-align: middle;
+  }
   &.variant-primary {
     .ant-table {
         background-color: var(--ns-primary);
