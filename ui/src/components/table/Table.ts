@@ -80,7 +80,7 @@ export const tableProps = {
     require: false,
   },
   maxHeight: {
-    type: String,
+    type: [String, Number],
   },
   /**
    * 表行对鼠标 hover 动作变色
