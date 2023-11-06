@@ -131,10 +131,13 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     maxHeight: props.maxHeight,
     // columns: columns as ColumnsType,
     rowConfig: {
-      isHover: true
+      isHover: !props.rowHoverable === false
     },
     columnConfig: {
       resizable: true
+    },
+    editConfig: {
+      mode: 'row'
     },
     scrollY: {enabled: true},
     onCheckboxChange: onSelectedChange,
