@@ -53,8 +53,8 @@ export interface InputEmits extends ObjectEmitsOptions {
   change: (value: string | number) => void
 }
 
-const inputEmits: InputEmits = {
-  change: (value: string | number) => {}
+export const inputEmits: InputEmits = {
+  change: (value: string | number) => true
 }
 
 export type InputProps = MakePropsType<typeof inputProps, InputEmits>

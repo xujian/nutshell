@@ -1,11 +1,11 @@
-import { h, ref } from 'vue'
+import { h } from 'vue'
 import { FormItem as AntFormItem, Input as AntInput } from 'ant-design-vue'
 import { defineComponent } from 'vue'
-import { InputType, inputProps, type InputProps } from '../../../../components/input'
+import { inputProps, inputEmits } from '../../../../components/input'
 import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from './rules'
-import type { MarginProps } from '../../../../utils'
-import { marginProps } from '../../../../utils'
+import { ChangeEvent } from 'ant-design-vue/es/_util/EventInterface'
+import { marginProps } from '../../../../utils/private/helpers'
 
 export type AntInputType = 
   'number' | 'button' | 'time' | 'reset' | 'submit' 
@@ -23,14 +23,14 @@ export const Input = defineComponent({
     ...inputProps,
     ...marginProps,
   },
-  setup: (props, ctx) => {
+  emits: inputEmits,
+  setup: (props, { emit }) => {
     const classes = [
       'ns-input',
       ...props.classes || []
     ]
 
     const rules = transformRules(props.rules as FullValidationRule[])
-
     return () => 
       h(AntFormItem, {
         class: [
@@ -47,10 +47,13 @@ export const Input = defineComponent({
         value: props.modelValue,
         placeholder: props.placeholder,
         'onUpdate:value': (value: string) => {
-          const val = props.modelModifiers.trim
+          const val = props.modelModifiers?.trim
             ? value.trim()
             : value
           props['onUpdate:modelValue']?.(val)
+        },
+        onChange: (e: ChangeEvent) => {
+          emit('change', e.target.value)
         }
       })
     )

@@ -7,10 +7,11 @@
   <p>&nbsp;</p>
   <ns-form name="validation" v-model="validationFormDate" ref="formRef">
     <ns-input name="clientName" 
-      v-model="validationFormDate.clientName" 
+      :model-value="validationFormDate.clientName" 
       label="客户名称" 
       :rules="['required']" 
-      fill="white" />
+      fill="white"
+      @change="onNameChange" />
     <ns-select name="clientLocation" v-model="validationFormDate.clientLocation"
       :options="cities"
       label="区域" :rules="['required']"
@@ -36,6 +37,10 @@ const cities = ref<any[]>([])
 
 const onFormSubmit = () => {
   formRef.value?.validate()
+}
+
+const onNameChange = (value: string) => {
+  console.log('onNameChange+++++', value)
 }
 
 onMounted(async () => {
