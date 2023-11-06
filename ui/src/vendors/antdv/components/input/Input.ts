@@ -24,7 +24,7 @@ export const Input = defineComponent({
     ...marginProps,
   },
   emits: inputEmits,
-  setup: (props, { emit }) => {
+  setup: (props, { emit, slots }) => {
     const classes = [
       'ns-input',
       ...props.classes || []
@@ -55,6 +55,9 @@ export const Input = defineComponent({
         onChange: (e: ChangeEvent) => {
           emit('change', e.target.value)
         }
+      }, {
+        ...slots.prepend && { prefix: slots.prepend},
+        ...slots.append && { suffix: slots.append }
       })
     )
   }

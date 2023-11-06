@@ -1,4 +1,4 @@
-import { ObjectEmitsOptions, PropType } from 'vue'
+import type { ObjectEmitsOptions, PropType, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { FullValidationRule, ValidationRule, buildStyles, formatRules } from '../../props/field'
@@ -57,12 +57,19 @@ export const inputEmits: InputEmits = {
   change: (value: string | number) => true
 }
 
+export interface InputSlots extends SlotsType {
+  /** 前缀 */
+  prepend: never,
+  /** 后缀 */
+  append: never
+}
+
 export type InputProps = MakePropsType<typeof inputProps, InputEmits>
 
 /**
  * 输入框 <ns-input>
  */
-export const NsInput = define({
+export const NsInput = define<typeof inputProps, InputEmits, InputSlots>({
     name: 'NsInput',
     props: inputProps,
     emits: inputEmits,

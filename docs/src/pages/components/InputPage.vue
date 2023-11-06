@@ -19,6 +19,9 @@
         :variant="variant" label="创建订单"></ns-input>
     </ns-row>
   </ns-card>
+  <ns-card title="特殊输入框">
+    <ns-search-input name="q" placeholder="搜索" />
+  </ns-card>
 </template>
 
 <script lang="ts" setup>
