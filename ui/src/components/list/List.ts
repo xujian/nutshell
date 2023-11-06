@@ -1,4 +1,4 @@
-import { MakePropsType } from 'src/utils'
+import { MakePropsType } from '../../utils'
 import { h } from 'vue'
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent } from 'vue'
 

@@ -3,7 +3,7 @@ import { define } from '../../utils'
 import { PropType } from 'vue'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { ValidationRule, buildStyles, formatRules } from '../../props/field'
-import { MakePropsType } from 'src/utils/private/helpers'
+import { MakePropsType } from '../../utils/private/helpers'
 
 export type SelectOption = {
   value: string | number,

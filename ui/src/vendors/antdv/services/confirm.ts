@@ -3,7 +3,7 @@ import { createApp } from 'vue'
 import { App } from 'vue'
 import { ConfirmOptions, DialogOptions } from '../../../services/dialog'
 import { NsDialog } from '../../../components'
-import { CoreVendor } from 'src/shared'
+import { CoreVendor } from '../../../shared'
 
 
 

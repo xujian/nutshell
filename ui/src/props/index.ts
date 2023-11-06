@@ -1,4 +1,4 @@
-export { useSizeProps } from './size'
+export { useSizeProps, Size } from './size'
 export { useFieldProps } from './field'
 export { useDimensionProps } from './dimension'
 export { useVariantProps } from './variant'

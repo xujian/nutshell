@@ -47,6 +47,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
   },
   {
     name: 'AntdvDialogVendor',
+    // @ts-ignore
     props: dialogProps,
     emits: dialogEmits,
   }
