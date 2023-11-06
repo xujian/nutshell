@@ -151,6 +151,10 @@ const menuData = computed(() => [
             key: '/components/checkbox'
           },
           {
+            label: '单选框 radio',
+            key: '/components/radio'
+          },
+          {
             label: '星星输入框 rating-input',
             key: '/components/rating-input'
           },

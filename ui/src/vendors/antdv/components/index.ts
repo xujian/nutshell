@@ -10,6 +10,7 @@ import { Tabs } from './tabs'
 import { Chips } from './chip'
 import { Stepper } from './stepper'
 import { Drawer } from './drawer'
+import { RadioGroup } from './radio'
 
 const components = {
   Form,
@@ -29,6 +30,7 @@ const components = {
   Chips,
   Stepper,
   Drawer,
+  RadioGroup,
 }
 
 export default components

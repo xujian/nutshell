@@ -17,6 +17,7 @@ const SelectPage = () => import('../pages/components/SelectPage.vue')
 const CascadingSelectPage = () => import('../pages/components/CascadingSelectPage.vue')
 const TablePage = () => import('../pages/components/TablePage.vue')
 const TabsPage = () => import('../pages/components/TabsPage.vue')
+const RadioPage = () => import('../pages/components/RadioPage.vue')
 const ListPage = () => import('../pages/components/ListPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
@@ -112,6 +113,11 @@ const router = createRouter({
           path: '/components/list',
           name: 'components-list',
           component: ListPage,
+        },
+        {
+          path: '/components/radio',
+          name: 'components-radio',
+          component: RadioPage,
         },
         {
           path: '/interactive/dialog',

@@ -17,6 +17,7 @@ export * from './list'
 // table uses other basic components
 export * from './stepper'
 export * from './drawer'
+export * from './radio'
 export * from './table'
 
 import { NsApp } from './app'
@@ -36,6 +37,7 @@ import { NsCard, NsCardTitle } from './card'
 import { NsList } from './list'
 import { NsStepper } from './stepper'  
 import { NsDrawer } from './drawer'
+import { NsRadio, NsRadioGroup } from './radio'
 import { NsTable, NsTableColumn } from './table'
 
 const components = {
@@ -67,6 +69,8 @@ const components = {
   NsList,
   NsStepper,
   NsDrawer,
+  NsRadio,
+  NsRadioGroup,
   NsTable,
 }
 
