@@ -88,7 +88,7 @@ export function define<
       ...extraProps,
       classes: buildClasses(props),
       vendorRef,
-    }, defaultSlot)
+    }, ctx.slots)
 
     /**
      * 使组件可执行 method (expose)

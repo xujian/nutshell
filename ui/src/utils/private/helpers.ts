@@ -5,8 +5,8 @@ import { Prettify, LooseRequired } from '@vue/shared'
  * 传给 vendor 的属性里加了一些字段
  */
 export type MarginProps = {
-  classes: string[],
-  vendorRef: Ref,
+  classes?: string[],
+  vendorRef?: Ref,
 }
 
 export type WithMarginProps<T = {}> = T & MarginProps
