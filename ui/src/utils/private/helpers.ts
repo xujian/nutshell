@@ -1,5 +1,22 @@
-import { AllowedComponentProps, ComponentObjectPropsOptions, ComponentPropsOptions, EmitsOptions, ExtractPropTypes, ExtractPublicPropTypes, ObjectEmitsOptions } from 'vue'
+import { AllowedComponentProps, ComponentObjectPropsOptions, ComponentPropsOptions, EmitsOptions, ExtractPropTypes, ExtractPublicPropTypes, ObjectEmitsOptions, PropType, Ref } from 'vue'
 import { Prettify, LooseRequired } from '@vue/shared'
+
+/**
+ * 传给 vendor 的属性里加了一些字段
+ */
+export type MarginProps = {
+  classes: string[],
+  vendorRef: Ref,
+}
+
+export type WithMarginProps<T = {}> = T & MarginProps
+
+export const marginProps = {
+  classes: {
+    type: Array as PropType<String[]>,
+    default: []
+  }
+}
 
 export type EmitsToProps<T extends EmitsOptions> = T extends string[]
   ? {
@@ -37,7 +54,9 @@ export type ResolveProps<
    * 以及组件的通用属性
    */
   export type MakePropsType<
-    PropsOptions extends ComponentObjectPropsOptions, Emits extends ObjectEmitsOptions = {}
+    PropsOptions extends ComponentObjectPropsOptions,
+    Emits extends ObjectEmitsOptions = {}
   > = ExtractPublicPropTypes<PropsOptions>
       & EmitsToProps<Emits>
       & AllowedComponentProps
+      & MarginProps

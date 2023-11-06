@@ -1,10 +1,8 @@
 import { h, SetupContext } from 'vue'
 import { Rate as AntdvRating, FormItem as AntFormItem } from 'ant-design-vue'
 import { RatingInputProps, RatingProps } from '../../../../components'
-import { marginProps } from '../../../../utils'
-import type { MarginProps } from '../../../../utils'
 
-export const RatingInput = (props: RatingInputProps & MarginProps, ctx: SetupContext) => {
+export const RatingInput = (props: RatingInputProps, ctx: SetupContext) => {
 
   return h(AntFormItem, {
     class: [

@@ -2,7 +2,7 @@ import { h, SetupContext } from 'vue'
 import { Checkbox as AntdvCheckbox } from 'ant-design-vue'
 import { checkboxProps } from '../../../../components'
 import type { CheckboxProps } from '../../../../components'
-import { MarginProps, marginProps } from '../../../../utils'
+import { MarginProps } from '../../../../utils'
 
 export const Checkbox = (props: CheckboxProps & MarginProps, ctx: SetupContext) => {
 

@@ -9,23 +9,6 @@ import { LooseRequired } from '@vue/shared'
 import { MakePropsType } from './helpers'
 import { useVendor } from '../../shared'
 
-  /**
-   * 传给 vendor 的属性里加了一些字段
-   */
-  export type MarginProps = {
-    classes: string[],
-    vendorRef: Ref,
-  }
-
-  export type WithMarginProps<T = {}> = T & MarginProps
-
-export const marginProps = {
-  classes: {
-    type: Array as PropType<String[]>,
-    default: []
-  }
-}
-
 const buildClasses = (props: any): string[] => {
   const { variant, color } = props
   const result: string[] = []
@@ -48,7 +31,7 @@ export function define<
   /** 组件属性的定义 */
   PropsOptions extends ComponentObjectPropsOptions,
   /** 组件事件的定义 */
-  Emits extends ObjectEmitsOptions = {}, 
+  Emits extends ObjectEmitsOptions, 
   /** 组件 SLOT 的定义 */
   Slots extends SlotsType = {},
   // 从 PropsOptions 抽取组件的实际属性
@@ -103,7 +86,6 @@ export function define<
     // return () => h(render.value, {
       ...props,
       ...extraProps,
-      ...options.emits,
       classes: buildClasses(props),
       vendorRef,
     }, defaultSlot)
@@ -124,6 +106,7 @@ export function define<
     inheritAttrs: true,
     name: options.name,
     props: options.props,
+    // emits: options.emits, // TODO: 加上就无法触发 onChange
     // @ts-ignore
     setup,
   }
