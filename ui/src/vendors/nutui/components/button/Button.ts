@@ -19,7 +19,7 @@ const getSize = (size?: Size): ButtonSize => {
   return sizeMapping[size]
 }
 
-export const Button = (props: ButtonProps & ButtonEmits & MarginProps) => {
+export const Button = (props: ButtonProps) => {
   const { color } = props
   const colorIsBrand = BRANDS.includes(color as BrandColor)
   const classes = [
@@ -28,7 +28,7 @@ export const Button = (props: ButtonProps & ButtonEmits & MarginProps) => {
     ...(props.classes ?? []),
     colorIsBrand ? `color-${color}` : ''
   ]
-  const { type, label, width, disabled,
+  const { label, width, disabled,
     maxWidth, height, maxHeight, minWidth, minHeight,
     ...p } = props
   
