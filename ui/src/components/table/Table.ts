@@ -38,7 +38,12 @@ export type TableColumnSlot = VNode<RendererNode, RendererElement, {
   [key: string]: string
 }>
 
-export type TableColumnType = 'checkbox' | 'number'
+/**
+ * 表格列类型
+ * 仅用于少数特殊预定义的列
+ * 例如序号列
+ */
+export type TableColumnType = 'number'
 
 export type TableColumnDefinition = {
   name?: string,
@@ -76,6 +81,13 @@ export const tableProps = {
   },
   maxHeight: {
     type: String,
+  },
+  /**
+   * 表行对鼠标 hover 动作变色
+   */
+  rowHoverable: {
+    type: Boolean,
+    default: true,
   }
 }
 
@@ -110,7 +122,6 @@ export const NsTable = define({
      * 例如 <ns-table-column-chip />
      * 并作为属性传递给 vendor 最终处理
      */
-
     const columns = getCustomizedColumns()
 
     return {
