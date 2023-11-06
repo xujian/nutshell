@@ -20,6 +20,7 @@ const TabsPage = () => import('../pages/components/TabsPage.vue')
 const ListPage = () => import('../pages/components/ListPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
+const DrawerPage = () => import('../pages/interactive/DrawerPage.vue')
 const FontPage = () => import('../pages/tokens/FontPage.vue')
 const TablePerfPage = () => import('../pages/labs/TablePerfPage.vue')
 const NotFoundPage = () => import('../pages/NotFoundPage.vue')
@@ -121,6 +122,11 @@ const router = createRouter({
           path: '/interactive/toast',
           name: 'interactive-toast',
           component: ToastPage,
+        },
+        {
+          path: '/interactive/drawer',
+          name: 'interactive-drawer',
+          component: DrawerPage,
         },
         {
           path: '/tokens/font',

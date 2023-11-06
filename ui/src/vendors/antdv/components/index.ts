@@ -9,6 +9,7 @@ import { Dropdown } from './dropdown'
 import { Tabs } from './tabs'
 import { Chips } from './chip'
 import { Stepper } from './stepper'
+import { Drawer } from './drawer'
 
 const components = {
   Form,
@@ -26,7 +27,8 @@ const components = {
   Checkbox,
   CheckboxGroup,
   Chips,
-  Stepper
+  Stepper,
+  Drawer,
 }
 
 export default components

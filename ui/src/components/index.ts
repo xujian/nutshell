@@ -15,8 +15,9 @@ export * from './card'
 export * from './list'
 // move table to the last for
 // table uses other basic components
-export * from './table'
 export * from './stepper'
+export * from './drawer'
+export * from './table'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -33,8 +34,9 @@ import { NsDropdown } from './dropdown'
 import { NsTabs, NsTabsItem } from './tabs'
 import { NsCard, NsCardTitle } from './card'
 import { NsList } from './list'
-import { NsTable, NsTableColumn } from './table'
 import { NsStepper } from './stepper'  
+import { NsDrawer } from './drawer'
+import { NsTable, NsTableColumn } from './table'
 
 const components = {
   NsApp,
@@ -63,8 +65,9 @@ const components = {
   NsCard,
   NsCardTitle,
   NsList,
+  NsStepper,
+  NsDrawer,
   NsTable,
-  NsStepper
 }
 
 export default components

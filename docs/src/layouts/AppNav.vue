@@ -181,6 +181,10 @@ const menuData = computed(() => [
           {
             label: '消息 toast',
             key: '/interactive/toast'
+          },
+          {
+            label: '侧边栏 drawer',
+            key: '/interactive/drawer'
           }
         ]
       },
