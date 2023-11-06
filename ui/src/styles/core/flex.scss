@@ -3,6 +3,11 @@
   display: flex;
 }
 
+.flex:before,
+.flex:after  {
+  content: " ";
+}
+
 /* direction */
 .flex-col {
   flex-direction: column;
@@ -74,4 +79,23 @@
 }
 .spacer {
   flex-grow: 1;
+}
+
+.gap-xs {
+  gap: var(--ns-spacing-xs)
+}
+.gap-sm {
+  gap: var(--ns-spacing-sm)
+}
+.gap-md {
+  gap: var(--ns-spacing-md)
+}
+.gap-lg {
+  gap: var(--ns-spacing-lg)
+}
+.gap-xl {
+  gap: var(--ns-spacing-xl)
+}
+.gap-none {
+  gap: 0
 }
