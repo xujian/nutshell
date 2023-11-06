@@ -7,7 +7,10 @@ export const Form = (props: FormProps & MarginProps, { slots }: SetupContext) =>
 
   return h(AntdvForm, {
     ref: props.vendorRef,
-    class: ['ns-form'].concat(props.classes),
+    class: [
+      'ns-form',
+      ...props.classes || []
+    ],
     name: props.name,
     autocomplete: 'off',
     model: props.modelValue,

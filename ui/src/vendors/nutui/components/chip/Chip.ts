@@ -5,7 +5,10 @@ import { MarginProps } from '../../../../utils'
 export const Chip = (props: ChipProps & MarginProps) => {
   const { label, color, textColor } = props
   return h(NutTag, {
-    class: ['ns-chip'].concat(props.classes),
+    class: [
+      'ns-chip',
+      ...props.classes || []
+    ],
     round: true,
   }, () => label)
 }

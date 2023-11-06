@@ -24,7 +24,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
 
   const classes = [
     'ns-table', 
-    ...props.classes,
+    ...props.classes || [],
   ].join(' ')
 
   const tableRef = ref<VxeTableInstance | null>(null)
