@@ -1,11 +1,11 @@
 import { PropType, h } from 'vue'
 import { defineComponent } from 'vue'
-import { MakePropsType } from 'src/utils/private/helpers'
+import { MakePropsType } from '../../utils/private/helpers'
 
-const JUSTIFY = ['start', 'end', 'center'] as const
+const JUSTIFY = ['start', 'end', 'center', 'between', 'around', 'evenly'] as const
 type JustifyValue = typeof JUSTIFY[number]
 
-const ALIGN = ['start', 'end', 'center'] as const
+const ALIGN = ['start', 'end', 'center', 'stretch'] as const
 type AlignValue = typeof ALIGN[number]
 
 const props = {
