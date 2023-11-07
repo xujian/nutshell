@@ -20,7 +20,7 @@ export const useTableColumnProps = () => ({
     type: String,
   },
   width: {
-    type: Number,
+    type: [Number, String],
   },
   align: {
     type: String as PropType<NsTableColumnAlign>,
