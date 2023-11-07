@@ -50,16 +50,17 @@ export const NsRadioGroup = define({
       slots = defaultSlot && defaultSlot()
     // 这里的逻辑
     // 当使用子组件(ns-radio)时，items 属性自动失效
-    const items = slots && slots.length
-      ? slots.map(slot => ({
+    const items = slots
+      && slots.length
+      && slots.map(slot => ({
           name: props.name,
           label: slot.props?.label,
           value: slot.props?.value,
         }))
-      : props.items
     return {
       props: {
-        items
+        // 这样写是为了避免用 undefine 覆盖掉原值 丢失 reactive
+        ...items && { items }
       }
     }
   }

@@ -4,10 +4,9 @@ import { RadioGroupProps } from '../../../../components'
 
 export const RadioGroup = (props: RadioGroupProps, ctx: SetupContext) => {
 
-  const { items } = props,
-    { emit } = ctx
- 
-  const children = () => items?.map(item => h(AntdvRadio, {
+  const { emit } = ctx
+
+  const children = () => props.items?.map(item => h(AntdvRadio, {
     name: props.name,
     value: item.value,
   }, () => item.label))
@@ -20,7 +19,6 @@ export const RadioGroup = (props: RadioGroupProps, ctx: SetupContext) => {
 
   const group = () => h(AntdvRadioGroup, {
     class: [
-      'ns-radio-group',
       ...props.direction === 'vertical'
         ? [
             'flex', 'flex-col'
@@ -28,21 +26,26 @@ export const RadioGroup = (props: RadioGroupProps, ctx: SetupContext) => {
         : [
             'flex', 'flex-row'
           ],
-      ],
-      value: props.modelValue,
-      'onUpdate:value': (value: string | number) => {
-        emit('update:modelValue', value)
-      },
-      onChange: (e: RadioChangeEvent) => {
-        e.stopPropagation()
-        emit('change', e.target.value)
-      }
+    ],
+    name: props.name || 'radio',
+    value: props.modelValue,
+    'onUpdate:value': (value: string | number) => {
+      emit('update:modelValue', value)
+    },
+    onChange: (e: RadioChangeEvent) => {
+      e.stopPropagation()
+      emit('change', e.target.value)
+    }
   }, children)
 
   return h('div', {
-    class: ['ns-radio-group']
+    class: [
+      'ns-radio-group',
+      props.class
+    ]
   }, [
-    title(),
-    group(),
-  ])
+      title(),
+      group() 
+    ]
+  )
 }

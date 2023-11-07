@@ -5,6 +5,9 @@ export const radioProps = {
   value: {
     type: [String, Number],
   },
+  name: {
+    type: String,
+  },
   label: {
     type: String
   }
@@ -17,7 +20,8 @@ const radioEmits: RadioEmits = {
 }
 
 export interface RadioSlots extends SlotsType {
-  default: never,
+  prepend: never,
+  append: never,
 }
 
 export type RadioProps = MakePropsType<typeof radioProps, RadioEmits>
