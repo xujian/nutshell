@@ -83,9 +83,9 @@ export const NsStepper = define({
   props: stepperProps,
   emits: stepperEmits,
   // @ts-ignore
-  setup (props, {slots}) {
+  setup (props) {
     return {
-      slots
+    
     }
   }
 })

@@ -4,8 +4,6 @@ import { StepsProps } from '../../../../components'
 import type { MarginProps } from '../../../../utils'
 
 export const Stepper = (props: StepsProps & MarginProps, ctx: SetupContext, emits: any) => {
-  const { slots } = ctx
-  console.log(slots, 222)
 
   return h(AntdvSteps, {
     class: ['ns-stepper'],
@@ -19,6 +17,6 @@ export const Stepper = (props: StepsProps & MarginProps, ctx: SetupContext, emit
     'onUpdate:current': (value: number) => {
       props['onUpdate:modelValue']?.(value)
     }
-  }, slots)
+  })
 }
 // + import => ./index.ts, ../components.ts
