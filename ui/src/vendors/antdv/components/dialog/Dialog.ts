@@ -13,8 +13,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
     const classes = [
       'ns-dialog',
     ].join(' ')
-    const { slots, emit } = ctx,
-      { onHide, onClose } = props
+    const { slots, emit } = ctx
 
     return () => h(AntdvModal, {
       class: classes,
@@ -24,25 +23,22 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       height: props.height,
       okText: props.okText || '确定',
       okType: props.okColor ? buttonTypesMap[props.okColor] || 'primary' : 'primary',
-      cancelText: props.cancelText,
+      cancelText: props.cancelText || '取消',
       keyboard: true,
       'onUpdate:open': (value: boolean) => {
         console.log('antdv modal.......onUpdate:open', value, Object.keys(props), props['onUpdate:modelValue'])
         props['onUpdate:modelValue']?.(value)
       },
-      onOK: () => {
+      onOk: () => {
         console.log('on ok')
         props['onUpdate:modelValue']?.(false)
-        props.onHide?.()
+        emit('ok')
       },
       onCancel: () => {
         console.log('on cancel')
-        props.onClose?.()
-      },
-      onClose: () => {
-        console.log('on close')
-        props.onClose?.()
-      },
+        emit('cancel')
+        emit('close')
+      }
     }, slots)
   },
   {

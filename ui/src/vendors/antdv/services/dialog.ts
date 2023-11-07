@@ -1,4 +1,4 @@
-import { h, ref } from 'vue'
+import { defineAsyncComponent, h, ref } from 'vue'
 import { createApp } from 'vue'
 import { App } from 'vue'
 import { DialogOptions } from '../../../services/dialog'
@@ -9,23 +9,44 @@ import { CoreVendor } from '../../../shared/vendor'
 function createDialog (options: DialogOptions, app: App) {
   const container = document.createElement('div')
   document.body.appendChild(container)
-  const { title, message } = options
+  const { title, message, component } = options
+
+  let completeResult: any = null
+
+  const onComplete = (result: any) => {
+    completeResult = result
+  }
+
+  // 定义 body
+  // component 优先级高于 message
+  const body = component
+    ? typeof component === 'function'
+      ? () => h(defineAsyncComponent(component), { onComplete })
+      : () => h(component, { onComplete })
+    : () => message
+
   const visible = ref(true)
   const dialog = createApp({
     name: 'NsDynamicDialog',
     setup: () => () => h(NsDialog, {
       title,
+      width: options.width,
       modelValue: visible.value,
       'onUpdate:modelValue': (value: boolean) => {
         visible.value = value
       },
+      onOk: () => {
+        options.onOk?.(completeResult)
+        visible.value = false
+      },
       onClose: () => {
         visible.value = false
+        options.onCancel?.()
       }
     }, {
       default: () => h('div', {
         class: 'dialog-content',
-      }, message)
+      }, body())
     })
   })
   dialog.config.globalProperties = app.config.globalProperties

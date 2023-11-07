@@ -22,6 +22,7 @@ export const dialogProps = {
 
 export interface DialogEmits extends ObjectEmitsOptions {
   'update:modelValue': (value: boolean) => void,
+  ok (): void,
   show (): void,
   hide (): void,
   close (): void,
@@ -29,6 +30,7 @@ export interface DialogEmits extends ObjectEmitsOptions {
 
 export const dialogEmits: DialogEmits = {
   'update:modelValue': (value: boolean) => void 0,
+  ok () {},
   show () {},
   hide () {},
   close () {},

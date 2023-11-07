@@ -1,14 +1,20 @@
-import { h, inject, ref, App } from 'vue'
+import { h, inject, ref, App, VueElement } from 'vue'
 import { VendorSymbol } from '../shared/symbols'
 import { DollarNutshell } from '../framework'
 import { Color } from '../composables'
+import {  } from 'vue'
+import { VueElementConstructor } from 'vue'
 
 export type DialogOptions = {
   title?: string,
   message?: string,
+  component?: any,
+  width: number,
   okText?: string,
   cancelText?: string,
-  okColor?: Color
+  okColor?: Color,
+  onOk?: (result?: any) => void
+  onCancel?: () => void
 }
 
 export type ConfirmOptions = {
@@ -38,7 +44,7 @@ export default {
         p.dialog(options)
       })
     }
-    $n.confirm = (message: string, onOk: () => void, options?: DialogOptions) => {
+    $n.confirm = (message: string, onOk: () => void, options?: ConfirmOptions) => {
       const vendor = app._context.provides[VendorSymbol as symbol]
       Promise.resolve(vendor).then(p => {
         p.confirm(message, onOk, options)
