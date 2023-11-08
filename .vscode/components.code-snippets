@@ -2,8 +2,8 @@
   "新建组件": {
     "prefix": ["nsc", "nutshell"],
     "body": [
-      "import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType } from 'vue'"
-      "import { define } from '../../utils'"
+      "import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'"
+      "import { define, MakePropsType } from '../../utils'"
       "",
       "export const ${2}Props = {"
       "\tlabel: {"
@@ -11,17 +11,17 @@
       "\t}"
       "}"
       ""
-      "export type ${1}Props = ExtractPublicPropTypes<typeof ${2}Props>"
-      ""
       "export interface ${1}Emits extends ObjectEmitsOptions {"
       "}"
       ""
-      "const emits: ${1}Emits = {"
+      "const ${2}Emits: ${1}Emits = {"
       "}"
       ""
       "export interface ${1}Slots extends SlotsType {"
       "\tdefault: never,"
       "}"
+      ""
+      "export type ${1}Props = MakePropsType<typeof ${2}Props, ${1}Emits>"
       "",
       "$BLOCK_COMMENT_START*"
       " * ${1} 组件 <ns-${2}>"
@@ -29,7 +29,7 @@
       "export const Ns${1:$TM_FILENAME_BASE} = define({"
       "\tname: 'Ns${1}',"
       "\tprops: ${2}Props,"
-      "\temits,"
+      "\temits: ${2}Emits,"
       "\tsetup (props, ctx) {"
       "\t\treturn {"
       "\t\t}"
