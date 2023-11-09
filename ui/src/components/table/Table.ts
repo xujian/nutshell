@@ -88,6 +88,10 @@ export const tableProps = {
   rowHoverable: {
     type: Boolean,
     default: true,
+  },
+  loading: {
+    type: Boolean,
+    default: false,
   }
 }
 

@@ -133,6 +133,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     rowConfig: {
       isHover: !props.rowHoverable === false
     },
+    loading: props.loading,
     columnConfig: {
       resizable: true
     },
