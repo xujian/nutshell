@@ -44,6 +44,7 @@ export const Input = defineComponent({
       }, () => h(AntInput, {
         type: props.type as AntInputType,
         maxlength: props.maxlength ?? 50,
+        disabled: props.disabled ?? false,
         value: props.modelValue,
         placeholder: props.placeholder,
         'onUpdate:value': (value: string) => {
