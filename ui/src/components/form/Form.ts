@@ -37,8 +37,15 @@ export const NsForm = define({
   setup (props, ctx) {
     const vendorRef = ref()
 
-    function validate (): boolean {
-      return !!vendorRef.value && vendorRef.value.validate()
+    function validate (): Promise<boolean> {
+      return new Promise<boolean>((resolve, reject) => {
+        vendorRef.value.validate().then((result: any) => {
+          console.log('after-validate------', result)
+          resolve(true)
+        }).catch((result: any) => {
+          resolve(result.errorFields.length === 0)
+        })
+      })
     }
 
     return {
