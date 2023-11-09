@@ -1,7 +1,7 @@
 import {ExtractPropTypes, PropType, defineComponent, h } from 'vue'
 import type { Size } from '../../props'
 
-const JUSTIFY = ['start', 'end', 'center', 'around', 'between', 'evently'] as const
+const JUSTIFY = ['start', 'end', 'center', 'around', 'between', 'eventy'] as const
 type JustifyValue = typeof JUSTIFY[number]
 
 const ALIGN = ['start', 'end', 'center', 'stretch'] as const
