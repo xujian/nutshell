@@ -103,6 +103,16 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
  * ]" />
  */
 
+/**
+ * 表单项的 name 属性
+ * string[]? when validating form item whithin array/v-for
+ * :name="[<form model field>, index, <child field>]"
+ */
+type FormItemName = string | [string, number, string]
+
+/**
+ * 表单项共用属性
+ */
 const fieldProps = {
   /**
    * 标题
@@ -111,7 +121,7 @@ const fieldProps = {
     type: String,
   },
   name: {
-    type: String,
+    type: [String, Array] as PropType<FormItemName>,
     required: true,
   },
   /**
