@@ -58,8 +58,10 @@
       box-shadow: none;
     }
   }
+  &.ant-form-item-with-help {
+    margin-bottom: 24px;
+  }
 }
-
 .ns-form-item {
   &.variant-solid {
     background-color: var(--ns-fill);
