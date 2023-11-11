@@ -35,13 +35,13 @@ export const Input = defineComponent({
       h(AntFormItem, {
         class: [
           'ns-form-item',
-          ...props.classes || [],
           props.variant ? `variant-${props.variant}` : '',
         ],
         label: props.label,
         name: props.name,
         rules,
       }, () => h(AntInput, {
+        class: classes,
         type: props.type as AntInputType,
         maxlength: props.maxlength ?? 50,
         disabled: props.disabled ?? false,
