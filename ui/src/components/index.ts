@@ -1,6 +1,7 @@
 export * from './app'
 export * from './button'
 export * from './input'
+export * from './switch'
 export * from './form'
 export * from './select'
 export * from './checkbox'
@@ -24,6 +25,7 @@ import { NsApp } from './app'
 import { NsButton } from './button'
 import { NsForm } from './form'
 import { NsInput, NsDateInput, NsMobileInput, NsIdInput } from './input'
+import { NsSwitch } from './switch'
 import { NsSelect, NsCascadingSelect, NsMultipleSelect } from './select'
 import { NsCheckbox } from './checkbox'
 import { NsRating, NsRatingInput } from './rating'
@@ -47,6 +49,7 @@ const components = {
   NsDateInput,
   NsMobileInput,
   NsIdInput,
+  NsSwitch,
   NsForm,
   NsSelect,
   NsMultipleSelect,

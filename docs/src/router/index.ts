@@ -13,6 +13,7 @@ const FormPage = () => import('../pages/components/FormPage.vue')
 const CheckboxPage = () => import('../pages/components/CheckboxPage.vue')
 const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const RatingInputPage = () => import('../pages/components/RatingInputPage.vue')
+const SwitchPage = () => import('../pages/components/switch-page.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
 const CascadingSelectPage = () => import('../pages/components/CascadingSelectPage.vue')
 const TablePage = () => import('../pages/components/TablePage.vue')
@@ -93,6 +94,11 @@ const router = createRouter({
           path: '/components/select',
           name: 'components-select',
           component: SelectPage,
+        },
+        {
+          path: '/components/switch',
+          name: 'components-switch',
+          component: SwitchPage,
         },
         {
           path: '/components/rating-input',

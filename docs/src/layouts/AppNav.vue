@@ -158,6 +158,10 @@ const menuData = computed(() => [
             label: '星星输入框 rating-input',
             key: '/components/rating-input'
           },
+          {
+            label: '开关 switch',
+            key: '/components/switch'
+          },
         ]
       },
       {

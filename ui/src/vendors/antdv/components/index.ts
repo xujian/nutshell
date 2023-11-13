@@ -1,5 +1,6 @@
 import { Form } from './form'
 import { Input, DateInput } from './input'
+import { Switch } from './switch'
 import { Checkbox, CheckboxGroup } from './checkbox'
 import { Rating, RatingInput } from './rating'
 import { Table } from './table'
@@ -16,6 +17,7 @@ const components = {
   Form,
   Input,
   DateInput,
+  Switch,
   Table,
   Dialog,
   Select,
