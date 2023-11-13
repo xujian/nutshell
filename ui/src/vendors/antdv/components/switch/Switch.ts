@@ -9,8 +9,12 @@ export const Switch = (props: SwitchProps, ctx: SetupContext) => {
         class: 'ns-switch',
         checked: props.modelValue,
         disabled: props.disabled,
-        'onUpdate:checked': (value: boolean) => {
-            props['onUpdate:modelValue']?.(value)
+        'onUpdate:checked': (value: boolean | string | number) => {
+            if (typeof value === 'boolean') {
+                props['onUpdate:modelValue']?.(value as boolean)
+            } else {
+                throw new Error('请使用Boolean值绑定')
+            }
         }
     }, () => '')
 }

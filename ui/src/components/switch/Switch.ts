@@ -17,7 +17,8 @@ export interface SwitchEmits extends ObjectEmitsOptions {
     'change': (checked: boolean, event: Event) => void
 }
 
-const Emits: SwitchEmits = {
+const emits: SwitchEmits = {
+    'change': (checked: boolean, event: Event) => void 0
 }
 
 export interface SwitchSlots extends SlotsType {
@@ -32,7 +33,7 @@ export type SwitchProps = MakePropsType<typeof Props, SwitchEmits>
 export const NsSwitch = define({
     name: 'NsSwitch',
     props: Props,
-    emits: Emits,
+    emits,
     setup (props, ctx) {
         // console.log('components/switch', props)
         return {
