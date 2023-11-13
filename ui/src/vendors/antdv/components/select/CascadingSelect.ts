@@ -36,7 +36,8 @@ export const CascadingSelect = defineComponent({
         'onUpdate:value': (value: ValueType) => {
           props['onUpdate:modelValue']?.(value as string[])
         },
-        popupClassName: 'ns-select-dropdown'
+        popupClassName: 'ns-select-dropdown',
+        disabled: props.disabled ?? false,
       })
     )
   }

@@ -43,7 +43,8 @@ export const Select = defineComponent({
           emit('change', value)
         },
         placeholder: props.placeholder,
-        popupClassName: 'ns-select-dropdown'
+        popupClassName: 'ns-select-dropdown',
+        disabled: props.disabled ?? false,
       })
     )
   }

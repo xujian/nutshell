@@ -36,7 +36,8 @@ export const MultipleSelect = defineComponent({
         'onUpdate:value': (value: SelectValue) => {
           props['onUpdate:modelValue']?.(value as string[])
         },
-        popupClassName: 'ns-select-dropdown'
+        popupClassName: 'ns-select-dropdown',
+        disabled: props.disabled ?? false,
       })
     )
   }

@@ -44,9 +44,6 @@ export const inputProps = {
   maxlength: {
     type: Number,
   },
-  disabled: {
-    type: Boolean,
-  },
   ...useVariantProps(),
   ...useModelValuePropsForInput(),
   ...useFieldProps(),

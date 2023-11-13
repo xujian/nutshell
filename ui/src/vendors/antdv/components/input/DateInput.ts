@@ -52,6 +52,7 @@ export const DateInput = defineComponent({
           props['onUpdate:modelValue']?.(val)
         },
         disabledDate: props.disabledDate,
+        disabled: props.disabled ?? false,
       })
     )
   }

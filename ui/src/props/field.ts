@@ -135,7 +135,10 @@ const fieldProps = {
   },
   fill: {
     type: String as PropType<Color>,
-  }
+  },
+  disabled: {
+    type: Boolean,
+  },
 }
 
 /**
