@@ -2,16 +2,10 @@ import { ObjectEmitsOptions, PropType } from 'vue'
 import { Dayjs } from 'dayjs'
 import { MakePropsType, define } from '../../utils'
 import { usePlatform } from '../../composables'
-import { useFieldProps } from '../../props'
+import { useFieldProps, useModelValuePropsForInput } from '../../props'
 
 export const dateInputProps = {
-  modelValue: {
-    type: String,
-    default: '',
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: string) => void>,
-  },
+  ...useModelValuePropsForInput(),
   disabledDate: {
     type: Function as PropType<(currentDate: Dayjs) => boolean>
   },

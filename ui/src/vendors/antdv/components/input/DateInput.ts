@@ -44,7 +44,7 @@ export const DateInput = defineComponent({
         onClose: close,
         placeholder: props.placeholder,
         locale,
-        value: value.value,
+        value: dayjs(value.value) || null,
         'onUpdate:value': (value: string | Dayjs) => {
           const val = value === null
             ? ''
