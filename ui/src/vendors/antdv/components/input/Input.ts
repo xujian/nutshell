@@ -46,7 +46,11 @@ export const Input = defineComponent({
         maxlength: props.maxlength ?? 50,
         disabled: props.disabled ?? false,
         value: props.modelValue,
+        lazy: true,
         placeholder: props.placeholder,
+        valueModifiers: {
+          lazy: true
+        },
         'onUpdate:value': (value: string) => {
           const val = props.modelModifiers?.trim
             ? value.trim()
@@ -55,6 +59,9 @@ export const Input = defineComponent({
         },
         onChange: (e: ChangeEvent) => {
           emit('change', e.target.value)
+        },
+        onBlur: (e: FocusEvent) {
+          emit('blur', e)
         }
       }, {
         ...slots.prepend && { prefix: slots.prepend},

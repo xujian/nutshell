@@ -54,7 +54,8 @@ export interface InputEmits extends ObjectEmitsOptions {
 }
 
 export const inputEmits: InputEmits = {
-  change: (value: string | number) => true
+  change: (value: string | number) => true,
+  blur: (value: string | number) => true
 }
 
 export interface InputSlots extends SlotsType {
