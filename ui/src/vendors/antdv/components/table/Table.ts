@@ -49,7 +49,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
         props: {
           ...props.field && {field: props.field},
           width: props.fixed ? props.width : undefined,
-          minWidth: props.fixed ? undefined : props.width,
+          minWidth: props.width,
           title: props.label,
           align: props.align,
           sortable: props.sortable,
@@ -65,7 +65,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       }
       if (column.name) { // 带有 name 调用 columns/之下的渲染器
         // 某些 column name 映射为 vxe table type
-        // 例如 checkbox 
+        // 例如 checkbox
         if (column.name in columnNameToTypeMapping) {
           colummConfig.props.type = columnNameToTypeMapping[column.name]
           if (column.name === 'checkbox') {
@@ -131,7 +131,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     maxHeight: props.maxHeight,
     // columns: columns as ColumnsType,
     rowConfig: {
-      isHover: !props.rowHoverable === false
+      isHover: !!props.rowHoverable
     },
     loading: props.loading,
     columnConfig: {
@@ -140,7 +140,8 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     editConfig: {
       mode: 'row'
     },
-    scrollY: {enabled: true},
+    showOverflow: props.showOverflow,
+    scrollY: { enabled: true },
     onCheckboxChange: onSelectedChange,
     onCheckboxAll: onSelectedChange,
     // loading: loading,

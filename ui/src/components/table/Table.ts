@@ -92,7 +92,14 @@ export const tableProps = {
   loading: {
     type: Boolean,
     default: false,
-  }
+  },
+  /**
+   * 设置所有内容过长时显示为省略号（如果是固定列建议设置该值，大幅提升渲染速度，可防止固定列里面的组件重复渲染等问题）
+   */
+  showOverflow: {
+    type: Boolean,
+    default: true,
+  },
 }
 
 export type TableProps = MakePropsType<typeof tableProps>
