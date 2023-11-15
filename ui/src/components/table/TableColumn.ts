@@ -47,7 +47,11 @@ export const useTableColumnProps = () => ({
     type: [String, Function] as PropType<TableColumnStyleDefination>,
     require: false,
   },
-  invisible: {
+  /**
+   * 隐藏这一列
+   * @remarks 用于某些特殊逻辑
+   */
+  hidden: {
     type: Boolean,
     default: false
   }
@@ -64,11 +68,11 @@ const props = {
 }
 
 export interface TableColumnEmits extends ObjectEmitsOptions {
-  click: ({value, row, index}: TableColumnData) => void
+  click: ({value, row, rowIndex}: TableColumnData) => void
 }
 
 const emits: TableColumnEmits = {
-  click: ({value, row, index}: TableColumnData) => void 0
+  click: ({value, row, rowIndex}: TableColumnData) => void 0
 }
 
 /**
@@ -82,7 +86,8 @@ export type TableColumnProps = MakePropsType<typeof props, TableColumnEmits>
 export type TableColumnData = {
   value: string,
   row: Record<string, any>,
-  index?: number
+  rowIndex?: number,
+  columnIndex?: number,
 }
 
 /**
@@ -94,7 +99,7 @@ export type TableColumnFilterOptions = {
 }[]
 
 export type CustomColumnFunctionalRender = 
-  ({ value, row, index }: TableColumnData) => any
+  (args: TableColumnData) => any
 
 export type CustomColumnRender =
   (props: TableColumnProps, ctx?: SetupContext) => CustomColumnFunctionalRender | DefineComponent<TableColumnData>

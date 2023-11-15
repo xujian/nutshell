@@ -94,11 +94,15 @@ export const tableProps = {
     default: false,
   },
   /**
-   * 设置所有内容过长时显示为省略号（如果是固定列建议设置该值，大幅提升渲染速度，可防止固定列里面的组件重复渲染等问题）
+   * 设置所有内容过长时显示为省略号
+   * @remarks 如果是固定列建议设置该值，大幅提升渲染速度，可防止固定列里面的组件重复渲染等问题
    */
-  showOverflow: {
+  overflow: {
+    // 暂时只实现 true/false
+    // false: 显示省略号, true: 允许换行撑开高度, 无值: 按 false 处理
+    // 提升渲染性能需显式设置 overflow=false
+    // 这里要注意一下 VXE 的属性名 showOverflow 的含义是反的
     type: Boolean,
-    default: true,
   },
 }
 
