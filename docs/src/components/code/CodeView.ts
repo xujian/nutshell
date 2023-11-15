@@ -1,4 +1,4 @@
-import { defineComponent, h, type ExtractPublicPropTypes } from 'vue'
+import { defineComponent, h, type ExtractPublicPropTypes, type PropType } from 'vue'
 import Prism from 'prismjs'
 import 'prismjs/plugins/toolbar/prism-toolbar.js'
 import 'prismjs/plugins/toolbar/prism-toolbar.css'
@@ -14,6 +14,10 @@ export const codeViewProps = {
   },
   components: {
     type: Object as PropType<Record<string, any>>,
+    required: false
+  },
+  language: {
+    type: String,
     required: false
   }
 }
@@ -36,7 +40,7 @@ const CodeView = defineComponent(
           h('code', {
             class: ['ns-code-view-content', 'r-sm'],
             ...attrs,
-            innerHTML: Prism.highlight(props.code.trim(), Prism.languages.markup, prismLanguage)
+            innerHTML: Prism.highlight(props.code.trim(), Prism.languages.markup, prismLanguage as string)
           })
         ]
       )

@@ -7,10 +7,15 @@
     "nightwatch.conf.*",
     "playwright.config.*"
   ],
+  "lib": [
+    "dom",
+    "esnext"
+  ],
   "compilerOptions": {
     "composite": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
     "types": ["node"]
   }
 }

@@ -10,13 +10,12 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
 import { useNutshell } from '@uxda/nutshell'
 
 const $n = useNutshell()
 
 const onOpenDialogButtonClick = () => {
-  $n.toast('客户信息已保存')
+  $n.toast('客户信息已保存', {})
 }
 </script>
 

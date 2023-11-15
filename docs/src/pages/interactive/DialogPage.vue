@@ -10,7 +10,6 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
 import { useNutshell } from '@uxda/nutshell'
 
 const $n = useNutshell()

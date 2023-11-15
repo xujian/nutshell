@@ -13,7 +13,7 @@ const cities = ref<any[]>([])
 onMounted(async () => {
   axios.get('/json/cities.json')
     .then(response => response.data)
-    .then(data => data.map(d => ({value: d.id, label: d.name})))
+    .then(data => data.map((d: any) => ({value: d.id, label: d.name})))
     .then(data => {
       cities.value = data
     })

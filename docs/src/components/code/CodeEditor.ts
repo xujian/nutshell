@@ -1,4 +1,4 @@
-import { defineComponent, h, type ExtractPublicPropTypes } from 'vue'
+import { defineComponent, h, type ExtractPublicPropTypes, type PropType } from 'vue'
 import { VueLive } from 'vue-live'
 import 'prismjs/themes/prism-tomorrow.css'
 import DefaultLayout from './DefaultLayout.vue'
@@ -12,13 +12,19 @@ export const codeEditorProps = {
   },
   language: {
     type: String,
-    default: 'markup'
+    default: 'markup',
+    required: false,
+  },
+  components: {
+    type: Object as PropType<Record<string, any>>,
+    default: {},
+    required: false,
   }
 }
 
 export type CodeEditorProps = ExtractPublicPropTypes<typeof codeEditorProps>
 
-const handleError = (e) => {
+const handleError = (e: any) => {
   console.log('error:', e)
 }
 

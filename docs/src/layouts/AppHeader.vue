@@ -17,7 +17,7 @@
 import { useBus } from '@uxda/nutshell'
 const $bus = useBus()
 const onHambergerClick = () => {
-  $bus.emit('nav:hide')
+  $bus.emit('nav:hide', {})
 }
 const onDropdownChange = (item: any) => {
   $bus.emit('theme:change', item.key)

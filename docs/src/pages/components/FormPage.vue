@@ -26,7 +26,7 @@ import axios from 'axios'
 import { NsForm } from '@uxda/nutshell'
 import RegularForm from '../../examples/RegularForm.vue'
 
-const formRef = ref(null)
+const formRef = ref<any>(null)
 
 const validationFormDate = reactive({
   clientName: '',
@@ -36,7 +36,7 @@ const validationFormDate = reactive({
 const cities = ref<any[]>([])
 
 const onFormSubmit = () => {
-  formRef.value?.validate()
+  formRef.value && formRef.value.validate()
 }
 
 const onNameChange = (value: string) => {
@@ -46,11 +46,11 @@ const onNameChange = (value: string) => {
 onMounted(async () => {
   axios.get('/json/cities.json')
     .then(response => response.data)
-    .then(data => data.map(d => ({value: d.id, label: d.name})))
-    .then(data => {
+    .then(data => data.map(((d: any) => ({value: d.id, label: d.name}))))
+    .then((data: any) => {
       cities.value = data
     })
-})
+  })
 </script>
 
 <style lang="scss">
