@@ -9,12 +9,16 @@ import { SetupContext, h } from 'vue'
 export default function custom (
     props: TableColumnCustomProps
   ): CustomColumnFunctionalRender {
-    return ({value, row}: TableColumnData, ctx?: SetupContext) => {
+    return ({row, rowIndex, columnIndex}: TableColumnData, ctx?: SetupContext) => {
+      console.log('custom----table c0olumn', rowIndex, columnIndex);
+      
       return h('div', 
         {
-          class: 'table-column-custom-content'
+          class: 'table-column-custom-content',
         },
-        ctx?.slots && ctx.slots.content?.(row)
+        {
+          default: () => ctx?.slots?.content?.(row)
+        }
       )
     }
 }

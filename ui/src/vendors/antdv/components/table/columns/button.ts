@@ -11,12 +11,12 @@ export default function button (
   ) {
   // TableColumnButton 内部还是一个NsButtton
   // 需要传递出 click 事件
-  return ({value, row, index}: TableColumnData) => h(NsButton, {
+  return ({value, row, rowIndex}: TableColumnData) => h(NsButton, {
     label: props.label,
     size: props.size || 'sm',
     color: 'primary',
     onClick: () => {
-      props.onClick?.({value, row, index})
+      props.onClick?.({value, row, rowIndex})
     }
   }, () => value)
 }

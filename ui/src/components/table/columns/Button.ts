@@ -10,11 +10,11 @@ const props = {
 }
 
 export interface TableColumnButtonEmits extends ObjectEmitsOptions {
-  click: ({value, row, index}: TableColumnData) => void
+  click: ({value, row, rowIndex}: TableColumnData) => void
 }
 
 const emits: TableColumnButtonEmits = {
-  click: ({value, row, index}: TableColumnData) => void 0
+  click: ({value, row, rowIndex}: TableColumnData) => void 0
 }
 
 export type TableColumnButtonProps = MakePropsType<typeof props, TableColumnButtonEmits>

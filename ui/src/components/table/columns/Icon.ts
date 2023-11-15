@@ -9,11 +9,11 @@ const iconProps = {
 }
 
 export interface TableColumnIconEmits extends ObjectEmitsOptions {
-  click: ({value, row, index}: TableColumnData) => void
+  click: ({value, row, rowIndex}: TableColumnData) => void
 }
 
 const iconEmits: TableColumnIconEmits = {
-  click: ({value, row, index}: TableColumnData) => void 0
+  click: ({value, row, rowIndex}: TableColumnData) => void 0
 }
 
 export type TableColumnIconProps = MakePropsType<typeof iconProps, TableColumnIconEmits>

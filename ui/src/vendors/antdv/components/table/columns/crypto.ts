@@ -14,7 +14,7 @@ export default function crypto (
   // 手机号脱敏
   // 这是带有状态的 table column, 所以用 defineComponent 定义
   // 不能用 functional component
-  const setup = ({value, row, index}: TableColumnData, ctx: SetupContext) => {
+  const setup = ({value, row, rowIndex}: TableColumnData, ctx: SetupContext) => {
     if (!value) return () => h('div', {}, [])
     let data: Record<string, string> = {}
     try {
@@ -60,6 +60,6 @@ export default function crypto (
     {
       name: 'TableColumnCryptoInterior',
       inheritAttrs: false,
-      props: ['value', 'row', 'index'],
+      props: ['value', 'row', 'rowIndex'],
   })
 }

@@ -9,11 +9,11 @@ import { h } from 'vue'
 export default function icon (
     props: TableColumnIconProps,
   ) {
-  return ({value, row, index}: TableColumnData) => h(NsIcon, {
+  return ({value, row, rowIndex}: TableColumnData) => h(NsIcon, {
     source: props.source,
     color: props.color,
     onClick: () => {
-      props.onClick?.({value, row, index})
+      props.onClick?.({value, row, rowIndex})
     }
   }, () => value)
 }

@@ -8,7 +8,7 @@ import { h } from 'vue'
  */
 export default function chip (props: TableColumnChipProps) {
   const style = props.extraStyle
-  return ({value, row, index}: TableColumnData) => h(NsChip, {
+  return ({value, row, rowIndex}: TableColumnData) => h(NsChip, {
     label: value as string,
     ...style && {
         style: typeof style === 'string'

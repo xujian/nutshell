@@ -8,7 +8,7 @@ import { h } from 'vue'
  */
 export default function rating (props: TableColumnRatingProps) {
   const color = props.color || 'primary'
-  return ({value, row, index}: TableColumnData) => h(NsRating, {
+  return ({value, row, rowIndex}: TableColumnData) => h(NsRating, {
     color: color,
   }, () => value)
 }

@@ -22,7 +22,7 @@ export default function datetime (
       date = timeValue.format(props.format)
     return `${date}`
   }
-  return ({value, row, index}: TableColumnData) => h('div', {
+  return ({value, row, rowIndex}: TableColumnData) => h('div', {
     class: ['number', 'datetime'],
   }, formatRangedDateTime(value))
 }
