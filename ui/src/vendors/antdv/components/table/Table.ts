@@ -1,6 +1,6 @@
 import { SetupContext, computed, h,VNode, ref } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance } from 'vxe-table'
-import { CustomColumnFunctionalRender, TableProps } from '../../../../components'
+import { CustomColumnFunctionalRender, TableColumnData, TableProps } from '../../../../components'
 // import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
 import { MarginProps } from '../../../../utils'
@@ -8,7 +8,7 @@ import { MarginProps } from '../../../../utils'
 type ColumnConfig = {
   props: VxeColumnProps,
   slots: {
-    default?: ({row}: {row: any}) => VNode
+    default?: (args: TableColumnData) => VNode
   }
 }
 
@@ -43,7 +43,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     const result: VNode[] = []
     for (const column of props.columns!) {
       const { props } = column
-      if (props.invisible) continue
+      if (props.hidden) continue
 
       // NsTableColumn 的属性 转换为-> VxeColumn 的属性
       const colummConfig: ColumnConfig = {
@@ -76,6 +76,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
             }
           }
         }
+        // columns 目录里的 function
         const predefinedColumn = columnCustomRenders[column.name]
         if (predefinedColumn) {
           const predefinedColumnRender = predefinedColumn(props, ctx) as CustomColumnFunctionalRender
@@ -83,7 +84,8 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
             // 所有 ns-table-column-xxx 都用 template 来实现
             // button/rating 使用组件库核心组件
             // 不用 VXE 提供的现成列
-            default: ({row}) => h('div', {
+            default: ({row, rowIndex, columnIndex}) => {
+              return h('div', {
                 class: [
                   'table-column',
                   `table-column-${column.name}`
@@ -92,8 +94,10 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
               h(predefinedColumnRender, {
                 value: row[column.props.field!],
                 row,
-              }, column.slots || {} )
-            )
+                rowIndex,
+                columnIndex,
+              }, column.slots || {} ))
+            }
           }
         }
       }
@@ -103,7 +107,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     return result
   }
 
-  const rows = computed(() => props?.rows?.map((row, index: number) => ({
+  const rows = computed(() => props?.rows?.map((row, rowIndex: number) => ({
     ...row,
   })))
 
@@ -132,16 +136,19 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     maxHeight: props.maxHeight,
     // columns: columns as ColumnsType,
     rowConfig: {
-      isHover: !!props.rowHoverable
+      useKey: true,
+      keyField: props.rowKey,
+      isHover: !props.rowHoverable === false
     },
     loading: props.loading,
     columnConfig: {
+      useKey: true,
       resizable: true
     },
     editConfig: {
       mode: 'row'
     },
-    showOverflow: props.showOverflow,
+    showOverflow: props.overflow === true ? false : true,
     scrollY: { enabled: true, gt: 20 },
     onCheckboxChange: onSelectedChange,
     onCheckboxAll: onSelectedChange,
