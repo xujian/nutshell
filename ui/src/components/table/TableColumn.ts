@@ -46,6 +46,10 @@ export const useTableColumnProps = () => ({
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
     require: false,
+  },
+  invisible: {
+    type: Boolean,
+    default: false
   }
 })
 

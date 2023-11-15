@@ -43,6 +43,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     const result: VNode[] = []
     for (const column of props.columns!) {
       const { props } = column
+      if (props.invisible) continue
 
       // NsTableColumn 的属性 转换为-> VxeColumn 的属性
       const colummConfig: ColumnConfig = {
@@ -141,7 +142,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       mode: 'row'
     },
     showOverflow: props.showOverflow,
-    scrollY: { enabled: true },
+    scrollY: { enabled: true, gt: 20 },
     onCheckboxChange: onSelectedChange,
     onCheckboxAll: onSelectedChange,
     // loading: loading,
