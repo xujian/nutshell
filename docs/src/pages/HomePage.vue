@@ -3,6 +3,9 @@ import { ref } from 'vue'
 import ComplexTable from '@/components/ComplexTable.vue'
 import HomeHero from '@/components/HomeHero.vue'
 import LatestReleases from '@/components/LatestReleases.vue'
+// import { test } from 'virtual:test'
+
+// console.log('vite-plugin-test-----///---///---///---///', test)
 
 const tabs = [
   { label: '2023', value: '2023'},
@@ -21,7 +24,6 @@ const variants: string[] = ['solid', 'outlined', 'soft', 'plain'],
   'warning',
 ]
 
-const description = 'This is a description.';
 const current = ref<number>(0)
 const items = ref<any>([
   {
@@ -38,6 +40,7 @@ const items = ref<any>([
 
 <template>
   <home-hero />
+  <story file="button/basic.vue" />
   <div class="features">
     <ns-tabs v-model="activeTab" :items="tabs" variant="card">
     </ns-tabs>
