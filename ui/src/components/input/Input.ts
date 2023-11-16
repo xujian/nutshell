@@ -44,6 +44,10 @@ export const inputProps = {
   maxlength: {
     type: Number,
   },
+  lazy: {
+    type: Boolean,
+    default: true,
+  },
   ...useVariantProps(),
   ...useModelValuePropsForInput(),
   ...useFieldProps(),

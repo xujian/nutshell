@@ -6,6 +6,7 @@ import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from './rules'
 import { ChangeEvent } from 'ant-design-vue/es/_util/EventInterface'
 import { marginProps } from '../../../../utils/private/helpers'
+import { withModifiers } from 'vue'
 
 export type AntInputType = 
   'number' | 'button' | 'time' | 'reset' | 'submit' 
@@ -31,6 +32,8 @@ export const Input = defineComponent({
     ]
 
     const rules = transformRules(props.rules as FullValidationRule[])
+    console.log('event........', props.onChangePrevent);
+    
     return () => 
       h(AntFormItem, {
         class: [
@@ -46,10 +49,9 @@ export const Input = defineComponent({
         maxlength: props.maxlength ?? 50,
         disabled: props.disabled ?? false,
         value: props.modelValue,
-        lazy: true,
         placeholder: props.placeholder,
         valueModifiers: {
-          lazy: true
+          lazy: props.lazy === false ? false : true
         },
         'onUpdate:value': (value: string) => {
           const val = props.modelModifiers?.trim
