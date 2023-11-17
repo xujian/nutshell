@@ -6,8 +6,6 @@ const state = reactive({
   hisense2: false,
 })
 
-const disabled = ref(true)
-
 function onChange(checked: any, $event: any) {
   // console.log('onClick')
   // console.log(checked)
@@ -15,8 +13,14 @@ function onChange(checked: any, $event: any) {
   // console.log('onClick')
 }
 
+const disabled = ref(true)
 function changeDisabled() {
   disabled.value = !disabled.value
+}
+
+const size = ref<'default' | 'small'>('default')
+function changeSize() {
+  size.value = size.value === 'default' ? 'small' : 'default'
 }
 </script>
 
@@ -24,14 +28,15 @@ function changeDisabled() {
   <h1 class="my-lg">开关&lt;ns-switch&gt;</h1>
   <h2 class="my-md">Switch</h2>
   <ns-form>
-    <ns-row>
+    <ns-row class="my-xs" style="align-items: center">
       普通：
-      <ns-switch v-model="state.hisense1" @change="onChange"></ns-switch>
+      <ns-switch v-model="state.hisense1" @change="onChange" :size="size"></ns-switch>
+      <ns-button color="primary" label="change size" @click="changeSize" class="mx-xs" />
     </ns-row>
-    <ns-row>
+    <ns-row class="my-xs" style="align-items: center">
       禁用：
       <ns-switch v-model="state.hisense2" :disabled="disabled" @change="onChange"></ns-switch>
-      <ns-button color="primary" label="change disabled" @click="changeDisabled" class="button-class" />
+      <ns-button color="primary" label="change disabled" @click="changeDisabled" class="mx-xs" />
     </ns-row>
   </ns-form>
 </template>

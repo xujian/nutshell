@@ -9,6 +9,7 @@ export const Switch = (props: SwitchProps, ctx: SetupContext) => {
         class: 'ns-switch',
         checked: props.modelValue,
         disabled: props.disabled,
+        size: props.size,
         'onUpdate:checked': (value: boolean | string | number) => {
             if (typeof value === 'boolean') {
                 props['onUpdate:modelValue']?.(value as boolean)

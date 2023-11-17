@@ -10,7 +10,10 @@ export const Props = {
         default: false,
     },
     // TODO -- nico 这块size有待商榷
-    // size: 'default' | 'small'
+    size: {
+        type: String as PropType<'default' | 'small'>,
+        default: 'default'
+    }
 }
 
 export interface SwitchEmits extends ObjectEmitsOptions {
