@@ -75,7 +75,7 @@ onMounted(importStory)
   display: flex;
   align-items: stretch;
   justify-content: center;
-  .card-body {
+  >.card-body {
     background-color: #fff;
     display: flex;
     justify-content: center;
