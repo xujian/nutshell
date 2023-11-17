@@ -17,6 +17,12 @@ export const useButtonProps = () => ({
   color: {
     type: String as PropType<Color>,
   },
+  /**
+   * 圆角按钮
+   */
+  round: {
+    type: Boolean,
+  },
   icon: {
     type: String
   },

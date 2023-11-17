@@ -1,11 +1,13 @@
 .ns-button {
-  border-radius: var(--ns-border-radius-xs);
   padding: 0 12px;
   &.nut-button {
     .nut-button__text {
       margin-left: 0; // fix nut-button style
     }
-  } 
+  }
+  &:not(.nut-button--round) {
+    border-radius: var(--ns-border-radius-xs);
+  }
   &.nut-button--mini {
     height: var(--ns-size-xs);
   }
