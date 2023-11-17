@@ -47,10 +47,14 @@ export const Button = (props: ButtonProps) => {
       : () => null
     : () => null
 
+  const shape = props.round === true
+      ? void 0
+      : 'suqare' as ButtonShape
+
   return h(NutButton, {
     class: classes,
     disabled,
-    shape: 'suqare' as ButtonShape,
+    shape,
     ...!colorIsBrand && {color: color as string},
     size: getSize(props.size),
     onClick: props.onClick
