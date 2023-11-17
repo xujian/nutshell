@@ -1,6 +1,17 @@
 .ns-code-view {
+  &[class*="language-"] {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1em;
+  }
+  .token.attr-name,
+  .token.inserted {
+    font-style: normal;
+  }
+  margin: 0;
   code {
-    background-color: #00000066;
+    border-radius: 0;
     display: block;
     padding: 1em;
     font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;

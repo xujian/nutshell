@@ -7,7 +7,8 @@
 <style lang="scss">
 .home-hero {
   position: relative;
-  height: 400px;
+  width: 100%;
+  aspect-ratio: 21/9;
   overflow: hidden;
   &:before {
     content: "";

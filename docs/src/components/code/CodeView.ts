@@ -3,9 +3,9 @@ import Prism from 'prismjs'
 import 'prismjs/plugins/toolbar/prism-toolbar.js'
 import 'prismjs/plugins/toolbar/prism-toolbar.css'
 import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js'
-import 'prismjs/themes/prism-tomorrow.css'
 import 'vue-live/style.css'
 import './CodeView.scss'
+import './prism-z-touch.css'
 
 export const codeViewProps = {
   code: {
@@ -33,7 +33,10 @@ const CodeView = defineComponent(
       h(
         'pre',
         {
-          class: ['ns-code-view'],
+          class: [
+            'ns-code-view',
+            'language-vue'
+          ],
           ...attrs
         },
         [

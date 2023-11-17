@@ -1,5 +1,6 @@
 <template>
   <h1 class="my-lg">按钮</h1>
+  <story file="button/basic.vue" />
   <h2 class="my-md">Size</h2>
   <ns-row>
     <ns-button color="primary" v-for="size in sizes" :key="size" :label="size" :size="size"></ns-button>
@@ -23,21 +24,10 @@
       label="证件识别"></ns-button>
   </ns-row>
   <p>&nbsp;</p>
-  <code-view :code="code" />
-  <code-editor :code="code" />
 </template>
 
 <script lang="ts" setup>
-import { CodeEditor, CodeView } from '../../components/code'
 import { colors, sizes, variants } from '../../props'
-
-const label = '提交'
-
-const code = `
-<template>
-  <div></div>
-</template>
-`
 
 </script>
 

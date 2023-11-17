@@ -7,12 +7,6 @@ import LatestReleases from '@/components/LatestReleases.vue'
 
 // console.log('vite-plugin-test-----///---///---///---///', test)
 
-const tabs = [
-  { label: '2023', value: '2023'},
-  { label: '2024', value: '2024'},
-]
-const activeTab = ref('2023')
-
 const variants: string[] = ['solid', 'outlined', 'soft', 'plain'],
   colors = [
   'primary',
@@ -40,10 +34,7 @@ const items = ref<any>([
 
 <template>
   <home-hero />
-  <story file="button/basic.vue" />
   <div class="features">
-    <ns-tabs v-model="activeTab" :items="tabs" variant="card">
-    </ns-tabs>
     <p>&nbsp;</p>
     <h2>最新进展</h2>
     <p>&nbsp;</p>

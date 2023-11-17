@@ -15,8 +15,6 @@ export default function StoriesPlugin (): Plugin {
     },
     async load (id) {
       if (!id.startsWith(ID)) return
-      console.log('-----------------------------stories...', id);
-      
       const storiesDir = fileURLToPath(
         new URL(
           '../src/stories/',
@@ -39,7 +37,7 @@ export default function StoriesPlugin (): Plugin {
         ].join('\n')
         return code
       } else {
-        // <story src="button/basic.vue" />
+        // <story file="button/basic.vue" />
         // virtual:stories/button.basic.vue
         const [, dir] = id.split('/')
         // 遍历 stories 目录
@@ -60,7 +58,6 @@ export default function StoriesPlugin (): Plugin {
               return acc
             }, { imports: [], files: []}
           )
-        console.log('read stories ======)))', imports)
         const code = [
             `${imports.join('\n')}`,
             `export default {`,

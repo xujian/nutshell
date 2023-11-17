@@ -1,7 +1,23 @@
 <template>
-  <div class="app-story">
+  <ns-card variant="outlined" fill="surface" class="story-card">
     <component :is="SotryComponent" v-if="isLoaded" />
-  </div>
+    <template #footer>
+      <div class="full-width flex-row">
+        <div class="flex-col flex-grow"></div>
+        <div class="flex-col align-end">
+          <ns-button label="CODE" round color="primary"
+            variant="soft" size="xs" @click="openCode" />
+        </div>
+      </div>
+    </template>
+    <template #bottom>
+      <Transition name="expand">
+        <div class="code-view flex-row" v-if="codeOpen">
+          <code-view :code="code" />
+        </div>
+      </Transition>
+    </template>
+  </ns-card>
 </template>
 
 <script lang="ts" setup>
@@ -18,6 +34,8 @@ const props = defineProps({
       required: true,
     }
   })
+
+const codeOpen = ref(false)
 
 const imported = shallowRef(),
   code = ref<string>(),
@@ -44,14 +62,40 @@ const importStory = async () => {
   }
 }
 
+const openCode = () => {
+  codeOpen.value = !codeOpen.value
+}
+
 onMounted(importStory)
 </script>
 
 <style lang="scss">
-.app-story {
+.story-card {
   min-height: 100px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
+  .card-body {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card-footer {
+    border-top: 1px solid var(--ns-stroke);
+  }
+  .expand-leave-active,
+  .expand-enter-active {
+    transition: all 500ms ease;
+    overflow: hidden;
+  }
+  .expand-enter-to,
+  .expand-leave-from {
+    max-height: 400px;
+  }
+  .expand-enter-from,
+  .expand-leave-to {
+    max-height: 0;
+  }
 }
 </style>

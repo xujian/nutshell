@@ -1,8 +1,10 @@
 import type { App, Component } from 'vue'
 import Story from '../components/Story.vue'
+import CodeView from '../components/code/CodeView'
 
 const components: Record<string, Component> = {
-  Story
+  Story,
+  CodeView
 }
 
 const install = (app: App) => {
