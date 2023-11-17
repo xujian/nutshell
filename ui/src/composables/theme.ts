@@ -35,6 +35,11 @@ type BaseColors = {
   [k in typeof ESSENTIALS[number]]: HexColor
 }
 
+/**
+ * 渐变
+ */
+export type GradientString = `${Color},${Color}` | `${Color},${Color}/${number}`
+
 export type Theme = {
   name: string
   dark: boolean,
@@ -56,15 +61,33 @@ export function useTheme () {
   return { theme, setTheme }
 }
 
+function makeColor (color: Color): string {
+  return BRANDS.includes(color as typeof BRANDS[number]) ||
+    ESSENTIALS.includes(color as typeof ESSENTIALS[number])
+      ? `var(--ns-${color})`
+      : color as string
+}
+
 /**
  * 生成 background color 样式
  */
 export function buildFillStyle (fill?: Color): { backgroundColor?: string} {
   if (!fill) return {}
   return {
-    backgroundColor: 
-      BRANDS.includes(fill as typeof BRANDS[number]) || ESSENTIALS.includes(fill as typeof ESSENTIALS[number])
-        ? `var(--${fill})`
-        : fill
+    backgroundColor: makeColor(fill)
   }
+}
+
+/**
+ * 生成 gradient 样式
+ */
+export function buildGradientStyle (gradient?: GradientString):
+  { backgroundColor?: string, background?: string } {
+    if (!gradient) return {}
+    const [start, end, angle = 0] = gradient.split(/[\,\/]/) as [Color, Color, number]
+    const startColor = makeColor(start),
+      endColor = makeColor(end)
+    return {
+      background: `linear-gradient(${angle}deg, ${startColor} 0%, ${endColor} 100%)`
+    }
 }
