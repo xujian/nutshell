@@ -46,7 +46,7 @@ const menuData = computed(() => [
     ]
   },
   {
-    
+
     label: '设计规范',
     key: 'tokens',
     children: [
@@ -175,6 +175,10 @@ const menuData = computed(() => [
           {
             label: '表格 table',
             key: '/components/table'
+          },
+          {
+            label: '空状态 empty',
+            key: '/components/empty'
           }
         ]
       },
@@ -259,7 +263,7 @@ const menuData = computed(() => [
       &.ant-menu-inline .ant-menu-sub.ant-menu-inline {
         background-color: transparent;
       }
-      .ant-menu-item:hover:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected), 
+      .ant-menu-item:hover:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected),
       .ant-menu-submenu-title:hover:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected) {
         color: var(--ns-text);
       }

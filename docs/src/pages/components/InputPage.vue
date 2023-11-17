@@ -15,7 +15,7 @@
       <ns-input
         :name="`client-variant-${variant}`"
         :key="'primary'"
-        :color="'primary'" 
+        :color="'primary'"
         :variant="variant" label="创建订单"></ns-input>
     </ns-row>
   </ns-card>

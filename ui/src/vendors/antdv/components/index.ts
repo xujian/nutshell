@@ -1,6 +1,7 @@
 import { Form } from './form'
 import { Input, DateInput } from './input'
 import { Switch } from './switch'
+import { Empty } from './empty'
 import { Checkbox, CheckboxGroup } from './checkbox'
 import { Rating, RatingInput } from './rating'
 import { Table } from './table'
@@ -21,6 +22,7 @@ const components = {
   Table,
   Dialog,
   Select,
+  Empty,
   CascadingSelect,
   MultipleSelect,
   Rating,
@@ -32,7 +34,7 @@ const components = {
   Chips,
   Stepper,
   Drawer,
-  RadioGroup,
+  RadioGroup
 }
 
 export default components

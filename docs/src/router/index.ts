@@ -14,6 +14,7 @@ const CheckboxPage = () => import('../pages/components/CheckboxPage.vue')
 const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const RatingInputPage = () => import('../pages/components/RatingInputPage.vue')
 const SwitchPage = () => import('../pages/components/switch-page.vue')
+const EmptyPage = () => import('../pages/components/EmptyPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
 const CascadingSelectPage = () => import('../pages/components/CascadingSelectPage.vue')
 const TablePage = () => import('../pages/components/TablePage.vue')
@@ -38,112 +39,117 @@ const router = createRouter({
         {
           path: '/',
           name: 'home',
-          component: HomePage,
+          component: HomePage
         },
         {
           path: '/palettes',
           name: 'palettes',
-          component: PalettesPage,
+          component: PalettesPage
         },
         {
           path: '/components/button',
           name: 'components-button',
-          component: ButtonPage,
+          component: ButtonPage
         },
         {
           path: '/components/dropdown',
           name: 'components-dropdown',
-          component: DropdownPage,
+          component: DropdownPage
         },
         {
           path: '/components/checkbox',
           name: 'components-checkbox',
-          component: CheckboxPage,
+          component: CheckboxPage
         },
         {
           path: '/components/chip',
           name: 'components-chip',
-          component: ChipPage,
+          component: ChipPage
         },
         {
           path: '/components/card',
           name: 'components-card',
-          component: CardPage,
+          component: CardPage
         },
         {
           path: '/components/tabs',
           name: 'components-tabs',
-          component: TabsPage,
+          component: TabsPage
         },
         {
           path: '/components/form',
           name: 'components-form',
-          component: FormPage,
+          component: FormPage
         },
         {
           path: '/components/input',
           name: 'components-input',
-          component: InputPage,
+          component: InputPage
         },
         {
           path: '/components/date-input',
           name: 'components-date-input',
-          component: DateInputPage,
+          component: DateInputPage
         },
         {
           path: '/components/select',
           name: 'components-select',
-          component: SelectPage,
+          component: SelectPage
         },
         {
           path: '/components/switch',
           name: 'components-switch',
-          component: SwitchPage,
+          component: SwitchPage
+        },
+        {
+          path: '/components/empty',
+          name: 'components-empty',
+          component: EmptyPage
         },
         {
           path: '/components/rating-input',
           name: 'components-rating-input',
-          component: RatingInputPage,
+          component: RatingInputPage
         },
         {
           path: '/components/cascading-select',
           name: 'components-cascading-select',
-          component: CascadingSelectPage,
+          component: CascadingSelectPage
         },
         {
           path: '/components/table',
           name: 'components-table',
-          component: TablePage,
+          component: TablePage
         },
         {
           path: '/components/list',
           name: 'components-list',
-          component: ListPage,
+          component: ListPage
         },
         {
           path: '/components/radio',
           name: 'components-radio',
-          component: RadioPage,
+          component: RadioPage
         },
         {
           path: '/interactive/dialog',
           name: 'interactive-dialog',
-          component: DialogPage,
+          component: DialogPage
         },
         {
           path: '/interactive/toast',
           name: 'interactive-toast',
-          component: ToastPage,
+          component: ToastPage
         },
         {
           path: '/interactive/drawer',
           name: 'interactive-drawer',
-          component: DrawerPage,
+          component: DrawerPage
         },
         {
           path: '/tokens/font',
           name: 'tokens-toast',
-          component: FontPage,
+          component: FontPage
         },
         {
           path: '/about',
@@ -159,13 +165,13 @@ const router = createRouter({
           path: '/404',
           name: 'not-found',
           component: NotFoundPage
-        },
+        }
       ]
     },
     {
       path: '/:pathMatch(.*)*',
       redirect: '/404'
-    },
+    }
   ]
 })
 

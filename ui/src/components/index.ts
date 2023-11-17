@@ -20,6 +20,7 @@ export * from './stepper'
 export * from './drawer'
 export * from './radio'
 export * from './table'
+export * from './empty'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -37,10 +38,11 @@ import { NsDropdown } from './dropdown'
 import { NsTabs, NsTabsItem } from './tabs'
 import { NsCard, NsCardTitle } from './card'
 import { NsList } from './list'
-import { NsStepper } from './stepper'  
+import { NsStepper } from './stepper'
 import { NsDrawer } from './drawer'
 import { NsRadio, NsRadioGroup } from './radio'
 import { NsTable, NsTableColumn } from './table'
+import { NsEmpty } from './empty'
 
 const components = {
   NsApp,
@@ -75,6 +77,7 @@ const components = {
   NsRadio,
   NsRadioGroup,
   NsTable,
+  NsEmpty
 }
 
 export default components

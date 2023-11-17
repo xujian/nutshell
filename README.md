@@ -58,6 +58,7 @@ yarn start
 - ui 核心代码库
 
 ## Core/Vendor策略
+
 Nutshell直接依赖 nutui。
 也就是Nutshell会强制引入@nutui/nutui，除此之外，对于PC端项目，会引入ant-design-vue, 也就是PC端项目会多出@nuui/nutui部分的 bundle size。
 
@@ -78,3 +79,10 @@ yarn dev
 ```
 
 在具体pages下面找到相应文档
+
+### 新建组件文件的快捷命令
+
+```bash
+nsc: 新建组件
+nsv: 新建 vendor
+```
