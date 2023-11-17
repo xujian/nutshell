@@ -23,10 +23,19 @@ const emits: CardEmits = {
 }
 
 export interface CardSlots extends SlotsType {
-  default: never,
-  corner: never,
-  header: never,
-  footer: never,
+  default?: never,
+  corner?: never,
+  header?: never,
+  footer?: never,
+  bottom?: never,
+}
+
+const cardSlots: CardSlots = {
+  default: undefined,
+  corner: undefined,
+  header: undefined,
+  footer: undefined,
+  bottom: undefined
 }
 
 export type CardProps = MakePropsType<typeof cardProps, CardEmits>
@@ -37,11 +46,15 @@ export type CardProps = MakePropsType<typeof cardProps, CardEmits>
 export const NsCard = defineComponent({
   name: 'NsCard',
   props: cardProps,
+  slots: cardSlots,
   setup (props, { slots }) {
+    console.log('NsCard------', slots);
+    
     const classes = [
       'ns-card',
       'flex',
       'flex-col',
+      'align-stretch',
       props.fill ? `fill-${props.fill}` : '',
       props.variant ? `variant-${props.variant}` : '',
     ].join(' ')
@@ -80,6 +93,18 @@ export const NsCard = defineComponent({
       class: 'card-body flex-grow'
     }, slots.default?.())
 
+    const footer = () => h('div', {
+      class: [
+        'card-footer',
+      ]
+    }, slots.footer?.())
+
+    const bottom = () => h('div', {
+      class: [
+        'card-bottom',
+      ]
+    }, slots.bottom?.())
+
     return () => h('div', {
       class: classes,
       style,
@@ -87,7 +112,13 @@ export const NsCard = defineComponent({
       props.title
         ? header
         : '',
-      body()
+      body(),
+      slots.footer
+        ? footer()
+        : null,
+        slots.bottom
+          ? bottom()
+          : null,
     ])
   }
 })

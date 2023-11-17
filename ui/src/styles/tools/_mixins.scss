@@ -57,6 +57,9 @@ $alphas: (
 
   @each $name, $value in map-get($theme, 'abstract') {
     #{'--ns-'}#{$name}: #{$value};
+    .fill-#{$name} {
+      background-color: var(--ns-#{$name});
+    }
   }
   
   @each $name, $value in map-get($theme, 'layout') {
@@ -68,6 +71,9 @@ $alphas: (
   }
 
   @each $name, $value in map-get($theme, 'brand') {
+    .fill-#{$name} {
+      background-color: var(--ns-#{$name});
+    }
     .color-#{$name} {
       background-color: var(--ns-#{$name});
       border-color: var(--ns-#{$name});

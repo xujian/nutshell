@@ -1,7 +1,6 @@
 .ns-card {
   border-radius: var(--ns-border-radius);
   background-color: #ffffff;
-  padding: var(--ns-spacing-lg);
   overflow: hidden;
   .card-header, .card-title {
     padding: 12px 0;
@@ -10,6 +9,13 @@
       display: flex;
       align-items: center;
     }
+  }
+  .card-body {
+    padding: var(--ns-spacing-lg);
+  }
+  .card-footer {
+    width: 100%;
+    padding: var(--ns-spacing-sm);
   }
   h3.title-label {
     font-size: 16px;
