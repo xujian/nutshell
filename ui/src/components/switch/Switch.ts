@@ -2,7 +2,7 @@ import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForBoolean } from '../../props'
 
-export const props = {
+export const switchProps = {
   // antd/nutui支持string和number，但我觉得没必要，布尔值就可以了
   ...useModelValuePropsForBoolean(),
   disabled: {
@@ -28,14 +28,14 @@ export interface SwitchSlots extends SlotsType {
   default: never,
 }
 
-export type SwitchProps = MakePropsType<typeof props, SwitchEmits>
+export type SwitchProps = MakePropsType<typeof switchProps, SwitchEmits>
 
 /**
  * Switch 组件 <ns-switch>
  */
 export const NsSwitch = define({
   name: 'NsSwitch',
-  props,
+  props: switchProps,
   emits,
   setup (props, ctx) {
     // console.log('components/switch', props)
