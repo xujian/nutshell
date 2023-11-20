@@ -179,6 +179,10 @@ const menuData = computed(() => [
           {
             label: '空状态 empty',
             key: '/components/empty'
+          },
+          {
+            label: '分页 pagination',
+            key: '/components/pagination'
           }
         ]
       },

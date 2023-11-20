@@ -1,3 +1,5 @@
+import { NsPagination } from './pagination'
+
 export * from './app'
 export * from './button'
 export * from './input'
@@ -21,6 +23,7 @@ export * from './drawer'
 export * from './radio'
 export * from './table'
 export * from './empty'
+export * from './pagination'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -77,7 +80,8 @@ const components = {
   NsRadio,
   NsRadioGroup,
   NsTable,
-  NsEmpty
+  NsEmpty,
+  NsPagination
 }
 
 export default components

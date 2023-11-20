@@ -18,6 +18,7 @@ const EmptyPage = () => import('../pages/components/EmptyPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
 const CascadingSelectPage = () => import('../pages/components/CascadingSelectPage.vue')
 const TablePage = () => import('../pages/components/TablePage.vue')
+const PaginationPage = () => import('../pages/components/PaginationPage.vue')
 const TabsPage = () => import('../pages/components/TabsPage.vue')
 const RadioPage = () => import('../pages/components/RadioPage.vue')
 const ListPage = () => import('../pages/components/ListPage.vue')
@@ -120,6 +121,11 @@ const router = createRouter({
           path: '/components/table',
           name: 'components-table',
           component: TablePage
+        },
+        {
+          path: '/components/pagination',
+          name: 'components-pagination',
+          component: PaginationPage
         },
         {
           path: '/components/list',
