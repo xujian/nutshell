@@ -1,4 +1,4 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions } from 'vue'
+import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
 import { define } from '../../utils'
 import { useModelValuePropsForInput } from '../../props'
 
@@ -25,7 +25,7 @@ export const paginationProps = {
     default: false
   },
   pageSizeOptions: {
-    type: Array,
+    type: Array as PropType<string[]>,
     default: undefined
   }
 }
