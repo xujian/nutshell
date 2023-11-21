@@ -1,5 +1,5 @@
 import { PropType } from 'vue'
-import { GradientString } from '../composables/theme'
+import { Color, GradientString } from '../composables/theme'
 import { buildProps } from '../utils/private/props'
 
 const designProps = {
