@@ -32,12 +32,12 @@ export const paginationProps = {
 
 export type PaginationProps = ExtractPublicPropTypes<typeof paginationProps>
 
-export interface StepperEmits extends ObjectEmitsOptions {
+export interface PaginationEmits extends ObjectEmitsOptions {
   'update:modelValue': (value: boolean) => void
   onChange: (page: number, pageSize: number) => void
 }
 
-const paginationEmits: StepperEmits = {
+const paginationEmits: PaginationEmits = {
   'update:modelValue': (value: boolean) => void 0,
   onChange: (page: number, pageSize: number) => void 0
 }
