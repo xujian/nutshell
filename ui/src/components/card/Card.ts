@@ -43,8 +43,6 @@ export const NsCard = defineComponent({
   props: cardProps,
   slots: cardSlots,
   setup (props, { slots }) {
-    console.log('NsCard------', slots);
-    
     const classes = [
       'ns-card',
       'flex',
@@ -55,11 +53,9 @@ export const NsCard = defineComponent({
     ].join(' ')
 
     const style = {
-      ...buildFillStyle(props.fill),
+      ...buildFillStyle(props.fill || '#fff'),
       ...buildGradientStyle(props.gradient)
     }
-    console.log('card.ts/...........', style);
-    
 
     const label = props.title
       ? h('div', {
