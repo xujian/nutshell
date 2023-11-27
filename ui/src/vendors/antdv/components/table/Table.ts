@@ -1,6 +1,6 @@
 import { SetupContext, computed, h,VNode, ref } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance } from 'vxe-table'
-import { CustomColumnFunctionalRender, TableColumnData, TableProps } from '../../../../components'
+import { CustomColumnFunctionalRender, TableColumnData, TableProps, type NsTableColumnCheckbox } from '../../../../components'
 // import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
 import { MarginProps } from '../../../../utils'
@@ -23,7 +23,7 @@ const columnNameToTypeMapping: {[key: string]: VxeColumnPropTypes.Type} = {
 export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
 
   const classes = [
-    'ns-table', 
+    'ns-table',
     ...props.classes || [],
   ].join(' ')
 
@@ -72,7 +72,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
           if (column.name === 'checkbox') {
             selectionOptions.field = column.props.field || ''
             selectionOptions.onChange = (selected: any) => {
-              column.props.onChange?.(selected)
+              column.props['onChange']?.(selected)
             }
           }
         }
@@ -125,7 +125,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     const { field, onChange } = selectionOptions
     if (field) {
       selected = selected.map(r => r[field])
-    } 
+    }
     onChange(selected)
   }
 

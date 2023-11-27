@@ -67,12 +67,14 @@ const props = {
   },
 }
 
-export interface TableColumnEmits extends ObjectEmitsOptions {
-  click: ({value, row, rowIndex}: TableColumnData) => void
+export type TableColumnEmits = {
+  click: ({value, row, rowIndex}: TableColumnData) => void,
+  change: (value: string[]) => void
 }
 
 const emits: TableColumnEmits = {
-  click: ({value, row, rowIndex}: TableColumnData) => void 0
+  click: ({value, row, rowIndex}: TableColumnData) => void 0,
+  change: (value: string[]) => void 0
 }
 
 /**
@@ -98,7 +100,7 @@ export type TableColumnFilterOptions = {
   value: string | number
 }[]
 
-export type CustomColumnFunctionalRender = 
+export type CustomColumnFunctionalRender =
   (args: TableColumnData) => any
 
 export type CustomColumnRender =

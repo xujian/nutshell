@@ -24,7 +24,7 @@ const props = {
   ...useIconProps(),
 }
 
-export interface IconEmits extends ObjectEmitsOptions {
+export type IconEmits = {
   click: () => void
 }
 

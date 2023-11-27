@@ -20,7 +20,7 @@ export const drawerProps = {
   ...useSizeProps(),
 }
 
-export interface DrawerEmits extends ObjectEmitsOptions {
+export type DrawerEmits = {
 }
 
 const drawerEmits: DrawerEmits = {

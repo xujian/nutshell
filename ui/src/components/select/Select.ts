@@ -1,9 +1,8 @@
-import { ObjectEmitsOptions } from 'vue'
-import { define } from '../../utils'
 import { PropType } from 'vue'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { ValidationRule, buildStyles, formatRules } from '../../props/field'
 import { MakePropsType } from '../../utils/private/helpers'
+import { define } from '../../utils'
 
 export type SelectOption = {
   value: string | number,
@@ -38,7 +37,7 @@ export const selectProps = {
   }
 }
 
-export interface SelectEmits extends ObjectEmitsOptions {
+export type SelectEmits = {
   change: (value: string | number) => void
 }
 

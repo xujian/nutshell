@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForBoolean } from '../../props'
 
@@ -16,15 +16,15 @@ export const switchProps = {
   }
 }
 
-export interface SwitchEmits extends ObjectEmitsOptions {
-  'change': (checked: boolean, event: Event) => void
+export type SwitchEmits = {
+  change: (checked: boolean, event: Event) => void
 }
 
 const emits: SwitchEmits = {
-  'change': (checked: boolean, event: Event) => void 0
+  change: (checked: boolean, event: Event) => void 0
 }
 
-export interface SwitchSlots extends SlotsType {
+export type SwitchSlots = {
   default: never,
 }
 

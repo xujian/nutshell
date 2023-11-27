@@ -42,15 +42,15 @@ const buttonProps = {
   ...useVariantProps(),
 }
 
-export interface ButtonEmits extends ObjectEmitsOptions {
-  click: () => void
+export type ButtonEmits = {
+  click: (...args: any[]) => any
 }
 
 const emits: ButtonEmits = {
-  click: () => void 0
+  click: (...args: any[]) => void 0
 }
 
-export interface ButtonSlots extends SlotsType {
+export type ButtonSlots = {
   default: never,
 }
 
@@ -70,3 +70,5 @@ export const NsButton = define({
     }
   }
 )
+
+export type NsButton = InstanceType<typeof NsButton>

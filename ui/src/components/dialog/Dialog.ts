@@ -20,7 +20,7 @@ export const dialogProps = {
   ...useDimensionProps(),
 }
 
-export interface DialogEmits extends ObjectEmitsOptions {
+export type DialogEmits = {
   'update:modelValue': (value: boolean) => void,
   ok (): void,
   show (): void,
@@ -34,10 +34,6 @@ export const dialogEmits: DialogEmits = {
   show () {},
   hide () {},
   close () {},
-}
-
-export interface DialogSlots extends SlotsType {
-  default: never,
 }
 
 export type DialogProps = MakePropsType<typeof dialogProps, DialogEmits>
@@ -62,4 +58,4 @@ export const NsDialog = define({
 
 // 另见
 // $n.dialog(options: DialogOptions)
-// 
+//

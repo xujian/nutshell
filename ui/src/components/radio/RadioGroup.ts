@@ -23,7 +23,7 @@ export const radioGroupProps = {
   ...useLayoutProps(),
 }
 
-export interface RadioGroupEmits extends ObjectEmitsOptions {
+export type RadioGroupEmits = {
   change: (value: string | number ) => void
 }
 
@@ -31,7 +31,7 @@ const radioGroupEmits: RadioGroupEmits = {
   change: (value: string | number ) => {}
 }
 
-export interface RadioGroupSlots extends SlotsType {
+export type RadioGroupSlots = {
   default: never,
 }
 
@@ -45,7 +45,7 @@ export const NsRadioGroup = define({
   props: radioGroupProps,
   emits: radioGroupEmits,
   setup (props, ctx) {
-    // 从子组件读取 items 
+    // 从子组件读取 items
     const { default: defaultSlot } = useSlots(),
       slots = defaultSlot && defaultSlot()
     // 这里的逻辑

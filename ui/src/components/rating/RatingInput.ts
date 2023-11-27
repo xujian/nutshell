@@ -13,13 +13,13 @@ export const ratingInputProps = {
   }
 }
 
-export interface RatingInputEmits extends ObjectEmitsOptions {
+export type RatingInputEmits = {
 }
 
 const emits: RatingInputEmits = {
 }
 
-export interface RatingInputSlots extends SlotsType {
+export type RatingInputSlots = {
   default: never,
 }
 

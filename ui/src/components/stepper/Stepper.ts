@@ -1,4 +1,4 @@
-import { PropType, ExtractPublicPropTypes, ObjectEmitsOptions, SlotsType, useSlots, VNode, RendererNode, RendererElement } from 'vue'
+import { PropType, ExtractPublicPropTypes, SlotsType, useSlots, VNode, RendererNode, RendererElement } from 'vue'
 import { define } from '../../utils'
 import { useModelValuePropsForInput } from '../../props'
 
@@ -10,7 +10,7 @@ export type StepperStatus = 'wait' | 'process' | 'finish' | 'error' | undefined
 
 export type StepItem = {
   description: {
-    type: String 
+    type: String
   },
   disabled: {
     type: Boolean
@@ -55,7 +55,7 @@ export const stepperProps = {
 
 export type StepsProps = ExtractPublicPropTypes<typeof stepperProps>
 
-export interface StepperEmits extends ObjectEmitsOptions {
+export type StepperEmits = {
   'update:modelValue': (value: boolean) => void,
 }
 
@@ -63,8 +63,8 @@ const stepperEmits: StepperEmits = {
   'update:modelValue': (value: boolean) => void 0,
 }
 
-export interface StepsSlots extends SlotsType {
-  default: never,
+export type StepsSlots = {
+  default: () => any,
 }
 
 // @ts-ignore
@@ -85,7 +85,7 @@ export const NsStepper = define({
   // @ts-ignore
   setup (props) {
     return {
-    
+
     }
   }
 })

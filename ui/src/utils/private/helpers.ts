@@ -18,24 +18,20 @@ export const marginProps = {
   }
 }
 
-export type EmitsToProps<T extends EmitsOptions> = T extends string[]
-  ? {
-    [K in string & `on${Capitalize<T[number]>}`]?: (...args: any[]) => any;
-  }
-  : T extends ObjectEmitsOptions
-      ? {
-        [K in string & `on${Capitalize<string & keyof T>}`]?: K extends `on${infer C}`
-          ? T[Uncapitalize<C>] extends null
-            ? (...args: any[]) => any
-            : (...args: T[Uncapitalize<C>] extends (...args: infer P) => any
-              ? P
-              : any
-            ) => any : never;
-        }
-      : {};
+export type EmitsToProps<T extends ObjectEmitsOptions> = {
+  [K in `on${Capitalize<string & keyof T>}`]?: K extends `on${infer C}`
+    ? T[Uncapitalize<C>] extends null
+      ? (...args: any[]) => any
+      : (...args:  // extract args from given function
+          T[Uncapitalize<C>] extends (...args: infer P) => any
+            ? P
+            : any
+        ) => any
+    : never
+}
 
 export type ResolveProps<
-  PropsOrPropOptions, 
+  PropsOrPropOptions,
   Emits extends ObjectEmitsOptions
 > = Readonly<
     PropsOrPropOptions extends ComponentObjectPropsOptions

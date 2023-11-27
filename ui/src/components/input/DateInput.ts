@@ -12,11 +12,11 @@ export const dateInputProps = {
   ...useFieldProps(),
 }
 
-export interface DateInputEmits extends ObjectEmitsOptions {
+export type DateInputEmits = {
   change: (value: string | number) => void
 }
 
-const emits = {
+const emits: DateInputEmits = {
   change: (value: string | number) => {}
 }
 

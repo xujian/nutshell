@@ -1,4 +1,3 @@
-import { ObjectEmitsOptions } from 'vue'
 import { define, MakePropsType } from '../../../utils'
 import { useTableColumnProps } from '../..'
 
@@ -6,7 +5,7 @@ const props = {
   ...useTableColumnProps(),
 }
 
-export interface TableColumnNumberEmits extends ObjectEmitsOptions {
+export type TableColumnNumberEmits = {
   click: () => void
 }
 

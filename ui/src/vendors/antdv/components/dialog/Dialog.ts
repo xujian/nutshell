@@ -1,7 +1,6 @@
 import { defineComponent, h } from 'vue'
 import { type DialogProps, dialogProps, dialogEmits, type DialogEmits } from '../../../../components/dialog'
 import { Modal as AntdvModal } from 'ant-design-vue'
-import { Color } from '../../../../composables'
 import { LegacyButtonType } from 'ant-design-vue/es/button/buttonTypes'
 
 const buttonTypesMap: Record<string, LegacyButtonType> = {
@@ -36,7 +35,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       },
       onCancel: () => {
         console.log('on cancel')
-        emit('cancel')
+        emit('hide')
         emit('close')
       }
     }, slots)

@@ -7,13 +7,13 @@ export const cardTitleProps = {
   },
 }
 
-export interface CardTitleEmits extends ObjectEmitsOptions {
+export type CardTitleEmits = {
 }
 
 const emits: CardTitleEmits = {
 }
 
-export interface CardTitleSlots extends SlotsType {
+export type CardTitleSlots = {
   default: never,
   after: never,
   end: never,

@@ -10,7 +10,7 @@ export const checkboxProps = {
   ...useVariantProps(),
 }
 
-export interface CheckboxEmits extends ObjectEmitsOptions {
+export type CheckboxEmits = {
 }
 
 const emits: CheckboxEmits = {

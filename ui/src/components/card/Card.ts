@@ -11,26 +11,21 @@ export const cardProps = {
   ...useVariantProps(),
 }
 
-export interface CardEmits extends ObjectEmitsOptions {
+export type CardEmits = {
 }
 
 const emits: CardEmits = {
 }
 
-export interface CardSlots extends SlotsType {
-  default?: never,
-  corner?: never,
-  header?: never,
-  footer?: never,
-  bottom?: never,
+export type CardSlots = {
+  default: () => any,
+  corner?: () => any,
+  header?: () => any,
+  footer?: () => any,
+  bottom?: () => any,
 }
 
-const cardSlots: CardSlots = {
-  default: undefined,
-  corner: undefined,
-  header: undefined,
-  footer: undefined,
-  bottom: undefined
+const cardSlots: SlotsType<CardSlots> = {
 }
 
 export type CardProps = MakePropsType<typeof cardProps, CardEmits>

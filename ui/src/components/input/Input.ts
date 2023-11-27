@@ -6,7 +6,7 @@ import { FullValidationRule, ValidationRule, buildStyles, formatRules } from '..
 /**
  * 输入框类型
  */
-export type InputType = 
+export type InputType =
   'text'
   | 'url'
   | 'date'
@@ -39,7 +39,7 @@ export const inputProps = {
     default: 'text'
   },
   /**
-   * 
+   *
    */
   maxlength: {
     type: Number,
@@ -53,16 +53,17 @@ export const inputProps = {
   ...useFieldProps(),
 }
 
-export interface InputEmits extends ObjectEmitsOptions {
-  change: (value: string | number) => void
+export type InputEmits = {
+  change: (value?: string | number) => void
+  blur: (value?: string | number) => void
 }
 
 export const inputEmits: InputEmits = {
-  change: (value: string | number) => true,
-  blur: (value: string | number) => true
+  change: (value?: string | number) => void 0,
+  blur: (value?: string | number) => void 0,
 }
 
-export interface InputSlots extends SlotsType {
+export type InputSlots = {
   /** 前缀 */
   prepend: never,
   /** 后缀 */
@@ -74,7 +75,7 @@ export type InputProps = MakePropsType<typeof inputProps, InputEmits>
 /**
  * 输入框 <ns-input>
  */
-export const NsInput = define<typeof inputProps, InputEmits, InputSlots>({
+export const NsInput = define({
     name: 'NsInput',
     props: inputProps,
     emits: inputEmits,

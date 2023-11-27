@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType, SlotsType } from 'vue'
 import { MakePropsType, define } from '../../utils'
 import { Color } from '../../composables/theme'
 
@@ -17,7 +17,7 @@ export const ratingProps = {
   }
 }
 
-export interface RatingEmits extends ObjectEmitsOptions {
+export type RatingEmits = {
 }
 
 const emits: RatingEmits = {

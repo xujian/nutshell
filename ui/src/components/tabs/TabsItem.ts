@@ -5,9 +5,9 @@ import { TabData } from './Tabs'
 /*
  * <ns-tabs-item>
  * 用来定义 tabs 内容
- * 
+ *
  * 属性冲突
- * 当 <ns-tabs> 内使用 <ns-tabs-item> 定义内容时, 
+ * 当 <ns-tabs> 内使用 <ns-tabs-item> 定义内容时,
  * 若 <ns-tabs-item> 提供了 tab 属性或者 tab slot
  * <ns-tabs> 的 items 自动失效
  */
@@ -24,7 +24,7 @@ export const tabsItemProps = {
   }
 }
 
-export interface TabsItemEmits extends ObjectEmitsOptions {
+export type TabsItemEmits = {
   click: (item: TabData) => void
 }
 
@@ -32,7 +32,7 @@ const emits: TabsItemEmits = {
   click: (item: TabData) => void 0
 }
 
-export interface TabsItemSlots extends SlotsType {
+export type TabsItemSlots = {
   default: never,
   tab: never
 }

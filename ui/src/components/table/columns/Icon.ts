@@ -1,4 +1,3 @@
-import { ObjectEmitsOptions } from 'vue'
 import { define, MakePropsType } from '../../../utils'
 import { TableColumnData, useTableColumnProps } from '../../table/TableColumn'
 import { useIconProps } from '../../../components/icon'
@@ -8,7 +7,7 @@ const iconProps = {
   ...useIconProps(),
 }
 
-export interface TableColumnIconEmits extends ObjectEmitsOptions {
+export type TableColumnIconEmits = {
   click: ({value, row, rowIndex}: TableColumnData) => void
 }
 

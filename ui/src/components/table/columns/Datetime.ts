@@ -1,6 +1,5 @@
-import { ObjectEmitsOptions } from 'vue'
 import { define, MakePropsType } from '../../../utils'
-import { useTableColumnProps } from '../TableColumn'
+import { TableColumnData, useTableColumnProps } from '../TableColumn'
 
 export const props: Record<string, any> = {
   ...useTableColumnProps(),
@@ -10,12 +9,12 @@ export const props: Record<string, any> = {
   },
 }
 
-export interface TableColumnDatetimeEmits extends ObjectEmitsOptions {
-  click: () => void
+export type TableColumnDatetimeEmits = {
+  click: ({value, row, rowIndex}: TableColumnData) => void
 }
 
 const emits: TableColumnDatetimeEmits = {
-  click: () => void 0
+  click: ({value, row, rowIndex}: TableColumnData) => void 0
 }
 
 export type TableColumnDatetimeProps = MakePropsType<typeof props, TableColumnDatetimeEmits>

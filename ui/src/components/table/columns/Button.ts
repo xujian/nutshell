@@ -1,15 +1,14 @@
-import { ObjectEmitsOptions } from 'vue'
-import { define } from '../../../utils'
-import { EmitsToProps, MakePropsType } from '../../../utils/private/helpers'
+import { MakePropsType } from '../../../utils/private/helpers'
 import { TableColumnData, useTableColumnProps } from '../../table/TableColumn'
 import { useButtonProps } from '../../../components/button'
+import { define } from '../../../utils'
 
 const props = {
   ...useTableColumnProps(),
   ...useButtonProps(),
 }
 
-export interface TableColumnButtonEmits extends ObjectEmitsOptions {
+export type TableColumnButtonEmits = {
   click: ({value, row, rowIndex}: TableColumnData) => void
 }
 

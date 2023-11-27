@@ -27,7 +27,7 @@ export const tabsProps = {
   ...useModelValuePropsForInput(),
 }
 
-export interface TabsEmits extends ObjectEmitsOptions {
+export type TabsEmits = {
   change: (value: string) => void
 }
 
@@ -35,8 +35,8 @@ const emits: TabsEmits = {
   change: (value: string) => {}
 }
 
-export interface TabsSlots extends SlotsType {
-  default: never,
+export type TabsSlots = {
+  default: () => any,
 }
 
 export type TabsProps = MakePropsType<typeof tabsProps, TabsEmits>
@@ -50,7 +50,7 @@ export const NsTabs = define({
   emits,
   setup (props, ctx) {
 
-    // 从子组件读取 items 
+    // 从子组件读取 items
     const getItems: () => TabData[] | undefined = () => {
       const { default: defaultSlot } = useSlots()
       if (!defaultSlot) return void 0

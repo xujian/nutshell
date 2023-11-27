@@ -9,7 +9,7 @@ export type DialogOptions = {
   title?: string,
   message?: string,
   component?: any,
-  width: number,
+  width?: number,
   okText?: string,
   cancelText?: string,
   okColor?: Color,

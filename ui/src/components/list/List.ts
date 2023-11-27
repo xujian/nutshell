@@ -1,6 +1,6 @@
 import { MakePropsType } from '../../utils'
 import { h } from 'vue'
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent } from 'vue'
+import { PropType, SlotsType, defineComponent } from 'vue'
 
 export type ListRow = {
   title: string,
@@ -27,7 +27,7 @@ export const listProps = {
   }
 }
 
-export interface ListEmits extends ObjectEmitsOptions {
+export type ListEmits = {
 }
 
 const emits: ListEmits = {
@@ -53,7 +53,7 @@ export const NsList = defineComponent({
           class: ['list-title'],
         }, () => props.title)
       : null
-    
+
     const main = (row: ListRow) => {
       return h('div', {
         class: ['list-item-section list-item-section-main']
@@ -62,7 +62,7 @@ export const NsList = defineComponent({
         h('p', { class: ['list-item-caption', 'caption']}, row.caption)
       ])
     }
-    
+
     const no = (row: ListRow, index: number) => {
       return h('div', {
         class: ['list-item-section list-item-section-no number'],
@@ -88,7 +88,7 @@ export const NsList = defineComponent({
       class: ['ns-list', 'r-md', 'flex', 'flex-col'],
     }, [
       header,
-      body, 
+      body,
     ])
   }
 })

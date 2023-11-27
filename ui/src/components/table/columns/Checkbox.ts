@@ -1,6 +1,7 @@
 import { ObjectEmitsOptions, PropType } from 'vue'
 import { define, MakePropsType } from '../../../utils'
 import { useTableColumnProps } from '../../table/TableColumn'
+import { TableColumnDefinition } from '../Table'
 
 const props = {
   ...useTableColumnProps(),
@@ -9,7 +10,7 @@ const props = {
   }
 }
 
-export interface TableColumnCheckboxEmits extends ObjectEmitsOptions {
+export type TableColumnCheckboxEmits = {
 }
 
 const emits: TableColumnCheckboxEmits = {
@@ -29,3 +30,5 @@ export const NsTableColumnCheckbox = define({
     }
   }
 })
+
+export type NsTableColumnCheckbox = InstanceType<typeof NsTableColumnCheckbox>

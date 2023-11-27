@@ -15,14 +15,14 @@ export const formProps = {
   }
 }
 
-export interface FormEmits extends ObjectEmitsOptions {
+export type FormEmits = {
 }
 
 const emits: FormEmits = {
 }
 
-export interface FormSlots extends SlotsType {
-  default: never,
+export type FormSlots = {
+  default: () => any,
 }
 
 export type FormProps = MakePropsType<typeof formProps, FormEmits>

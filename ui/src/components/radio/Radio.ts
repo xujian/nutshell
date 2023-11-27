@@ -13,15 +13,15 @@ export const radioProps = {
   }
 }
 
-export interface RadioEmits extends ObjectEmitsOptions {
+export type RadioEmits = {
 }
 
 const radioEmits: RadioEmits = {
 }
 
-export interface RadioSlots extends SlotsType {
-  prepend: never,
-  append: never,
+export type RadioSlots = {
+  prepend: () => any,
+  append: () => any,
 }
 
 export type RadioProps = MakePropsType<typeof radioProps, RadioEmits>

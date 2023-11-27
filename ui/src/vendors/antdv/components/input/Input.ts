@@ -8,11 +8,11 @@ import { ChangeEvent } from 'ant-design-vue/es/_util/EventInterface'
 import { marginProps } from '../../../../utils/private/helpers'
 import { withModifiers } from 'vue'
 
-export type AntInputType = 
-  'number' | 'button' | 'time' | 'reset' | 'submit' 
-  | 'image' | 'text' | 'search' | 'checkbox' | 'radio' 
-  | 'hidden' | 'color' | 'range' | 'date' | 'url' 
-  | 'email' | 'week' | 'month' 
+export type AntInputType =
+  'number' | 'button' | 'time' | 'reset' | 'submit'
+  | 'image' | 'text' | 'search' | 'checkbox' | 'radio'
+  | 'hidden' | 'color' | 'range' | 'date' | 'url'
+  | 'email' | 'week' | 'month'
   | 'tel' | 'datetime-local' | 'file' | 'password'
 
 /**
@@ -32,9 +32,7 @@ export const Input = defineComponent({
     ]
 
     const rules = transformRules(props.rules as FullValidationRule[])
-    console.log('event........', props.onChangePrevent);
-    
-    return () => 
+    return () =>
       h(AntFormItem, {
         class: [
           'ns-form-item',
@@ -63,7 +61,7 @@ export const Input = defineComponent({
           emit('change', e.target.value)
         },
         onBlur: (e: FocusEvent) => {
-          emit('blur', e)
+          emit('blur', props.modelValue)
         }
       }, {
         ...slots.prepend && { prefix: slots.prepend},

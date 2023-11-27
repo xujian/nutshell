@@ -32,7 +32,7 @@ export const chipProps = {
   ...useSizeProps(),
 }
 
-export interface ChipEmits extends ObjectEmitsOptions {
+export type ChipEmits = {
   click (): void,
 }
 

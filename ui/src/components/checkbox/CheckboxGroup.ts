@@ -19,13 +19,13 @@ export const checkboxGroupProps = {
   }
 }
 
-export interface CheckboxGroupEmits extends ObjectEmitsOptions {
+export type CheckboxGroupEmits = {
 }
 
 const emits: CheckboxGroupEmits = {
 }
 
-export interface CheckboxGroupSlots extends SlotsType {
+export type CheckboxGroupSlots = {
   default: never,
 }
 

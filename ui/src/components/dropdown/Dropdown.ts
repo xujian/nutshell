@@ -35,7 +35,7 @@ export const dropdownProps = {
   ...useDimensionProps(),
 }
 
-export interface DropdownEmits extends ObjectEmitsOptions {
+export type DropdownEmits = {
   click: () => void
 }
 

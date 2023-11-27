@@ -1,5 +1,3 @@
-import { NsPagination } from './pagination'
-
 export * from './app'
 export * from './button'
 export * from './input'
@@ -44,8 +42,9 @@ import { NsList } from './list'
 import { NsStepper } from './stepper'
 import { NsDrawer } from './drawer'
 import { NsRadio, NsRadioGroup } from './radio'
-import { NsTable, NsTableColumn } from './table'
 import { NsEmpty } from './empty'
+import { NsPagination } from './pagination'
+import { NsTable, NsTableColumn } from './table'
 
 const components = {
   NsApp,
@@ -79,9 +78,22 @@ const components = {
   NsDrawer,
   NsRadio,
   NsRadioGroup,
-  NsTable,
+  NsPagination,
   NsEmpty,
-  NsPagination
+  NsTable,
 }
 
-export default components
+const properties = Object.fromEntries(
+  Object.entries(components).map(([name, component]) => {
+    return [
+      name,
+      // @ts-ignore
+      component.props
+    ]
+  })
+)
+
+export {
+  components,
+  properties
+}

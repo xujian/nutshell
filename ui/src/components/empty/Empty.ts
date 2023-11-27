@@ -30,11 +30,11 @@ export const emptyProps = {
   }
 }
 
-export interface EmptyEmits extends ObjectEmitsOptions {}
+export type EmptyEmits = {}
 
 const Emits: EmptyEmits = {}
 
-export interface EmptySlots extends SlotsType {
+export type EmptySlots = {
   /** 描述内容 **/
   description: never
   /** 图片 **/
