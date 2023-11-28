@@ -42,7 +42,6 @@ const toggleNav = () => {
     transition: transform .5s;
   }
   .app-header {
-    background-color: #fff;
     position: fixed;
     height: 48px;
     left: var(--layout-nav-width);
