@@ -11,16 +11,16 @@ export const useTableColumnProps = () => ({
    * 列名
    */
   field: {
-    type: String,
+    type: String
   },
   /**
    * 列头名称
    */
   label: {
-    type: String,
+    type: String
   },
   width: {
-    type: [Number, String],
+    type: [Number, String]
   },
   align: {
     type: String as PropType<NsTableColumnAlign>,
@@ -35,17 +35,17 @@ export const useTableColumnProps = () => ({
    */
   sortable: {
     type: Boolean,
-    default: false,
+    default: false
   },
   /**
    * 列可筛选
    */
   filterable: {
-    type: Array as PropType<TableColumnFilterOptions>,
+    type: Array as PropType<TableColumnFilterOptions>
   },
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
-    require: false,
+    require: false
   },
   /**
    * 隐藏这一列
@@ -54,26 +54,32 @@ export const useTableColumnProps = () => ({
   hidden: {
     type: Boolean,
     default: false
+  },
+  /**
+   * 显示树形节点
+   */
+  tree: {
+    type: Boolean,
+    default: false
   }
 })
-
 
 const props = {
   ...useTableColumnProps(),
   type: {
     type: String as PropType<NsTableColumnType>,
     require: false,
-    default: 'normal',
-  },
+    default: 'normal'
+  }
 }
 
 export type TableColumnEmits = {
-  click: ({value, row, rowIndex}: TableColumnData) => void,
+  click: ({ value, row, rowIndex }: TableColumnData) => void
   change: (value: string[]) => void
 }
 
 const emits: TableColumnEmits = {
-  click: ({value, row, rowIndex}: TableColumnData) => void 0,
+  click: ({ value, row, rowIndex }: TableColumnData) => void 0,
   change: (value: string[]) => void 0
 }
 
@@ -86,25 +92,26 @@ export type TableColumnProps = MakePropsType<typeof props, TableColumnEmits>
  * 表格列数据
  */
 export type TableColumnData = {
-  value: string,
-  row: Record<string, any>,
-  rowIndex?: number,
-  columnIndex?: number,
+  value: string
+  row: Record<string, any>
+  rowIndex?: number
+  columnIndex?: number
 }
 
 /**
  * 列筛选选项
  */
 export type TableColumnFilterOptions = {
-  label: string,
+  label: string
   value: string | number
 }[]
 
-export type CustomColumnFunctionalRender =
-  (args: TableColumnData) => any
+export type CustomColumnFunctionalRender = (args: TableColumnData) => any
 
-export type CustomColumnRender =
-  (props: TableColumnProps, ctx?: SetupContext) => CustomColumnFunctionalRender | DefineComponent<TableColumnData>
+export type CustomColumnRender = (
+  props: TableColumnProps,
+  ctx?: SetupContext
+) => CustomColumnFunctionalRender | DefineComponent<TableColumnData>
 
 /**
  * 表格列
@@ -113,8 +120,7 @@ export const NsTableColumn = define({
   name: 'NsTableColumn',
   props,
   emits,
-  setup (props, ctx) {
-    return {
-    }
+  setup(props, ctx) {
+    return {}
   }
 })

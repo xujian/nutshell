@@ -12,8 +12,9 @@ type ColumnConfig = {
   }
 }
 
-const columnTypeMapping: {[key: string]: VxeColumnPropTypes.Type} = {
-  number: 'seq'
+const columnTypeMapping: { [key: string]: VxeColumnPropTypes.Type } = {
+  number: 'seq',
+  checkbox: 'checkbox'
 }
 
 const columnNameToTypeMapping: {[key: string]: VxeColumnPropTypes.Type} = {
@@ -56,13 +57,19 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
           sortable: props.sortable,
           filters: props.filterable,
           fixed: props.fixed as VxeColumnPropTypes.Fixed,
+          treeNode: props.tree
         },
         slots: {}
       }
       if (column.type) {
         // 输出 <vxe-column type=checkbox> 以及其他
-        const t = columnTypeMapping[column.type]
-        colummConfig.props.type = t
+        colummConfig.props.type = columnTypeMapping[column.type]
+        if (column.type == 'checkbox') {
+          selectionOptions.field = column.props.field || ''
+          selectionOptions.onChange = (selected: any) => {
+            column.props['onChange']?.(selected)
+          }
+        }
       }
       if (column.name) { // 带有 name 调用 columns/之下的渲染器
         // 某些 column name 映射为 vxe table type
@@ -130,32 +137,37 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
   }
 
   return h(VxeTable, {
-    ref: tableRef,
-    class: classes,
-    data: rows.value,
-    maxHeight: props.maxHeight,
-    // columns: columns as ColumnsType,
-    rowConfig: {
-      useKey: true,
-      keyField: props.rowKey,
-      isHover: !props.rowHoverable === false
-    },
-    loading: props.loading,
-    columnConfig: {
-      useKey: true,
-      resizable: true
-    },
-    editConfig: {
-      mode: 'row'
-    },
-    showOverflow: props.overflow === true ? false : true,
-    scrollY: { enabled: true, gt: 20 },
-    onCheckboxChange: onSelectedChange,
-    onCheckboxAll: onSelectedChange,
-    // loading: loading,
-    // pagination: false,
-    // rowKey: props.rowKey,
-    // rowSelection
-  }, () => columns)
+      ref: tableRef,
+      class: classes,
+      data: rows.value,
+      maxHeight: props.maxHeight,
+      // columns: columns as ColumnsType,
+      rowConfig: {
+        useKey: true,
+        keyField: props.rowKey,
+        isHover: !props.rowHoverable === false,
+        height: props.rowHeight
+      },
+      treeConfig: {
+        transform: true,
+        rowField: 'id',
+        parentField: 'parentId'
+      },
+      loading: props.loading,
+      columnConfig: {
+        useKey: true,
+        resizable: true
+      },
+      editConfig: {
+        mode: 'row'
+      },
+      showOverflow: props.overflow === true ? false : true,
+      scrollY: { enabled: true, gt: 20 },
+      onCheckboxChange: onSelectedChange,
+      onCheckboxAll: onSelectedChange
+      // loading: loading,
+      // pagination: false,
+      // rowKey: props.rowKey,
+      // rowSelection
+    }, () => columns)
 }
-

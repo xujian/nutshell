@@ -1,6 +1,11 @@
-import { PropType, VNode, RendererNode, RendererElement,
-  useSlots, 
-  VNodeNormalizedChildren} from 'vue'
+import {
+  PropType,
+  VNode,
+  RendererNode,
+  RendererElement,
+  useSlots,
+  VNodeNormalizedChildren
+} from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { TableColumnProps } from './TableColumn'
 
@@ -14,29 +19,33 @@ export type TableRow = {
 /**
  * 表示表格单元格内数据模型
  * 通常用于表格内事件参数或计算用数据
- * 
+ *
  * 例如 表格内按钮的单击事件
  */
 export type TableCellModel = {
   /**
    * 单元格所在行所在列渲染值
    */
-  value: unknown,
+  value: unknown
   /**
    * 所在行
    */
-  row: Record<string, unknown>,
+  row: Record<string, unknown>
   /**
    * 行号
    */
-  rowIndex: number,
+  rowIndex: number
 }
 
 export type TableRows = TableRow[]
 
-export type TableColumnSlot = VNode<RendererNode, RendererElement, {
-  [key: string]: string
-}>
+export type TableColumnSlot = VNode<
+  RendererNode,
+  RendererElement,
+  {
+    [key: string]: string
+  }
+>
 
 /**
  * 表格列类型
@@ -46,10 +55,10 @@ export type TableColumnSlot = VNode<RendererNode, RendererElement, {
 export type TableColumnType = 'number'
 
 export type TableColumnDefinition = {
-  name?: string,
-  type?: TableColumnType,
-  props: TableColumnProps,
-  slots?: VNodeNormalizedChildren,
+  name?: string
+  type?: TableColumnType
+  props: TableColumnProps
+  slots?: VNodeNormalizedChildren
   customRender?: (options: any) => void
 }
 
@@ -59,13 +68,13 @@ export const tableProps = {
    */
   rows: {
     type: Array as PropType<TableRows>,
-    default: [],
+    default: []
   },
   /**
    * Columns Customization 列配置
    */
   columns: {
-    type: Array as PropType<TableColumnDefinition[]>,
+    type: Array as PropType<TableColumnDefinition[]>
   },
   rowKey: {
     type: String,
@@ -73,25 +82,25 @@ export const tableProps = {
   },
   hasNumberColumn: {
     type: Boolean,
-    default: false,
+    default: false
   },
   customColumns: {
     type: Array,
-    require: false,
+    require: false
   },
   maxHeight: {
-    type: [String, Number],
+    type: [String, Number]
   },
   /**
    * 表行对鼠标 hover 动作变色
    */
   rowHoverable: {
     type: Boolean,
-    default: true,
+    default: true
   },
   loading: {
     type: Boolean,
-    default: false,
+    default: false
   },
   /**
    * 设置所有内容过长时显示为省略号
@@ -102,8 +111,21 @@ export const tableProps = {
     // false: 显示省略号, true: 允许换行撑开高度, 无值: 按 false 处理
     // 提升渲染性能需显式设置 overflow=false
     // 这里要注意一下 VXE 的属性名 showOverflow 的含义是反的
-    type: Boolean,
+    type: Boolean
   },
+  /**
+   * 启动树形表格模式
+   */
+  enableTreeMode: {
+    type: Boolean,
+    default: false
+  },
+  /**
+   * 行高
+   */
+  rowHeight: {
+    type: [String, Number]
+  }
 }
 
 export type TableProps = MakePropsType<typeof tableProps>
@@ -111,24 +133,23 @@ export type TableProps = MakePropsType<typeof tableProps>
 export const NsTable = define({
   name: 'NsTable',
   props: tableProps,
-  setup (props, ctx) {
-
-    function getColumnName (slot: TableColumnSlot): string {
+  setup(props, ctx) {
+    function getColumnName(slot: TableColumnSlot): string {
       const slotType = slot.type as any,
         functionName = slotType.name
       return functionName.slice('NsTableColumn'.length).toLowerCase()
     }
 
-    function getCustomizedColumns (): TableColumnDefinition[] {
+    function getCustomizedColumns(): TableColumnDefinition[] {
       const { default: defaultSlot } = useSlots()
       if (!defaultSlot) return []
       const slots = defaultSlot()
       // 获取全体 <ns-table-column-x>
-      return slots.map(slot => ({
+      return slots.map((slot) => ({
         name: getColumnName(slot),
         type: slot.props?.type as TableColumnType,
         props: slot.props as never as TableColumnProps,
-        slots: slot.children,
+        slots: slot.children
       }))
     }
 
@@ -145,7 +166,7 @@ export const NsTable = define({
       // 并作为最终 props 交给 vendor
       props: {
         // 对 customColumns 的处理在 vendors/components/table
-        columns,
+        columns
       }
     }
   }
