@@ -52,7 +52,7 @@ export type TableColumnSlot = VNode<
  * 仅用于少数特殊预定义的列
  * 例如序号列
  */
-export type TableColumnType = 'number'
+export type TableColumnType = 'number' | 'checkbox'
 
 export type TableColumnDefinition = {
   name?: string
@@ -124,7 +124,7 @@ export const tableProps = {
    * 行高
    */
   rowHeight: {
-    type: [String, Number]
+    type: Number
   }
 }
 
