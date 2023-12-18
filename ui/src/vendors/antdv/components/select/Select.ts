@@ -19,7 +19,7 @@ export const Select = defineComponent({
     const {
       clearable, searchable
     } = props
-  
+
     const rules = transformRules(props.rules as FullValidationRule[])
     return () => h(AntFormItem, {
         name: props.name,
@@ -45,6 +45,7 @@ export const Select = defineComponent({
         placeholder: props.placeholder,
         popupClassName: 'ns-select-dropdown',
         disabled: props.disabled ?? false,
+        optionFilterProp: 'label'
       })
     )
   }
