@@ -161,9 +161,9 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       editConfig: {
         mode: 'row'
       },
-      checkboxConfig: {
-        checkStrictly: true
-      },
+      // checkboxConfig: {
+      //   checkStrictly: true
+      // },
       showOverflow: props.overflow === true ? false : true,
       scrollY: { enabled: true, gt: 20 },
       onCheckboxChange: onSelectedChange,
