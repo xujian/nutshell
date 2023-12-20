@@ -62,6 +62,17 @@ export type TableColumnDefinition = {
   customRender?: (options: any) => void
 }
 
+export type TableTreeConfig = {
+  /**
+   * 是否启用树形表格
+   */
+  enable: boolean
+  /**
+   * true 设置父子节点不互相关联，默认false
+   */
+  checkStrictly?: boolean
+}
+
 export const tableProps = {
   /**
    * 行数据
@@ -114,11 +125,10 @@ export const tableProps = {
     type: Boolean
   },
   /**
-   * 启动树形表格模式
+   * 树形表格配置
    */
-  enableTreeMode: {
-    type: Boolean,
-    default: false
+  treeConfig: {
+    type: Object as PropType<TableTreeConfig>,
   },
   /**
    * 行高

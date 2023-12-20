@@ -149,7 +149,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
         height: props.rowHeight
       },
       treeConfig: {
-        transform: true,
+        transform: props.treeConfig?.enable,
         rowField: 'id',
         parentField: 'parentId'
       },
@@ -161,9 +161,9 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       editConfig: {
         mode: 'row'
       },
-      // checkboxConfig: {
-      //   checkStrictly: true
-      // },
+      checkboxConfig: {
+        checkStrictly: props.treeConfig?.checkStrictly
+      },
       showOverflow: props.overflow === true ? false : true,
       scrollY: { enabled: true, gt: 20 },
       onCheckboxChange: onSelectedChange,
