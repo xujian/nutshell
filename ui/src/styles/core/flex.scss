@@ -3,11 +3,6 @@
   display: flex;
 }
 
-.flex:before,
-.flex:after  {
-  content: " ";
-}
-
 /* direction */
 .flex-col {
   flex-direction: column;
