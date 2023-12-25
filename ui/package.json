@@ -1,6 +1,6 @@
 {
   "name": "@uxda/nutshell",
-  "version": "1.0.32",
+  "version": "1.0.58",
   "description": "A Vue 3 UI library base on Nutui",
   "type": "module",
   "main": "dist/index.js",
@@ -21,7 +21,6 @@
     "./antdv.css": "./dist/antdv.css"
   },
   "scripts": {
-    "patch": "node build/patch.js",
     "clean": "node build/scripts/clean.js",
     "develop": "cd ./dev && node ./scripts.buid.js dev && cd ..",
     "dev": "rollup -c rollup.config.js --watch",
