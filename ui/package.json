@@ -70,7 +70,7 @@
     "dayjs": "^1.11.9",
     "lodash": "^4.17.21",
     "tippy.js": "^6.3.7",
-    "typescript": "5.2.2",
+    "typescript": "^5.2.2",
     "validator": "^13.11.0",
     "vue-tippy": "v6",
     "vxe-table": "^4.5.13"
