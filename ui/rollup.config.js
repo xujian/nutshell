@@ -6,6 +6,7 @@ import copy from 'rollup-plugin-copy'
 import scss from 'rollup-plugin-scss'
 import postcss from 'rollup-plugin-postcss'
 import { resolve } from 'path'
+import json from './rollup/plugin-json.js'
 // import alias from '@rollup/plugin-alias'
 // import NutUIResolver from '@nutui/nutui/dist/resolver'
 // import path from 'path'
@@ -49,7 +50,7 @@ const OnlyTaroResolver = (name) => {
   }
 }
 
-// 返回一个假的Taro 
+// 返回一个假的Taro
 // 避免 Desktio/H5 引入整个Taro包
 // 见 vendors/nutui/service/toast.ts
 const PsuedoTaroResolver = (name) => {
@@ -112,6 +113,7 @@ export default [
         jsx: 'transform', // default, or 'preserve'
         jsxFactory: 'vueJsxCompat',
       }),
+      json(),
     ],
     external: ['vue']
   },
