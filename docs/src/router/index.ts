@@ -27,6 +27,7 @@ const ToastPage = () => import('../pages/interactive/ToastPage.vue')
 const DrawerPage = () => import('../pages/interactive/DrawerPage.vue')
 const FontPage = () => import('../pages/tokens/FontPage.vue')
 const TablePerfPage = () => import('../pages/labs/TablePerfPage.vue')
+const ComponentListPage = () => import('../pages/labs/ComponentList.vue')
 const NotFoundPage = () => import('../pages/NotFoundPage.vue')
 
 const router = createRouter({
@@ -166,6 +167,11 @@ const router = createRouter({
           path: '/labs/table-perf',
           name: 'table-perf',
           component: TablePerfPage
+        },
+        {
+          path: '/labs/component-list',
+          name: 'component-list',
+          component: ComponentListPage
         },
         {
           path: '/404',

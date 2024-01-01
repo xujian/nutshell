@@ -243,6 +243,10 @@ const menuData = computed(() => [
       {
         label: '大量数据表格',
         key: '/labs/table-perf'
+      },
+      {
+        label: '组件表',
+        key: '/labs/component-list'
       }
     ]
   }

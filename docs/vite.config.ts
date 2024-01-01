@@ -34,7 +34,7 @@ export default defineConfig({
     }),
     // Markdown(),
     // TestPlugin(),
-    StoriesPlugin(),
+    StoriesPlugin()
   ],
   server: {
     port: 2024,

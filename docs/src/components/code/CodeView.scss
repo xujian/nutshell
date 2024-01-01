@@ -1,4 +1,5 @@
 .ns-code-view {
+  border-radius: 10px;
   &[class*="language-"] {
     margin: 0;
     padding: 0;
@@ -14,6 +15,6 @@
     border-radius: 0;
     display: block;
     padding: 1em;
-    font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
+    font-family: "Jetbrains Mono", "Fira code", "Fira Mono", Consolas, Menlo, Courier, monospace;
   }
 }
