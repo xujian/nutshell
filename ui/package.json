@@ -23,7 +23,8 @@
   "scripts": {
     "clean": "node build/scripts/clean.js",
     "develop": "cd ./dev && node ./scripts.buid.js dev && cd ..",
-    "dev": "concurrently \"rollup -c rollup.config.js --watch\" \"node ./server.js\"",
+    "dev": "rollup -c rollup.config.js --watch",
+    "dev:serve": "concurrently \"rollup -c rollup.config.js --watch\" \"node ./server.js\"",
     "start": "rollup -c rollup.config.js --watch",
     "build": "yarn build:types && rollup -c rollup.config.js",
     "build:types": "tsc --pretty --emitDeclarationOnly",
