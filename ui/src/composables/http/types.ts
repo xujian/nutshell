@@ -1,4 +1,49 @@
 /**
+ * 由使用场景提供的配置
+ */
+export type HttpClientConfig = {
+  vendor?: HttpVendor
+  baseURL: string,
+  /**
+   * 向 HTTP header 加入的数据
+   * 通常含有 JWT token 以及其他参数
+   */
+  headers?: HeaderParams
+  /**
+   * 定义返回数据的外层格式
+   */
+  response?: {
+    getCode (raw: ResponseRaw): `${number}` | number,
+    getMessage (raw: ResponseRaw): string,
+    getData (raw: ResponseRaw): ResponseData
+  },
+  /**
+   * 错误码配置
+   * 依据后端给出的 code 定义错误类型及处理方法
+   */
+  interceptors?: {
+    auth (data: ResponseRaw): boolean
+    server (data: ResponseRaw): boolean
+  },
+  onAuthError? (): void
+  onServerError? (): void
+  translates?: HttpTranslates
+  transforms?: HttpTransforms
+}
+
+/**
+ * Request Config for request API
+ * 沿用 Axios 的部分配置
+ */
+export type HttpRequestConfig<D = RequestData> = {
+  url: string,
+  method?: HttpMethod,
+  baseURL?: string,
+  headers?: HeaderData,
+  data?: RequestData,
+}
+
+/**
  * Request data for http get & post method
  */
 export type RequestData = Record<string, any>
@@ -12,12 +57,18 @@ export type HttpResonse<T> = {
 /**
  * 本地后端团队的接口数据格式
  */
-export type ResponseRaw = Record<string, any>
+export type ResponseRaw<T = ResponseData> = Record<string, any>
 
 /**
  * 拆箱之后前端拿到的数据
  */
 export type ResponseData = Record<string, any> | any[]
+
+export type HttpInstance = {
+  request<T = ResponseData>(config: HttpRequestConfig): Promise<ResponseRaw<T>>
+  get<T = ResponseData>(url: string, data?: RequestData): Promise<T>,
+  post<T = ResponseData>(url: string, data?: RequestData): Promise<T>,
+}
 
 /**
  *
@@ -39,39 +90,6 @@ export type HttpVendor = {
   request (config: HttpRequestConfig): ResponseRaw
 }
 
-/**
- * 由使用场景提供的配置
- */
-export type HttpClientConfig = {
-  vendor?: HttpVendor
-  baseUrl: string,
-  /**
-   * 向 HTTP header 加入的数据
-   * 通常含有 JWT token 以及其他参数
-   */
-  header?: HeaderParams
-  /**
-   * 定义返回数据的外层格式
-   */
-  response?: {
-    getCode (data: ResponseData): `${number}` | number,
-    getMessage (data: RequestData): string,
-    getData (data: ResponseData): ResponseData
-  },
-  onAuthError? (): void
-  onServerError? (): void
-  /**
-   * 错误码配置
-   * 依据后端给出的 code 定义错误类型及处理方法
-   */
-  interceptors?: {
-    auth (data: ResponseData): boolean
-    server (data: ResponseData): boolean
-  },
-  translates?: HttpTranslates
-  transforms?: HttpTransforms
-}
-
 export enum HttpMethod {
   get = 'GET',
   post = 'POST',
@@ -84,22 +102,7 @@ export enum HttpError {
   server = 'server'
 }
 
-export type Http = {
-  request<T = ResponseData>(config: HttpRequestConfig): Promise<T>
-  get<T = ResponseData>(url: string, data?: RequestData): Promise<T>,
-  post<T = ResponseData>(url: string, data?: RequestData): Promise<T>,
-}
-
 export type HeaderData = Record<string, string>
-
-export type HttpRequestConfig = {
-  url: string,
-  header?: HeaderData,
-  data?: RequestData,
-  method?: HttpMethod,
-  success? (res: ResponseRaw): void,
-  fail? (res: ResponseRaw): void
-}
 
 /**
  * 接口参数转换器

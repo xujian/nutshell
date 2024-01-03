@@ -1,10 +1,12 @@
-import { Http, HttpClientConfig,
+import { HttpInstance, HttpClientConfig,
   HttpMethod, HttpRequestConfig,
   RequestData, ResponseData,
   ResponseRaw } from './types'
 /**
  * Useage:
- * const $http = useHttp()
+ * const $http = createHttp({
+ *
+ * })
  * $http.get('/url').then(data => {
  *
  * })
@@ -15,7 +17,7 @@ import { Http, HttpClientConfig,
  * @param config
  * @returns
  */
-const request: Http['request'] = <T>(config: HttpRequestConfig) => {
+const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
   clientConfig = {
     ...clientConfig,
     ...config,
@@ -26,16 +28,13 @@ const request: Http['request'] = <T>(config: HttpRequestConfig) => {
       && clientConfig.translates[config.url]
         ? clientConfig.translates[config.url](config.data)
         : config.data
-    console.log(`===HTTP.${config.method}, ${clientConfig.baseUrl}${config.url}`, data)
+    console.log(`===HTTP.${config.method}, ${clientConfig.baseURL}${config.url}`, data)
     clientConfig.vendor?.request({
-      url: `${clientConfig.baseUrl}${config.url}`,
+      url: `${clientConfig.baseURL}${config.url}`,
       data,
-      header: clientConfig.header,
+      headers: clientConfig.headers,
       method: config.method,
     }).then((res: ResponseRaw) => {
-      if (!isSuccess(res)) {
-        reject(`接口报错`)
-      }
       const { data: raw } = res
       if (clientConfig.interceptors?.auth(raw)) {
         clientConfig.onAuthError?.()
@@ -55,13 +54,13 @@ const request: Http['request'] = <T>(config: HttpRequestConfig) => {
       } else {
         reject(`未知错误`)
       }
-    }).fail((error: any) => {
-      console.log(error)
+    }).catch((e: any) => {
+      console.log('request.catch===', e)
     })
   })
 }
 
-const get: Http['get'] = <T>(url: string, data?: RequestData) => {
+const get: HttpInstance['get'] = <T>(url: string, data?: RequestData) => {
   return request<T>({
     url,
     data,
@@ -69,7 +68,7 @@ const get: Http['get'] = <T>(url: string, data?: RequestData) => {
   })
 }
 
-const post: Http['post'] = <T>(url: string, data: RequestData) => {
+const post: HttpInstance['post'] = <T>(url: string, data: RequestData) => {
   return request<T>({
     url,
     data,
@@ -82,15 +81,15 @@ const post: Http['post'] = <T>(url: string, data: RequestData) => {
  * 本地后台团队统一返回值外层
  */
 const defaultClientConfig: HttpClientConfig = {
-  baseUrl: '/',
+  baseURL: '/',
   response: {
-    getCode: (data: ResponseRaw) => data.code,
-    getMessage: (data: ResponseRaw) => data.msg,
-    getData: (data: ResponseRaw) => data.result
+    getCode: (raw: ResponseRaw) => raw.code,
+    getMessage: (raw: ResponseRaw) => raw.msg,
+    getData: (raw: ResponseRaw) => raw.result
   },
   interceptors: {
-    auth: (data) => data.code == '401',
-    server: (data) => false,
+    auth: (raw) => raw.code == '401',
+    server: (raw) => false,
   }
 }
 
@@ -99,13 +98,13 @@ let clientConfig = {
 }
 
 /**
- * 写入配置并
+ * 写入配置并返回 HTTP instance
  * @param config
  * @returns
  */
-export function useHttp (config: HttpClientConfig): Http {
+export function createHttp (config: HttpClientConfig): HttpInstance {
 
-  const clientConfig = {
+  clientConfig = {
     ...defaultClientConfig,
     ...config
   }
@@ -115,9 +114,4 @@ export function useHttp (config: HttpClientConfig): Http {
     get,
     post
   }
-}
-
-
-function isSuccess (res: ResponseRaw) {
-  return /^2/.test(res.statusCode.toString())
 }

@@ -17,7 +17,11 @@ app.post('/write-json', async (req, res) => {
       console.error(err)
       res.status(500).send('Error writing file')
     } else {
-      res.status(200).send('OK')
+      res.status(200).json({
+        result: {
+          ok: true
+        }
+      })
     }
   })
 })
