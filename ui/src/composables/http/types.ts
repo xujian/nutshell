@@ -65,7 +65,7 @@ export type ResponseRaw<T = ResponseData> = Record<string, any>
 export type ResponseData = Record<string, any> | any[]
 
 export type HttpInstance = {
-  request<T = ResponseData>(config: HttpRequestConfig): Promise<ResponseRaw<T>>
+  request<T = ResponseData>(config: HttpRequestConfig): Promise<T>
   get<T = ResponseData>(url: string, data?: RequestData): Promise<T>,
   post<T = ResponseData>(url: string, data?: RequestData): Promise<T>,
 }
@@ -87,7 +87,7 @@ export type HeaderParams = Record<string, string>
  * Axios/Taro.request
  */
 export type HttpVendor = {
-  request (config: HttpRequestConfig): ResponseRaw
+  request <T = ResponseData>(config: HttpRequestConfig): Promise<ResponseRaw<T>>
 }
 
 export enum HttpMethod {

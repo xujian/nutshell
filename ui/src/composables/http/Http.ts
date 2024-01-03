@@ -60,7 +60,7 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
   })
 }
 
-const get: HttpInstance['get'] = <T>(url: string, data?: RequestData) => {
+const get: HttpInstance['get'] = <T = ResponseData>(url: string, data?: RequestData) => {
   return request<T>({
     url,
     data,
@@ -68,7 +68,7 @@ const get: HttpInstance['get'] = <T>(url: string, data?: RequestData) => {
   })
 }
 
-const post: HttpInstance['post'] = <T>(url: string, data: RequestData) => {
+const post: HttpInstance['post'] = <T = ResponseData>(url: string, data: RequestData) => {
   return request<T>({
     url,
     data,
