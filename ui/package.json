@@ -1,20 +1,22 @@
 {
   "name": "@uxda/nutshell",
-  "version": "1.0.58",
+  "version": "1.0.60",
   "description": "A Vue 3 UI library base on Nutui",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "sass": "dist/styles/main.scss",
-  "style": "dist/styles/nutshell.scss",
+  "styles": "dist/styles/nutshell.scss",
   "moduleResolution": "node",
-  "typings": "./dist/index.d.ts",
+  "types": "dist/nutshell.d.ts",
+  "typings": "dist/nutshell.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist/",
+    "src/"
   ],
   "exports": {
     ".": "./dist/index.js",
+    "./api/components": "./dist/api/components.js",
     "./taro": "./dist/taro/index.js",
     "./nutshell.css": "./dist/nutshell.css",
     "./nutui.css": "./dist/nutui.css",
@@ -76,5 +78,8 @@
     "validator": "^13.11.0",
     "vue-tippy": "v6",
     "vxe-table": "^4.5.13"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -105,6 +105,10 @@ export default [
           {
             src: 'src/styles/**',
             dest: 'dist/styles'
+          },
+          {
+            src: 'components.d.ts',
+            dest: 'dist/api/'
           }
         ]
       }),

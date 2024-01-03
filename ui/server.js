@@ -10,9 +10,10 @@ app.get('/', (req, res) => {
 })
 
 app.post('/write-json', async (req, res) => {
-  const data = req.body
+  const data = req.body,
+  content = `export const components = ${JSON.stringify(data, null, 2)}`
 
-  fs.writeFile('dist/components.json', JSON.stringify(data, null, 2), (err) => {
+  fs.writeFile('dist/api/components.js', content, (err) => {
     if (err) {
       console.error(err)
       res.status(500).send('Error writing file')
