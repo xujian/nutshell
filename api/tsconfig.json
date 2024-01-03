@@ -5,6 +5,7 @@
     "noUnusedLocals": false,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "esModuleInterop": true,
     "outDir": "dist",
     "moduleResolution": "bundler",
     "noEmitOnError": false,

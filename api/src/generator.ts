@@ -209,13 +209,13 @@ function generateDefinition (
       }
     }
     const symbol = type.getAliasSymbol() ?? type.getSymbol()
-    // console.log('===000===999===888===AAA generateDefinition symbol', symbol)
     const declaration = symbol?.getDeclarations()?.[0]
     const targetType = type.getTargetType()
     let definition: Definition = {
       text: getCleanText(type.getText()),
       source: getSource(declaration)
     } as Definition
+    console.log('===000===999===888===AAAA generateDefinition symbol', definition)
     if (count(recursed, type.getText()) > 1 ||
       allowedRefs.includes(symbol?.getName() as string) ||
       isExternalDeclaration(declaration, definition.text)
@@ -342,7 +342,7 @@ function generateDefinition (
         }
       }
       // @ts-ignore
-      // console.log('===000===999===888===AAA definition', definition)
+      console.log('===000===999===888===DDDD definition', definition)
     } else if (ts.TypeFlags.Void & type.getFlags()) {
       // @ts-expect-error asd
       definition.type = 'void'
@@ -361,6 +361,7 @@ async function inspect (project: Project, node?: Node<ts.Node>) {
   if (kind == ts.SyntaxKind.TypeAliasDeclaration) {
     const definition = generateDefinition(node, [], project) as ObjectDefinition
     if (definition.properties) {
+      console.log('===000===999===888===bbbb kind ok definition.properties', definition.properties)
       definition.properties = Object.fromEntries(
         await Promise.all(
           Object.entries(definition.properties)
@@ -374,7 +375,7 @@ async function inspect (project: Project, node?: Node<ts.Node>) {
         )
       )
     }
-    // console.log('===000===999===888===666', definition.properties)
+    console.log('===000===999===888===cccc', definition.properties)
     return definition
   }
   throw new Error(`Unsupported node kind: ${kind}`)
@@ -383,10 +384,11 @@ async function inspect (project: Project, node?: Node<ts.Node>) {
 
 // poll.run entry point
 export async function generateComponentDataFromTypes (component: string) {
+  console.log('===000===999===888===0000', component)
   const sourceFile = project.addSourceFileAtPath(`./templates/tmp/${component}.d.ts`)
   const data = await inspect(project, sourceFile.getTypeAlias('ComponentProps'))
   const events = await inspect(project, sourceFile.getTypeAlias('ComponentEvents'))
-  // console.log('===000===999===888===777', data)
+  console.log('===000===999===888===0001', data)
 
   const sections = [data]
   sections.forEach(item => {

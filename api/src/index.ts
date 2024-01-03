@@ -6,10 +6,9 @@ import fs from 'fs/promises'
 import { rimraf } from 'rimraf'
 import { mkdirp } from 'mkdirp'
 import { fileURLToPath } from 'url'
-import { components } from '@uxda/nutshell'
+import { components } from '@uxda/nutshell/api/components'
 import { kebabCase } from './helpers/text.ts'
 import { createVeturApi } from './vetur.ts'
-import { stringifyProps } from './utils'
 import yargs from 'yargs'
 
 const yar = yargs(process.argv.slice(2))
@@ -49,20 +48,21 @@ const run = async () => {
   await mkdirp('./templates/tmp')
   const template = await fs.readFile('./templates/component.d.ts', 'utf-8')
 
-  for (const component in components) {
-    await fs.writeFile(`./templates/tmp/${component}.d.ts`,
-      template.replaceAll('__component__', component)
+  components.forEach(async component => {
+    await fs.writeFile(`./templates/tmp/${component.name}.d.ts`,
+      template.replaceAll('__component__', component.name)
         // .replaceAll('__name__', componentsInfo[component].from.replace('.mjs', '.js'))
         .replaceAll('__name__', 'components')
     )
-  }
+  })
   const outPath = path.resolve('./dist/api')
   await mkdirp(outPath)
 
   const componentData = await Promise.all(
-    Object.entries(components).map(async ([name, component]) => {
+    components.map(async ({name}) => {
+      console.log('===000===000===000===000', name)
       const data = await pool.run(name)
-      console.log('===000===000===000===000', data)
+      console.log('===000===000===000===002', data)
       // const componentProps = stringifyProps(component?.props)
 
       const json = {
