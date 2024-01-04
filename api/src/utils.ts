@@ -78,7 +78,12 @@ export function stringifyProps (props: any) {
           indent: '  ',
           inlineCharacterLimit: 60,
           filter (obj, property) {
-            if (typeof obj === 'object' && !Array.isArray(obj) && obj != null && 'name' in obj && 'props' in obj && 'setup' in obj) {
+            if (typeof obj === 'object'
+              && !Array.isArray(obj)
+              && obj != null
+              && 'name' in obj
+              && 'props' in obj
+              && 'setup' in obj) {
               return property === 'name'
             }
             return true
@@ -121,7 +126,7 @@ async function loadLocale (componentName: string, locale: string): Promise<Recor
 const currentBranch = execSync('git branch --show-current', { encoding: 'utf-8' }).trim()
 
 
-async function getSources (name: string, locale: string, sources: string[]) {
+async function getSources (name: string, sources: string[]) {
   const arr = await Promise.all([
     loadLocale(name, locale),
     ...sources.map(source => loadLocale(source, locale)),
@@ -144,9 +149,8 @@ async function getSources (name: string, locale: string, sources: string[]) {
 }
 
 
-export async function addDescriptions (name: string, componentData: ComponentData, locales: string[], sources: string[] = []) {
-  for (const locale of locales) {
-    const descriptions = await getSources(name, locale, sources)
+export async function addDescriptions (name: string, componentData: ComponentData, sources: string[] = []) {
+    const descriptions = await getSources(name, sources)
 
     for (const section of ['props', 'slots', 'events', 'exposed'] as const) {
       for (const [propName, propObj] of Object.entries(componentData[section] ?? {})) {
@@ -154,11 +158,10 @@ export async function addDescriptions (name: string, componentData: ComponentDat
         propObj.descriptionSource = propObj.descriptionSource ?? {}
 
         const found = descriptions.find(section, propName, propObj.source)
-        propObj.description![locale] = found.text
-        propObj.descriptionSource![locale] = found.source
+        propObj.description = found.text
+        propObj.descriptionSource = found.source
       }
     }
-  }
 }
 
 

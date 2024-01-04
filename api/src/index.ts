@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url'
 import { components } from '@uxda/nutshell/api/components'
 import { kebabCase } from './helpers/text.ts'
 import { createVeturApi } from './vetur.ts'
+import { addDescriptions, addDirectiveDescriptions, addPropData, stringifyProps } from './utils'
 import yargs from 'yargs'
 
 const yar = yargs(process.argv.slice(2))
@@ -59,11 +60,11 @@ const run = async () => {
   await mkdirp(outPath)
 
   const componentData = await Promise.all(
-    components.map(async ({name}) => {
-      console.log('===000===000===000===000', name)
+    components.slice(0, 2).map(async ({name}) => {
       const data = await pool.run(name)
-      console.log('===000===000===000===002', data)
       // const componentProps = stringifyProps(component?.props)
+      // const sources = addPropData(name, data, componentProps)
+      // await addDescriptions(name, data, locales, sources)
 
       const json = {
         displayName: name,

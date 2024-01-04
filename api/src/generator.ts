@@ -193,13 +193,14 @@ function formatDefinition (definition: Definition) {
   }
 }
 
-
+// step-in #02
 function generateDefinition (
     node: Node<ts.Node>,
     recursed: string[],
     project: Project,
     type?: Type<ts.Type>
   ): Definition {
+    console.log('===|||===999===888===generateDefinition===recursed===:', recursed)
     const tc = project.getTypeChecker()
     type = type ?? node.getType()
     if (type.getAliasSymbol()?.getName() === 'NonNullable') {
@@ -215,7 +216,14 @@ function generateDefinition (
       text: getCleanText(type.getText()),
       source: getSource(declaration)
     } as Definition
-    console.log('===000===999===888===AAAA generateDefinition symbol', definition)
+    // @ts-ignore
+    const comment = ts.getJSDocCommentsAndTags(node)[0]
+    if (comment) {
+      console.log('===|||===999===888===generateDefinition===comment===:', comment)
+      definition.description = {
+        zh: comment.getText()
+      }
+    }
     if (count(recursed, type.getText()) > 1 ||
       allowedRefs.includes(symbol?.getName() as string) ||
       isExternalDeclaration(declaration, definition.text)
@@ -310,11 +318,13 @@ function generateDefinition (
       definition.items = type.getTupleElements().map(t => generateDefinition(node, recursed, project, t))
       definition.length = definition.items.length
     } else if (type.isObject()) {
+      // 似乎从这里获取属性
       definition = definition as ObjectDefinition
       definition.type = 'object'
       definition.properties = {}
       for (const property of type.getProperties()) {
         const propertyName = property.getEscapedName()
+        console.log('===|||===999===888===generateDefinition===property:', propertyName)
         const propertyType = tc.getTypeOfSymbolAtLocation(property, node)
         definition.properties[propertyName] = generateDefinition(
           node,
@@ -342,7 +352,6 @@ function generateDefinition (
         }
       }
       // @ts-ignore
-      console.log('===000===999===888===DDDD definition', definition)
     } else if (ts.TypeFlags.Void & type.getFlags()) {
       // @ts-expect-error asd
       definition.type = 'void'
@@ -354,14 +363,13 @@ function generateDefinition (
     return definition
 }
 
-
+// step-in #01
 async function inspect (project: Project, node?: Node<ts.Node>) {
   if (!node) throw new Error('No node provided')
   const kind = node.getKind()
   if (kind == ts.SyntaxKind.TypeAliasDeclaration) {
     const definition = generateDefinition(node, [], project) as ObjectDefinition
     if (definition.properties) {
-      console.log('===000===999===888===bbbb kind ok definition.properties', definition.properties)
       definition.properties = Object.fromEntries(
         await Promise.all(
           Object.entries(definition.properties)
@@ -375,7 +383,6 @@ async function inspect (project: Project, node?: Node<ts.Node>) {
         )
       )
     }
-    console.log('===000===999===888===cccc', definition.properties)
     return definition
   }
   throw new Error(`Unsupported node kind: ${kind}`)
@@ -384,12 +391,9 @@ async function inspect (project: Project, node?: Node<ts.Node>) {
 
 // poll.run entry point
 export async function generateComponentDataFromTypes (component: string) {
-  console.log('===000===999===888===0000', component)
   const sourceFile = project.addSourceFileAtPath(`./templates/tmp/${component}.d.ts`)
   const data = await inspect(project, sourceFile.getTypeAlias('ComponentProps'))
   const events = await inspect(project, sourceFile.getTypeAlias('ComponentEvents'))
-  console.log('===000===999===888===0001', data)
-
   const sections = [data]
   sections.forEach(item => {
     item.text = undefined!
@@ -400,7 +404,6 @@ export async function generateComponentDataFromTypes (component: string) {
       console.log(`\x1b[33mLong prop type (${formatted.length}): ${component}.${name}\x1b[0m`)
     }
   }
-  console.log('===000===999===888===1111', events.properties)
   return {
     props: data.properties,
     events: events.properties,
@@ -417,7 +420,6 @@ function getCleanText (text: string) {
 
 
 function getSource (declaration?: Node<ts.Node>) {
-  // console.AAA('===000===333 getSource------------------------------', declaration?.getSourceFile());
   const filePath = declaration?.getSourceFile().getFilePath()
     .replace(/.*\/node_modules\//, '')
     .replace(/.*\/packages\/vuetify\//, 'vuetify/')
@@ -434,7 +436,6 @@ function getSource (declaration?: Node<ts.Node>) {
 
 export async function prettifyType (name: string, item: Definition) {
   const prefix = 'type Type = '
-  // console.log('===000===333------------------------------', item.formatted)
   const [str, stripped] = stripLinks(item.formatted)
   let formatted
   try {
