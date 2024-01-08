@@ -18,39 +18,40 @@ import { HttpInstance, HttpClientConfig,
  * @returns
  */
 const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
-  clientConfig = {
+  const c = {
     ...clientConfig,
     ...config,
   }
   return new Promise<T>((resolve, reject) => {
     const data = config.data
       && clientConfig.translates
-      && clientConfig.translates[config.url]
-        ? clientConfig.translates[config.url](config.data)
-        : config.data
-    console.log(`===HTTP.${config.method}, ${clientConfig.baseURL}${config.url}`, data)
+      && clientConfig.translates[c.url]
+        ? clientConfig.translates[c.url]?.(c.data || {})
+        : c.data
+    console.log(`[][][][][]HTTP.${c.method}, ${c.baseUrl}${c.url}`, data)
     clientConfig.vendor?.request({
-      url: `${clientConfig.baseURL}${config.url}`,
+      url: `${c.baseUrl}${c.url}`,
       data,
-      headers: clientConfig.headers,
-      method: config.method,
-    }).then((res: ResponseRaw) => {
-      const { data: raw } = res
-      if (clientConfig.interceptors?.auth(raw)) {
-        clientConfig.onAuthError?.()
-        reject('--- 401 ---')
+      headers: c.headers,
+      method: c.method,
+    }).then((raw: ResponseRaw) => {
+      // 按顺序执行拦截器
+      console.log(`===HTTP==`, raw)
+      for (const interc of c.interceptors || []) {
+        const r = interc(raw)
+        if (r) {
+          // 某拦截器命中时
+          // 按拦截结果 决定是否继续执行
+          reject('===INTERCEPTED===')
+          return false
+        }
       }
-      if (clientConfig.interceptors?.server(raw)) {
-        clientConfig.onServerError?.()
-        reject('server error')
-      }
-      const response = clientConfig.response?.getData(raw)
-      if (response) {
+      if (raw.data) {
         // 当用户配置含有 transforms 时, 使用用户提供的 transform
         resolve(clientConfig.transforms
-          && clientConfig.transforms[config.url]
-            ? clientConfig.transforms[config.url](response) as T
-            : response as T)
+          && clientConfig.transforms[c.url]
+            ? clientConfig.transforms[c.url]?.(raw.data) as T
+            : data as T)
       } else {
         reject(`未知错误`)
       }
@@ -81,16 +82,11 @@ const post: HttpInstance['post'] = <T = ResponseData>(url: string, data: Request
  * 本地后台团队统一返回值外层
  */
 const defaultClientConfig: HttpClientConfig = {
-  baseURL: '/',
-  response: {
-    getCode: (raw: ResponseRaw) => raw.code,
-    getMessage: (raw: ResponseRaw) => raw.msg,
-    getData: (raw: ResponseRaw) => raw.result
-  },
-  interceptors: {
-    auth: (raw) => raw.code == '401',
-    server: (raw) => false,
-  }
+  baseUrl: '/',
+  interceptors: [
+    (raw) => raw.status == 401,
+    (raw) => false,
+  ]
 }
 
 let clientConfig = {
@@ -103,7 +99,6 @@ let clientConfig = {
  * @returns
  */
 export function createHttp (config: HttpClientConfig): HttpInstance {
-
   clientConfig = {
     ...defaultClientConfig,
     ...config

@@ -15,18 +15,21 @@ export const HttpSymbol: InjectionKey<HttpInstance>
  */
 const vendor = {
   async request <T>(config: HttpRequestConfig) {
-    return axios.request<ResponseRaw<T>>({
+    return axios.request({
       url: config.url,
       method: config.method,
-      baseURL: config.baseURL,
+      baseURL: config.baseUrl,
       headers: config.headers,
       data: config.data,
-    }).then(res => res.data)
+    }).then(res => ({
+      status: res.status,
+      message: res.statusText,
+      data: res.data
+    }) as ResponseRaw<T> )
   }
 }
 
 const headers = {
-  Token: ''
 }
 
 /**
@@ -34,34 +37,20 @@ const headers = {
  */
 const $http = createHttp({
   vendor,
-  baseURL: '/api',
+  baseUrl: '/api',
   headers,
-  response: {
-    getCode: (raw: ResponseRaw) => raw.code,
-    getMessage: (raw: ResponseRaw) => raw.message,
-    getData: (raw: ResponseRaw) => raw.result,
-  },
-  interceptors: {
-    auth: (raw: ResponseRaw) => raw.code == 401,
-    server: (raw: ResponseRaw) => false
-  },
-  onAuthError () {
-    console.log('auth error')
-  },
-  onServerError () {
-    console.log('server error')
-  }
+  interceptors: [
+    raw => raw.status == 401,
+  ],
 })
 
 const install = (app: App) => {
   app.config.globalProperties.$http = $http
-  console.log('install() http', $http);
   app.provide(HttpSymbol, $http)
 }
 
 function useHttp () {
   const $http = inject(HttpSymbol)
-  console.log('$http', $http)
   return $http
 }
 
