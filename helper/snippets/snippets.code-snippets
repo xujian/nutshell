@@ -1,0 +1,94 @@
+{
+  "打 log": {
+    "prefix": "log",
+    "body": [
+      "console.log('===${1}', ${1})"
+    ],
+    "description": "Log output to console"
+  },
+  "使用 $http": {
+    "prefix": ["useHttp", "http"],
+    "body": [
+      "import { endpoints, useHttp } from '../api'",
+      "const \$http = useHttp()",
+      "$http.get<${1}>(endpoints.${2}', {${3}}).then((data: ${4}) => {",
+      "  ${3}"
+      "}",
+    ],
+    "description": "使用 $http"
+  },
+  "配置 $http": {
+    "prefix": ["createHttp", "http"],
+    "body": [
+      "import { inject, type App, type InjectionKey } from 'vue'",
+      "import { createHttp } from '@uxda/nutshell'",
+      "import type { HttpInstance, HttpRequestConfig, ResponseRaw } from '@uxda/nutshell'",
+      "import axios from 'axios'",
+      "",
+      "export const HttpSymbol: InjectionKey<HttpInstance>",
+      "  = Symbol.for('\$http')",
+      "",
+      "const vendor = {",
+      "  async request <T>(config: HttpRequestConfig) {",
+      "    return axios.request({",
+      "      url: config.url,",
+      "      method: config.method,",
+      "      baseURL: config.baseUrl,",
+      "      headers: config.headers,",
+      "      data: config.data,",
+      "    }).then(res => ({",
+      "      status: res.status,",
+      "      message: res.statusText,",
+      "      data: res.data",
+      "    }) as ResponseRaw<T>)",
+      "  }",
+      "}",
+      "",
+      "const headers = {",
+      "}",
+      "",
+      "const \$http = createHttp({",
+      "  vendor,",
+      "  baseUrl: '/api',",
+      "  headers,",
+      "  interceptors: [",
+      "    raw => raw.status == 401,",
+      "  ],",
+      "})",
+      "",
+      "const install = (app: App) => {",
+      "  app.config.globalProperties.\$http = \$http",
+      "  app.provide(HttpSymbol, \$http)",
+      "}",
+      "",
+      "function useHttp () {",
+      "  const \$http = inject(HttpSymbol)",
+      "  return \$http",
+      "}",
+      "",
+      "export {",
+      "  useHttp",
+      "}"
+    ],
+    "description": "配置 $http"
+  },
+  "组件属性": {
+    "prefix": ["defineProps", "props"],
+    "body": [
+      "type ${1:$TM_FILENAME_BASE}Props = {",
+      "}",
+      "const props = defineProps<${1}Props>()"
+    ],
+    "description": "组件属性"
+  },
+  "使用 $bus": {
+    "prefix": ["useBus", "bus"],
+    "body": [
+      "import { useBus } from '@uxda/nutshell'",
+      "const \$bus = useBus()",
+      "const onHambergerClick = () => {",
+      "  \$bus.emit('nav:hide${1}', {})",
+      "}"
+    ]
+  }
+}
