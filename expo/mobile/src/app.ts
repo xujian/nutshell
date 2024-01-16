@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { Nutshell } from '@uxda/nutshell'
+import AppKit from '@uxda/appkit'
 import '@uxda/nutshell/nutshell.css'
 import '@uxda/nutshell/nutui.css'
 import './app.scss'
