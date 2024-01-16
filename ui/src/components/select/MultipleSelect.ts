@@ -32,7 +32,21 @@ export const multipleSelectProps = {
   searchable: {
     type: Boolean,
     default: false,
+  },
+  /**
+   * 最多显示多少个 tag, 默认不限制
+   */
+  maxTagShowCount: {
+    type: [Number, String] as PropType<number |'responsive'>,
   }
+}
+
+export type MultipleSelectEmits = {
+  change: (value: string[]) => void
+}
+
+const emits: MultipleSelectEmits = {
+  change: (value: string[]) => {}
 }
 
 export type MultipleSelectProps = MakePropsType<typeof multipleSelectProps>
@@ -43,6 +57,7 @@ export type MultipleSelectProps = MakePropsType<typeof multipleSelectProps>
 export const NsMultipleSelect = define({
   name: 'NsMultipleSelect',
   props: multipleSelectProps,
+  emits,
   setup (props, ctx) {
     const rules = formatRules(props.rules as ValidationRule[], props)
     return {

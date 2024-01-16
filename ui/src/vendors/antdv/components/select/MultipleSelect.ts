@@ -10,6 +10,8 @@ export const MultipleSelect = defineComponent({
   props: multipleSelectProps,
   setup (props, ctx) {
 
+    const { emit } = ctx
+
     const classes = [
       'ns-select',
       'ns-multiple-select'
@@ -18,7 +20,7 @@ export const MultipleSelect = defineComponent({
     const {
       clearable, searchable
     } = props
-  
+
     const rules = transformRules(props.rules as FullValidationRule[])
     return () => h(AntFormItem, {
         name: props.name,
@@ -36,8 +38,14 @@ export const MultipleSelect = defineComponent({
         'onUpdate:value': (value: SelectValue) => {
           props['onUpdate:modelValue']?.(value as string[])
         },
+        'onChange': (value: SelectValue) => {
+          emit('change', value)
+        },
         popupClassName: 'ns-select-dropdown',
         disabled: props.disabled ?? false,
+        placeholder: props.placeholder,
+        maxTagCount: props.maxTagShowCount,
+        optionFilterProp: 'label'
       })
     )
   }
