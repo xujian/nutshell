@@ -22,6 +22,7 @@ export * from './radio'
 export * from './table'
 export * from './empty'
 export * from './pagination'
+export * from './repeator'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -44,6 +45,7 @@ import { NsDrawer } from './drawer'
 import { NsRadio, NsRadioGroup } from './radio'
 import { NsEmpty } from './empty'
 import { NsPagination } from './pagination'
+import { NsRepeator } from './repeator'
 import { NsTable, NsTableColumn } from './table'
 
 const components = {
@@ -80,6 +82,7 @@ const components = {
   NsRadioGroup,
   NsPagination,
   NsEmpty,
+  NsRepeator,
   NsTable,
 }
 
