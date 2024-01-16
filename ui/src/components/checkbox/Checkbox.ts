@@ -6,6 +6,9 @@ export const checkboxProps = {
   label: {
     type: String
   },
+  disabled: {
+    type: Boolean,
+  },
   ...useModelValuePropsForBoolean(),
   ...useVariantProps(),
 }

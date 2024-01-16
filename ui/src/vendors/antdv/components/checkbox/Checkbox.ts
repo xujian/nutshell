@@ -15,7 +15,8 @@ export const Checkbox = (props: CheckboxProps & MarginProps, ctx: SetupContext) 
     'onUpdate:checked': (value: boolean) => {
       console.log('++++++', value, props['onUpdate:modelValue'])
       props['onUpdate:modelValue']?.(value)
-    }
+    },
+    disabled: props.disabled ?? false,
   }, () => props.label)
 }
 // + import => ./index.ts, ../components.ts
