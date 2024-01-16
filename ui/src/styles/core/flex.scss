@@ -94,3 +94,14 @@
 .gap-none {
   gap: 0
 }
+
+.flex-with-vars {
+  flex-direction: var(--flex-direction);
+  margin: calc(-1/2 * var(--flex-gutter));
+  flex-wrap: var(--flex-wrap);
+  .flex-item {
+    margin: calc(1/2 * var(--flex-gutter));
+    flex-shrink: 0;
+    flex-grow: 1;
+  }
+}

@@ -1,7 +1,6 @@
 import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
-import isIdentityCard from 'validator/lib/isIdentityCard'
-import isMobilePhone from 'validator/lib/isMobilePhone'
+import { isIdentityCard, isMobilePhone } from 'validator'
 import { Color } from '../composables/theme'
 import { MakePropsType } from '../utils'
 
@@ -65,7 +64,7 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
     if (typeof rule === 'string' && quickValidationMethods.includes(rule)) {
       const method = quickRuleMapping[rule]
       result.push({
-        name: rule, 
+        name: rule,
         method,
         message: rule === 'required'
           ? `请输入${props.label || ''}`
@@ -76,7 +75,7 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
     if (typeof rule === 'function') {
       result.push({
         name: 'function',
-        method: rule, 
+        method: rule,
         message: '格式错误',
         trigger: 'blur'
       })
@@ -146,7 +145,7 @@ const fieldProps = {
  */
 export const useFieldProps = buildProps(fieldProps)
 
-export type FieldProps = MakePropsType<typeof fieldProps> 
+export type FieldProps = MakePropsType<typeof fieldProps>
 
 export const buildStyles = (props: FieldProps) => {
   const style = {
