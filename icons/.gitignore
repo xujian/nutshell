@@ -4,6 +4,8 @@
 /_site/
 /node_modules/
 /resources/
+/output/
+/svg/
 
 # Editor folders
 /.vscode/
