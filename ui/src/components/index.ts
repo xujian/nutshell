@@ -12,6 +12,7 @@ export * from './icon'
 export * from './dialog'
 export * from './dropdown'
 export * from './tabs'
+export * from './tabbar'
 export * from './card'
 export * from './list'
 // move table to the last for
@@ -38,6 +39,7 @@ import { NsIcon } from './icon'
 import { NsDialog } from './dialog'
 import { NsDropdown } from './dropdown'
 import { NsTabs, NsTabsItem } from './tabs'
+import { NsTabbar } from './tabbar'
 import { NsCard, NsCardTitle } from './card'
 import { NsList } from './list'
 import { NsStepper } from './stepper'
@@ -73,6 +75,7 @@ const components = {
   NsDropdown,
   NsTabs,
   NsTabsItem,
+  NsTabbar,
   NsCard,
   NsCardTitle,
   NsList,

@@ -1,10 +1,14 @@
-import { ObjectEmitsOptions, PropType } from 'vue'
+import { ObjectEmitsOptions, PropType, defineComponent } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { Color } from '../../composables'
 import { useSizeProps } from '../../props/size'
 import { buildProps } from '../../utils/private/props'
+import { h } from 'vue'
 
 export const useIconProps = buildProps({
+  name: {
+    type: String,
+  },
   /**
    * SVG或图片URI
    */
@@ -37,12 +41,18 @@ export type IconProps = MakePropsType<typeof props, IconEmits>
 /**
  * 图标组件
  */
-export const NsIcon = define({
+export const NsIcon = defineComponent({
   name: 'NsIcon',
   props,
   emits,
   setup (props, ctx) {
-    return {
-    }
+    return () => h('i', {
+      class: [
+        'ns-icon',
+        'ni',
+        `ni-${props.name}`,
+        `font-size-${props.size}`
+      ]
+    })
   }
 })

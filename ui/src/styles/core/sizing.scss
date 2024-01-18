@@ -1,5 +1,10 @@
 @use '../variables/sizing' as *;
 
+@each $name, $value in $sizing {
+  #{'.font-size-'}#{$name} {
+    font-size: var(--ns-size-#{$name})
+  }
+}
 :root {
   @each $name, $value in $sizing {
     #{'--ns-size-'}#{$name}: #{$value}

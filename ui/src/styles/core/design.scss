@@ -6,7 +6,7 @@
 
 @each $name, $value in design.$borders {
   #{'.border-'}#{$name} {
-    border: #{$value};
+    border: #{$value} solid var(--stroke, #999);
   }
 }
 
@@ -19,5 +19,5 @@
 @each $name, $value in design.$rounded {
   #{'.r-'}#{$name} {
     border-radius: #{$value};
-  } 
+  }
 }
