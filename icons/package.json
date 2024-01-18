@@ -7,12 +7,14 @@
   "version": "1.0.0",
   "keywords": [
   ],
-  "style": "output/icons.css",
-  "sass": "output/icons.scss",
+  "style": "icons.css",
+  "sass": "icons.scss",
   "files": [
     "icons/*.svg",
     "icons.svg",
-    "output",
+    "fonts",
+    "icons.json",
+    "icons.min.css",
     "!.DS_Store"
   ],
   "hugo-bin": {
@@ -28,11 +30,11 @@
     "pages": "node build/build-pages.mjs",
     "icons": "npm-run-all icons-main --aggregate-output --parallel icons-sprite icons-font",
     "icons-main": "node build/build-svgs.mjs",
-    "icons-zip": "cross-env-shell \"rm -rf icons-$npm_package_version icons-$npm_package_version.zip && cp -r icons/ icons-$npm_package_version && cp icons.svg icons-$npm_package_version && cp -r output/ icons-$npm_package_version && zip -qr9 icons-$npm_package_version.zip icons-$npm_package_version && rm -rf icons-$npm_package_version\"",
+    "icons-zip": "cross-env-shell \"rm -rf icons-$npm_package_version icons-$npm_package_version.zip && cp -r icons/ icons-$npm_package_version && cp icons.svg icons-$npm_package_version && cp icons-$npm_package_version && zip -qr9 icons-$npm_package_version.zip icons-$npm_package_version && rm -rf icons-$npm_package_version\"",
     "icons-sprite": "svg-sprite --config svg-sprite.json --log=info \"icons/*.svg\"",
     "icons-font": "npm-run-all icons-font-*",
     "icons-font-main": "fantasticon",
-    "icons-font-min": "cleancss -O1 --format breakWith=lf --with-rebase --output output/icons.min.css output/icons.css",
+    "icons-font-min": "cleancss -O1 --format breakWith=lf --with-rebase --output icons.min.css icons.css",
     "release": "npm-run-all icons docs-build icons-zip",
     "release-version": "node build/bump-version.mjs",
     "netlify": "cross-env-shell HUGO_BASEURL=$DEPLOY_PRIME_URL npm-run-all icons docs-build",

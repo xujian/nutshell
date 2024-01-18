@@ -1,14 +1,12 @@
 'use strict'
 
-const codepoints = require('./output/icons.json')
-
 module.exports = {
   inputDir: './svg',
-  outputDir: './output',
+  outputDir: './',
   fontTypes: ['woff2', 'woff'],
   assetTypes: ['css', 'scss', 'json'],
   name: 'ni-icons',
-  codepoints,
+  codepoints: {},
   prefix: 'ni',
   selector: '.ni',
   fontsUrl: './fonts',
@@ -23,10 +21,10 @@ module.exports = {
     scss: './build/font/scss.hbs'
   },
   pathOptions: {
-    json: './output/icons.json',
-    css: './output/icons.css',
-    scss: './output/icons.scss',
-    woff: './output/fonts/icons.woff',
-    woff2: './output/fonts/icons.woff2'
+    json: './icons.json',
+    css: './icons.css',
+    scss: './icons.scss',
+    woff: './fonts/ni-icons.woff',
+    woff2: './fonts/ni-icons.woff2'
   }
 }
