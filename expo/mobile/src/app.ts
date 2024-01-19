@@ -1,16 +1,53 @@
 import { createApp } from 'vue'
-import { Nutshell } from '@uxda/nutshell'
-import AppKit from '@uxda/appkit'
-import '@uxda/nutshell/nutshell.css'
-import '@uxda/nutshell/nutui.css'
 import './app.scss'
+import { createPinia } from 'pinia'
+import { Nutshell } from '@uxda/nutshell/taro'
+import '@uxda/nutshell/nutui.css'
+import '@uxda/nutshell/nutshell.css'
+import AppKit from '@uxda/appkit-next'
+import '@uxda/appkit-next/appkit.css'
+import '@uxda/icons/icons.css'
+import Taro from '@tarojs/taro'
 
-const app = createApp({
-  onShow (options) {},
-  // 入口组件不需要实现 render 方法，即使实现了也会被 taro 所覆盖
+const App = createApp({
+  onShow() {},
+  onHide() {}
 })
+App.use(createPinia())
+
 
 const nutshell = Nutshell()
-app.use(nutshell)
+App.use(nutshell)
 
-export default app
+const tenant = () => {
+  const stored = Taro.getStorageSync('tenantInfo')
+  let tenant: any = {}
+  try {
+    tenant = JSON.parse(stored || '{}')
+  } catch (e) {}
+  return tenant?.tenantId ?? ''
+}
+const app = () => {
+  const stored = Taro.getStorageSync('ddjf_appInfo')
+  let app: any = {}
+  try {
+    app = JSON.parse(stored || '{}')
+  } catch (e) {}
+  return app?.appCode ?? ''
+}
+
+App.use(AppKit, {
+  app,
+  tenant,
+  token: () => {
+    return Taro.getStorageSync('session')
+  },
+  baseUrl: () => '/',
+  401: () => {
+    Taro.redirectTo({
+      url: '/pages/login/index'
+    })
+  }
+})
+
+export default App

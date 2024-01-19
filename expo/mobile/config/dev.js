@@ -1,9 +1,31 @@
+const build_env = process.env.BUILD_ENV
+
 module.exports = {
   env: {
-    NODE_ENV: '"development"'
+    NODE_ENV: '"development"',
+    BUILD_ENV: `"${build_env}"`
   },
-  defineConstants: {
+  defineConstants: {},
+  mini: {
+    webpackChain: (chain, webpack) => {
+      chain.merge({
+        plugin: {
+          install: {
+            plugin: require('terser-webpack-plugin'),
+            args: [
+              {
+                terserOptions: {
+                  compress: true, // 默认使用terser压缩
+                  // mangle: false,
+                  keep_classnames: true, // 不改变class名称
+                  keep_fnames: true // 不改变函数名称
+                }
+              }
+            ]
+          }
+        }
+      })
+    }
   },
-  mini: {},
   h5: {}
 }

@@ -2,14 +2,14 @@
   "miniprogramRoot": "dist/",
   "projectname": "Nutshell Expo Mobile",
   "description": "Nutui expo using Nutshell library",
-  "appid": "wxda54e5109e09a60b",
+  "appid": "wx82330581af3328ab",
   "setting": {
     "urlCheck": true,
-    "es6": false,
-    "enhance": false,
+    "es6": true,
+    "enhance": true,
     "compileHotReLoad": false,
-    "postcss": false,
-    "minified": false,
+    "postcss": true,
+    "minified": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -18,8 +18,6 @@
     "condition": false
   },
   "compileType": "miniprogram",
-  "libVersion": "3.0.0",
-  "srcMiniprogramRoot": "dist/",
   "packOptions": {
     "ignore": [],
     "include": []
@@ -28,5 +26,7 @@
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
-  }
+  },
+  "libVersion": "3.0.0",
+  "srcMiniprogramRoot": "dist/"
 }

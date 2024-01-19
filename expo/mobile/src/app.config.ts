@@ -1,11 +1,32 @@
 export default defineAppConfig({
   pages: [
-    'pages/home/index'
+    'pages/home/index',
+    'pages/account/index',
+    'pages/recharge/index',
+    'pages/recharge/result',
   ],
+  tabBar: {
+    custom: true,
+    color: '#000',
+    selectedColor: '#000',
+    backgroundColor: '#ddd',
+    list: [
+      {
+        pagePath: 'pages/home/index',
+        text: '首页',
+      },
+      {
+        pagePath: 'pages/account/index',
+        text: '我的'
+      }
+    ]
+  },
   window: {
-    backgroundTextStyle: 'light',
+    backgroundColor: '#F1F3F5',
+    backgroundTextStyle: 'dark',
     navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'WeChat',
+    navigationBarTitleText: 'Expo Mobile',
     navigationBarTextStyle: 'black'
-  }
+  },
+  lazyCodeLoading: 'requiredComponents',
 })

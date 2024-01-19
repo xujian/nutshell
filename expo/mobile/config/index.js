@@ -1,5 +1,6 @@
 import Components from 'unplugin-vue-components/webpack'
 import NutUIResolver from '@nutui/nutui-taro/dist/resolver'
+import path from 'path'
 
 /**
  * 这是一个微信小程序应用
@@ -18,14 +19,9 @@ const NutshellResolver = (name) => {
 }
 
 const config = {
-  projectName: 'nutui',
+  projectName: 'expo-mobile',
   date: '2023-7-21',
-  designWidth (input) {
-    if (input?.file?.replace(/\\+/g, '/').indexOf('@nutui') > -1) {
-      return 375
-    }
-    return 750
-  },
+  designWidth: 375,
   deviceRatio: {
     640: 2.34 / 2,
     750: 1,
@@ -34,7 +30,9 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: ['@tarojs/plugin-html'],
+  plugins: [
+    '@tarojs/plugin-html'
+  ],
   defineConstants: {
   },
   copy: {
@@ -47,7 +45,10 @@ const config = {
   compiler: {
     type: 'webpack5',
     prebundle: { enable: false }
-  }, 
+  },
+  alias: {
+    '~': path.resolve(__dirname, '../src'),
+  },
   cache: {
     enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
   },
