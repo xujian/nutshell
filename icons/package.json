@@ -5,10 +5,9 @@
   "repository": "https://gitlab.ddjf.local/fed/nutshell",
   "author": "uxda",
   "version": "1.0.0",
-  "keywords": [
-  ],
-  "style": "icons.css",
-  "sass": "icons.scss",
+  "keywords": [],
+  "style": "font.css",
+  "sass": "font.scss",
   "files": [
     "icons/*.svg",
     "icons.svg",
@@ -34,7 +33,7 @@
     "icons-sprite": "svg-sprite --config svg-sprite.json --log=info \"icons/*.svg\"",
     "icons-font": "npm-run-all icons-font-*",
     "icons-font-main": "fantasticon",
-    "icons-font-min": "cleancss -O1 --format breakWith=lf --with-rebase --output icons.min.css icons.css",
+    "icons-font-min": "cleancss -O1 --format breakWith=lf --with-rebase --output font.min.css font.css",
     "release": "npm-run-all icons docs-build icons-zip",
     "release-version": "node build/bump-version.mjs",
     "netlify": "cross-env-shell HUGO_BASEURL=$DEPLOY_PRIME_URL npm-run-all icons docs-build",

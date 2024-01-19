@@ -13,3 +13,7 @@ expo/desktop/.eslintrc-auto-import.json
 **/nutshell.css
 **/components.d.ts
 .idea/
+**/*.woff
+**/*.woff2
+icons/**/ni-icons.woff
+icons/**/ni-icons.woff2

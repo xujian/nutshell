@@ -5,11 +5,11 @@
 /node_modules/
 /resources/
 /svg/
-icons.css
-icons.min.css
-icons.scss
+font.css
+font.min.css
+font.scss
 icons.json
-/fonts/
+*.woff*
 
 # Editor folders
 /.vscode/

@@ -6,7 +6,7 @@ import '@uxda/nutshell/nutui.css'
 import '@uxda/nutshell/nutshell.css'
 import AppKit from '@uxda/appkit-next'
 import '@uxda/appkit-next/appkit.css'
-import '@uxda/icons/icons.css'
+import '@uxda/icons/font.css'
 import Taro from '@tarojs/taro'
 
 const App = createApp({

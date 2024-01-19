@@ -22,8 +22,8 @@ module.exports = {
   },
   pathOptions: {
     json: './icons.json',
-    css: './icons.css',
-    scss: './icons.scss',
+    css: './font.css',
+    scss: './font.scss',
     woff: './fonts/ni-icons.woff',
     woff2: './fonts/ni-icons.woff2'
   }
