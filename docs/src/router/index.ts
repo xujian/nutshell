@@ -18,8 +18,10 @@ const EmptyPage = () => import('../pages/components/EmptyPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
 const CascadingSelectPage = () => import('../pages/components/CascadingSelectPage.vue')
 const TablePage = () => import('../pages/components/TablePage.vue')
+const IconPage = () => import('../pages/components/IconPage.vue')
 const PaginationPage = () => import('../pages/components/PaginationPage.vue')
 const TabsPage = () => import('../pages/components/TabsPage.vue')
+const TabbarPage = () => import('../pages/components/TabbarPage.vue')
 const RadioPage = () => import('../pages/components/RadioPage.vue')
 const ListPage = () => import('../pages/components/ListPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
@@ -79,9 +81,19 @@ const router = createRouter({
           component: TabsPage
         },
         {
+          path: '/components/tabbar',
+          name: 'components-tabbar',
+          component: TabbarPage
+        },
+        {
           path: '/components/form',
           name: 'components-form',
           component: FormPage
+        },
+        {
+          path: '/components/icon',
+          name: 'components-icon',
+          component: IconPage
         },
         {
           path: '/components/input',

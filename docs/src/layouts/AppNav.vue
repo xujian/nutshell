@@ -117,8 +117,16 @@ const menuData = computed(() => [
             key: '/components/card'
           },
           {
-            label: 'Tabs tabs',
+            label: 'Tabs',
             key: '/components/tabs'
+          },
+          {
+            label: 'Tabbar',
+            key: '/components/tabbar'
+          },
+          {
+            label: '图标 icon',
+            key: '/components/icon'
           }
         ]
       },

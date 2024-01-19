@@ -8,6 +8,7 @@ import plugins from './plugins'
 import '@uxda/nutshell/nutui.css'
 import '@uxda/nutshell/antdv.css'
 import '@uxda/nutshell/nutshell.css'
+import '@uxda/icons/icons.css'
 import './styles/main.scss'
 
 const app = createApp(App)
