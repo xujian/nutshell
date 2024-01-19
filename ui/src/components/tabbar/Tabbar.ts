@@ -44,6 +44,7 @@ export const NsTabbar = defineComponent({
       }, text)
     const items = h('ul', {
       class: [
+        'tabbar-list',
         'flex',
         'row',
         'justify-around',
