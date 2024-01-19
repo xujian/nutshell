@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "sass": "dist/styles/main.scss",
-  "styles": "dist/styles/nutshell.scss",
+  "styles": "dist/nutshell.css",
   "moduleResolution": "node",
   "types": "dist/nutshell.d.ts",
   "typings": "dist/nutshell.d.ts",
@@ -16,8 +16,9 @@
   ],
   "exports": {
     ".": "./dist/index.js",
-    "./api/components": "./dist/api/components.js",
+    "./dist/*": "./dist/*",
     "./taro": "./dist/taro/index.js",
+    "./api/components": "./dist/api/components.js",
     "./nutshell.css": "./dist/nutshell.css",
     "./nutui.css": "./dist/nutui.css",
     "./antdv.css": "./dist/antdv.css"

@@ -165,10 +165,18 @@ export default [
     plugins: [dts()]
   },
   {
+    input: './dist/index.d.ts',
+    output: {
+      file: 'dist/taro/nutshell.d.ts',
+      exports: 'named',
+      format: 'es',
+    },
+    plugins: [dts()]
+  },
+  {
     input: './src/styles/main.scss',
     output: {
-      file: 'nutshell.css',
-      format: 'es'
+      dir: './dist'
     },
     plugins: [
       postcss({
@@ -180,8 +188,7 @@ export default [
   {
     input: './src/vendors/nutui/nutui.scss',
     output: {
-      file: 'nutui.css',
-      format: 'es'
+      dir: './dist'
     },
     plugins: [
       postcss({
@@ -193,8 +200,7 @@ export default [
   {
     input: './src/vendors/antdv/antdv.scss',
     output: {
-      file: 'antdv.css',
-      format: 'es'
+      dir: './dist'
     },
     plugins: [
       postcss({
