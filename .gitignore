@@ -15,5 +15,4 @@ expo/desktop/.eslintrc-auto-import.json
 .idea/
 **/*.woff
 **/*.woff2
-icons/**/ni-icons.woff
-icons/**/ni-icons.woff2
+icons/fonts/*
