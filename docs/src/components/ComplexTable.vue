@@ -187,7 +187,10 @@ const onTableRowSelected = (selected: any[]) => {
     <ns-table-column field="confirmUserId" label="确定提交人员" width="160" />
     <ns-table-column-datetime field="confirmDate" label="确定提交时间" width="170" />
     <ns-table-column-custom field="id" width="60px" fixed="right" label="操作">
-      <template #content="row">
+      <template #header="{column}">
+        <h6>{{ column.label }}</h6>
+      </template>
+      <template #content="{row}">
         <a href="javascript:void(0);" class="text-sm" v-if="row.stage === '线索'">删除</a>
       </template>
     </ns-table-column-custom>

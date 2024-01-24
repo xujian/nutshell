@@ -1,6 +1,6 @@
 import { SetupContext, computed, h,VNode, ref } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance } from 'vxe-table'
-import { CustomColumnFunctionalRender, TableColumnData, TableProps, type NsTableColumnCheckbox } from '../../../../components'
+import { CustomColumnFunctionalRender, TableColumnData, TableProps, type NsTableColumnCheckbox, CustomColumnSlots, isCustomColumnSlots } from '../../../../components'
 // import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
 import { MarginProps } from '../../../../utils'
@@ -8,7 +8,8 @@ import { MarginProps } from '../../../../utils'
 type ColumnConfig = {
   props: VxeColumnProps,
   slots: {
-    default?: (args: TableColumnData) => VNode
+    default?: (args: TableColumnData) => VNode,
+    header?: (args: TableColumnData) => VNode,
   }
 }
 
@@ -86,26 +87,58 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
         // columns 目录里的 function
         const predefinedColumn = columnCustomRenders[column.name]
         if (predefinedColumn) {
-          const predefinedColumnRender = predefinedColumn(props, ctx) as CustomColumnFunctionalRender
-          colummConfig.slots = {
-            // 所有 ns-table-column-xxx 都用 template 来实现
-            // button/rating 使用组件库核心组件
-            // 不用 VXE 提供的现成列
-            default: ({row, rowIndex, columnIndex}) => {
-              return h('div', {
-                class: [
-                  'table-column',
-                  `table-column-${column.name}`
-                ]
+          const predefinedColumnRender = predefinedColumn(props, ctx) as CustomColumnFunctionalRender | CustomColumnSlots
+          // 使用 type guard 判断返回格式是 CustomColumnSlots:
+          colummConfig.slots = !isCustomColumnSlots(predefinedColumnRender)
+            ? {
+                // 所有 ns-table-column-xxx 都用 template 来实现
+                // button/rating 使用组件库核心组件
+                // 不用 VXE 提供的现成列
+                default: ({row, rowIndex, columnIndex}) => {
+                  return h('div', {
+                    class: [
+                      'table-column',
+                      `table-column-${column.name}`
+                    ]
+                  },
+                  h(predefinedColumnRender, {
+                    value: row[column.props.field!],
+                    row,
+                    rowIndex,
+                    columnIndex,
+                  }, column.slots || {} ))
+                }
+              }
+            : {
+              // column content slot
+              default: ({row, rowIndex, columnIndex}) => {
+                return h('div', {
+                  class: [
+                    'table-column',
+                    `table-column-${column.name}`
+                  ]
+                },
+                h(predefinedColumnRender.content, {
+                  value: row[column.props.field!],
+                  row,
+                  rowIndex,
+                  columnIndex,
+                }, column.slots || {} ))
               },
-              h(predefinedColumnRender, {
-                value: row[column.props.field!],
-                row,
-                rowIndex,
-                columnIndex,
-              }, column.slots || {} ))
+              // custom column header slot
+              header: ({columnIndex}) => {
+                return h('div', {
+                  class: [
+                    'table-column-header',
+                    `table-column-${column.name}`
+                  ]
+                },
+                h(predefinedColumnRender.header!, {
+                  column: column.props,
+                  columnIndex,
+                }, column.slots || {} ))
+              },
             }
-          }
         }
       }
       const node = h(VxeColumn, colummConfig.props, colummConfig.slots)

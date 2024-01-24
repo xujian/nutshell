@@ -1,6 +1,6 @@
 import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { TableColumnStyleDefination } from '../../components/table'
+import { TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
 
 export type NsTableColumnType = 'normal' | 'number' | 'checkbox'
 export type NsTableColumnAlign = 'left' | 'center' | 'right'
@@ -90,11 +90,21 @@ export type TableColumnProps = MakePropsType<typeof props, TableColumnEmits>
 
 /**
  * 表格列数据
+ * 填充 table cell 时需要用到的数据
  */
 export type TableColumnData = {
   value: string
   row: Record<string, any>
   rowIndex?: number
+  column?: TableColumnDefinition,
+  columnIndex?: number
+}
+
+/**
+ * 表格列参数
+ */
+export type TableColumnInfo = {
+  column?: TableColumnProps,
   columnIndex?: number
 }
 
@@ -108,10 +118,31 @@ export type TableColumnFilterOptions = {
 
 export type CustomColumnFunctionalRender = (args: TableColumnData) => any
 
+/**
+ * 列头渲染函数
+ */
+export type CustomColumnHeaderFunctionalRender = (args: TableColumnInfo) => any
+
+
+export type CustomColumnSlots = {
+  content: CustomColumnFunctionalRender,
+  header?: CustomColumnHeaderFunctionalRender
+}
+
 export type CustomColumnRender = (
   props: TableColumnProps,
   ctx?: SetupContext
-) => CustomColumnFunctionalRender | DefineComponent<TableColumnData>
+) => CustomColumnFunctionalRender | CustomColumnSlots | DefineComponent<TableColumnData>
+
+
+/**
+ * Type Guard // 断定来值是 自定义列 slot 多项定义
+ * @param def
+ */
+export function isCustomColumnSlots(def: CustomColumnFunctionalRender | CustomColumnSlots): def is CustomColumnSlots {
+  // 用于判断返回的是 slots 定义
+  return 'content' in def
+}
 
 /**
  * 表格列
