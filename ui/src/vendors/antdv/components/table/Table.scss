@@ -10,6 +10,9 @@
   .vxe-body--column {
     vertical-align: middle;
   }
+  .fixed-right--wrapper .vxe-body--column:after {
+    display: none;
+  }
   &.variant-primary {
     .ant-table {
         background-color: var(--ns-primary);

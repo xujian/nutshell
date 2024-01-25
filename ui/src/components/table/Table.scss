@@ -1,5 +1,6 @@
 .ns-table {
   --table-cell-padding: 6px 0;
+  --ns-table-border-color: rgba(151, 151, 151, 0.2);
   border-color: var(--ns-table-border-color, var(--ns-stroke));
   border-style: solid;
   border-width: 1px;
