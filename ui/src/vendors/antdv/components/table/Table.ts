@@ -89,13 +89,13 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
         if (predefinedColumn) {
           const predefinedColumnRender = predefinedColumn(props, ctx) as CustomColumnFunctionalRender | CustomColumnSlots
           // 使用 type guard 判断返回格式是 CustomColumnSlots:
-          colummConfig.slots = !isCustomColumnSlots(predefinedColumnRender)
-            ? {
-                // 所有 ns-table-column-xxx 都用 template 来实现
-                // button/rating 使用组件库核心组件
-                // 不用 VXE 提供的现成列
-                default: ({row, rowIndex, columnIndex}) => {
-                  return h('div', {
+          if (!isCustomColumnSlots(predefinedColumnRender)) {
+            colummConfig.slots = {
+              // 所有 ns-table-column-xxx 都用 template 来实现
+              // button/rating 使用组件库核心组件
+              // 不用 VXE 提供的现成列
+              default: ({row, rowIndex, columnIndex}) => {
+                return h('div', {
                     class: [
                       'table-column',
                       `table-column-${column.name}`
@@ -106,39 +106,43 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
                     row,
                     rowIndex,
                     columnIndex,
-                  }, column.slots || {} ))
-                }
+                  }, column.slots || {}))
               }
-            : {
+            }
+          } else {
+            colummConfig.slots = {
               // column content slot
               default: ({row, rowIndex, columnIndex}) => {
                 return h('div', {
-                  class: [
-                    'table-column',
-                    `table-column-${column.name}`
-                  ]
-                },
-                h(predefinedColumnRender.content, {
-                  value: row[column.props.field!],
-                  row,
-                  rowIndex,
-                  columnIndex,
-                }, column.slots || {} ))
-              },
-              // custom column header slot
-              header: ({columnIndex}) => {
-                return h('div', {
-                  class: [
-                    'table-column-header',
-                    `table-column-${column.name}`
-                  ]
-                },
-                h(predefinedColumnRender.header!, {
-                  column: column.props,
-                  columnIndex,
-                }, column.slots || {} ))
-              },
+                    class: [
+                      'table-column',
+                      `table-column-${column.name}`
+                    ]
+                  },
+                  h(predefinedColumnRender.content, {
+                    value: row[column.props.field!],
+                    row,
+                    rowIndex,
+                    columnIndex,
+                  }, column.slots || {}))
+              }
             }
+            // custom column header slot
+            if (column?.slots?.hasOwnProperty('header')) {
+              colummConfig.slots['header'] = ({columnIndex}) => {
+                return h('div', {
+                    class: [
+                      'table-column-header',
+                      `table-column-${column.name}`
+                    ]
+                  },
+                  h(predefinedColumnRender.header!, {
+                    column: column.props,
+                    columnIndex,
+                  }, column.slots || {}))
+              }
+            }
+          }
         }
       }
       const node = h(VxeColumn, colummConfig.props, colummConfig.slots)
