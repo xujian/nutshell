@@ -1,0 +1,15 @@
+.ni {
+  display: inline-block;
+  line-height: 1;
+  width: 16px;
+  line-height: 16px;
+  background-size: 100%;
+}
+
+.ni-home {
+  background-image: url('http://localhost:2024/svg/home.svg');
+}
+.ni-my {
+  background-image: url('http://localhost:2024/svg/my.svg');
+}
+

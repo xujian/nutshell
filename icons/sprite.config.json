@@ -1,8 +1,11 @@
 {
   "mode": {
+    "css": {
+      "dest": "."
+    },
     "symbol": {
       "dest": ".",
-      "sprite": "icons.svg"
+      "sprite": "sprite.svg"
     }
   },
   "svg": {
