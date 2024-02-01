@@ -49,6 +49,7 @@
   "devDependencies": {
     "@figma-export/core": "^4.7.0",
     "@figma-export/output-components-as-svg": "^4.7.0",
+    "@figma-export/transform-svg-with-svgo": "^4.7.0",
     "@figma-export/types": "^4.7.0",
     "@twbs/fantasticon": "^2.7.2",
     "autoprefixer": "^10.4.16",

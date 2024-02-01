@@ -4,6 +4,7 @@
   width: 16px;
   line-height: 16px;
   background-size: 100%;
+  --ns-primary: #002299;
 }
 
 .ni-home {
