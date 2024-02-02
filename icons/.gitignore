@@ -5,6 +5,7 @@
 /node_modules/
 /resources/
 /svg/
+/sprite.svg
 font.css
 font.min.css
 font.scss
@@ -16,3 +17,4 @@ icons.json
 
 # Release zip files
 icons-*.zip
+/.env
