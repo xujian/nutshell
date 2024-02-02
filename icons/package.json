@@ -32,7 +32,7 @@
     "icons": "npm-run-all icons-main --aggregate-output --parallel icons-sprite icons-font",
     "icons-main": "node build/build-svgs.mjs",
     "icons-zip": "cross-env-shell \"rm -rf icons-$npm_package_version icons-$npm_package_version.zip && cp -r icons/ icons-$npm_package_version && cp icons.svg icons-$npm_package_version && cp icons-$npm_package_version && zip -qr9 icons-$npm_package_version.zip icons-$npm_package_version && rm -rf icons-$npm_package_version\"",
-    "icons-sprite": "svg-sprite --config sprite.config.json --log=info \"svg/*.svg\"",
+    "icons-sprite": "svg-sprite --config sprite.config.json --log=info \"svg/default/*.svg\"",
     "icons-font": "npm-run-all icons-font-*",
     "icons-font-main": "fantasticon",
     "icons-font-min": "cleancss -O1 --format breakWith=lf --with-rebase --output font.min.css font.css",
