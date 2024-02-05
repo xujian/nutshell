@@ -1,7 +1,7 @@
 import { h } from 'vue'
 import type { ButtonEmits, ButtonProps } from '../../../../components'
 import { Size } from '../../../../props/size'
-import { ButtonSize, ButtonShape } from '@nutui/nutui-taro/dist/types/__VUE/button/type'
+import { ButtonSize, ButtonShape } from '@nutui/nutui-taro/dist/types/__VUE/button/types'
 import { BRANDS, BrandColor } from '../../../../composables/theme'
 import { MarginProps } from '../../../../utils'
 
@@ -31,7 +31,7 @@ export const Button = (props: ButtonProps) => {
   const { label, width, disabled,
     maxWidth, height, maxHeight, minWidth, minHeight,
     ...p } = props
-  
+
   const isStaticImage = (url: string) =>
     url.endsWith('.svg')
     || url.endsWith('.png')
