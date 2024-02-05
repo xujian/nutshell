@@ -28,6 +28,7 @@ const onIconClick = (name: string) => {
     footer: false,
     width: 320,
     height: 320,
+    centered: true,
     props: {
       icon: name
     }

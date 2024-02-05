@@ -20,6 +20,10 @@ export const dialogProps = {
     type: Boolean,
     default: true,
   },
+  centered: {
+    type: Boolean,
+    default: false,
+  },
   ...useModelValuePropsForBoolean(),
   ...useDimensionProps(),
 }

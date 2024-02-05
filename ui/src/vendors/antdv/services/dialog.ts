@@ -32,6 +32,7 @@ function createDialog (options: DialogOptions, app: App) {
     setup: () => () => h(NsDialog, {
       title,
       width: options.width,
+      centered: options.centered,
       modelValue: visible.value,
       'onUpdate:modelValue': (value: boolean) => {
         visible.value = value

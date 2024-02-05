@@ -24,6 +24,7 @@ export type DialogOptions = {
   footer?: boolean,
   onOk?: (result?: any) => void
   onCancel?: () => void
+  centered?: boolean
 }
 
 export type ConfirmOptions = {
