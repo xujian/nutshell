@@ -4,18 +4,35 @@
   <p>&nbsp;</p>
   <ns-row class="icons-list" gap="sm">
     <div class="icon-container border-sm r-sm round"
-      v-for="(name) in icons" :key="name">
+      v-for="(name) in icons"
+      :key="name"
+      @click="() => onIconClick(name)">
       <ns-icon :name="name" />
     </div>
   </ns-row>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { useNutshell } from '@uxda/nutshell'
+import IconDialog from '../../components/IconDialog.vue'
+
+const $n = useNutshell()
 
 const icons = [
-  'house', 'gear'
+  'home', 'account'
 ]
+
+const onIconClick = (name: string) => {
+  $n.dialog({
+    component: IconDialog,
+    footer: false,
+    width: 320,
+    height: 320,
+    props: {
+      icon: name
+    }
+  })
+}
 </script>
 
 <style lang="scss">
@@ -23,6 +40,15 @@ const icons = [
   width: 100%;
   .icon-container {
     padding: 10px;
+    cursor: pointer;
+    transition: all .33s;
+    &:hover {
+      background-color: #ffffff33;
+    }
+  }
+  .ns-icon {
+    width: 32px;
+    height: 32px;
   }
 }
 </style>

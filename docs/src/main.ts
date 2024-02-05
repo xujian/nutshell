@@ -15,7 +15,8 @@ const app = createApp(App)
 
 const nutshell = Nutshell({
   vendor: 'antdv',
-  theme: 'present'
+  theme: 'present',
+  icon: 'sprite'
 })
 app.use(nutshell)
 plugins.forEach(plugin => app.use(plugin))
