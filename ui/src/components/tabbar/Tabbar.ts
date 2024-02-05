@@ -35,6 +35,7 @@ export const NsTabbar = defineComponent({
   setup (props, ctx) {
     const icon = (name: string) => h(NsIcon, {
         name,
+        format: 'svg',
         size: 'sm'
       }),
       label = (text: string) => h('label', {

@@ -1,7 +1,7 @@
 .ns-tabbar {
   width: 100%;
   border-radius: 16px;
-  padding: 4px 0;
+  padding: 6px 0;
   background-color: #eee;
   .tabbar-list {
     display: flex;
@@ -16,14 +16,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    filter: grayscale(1);
     .ns-icon {
-      width: 32px;
-      height: 32px;
-      display: block;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .tabbar-item-label {
+      margin-top: 6px;
       display: block;
+    }
+    &.selected {
+      filter: none;
     }
   }
   .ns-icon {
