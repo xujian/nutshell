@@ -8,17 +8,23 @@ import services from './services'
 import { ConfirmOptions, DialogOptions } from './services/dialog'
 import { ToastOptions } from './services/toast'
 import { LoadingOptions } from './services/loading'
+import { IconFormat } from './components'
 
+/**
+ * Nulshell framework options holding by app
+ */
 export interface NutshellOptions {
   theme?: string,
   vendor?: string,
+  icon?: IconFormat
 }
 
 export type DollarNutshell = {
   dialog?: (options: DialogOptions) => void,
   confirm?: (message: string, onOk: () => void, options?: ConfirmOptions) => void
   toast?: (message: string, options: ToastOptions) => void
-  loading?: (options: LoadingOptions) => void
+  loading?: (options: LoadingOptions) => void,
+  options: NutshellOptions
 }
 
 export const NutshellSymbol: InjectionKey<DollarNutshell>
@@ -33,8 +39,9 @@ export function useNutshell () {
 }
 
 export function Nutshell ({
-  theme = 'default', 
+  theme = 'default',
   vendor = 'nutui',
+  icon = 'sprite'
 }: NutshellOptions = {}) {
 
   const theVendor = createVendor(vendor)
@@ -44,7 +51,13 @@ export function Nutshell ({
 
   // for app.use()
   const install = (app: App) => {
-    const $n: DollarNutshell = {}
+    const $n: DollarNutshell = {
+      options: {
+        theme,
+        vendor,
+        icon
+      }
+    }
     app.config.globalProperties.$n = $n
     app.provide(VendorSymbol, theVendor)
     app.provide(NutshellSymbol, $n)
