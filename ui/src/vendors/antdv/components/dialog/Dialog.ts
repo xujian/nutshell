@@ -24,6 +24,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       okType: props.okColor ? buttonTypesMap[props.okColor] || 'primary' : 'primary',
       cancelText: props.cancelText || '取消',
       keyboard: true,
+      footer: props.footer,
       'onUpdate:open': (value: boolean) => {
         console.log('antdv modal.......onUpdate:open', value, Object.keys(props), props['onUpdate:modelValue'])
         props['onUpdate:modelValue']?.(value)

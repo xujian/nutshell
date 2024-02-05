@@ -4,10 +4,14 @@
 }
 
 /* direction */
-.flex-col {
+.flex-col,
+.col {
+  display: flex;
   flex-direction: column;
 }
-.flex-row {
+.flex-row,
+.row {
+  display: flex;
   flex-direction: row;
 }
 .flex-col-r {

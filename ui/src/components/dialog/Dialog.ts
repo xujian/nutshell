@@ -16,6 +16,10 @@ export const dialogProps = {
   cancelText: {
     type: String
   },
+  footer: {
+    type: Boolean,
+    default: true,
+  },
   ...useModelValuePropsForBoolean(),
   ...useDimensionProps(),
 }

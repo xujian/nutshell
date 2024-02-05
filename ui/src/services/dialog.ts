@@ -8,11 +8,20 @@ import { VueElementConstructor } from 'vue'
 export type DialogOptions = {
   title?: string,
   message?: string,
+  /**
+   * 嵌入子组件
+   */
   component?: any,
+  /**
+   * 透传给子组件的属性
+   */
+  props?: any,
   width?: number,
+  height?: number,
   okText?: string,
   cancelText?: string,
   okColor?: Color,
+  footer?: boolean,
   onOk?: (result?: any) => void
   onCancel?: () => void
 }

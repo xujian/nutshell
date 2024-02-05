@@ -4,12 +4,13 @@ import { App } from 'vue'
 import { DialogOptions } from '../../../services/dialog'
 import { NsDialog } from '../../../components'
 import { CoreVendor } from '../../../shared/vendor'
+import type { AsyncComponentLoader } from 'vue'
 
 
 function createDialog (options: DialogOptions, app: App) {
   const container = document.createElement('div')
   document.body.appendChild(container)
-  const { title, message, component } = options
+  const { title, message, component, props } = options
 
   let completeResult: any = null
 
@@ -21,8 +22,8 @@ function createDialog (options: DialogOptions, app: App) {
   // component 优先级高于 message
   const body = component
     ? typeof component === 'function'
-      ? () => h(defineAsyncComponent(component), { onComplete })
-      : () => h(component, { onComplete })
+      ? () => h(defineAsyncComponent(component as AsyncComponentLoader), { ...props, onComplete })
+      : () => h(component, { ...props, onComplete })
     : () => message
 
   const visible = ref(true)

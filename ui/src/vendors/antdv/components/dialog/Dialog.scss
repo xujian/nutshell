@@ -8,9 +8,15 @@
     border-top: none;
   }
   .ant-modal-content {
+    background-color: var(--ns-paper);
     .ant-modal-close-x {
       width: 22px;
       height: 22px;
+    }
+    .anticon {
+      svg {
+        fill: var(--ns-stroke)
+      }
     }
   }
 }
