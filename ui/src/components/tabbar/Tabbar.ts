@@ -1,13 +1,16 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { NsIcon } from '../icon'
+import { useModelValuePropsForString } from '../../props/model'
 
 export type TabbarItem = {
   label: string,
+  value: string,
   icon: string,
 }
 
 export const tabbarProps = {
+  ...useModelValuePropsForString(),
   items: {
     type: Array as PropType<TabbarItem[]>
   }
@@ -43,7 +46,7 @@ export const NsTabbar = defineComponent({
           'tabbar-item-label'
         ]
       }, text)
-    const items = h('ul', {
+    const items = () => h('ul', {
       class: [
         'tabbar-list',
         'flex',
@@ -54,7 +57,16 @@ export const NsTabbar = defineComponent({
         return h('li', {
           class: [
             'tabbar-item',
-          ]
+            props.modelValue == item.label ||
+              props.modelValue == item.value && 'selected'
+          ],
+          onClick () {
+            const value = item.value || item.label
+            if (value == props.modelValue) {
+              return
+            }
+            props['onUpdate:modelValue']?.(value)
+          }
         }, [
           icon(item.icon),
           label(item.label)
@@ -65,6 +77,6 @@ export const NsTabbar = defineComponent({
       class: [
         'ns-tabbar',
       ]
-    }, items)
+    }, items())
   }
 })
