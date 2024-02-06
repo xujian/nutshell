@@ -16,6 +16,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
 
     return () => h(AntdvModal, {
       class: classes,
+      style: props.style,
       open: props.modelValue,
       title: props.title,
       width: props.width,

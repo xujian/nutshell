@@ -1,7 +1,8 @@
 import { ObjectEmitsOptions, PropType, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDimensionProps, useModelValuePropsForBoolean } from '../../props'
+import { useDesignProps, useDimensionProps, useModelValuePropsForBoolean } from '../../props'
 import { Color } from '../../composables/theme'
+import { buildDesignStyles } from '../../props/design'
 
 export const dialogProps = {
   title: {
@@ -24,6 +25,7 @@ export const dialogProps = {
     type: Boolean,
     default: false,
   },
+  ...useDesignProps(),
   ...useModelValuePropsForBoolean(),
   ...useDimensionProps(),
 }
@@ -60,6 +62,12 @@ export const NsDialog = define({
   emits: dialogEmits,
   setup (props, ctx) {
     return {
+      props: {
+        style: {
+          // 输出 CSS varibales 给内部结构使用
+          ...props.fill ? { '--dialog-content': props.fill }: {}
+        }
+      }
     }
   }
 })

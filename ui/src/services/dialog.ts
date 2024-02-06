@@ -18,6 +18,7 @@ export type DialogOptions = {
   props?: any,
   width?: number,
   height?: number,
+  fill?: Color,
   okText?: string,
   cancelText?: string,
   okColor?: Color,
