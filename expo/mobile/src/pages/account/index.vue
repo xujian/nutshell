@@ -14,10 +14,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useNutshell } from '@uxda/nutshell/taro'
-import { reactive, toRefs } from 'vue'
-import { PageHeader } from '@uxda/appkit-next'
+import { onMounted } from 'vue'
+import { PageHeader, useTabbar } from '@uxda/appkit-next'
 
+onMounted(() => {
+  const { setTab } = useTabbar()
+  setTab('account')
+})
 </script>
 
 <style lang="scss">

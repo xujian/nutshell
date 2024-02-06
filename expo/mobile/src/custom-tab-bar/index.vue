@@ -1,13 +1,18 @@
 <template>
   <ns-tabbar class="basic-tabbar"
+    :modelValue="selected"
+    @update:modelValue="onChange"
     :items="items"
     :style="style">
   </ns-tabbar>
 </template>
 <script lang="ts" setup>
-import { useSafeArea } from '@uxda/appkit-next'
+import { ref } from 'vue'
+import Taro from '@tarojs/taro'
+import { useSafeArea, useTabbar } from '@uxda/appkit-next'
 
 const { bottom } = useSafeArea()
+const selected = ref<string>('home')
 
 // 使用 useSafeAre 避开底部的操作条
 const style = {
@@ -17,13 +22,29 @@ const style = {
 const items = [
   {
     label: '首页',
-    icon: 'home'
+    value: 'home',
+    icon: 'home',
+    url: '/pages/home/index',
   },
   {
     label: '账户',
-    icon: 'account'
+    value: 'account',
+    icon: 'account',
+    url: '/pages/account/index',
   },
 ]
+
+function onChange (value: string) {
+  const index = items.findIndex(item => item.value == value || item.label == value)
+  Taro.switchTab({
+    url: items[index].url
+  })
+}
+
+const { onTabChange } = useTabbar()
+onTabChange((value: string) => {
+  selected.value = value
+})
 </script>
 <style lang="scss">
 @import url('./index.scss');
