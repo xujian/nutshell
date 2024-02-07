@@ -3,33 +3,39 @@ import type { Plugin } from 'vite'
 import fs from 'fs/promises'
 import path from 'path'
 
-const ID = 'virtual:stories'
+const methodMapping: Record<string, string> = {
+  stories: 'getStory',
+  blocks: 'getBlock',
+  templates: 'getTemplate',
+}
 
-export default function StoriesPlugin (): Plugin {
+export default function StoriesPlugin (category: string): Plugin {
+  const ID = `virtual:${category}`,
+    method = methodMapping[category]
   return {
     name: 'stories',
     resolveId (source) {
-      if (!source.startsWith('virtual:stories')) return
+      if (!source.startsWith('virtual:')) return
       const [, dir] = source.split('/')
       return dir ? `${ID}/${dir}` : ID
     },
     async load (id) {
       if (!id.startsWith(ID)) return
-      const storiesDir = fileURLToPath(
+      const sourceDir = fileURLToPath(
         new URL(
-          '../src/stories/',
+          `../src/${category}/`,
           import.meta.url
         )
       )
       if (id === ID) {
-        const dirs = (await fs.readdir(storiesDir, {encoding: 'utf8'}))
-          .map(dir => `  '${dir}': () => import('virtual:stories/${dir}')`)
+        const dirs = (await fs.readdir(sourceDir, {encoding: 'utf8'}))
+          .map(dir => `  '${dir}': () => import('virtual:${category}/${dir}')`)
           .join(',\n')
         const code = [
           `const dirs = {`,
           `${dirs}`,
           `}`,
-          `export async function getStory (name) {`,
+          `export async function ${method} (name) {`,
           `  const [dir, file] = name.split('/')`,
           `  const imported = await dirs[dir]()`,
           `  return imported.default[file.replace(/\\.vue$/, '')]`,
@@ -43,11 +49,11 @@ export default function StoriesPlugin (): Plugin {
         // 遍历 stories 目录
         // 获取全体 story vue 文件
         const { imports, files } = (await fs.readdir(
-            path.join(storiesDir, dir), 'utf8'
+            path.join(sourceDir, dir), 'utf8'
           ))
           .reduce<{imports: string[], files: string[]}>((acc, file, i) => {
-              acc.imports.push(`import __${i} from '/src/stories/${dir}/${file}'`)
-              acc.imports.push(`import __${i}_raw from '/src/stories/${dir}/${file}?raw'`)
+              acc.imports.push(`import __${i} from '/src/${category}/${dir}/${file}'`)
+              acc.imports.push(`import __${i}_raw from '/src/${category}/${dir}/${file}?raw'`)
               acc.files.push([
                   `  '${file.split('.vue')[0]}': {`,
                   `    component: __${i},`,

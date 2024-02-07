@@ -1,5 +1,5 @@
 <template>
-  <h1>Story missing</h1>
+  <h1>Virtual Component Missing</h1>
 </template>
 
 <script lang="ts" setup>

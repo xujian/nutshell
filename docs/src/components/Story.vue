@@ -23,7 +23,7 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref, shallowRef } from 'vue'
 import { getStory } from 'virtual:stories'
-import StoryMissing from './StoryMissing.vue'
+import VirtualMissing from './VirtualMissing.vue'
 
 const props = defineProps({
     /**
@@ -42,7 +42,7 @@ const imported = shallowRef(),
   isLoaded = ref(false),
   isError = ref(false)
 const SotryComponent = computed(() => isError.value
-      ? StoryMissing
+      ? VirtualMissing
       : isLoaded.value
         ? imported.value
         : null)
@@ -95,6 +95,9 @@ onMounted(importStory)
   .expand-enter-from,
   .expand-leave-to {
     max-height: 0;
+  }
+  .ns-code-view {
+    width: 100%;
   }
 }
 </style>
