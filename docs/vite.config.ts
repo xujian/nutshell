@@ -36,7 +36,7 @@ export default defineConfig({
     // TestPlugin(),
     VirtualPlugin('stories'),
     VirtualPlugin('panels'),
-    VirtualPlugin('sheets'),
+    VirtualPlugin('boards'),
   ],
   server: {
     port: 2024,

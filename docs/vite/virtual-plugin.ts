@@ -6,7 +6,7 @@ import path from 'path'
 const methodMapping: Record<string, string> = {
   stories: 'getStory',
   panels: 'getPanel',
-  sheets: 'getSheet',
+  boards: 'getBoard',
 }
 
 export default function VirtualPlugin (category: string): Plugin {

@@ -30,7 +30,7 @@ declare module 'virtual:panels' {
    }>
 }
 
-declare module 'virtual:sheets' {
+declare module 'virtual:boards' {
   import { Component } from 'vue'
    export async function getSheet (name: string): Promise<{
     component: Component,

@@ -1,6 +1,6 @@
 <template>
-  <div class="virtual-sheet column">
-    <component :is="SheetComponent" v-if="isLoaded" />
+  <div class="virtual-board column">
+    <component :is="BoardComponent" v-if="isLoaded" />
     <div class="full-width flex-row">
       <div class="flex-col flex-grow"></div>
       <div class="flex-col align-end">
@@ -18,12 +18,12 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, ref, shallowRef } from 'vue'
-import { getSheet } from 'virtual:sheets'
+import { getBoard } from 'virtual:boards'
 import VirtualMissing from './VirtualMissing.vue'
 
 const props = defineProps({
     /**
-     * Sheet file path
+     * Board file path
      */
     file: {
       type: String,
@@ -37,24 +37,24 @@ const imported = shallowRef(),
   code = ref<string>(),
   isLoaded = ref(false),
   isError = ref(false)
-const SheetComponent = computed(() => isError.value
+const BoardComponent = computed(() => isError.value
       ? VirtualMissing
       : isLoaded.value
         ? imported.value
         : null)
 
-const importSheet = async () => {
+const importBoard = async () => {
   try {
     const {
       component: _component,
       source: _code
-    } = await getSheet(props.file)
+    } = await getBoard(props.file)
     imported.value = _component
     code.value = _code
     isLoaded.value = true
   } catch (e) {
     isError.value = true
-    console.log('importSheet failed', e)
+    console.log('importBoard failed', e)
   }
 }
 
@@ -62,11 +62,11 @@ const openCode = () => {
   codeOpen.value = !codeOpen.value
 }
 
-onMounted(importSheet)
+onMounted(importBoard)
 </script>
 
 <style lang="scss">
-.virtual-sheet {
+.virtual-board {
   .expand-leave-active,
   .expand-enter-active {
     transition: all 500ms ease;
