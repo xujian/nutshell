@@ -16,7 +16,23 @@ declare module 'virtual:test' {
 
 declare module 'virtual:stories' {
   import { Component } from 'vue'
-   export async function getStory (name: string): PromiseM<{
+   export async function getStory (name: string): Promise<{
+    component: Component,
+    source: string
+   }>
+}
+
+declare module 'virtual:panels' {
+  import { Component } from 'vue'
+   export async function getPanel (name: string): Promise<{
+    component: Component,
+    source: string
+   }>
+}
+
+declare module 'virtual:sheets' {
+  import { Component } from 'vue'
+   export async function getSheet (name: string): Promise<{
     component: Component,
     source: string
    }>

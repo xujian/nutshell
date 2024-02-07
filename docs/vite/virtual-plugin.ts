@@ -5,17 +5,17 @@ import path from 'path'
 
 const methodMapping: Record<string, string> = {
   stories: 'getStory',
-  blocks: 'getBlock',
-  templates: 'getTemplate',
+  panels: 'getPanel',
+  sheets: 'getSheet',
 }
 
-export default function StoriesPlugin (category: string): Plugin {
+export default function VirtualPlugin (category: string): Plugin {
   const ID = `virtual:${category}`,
     method = methodMapping[category]
   return {
-    name: 'stories',
+    name: category,
     resolveId (source) {
-      if (!source.startsWith('virtual:')) return
+      if (!source.startsWith(`virtual:${category}`)) return
       const [, dir] = source.split('/')
       return dir ? `${ID}/${dir}` : ID
     },

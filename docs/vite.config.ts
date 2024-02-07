@@ -7,7 +7,7 @@ import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import Markdown from 'vite-plugin-md'
 import TestPlugin from './vite/test-plugin'
-import StoriesPlugin from './vite/stories-plugin'
+import VirtualPlugin from './vite/virtual-plugin'
 
 const nsRegex = /^Ns[A-Z][\w]+/
 const NsResolver = (name: string) => {
@@ -34,7 +34,9 @@ export default defineConfig({
     }),
     // Markdown(),
     // TestPlugin(),
-    StoriesPlugin()
+    VirtualPlugin('stories'),
+    VirtualPlugin('panels'),
+    VirtualPlugin('sheets'),
   ],
   server: {
     port: 2024,

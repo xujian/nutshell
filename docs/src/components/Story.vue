@@ -1,6 +1,6 @@
 <template>
   <ns-card variant="outlined" fill="surface" class="story-card">
-    <component :is="SotryComponent" v-if="isLoaded" />
+    <component :is="StoryComponent" v-if="isLoaded" />
     <template #footer>
       <div class="full-width flex-row">
         <div class="flex-col flex-grow"></div>
@@ -41,7 +41,7 @@ const imported = shallowRef(),
   code = ref<string>(),
   isLoaded = ref(false),
   isError = ref(false)
-const SotryComponent = computed(() => isError.value
+const StoryComponent = computed(() => isError.value
       ? VirtualMissing
       : isLoaded.value
         ? imported.value
