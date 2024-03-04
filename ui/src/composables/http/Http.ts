@@ -1,7 +1,10 @@
+import omit from 'lodash/omit'
 import { HttpInstance, HttpClientConfig,
   HttpMethod, HttpRequestConfig,
   RequestData, ResponseData,
-  ResponseRaw } from './types'
+  ResponseRaw,
+PagingParams} from './types'
+
 /**
  * Useage:
  * const $http = createHttp({
@@ -23,11 +26,19 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
     ...config,
   }
   return new Promise<T>((resolve, reject) => {
-    const data = config.data
+    let data = config.data
       && clientConfig.translates
       && clientConfig.translates[c.url]
         ? clientConfig.translates[c.url]?.(c.data || {})
         : c.data
+    // 处理 分页
+    if (clientConfig.paging && data && data.page) {
+      const paging = clientConfig.paging.translate(data as PagingParams)
+      data = omit({
+        ...data,
+        ...paging,
+      }, 'page')
+    }
     console.log(`[][][][][]HTTP.${c.method}, ${c.baseUrl}${c.url}`, data)
     clientConfig.vendor?.request({
       url: `${c.baseUrl}${c.url}`,
@@ -36,22 +47,37 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
       method: c.method,
     }).then((raw: ResponseRaw) => {
       // 按顺序执行拦截器
-      console.log(`===HTTP==`, raw)
       for (const interc of c.interceptors || []) {
         const r = interc(raw)
         if (r) {
           // 某拦截器命中时
           // 按拦截结果 决定是否继续执行
-          reject('===INTERCEPTED===')
+          reject('===INTERCEPTED===' + raw.status)
           return false
         }
       }
       if (raw.data) {
         // 当用户配置含有 transforms 时, 使用用户提供的 transform
-        resolve(clientConfig.transforms
+        // 先 endpoints transform
+        // 再组装分页数据
+        const response = clientConfig.transforms
           && clientConfig.transforms[c.url]
             ? clientConfig.transforms[c.url]?.(raw.data) as T
-            : data as T)
+            : data as T
+        // 前端要求分页
+        // 在 endpoints transform 之前格式化分页数据
+        // 并拼装回原 raw 数据
+        const paging = config.data?.page
+          ? clientConfig.paging?.transform(raw.data)
+          : void 0
+        resolve(
+          paging
+            ? {
+                ...paging,
+                data: response
+              } as T
+            : response
+        )
       } else {
         reject(`未知错误`)
       }
@@ -85,7 +111,6 @@ const defaultClientConfig: HttpClientConfig = {
   baseUrl: '/',
   interceptors: [
     (raw) => raw.status == 401,
-    (raw) => false,
   ]
 }
 

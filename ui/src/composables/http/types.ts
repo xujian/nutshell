@@ -3,20 +3,21 @@
  * createHttp() 使用的配置
  */
 export type HttpClientConfig = {
-  vendor?: HttpVendor
+  vendor?: HttpVendor,
   baseUrl: string,
   /**
    * 向 HTTP header 加入的数据
    * 通常含有 JWT token 以及其他参数
    */
-  headers?: HeaderParams
+  headers?: HeaderParams,
+  paging?: Paging,
   /**
    * 拦截器组
    * 请求返回异常时进行一定的操作
    */
   interceptors?: HttpInterceptor[],
-  translates?: HttpTranslates
-  transforms?: HttpTransforms
+  translates?: HttpTranslates,
+  transforms?: HttpTransforms,
 }
 
 /**
@@ -116,4 +117,47 @@ export type HttpEndpoint = {
  */
 export type HttpEndpoints = {
   [name: string]: HttpEndpoint
+}
+
+/**
+ * 分页参数
+ */
+export type PagingParams = {
+  /**
+   * 页数
+   */
+  page: number,
+  /**
+   * 页数据条数
+   */
+  pageSize?: number,
+  [key: string]: any,
+}
+
+export type PagingData = {
+  /**
+   * 页总数
+   */
+  totalPages: number,
+  /**
+   * 数据总数
+   */
+  total: number,
+}
+
+/**
+ * Wrapped with Paging Data
+ */
+export type WithPaging<T = ResponseData> = {
+  [K in keyof PagingData]: PagingData[K];
+} & {
+  data: T;
+}
+
+/**
+ * 分页设置
+ */
+export type Paging = {
+  translate (params: PagingParams): any,
+  transform (resonse: any): PagingData,
 }
