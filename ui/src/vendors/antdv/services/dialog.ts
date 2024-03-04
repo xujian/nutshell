@@ -34,6 +34,7 @@ function createDialog (options: DialogOptions, app: App) {
       width: options.width,
       centered: options.centered,
       modelValue: visible.value,
+      fill: options.fill,
       'onUpdate:modelValue': (value: boolean) => {
         visible.value = value
       },
