@@ -7,6 +7,19 @@ export type ModelValueProps<T = any> = {
   modelValue: T,
 }
 
+export const useModelValuePropsForString = buildProps({
+  modelValue: {
+    type: String,
+  },
+  'onUpdate:modelValue': {
+    type: Function as PropType<(value: string) => void>,
+  },
+  modelModifiers: {
+    type: Object as PropType<ModelModifiers>,
+    default: () => ({})
+  }
+})
+
 export const useModelValuePropsForBoolean = buildProps({
   modelValue: {
     type: Boolean,
