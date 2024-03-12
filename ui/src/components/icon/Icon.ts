@@ -39,6 +39,10 @@ export const useIconProps = buildProps({
   color: {
     type: String as PropType<Color>,
   },
+  clickable: {
+    type: Boolean,
+    default: false,
+  },
   ...useSizeProps(),
 })
 
@@ -65,13 +69,15 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
         'ns-icon',
         'ni',
         `ni-${props.name}`,
-        `font-size-${props.size}`
+        `font-size-${props.size}`,
+        props.clickable && 'clickable'
       ]
     }),
   sprite: (props: IconProps) => h('svg', {
       class: [
         'ns-icon',
-        `font-size-${props.size}`
+        `font-size-${props.size}`,
+        props.clickable && 'clickable'
       ]
     }, h('use', {
       href: `http://localhost:2024/sprite.svg#${props.name}`
@@ -79,7 +85,8 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
   svg:  (props: IconProps) => h('img', {
       class: [
         'ns-icon',
-        props.size && `font-size-${props.size}`
+        props.size && `font-size-${props.size}`,
+        props.clickable && 'clickable'
       ],
       src: `http://localhost:2024/icons/default/${props.name}.svg`
     }),
