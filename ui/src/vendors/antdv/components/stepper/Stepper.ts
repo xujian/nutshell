@@ -1,13 +1,14 @@
 import { h, SetupContext } from 'vue'
 import { Steps as AntdvSteps } from 'ant-design-vue'
-import { StepsProps } from '../../../../components'
+import { StepsProps, StepperStatus } from '../../../../components'
 import type { MarginProps } from '../../../../utils'
 
 export const Stepper = (props: StepsProps & MarginProps, ctx: SetupContext, emits: any) => {
+  const { emit } = ctx
 
-  return h(AntdvSteps, {
-    class: ['ns-stepper'],
-    status: props.status ? props.status : 'process',
+  return h(AntdvSteps as any, {
+    class: 'ns-stepper',
+    status: props.status ? props.status : ('process' as StepperStatus),
     size: props.size === 'default' ? 'default' : 'small',
     direction: props.direction === 'horizontal' ? 'horizontal' : 'vertical',
     labelPlacement: props.labelPlacement === 'horizontal' ? 'horizontal' : 'vertical',
@@ -16,6 +17,9 @@ export const Stepper = (props: StepsProps & MarginProps, ctx: SetupContext, emit
     current: props.modelValue as number,
     'onUpdate:current': (value: number) => {
       props['onUpdate:modelValue']?.(value)
+    },
+    onChange: (value: number) => {
+      emit('change', value)
     }
   })
 }

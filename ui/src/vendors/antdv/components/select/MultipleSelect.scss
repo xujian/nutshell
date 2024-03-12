@@ -1,0 +1,16 @@
+.ns-multiple-select {
+  &.ant-select {
+    .ant-select-selection-item {
+      font-size: 12px;
+      background: var(--ns-primary--90);
+      color: var(--ns-primary);
+    }
+    .ant-select-selection-item-remove {
+      color: var(--ns-primary);
+      transform: scale(0.8);
+      font-size: 10px;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+}

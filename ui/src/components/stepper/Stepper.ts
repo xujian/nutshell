@@ -1,4 +1,12 @@
-import { PropType, ExtractPublicPropTypes, SlotsType, useSlots, VNode, RendererNode, RendererElement } from 'vue'
+import {
+  PropType,
+  ExtractPublicPropTypes,
+  SlotsType,
+  useSlots,
+  VNode,
+  RendererNode,
+  RendererElement
+} from 'vue'
 import { define } from '../../utils'
 import { useModelValuePropsForInput } from '../../props'
 
@@ -11,22 +19,22 @@ export type StepperStatus = 'wait' | 'process' | 'finish' | 'error' | undefined
 export type StepItem = {
   description: {
     type: String
-  },
+  }
   disabled: {
     type: Boolean
-  },
+  }
   icon: {
     type: String
-  },
+  }
   status: {
-    type: StepperStatus,
-  },
+    type: StepperStatus
+  }
   subTitle: {
     type: String
-  },
+  }
   title: {
     type: String
-  },
+  }
 }
 
 export const stepperProps = {
@@ -56,15 +64,15 @@ export const stepperProps = {
 export type StepsProps = ExtractPublicPropTypes<typeof stepperProps>
 
 export type StepperEmits = {
-  'update:modelValue': (value: boolean) => void,
+  'update:modelValue': (value: boolean) => void
 }
 
 const stepperEmits: StepperEmits = {
-  'update:modelValue': (value: boolean) => void 0,
+  'update:modelValue': (value: boolean) => void 0
 }
 
 export type StepsSlots = {
-  default: () => any,
+  default: () => any
 }
 
 // @ts-ignore
@@ -83,10 +91,8 @@ export const NsStepper = define({
   props: stepperProps,
   emits: stepperEmits,
   // @ts-ignore
-  setup (props) {
-    return {
-
-    }
+  setup(props) {
+    return {}
   }
 })
 // 需要增加 import 到 ./index.ts, ../components.ts

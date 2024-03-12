@@ -4,10 +4,10 @@ import { useFieldProps, useModelValuePropsForStringArray } from '../../props'
 import { ValidationRule, formatRules } from '../../props/field'
 
 export type MultipleSelectOption = {
-  value: string | number,
-  label: string,
-  disabled?: boolean,
-  title?: string,
+  value: string | number
+  label: string
+  disabled?: boolean
+  title?: string
 }
 
 export const multipleSelectProps = {
@@ -15,7 +15,7 @@ export const multipleSelectProps = {
    * 选项组数据
    */
   options: {
-    type: Array as PropType<MultipleSelectOption[]>,
+    type: Array as PropType<MultipleSelectOption[]>
   },
   ...useModelValuePropsForStringArray(),
   ...useFieldProps(),
@@ -24,20 +24,27 @@ export const multipleSelectProps = {
    */
   clearable: {
     type: Boolean,
-    default: true,
+    default: true
   },
   /**
    * 接受搜索
    */
   searchable: {
     type: Boolean,
-    default: false,
+    default: false
   },
   /**
    * 最多显示多少个 tag, 默认不限制
    */
   maxTagShowCount: {
-    type: [Number, String] as PropType<number |'responsive'>,
+    type: [Number, String] as PropType<number | 'responsive'>
+  },
+  /**
+   * 是否为 tags 模式，tags 模式可以输入
+   */
+  showTagsMode: {
+    type: Boolean,
+    default: false
   }
 }
 
@@ -58,7 +65,7 @@ export const NsMultipleSelect = define({
   name: 'NsMultipleSelect',
   props: multipleSelectProps,
   emits,
-  setup (props, ctx) {
+  setup(props, ctx) {
     const rules = formatRules(props.rules as ValidationRule[], props)
     return {
       props: {

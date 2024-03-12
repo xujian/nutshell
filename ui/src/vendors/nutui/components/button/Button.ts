@@ -1,7 +1,7 @@
 import { h } from 'vue'
 import type { ButtonEmits, ButtonProps } from '../../../../components'
 import { Size } from '../../../../props/size'
-import { ButtonSize, ButtonShape } from '@nutui/nutui-taro/dist/types/__VUE/button/types'
+import type { ButtonSize, ButtonShape } from '@nutui/nutui-taro'
 import { BRANDS, BrandColor } from '../../../../composables/theme'
 import { MarginProps } from '../../../../utils'
 
@@ -28,38 +28,36 @@ export const Button = (props: ButtonProps) => {
     ...(props.classes ?? []),
     colorIsBrand ? `color-${color}` : ''
   ]
-  const { label, width, disabled,
-    maxWidth, height, maxHeight, minWidth, minHeight,
-    ...p } = props
+  const { label, width, disabled, maxWidth, height, maxHeight, minWidth, minHeight, ...p } = props
 
   const isStaticImage = (url: string) =>
-    url.endsWith('.svg')
-    || url.endsWith('.png')
-    || url.endsWith('.jpg')
-    || url.endsWith('.jpeg')
+    url.endsWith('.svg') || url.endsWith('.png') || url.endsWith('.jpg') || url.endsWith('.jpeg')
 
   const icon = props.icon
     ? isStaticImage(props.icon)
-      ? () => h('img', {
-        src: props.icon,
-        class: 'icon',
-      })
+      ? () =>
+          h('img', {
+            src: props.icon,
+            class: 'icon'
+          })
       : () => null
     : () => null
 
-  const shape = props.round === true
-      ? void 0
-      : 'suqare' as ButtonShape
+  const shape = props.round === true ? void 0 : ('suqare' as ButtonShape)
 
-  return h(NutButton, {
-    class: classes,
-    disabled,
-    shape,
-    ...!colorIsBrand && {color: color as string},
-    size: getSize(props.size),
-    onClick: props.onClick
-  }, {
-    default: () => props.label,
-    icon
-  })
+  return h(
+    NutButton,
+    {
+      class: classes,
+      disabled,
+      shape,
+      ...(!colorIsBrand && { color: color as string }),
+      size: getSize(props.size),
+      onClick: props.onClick
+    },
+    {
+      default: () => props.label,
+      icon
+    }
+  )
 }
