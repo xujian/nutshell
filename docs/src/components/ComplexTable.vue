@@ -148,9 +148,20 @@ const selectedRows = ref<any[]>([])
 const onTableRowSelected = (selected: any[]) => {
   selectedRows.value = selected
 }
+
+const visibleColumns = ref<string[]>([
+  '序号',
+  '姓名',
+  '手机号码',
+  '呼叫',
+  '跟进',
+  '操作'
+])
 </script>
 <template>
-  <ns-table :rows="tableData" class="no-border">
+  <ns-table :rows="tableData" class="no-border"
+    :visible-columns="visibleColumns"
+    has-column-control>
     <ns-table-column-checkbox @change="onTableRowSelected" field="id" fixed="left" />
     <ns-table-column type="number" label="序号" width="50" align="center" fixed="left" />
     <ns-table-column field="name" label="姓名" sortable width="110" fixed="left" />
@@ -186,12 +197,9 @@ const onTableRowSelected = (selected: any[]) => {
     <ns-table-column-datetime field="confirmStart" label="确定上门时间" width="200" />
     <ns-table-column field="confirmUserId" label="确定提交人员" width="160" />
     <ns-table-column-datetime field="confirmDate" label="确定提交时间" width="170" />
-    <ns-table-column-custom field="id" width="60px" fixed="right" label="操作">
-      <template #header="{column}">
-        <h6>{{ column.label }}</h6>
-      </template>
+    <ns-table-column-custom field="id" width="68" fixed="right" label="操作">
       <template #content="{row}">
-        <a href="javascript:void(0);" class="text-sm" v-if="row.stage === '线索'">删除</a>
+        <a href="javascript:void(0);" class="font-xs" v-if="row.stage === '线索'">删除</a>
       </template>
     </ns-table-column-custom>
   </ns-table>

@@ -48,7 +48,7 @@ import { NsRadio, NsRadioGroup } from './radio'
 import { NsEmpty } from './empty'
 import { NsPagination } from './pagination'
 import { NsRepeator } from './repeator'
-import { NsTable, NsTableColumn } from './table'
+import { NsTable, NsTableColumn, NsTableColumnSelector } from './table'
 
 const components = {
   NsApp,
@@ -71,6 +71,7 @@ const components = {
   NsChips,
   NsIcon,
   NsTableColumn,
+  NsTableColumnSelector,
   NsDialog,
   NsDropdown,
   NsTabs,

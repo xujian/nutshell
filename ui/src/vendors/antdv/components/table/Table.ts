@@ -3,7 +3,9 @@ import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents
 import { CustomColumnFunctionalRender, TableColumnData, TableProps, type NsTableColumnCheckbox, CustomColumnSlots, isCustomColumnSlots } from '../../../../components'
 // import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
+import { NsTableColumnSelector } from '../../../../components'
 import { MarginProps } from '../../../../utils'
+import { useNutshell } from '../../../../framework'
 
 type ColumnConfig = {
   props: VxeColumnProps,
@@ -22,7 +24,11 @@ const columnNameToTypeMapping: {[key: string]: VxeColumnPropTypes.Type} = {
   checkbox: 'checkbox',
 }
 
+const columnControlOpen = ref<boolean>(false)
+
 export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
+
+  const $n = useNutshell()!
 
   const classes = [
     'ns-table',
@@ -37,28 +43,52 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     onChange: (selected: any[]) => {}
   }
 
+  const openColumnControl = () => {
+    $n.dialog({
+      component: NsTableColumnSelector,
+      props: {
+        columns: ['序号', '姓名', '手机号码', '呼叫'],
+        modelValue: props.visibleColumns
+      }
+    })
+  }
+
   /**
    * 为 VxeTable 构造volumns
    * @param customColumns
    */
   function buildFinalColumns (): VNode[] {
     const result: VNode[] = []
-    for (const column of props.columns!) {
-      const { props } = column
+    let columns = props.columns || []
+    const visibleColumns = props.visibleColumns || []
+
+    console.log('===visibleColumns', columns, visibleColumns)
+    // 如果有 visibleColumns
+    // 对 columns 进行筛选和排序
+    // 排序和筛选用 label 而不是 name
+    if (visibleColumns.length) {
+      columns = columns.filter(c => visibleColumns.includes(c.label))
+      columns.sort((c1, c2) =>
+        visibleColumns.indexOf(c1.label) - visibleColumns.indexOf(c2.label))
+    }
+
+    // 循环渲染表格列
+    let columnCount = 0
+    for (const column of columns) {
       if (props.hidden) continue
 
       // NsTableColumn 的属性 转换为-> VxeColumn 的属性
       const colummConfig: ColumnConfig = {
         props: {
-          ...props.field && {field: props.field},
-          width: props.fixed ? props.width : undefined,
-          minWidth: props.width,
-          title: props.label,
-          align: props.align,
-          sortable: props.sortable,
-          filters: props.filterable,
-          fixed: props.fixed as VxeColumnPropTypes.Fixed,
-          treeNode: props.tree
+          ...column.props.field && {field: column.props.field},
+          width: column.props.fixed ? column.props.width : undefined,
+          minWidth: column.props.width,
+          title: column.props.label,
+          align: column.props.align,
+          sortable: column.props.sortable,
+          filters: column.props.filterable,
+          fixed: column.props.fixed as VxeColumnPropTypes.Fixed,
+          treeNode: column.props.tree
         },
         slots: {}
       }
@@ -90,6 +120,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
           const predefinedColumnRender = predefinedColumn(props, ctx) as CustomColumnFunctionalRender | CustomColumnSlots
           // 使用 type guard 判断返回格式是 CustomColumnSlots:
           if (!isCustomColumnSlots(predefinedColumnRender)) {
+            console.log('===isCustomColumnSlots', column.label)
             colummConfig.slots = {
               // 所有 ns-table-column-xxx 都用 template 来实现
               // button/rating 使用组件库核心组件
@@ -110,6 +141,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
               }
             }
           } else {
+            console.log('===isCustomColumnSlots NO', column.label)
             colummConfig.slots = {
               // column content slot
               default: ({row, rowIndex, columnIndex}) => {
@@ -127,19 +159,37 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
                   }, column.slots || {}))
               }
             }
+
+            const headerTailOptionsIcon =
+              columnCount === columns.length -1
+                ? h ('i', {
+                    class: [
+                      'icon',
+                      'icon-options',
+                      'clickable'
+                    ].join(' '),
+                    onClick: openColumnControl
+                  })
+                : null,
+              // 显示 列操作 齿轮图标
+              shouldDisplayColumnOptionsIcon = props.hasColumnControl && columnCount === columns.length -1
+
             // custom column header slot
-            if (column?.slots?.hasOwnProperty('header')) {
+            if (column?.slots?.hasOwnProperty('header') || shouldDisplayColumnOptionsIcon) {
               colummConfig.slots['header'] = ({columnIndex}) => {
                 return h('div', {
                     class: [
                       'table-column-header',
-                      `table-column-${column.name}`
+                      `table-column-${column.name}`,
+                      'row', 'align-center', 'justify-between'
                     ]
-                  },
-                  h(predefinedColumnRender.header!, {
+                  }, [
+                  h(column.slots.header || predefinedColumnRender.header, {
                     column: column.props,
                     columnIndex,
-                  }, column.slots || {}))
+                  }),
+                  headerTailOptionsIcon
+                ])
               }
             }
           }
@@ -147,6 +197,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       }
       const node = h(VxeColumn, colummConfig.props, colummConfig.slots)
       result.push(node)
+      columnCount ++
     }
     return result
   }
@@ -173,41 +224,46 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     onChange(selected)
   }
 
-  return h(VxeTable, {
-      ref: tableRef,
-      class: classes,
-      data: rows.value,
-      maxHeight: props.maxHeight,
-      // columns: columns as ColumnsType,
-      rowConfig: {
-        useKey: true,
-        keyField: props.rowKey,
-        isHover: !props.rowHoverable === false,
-        height: props.rowHeight
-      },
-      treeConfig: {
-        transform: props.treeConfig?.enable,
-        rowField: 'id',
-        parentField: 'parentId'
-      },
-      loading: props.loading,
-      columnConfig: {
-        useKey: true,
-        resizable: true
-      },
-      editConfig: {
-        mode: 'row'
-      },
-      checkboxConfig: {
-        checkStrictly: props.treeConfig?.checkStrictly
-      },
-      showOverflow: props.overflow === true ? false : true,
-      scrollY: { enabled: true, gt: 20 },
-      onCheckboxChange: onSelectedChange,
-      onCheckboxAll: onSelectedChange
-      // loading: loading,
-      // pagination: false,
-      // rowKey: props.rowKey,
-      // rowSelection
-    }, () => columns)
+  const vxe = () => h(VxeTable, {
+    ref: tableRef,
+    data: rows.value,
+    maxHeight: props.maxHeight,
+    // columns: columns as ColumnsType,
+    rowConfig: {
+      useKey: true,
+      keyField: props.rowKey,
+      isHover: !props.rowHoverable === false,
+      height: props.rowHeight
+    },
+    treeConfig: {
+      transform: props.treeConfig?.enable,
+      rowField: 'id',
+      parentField: 'parentId'
+    },
+    loading: props.loading,
+    columnConfig: {
+      useKey: true,
+      resizable: true
+    },
+    editConfig: {
+      mode: 'row'
+    },
+    checkboxConfig: {
+      checkStrictly: props.treeConfig?.checkStrictly
+    },
+    showOverflow: props.overflow === true ? false : true,
+    scrollY: { enabled: true, gt: 20 },
+    onCheckboxChange: onSelectedChange,
+    onCheckboxAll: onSelectedChange
+    // loading: loading,
+    // pagination: false,
+    // rowKey: props.rowKey,
+    // rowSelection
+  }, () => columns)
+
+  return h('div', {
+    class: classes,
+  }, [
+    vxe(),
+  ])
 }

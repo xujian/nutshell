@@ -89,7 +89,7 @@ export const tableProps = {
   },
   rowKey: {
     type: String,
-    default: 'id'
+    default: () => 'id'
   },
   hasNumberColumn: {
     type: Boolean,
@@ -98,6 +98,14 @@ export const tableProps = {
   customColumns: {
     type: Array,
     require: false
+  },
+  hasColumnControl: {
+    type: Boolean,
+    default: () => false,
+  },
+  visibleColumns: {
+    type: Array,
+    require: false,
   },
   maxHeight: {
     type: [String, Number]
@@ -155,8 +163,10 @@ export const NsTable = define({
       if (!defaultSlot) return []
       const slots = defaultSlot()
       // 获取全体 <ns-table-column-x>
+      // 读取所有 slots 并且读属性, 转换为 TableColumnDefinition
       return slots.map((slot) => ({
         name: getColumnName(slot),
+        label: slot.props.label,
         type: slot.props?.type as TableColumnType,
         props: slot.props as never as TableColumnProps,
         slots: slot.children
