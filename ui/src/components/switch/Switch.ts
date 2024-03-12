@@ -1,6 +1,6 @@
 import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useModelValuePropsForBoolean } from '../../props'
+import { useModelValuePropsForBoolean, useSizeProps } from '../../props'
 
 export const switchProps = {
   // antd/nutui支持string和number，但我觉得没必要，布尔值就可以了
@@ -9,11 +9,7 @@ export const switchProps = {
     type: Boolean,
     default: false,
   },
-  // TODO -- nico 这块size有待商榷
-  size: {
-    type: String as PropType<'default' | 'small'>,
-    default: 'default'
-  }
+  ...useSizeProps(),
 }
 
 export type SwitchEmits = {
