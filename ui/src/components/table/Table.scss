@@ -13,5 +13,13 @@
 }
 
 .ns-table-column-selector-item {
-  margin: 1px;
+  margin: 4px;
+  &.has-handler {
+    .label {
+      padding: 0 4px;
+    }
+  }
+  .icon-drag-handler {
+    cursor: move;
+  }
 }

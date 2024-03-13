@@ -1,4 +1,4 @@
-import { SetupContext, computed, h,VNode, ref } from 'vue'
+import { SetupContext, computed, h,VNode, ref, reactive } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance } from 'vxe-table'
 import { CustomColumnFunctionalRender, TableColumnData, TableProps, type NsTableColumnCheckbox, CustomColumnSlots, isCustomColumnSlots } from '../../../../components'
 // import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
@@ -24,7 +24,13 @@ const columnNameToTypeMapping: {[key: string]: VxeColumnPropTypes.Type} = {
   checkbox: 'checkbox',
 }
 
-const columnControlOpen = ref<boolean>(false)
+const state = reactive<{
+  inited: boolean,
+  visibleColumns: string[]}
+>({
+  inited: false,
+  visibleColumns: []
+})
 
 export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
 
@@ -43,12 +49,22 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     onChange: (selected: any[]) => {}
   }
 
+  const allColumns: string[] = props.columns?.map(c => c.label) || []
+  if (!state.inited) {
+    state.inited = true
+    state.visibleColumns = allColumns
+  }
+
   const openColumnControl = () => {
     $n.dialog({
+      width: 250,
       component: NsTableColumnSelector,
       props: {
-        columns: ['序号', '姓名', '手机号码', '呼叫'],
-        modelValue: props.visibleColumns
+        columns: props.columns?.map(c => c.label).filter(Boolean),
+        modelValue: state.visibleColumns,
+        'onUpdate:modelValue': (labels: string[]) => {
+          state.visibleColumns = labels
+        }
       }
     })
   }
@@ -60,22 +76,20 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
   function buildFinalColumns (): VNode[] {
     const result: VNode[] = []
     let columns = props.columns || []
-    const visibleColumns = props.visibleColumns || []
 
-    console.log('===visibleColumns', columns, visibleColumns)
     // 如果有 visibleColumns
     // 对 columns 进行筛选和排序
     // 排序和筛选用 label 而不是 name
-    if (visibleColumns.length) {
-      columns = columns.filter(c => visibleColumns.includes(c.label))
+    if (state.visibleColumns.length) {
+      columns = columns.filter(c => state.visibleColumns.includes(c.label))
       columns.sort((c1, c2) =>
-        visibleColumns.indexOf(c1.label) - visibleColumns.indexOf(c2.label))
+      state.visibleColumns.indexOf(c1.label) - state.visibleColumns.indexOf(c2.label))
     }
 
     // 循环渲染表格列
     let columnCount = 0
     for (const column of columns) {
-      if (props.hidden) continue
+      if (column.props.hidden) continue
 
       // NsTableColumn 的属性 转换为-> VxeColumn 的属性
       const colummConfig: ColumnConfig = {
@@ -120,7 +134,6 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
           const predefinedColumnRender = predefinedColumn(props, ctx) as CustomColumnFunctionalRender | CustomColumnSlots
           // 使用 type guard 判断返回格式是 CustomColumnSlots:
           if (!isCustomColumnSlots(predefinedColumnRender)) {
-            console.log('===isCustomColumnSlots', column.label)
             colummConfig.slots = {
               // 所有 ns-table-column-xxx 都用 template 来实现
               // button/rating 使用组件库核心组件
@@ -141,7 +154,6 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
               }
             }
           } else {
-            console.log('===isCustomColumnSlots NO', column.label)
             colummConfig.slots = {
               // column content slot
               default: ({row, rowIndex, columnIndex}) => {

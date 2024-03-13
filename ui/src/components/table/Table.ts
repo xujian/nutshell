@@ -56,6 +56,7 @@ export type TableColumnType = 'number' | 'checkbox'
 
 export type TableColumnDefinition = {
   name?: string
+  label: string,
   type?: TableColumnType
   props: TableColumnProps
   slots?: VNodeNormalizedChildren
@@ -103,10 +104,10 @@ export const tableProps = {
     type: Boolean,
     default: () => false,
   },
-  visibleColumns: {
-    type: Array,
-    require: false,
-  },
+  // visibleColumns: {
+  //   type: Array,
+  //   require: false,
+  // },
   maxHeight: {
     type: [String, Number]
   },
@@ -166,7 +167,7 @@ export const NsTable = define({
       // 读取所有 slots 并且读属性, 转换为 TableColumnDefinition
       return slots.map((slot) => ({
         name: getColumnName(slot),
-        label: slot.props.label,
+        label: slot.props?.label,
         type: slot.props?.type as TableColumnType,
         props: slot.props as never as TableColumnProps,
         slots: slot.children
