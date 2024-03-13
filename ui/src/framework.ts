@@ -20,10 +20,10 @@ export interface NutshellOptions {
 }
 
 export type DollarNutshell = {
-  dialog?: (options: DialogOptions) => void,
-  confirm?: (message: string, onOk: () => void, options?: ConfirmOptions) => void
-  toast?: (message: string, options: ToastOptions) => void
-  loading?: (options: LoadingOptions) => void,
+  dialog: (options: DialogOptions) => void,
+  confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => void,
+  toast: (message: string, options: ToastOptions) => void,
+  loading: (options: LoadingOptions) => void,
   options: NutshellOptions
 }
 
@@ -34,7 +34,7 @@ export const NutshellSymbol: InjectionKey<DollarNutshell>
  * 返回 $n 供应用程序使用
  */
 export function useNutshell () {
-  const $n = inject(NutshellSymbol)
+  const $n = inject(NutshellSymbol)!
   return $n
 }
 
@@ -52,6 +52,10 @@ export function Nutshell ({
   // for app.use()
   const install = (app: App) => {
     const $n: DollarNutshell = {
+      dialog: (options: DialogOptions) => {},
+      confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => {},
+      toast: (message: string, options: ToastOptions) => {},
+      loading: (options: LoadingOptions) => {},
       options: {
         theme,
         vendor,
