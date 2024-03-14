@@ -128,7 +128,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
         // columns 目录里的 function
         const predefinedColumn = columnCustomRenders[column.name]
         if (predefinedColumn) {
-          const predefinedColumnRender = predefinedColumn(props, ctx) as CustomColumnFunctionalRender | CustomColumnSlots
+          const predefinedColumnRender = predefinedColumn(column.props, ctx) as CustomColumnFunctionalRender | CustomColumnSlots
           // 使用 type guard 判断返回格式是 CustomColumnSlots:
           if (!isCustomColumnSlots(predefinedColumnRender)) {
             colummConfig.slots = {
