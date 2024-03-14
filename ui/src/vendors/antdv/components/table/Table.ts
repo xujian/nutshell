@@ -6,6 +6,7 @@ import columnCustomRenders from './columns'
 import { NsTableColumnSelector } from '../../../../components'
 import { MarginProps } from '../../../../utils'
 import { useNutshell } from '../../../../framework'
+import { useRoute } from 'vue-router'
 
 type ColumnConfig = {
   props: VxeColumnProps,
@@ -30,6 +31,9 @@ const state = reactive<{
 
 export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
 
+  const $route = useRoute(),
+    routePath = $route.path,
+    storageKey = `table-columns-${routePath.split('/').join('-')}`
   const $n = useNutshell()!
 
   const classes = [
@@ -47,7 +51,10 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
 
   const allColumns: TableColumnDefinition[] = props.columns || [],
     columnsNotHidden = allColumns.filter(c => c.props.hidden !== true) || [],
-    columnsNotHiddenNames = columnsNotHidden.map(c => c.label)
+    columnsCached = localStorage.getItem(storageKey),
+    columnsNotHiddenNames = columnsCached
+      ? columnsCached.split(',')
+      : columnsNotHidden.map(c => c.label)
   if (!state.inited) {
     state.inited = true
     state.visibleColumns = columnsNotHiddenNames
@@ -63,8 +70,8 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
         ),
         modelValue: state.visibleColumns,
         'onUpdate:modelValue': (labels: string[]) => {
-          console.log('===labels', labels)
           state.visibleColumns = labels
+          localStorage.setItem(storageKey, labels.join(','))
         }
       }
     })
