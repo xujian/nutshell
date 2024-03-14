@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { TableColumnData, TableColumnDatetimeProps, props as defaultProps } from '../../../../../components'
+import { TableColumnData, TableColumnDatetimeProps, tableColumnDatetimeProps as defaultProps } from '../../../../../components'
 import { h } from 'vue'
 
 /**
@@ -10,12 +10,12 @@ export default function datetime (
     props: TableColumnDatetimeProps,
   ) {
     Object.keys(defaultProps)
-        .forEach((k) => {
-            const defaultValue = defaultProps[k].default
-            if (typeof defaultValue !== 'undefined' && typeof props[k] === 'undefined') {
-                props[k] = defaultValue
-            }
-        })
+      .forEach((k) => {
+          const defaultValue = defaultProps[k].default
+          if (typeof defaultValue !== 'undefined' && typeof props[k] === 'undefined') {
+              props[k] = defaultValue
+          }
+      })
     const formatRangedDateTime = (input: number | string): string => {
     if (!input) return ''
     const timeValue = dayjs(input),

@@ -45,10 +45,12 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     onChange: (selected: any[]) => {}
   }
 
-  const allColumns: string[] = props.columns?.map(c => c.label) || []
+  const allColumns: TableColumnDefinition[] = props.columns || [],
+    columnsNotHidden = allColumns.filter(c => c.props.hidden !== true) || [],
+    columnsNotHiddenNames = columnsNotHidden.map(c => c.label)
   if (!state.inited) {
     state.inited = true
-    state.visibleColumns = allColumns
+    state.visibleColumns = columnsNotHiddenNames
   }
 
   const openColumnControl = () => {
@@ -61,6 +63,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
         ),
         modelValue: state.visibleColumns,
         'onUpdate:modelValue': (labels: string[]) => {
+          console.log('===labels', labels)
           state.visibleColumns = labels
         }
       }
@@ -73,7 +76,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
    */
   function buildFinalColumns (): VNode[] {
     const result: VNode[] = []
-    let columns = props.columns || []
+    let columns = allColumns || []
 
     /**
      * 过滤掉隐藏的列
@@ -81,7 +84,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
      */
     const visibleColumnsFilter = (c: TableColumnDefinition) =>
       c.name === 'checkbox' ||
-      state.visibleColumns.includes(c.label)
+        state.visibleColumns.includes(c.label)
 
     // 如果有 visibleColumns
     // 对 columns 进行筛选和排序
@@ -96,7 +99,6 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     // 循环渲染表格列
     let columnCount = 0
     for (const column of columns) {
-      if (column.props.hidden) continue
 
       // NsTableColumn 的属性 转换为-> VxeColumn 的属性
       const colummConfig: ColumnConfig = {

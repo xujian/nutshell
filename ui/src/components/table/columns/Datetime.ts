@@ -1,7 +1,7 @@
 import { define, MakePropsType } from '../../../utils'
 import { TableColumnData, useTableColumnProps } from '../TableColumn'
 
-export const props: Record<string, any> = {
+export const tableColumnDatetimeProps = {
   ...useTableColumnProps(),
   format: {
     type: String,
@@ -17,14 +17,14 @@ const emits: TableColumnDatetimeEmits = {
   click: ({value, row, rowIndex}: TableColumnData) => void 0
 }
 
-export type TableColumnDatetimeProps = MakePropsType<typeof props, TableColumnDatetimeEmits>
+export type TableColumnDatetimeProps = MakePropsType<typeof tableColumnDatetimeProps, TableColumnDatetimeEmits>
 
 /**
  * 显示日期时间的表格列
  */
 export const NsTableColumnDatetime = define({
   name: 'NsTableColumnDatetime',
-  props,
+  props: tableColumnDatetimeProps,
   emits,
   setup (props, ctx) {
     return {

@@ -1,12 +1,13 @@
 import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
+import { buildProps } from '../../utils/private/props'
 
 export type NsTableColumnType = 'normal' | 'number' | 'checkbox'
 export type NsTableColumnAlign = 'left' | 'center' | 'right'
 export type NsTableColumnFixed = undefined | 'left' | 'right'
 
-export const useTableColumnProps = () => ({
+export const useTableColumnProps = buildProps({
   /**
    * 列名
    */
@@ -48,8 +49,7 @@ export const useTableColumnProps = () => ({
     require: false
   },
   /**
-   * 隐藏这一列
-   * @remarks 用于某些特殊逻辑
+   * 列初始隐藏
    */
   hidden: {
     type: Boolean,
@@ -64,14 +64,7 @@ export const useTableColumnProps = () => ({
   }
 })
 
-const props = {
-  ...useTableColumnProps(),
-  type: {
-    type: String as PropType<NsTableColumnType>,
-    require: false,
-    default: 'normal'
-  }
-}
+const tableColumnProps = useTableColumnProps()
 
 export type TableColumnEmits = {
   click: ({ value, row, rowIndex }: TableColumnData) => void
@@ -86,7 +79,7 @@ const emits: TableColumnEmits = {
 /**
  * 表格列标准属性
  */
-export type TableColumnProps = MakePropsType<typeof props, TableColumnEmits>
+export type TableColumnProps = MakePropsType<typeof tableColumnProps, TableColumnEmits>
 
 /**
  * 表格列数据
@@ -149,7 +142,7 @@ export function isCustomColumnSlots(def: CustomColumnFunctionalRender | CustomCo
  */
 export const NsTableColumn = define({
   name: 'NsTableColumn',
-  props,
+  props: tableColumnProps,
   emits,
   setup(props, ctx) {
     return {}

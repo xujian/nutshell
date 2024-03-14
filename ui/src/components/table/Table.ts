@@ -152,6 +152,31 @@ export const NsTable = define({
       return functionName.slice('NsTableColumn'.length).toLowerCase()
     }
 
+    /**
+     * 给所有的 <ns-table-column-xxx> 补上默认值
+     * 同时支持 hidden 形式的属性
+     * 使 hidden 等效于 :hidden="true"
+     * @returns
+     */
+    function getSlotProps (slot: TableColumnSlot): TableColumnProps {
+      const ps: Record<string, any> = slot.props as Record<string, any>,
+      // @ts-ignore
+        definedProps = slot.type.props || {}
+      Object.keys(definedProps).forEach((key: string) => {
+        if (definedProps[key].hasOwnProperty('default')) {
+          if (ps[key] === void 0) {
+            ps[key] = definedProps[key].default
+          }
+          if (ps[key] === '') { // 属性为
+            if (definedProps[key].type.name === 'Boolean') {
+              ps[key] = true
+            }
+          }
+        }
+      })
+      return ps
+    }
+
     function getCustomizedColumns(): TableColumnDefinition[] {
       const { default: defaultSlot } = useSlots()
       if (!defaultSlot) return []
@@ -161,8 +186,7 @@ export const NsTable = define({
       return slots.map((slot) => ({
         name: getColumnName(slot),
         label: slot.props?.label,
-        type: slot.props?.type as TableColumnType,
-        props: slot.props as never as TableColumnProps,
+        props: getSlotProps(slot),
         slots: slot.children
       }))
     }

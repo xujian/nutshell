@@ -181,7 +181,7 @@ const onTableRowSelected = (selected: any[]) => {
     <ns-table-column-datetime field="inviteStart" label="邀约时间" width="170" />
     <ns-table-column field="submitUserId" label="邀约提交人员" width="180" />
     <ns-table-column-datetime field="inputDate" label="邀约提交时间" width="170" />
-    <ns-table-column field="userIds" label="协助谈单人员" width="180" />
+    <ns-table-column field="userIds" :hidden="true" label="协助谈单人员" width="180" />
     <ns-table-column field="userIds" label="是否确认" width="180" />
     <ns-table-column field="num" label="客户人数" width="100" />
     <ns-table-column-datetime field="confirmStart" label="确定上门时间" width="200" />
