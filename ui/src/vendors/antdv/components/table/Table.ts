@@ -1,7 +1,7 @@
 import { SetupContext, computed, h,VNode, ref, reactive } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance } from 'vxe-table'
-import { CustomColumnFunctionalRender, TableColumnData, TableProps, type NsTableColumnCheckbox, CustomColumnSlots, isCustomColumnSlots, TableColumnDefinition } from '../../../../components'
-// import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
+import type { CustomColumnFunctionalRender, TableColumnData, TableProps, CustomColumnSlots, TableColumnDefinition } from '../../../../components'
+import { isCustomColumnSlots  } from '../../../../components'
 import columnCustomRenders from './columns'
 import { NsTableColumnSelector } from '../../../../components'
 import { MarginProps } from '../../../../utils'
@@ -15,12 +15,8 @@ type ColumnConfig = {
   }
 }
 
-const columnTypeMapping: { [key: string]: VxeColumnPropTypes.Type } = {
-  number: 'seq',
-  checkbox: 'checkbox'
-}
-
 const columnNameToTypeMapping: {[key: string]: VxeColumnPropTypes.Type} = {
+  number: 'seq',
   checkbox: 'checkbox',
 }
 
@@ -79,8 +75,6 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     const result: VNode[] = []
     let columns = props.columns || []
 
-    console.log('===buildFinalColumns===columns', columns)
-
     /**
      * 过滤掉隐藏的列
      * @returns
@@ -118,16 +112,6 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
           treeNode: column.props.tree
         },
         slots: {}
-      }
-      if (column.type) {
-        // 输出 <vxe-column type=checkbox> 以及其他
-        colummConfig.props.type = columnTypeMapping[column.type]
-        // if (column.type == 'checkbox') {
-        //   selectionOptions.field = column.props.field || ''
-        //   selectionOptions.onChange = (selected: any) => {
-        //     column.props['onChange']?.(selected)
-        //   }
-        // }
       }
       if (column.name) { // 带有 name 调用 columns/之下的渲染器
         // 某些 column name 映射为 vxe table type

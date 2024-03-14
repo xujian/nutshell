@@ -148,21 +148,12 @@ const selectedRows = ref<any[]>([])
 const onTableRowSelected = (selected: any[]) => {
   selectedRows.value = selected
 }
-
-const visibleColumns = ref<string[]>([
-  '序号',
-  '姓名',
-  '手机号码',
-  '呼叫',
-  '跟进',
-  '操作'
-])
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border"
     has-column-control>
     <ns-table-column-checkbox @change="onTableRowSelected" field="id" fixed="left" />
-    <ns-table-column type="number" label="序号" width="50" align="center" fixed="left" />
+    <ns-table-column-number label="序号" width="50" align="center" fixed="left" />
     <ns-table-column field="name" label="姓名" sortable width="110" fixed="left" />
     <ns-table-column-crypto field="phone" label="手机号码" width="140"
       @decrypt="decryptPhoneNumber" />

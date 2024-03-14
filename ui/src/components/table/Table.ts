@@ -47,17 +47,9 @@ export type TableColumnSlot = VNode<
   }
 >
 
-/**
- * 表格列类型
- * 仅用于少数特殊预定义的列
- * 例如序号列
- */
-export type TableColumnType = 'number' | 'checkbox'
-
 export type TableColumnDefinition = {
   name?: string
   label: string,
-  type?: TableColumnType
   props: TableColumnProps
   slots?: VNodeNormalizedChildren
   customRender?: (options: any) => void
@@ -153,6 +145,7 @@ export const NsTable = define({
   name: 'NsTable',
   props: tableProps,
   setup(props, ctx) {
+
     function getColumnName(slot: TableColumnSlot): string {
       const slotType = slot.type as any,
         functionName = slotType.name
