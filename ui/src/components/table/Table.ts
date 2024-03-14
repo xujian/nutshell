@@ -7,7 +7,7 @@ import {
   VNodeNormalizedChildren
 } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { TableColumnProps } from './TableColumn'
+import { NsTableColumnFixed, TableColumnProps } from './TableColumn'
 
 /**
  * 填充表格的数据

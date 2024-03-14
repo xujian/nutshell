@@ -160,7 +160,6 @@ const visibleColumns = ref<string[]>([
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border"
-    :visible-columns="visibleColumns"
     has-column-control>
     <ns-table-column-checkbox @change="onTableRowSelected" field="id" fixed="left" />
     <ns-table-column type="number" label="序号" width="50" align="center" fixed="left" />

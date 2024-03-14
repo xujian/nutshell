@@ -1,6 +1,6 @@
 import { SetupContext, computed, h,VNode, ref, reactive } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance } from 'vxe-table'
-import { CustomColumnFunctionalRender, TableColumnData, TableProps, type NsTableColumnCheckbox, CustomColumnSlots, isCustomColumnSlots } from '../../../../components'
+import { CustomColumnFunctionalRender, TableColumnData, TableProps, type NsTableColumnCheckbox, CustomColumnSlots, isCustomColumnSlots, TableColumnDefinition } from '../../../../components'
 // import type { ColumnsType, ColumnType } from 'ant-design-vue/es/table'
 import columnCustomRenders from './columns'
 import { NsTableColumnSelector } from '../../../../components'
@@ -60,7 +60,9 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       width: 250,
       component: NsTableColumnSelector,
       props: {
-        columns: props.columns?.map(c => c.label).filter(Boolean),
+        columns: props.columns?.filter(column =>
+          column.name !== 'checkbox'
+        ),
         modelValue: state.visibleColumns,
         'onUpdate:modelValue': (labels: string[]) => {
           state.visibleColumns = labels
@@ -77,13 +79,24 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     const result: VNode[] = []
     let columns = props.columns || []
 
+    console.log('===buildFinalColumns===columns', columns)
+
+    /**
+     * 过滤掉隐藏的列
+     * @returns
+     */
+    const visibleColumnsFilter = (c: TableColumnDefinition) =>
+      c.name === 'checkbox' ||
+      state.visibleColumns.includes(c.label)
+
     // 如果有 visibleColumns
     // 对 columns 进行筛选和排序
     // 排序和筛选用 label 而不是 name
     if (state.visibleColumns.length) {
-      columns = columns.filter(c => state.visibleColumns.includes(c.label))
+      columns = columns.filter(visibleColumnsFilter)
       columns.sort((c1, c2) =>
-      state.visibleColumns.indexOf(c1.label) - state.visibleColumns.indexOf(c2.label))
+        state.visibleColumns.indexOf(c1.label) - state.visibleColumns.indexOf(c2.label)
+      )
     }
 
     // 循环渲染表格列
@@ -109,12 +122,12 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       if (column.type) {
         // 输出 <vxe-column type=checkbox> 以及其他
         colummConfig.props.type = columnTypeMapping[column.type]
-        if (column.type == 'checkbox') {
-          selectionOptions.field = column.props.field || ''
-          selectionOptions.onChange = (selected: any) => {
-            column.props['onChange']?.(selected)
-          }
-        }
+        // if (column.type == 'checkbox') {
+        //   selectionOptions.field = column.props.field || ''
+        //   selectionOptions.onChange = (selected: any) => {
+        //     column.props['onChange']?.(selected)
+        //   }
+        // }
       }
       if (column.name) { // 带有 name 调用 columns/之下的渲染器
         // 某些 column name 映射为 vxe table type
