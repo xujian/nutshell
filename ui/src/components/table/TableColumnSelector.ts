@@ -6,7 +6,7 @@ import { define, MakePropsType } from '../../utils'
 import { NsTableColumnSelectorItem } from './TableColumnSelectorItem'
 import { NsButton } from '../button'
 import { TableColumnDefinition } from './Table'
-import { NsTableColumnFixed } from '.'
+import { TableColumnFixed } from '.'
 
 export const tableColumnSelectorProps = {
   columns: {
@@ -32,7 +32,7 @@ export type TableColumnSelectorProps = MakePropsType<typeof tableColumnSelectorP
 
 type TableColumnSelectorItem = {
   label: string,
-  fixed?: NsTableColumnFixed,
+  fixed?: TableColumnFixed,
   order: number
 }
 

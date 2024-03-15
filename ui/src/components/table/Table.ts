@@ -7,7 +7,7 @@ import {
   VNodeNormalizedChildren
 } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { NsTableColumnFixed, TableColumnProps } from './TableColumn'
+import { TableColumnFixed, TableColumnProps } from './TableColumn'
 
 /**
  * 填充表格的数据
@@ -65,6 +65,19 @@ export type TableTreeConfig = {
    */
   checkStrictly?: boolean
 }
+
+/**
+ * 表格筛选条件
+ */
+export type TableFilterQuery = {
+  field: string,
+  values: string[]
+}
+
+/**
+ * 表格筛选方法
+ */
+export type TableFilterHandler = (queries: TableFilterQuery[]) => void
 
 export const tableProps = {
   /**
@@ -136,6 +149,12 @@ export const tableProps = {
    */
   rowHeight: {
     type: Number
+  },
+  /**
+   * 执行筛选的方法
+   */
+  filterHandler: {
+    type: Function as PropType<TableFilterHandler>,
   }
 }
 

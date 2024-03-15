@@ -3,9 +3,15 @@ import { define, MakePropsType } from '../../utils'
 import { TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
 import { buildProps } from '../../utils/private/props'
 
-export type NsTableColumnType = 'normal' | 'number' | 'checkbox'
-export type NsTableColumnAlign = 'left' | 'center' | 'right'
-export type NsTableColumnFixed = undefined | 'left' | 'right'
+export type TableColumnAlign = 'left' | 'center' | 'right'
+export type TableColumnFixed = undefined | 'left' | 'right'
+/**
+ * 列筛选选项
+ */
+export type TableColumnFilterOptions = {
+  label: string
+  value: string | number
+}[]
 
 export const useTableColumnProps = buildProps({
   /**
@@ -24,11 +30,11 @@ export const useTableColumnProps = buildProps({
     type: [Number, String]
   },
   align: {
-    type: String as PropType<NsTableColumnAlign>,
+    type: String as PropType<TableColumnAlign>,
     default: 'center'
   },
   fixed: {
-    type: String as PropType<NsTableColumnFixed>,
+    type: String as PropType<TableColumnFixed>,
     default: undefined
   },
   /**
@@ -43,6 +49,7 @@ export const useTableColumnProps = buildProps({
    */
   filterable: {
     type: Array as PropType<TableColumnFilterOptions>
+
   },
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
@@ -100,14 +107,6 @@ export type TableColumnInfo = {
   column?: TableColumnProps,
   columnIndex?: number
 }
-
-/**
- * 列筛选选项
- */
-export type TableColumnFilterOptions = {
-  label: string
-  value: string | number
-}[]
 
 export type CustomColumnFunctionalRender = (args: TableColumnData) => any
 

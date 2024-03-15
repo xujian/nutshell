@@ -1,6 +1,6 @@
 import { SetupContext, computed, h,VNode, ref, reactive } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance } from 'vxe-table'
-import type { CustomColumnFunctionalRender, TableColumnData, TableProps, CustomColumnSlots, TableColumnDefinition } from '../../../../components'
+import type { CustomColumnFunctionalRender, TableColumnData, TableProps, CustomColumnSlots, TableColumnDefinition, TableColumnProps, TableFilterQuery } from '../../../../components'
 import { isCustomColumnSlots  } from '../../../../components'
 import columnCustomRenders from './columns'
 import { NsTableColumnSelector } from '../../../../components'
@@ -77,6 +77,15 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     })
   }
 
+  function onFilterChange ({filters}: any): boolean {
+    const queries: TableFilterQuery[] = filters.map(f => ({
+      field: f.field,
+      values: f.values
+    }))
+    props.filterHandler?.(queries)
+    return true
+  }
+
   /**
    * 为 VxeTable 构造volumns
    * @param customColumns
@@ -103,6 +112,20 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       )
     }
 
+    /**
+     * 转换为
+     * @param props
+     * @returns
+     */
+    function buildFilterConfig (props: TableColumnProps): Partial<VxeColumnProps>{
+      if (!props.filterable) {
+        return {}
+      }
+      return {
+        filters: props.filterable,
+      }
+    }
+
     // 循环渲染表格列
     let columnCount = 0
     for (const column of columns) {
@@ -116,7 +139,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
           title: column.props.label,
           align: column.props.align,
           sortable: column.props.sortable,
-          filters: column.props.filterable,
+          ...buildFilterConfig(column.props),
           fixed: column.props.fixed as VxeColumnPropTypes.Fixed,
           treeNode: column.props.tree
         },
@@ -269,6 +292,12 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     checkboxConfig: {
       checkStrictly: props.treeConfig?.checkStrictly
     },
+    // 写死
+    // 所有筛选都是远端
+    filterConfig: {
+      remote: true,
+    },
+    onFilterChange,
     showOverflow: props.overflow === true ? false : true,
     scrollY: { enabled: true, gt: 20 },
     onCheckboxChange: onSelectedChange,

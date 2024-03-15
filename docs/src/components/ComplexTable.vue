@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import dayjs from 'dayjs'
-import type { CryptoSecret } from '@uxda/nutshell'
+import type { CryptoSecret, TableFilterHandler } from '@uxda/nutshell'
 
 const tableData = ref<any[]>([])
 
@@ -143,18 +143,52 @@ const stageFilterableOptions = [
   },
 ]
 
+const gradeFilterableOptions = [
+  {
+    label: '1',
+    value: 1,
+  },
+  {
+    label: '2',
+    value: 2,
+  },
+  {
+    label: '3',
+    value: 3,
+  },
+  {
+    label: '4',
+    value: 4,
+  },
+  {
+    label: '5',
+    value: 5,
+  },
+]
+
 const selectedRows = ref<any[]>([])
 
 const onTableRowSelected = (selected: any[]) => {
   selectedRows.value = selected
 }
+
+/**
+ * 执行远端筛选
+ * 提交参数给后端接口
+ * 重新查询数据
+ */
+const filterHandler: TableFilterHandler = (queries: any[]) => {
+  console.log('===filterHandler queries:', queries)
+  fetchTableData()
+}
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border"
-    has-column-control>
+    has-column-control
+    :filter-handler="filterHandler">
     <ns-table-column-checkbox @change="onTableRowSelected" field="id" fixed="left" />
     <ns-table-column-number label="序号" width="50" align="center" fixed="left" />
-    <ns-table-column field="name" label="姓名" sortable width="110" fixed="left" />
+    <ns-table-column field="name" label="姓名" align="left" sortable width="110" fixed="left" />
     <ns-table-column-crypto field="phone" label="手机号码" width="140"
       @decrypt="decryptPhoneNumber" />
     <ns-table-column-icon field="phone" label="呼叫" width="60"
@@ -169,6 +203,7 @@ const onTableRowSelected = (selected: any[]) => {
       @click="onTableColumnButtonClick"
     />
     <ns-table-column-rating field="grade"
+      :filterable="gradeFilterableOptions"
       color="#ff8400" label="客户等级" width="150" />
     <ns-table-column field="userId" label="创建用户" width="120" />
     <ns-table-column field="followerId" label="当前跟进用户" width="120" />
@@ -187,7 +222,7 @@ const onTableRowSelected = (selected: any[]) => {
     <ns-table-column-datetime field="confirmStart" label="确定上门时间" width="200" />
     <ns-table-column field="confirmUserId" label="确定提交人员" width="160" />
     <ns-table-column-datetime field="confirmDate" label="确定提交时间" width="170" />
-    <ns-table-column-custom field="id" width="68" fixed="right" label="操作">
+    <ns-table-column-custom field="id" width="68" align="left" fixed="right" label="操作">
       <template #content="{row}">
         <a href="javascript:void(0);" class="font-xs" v-if="row.stage === '线索'">删除</a>
       </template>
