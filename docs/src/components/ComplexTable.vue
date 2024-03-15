@@ -191,8 +191,9 @@ const filterHandler: TableFilterHandler = (queries: any[]) => {
     <ns-table-column field="name" label="姓名" align="left" sortable width="110" fixed="left" />
     <ns-table-column-crypto field="phone" label="手机号码" width="140"
       @decrypt="decryptPhoneNumber" />
-    <ns-table-column-icon field="phone" label="呼叫" width="60"
+    <ns-table-column-icon field="phone" label="呼叫" width="80"
       source="/icons/call.svg"
+      description="这是字段说明"
       @click="onTableColumnIconClick" />
     <ns-table-column-button
       field="id"

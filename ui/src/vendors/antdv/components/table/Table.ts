@@ -141,7 +141,18 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
           sortable: column.props.sortable,
           ...buildFilterConfig(column.props),
           fixed: column.props.fixed as VxeColumnPropTypes.Fixed,
-          treeNode: column.props.tree
+          treeNode: column.props.tree,
+          ...column.props.description && {
+            titlePrefix: {
+              content: column.props.description
+            }
+          },
+          // 给列头加上特定的 css class
+          headerClassName: column.props.description
+            ? [
+                'has-description',
+              ].join(' ')
+            : ''
         },
         slots: {}
       }
@@ -301,7 +312,10 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     showOverflow: props.overflow === true ? false : true,
     scrollY: { enabled: true, gt: 20 },
     onCheckboxChange: onSelectedChange,
-    onCheckboxAll: onSelectedChange
+    onCheckboxAll: onSelectedChange,
+    tooltipConfig: {
+      showAll: true,
+    }
     // loading: loading,
     // pagination: false,
     // rowKey: props.rowKey,

@@ -51,6 +51,12 @@ export const useTableColumnProps = buildProps({
     type: Array as PropType<TableColumnFilterOptions>
 
   },
+  /**
+   * 列说明
+   */
+  description: {
+    type: String,
+  },
   extraStyle: {
     type: [String, Function] as PropType<TableColumnStyleDefination>,
     require: false
