@@ -30,4 +30,10 @@
     width: 16px;
     height: 16px;
   }
+  &:active:before {
+    opacity: 0;
+  }
+  .nut-icon-loading {
+    margin-right: 5px;
+  }
 }

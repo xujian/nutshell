@@ -53,6 +53,7 @@ export const Button = (props: ButtonProps) => {
       shape,
       ...(!colorIsBrand && { color: color as string }),
       size: getSize(props.size),
+      loading: props.loading,
       onClick: props.onClick
     },
     {
