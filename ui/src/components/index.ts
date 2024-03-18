@@ -24,6 +24,7 @@ export * from './table'
 export * from './empty'
 export * from './pagination'
 export * from './repeator'
+export * from './popover'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -49,6 +50,7 @@ import { NsEmpty } from './empty'
 import { NsPagination } from './pagination'
 import { NsRepeator } from './repeator'
 import { NsTable, NsTableColumn, NsTableColumnSelector } from './table'
+import { NsPopover } from './popover'
 
 const components = {
   NsApp,
@@ -88,6 +90,7 @@ const components = {
   NsEmpty,
   NsRepeator,
   NsTable,
+  NsPopover
 }
 
 const properties = Object.fromEntries(
@@ -100,7 +103,4 @@ const properties = Object.fromEntries(
   })
 )
 
-export {
-  components,
-  properties
-}
+export { components, properties }

@@ -14,6 +14,7 @@ const CheckboxPage = () => import('../pages/components/CheckboxPage.vue')
 const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const RatingInputPage = () => import('../pages/components/RatingInputPage.vue')
 const SwitchPage = () => import('../pages/components/SwitchPage.vue')
+const PopoverPage = () => import('../pages/components/PopoverPage.vue')
 const EmptyPage = () => import('../pages/components/EmptyPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
 const CascadingSelectPage = () => import('../pages/components/CascadingSelectPage.vue')
@@ -119,6 +120,11 @@ const router = createRouter({
           path: '/components/empty',
           name: 'components-empty',
           component: EmptyPage
+        },
+        {
+          path: '/components/popover',
+          name: 'components-popover',
+          component: PopoverPage
         },
         {
           path: '/components/rating-input',

@@ -1,18 +1,18 @@
-import { PropType, computed } from 'vue'
+import { PropType, computed, ref } from 'vue'
 import { buildProps } from '../utils/private/props'
 
 type ModelModifiers = Record<string, boolean>
 
 export type ModelValueProps<T = any> = {
-  modelValue: T,
+  modelValue: T
 }
 
 export const useModelValuePropsForString = buildProps({
   modelValue: {
-    type: String,
+    type: String
   },
   'onUpdate:modelValue': {
-    type: Function as PropType<(value: string) => void>,
+    type: Function as PropType<(value: string) => void>
   },
   modelModifiers: {
     type: Object as PropType<ModelModifiers>,
@@ -22,10 +22,10 @@ export const useModelValuePropsForString = buildProps({
 
 export const useModelValuePropsForBoolean = buildProps({
   modelValue: {
-    type: Boolean,
+    type: Boolean
   },
   'onUpdate:modelValue': {
-    type: Function as PropType<(value: boolean) => void>,
+    type: Function as PropType<(value: boolean) => void>
   },
   modelModifiers: {
     type: Object as PropType<ModelModifiers>,
@@ -36,10 +36,10 @@ export const useModelValuePropsForBoolean = buildProps({
 export const useModelValuePropsForInput = buildProps({
   modelValue: {
     type: [Number, String],
-    default: undefined,
+    default: undefined
   },
   'onUpdate:modelValue': {
-    type: Function as PropType<(value: number | string) => void>,
+    type: Function as PropType<(value: number | string) => void>
   },
   modelModifiers: {
     type: Object as PropType<ModelModifiers>,
@@ -49,9 +49,21 @@ export const useModelValuePropsForInput = buildProps({
 
 export const useModelValuePropsForStringArray = buildProps({
   modelValue: {
-    type: Array as PropType<string[]>,
+    type: Array as PropType<string[]>
   },
   'onUpdate:modelValue': {
-    type: Function as PropType<(value: string[]) => void>,
+    type: Function as PropType<(value: string[]) => void>
   }
 })
+
+// model:open属性更新
+export function useUpdateModelOpen(props: Record<string, any>) {
+  return {
+    open: props.modelValue,
+    'onUpdate:open': (value: boolean) => {
+      props['onUpdate:modelValue']?.(value)
+      props['modelValue'] = value
+      console.log(value, props)
+    }
+  }
+}
