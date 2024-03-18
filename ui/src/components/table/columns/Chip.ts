@@ -2,9 +2,9 @@ import { MakePropsType, define } from '../../../utils'
 import { useChipProps } from '../../../components/chip'
 import { useTableColumnProps } from '../TableColumn'
 
-export type TableColumnStyleGetter = (value: string, row: Record<string, any>) => string 
+export type TableColumnStyleGetter = (value: string, row: Record<string, any>) => string
 
-export type TableColumnStyleDefination = 
+export type TableColumnStyleDefination =
   string | TableColumnStyleGetter
 
 const props = {
@@ -15,7 +15,7 @@ const props = {
 export type TableColumnChipProps = MakePropsType<typeof props>
 
 /**
- * 自定义的表格列样式
+ * 单个标签表格列
  */
 export const NsTableColumnChip = define({
   name: 'NsTableColumnChip',

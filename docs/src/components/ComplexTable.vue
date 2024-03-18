@@ -193,7 +193,7 @@ const filterHandler: TableFilterHandler = (queries: any[]) => {
       @decrypt="decryptPhoneNumber" />
     <ns-table-column-icon field="phone" label="呼叫" width="80"
       source="/icons/call.svg"
-      description="这是字段说明"
+      description="有电话号码的可以直接呼叫"
       @click="onTableColumnIconClick" />
     <ns-table-column-button
       field="id"
@@ -207,6 +207,9 @@ const filterHandler: TableFilterHandler = (queries: any[]) => {
       :filterable="gradeFilterableOptions"
       color="#ff8400" label="客户等级" width="150" />
     <ns-table-column field="userId" label="创建用户" width="120" />
+    <ns-table-column-chips field="tags"
+      color="secondary"
+      label="标签" width="300" />
     <ns-table-column field="followerId" label="当前跟进用户" width="120" />
     <ns-table-column-chip
       field="stage"

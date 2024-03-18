@@ -1,4 +1,5 @@
 import chip from './chip'
+import chips from './chips'
 import rating from './rating'
 import button from './button'
 import icon from './icon'
@@ -9,6 +10,7 @@ import { CustomColumnRender } from '../../../../../components/table/TableColumn'
 
 const columnCustomRenders: Record<string, CustomColumnRender> = {
   chip,
+  chips,
   rating,
   button,
   icon,

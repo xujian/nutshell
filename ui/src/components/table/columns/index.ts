@@ -1,4 +1,5 @@
 export * from './Chip'
+export * from './Chips'
 export * from './Rating'
 export * from './Button'
 export * from './Icon'

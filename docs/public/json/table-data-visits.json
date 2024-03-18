@@ -17,6 +17,24 @@
       "confirmUserId": "1555465543356526594",
       "confirmDate": 1689058531000,
       "userIds": "1590542980487454722",
+      "tags": [
+        {
+          "label": "微信",
+          "value": "WX"
+        },
+        {
+          "label": "有车",
+          "value": "YC"
+        },
+        {
+          "label": "有房",
+          "value": "YF"
+        },
+        {
+          "label": "本市户口",
+          "value": "BSHK"
+        }
+      ],
       "num": 111,
       "grade": 1
   },
@@ -38,6 +56,12 @@
       "confirmUserId": "1585910857247346689",
       "confirmDate": 1692276412000,
       "userIds": "1603657908515733506,1669520192115486722",
+      "tags": [
+        {
+          "label": "有房",
+          "value": "YF"
+        }
+      ],
       "num": 1,
       "grade": 1
   },
@@ -59,6 +83,20 @@
       "confirmUserId": "1585910857247346689",
       "confirmDate": 1692276331000,
       "userIds": "1603657908515733506,1669520192115486722",
+      "tags": [
+        {
+          "label": "未婚",
+          "value": "WH"
+        },
+        {
+          "label": "有车",
+          "value": "YC"
+        },
+        {
+          "label": "有房",
+          "value": "YF"
+        }
+      ],
       "num": 1,
       "grade": 2
   },
@@ -80,6 +118,16 @@
       "confirmUserId": "1564494814692511745",
       "confirmDate": 1692156867000,
       "userIds": "1603657908515733506",
+      "tags": [
+        {
+          "label": "未婚",
+          "value": "WX"
+        },
+        {
+          "label": "上征信",
+          "value": "SZX"
+        }
+      ],
       "num": 1,
       "grade": 1
   },
