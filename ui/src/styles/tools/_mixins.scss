@@ -61,7 +61,7 @@ $alphas: (
       background-color: var(--ns-#{$name});
     }
   }
-  
+
   @each $name, $value in map-get($theme, 'layout') {
     #{'--ns-'}#{$name}: #{$value};
   }
@@ -92,9 +92,9 @@ $alphas: (
         background-color: transparent;
         border-color: transparent;
         color: $value;
-        &:hover {
-          background-color: #00000033;
-        }
+        // &:hover {
+        //   background-color: #00000033;
+        // }
       }
     }
   }
