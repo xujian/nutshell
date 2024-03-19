@@ -55,15 +55,3 @@ export const useModelValuePropsForStringArray = buildProps({
     type: Function as PropType<(value: string[]) => void>
   }
 })
-
-// model:open属性更新
-export function useUpdateModelOpen(props: Record<string, any>) {
-  return {
-    open: props.modelValue,
-    'onUpdate:open': (value: boolean) => {
-      props['onUpdate:modelValue']?.(value)
-      props['modelValue'] = value
-      console.log(value, props)
-    }
-  }
-}

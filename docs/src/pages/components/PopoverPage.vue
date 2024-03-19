@@ -5,13 +5,14 @@
     <template #content>
       content
     </template>
-    气泡开票
+    气泡
   </ns-popover>
 
   <h4 class="my-lg">content list用法</h4>
   <ns-popover v-model="popover1" :list="list" title="Title">
-    气泡开票
+    气泡
   </ns-popover>
+
 </template>
 
 <script lang="ts" setup>
@@ -32,5 +33,4 @@ const list = [
 </script>
 
 <style lang="scss">
-
 </style>
