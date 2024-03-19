@@ -18,9 +18,11 @@ export const ratingProps = {
 }
 
 export type RatingEmits = {
+  change: (value: number) => boolean
 }
 
 const emits: RatingEmits = {
+  change: (value: number) => true
 }
 
 export interface RatingSlots extends SlotsType {

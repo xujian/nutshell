@@ -107,8 +107,8 @@ export type TableColumnProps = MakePropsType<typeof tableColumnProps, TableColum
  * 表格列数据
  * 填充 table cell 时需要用到的数据
  */
-export type TableColumnData = {
-  value: string
+export type TableColumnData<T = string> = {
+  value: T
   row: Record<string, any>
   rowIndex?: number
   column?: TableColumnDefinition,

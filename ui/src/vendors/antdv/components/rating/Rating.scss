@@ -16,7 +16,7 @@
       }
       &.ant-rate-star-full {
         .anticon {
-          color: var(--ns-accent)
+          color: var(--color, var(--ns-accent))
         }
       }
     }
