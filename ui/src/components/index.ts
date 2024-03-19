@@ -47,6 +47,7 @@ import { NsStepper } from './stepper'
 import { NsDrawer } from './drawer'
 import { NsRadio, NsRadioGroup } from './radio'
 import { NsEmpty } from './empty'
+import { NsEditable } from './editable'
 import { NsPagination } from './pagination'
 import { NsRepeator } from './repeator'
 import { NsTable, NsTableColumn, NsTableColumnSelector } from './table'
@@ -88,6 +89,7 @@ const components = {
   NsRadioGroup,
   NsPagination,
   NsEmpty,
+  NsEditable,
   NsRepeator,
   NsTable,
   NsPopover

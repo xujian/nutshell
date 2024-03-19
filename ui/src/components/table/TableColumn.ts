@@ -2,6 +2,7 @@ import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext } from 'vue
 import { define, MakePropsType } from '../../utils'
 import { TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
 import { buildProps } from '../../utils/private/props'
+import { LabelValuePair } from '../../shared/models'
 
 export type TableColumnAlign = 'left' | 'center' | 'right'
 export type TableColumnFixed = undefined | 'left' | 'right'
@@ -74,6 +75,14 @@ export const useTableColumnProps = buildProps({
   tree: {
     type: Boolean,
     default: false
+  },
+  editable: {
+    type: Boolean,
+    default: false
+  },
+  editData: {
+    type: Array as PropType<LabelValuePair[]>,
+    default: []
   }
 })
 
@@ -149,7 +158,11 @@ export const NsTableColumn = define({
   name: 'NsTableColumn',
   props: tableColumnProps,
   emits,
-  setup(props, ctx) {
-    return {}
+  setup (props, ctx) {
+
+    return {
+      props: {
+      }
+    }
   }
 })

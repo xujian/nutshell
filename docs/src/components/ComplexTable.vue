@@ -166,6 +166,25 @@ const gradeFilterableOptions = [
   },
 ]
 
+const allTags = [
+  {
+    "label": "微信",
+    "value": "WX"
+  },
+  {
+    "label": "有车",
+    "value": "YC"
+  },
+  {
+    "label": "有房",
+    "value": "YF"
+  },
+  {
+    "label": "本市户口",
+    "value": "BSHK"
+  }
+]
+
 const selectedRows = ref<any[]>([])
 
 const onTableRowSelected = (selected: any[]) => {
@@ -180,6 +199,10 @@ const onTableRowSelected = (selected: any[]) => {
 const filterHandler: TableFilterHandler = (queries: any[]) => {
   console.log('===filterHandler queries:', queries)
   fetchTableData()
+}
+
+const onColumnEditComplete = ({field, value})=> {
+  console.log('===field', field, value)
 }
 </script>
 <template>
@@ -208,6 +231,9 @@ const filterHandler: TableFilterHandler = (queries: any[]) => {
       color="#ff8400" label="客户等级" width="150" />
     <ns-table-column field="userId" label="创建用户" width="120" />
     <ns-table-column-chips field="tags"
+      :editable="true"
+      :editData="allTags"
+      @edit-complete="onColumnEditComplete"
       color="secondary"
       label="标签" width="300" />
     <ns-table-column field="followerId" label="当前跟进用户" width="120" />
