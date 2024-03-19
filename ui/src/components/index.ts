@@ -15,6 +15,7 @@ export * from './tabs'
 export * from './tabbar'
 export * from './card'
 export * from './list'
+export * from './menu'
 // move table to the last for
 // table uses other basic components
 export * from './stepper'
@@ -43,6 +44,7 @@ import { NsTabs, NsTabsItem } from './tabs'
 import { NsTabbar } from './tabbar'
 import { NsCard, NsCardTitle } from './card'
 import { NsList } from './list'
+import { NsMenu } from './menu'
 import { NsStepper } from './stepper'
 import { NsDrawer } from './drawer'
 import { NsRadio, NsRadioGroup } from './radio'
@@ -83,6 +85,7 @@ const components = {
   NsCard,
   NsCardTitle,
   NsList,
+  NsMenu,
   NsStepper,
   NsDrawer,
   NsRadio,

@@ -214,6 +214,10 @@ const menuData = computed(() => [
             label: '气泡卡片 popover',
             key: '/components/popover'
           },
+          {
+            label: '选单 menu',
+            key: '/interactive/menu'
+          }
         ]
       },
       {

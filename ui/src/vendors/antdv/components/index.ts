@@ -10,6 +10,7 @@ import { Select, CascadingSelect, MultipleSelect } from './select'
 import { Dropdown } from './dropdown'
 import { Tabs } from './tabs'
 import { Chips } from './chip'
+import { Menu } from './menu'
 import { Stepper } from './stepper'
 import { Drawer } from './drawer'
 import { RadioGroup } from './radio'
@@ -34,6 +35,7 @@ const components = {
   Checkbox,
   CheckboxGroup,
   Chips,
+  Menu,
   Stepper,
   Drawer,
   RadioGroup,

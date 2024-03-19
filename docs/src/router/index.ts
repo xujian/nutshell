@@ -25,6 +25,7 @@ const TabsPage = () => import('../pages/components/TabsPage.vue')
 const TabbarPage = () => import('../pages/components/TabbarPage.vue')
 const RadioPage = () => import('../pages/components/RadioPage.vue')
 const ListPage = () => import('../pages/components/ListPage.vue')
+const MenuPage = () => import('../pages/components/MenuPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
 const DrawerPage = () => import('../pages/interactive/DrawerPage.vue')
@@ -170,6 +171,11 @@ const router = createRouter({
           path: '/interactive/drawer',
           name: 'interactive-drawer',
           component: DrawerPage
+        },
+        {
+          path: '/interactive/menu',
+          name: 'interactive-menu',
+          component: MenuPage
         },
         {
           path: '/tokens/font',
