@@ -20,6 +20,12 @@ const designProps = {
 
 export type DesignProps = MakePropsType<typeof designProps>
 
+const buildDesignClasses = (props: DesignProps) => [
+  ...props.fill ? [
+    `fill-${props.fill}`
+   ] : [],
+  ]
+
 const buildDesignStyles = (props: DesignProps) => {
   const style = {
     ...props.fill ? buildFillStyle(props.fill) : {},
@@ -32,5 +38,6 @@ const useDesignProps = buildProps(designProps)
 
 export {
   buildDesignStyles,
+  buildDesignClasses,
   useDesignProps,
 }

@@ -1,14 +1,21 @@
 import { h, SetupContext } from 'vue'
 import { Menu as AntdvMenu, MenuProps as AntdvMenuProps, ItemType as AntdvMenuItemType } from 'ant-design-vue'
 import { MenuItem, MenuProps } from '../../../../components'
+import { buildDesignClasses, buildDesignStyles } from '../../../../props'
 
 export const Menu = (props: MenuProps, ctx: SetupContext) => {
+
+  const classes = buildDesignClasses(props),
+    style = buildDesignStyles(props)
 
   function transformItem (item: MenuItem): AntdvMenuItemType {
     return {
       key: item.value,
       label: item.label,
-      popupClassName: 'ns-menu',
+      popupClassName: [
+        'ns-menu',
+        ...classes
+      ].join(' '),
       ...item.children
         ? {
             children: item.children.map(transformItem)
@@ -20,7 +27,12 @@ export const Menu = (props: MenuProps, ctx: SetupContext) => {
   const antdvItems: AntdvMenuProps['items'] = props.items?.map(transformItem)
 
   return h(AntdvMenu, {
-    class: 'ns-menu',
+    class: [
+      'ns-menu',
+      ...classes,
+    ],
+    selectable: false,
+    style,
     items: antdvItems,
   })
 }

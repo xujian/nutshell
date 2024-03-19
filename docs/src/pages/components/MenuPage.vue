@@ -9,6 +9,16 @@ const items = [
   {
     label: '选项',
     value: 'settings',
+    children: [
+      {
+        label: '色彩模式',
+        value: 'theme',
+      },
+      {
+        label: '语言',
+        value: 'language'
+      }
+    ]
   },
   {
     label: '退出登录',
@@ -26,7 +36,7 @@ const items = [
     <h1 class="my-lg">选单 &lt;ns-menu&gt;</h1>
     <h2 class="my-md">Menu</h2>
     <p></p>
-    <ns-menu :items="items" />
+    <ns-menu fill="primary" :items="items" />
   </div>
 </template>
 
