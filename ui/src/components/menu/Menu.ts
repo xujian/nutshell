@@ -1,15 +1,18 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
+import { useDesignProps } from '../../props'
 
 export type MenuItem = {
   label: string,
   value: string,
+  children?: MenuItem[]
 }
 
 export const menuProps = {
   items: {
     type: Array as PropType<MenuItem[]>,
-  }
+  },
+  ...useDesignProps()
 }
 
 export type MenuEmits = {
