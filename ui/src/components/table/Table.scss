@@ -15,6 +15,13 @@
   .table-column-chips {
     text-align: left;
   }
+  .vxe-table--render-default {
+    .vxe-cell.c--tooltip {
+      &:has(.table-column-chips) {
+        overflow: visible;
+      }
+    }
+  }
 }
 
 .ns-table-column-selector-item {

@@ -314,7 +314,6 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     onCheckboxChange: onSelectedChange,
     onCheckboxAll: onSelectedChange,
     tooltipConfig: {
-      showAll: true,
     }
     // loading: loading,
     // pagination: false,

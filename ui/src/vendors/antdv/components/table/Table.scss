@@ -78,5 +78,8 @@
   }
   .ant-form-item {
     margin-bottom: 0;
+    .ant-form-item-control {
+      z-index: 9;
+    }
   }
 }

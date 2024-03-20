@@ -204,9 +204,14 @@ const filterHandler: TableFilterHandler = (queries: any[]) => {
 const onColumnEditComplete = ({field, value})=> {
   console.log('===field', field, value)
 }
+
+const onRatingColumnChange = (value: number, row) => {
+  console.log('===ComplexTable.vue onRatingColumnChange', value, row)
+}
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border"
+    :row-height="32"
     has-column-control
     :filter-handler="filterHandler">
     <ns-table-column-checkbox @change="onTableRowSelected" field="id" fixed="left" />
@@ -227,12 +232,15 @@ const onColumnEditComplete = ({field, value})=> {
       @click="onTableColumnButtonClick"
     />
     <ns-table-column-rating field="grade"
+      editable
+      @change="onRatingColumnChange"
       :filterable="gradeFilterableOptions"
       color="#ff8400" label="客户等级" width="150" />
     <ns-table-column field="userId" label="创建用户" width="120" />
     <ns-table-column-chips field="tags"
       :editable="true"
       :editData="allTags"
+      :overflow="false"
       @edit-complete="onColumnEditComplete"
       color="secondary"
       label="标签" width="300" />
