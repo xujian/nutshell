@@ -1,44 +1,21 @@
-import { ExtractPublicPropTypes, ObjectEmitsOptions, PropType } from 'vue'
-import { define } from '../../utils'
-import { useModelValuePropsForInput } from '../../props'
+import { PropType } from 'vue'
+import { MakePropsType, define } from '../../utils'
+import { useModelValuePropsForInput, usePaginationProps } from '../../props'
 
 export const paginationProps = {
   ...useModelValuePropsForInput(),
-  total: {
-    type: Number,
-    default: 0
-  },
-  pageSize: {
-    type: Number,
-    default: 0
-  },
-  showSizeChanger: {
-    type: Boolean,
-    default: true
-  },
-  showQuickJumper: {
-    type: Boolean,
-    default: true
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
-  pageSizeOptions: {
-    type: Array as PropType<string[]>,
-    default: undefined
-  }
+  ...usePaginationProps(),
 }
 
-export type PaginationProps = ExtractPublicPropTypes<typeof paginationProps>
-
 export type PaginationEmits = {
-  'update:modelValue': (value: boolean) => void
+  change: (value: number) => void
 }
 
 const paginationEmits: PaginationEmits = {
-  'update:modelValue': (value: boolean) => void 0,
+  change: (value: number) => void 0,
 }
+
+export type PaginationProps = MakePropsType<typeof paginationProps, PaginationEmits>
 
 export const NsPagination = define({
   name: 'NsPagination',

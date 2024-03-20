@@ -1,7 +1,7 @@
 import { SetupContext, computed, h,VNode, ref, reactive } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance } from 'vxe-table'
 import type { CustomColumnFunctionalRender, TableColumnData, TableProps, CustomColumnSlots, TableColumnDefinition, TableColumnProps, TableFilterQuery } from '../../../../components'
-import { isCustomColumnSlots  } from '../../../../components'
+import { NsPagination, isCustomColumnSlots  } from '../../../../components'
 import columnCustomRenders from './columns'
 import { NsTableColumnSelector } from '../../../../components'
 import { MarginProps } from '../../../../utils'
@@ -39,7 +39,8 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
   const classes = [
     'ns-table',
     ...props.classes || [],
-  ].join(' ')
+    ...props.hasPagination ? ['table-has-pagination'] : []
+  ]
 
   const tableRef = ref<VxeTableInstance | null>(null)
 
@@ -277,53 +278,67 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
   }
 
   const vxe = () => h(VxeTable, {
-    ref: tableRef,
-    data: rows.value,
-    maxHeight: props.maxHeight,
-    // columns: columns as ColumnsType,
-    rowConfig: {
-      useKey: true,
-      keyField: props.rowKey,
-      isHover: !props.rowHoverable === false,
-      height: props.rowHeight
-    },
-    treeConfig: {
-      transform: props.treeConfig?.enable,
-      rowField: 'id',
-      parentField: 'parentId'
-    },
-    loading: props.loading,
-    columnConfig: {
-      useKey: true,
-      resizable: true
-    },
-    editConfig: {
-      mode: 'row'
-    },
-    checkboxConfig: {
-      checkStrictly: props.treeConfig?.checkStrictly
-    },
-    // 写死
-    // 所有筛选都是远端
-    filterConfig: {
-      remote: true,
-    },
-    onFilterChange,
-    showOverflow: props.overflow === true ? false : true,
-    scrollY: { enabled: true, gt: 20 },
-    onCheckboxChange: onSelectedChange,
-    onCheckboxAll: onSelectedChange,
-    tooltipConfig: {
-    }
-    // loading: loading,
-    // pagination: false,
-    // rowKey: props.rowKey,
-    // rowSelection
-  }, () => columns)
+      ref: tableRef,
+      data: rows.value,
+      maxHeight: props.maxHeight,
+      // columns: columns as ColumnsType,
+      rowConfig: {
+        useKey: true,
+        keyField: props.rowKey,
+        isHover: !props.rowHoverable === false,
+        height: props.rowHeight
+      },
+      treeConfig: {
+        transform: props.treeConfig?.enable,
+        rowField: 'id',
+        parentField: 'parentId'
+      },
+      loading: props.loading,
+      columnConfig: {
+        useKey: true,
+        resizable: true
+      },
+      editConfig: {
+        mode: 'row'
+      },
+      checkboxConfig: {
+        checkStrictly: props.treeConfig?.checkStrictly
+      },
+      // 写死
+      // 所有筛选都是远端
+      filterConfig: {
+        remote: true,
+      },
+      onFilterChange,
+      showOverflow: props.overflow === true ? false : true,
+      scrollY: { enabled: true, gt: 20 },
+      onCheckboxChange: onSelectedChange,
+      onCheckboxAll: onSelectedChange,
+      tooltipConfig: {
+      }
+      // loading: loading,
+      // pagination: false,
+      // rowKey: props.rowKey,
+      // rowSelection
+    }, () => columns),
+    pagination = () => h(NsPagination, {
+      class: [],
+      ...props.paginationData,
+      onChange: props.onPageChange,
+    })
 
-  return h('div', {
-    class: classes,
-  }, [
-    vxe(),
-  ])
+  return props.hasPagination
+    ? h('div', {
+        class: [
+          'ns-table-pagination'
+        ],
+      }, [
+        h('div', {
+          class: ['ns-table', ...classes]
+        }, vxe()),
+        pagination(),
+      ])
+    : h('div', {
+        class: ['ns-table', ...classes]
+      }, vxe())
 }

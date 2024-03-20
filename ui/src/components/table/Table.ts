@@ -8,6 +8,7 @@ import {
 } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { TableColumnFixed, TableColumnProps } from './TableColumn'
+import { PaginationProps } from '../pagination'
 
 /**
  * 填充表格的数据
@@ -155,10 +156,32 @@ export const tableProps = {
    */
   filterHandler: {
     type: Function as PropType<TableFilterHandler>,
+  },
+  /**
+   * 自带分页
+   */
+  hasPagination: {
+    type: Boolean,
+    default: true,
+  },
+  /**
+   * 分页数据
+   */
+  paginationData: {
+    type: Object as PropType<PaginationProps>,
   }
 }
 
-export type TableProps = MakePropsType<typeof tableProps>
+
+export type TableEmits = {
+  pageChange: (value: number) => void
+}
+
+const tableEmits: TableEmits = {
+  pageChange: (value: number) => void 0,
+}
+
+export type TableProps = MakePropsType<typeof tableProps, TableEmits>
 
 export const NsTable = define({
   name: 'NsTable',

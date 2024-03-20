@@ -8,7 +8,7 @@ export const Pagination = (props: PaginationProps, ctx: SetupContext) => {
     AntdvPagination,
     {
       class: 'ns-pagination',
-      total: props.total,
+      total: props.totalPages,
       pageSize: props.pageSize,
       onChange: (page: number, pageSize: number) => {
         props['onUpdate:modelValue']?.(page)
