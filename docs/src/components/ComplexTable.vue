@@ -217,7 +217,9 @@ const onRatingColumnChange = (value: number, row) => {
     <ns-table-column-checkbox @change="onTableRowSelected" field="id" fixed="left" />
     <ns-table-column-number label="序号" width="50" align="center" fixed="left" />
     <ns-table-column field="name" label="姓名" align="left" sortable width="110" fixed="left" />
-    <ns-table-column-crypto field="phone" label="手机号码" width="140"
+    <ns-table-column-crypto
+      :enabled="false"
+      field="phone" label="手机号码" width="140"
       @decrypt="decryptPhoneNumber" />
     <ns-table-column-icon field="phone" label="呼叫" width="80"
       source="/icons/call.svg"

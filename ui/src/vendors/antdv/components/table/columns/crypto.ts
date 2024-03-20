@@ -4,11 +4,11 @@ import { SetupContext } from 'vue'
 
 /**
  * Table custom column: button
- * @param column 
- * @param custom 
+ * @param column
+ * @param custom
  */
 export default function crypto (
-    attrs: TableColumnCryptoProps,
+    props: TableColumnCryptoProps,
   ) {
   // 脱敏字段
   // 手机号脱敏
@@ -25,13 +25,13 @@ export default function crypto (
     if (!data.mask) return () => h('div', {}, [])
 
     const content = ref(data.mask),
-      state = ref('masked')
+      state = ref(props.enabled ? 'masked' : 'decrypted')
 
     const onIconClick = () => {
-      if (!attrs.onDecrypt) return
+      if (!props.onDecrypt) return
       if (!row) return
       if (state.value === 'masked') {
-        attrs.onDecrypt.call(null, data as CryptoSecret).then((answer: string) => {
+        props.onDecrypt.call(null, data as CryptoSecret).then((answer: string) => {
           if (answer) {
             content.value = answer
             state.value = 'decrypted'
@@ -42,7 +42,7 @@ export default function crypto (
         content.value = data.mask
       }
     }
-    
+
     const icon = () => h('i', {
       class: ['icon', `icon-${state.value}`],
       onClick: onIconClick

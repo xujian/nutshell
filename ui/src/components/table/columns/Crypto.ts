@@ -12,6 +12,13 @@ type DecryptMethod = (data: CryptoSecret) => Promise<string>
 
 const props = {
   ...useTableColumnProps(),
+  /**
+   * 是否开启
+   */
+  enabled: {
+    type: Boolean,
+    default: true,
+  },
   onDecrypt: {
     type: Function as PropType<DecryptMethod>,
   }
@@ -28,7 +35,7 @@ const emits: TableColumnCryptoEmits = {
 export type TableColumnCryptoProps = MakePropsType<typeof props, TableColumnCryptoEmits>
 
 /**
- * 自定义的表格列样式
+ * 脱敏列
  */
 export const NsTableColumnCrypto = define({
   name: 'NsTableColumnCrypto',
