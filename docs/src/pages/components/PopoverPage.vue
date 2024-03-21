@@ -9,7 +9,7 @@
   </ns-popover>
 
   <h4 class="my-lg">content list用法</h4>
-  <ns-popover v-model="popover1" :list="list" title="Title">
+  <ns-popover v-model="popover1" :items="items" title="Title" @item-click="onItemClick">
     气泡
   </ns-popover>
 
@@ -21,15 +21,23 @@ import { onMounted, ref } from 'vue'
 const popover = ref(false)
 const popover1 = ref(false)
 
-const list = [
-
-  {
-    title: '列表组件',
+const items = [
+{
+    label: '账户',
+    value: 'account',
   },
   {
-    caption: '<ns-popover>'
+    label: '退出登录',
+    value: 'logout',
+  },
+  {
+    label: '用户手册',
+    value: 'help',
   },
 ]
+function onItemClick(e) {
+  console.log(e)
+}
 </script>
 
 <style lang="scss">

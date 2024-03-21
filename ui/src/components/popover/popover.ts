@@ -16,10 +16,9 @@ export type PopoverPositionType =
   | 'leftBottom'
   | 'rightTop'
   | 'rightBottom'
-export type PopoverListType = {
-  title: string
-  caption: string
-  icon: string
+export type MenuItem = {
+  label: string
+  value: string
 }
 
 export const popoverProps = {
@@ -37,8 +36,8 @@ export const popoverProps = {
     type: String as PropType<PopoverPositionType>,
     require: false
   },
-  list: {
-    type: Array as PropType<PopoverListType[]>,
+  items: {
+    type: Array as PropType<MenuItem[]>,
     require: false
   }
 }

@@ -1,7 +1,8 @@
 import { h, SetupContext } from 'vue'
 import { Popover as AntdvPopover } from 'ant-design-vue'
 import { PopoverProps } from '../../../../components'
-import { NsList } from '../../../../components'
+import { NsMenu } from '../../../../components'
+import { MenuInfo } from 'ant-design-vue/es/menu/src/interface'
 
 export const Popover = (props: PopoverProps, cxt: SetupContext) => {
   // console.log('vendors/Popover', props)
@@ -22,7 +23,14 @@ export const Popover = (props: PopoverProps, cxt: SetupContext) => {
     {
       default: cxt.slots.default,
       title: cxt.slots.title,
-      content: !props.list ? cxt.slots.content : h(NsList, { data: props.list })
+      content: !props.items
+        ? cxt.slots.content
+        : h(NsMenu, {
+            items: props.items,
+            onClick: (e: MenuInfo) => {
+              cxt.emit('item-click', e)
+            }
+          })
     }
   )
 }
