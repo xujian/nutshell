@@ -1,0 +1,65 @@
+.ns-stepper {
+  --space: 16px;
+  &.stepper-variant-arrow {
+    position: relative;
+    display: flex;
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      content: "";
+      width: calc(100% - var(--space));
+    }
+    .ant-steps-item-icon {
+      display: none;
+    }
+    .ant-steps-item {
+      background-color: #ffffff;
+      margin: 0 0 0 calc(calc(-1 * var(--space)) + 1px);
+      -webkit-clip-path: polygon(
+        var(--space) 50%,
+        0% 0%,
+        calc(100% - var(--space)) 0%,
+        100% 50%,
+        calc(100% - var(--space)) 100%,
+        0% 100%
+      );
+      &:first-child {
+        margin: 0;
+        -webkit-clip-path: polygon(
+          0% 0%,
+          calc(100% - var(--space)) 0%,
+          100% 50%,
+          calc(100% - var(--space)) 100%,
+          0% 100%
+        );
+      }
+      &:last-child {
+        flex: 1;
+      }
+      .ant-steps-item-title {
+        padding-left: 1em;
+        font-size: 12px;
+      }
+    }
+    .ant-steps-item-container[role='button'] {
+      .ant-steps-item-title {
+        &::after {
+          display: none;
+        }
+      }
+    }
+    .ant-steps-item-finish {
+      background-color: var(--ns-primary);
+      .ant-steps-item-container[role='button'] {
+        .ant-steps-item-title {
+          color: #fff;
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

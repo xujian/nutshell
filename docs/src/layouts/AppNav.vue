@@ -125,6 +125,10 @@ const menuData = computed(() => [
             key: '/components/tabbar'
           },
           {
+            label: '步骤条 stepper',
+            key: '/components/stepper'
+          },
+          {
             label: '图标 icon',
             key: '/components/icon'
           }

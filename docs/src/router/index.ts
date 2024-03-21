@@ -23,6 +23,7 @@ const IconPage = () => import('../pages/components/IconPage.vue')
 const PaginationPage = () => import('../pages/components/PaginationPage.vue')
 const TabsPage = () => import('../pages/components/TabsPage.vue')
 const TabbarPage = () => import('../pages/components/TabbarPage.vue')
+const StepperPage = () => import('../pages/components/StepperPage.vue')
 const RadioPage = () => import('../pages/components/RadioPage.vue')
 const ListPage = () => import('../pages/components/ListPage.vue')
 const MenuPage = () => import('../pages/components/MenuPage.vue')
@@ -86,6 +87,11 @@ const router = createRouter({
           path: '/components/tabbar',
           name: 'components-tabbar',
           component: TabbarPage
+        },
+        {
+          path: '/components/stepper',
+          name: 'components-stepper',
+          component: StepperPage
         },
         {
           path: '/components/form',

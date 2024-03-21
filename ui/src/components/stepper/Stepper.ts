@@ -7,10 +7,10 @@ import {
   RendererNode,
   RendererElement
 } from 'vue'
-import { define } from '../../utils'
-import { useModelValuePropsForInput } from '../../props'
+import { MakePropsType, define } from '../../utils'
+import { useModelValuePropsForInput, useSizeProps } from '../../props'
 
-export type StepperSize = 'default' | 'small' | undefined
+export type StepperVariant = 'arrow' | 'stone'
 
 export type StepperDirection = 'horizontal' | 'vertical'
 
@@ -42,10 +42,6 @@ export const stepperProps = {
     type: String as PropType<StepperStatus>,
     default: 'process'
   },
-  size: {
-    type: String as PropType<StepperSize>,
-    default: 'default'
-  },
   direction: {
     type: String as PropType<StepperDirection>,
     default: 'horizontal'
@@ -58,18 +54,21 @@ export const stepperProps = {
     type: Array as PropType<StepItem[]>,
     default: []
   },
+  variant: {
+    type: String as PropType<StepperVariant>,
+    default: 'stone'
+  },
+  ...useSizeProps(),
   ...useModelValuePropsForInput()
 }
 
-export type StepsProps = ExtractPublicPropTypes<typeof stepperProps>
-
 export type StepperEmits = {
-  'update:modelValue': (value: boolean) => void
 }
 
 const stepperEmits: StepperEmits = {
-  'update:modelValue': (value: boolean) => void 0
 }
+
+export type StepsProps = MakePropsType<typeof stepperProps, StepperEmits>
 
 export type StepsSlots = {
   default: () => any
@@ -91,8 +90,7 @@ export const NsStepper = define({
   props: stepperProps,
   emits: stepperEmits,
   // @ts-ignore
-  setup(props) {
+  setup (props) {
     return {}
   }
 })
-// 需要增加 import 到 ./index.ts, ../components.ts

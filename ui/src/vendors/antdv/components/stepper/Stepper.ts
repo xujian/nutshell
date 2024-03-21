@@ -7,9 +7,12 @@ export const Stepper = (props: StepsProps & MarginProps, ctx: SetupContext, emit
   const { emit } = ctx
 
   return h(AntdvSteps as any, {
-    class: 'ns-stepper',
+    class: [
+      'ns-stepper',
+      `stepper-variant-${props.variant}`
+    ],
     status: props.status ? props.status : ('process' as StepperStatus),
-    size: props.size === 'default' ? 'default' : 'small',
+    size: props.size !== 'xs' ? 'default' : 'small',
     direction: props.direction === 'horizontal' ? 'horizontal' : 'vertical',
     labelPlacement: props.labelPlacement === 'horizontal' ? 'horizontal' : 'vertical',
     // @ts-ignore
