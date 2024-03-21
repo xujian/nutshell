@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import dayjs from 'dayjs'
-import type { CryptoSecret, TableFilterHandler } from '@uxda/nutshell'
+import { NsDateRangeInput, type CryptoSecret, type TableFilterHandler } from '@uxda/nutshell'
 
 const tableData = ref<any[]>([])
 
@@ -208,6 +208,12 @@ const onColumnEditComplete = ({field, value})=> {
 const onRatingColumnChange = (value: number, row) => {
   console.log('===ComplexTable.vue onRatingColumnChange', value, row)
 }
+
+/**
+ * 邀约时间的自定义筛选
+ */
+const inviteFilterSettings = {
+}
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border"
@@ -253,7 +259,11 @@ const onRatingColumnChange = (value: number, row) => {
       label="客户阶段"
       :filterable="stageFilterableOptions"
       :extraStyle="(model: string) => getStageStyle(model)" />
-    <ns-table-column-datetime field="inviteStart" label="邀约时间" width="170" />
+    <ns-table-column-datetime
+      field="inviteStart"
+      label="邀约时间"
+      width="170"
+      :filterable="inviteFilterSettings" />
     <ns-table-column field="submitUserId" label="邀约提交人员" width="180" />
     <ns-table-column-datetime field="inputDate" label="邀约提交时间" width="170" />
     <ns-table-column field="userIds" :hidden="true" label="协助谈单人员" width="180" />

@@ -7,7 +7,14 @@
       v-model="registerDate"
       :variant="variant"
       :rules="['required']" />
-    </ns-row>
+  </ns-row>
+
+  <h2 class="my-lg">日期区间输入框 &lt;ns-date-input&gt;</h2>
+  <ns-date-range-input name="rangedDate" label="选择日期"
+    :width="300"
+    v-model="rangedDate"
+    @change="onRangeDateInputChange"
+    :rules="['required']" />
 </template>
 
 <script lang="ts" setup>
@@ -15,6 +22,12 @@ import { ref } from 'vue'
 import { variants } from '../../props'
 
 const registerDate = ref<string>('2023-09-01')
+const rangedDate = ref<string[]>()
+
+const onRangeDateInputChange = (value?: string[]) => {
+  // rangedDate.value = value
+  console.log('===onRangeDateInputChange value', value)
+}
 </script>
 
 <style lang="scss">
