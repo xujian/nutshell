@@ -30,7 +30,7 @@ export * from './popover'
 import { NsApp } from './app'
 import { NsButton } from './button'
 import { NsForm } from './form'
-import { NsInput, NsDateInput, NsMobileInput, NsIdInput } from './input'
+import { NsInput, NsDateInput, NsDateRangeInput, NsMobileInput, NsIdInput } from './input'
 import { NsSwitch } from './switch'
 import { NsSelect, NsCascadingSelect, NsMultipleSelect } from './select'
 import { NsCheckbox } from './checkbox'
@@ -60,6 +60,7 @@ const components = {
   NsButton,
   NsInput,
   NsDateInput,
+  NsDateRangeInput,
   NsMobileInput,
   NsIdInput,
   NsSwitch,

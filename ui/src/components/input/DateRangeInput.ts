@@ -18,6 +18,10 @@ export const dateRangeInputProps = {
     type: Function as PropType<(currentDate: DateRange) => boolean>
   },
   ...useFieldProps(),
+  inside: {
+    type: Boolean,
+    default: false,
+  }
 }
 
 export type DateRangeInputEmits = {

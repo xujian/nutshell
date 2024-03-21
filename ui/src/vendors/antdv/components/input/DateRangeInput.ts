@@ -1,4 +1,4 @@
-import {h, ref, defineComponent, Ref, computed, toRaw, ComputedRef} from 'vue'
+import {h, ref, defineComponent, Ref, computed, toRaw, ComputedRef, VNode} from 'vue'
 import { FormItem as AntFormItem, RangePicker } from 'ant-design-vue'
 import 'dayjs/locale/zh-cn'
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN'
@@ -19,7 +19,6 @@ export const DateRangeInput = defineComponent({
   props: dateRangeInputProps,
   emits: dataRangeInputEmits,
   setup: (props, { emit }) => {
-    console.log('===DateRangeInput props', props.modelValue)
     const classes = [
       'ns-date-range-input',
     ].join(' ')
@@ -45,12 +44,15 @@ export const DateRangeInput = defineComponent({
         ]
     })
 
+    const formItem = ref(null)
+
     return () => h(AntFormItem, {
       name: props.name,
       class: 'ns-form-item',
       label: props.label,
       rules,
     }, () => h(RangePicker, {
+        ref: formItem,
         class: classes,
         visible: visible.value,
         onClose: close,
@@ -63,11 +65,18 @@ export const DateRangeInput = defineComponent({
               return (typeof v === 'string' ? dayjs(v) : v).format('YYYY-MM-DD')
             })
             : []
-          console.log('===onUpdate:value', val, props.onChange)
           props['onUpdate:modelValue']?.(val)
           emit('change', val)
         },
         disabled: props.disabled ?? false,
+        ...props.inside
+           ? {
+              // @ts-ignore
+              getPopupContainer: (element) => {
+                return element.parentElement
+              }
+            }
+          : {}
       })
     )
   }

@@ -121,7 +121,6 @@ const fieldProps = {
   },
   name: {
     type: [String, Array] as PropType<FormItemName>,
-    required: true,
   },
   /**
    * 输入校验规则

@@ -128,62 +128,68 @@ const decryptPhoneNumber = async (data: CryptoSecret) => {
   // 调用远端接口解密手机号
 }
 
-const stageFilterableOptions = [
-  {
-    label: '线索',
-    value: '线索',
-  },
-  {
-    label: '上门',
-    value: '上门',
-  },
-  {
-    label: '终止',
-    value: '终止',
-  },
-]
+const stageFilterableOptions = {
+  data: [
+    {
+      label: '线索',
+      value: '线索',
+    },
+    {
+      label: '上门',
+      value: '上门',
+    },
+    {
+      label: '终止',
+      value: '终止',
+    },
+  ]
+}
 
-const gradeFilterableOptions = [
-  {
-    label: '1',
-    value: 1,
-  },
-  {
-    label: '2',
-    value: 2,
-  },
-  {
-    label: '3',
-    value: 3,
-  },
-  {
-    label: '4',
-    value: 4,
-  },
-  {
-    label: '5',
-    value: 5,
-  },
-]
+const gradeFilterableOptions = {
+  data: [
+    {
+      label: '1',
+      value: 1,
+    },
+    {
+      label: '2',
+      value: 2,
+    },
+    {
+      label: '3',
+      value: 3,
+    },
+    {
+      label: '4',
+      value: 4,
+    },
+    {
+      label: '5',
+      value: 5,
+    },
+  ]
+}
 
-const allTags = [
-  {
-    "label": "微信",
-    "value": "WX"
-  },
-  {
-    "label": "有车",
-    "value": "YC"
-  },
-  {
-    "label": "有房",
-    "value": "YF"
-  },
-  {
-    "label": "本市户口",
-    "value": "BSHK"
+const allTags = {
+  data: [
+      {
+        "label": "微信",
+        "value": "WX"
+      },
+      {
+        "label": "有车",
+        "value": "YC"
+      },
+      {
+        "label": "有房",
+        "value": "YF"
+      },
+      {
+        "label": "本市户口",
+        "value": "BSHK"
+      }
+    ]
   }
-]
 
 const selectedRows = ref<any[]>([])
 
@@ -213,6 +219,15 @@ const onRatingColumnChange = (value: number, row) => {
  * 邀约时间的自定义筛选
  */
 const inviteFilterSettings = {
+  component: NsDateRangeInput,
+  props: {
+    inside: true,
+  }
+}
+
+// * 邀约时间的筛选处理
+const onInviteFilterChange = (value: string[]) => {
+  console.log('===onInviteFilterChange value', value)
 }
 </script>
 <template>
@@ -263,7 +278,8 @@ const inviteFilterSettings = {
       field="inviteStart"
       label="邀约时间"
       width="170"
-      :filterable="inviteFilterSettings" />
+      :filterable="inviteFilterSettings"
+      @change="onInviteFilterChange" />
     <ns-table-column field="submitUserId" label="邀约提交人员" width="180" />
     <ns-table-column-datetime field="inputDate" label="邀约提交时间" width="170" />
     <ns-table-column field="userIds" :hidden="true" label="协助谈单人员" width="180" />

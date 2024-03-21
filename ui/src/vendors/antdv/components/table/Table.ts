@@ -1,6 +1,6 @@
 import { SetupContext, computed, h,VNode, ref, reactive } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance } from 'vxe-table'
-import type { CustomColumnFunctionalRender, TableColumnData, TableProps, CustomColumnSlots, TableColumnDefinition, TableColumnProps, TableFilterQuery } from '../../../../components'
+import type { CustomColumnFunctionalRender, TableColumnData, TableProps, CustomColumnSlots, TableColumnDefinition, TableColumnProps, TableFilterQuery, TableColumnFilterSettings } from '../../../../components'
 import { NsPagination, isCustomColumnSlots  } from '../../../../components'
 import columnCustomRenders from './columns'
 import { NsTableColumnSelector } from '../../../../components'
@@ -118,13 +118,14 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
      * @param props
      * @returns
      */
-    function buildFilterConfig (props: TableColumnProps): Partial<VxeColumnProps>{
+    function buildFilterConfig (props: TableColumnProps): Partial<VxeColumnProps> {
       if (!props.filterable) {
         return {}
       }
-      return {
-        filters: props.filterable,
-      }
+      const result: Partial<VxeColumnProps> =  {
+          filters: props.filterable.data || [],
+        }
+      return result
     }
 
     // 循环渲染表格列
@@ -245,6 +246,21 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
                 ])
               }
             }
+          }
+          // 开始处理自定义列头筛选
+          const filterable = column.props.filterable
+          if (filterable &&
+            filterable.component
+          ) {
+            // @ts-ignore
+            colummConfig.slots['filter'] = ({columnIndex}) => h('div', {
+              class: [
+                'table-column-custom-filter'
+              ]
+            }, h(filterable.component, {
+              ...filterable.props,
+              onChange: column.props.onChange
+            }))
           }
         }
       }

@@ -1,4 +1,4 @@
-import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext } from 'vue'
+import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
 import { buildProps } from '../../utils/private/props'
@@ -6,13 +6,17 @@ import { LabelValuePair } from '../../shared/models'
 
 export type TableColumnAlign = 'left' | 'center' | 'right'
 export type TableColumnFixed = undefined | 'left' | 'right'
+
 /**
- * 列筛选选项
+ * 自定义列头筛选框
+ * 例如按时间区间筛选
+ * 或者显示一个输入框
  */
-export type TableColumnFilterOptions = {
-  label: string
-  value: string | number
-}[]
+export type TableColumnFilterSettings = {
+  data: LabelValuePair[],
+  component: VNode | (() => VNode),
+  props: any
+}
 
 export const useTableColumnProps = buildProps({
   /**
@@ -49,8 +53,7 @@ export const useTableColumnProps = buildProps({
    * 列可筛选
    */
   filterable: {
-    type: Array as PropType<TableColumnFilterOptions>
-
+    type: Object as PropType<TableColumnFilterSettings>
   },
   /**
    * 列说明
