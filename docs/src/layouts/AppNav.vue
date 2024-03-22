@@ -199,6 +199,10 @@ const menuData = computed(() => [
           {
             label: '时间线 timeline',
             key: '/components/timeline'
+          },
+          {
+            label: '详表 facts',
+            key: '/components/facts'
           }
         ]
       },

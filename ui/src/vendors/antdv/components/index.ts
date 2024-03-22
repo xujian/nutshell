@@ -17,6 +17,7 @@ import { Drawer } from './drawer'
 import { RadioGroup } from './radio'
 import { Pagination } from './pagination'
 import { Popover } from './popover'
+import { Facts } from './facts'
 
 const components = {
   Form,
@@ -43,7 +44,8 @@ const components = {
   Drawer,
   RadioGroup,
   Pagination,
-  Popover
+  Popover,
+  Facts,
 }
 
 export default components

@@ -1,0 +1,14 @@
+.ns-facts {
+  &.ant-descriptions {
+    overflow: hidden;
+    .ant-descriptions-view {
+      overflow: hidden;
+    }
+    .ant-descriptions-item-label {
+      padding: .5em;
+    }
+    .ant-descriptions-item-content {
+      background-color: #fff;
+    }
+  }
+}

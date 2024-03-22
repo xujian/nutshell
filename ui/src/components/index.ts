@@ -25,6 +25,7 @@ export * from './table'
 export * from './empty'
 export * from './pagination'
 export * from './repeator'
+export * from './facts'
 export * from './popover'
 export * from './timeline'
 
@@ -55,6 +56,7 @@ import { NsPagination } from './pagination'
 import { NsRepeator } from './repeator'
 import { NsTable, NsTableColumn, NsTableColumnSelector } from './table'
 import { NsPopover } from './popover'
+import { NsFacts } from './facts'
 import { NsTimeline } from './timeline'
 
 const components = {
@@ -97,6 +99,7 @@ const components = {
   NsEmpty,
   NsEditable,
   NsRepeator,
+  NsFacts,
   NsTable,
   NsPopover,
   NsTimeline,
