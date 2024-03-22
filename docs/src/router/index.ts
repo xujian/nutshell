@@ -25,6 +25,7 @@ const TabsPage = () => import('../pages/components/TabsPage.vue')
 const TabbarPage = () => import('../pages/components/TabbarPage.vue')
 const StepperPage = () => import('../pages/components/StepperPage.vue')
 const RadioPage = () => import('../pages/components/RadioPage.vue')
+const TimelinePage = () => import('../pages/components/TimelinePage.vue')
 const ListPage = () => import('../pages/components/ListPage.vue')
 const MenuPage = () => import('../pages/components/MenuPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
@@ -154,14 +155,14 @@ const router = createRouter({
           component: PaginationPage
         },
         {
-          path: '/components/list',
-          name: 'components-list',
-          component: ListPage
-        },
-        {
           path: '/components/radio',
           name: 'components-radio',
           component: RadioPage
+        },
+        {
+          path: '/components/timeline',
+          name: 'components-timeline',
+          component: TimelinePage
         },
         {
           path: '/interactive/dialog',

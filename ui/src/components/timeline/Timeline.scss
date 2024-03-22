@@ -1,0 +1,17 @@
+.ns-timeline {
+  width: 100%;
+  .title {
+    font-weight: bold;
+  }
+  .time {
+    color: var(--ns-neutral---30);
+  }
+  .caption {
+    color:  var(--ns-neutral);
+  }
+  .status-off {
+   .title {
+    color:  var(--ns-neutral);
+   }
+  }
+}

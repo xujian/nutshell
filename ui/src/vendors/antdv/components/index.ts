@@ -12,6 +12,7 @@ import { Tabs } from './tabs'
 import { Chips } from './chip'
 import { Menu } from './menu'
 import { Stepper } from './stepper'
+import { Timeline } from './timeline'
 import { Drawer } from './drawer'
 import { RadioGroup } from './radio'
 import { Pagination } from './pagination'
@@ -38,6 +39,7 @@ const components = {
   Chips,
   Menu,
   Stepper,
+  Timeline,
   Drawer,
   RadioGroup,
   Pagination,

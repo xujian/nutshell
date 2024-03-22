@@ -26,6 +26,7 @@ export * from './empty'
 export * from './pagination'
 export * from './repeator'
 export * from './popover'
+export * from './timeline'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -54,6 +55,7 @@ import { NsPagination } from './pagination'
 import { NsRepeator } from './repeator'
 import { NsTable, NsTableColumn, NsTableColumnSelector } from './table'
 import { NsPopover } from './popover'
+import { NsTimeline } from './timeline'
 
 const components = {
   NsApp,
@@ -96,7 +98,8 @@ const components = {
   NsEditable,
   NsRepeator,
   NsTable,
-  NsPopover
+  NsPopover,
+  NsTimeline,
 }
 
 const properties = Object.fromEntries(

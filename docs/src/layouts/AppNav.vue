@@ -195,6 +195,10 @@ const menuData = computed(() => [
           {
             label: '分页 pagination',
             key: '/components/pagination'
+          },
+          {
+            label: '时间线 timeline',
+            key: '/components/timeline'
           }
         ]
       },
