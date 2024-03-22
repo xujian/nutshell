@@ -19,25 +19,39 @@ function transformItemsToSlots (items: TimelineItem[], slots: SetupContext['slot
 
   return items.map(item => {
 
-    return h(AntdvTimelineItem, {
-      color: item.status === 'off' ? 'gray' : ''
-    }, () => h('div', {
+    // 把 <ns-timeline><#dot> 提供给 AntdvTimeline 的 #dot slot
+    const dot = slots.dot
+      ? () => slots.dot?.({item})
+      : null
+
+    const defaultSlot = () => h('div', {
         class: [
           'timeline-item-content',
-          `status-${item.status || 'normal'}`
         ]
       }, [
-        title(item),
-        // content slot 与 time/caption 互斥
-        ...slots.content
-          ? [
-              content(item),
-            ]
-          : [
-              time(item),
-              caption(item),
-            ]
-      ]))
+          title(item),
+          // content slot 与 time/caption 互斥
+          ...slots.content
+            ? [
+                content(item),
+              ]
+            : [
+                time(item),
+                caption(item),
+              ]
+          ]
+      )
+
+    return h(AntdvTimelineItem, {
+      color: item.status === 'off' ? 'gray' : '',
+      class: [
+        'timeline-item',
+        `status-${item.status || 'normal'}`
+      ]
+    }, {
+        default: defaultSlot,
+        dot,
+      })
     })
 }
 
@@ -48,6 +62,8 @@ export const Timeline = (props: TimelineProps, { slots, emit }: SetupContext) =>
 
   return h(AntdvTimeline, {
     class: 'ns-timeline',
-  }, () => items)
+  }, {
+    default: () => items,
+  })
 }
 // + import => ./index.ts, ../components.ts

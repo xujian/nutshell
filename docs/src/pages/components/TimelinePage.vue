@@ -7,6 +7,10 @@
   <h3>自定义 slot: content</h3>
   <p>&nbsp;</p>
   <story file="timeline/slot-content.vue" />
+  <p>&nbsp;</p>
+  <h3>自定义 slot: dot</h3>
+  <p>&nbsp;</p>
+  <story file="timeline/slot-dot.vue" />
 </template>
 
 <script lang="ts" setup>

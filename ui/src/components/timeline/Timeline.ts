@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
 
 export type TimelineStatus = 'normal' | 'on' | 'off'
@@ -24,7 +24,7 @@ const timelineEmits: TimelineEmits = {
 }
 
 export type TimelineSlots = {
-  item: never,
+  dot: ({item}: {item: TimelineItem}) => VNode
 }
 
 export type TimelineProps = MakePropsType<typeof timelineProps, TimelineEmits>

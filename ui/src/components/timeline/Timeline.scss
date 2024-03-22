@@ -1,7 +1,23 @@
 .ns-timeline {
   width: 100%;
+  .timeline-item {
+    .dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 12px;
+      border: 2px solid var(--ns-primary);
+      background-color: #fff;
+      line-height: 20px;
+      text-align: center;
+      cursor: default;
+      color: var(--ns-primary);
+    }
+  }
+
   .title {
     font-weight: bold;
+    font-size: 14px;
+    color: var(--ns-primary);
   }
   .time {
     color: var(--ns-neutral---30);
@@ -10,8 +26,12 @@
     color:  var(--ns-neutral);
   }
   .status-off {
-   .title {
-    color:  var(--ns-neutral);
-   }
+    .title {
+        color:  var(--ns-neutral);
+    }
+    .dot {
+      color: var(--ns-neutral);
+      border-color: var(--ns-neutral);
+    }
   }
 }
