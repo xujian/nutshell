@@ -1,6 +1,7 @@
 import { ExtractPublicPropTypes, PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForBoolean, useTriggerProps } from '../../props'
+import { MenuItem } from '../menu'
 
 export type PopoverTriggerType = 'hover' | 'focus' | 'click' | 'contextmenu'
 export type PopoverPositionType =
@@ -16,10 +17,6 @@ export type PopoverPositionType =
   | 'leftBottom'
   | 'rightTop'
   | 'rightBottom'
-export type MenuItem = {
-  label: string
-  value: string
-}
 
 export const popoverProps = {
   ...useModelValuePropsForBoolean(),
