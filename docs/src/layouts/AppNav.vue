@@ -203,6 +203,10 @@ const menuData = computed(() => [
           {
             label: '详表 facts',
             key: '/components/facts'
+          },
+          {
+            label: '文件表 files',
+            key: '/components/files'
           }
         ]
       },

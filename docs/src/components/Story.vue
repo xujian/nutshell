@@ -1,5 +1,5 @@
 <template>
-  <ns-card variant="outlined" fill="surface" class="story-card">
+  <ns-card variant="outlined" class="story-card">
     <component :is="StoryComponent" v-if="isLoaded" />
     <template #footer>
       <div class="full-width flex-row">

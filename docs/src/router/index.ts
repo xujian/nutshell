@@ -16,6 +16,7 @@ const RatingInputPage = () => import('../pages/components/RatingInputPage.vue')
 const SwitchPage = () => import('../pages/components/SwitchPage.vue')
 const PopoverPage = () => import('../pages/components/PopoverPage.vue')
 const FactsPage = () => import('../pages/components/FactsPage.vue')
+const FilesPage = () => import('../pages/components/FilesPage.vue')
 const EmptyPage = () => import('../pages/components/EmptyPage.vue')
 const SelectPage = () => import('../pages/components/SelectPage.vue')
 const CascadingSelectPage = () => import('../pages/components/CascadingSelectPage.vue')
@@ -164,6 +165,11 @@ const router = createRouter({
           path: '/components/facts',
           name: 'components-facts',
           component: FactsPage
+        },
+        {
+          path: '/components/files',
+          name: 'components-files',
+          component: FilesPage
         },
         {
           path: '/components/radio',

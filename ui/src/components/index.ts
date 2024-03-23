@@ -28,6 +28,7 @@ export * from './repeator'
 export * from './facts'
 export * from './popover'
 export * from './timeline'
+export * from './files'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -57,6 +58,7 @@ import { NsRepeator } from './repeator'
 import { NsTable, NsTableColumn, NsTableColumnSelector } from './table'
 import { NsPopover } from './popover'
 import { NsFacts } from './facts'
+import { NsFiles} from './files'
 import { NsTimeline } from './timeline'
 
 const components = {
@@ -100,6 +102,7 @@ const components = {
   NsEditable,
   NsRepeator,
   NsFacts,
+  NsFiles,
   NsTable,
   NsPopover,
   NsTimeline,
