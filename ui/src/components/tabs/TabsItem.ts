@@ -1,6 +1,6 @@
 import { ObjectEmitsOptions, SlotsType } from 'vue'
 import { MakePropsType, define } from '../../utils'
-import { TabData } from './Tabs'
+import { TabsItem } from './Tabs'
 
 /*
  * <ns-tabs-item>
@@ -20,16 +20,15 @@ export const tabsItemProps = {
   /** 指定 tab 文本 */
   key: {
     type: String,
-    require: true,
   }
 }
 
 export type TabsItemEmits = {
-  click: (item: TabData) => void
+  click: (item: TabsItem) => void
 }
 
 const emits: TabsItemEmits = {
-  click: (item: TabData) => void 0
+  click: (item: TabsItem) => void 0
 }
 
 export type TabsItemSlots = {

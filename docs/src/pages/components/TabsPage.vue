@@ -1,5 +1,5 @@
 <template>
-  <h1 class="my-lg">Tabs &lt;ns-table&gt;</h1>
+  <h1 class="my-lg">Tabs &lt;ns-tabs&gt;</h1>
   <h3>基本特性</h3>
   <p>&nbsp;</p>
   <ns-tabs class="normal-tabs"
@@ -40,7 +40,6 @@
   </ns-tabs>
   <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
     <symbol id="icon-coffee" viewBox="0 0 20 20">
-      <title>icon-coffee</title>
       <path fill="var(--handle-color)" d="M15,17H14V9h3a3,3,0,0,1,3,3h0A5,5,0,0,1,15,17Zm1-6v3.83A3,3,0,0,0,18,12a1,1,0,0,0-1-1Z"></path>
       <rect fill="var(--cup-color)" x="1" y="7" width="15" height="12" rx="3" ry="3"></rect>
       <path fill="var(--smoke-color)" d="M7.07,5.42a5.45,5.45,0,0,1,0-4.85,1,1,0,0,1,1.79.89,3.44,3.44,0,0,0,0,3.06,1,1,0,0,1-1.79.89Z"></path>
@@ -48,19 +47,27 @@
       <path fill="var(--smoke-color)" d="M11.07,5.42a5.45,5.45,0,0,1,0-4.85,1,1,0,0,1,1.79.89,3.44,3.44,0,0,0,0,3.06,1,1,0,1,1-1.79.89Z"></path>
     </symbol>
   </svg>
+  <p>&nbsp;</p>
+  <h3>使用 ITEMS</h3>
+  <p>&nbsp;</p>
+  <story file="tabs/use-items" />
+  <p>&nbsp;</p>
+
+  <p>&nbsp;</p>
+  <h3>使用 &lt;ns-tabs-item&gt;</h3>
+  <p>&nbsp;</p>
+  <story file="tabs/use-slots" />
+  <p>&nbsp;</p>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 const activeTab = ref<string>('single')
 
 const onTabsChange = (value: string) => {
   console.log('OPOPOPOPOPOPOPOPOPOPOPOP', value)
 }
-
-onMounted(async () => {
-})
 </script>
 
 <style lang="scss">

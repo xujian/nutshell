@@ -1,11 +1,11 @@
-import { PropType, ObjectEmitsOptions, SlotsType, useSlots } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, useSlots, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForInput } from '../../props'
 
-export type TabData = {
-  label: string
-  value: string
-  slots: any
+export type TabsItem = {
+  tab: string,
+  key?: string,
+  content?: string | VNode,
 }
 
 export type TabsVariant = 'line' | 'card' | 'plain'
@@ -36,11 +36,12 @@ const emits: TabsEmits = {
 }
 
 export type TabsSlots = {
-  default: () => any
+  default: () => VNode,
+  before: () => VNode,
+  after: () => VNode,
 }
 
 export type TabsProps = MakePropsType<typeof tabsProps, TabsEmits>
-
 /**
  * Tabs 组件 <ns-tabs>
  */
@@ -48,26 +49,25 @@ export const NsTabs = define({
   name: 'NsTabs',
   props: tabsProps,
   emits,
-  setup(props, ctx) {
-    // 从子组件读取 items
-    // const getItems: () => TabData[] | undefined = () => {
-    //   const { default: defaultSlot } = useSlots()
-    //   if (!defaultSlot) return void 0
-    //   const slots = defaultSlot()
-    //   if (!slots.length) return void 0
-    //   return slots.map((s) => ({
-    //     label: s.props?.tab,
-    //     value: s.props?.key as string,
-    //     slots: s.children
-    //   }))
-    // }
+  setup (props, { slots }) {
 
-    // const items = getItems()
+    // 确定 children
+    // slots 优先级高于 items
+    // 如果定义了 slots, items 失效
+    const items: TabsItem[] = slots.default?.().map((s, index) => {
+      // @ts-ignore
+      const tabSlot = s.children?.tab?.()
+      return {
+        key: s.props?.key as string,
+        tab: tabSlot || s.props?.tab || `Tab-${index}` as string,
+        content: s.children
+      }
+    }) || props.items || []
 
     return {
-      // props: {
-      //   items: items
-      // }
+      props: {
+        items
+      }
     }
   }
 })
