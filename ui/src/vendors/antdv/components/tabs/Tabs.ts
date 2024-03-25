@@ -47,7 +47,7 @@ export const Tabs = (props: TabsProps, { emit, slots }: SetupContext) => {
           )
         ),
       rightExtra: slots.after,
-      leftExtra: slots.left
+      leftExtra: slots.before
     }
   )
 }
