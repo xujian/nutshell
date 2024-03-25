@@ -3,8 +3,8 @@ import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForInput } from '../../props'
 
 export type TabData = {
-  label: string,
-  value: string,
+  label: string
+  value: string
   slots: any
 }
 
@@ -22,9 +22,9 @@ export const tabsProps = {
   },
   /** 页签对齐方向 */
   align: {
-    type: String as PropType<TabsAlign>,
+    type: String as PropType<TabsAlign>
   },
-  ...useModelValuePropsForInput(),
+  ...useModelValuePropsForInput()
 }
 
 export type TabsEmits = {
@@ -36,7 +36,7 @@ const emits: TabsEmits = {
 }
 
 export type TabsSlots = {
-  default: () => any,
+  default: () => any
 }
 
 export type TabsProps = MakePropsType<typeof tabsProps, TabsEmits>
@@ -48,27 +48,26 @@ export const NsTabs = define({
   name: 'NsTabs',
   props: tabsProps,
   emits,
-  setup (props, ctx) {
-
+  setup(props, ctx) {
     // 从子组件读取 items
-    const getItems: () => TabData[] | undefined = () => {
-      const { default: defaultSlot } = useSlots()
-      if (!defaultSlot) return void 0
-      const slots = defaultSlot()
-      if (!slots.length) return void 0
-      return slots.map(s => ({
-        label: s.props?.tab,
-        value: s.props?.key as string,
-        slots: s.children
-      }))
-    }
+    // const getItems: () => TabData[] | undefined = () => {
+    //   const { default: defaultSlot } = useSlots()
+    //   if (!defaultSlot) return void 0
+    //   const slots = defaultSlot()
+    //   if (!slots.length) return void 0
+    //   return slots.map((s) => ({
+    //     label: s.props?.tab,
+    //     value: s.props?.key as string,
+    //     slots: s.children
+    //   }))
+    // }
 
-    const items = getItems()
+    // const items = getItems()
 
     return {
-      props: {
-        items
-      }
+      // props: {
+      //   items: items
+      // }
     }
   }
 })
