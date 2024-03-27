@@ -55,3 +55,12 @@ export const useModelValuePropsForStringArray = buildProps({
     type: Function as PropType<(value: string[]) => void>
   }
 })
+
+export const useModelValuePropsForArray = buildProps<T>({
+  modelValue: {
+    type: Array as PropType<T[]>
+  },
+  'onUpdate:modelValue': {
+    type: Function as PropType<(value: T[]) => void>
+  }
+})

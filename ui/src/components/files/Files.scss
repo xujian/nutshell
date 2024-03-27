@@ -1,39 +1,90 @@
-.ns-files {
-  .files-item {
-    width: 120px;
+.ns-file {
+  width: 100px;
+  .icon-item {
+    background-size: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--ns-surface);
+  }
+  .thumb-item {
+    background-size: cover;
+    background-position: center;
+  }
+  .toolbar {
+    height: 32px;
+    padding: 0 8px;
+    width: 100%;
+    background-color: #00000088;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: transform .33s;
+    border-radius: var(--ns-border-radius);
+    cursor: default;
     .icon {
-      width: 120px;
-      height: 120px;
-      background-size: 32px;
-      background-repeat: no-repeat;
+      height: 24px;
+      width: 24px;
+      background-size: 16px;
       background-position: center;
-      background-color: var(--ns-surface);
-      border-radius: var(--ns-border-radius);
+      background-repeat: no-repeat;
       cursor: pointer;
+      border-radius: 8px;
+      &:hover {
+        background-color: #00000088;
+      }
     }
-    .filename {
-      cursor: pointer;
-      line-height: 2em;
-      font-size: 12px;
-      max-width: 100%;
+    .icon-preview {
+      background-image: url(https://cdn.ddjf.com/static/images/loan-manage/fangda@3x.png);
+    }
+    .icon-delete {
+      background-image: url(https://cdn.ddjf.com/static/images/loan-manage/shanchu@3x.png);
+    }
+    .icon-download {
+      background-image: url(https://cdn.ddjf.com/static/images/loan-manage/yunduanxiazai@3x.png);
+    }
+  }
+  .icon-item, .thumb-item {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--ns-border-radius);
+    cursor: pointer;
+    .toolbar {
+      transform: translate3d(0, 32px, 0);
+    }
+    &:hover {
+      .toolbar {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+  .filename {
+    cursor: pointer;
+    line-height: 2em;
+    font-size: 12px;
+    max-width: 100%;
+    overflow: hidden;
+    width: fit-content;
+    .base {
+      flex-grow: 1;
       overflow: hidden;
-      width: fit-content;
-      .base {
-        flex-grow: 1;
+      .ellipsis {
+        max-width: 100%;
+        text-overflow: ellipsis;
         overflow: hidden;
-        .ellipsis {
-          max-width: 100%;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-        }
+        white-space: nowrap;
       }
-      .ext {
-        flex-grow: 0;
-      }
+    }
+    .ext {
+      flex-grow: 0;
     }
   }
   .icon-type-pdf {
     background-image: url(https://cdn.ddjf.com/static/images/loan-manage/form-pdf-icon@2x.png);
   }
+}
+
+.ns-files {
+  margin-inline: calc(-1 * var(--ns-spacing-xs));
 }
