@@ -24,6 +24,13 @@ const files = ref([
     type: 'image',
     url: 'https://images.unsplash.com/photo-1541182388496-ac92a3230e4c',
     thumb: 'https://images.unsplash.com/photo-1541182388496-ac92a3230e4c?q=80&w=480&auto=format&fit=crop'
+  },
+  {
+    id: '65d6e705febeec0001323139',
+    name: '1653152566529.jpeg',
+    type: 'image',
+    url: 'https://images.unsplash.com/photo-1653152566529-c3b44fd5efea',
+    thumb: 'https://images.unsplash.com/photo-1653152566529-c3b44fd5efea?q=80&w=480&auto=format&fit=crop'
   }
 ])
 const onUploadComplete = () => {

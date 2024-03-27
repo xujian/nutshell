@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDisplayProps, useModelValuePropsForArray, useModelValuePropsForStringArray } from '../../props'
 import type { File } from '../files'
@@ -39,7 +39,7 @@ export const uploadProps = {
 export type UploadEmits = {
 }
 
-const uploadEmits: UploadEmits = {
+export const uploadEmits: UploadEmits = {
 }
 
 export type UploadSlots = {
@@ -56,6 +56,7 @@ export const NsUpload = define({
   props: uploadProps,
   emits: uploadEmits,
   setup (props, ctx) {
+
     return {
     }
   }

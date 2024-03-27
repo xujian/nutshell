@@ -110,10 +110,18 @@ export const NsFile = defineComponent({
         class: [
           'thumb-item',
         ],
-        style: {
-          backgroundImage: `url(${props.thumb || props.url})`
+        onClick: () => {
+          console.log('===props.id', props.id)
+          emit('preview', props.id)
         }
-      }, toolbar()),
+      }, [
+        h('img', {
+          class: 'image',
+          'data-id': props.id,
+          src: props.thumb ?? props.url
+        }),
+        toolbar()
+      ]),
       filename = () => {
         const { base, ext} = resolveFileName(props.name!)
         return h('div', {

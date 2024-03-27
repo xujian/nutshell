@@ -1,6 +1,8 @@
-import { PropType, defineComponent, h } from 'vue'
+import { PropType, defineComponent, h, onMounted, ref } from 'vue'
+import Viewer from 'viewerjs'
 import { MakePropsType } from '../../utils'
 import { NsFile, File } from './File'
+import 'viewerjs/dist/viewer.min.css'
 
 export const filesProps = {
   items: {
@@ -28,6 +30,10 @@ export const NsFiles = defineComponent({
   props: filesProps,
   emits: filesEmits,
   setup (props, ctx) {
+
+    const me = ref<HTMLElement>(),
+      viewer = ref()
+
     const item = (item: File) => h(NsFile, {
       class: [
         'files-item',
@@ -39,6 +45,7 @@ export const NsFiles = defineComponent({
       },
       onPreview (id?: string) {
         console.log('===NsFile onPreview id', id)
+        // viewer.value.view()
       },
       ...item,
     })
@@ -46,7 +53,29 @@ export const NsFiles = defineComponent({
     const items = props.items || [],
       slots = items.map(item)
 
+    const initViewer = () => {
+      viewer.value = new Viewer(me.value!, {
+        container: document.body,
+        navbar: false,
+        toolbar: false,
+        zoomable: false,
+        url (image: HTMLImageElement) {
+          // 查原图的 url
+          // 参数 image 是缩略图
+          const id = image.getAttribute('data-id')
+          if (!id) return image.src
+          const item = items.find((f: any) => f.id === id)
+          if (!item) return image.src
+          return item.url
+        }
+      })
+      console.log('===viewer.value', viewer.value)
+    }
+
+    onMounted(initViewer)
+
     return () => h('div', {
+      ref: me,
       class: [
         'ns-files',
         'row',

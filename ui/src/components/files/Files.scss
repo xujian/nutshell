@@ -1,3 +1,4 @@
+
 .ns-file {
   width: 100px;
   .icon-item {
@@ -7,8 +8,12 @@
     background-color: var(--ns-surface);
   }
   .thumb-item {
-    background-size: cover;
-    background-position: center;
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
   .toolbar {
     height: 32px;

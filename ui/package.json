@@ -80,6 +80,7 @@
     "tippy.js": "^6.3.7",
     "typescript": "^5.2.2",
     "validator": "^13.11.0",
+    "viewerjs": "^1.11.6",
     "vue-draggable-plus": "^0.3.5",
     "vue-tippy": "v6",
     "vxe-table": "^4.5.13"
