@@ -29,6 +29,7 @@ export * from './facts'
 export * from './popover'
 export * from './timeline'
 export * from './files'
+export * from './upload'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -58,7 +59,8 @@ import { NsRepeator } from './repeator'
 import { NsTable, NsTableColumn, NsTableColumnSelector } from './table'
 import { NsPopover } from './popover'
 import { NsFacts } from './facts'
-import { NsFiles} from './files'
+import { NsFiles } from './files'
+import { NsUpload } from './upload'
 import { NsTimeline } from './timeline'
 
 const components = {
@@ -103,6 +105,7 @@ const components = {
   NsRepeator,
   NsFacts,
   NsFiles,
+  NsUpload,
   NsTable,
   NsPopover,
   NsTimeline,

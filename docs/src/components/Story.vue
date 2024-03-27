@@ -77,7 +77,6 @@ onMounted(importStory)
   justify-content: center;
   >.card-body {
     display: flex;
-    justify-content: center;
     align-items: center;
   }
   .card-footer {

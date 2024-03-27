@@ -28,6 +28,7 @@ const TabbarPage = () => import('../pages/components/TabbarPage.vue')
 const StepperPage = () => import('../pages/components/StepperPage.vue')
 const RadioPage = () => import('../pages/components/RadioPage.vue')
 const TimelinePage = () => import('../pages/components/TimelinePage.vue')
+const UploadPage = () => import('../pages/components/UploadPage.vue')
 const ListPage = () => import('../pages/components/ListPage.vue')
 const MenuPage = () => import('../pages/components/MenuPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
@@ -180,6 +181,11 @@ const router = createRouter({
           path: '/components/timeline',
           name: 'components-timeline',
           component: TimelinePage
+        },
+        {
+          path: '/components/upload',
+          name: 'components-upload',
+          component: UploadPage
         },
         {
           path: '/interactive/dialog',

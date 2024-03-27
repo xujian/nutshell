@@ -174,6 +174,10 @@ const menuData = computed(() => [
             label: '开关 switch',
             key: '/components/switch'
           },
+          {
+            label: '文件上传 upload',
+            key: '/components/upload'
+          },
         ]
       },
       {

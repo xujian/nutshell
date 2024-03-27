@@ -1,9 +1,11 @@
 <template>
-  <ns-files :items="items" />
+  <ns-upload v-model="files" caption="支持格式 png/jpg/jpeg/pdf" @complete="onUploadComplete" />
 </template>
 
 <script lang="ts" setup>
-const items = [
+import { ref } from 'vue'
+
+const files = ref([
   {
     id: '65d6e700febeec0001323135',
     name: '方案.pdf',
@@ -20,8 +22,11 @@ const items = [
     id: '65d6e705febeec0001323137',
     name: '证件照.jpeg',
     type: 'image',
-    url: 'https://images-test-oss.ddjf.info/loankit/image/2024/0326/66024333001b290001125add.png?Expires=1711468799&OSSAccessKeyId=LTAI5tRQ5chXmPpX4szHdiG2&Signature=S3P7e%2BXrsPJZlk01RdoqS0c%2Bl0M%3D',
-    thumb: 'https://images-test-oss.ddjf.info/loankit/image/2024/0326/66024333001b290001125add.png?Expires=1711468799&OSSAccessKeyId=LTAI5tRQ5chXmPpX4szHdiG2&Signature=Ry3TMpUYaqOhyAIphNAf%2BV60Dlk%3D&x-oss-process=image%2Fresize%2Cw_800%2Ch_800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpeg'
+    url: 'https://images.unsplash.com/photo-1541182388496-ac92a3230e4c',
+    thumb: 'https://images.unsplash.com/photo-1541182388496-ac92a3230e4c?q=80&w=480&auto=format&fit=crop'
   }
-]
+])
+const onUploadComplete = () => {
+
+}
 </script>
