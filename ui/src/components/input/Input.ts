@@ -7,7 +7,7 @@ import { FullValidationRule, ValidationRule, buildStyles, formatRules } from '..
  * 输入框类型
  */
 export type InputType =
-  'text'
+  | 'text'
   | 'url'
   | 'date'
   | 'file'
@@ -42,30 +42,32 @@ export const inputProps = {
    *
    */
   maxlength: {
-    type: Number,
+    type: Number
   },
   lazy: {
     type: Boolean,
-    default: true,
+    default: true
   },
   ...useVariantProps(),
   ...useModelValuePropsForInput(),
-  ...useFieldProps(),
+  ...useFieldProps()
 }
 
 export type InputEmits = {
   change: (value?: string | number) => void
   blur: (value?: string | number) => void
+  focus: (value?: string | number) => void
 }
 
 export const inputEmits: InputEmits = {
   change: (value?: string | number) => void 0,
   blur: (value?: string | number) => void 0,
+  focus: (value?: string | number) => void 0
 }
 
 export type InputSlots = {
   /** 前缀 */
-  prepend: never,
+  prepend: never
   /** 后缀 */
   append: never
 }
@@ -76,17 +78,16 @@ export type InputProps = MakePropsType<typeof inputProps, InputEmits>
  * 输入框 <ns-input>
  */
 export const NsInput = define({
-    name: 'NsInput',
-    props: inputProps,
-    emits: inputEmits,
-    setup (props, ctx) {
-      const finalRules = formatRules(props.rules as ValidationRule[], props)
-      return {
-        props: {
-          style: buildStyles(props),
-          rules: finalRules as FullValidationRule[]
-        }
+  name: 'NsInput',
+  props: inputProps,
+  emits: inputEmits,
+  setup(props, ctx) {
+    const finalRules = formatRules(props.rules as ValidationRule[], props)
+    return {
+      props: {
+        style: buildStyles(props),
+        rules: finalRules as FullValidationRule[]
       }
     }
   }
-)
+})
