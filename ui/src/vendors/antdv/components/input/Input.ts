@@ -33,7 +33,7 @@ export type AntInputType =
   | 'password'
 
 /**
- * Antdv DateInput
+ * Antdv Input
  */
 export const Input = defineComponent({
   name: 'Input',

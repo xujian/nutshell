@@ -34,7 +34,14 @@ export * from './upload'
 import { NsApp } from './app'
 import { NsButton } from './button'
 import { NsForm } from './form'
-import { NsInput, NsDateInput, NsDateRangeInput, NsMobileInput, NsIdInput } from './input'
+import {
+  NsInput,
+  NsDateInput,
+  NsDateRangeInput,
+  NsMobileInput,
+  NsIdInput,
+  NsTextarea
+} from './input'
 import { NsSwitch } from './switch'
 import { NsSelect, NsCascadingSelect, NsMultipleSelect } from './select'
 import { NsCheckbox } from './checkbox'
@@ -71,6 +78,7 @@ const components = {
   NsDateRangeInput,
   NsMobileInput,
   NsIdInput,
+  NsTextarea,
   NsSwitch,
   NsForm,
   NsSelect,
@@ -108,7 +116,7 @@ const components = {
   NsUpload,
   NsTable,
   NsPopover,
-  NsTimeline,
+  NsTimeline
 }
 
 const properties = Object.fromEntries(
