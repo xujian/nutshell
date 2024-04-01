@@ -1,25 +1,59 @@
-import { defineComponent, h, onBeforeUnmount, onMounted, ref } from 'vue'
+import { defineComponent, h, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import Viewer from 'viewerjs'
 import { Upload as AntdvUpload } from 'ant-design-vue'
 import { NsButton, NsFile, uploadEmits, uploadProps, UploadEmits, UploadProps } from '../../../../components'
 import 'viewerjs/dist/viewer.min.css'
 
-export const Upload = defineComponent<UploadProps, UploadEmits>(
-  (props, { slots }) => {
-
+export const Upload = defineComponent<UploadProps, UploadEmits>({
+  name: 'AntdvUploadVendor',
+  // @ts-ignore
+  props: uploadProps,
+  emits: uploadEmits,
+  setup (props, { slots, expose }) {
+    console.log('===Upload vendor setup', props.modelValue)
     const me = ref(),
-      viewer = ref()
+      viewer = ref(),
+      slideOpen = ref(false)
 
-    const fileList = props.modelValue.map(v => ({
-      uid: v.id,
-      name: v.name,
-      status: v.status,
-      url: v.url,
-      thumb: v.thumb,
-    }))
+    function openSlide () {
+      slideOpen.value = true
+    }
 
-    const label = props.label || '上传',
-      button = props.hasFiles === false
+    function closeSlide () {
+      slideOpen.value = true
+    }
+
+    function preview (url: string) {
+
+    }
+
+    const that = {
+      openSlide, closeSlide
+    }
+
+    const files = props.modelValue || [],
+      fileList = files.map(v => ({
+        uid: v.id,
+        name: v.name,
+        status: v.status,
+        url: v.url,
+        thumb: v.thumb,
+      })),
+      // 最多文件数
+      // maxFiles === 1 时为单文件模式
+      maxFiles = props.maxFiles ?? 0,
+      single = maxFiles === 1,
+      /**
+       * 单一文件模式时 已经上传过
+       * 上传按钮与文件内容合并
+       */
+      单一模式并且已上传 = single && fileList.length > 0
+
+    const label = props.label ||
+      单一模式并且已上传
+        ? '重新上传'
+        : '上传',
+      button = () => props.hasFiles === false
       ? h(NsButton, {
             label,
             color: 'primary',
@@ -33,10 +67,20 @@ export const Upload = defineComponent<UploadProps, UploadEmits>(
             'justify-center'
           ]
         }, [
-          h('div', { class: [
-            'label',
-          ]}, label),
-          props.caption ? h('div', {class: 'caption'}, props.caption) : null
+          // 单一模式并且已上传
+          // 在上传按钮直接预览
+          // 不显示 file-list
+          单一模式并且已上传
+            ? h(NsFile, {
+                class: 'thumb',
+                hasName: false,
+                ...fileList[0]
+              })
+            : null,
+          h('div', { class: [ 'label',]}, label),
+          props.caption
+            ? h('div', {class: 'caption'}, props.caption)
+            : null
         ])
 
     const defaultSlot = slots.default || button,
@@ -85,21 +129,45 @@ export const Upload = defineComponent<UploadProps, UploadEmits>(
         showUploadList: props.hasFiles,
         listType,
         fileList,
+        multiple: props.multiple,
+        maxCount: maxFiles,
+        beforeUpload (file) {
+          // 留待以后扩充
+          if (!props.beforeUpload) return false
+          else {
+            return props.beforeUpload.call(that, file)
+          }
+        }
       }, {
-        default: () => defaultSlot,
-        itemRender,
-      })
+        default: defaultSlot,
+        itemRender: props.maxFiles === 1 ? () => null : itemRender,
+      }),
+      slide = () => slots.slide
+        ? h('div', {
+            class: [
+              'slide'
+            ]
+          }, h('div', {
+              class: 'content',
+            }, slots.slide()
+          )
+        )
+        : null
+
+    expose(that)
 
     return () => h('div', {
-      ref: me,
-      class: 'ns-upload',
-    }, trunk())
-  },
-  {
-    name: 'AntdvUploadVendor',
-    // @ts-ignore
-    props: uploadProps,
-    emits: uploadEmits,
+        ref: me,
+        class: [
+          'ns-upload',
+          // 单一上传模式时 追加一个特殊样式
+          ...maxFiles === 1 ? ['single'] : [],
+          ...slideOpen.value ? ['slide-open'] : []
+        ],
+      }, [
+        trunk(),
+        slide(),
+      ])
   }
-)
+})
 

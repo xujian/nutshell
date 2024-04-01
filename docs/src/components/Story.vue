@@ -75,10 +75,6 @@ onMounted(importStory)
   display: flex;
   align-items: stretch;
   justify-content: center;
-  >.card-body {
-    display: flex;
-    align-items: center;
-  }
   .card-footer {
     border-top: 1px solid var(--ns-stroke);
   }

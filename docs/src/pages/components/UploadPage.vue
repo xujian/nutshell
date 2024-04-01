@@ -15,6 +15,11 @@
   <h3>单一模式</h3>
   <p>&nbsp;</p>
   <story file="upload/single.vue" />
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h3>上传时裁切</h3>
+  <p>&nbsp;</p>
+  <story file="upload/crop.vue" />
 </template>
 
 <script lang="ts" setup>

@@ -1,5 +1,5 @@
 <template>
-  <ns-upload v-model="files" :single="true" @complete="onUploadComplete" />
+  <ns-upload v-model="files" :maxFiles="1" @complete="onUploadComplete" />
 </template>
 
 <script lang="ts" setup>

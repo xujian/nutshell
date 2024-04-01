@@ -69,7 +69,6 @@ export const NsFiles = defineComponent({
           return item.url
         }
       })
-      console.log('===viewer.value', viewer.value)
     }
 
     onMounted(initViewer)

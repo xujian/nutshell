@@ -15,6 +15,7 @@ export const transformRules = (rules: FullValidationRule[]) => {
     } else {
       result.push({
         validator (rule: any, value: string) {
+          debugger
           if (!value) {
             return Promise.resolve()
           }
