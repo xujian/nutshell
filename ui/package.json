@@ -75,7 +75,6 @@
     "@nutui/nutui-taro": "^4.3.2",
     "@types/validator": "^13.11.0",
     "ant-design-vue": "4.x",
-    "cropperjs": "^1.6.1",
     "dayjs": "^1.11.9",
     "lodash": "^4.17.21",
     "tippy.js": "^6.3.7",

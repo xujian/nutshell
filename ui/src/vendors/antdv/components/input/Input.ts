@@ -46,7 +46,6 @@ export const Input = defineComponent({
     const classes = ['ns-input', ...(props.classes || [])]
 
     const rules = transformRules(props.rules as FullValidationRule[])
-    console.log('===rules', props.name, rules)
     return () =>
       h(
         AntFormItem,

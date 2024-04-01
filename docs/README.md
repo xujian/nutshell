@@ -1,5 +1,5 @@
 # Nutsell Docs
-组件库开发文档
+组件库官方文档
 
 ## Project Setup
 
@@ -44,7 +44,7 @@ yarn deploy
 * /boards 业务场景(完整的页面样板)
 
 以上目录下放的是一些 *.vue 文件
-可以分别使用下列形式
+可以分别使用
 
 ```html
 <story file="button/basic.vue" />
@@ -52,5 +52,3 @@ yarn deploy
 <board file="contracts/query.vue" />
 ```
 嵌入到 vue 页面
-
-所有虚拟目录下的 vue 组件不需要 import

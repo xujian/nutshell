@@ -34,10 +34,9 @@ export const NsForm = define({
   name: 'NsForm',
   props: formProps,
   emits,
-  setup (props, { slots }) {
+  setup (props, ctx) {
     const vendorRef = ref()
 
-    console.log('===setup slots', slots)
     function validate (): Promise<boolean> {
       return new Promise<boolean>((resolve, reject) => {
         vendorRef.value.validate().then((result: any) => {

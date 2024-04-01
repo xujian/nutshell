@@ -1,8 +1,6 @@
 <template>
   <h1 class="my-lg">按钮</h1>
   <story file="button/basic.vue" />
-  <panel file="forms/tasks.vue" />
-  <board file="contracts/query.vue" />
   <h2 class="my-md">Size</h2>
   <ns-row>
     <ns-button color="primary" v-for="size in sizes" :key="size" :label="size" :size="size"></ns-button>
@@ -16,13 +14,13 @@
     <h4 class="variant-label">{{ variant }}</h4>
     <ns-button v-for="(color) in colors" class="my-xs"
       :key="color"
-      :color="color"
+      :color="color" 
       :variant="variant" label="创建订单"></ns-button>
   </ns-row>
   <ns-row class="with-icon" align="center">
     <ns-button class="my-xs"
       color="primary"
-      icon="https://cdn.ddjf.com/static/images/ai-approve-mini/scan.png"
+      icon="https://cdn.ddjf.com/static/images/ai-approve-mini/scan.png" 
       label="证件识别"></ns-button>
   </ns-row>
   <p>&nbsp;</p>

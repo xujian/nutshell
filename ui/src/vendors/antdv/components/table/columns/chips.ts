@@ -49,7 +49,7 @@ export default function chips (props: TableColumnChipsProps) {
           class: ['icon icon-ok'],
           size: 'xs',
           onClick () {
-            // props.onEditComplete?.()
+            props.onEditComplete?.()
             editable.value?.exitEdit()
           }
         }),

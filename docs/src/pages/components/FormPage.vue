@@ -6,10 +6,10 @@
   <h2>用户输入校验</h2>
   <p>&nbsp;</p>
   <ns-form name="validation" v-model="validationFormDate" ref="formRef">
-    <ns-input name="clientName"
-      :model-value="validationFormDate.clientName"
-      label="客户名称"
-      :rules="['required']"
+    <ns-input name="clientName" 
+      :model-value="validationFormDate.clientName" 
+      label="客户名称" 
+      :rules="['required']" 
       fill="white"
       @change="onNameChange" />
     <ns-select name="clientLocation" v-model="validationFormDate.clientLocation"
@@ -18,12 +18,6 @@
       fill="white" />
   </ns-form>
   <ns-button label="提交" @click="onFormSubmit"></ns-button>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <h2>自定义校验方法</h2>
-  <p>&nbsp;</p>
-  <story file="form/custom-validate" />
-  <p>&nbsp;</p>
 </template>
 
 <script lang="ts" setup>

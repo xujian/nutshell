@@ -87,7 +87,6 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
       })
     }
   })
-  console.log('===result', result)
   return result
 }
 

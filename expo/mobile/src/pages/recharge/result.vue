@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import Taro, { useDidShow } from '@tarojs/taro'
 import { RechargeResult } from '@uxda/appkit-next'
-import { useStaging } from '@uxda/appkit-next'
+import { useStaging } from '~/composables/useStaging'
 
 const { jumped, leave, checkStage } = useStaging()
 

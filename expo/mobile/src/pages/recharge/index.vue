@@ -22,7 +22,7 @@
 import { onMounted, reactive, ref } from 'vue'
 import Taro from '@tarojs/taro'
 import { PageHeader, RechargeView, type PaymentParams } from '@uxda/appkit-next'
-import { useStaging } from '@uxda/appkit-next'
+import { useStaging } from '~/composables/useStaging'
 
 const { leave, checkStage } = useStaging()
 

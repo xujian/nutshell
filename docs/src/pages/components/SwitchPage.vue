@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { Size } from '../../props'
 import { reactive, ref } from 'vue'
 
 const state = reactive({
@@ -19,9 +18,9 @@ function changeDisabled() {
   disabled.value = !disabled.value
 }
 
-const size = ref<Size>('sm')
+const size = ref<'default' | 'small'>('default')
 function changeSize() {
-  size.value = size.value === 'sm' ? 'xs' : 'sm'
+  size.value = size.value === 'default' ? 'small' : 'default'
 }
 </script>
 

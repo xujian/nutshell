@@ -67,7 +67,7 @@ import { NsTable, NsTableColumn, NsTableColumnSelector } from './table'
 import { NsPopover } from './popover'
 import { NsFacts } from './facts'
 import { NsFiles } from './files'
-import { NsUpload, NsCropUpload } from './upload'
+import { NsUpload } from './upload'
 import { NsTimeline } from './timeline'
 
 const components = {
@@ -114,7 +114,6 @@ const components = {
   NsFacts,
   NsFiles,
   NsUpload,
-  NsCropUpload,
   NsTable,
   NsPopover,
   NsTimeline

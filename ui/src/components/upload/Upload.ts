@@ -1,18 +1,9 @@
 import { PropType, ObjectEmitsOptions, SlotsType, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDisplayProps, useModelValuePropsForArray, useModelValuePropsForStringArray } from '../../props'
-import type { File, FilesEmits } from '../files'
-
-export type BeforeUploadMethod = ((files: File[]) => Promise<File[]>)
+import type { File } from '../files'
 
 export const uploadProps = {
-  /**
-   * 表单项名称
-   */
-  name: {
-    type: String,
-    default: 'file',
-  },
   label: {
     type: String
   },
@@ -23,20 +14,14 @@ export const uploadProps = {
     type: Boolean,
     default: true,
   },
-  /**
-   * 限制可上传的文件类型
-   */
   accept: {
-    type: String,
-  },
-  maxFileSize: {
-    type: Number,
+    type: Array as PropType<string[]>
   },
   /**
    * 上传数量限制
-   * 当 maxFiles = 1 时, UI 有所不同 (替换模式)
+   * 当 limit = 1 时, UI 有所不同 (替换模式)
    */
-  maxFiles: {
+  limit: {
     type: Number,
   },
   /**
@@ -46,25 +31,19 @@ export const uploadProps = {
     type: Boolean,
     default: false,
   },
-  beforeUpload: {
-    type: Function as PropType<BeforeUploadMethod>
-  },
   ...useModelValuePropsForArray<File>(),
   ...useDisplayProps(),
   ...useModelValuePropsForStringArray
 }
 
 export type UploadEmits = {
-  complete: () => void
-} | FilesEmits
+}
 
 export const uploadEmits: UploadEmits = {
-  complete: () => void 0
 }
 
 export type UploadSlots = {
   default: never,
-  slide: never,
 }
 
 export type UploadProps = MakePropsType<typeof uploadProps, UploadEmits>

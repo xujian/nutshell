@@ -3,7 +3,6 @@ node_modules/
 .Thumbs.db
 ui/dist/
 docs/dist/
-docs/public/svg/
 yarn.lock
 ui/.eslintrc-auto-import.json
 ui/auto-imports.d.ts
@@ -17,5 +16,3 @@ expo/desktop/.eslintrc-auto-import.json
 **/*.woff
 **/*.woff2
 icons/fonts/*
-icons/svg/
-**/.env*
