@@ -28,6 +28,13 @@ export const fileProps = {
   },
   thumb: {
     type: String,
+  },
+  /**
+   * 显示文件名
+   */
+  hasName: {
+    type: Boolean,
+    default: true,
   }
 }
 
@@ -91,7 +98,10 @@ export const NsFile = defineComponent({
           'row',
           'justify-between',
           'align-center'
-        ]
+        ],
+        onClick (ev) {
+          ev.stopPropagation()
+        }
       }, [
         h('i', { class: ['icon', 'icon-preview'], onClick: () => emit('preview', props.id)}),
         h('i', { class: ['icon', 'icon-delete'], onClick: () => emit('delete', props.id)}),
@@ -123,6 +133,7 @@ export const NsFile = defineComponent({
         toolbar()
       ]),
       filename = () => {
+        if (!props.hasName) return null
         const { base, ext} = resolveFileName(props.name!)
         return h('div', {
           class: [

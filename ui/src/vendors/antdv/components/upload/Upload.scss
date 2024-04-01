@@ -1,0 +1,7 @@
+.ns-upload {
+  &.single {
+    .ant-upload-list-item-container {
+      display: none !important;
+    }
+  }
+}
