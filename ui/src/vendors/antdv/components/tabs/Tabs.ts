@@ -3,9 +3,20 @@ import { Tabs as AntdvTabs, TabPane as AntdvTabPane } from 'ant-design-vue'
 import { TabsItem, TabsProps } from '../../../../components'
 
 export const Tabs = (props: TabsProps, { emit, slots }: SetupContext) => {
+  // 确定 children
+  // slots 优先级高于 items
+  // 如果定义了 slots, items 失效
+  const items: TabsItem[] = slots.default?.().map((s, index) => {
+    // @ts-ignore
+    const tabSlot = s.children?.tab?.()
+    return {
+      key: s.props?.key as string,
+      tab: tabSlot || s.props?.tab || `Tab-${index}` as string,
+      content: s.children
+    }
+  }) || props.items || []
 
-
-  const defaultSlot = props.items?.map(item => h(AntdvTabPane, {
+  const defaultSlot = items?.map(item => h(AntdvTabPane, {
     key: item.key || item.tab,
     tab: item.tab
   }, item.content))

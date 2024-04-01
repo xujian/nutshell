@@ -13,7 +13,7 @@ export type TabsAlign = 'start' | 'center' | 'end'
 
 export const tabsProps = {
   items: {
-    type: Array as PropType<TabData[]>
+    type: Array as PropType<TabsItem[]>
   },
   /** 样式 */
   variant: {
@@ -51,24 +51,7 @@ export const NsTabs = define({
   emits,
   setup (props, { slots }) {
 
-    // 确定 children
-    // slots 优先级高于 items
-    // 如果定义了 slots, items 失效
-    const items: TabsItem[] = slots.default?.().map((s, index) => {
-      // @ts-ignore
-      const tabSlot = s.children?.tab?.()
-      return {
-        key: s.props?.key as string,
-        tab: tabSlot || s.props?.tab || `Tab-${index}` as string,
-        content: s.children
-      }
-    }) || props.items || []
-
-    return {
-      props: {
-        items
-      }
-    }
+    return {}
   }
 })
 // + import => ./index.ts, ../components.ts
