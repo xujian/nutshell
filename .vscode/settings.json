@@ -1,6 +1,7 @@
 {
   "eslint.enable": true,
   "eslint.validate": [],
+  "editor.formatOnSave": false,
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
   "files.exclude": {
     "**/dist": true,
@@ -62,7 +63,7 @@
       "keyword.void": {
         "foreground": "#ffff99",
         "fontStyle": "underline"
-      }  
+      }
     },
       },
   "editor.tokenColorCustomizations": {
