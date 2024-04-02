@@ -1,4 +1,4 @@
-import { defineComponent, h, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { defineComponent, getCurrentInstance, h, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import Viewer from 'viewerjs'
 import { Upload as AntdvUpload } from 'ant-design-vue'
 import { NsButton, NsFile, uploadEmits, uploadProps, UploadEmits, UploadProps } from '../../../../components'
@@ -9,27 +9,11 @@ export const Upload = defineComponent<UploadProps, UploadEmits>({
   // @ts-ignore
   props: uploadProps,
   emits: uploadEmits,
-  setup (props, { slots, expose }) {
-    console.log('===Upload vendor setup', props.modelValue)
-    const me = ref(),
-      viewer = ref(),
-      slideOpen = ref(false)
+  setup (props, { slots }) {
 
-    function openSlide () {
-      slideOpen.value = true
-    }
-
-    function closeSlide () {
-      slideOpen.value = true
-    }
-
-    function preview (url: string) {
-
-    }
-
-    const that = {
-      openSlide, closeSlide
-    }
+    const vm = getCurrentInstance() as any,
+      me = ref(),
+      viewer = ref()
 
     const files = props.modelValue || [],
       fileList = files.map(v => ({
@@ -135,39 +119,28 @@ export const Upload = defineComponent<UploadProps, UploadEmits>({
           // 留待以后扩充
           if (!props.beforeUpload) return false
           else {
-            return props.beforeUpload.call(that, file)
+            return props.beforeUpload(file)
           }
         }
       }, {
         default: defaultSlot,
         itemRender: props.maxFiles === 1 ? () => null : itemRender,
-      }),
-      slide = () => slots.slide
-        ? h('div', {
-            class: [
-              'slide'
-            ]
-          }, h('div', {
-              class: 'content',
-            }, slots.slide()
-          )
-        )
-        : null
+      })
 
-    expose(that)
+    vm.render = () => h('div', {
+      ref: me,
+      class: [
+        'ns-upload',
+        // 单一上传模式时 追加一个特殊样式
+        ...maxFiles === 1 ? ['single'] : [],
+      ],
+    }, [
+      trunk(),
+      slots.extra?.()
+    ])
 
-    return () => h('div', {
-        ref: me,
-        class: [
-          'ns-upload',
-          // 单一上传模式时 追加一个特殊样式
-          ...maxFiles === 1 ? ['single'] : [],
-          ...slideOpen.value ? ['slide-open'] : []
-        ],
-      }, [
-        trunk(),
-        slide(),
-      ])
-  }
+    return {
+    }
+  } // setup
 })
 

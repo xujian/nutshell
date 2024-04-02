@@ -64,7 +64,7 @@ export const uploadEmits: UploadEmits = {
 
 export type UploadSlots = {
   default: never,
-  slide: never,
+  extra: never,
 }
 
 export type UploadProps = MakePropsType<typeof uploadProps, UploadEmits>
@@ -76,7 +76,7 @@ export const NsUpload = define({
   name: 'NsUpload',
   props: uploadProps,
   emits: uploadEmits,
-  setup (props, ctx) {
+  setup (props, slots) {
 
     return {
     }

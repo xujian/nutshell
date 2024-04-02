@@ -53,6 +53,9 @@ export const cropUploadEmits: CropUploadEmits = {
 
 export type CropUploadProps = MakePropsType<typeof cropUploadProps, CropUploadEmits>
 
+export type CropComplete = (blob: Blob) => void
+export type CropCancel = () => void
+
 /**
  *  带有裁切功能的文件上传组件 <ns-crop-upload>
  */
@@ -62,22 +65,37 @@ export const NsCropUpload = defineComponent({
   emits: cropUploadEmits,
   setup (props, { emit }) {
 
-    const uploader = ref<typeof NsUpload>(),
-      url = ref<string>(''),
+    const extraOpen = ref(false)
+
+    const url = ref<string | undefined>(),
       panel = ref<HTMLDivElement>(),
-      cropper = ref<Cropper>(),
-      previewUrl = ref<string>()
+      cropper = ref<Cropper | null>(null),
+      previewUrl = ref<string>(),
+      cropComplete = ref<CropComplete>(),
+      cropCancel = ref<CropCancel>()
 
-    const cancel = () => {
-      if (!cropper.value) return
-      cropper.value.destroy()
-      console.log('===uploader.value', uploader.value)
-      uploader.value?.closeSlide()
-    }
-
-    const ok = () => {
-      if (!cropper.value) return
-    }
+    const cleanup = () => {
+        if (!cropper.value) return
+        cropper.value.destroy()
+        cropper.value = null
+        url.value = undefined
+        extraOpen.value = false
+      },
+      cancel = () => {
+        cleanup()
+        cropCancel.value?.()
+      },
+      ok = () => {
+        if (!cropper.value) return
+        cropper.value.getCroppedCanvas().toBlob((blob) => {
+          if (blob) {
+            cropComplete.value?.(blob)
+          } else {
+            cropCancel.value?.()
+          }
+          cleanup()
+        })
+      }
 
     const originalImage = () =>
       url.value
@@ -85,7 +103,6 @@ export const NsCropUpload = defineComponent({
             class: ['image'],
             src: url.value,
             onLoad () {
-              console.log('===onload')
               const img = panel.value?.querySelector('.image')
               initCropper(img as HTMLImageElement)
             }
@@ -114,14 +131,15 @@ export const NsCropUpload = defineComponent({
       src: previewUrl.value
     }))
 
-    const slide = () => h('div', {
+    const extra = () => h('div', {
       ref: panel,
-      class: 'crop-panel'
-    }, [
-        originalImage(),
-        buttons(),
-        preview(),
-      ]
+      class: 'extra crop-panel'
+    }, h('div', {class: 'content'}, [
+          originalImage(),
+          buttons(),
+          preview(),
+        ]
+      )
     )
 
     const onCrop = throttle((ev: any) => {
@@ -146,8 +164,11 @@ export const NsCropUpload = defineComponent({
       cropper.value = new Cropper(img, options)
     }
 
+    /**
+     * 上传以前讲本地图片显示预览
+     * 并且初始化 Cropper
+     */
     const makeImage = (file: File) => {
-      console.log('===makeImage', file)
       const reader = new FileReader()
       reader.onload = function (evt) {
         var base64 = evt.target?.result || ''
@@ -157,7 +178,6 @@ export const NsCropUpload = defineComponent({
     }
 
     return () => h(NsUpload, {
-      ref: uploader,
       name: props.name,
       label: props.label,
       modelValue: props.modelValue,
@@ -165,14 +185,23 @@ export const NsCropUpload = defineComponent({
       maxFiles: 1, // 仅允许上传一个文件(单一模式)
       multiple: false, // 不允许选取多个文件
       accept: 'image/jpeg, image/png',
-      class: 'ns-crop-upload',
+      class: [
+        'ns-crop-upload',
+        ...extraOpen.value ? ['extra-open'] : []
+      ],
       beforeUpload (file: File) {
-        makeImage(file)
-        this.openSlide()
-        return false
+        // 拦截上传动作
+        // 当 resolve 时恢复上传
+        return new Promise<Blob>((resolve, reject) => {
+          makeImage(file)
+          cropComplete.value = (blob: Blob) => {
+            resolve(blob)
+          }
+          extraOpen.value = true
+        })
       }
     }, {
-      slide,
+      extra,
     })
   }
 })
