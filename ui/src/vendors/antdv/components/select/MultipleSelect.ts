@@ -14,7 +14,6 @@ export const MultipleSelect = defineComponent({
     const classes = ['ns-select', 'ns-multiple-select'].join(' ')
 
     const { clearable, searchable } = props
-    console.log(props, 'props')
 
     const rules = transformRules(props.rules as FullValidationRule[])
     return () =>

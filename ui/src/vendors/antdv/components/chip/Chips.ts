@@ -1,4 +1,4 @@
-import { FunctionalComponent, h, ref, RendererElement, RendererNode, SetupContext, VNode } from 'vue'
+import { h, ref, SetupContext, VNode } from 'vue'
 import { FormItem as AntFormItem } from 'ant-design-vue'
 import { ChipsProps, NsButton, NsCheckboxGroup, NsChip, NsPopover } from '../../../../components'
 import { LabelValuePair } from '../../../../shared/models'
@@ -9,17 +9,16 @@ const modelValue = ref(false)
 const hovercheckbox = ref(false)
 
 export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
-
   const options = props.options || []
 
   const onItemClick = (item: LabelValuePair) => {
     const value = props.modelValue || [],
-    itemIncludes = value.includes(item.value),
-    newValue = itemIncludes
+      itemIncludes = value.includes(item.value),
+      newValue = itemIncludes
         ? value.filter((a) => a !== item.value)
         : Array.from(new Set([...value, item.value]))
-        props['onUpdate:modelValue']?.(newValue)
-      }
+    props['onUpdate:modelValue']?.(newValue)
+  }
 
   const rules = transformRules(props.rules as FullValidationRule[])
 
@@ -27,16 +26,17 @@ export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
 
   // 可下拉选择模式时
   if (props.dropdown) {
-    const selectedSlot = options.filter((o) => props.modelValue?.includes(o.value)).map(o => {
-      return h(NsChip, {
-        class: ['selected'],
-        color: 'primary',
-        variant: props.variant,
-        size: 'md',
-        label: o.label,
-        onClick: () => onItemClick(o)
+    const selectedSlot = options
+      .filter((o) => props.modelValue?.includes(o.value))
+      .map((o) => {
+        return h(NsChip, {
+          class: ['selected'],
+          color: 'primary',
+          variant: props.variant,
+          label: o.label,
+          onClick: () => onItemClick(o)
+        })
       })
-    })
     defaultSlot = h(
       NsPopover,
       {
@@ -51,21 +51,31 @@ export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
 
             modelValue.value = false
           }, 300)
-        },
+        }
       },
       {
-        default: [
-          selectedSlot,
-          h(NsButton, {
-            round: false,
-            label: '+ 添加',
-            variant: 'outlined',
-            color: 'primary',
-            size: 'md',
-          })
-        ],
+        default: () =>
+          h(
+            'div',
+            {
+              class: 'ns-chips-dropdown-default'
+            },
+            [
+              selectedSlot,
+              h(NsButton, {
+                round: false,
+                label: '+ 添加',
+                variant: 'outlined',
+                color: 'primary',
+                size: 'xs',
+                style: {
+                  'margin-left': '5px'
+                }
+              })
+            ]
+          ),
         content: [
-          h('h3', {}, props.label),
+          h('h3', {}, `${props.label}选择`),
           h(NsCheckboxGroup, {
             modelValue: props.modelValue,
             options: options,

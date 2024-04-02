@@ -3,6 +3,14 @@
     background-color: transparent;
     border-color: transparent !important;
   }
+  .ns-chips-dropdown-default {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .nut-tag {
+      margin: 3px 4px;
+    }
+  }
 }
 .ns-chips-popover {
   .ns-checkbox-group {
