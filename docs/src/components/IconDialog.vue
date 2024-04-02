@@ -23,6 +23,7 @@ const props = defineProps<IconDialogProps>()
 <style lang="scss">
 .icon-preview {
   .ns-icon {
+    margin: 16px;
     width: 96px;
     height: 96px;
   }
