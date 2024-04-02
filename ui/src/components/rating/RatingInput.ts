@@ -1,16 +1,16 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { MakePropsType, define } from '../../utils'
+import { useFieldProps } from '../../props'
+import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 
 export const ratingInputProps = {
-  label: {
-    type: String
-  },
   modelValue: {
     type: Number,
   },
   'onUpdate:modelValue': {
     type: Function as PropType<(value: number | string) => void>
-  }
+  },
+  ...useFieldProps(),
 }
 
 export type RatingInputEmits = {
@@ -33,7 +33,11 @@ export const NsRatingInput = define({
   props: ratingInputProps,
   emits,
   setup (props, ctx) {
+    const finalRules = formatRules(props.rules as ValidationRule[], props)
     return {
+      props: {
+        rules: finalRules as FullValidationRule[]
+      }
     }
   }
 })

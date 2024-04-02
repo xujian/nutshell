@@ -8,6 +8,8 @@
 .ns-rating {
   &.ant-rate {
     font-size: 12px;
+    display: inline-flex;
+    align-items: center;
     .ant-rate-star {
       &.ant-rate-star-full {
         .anticon {
