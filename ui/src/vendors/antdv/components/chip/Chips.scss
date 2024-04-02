@@ -4,3 +4,11 @@
     border-color: transparent !important;
   }
 }
+.ns-chips-popover {
+  .ns-checkbox-group {
+    flex-direction: column;
+  }
+  .ant-checkbox-wrapper {
+    margin-bottom: 8px;
+  }
+}

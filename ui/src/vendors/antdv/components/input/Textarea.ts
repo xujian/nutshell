@@ -38,7 +38,7 @@ export const Textarea = defineComponent({
             value: props.modelValue,
             placeholder: props.placeholder,
             showCount: props.showCount,
-            autosize: props.autosize,
+            autoSize: props.autoSize,
             rows: props.rows,
             valueModifiers: {
               lazy: props.lazy === false ? false : true

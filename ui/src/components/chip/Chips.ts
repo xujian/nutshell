@@ -9,6 +9,10 @@ export const chipsProps = {
   options: {
     type: Array as PropType<LabelValuePair[]>,
   },
+  dropdown: {
+    type: Boolean,
+    default: false,
+  },
   ...useVariantProps(),
   ...useSizeProps(),
   ...useFieldProps(),

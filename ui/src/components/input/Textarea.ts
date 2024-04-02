@@ -3,7 +3,7 @@ import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../.
 import { FullValidationRule, ValidationRule, buildStyles, formatRules } from '../../props/field'
 import { PropType } from 'vue'
 
-export type AutosizeType = Boolean | Object
+export type AutoSizeType = Boolean | Object
 
 export const textareaProps = {
   maxlength: {
@@ -13,8 +13,8 @@ export const textareaProps = {
     type: Boolean,
     default: false
   },
-  autosize: {
-    type: Boolean as PropType<AutosizeType> | Object as PropType<AutosizeType>,
+  autoSize: {
+    type: Boolean as PropType<AutoSizeType> | Object as PropType<AutoSizeType>,
     default: false
   },
   rows: {

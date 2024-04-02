@@ -36,14 +36,25 @@ export const popoverProps = {
   items: {
     type: Array as PropType<MenuItem[]>,
     require: false
+  },
+  overlayClassName: {
+    type: String,
   }
 }
 
 export type PopoverProps = ExtractPublicPropTypes<typeof popoverProps>
 
-export type PopoverEmits = {}
+export type PopoverEmits = {
+  mouseleave (): void,
+  mouseenter (): void,
+  click (): void,
+}
 
-const popoverEmits: PopoverEmits = {}
+const popoverEmits: PopoverEmits = {
+  mouseleave () {},
+  mouseenter () {},
+  click () {},
+}
 
 export type PopoverSlots = {
   content: never

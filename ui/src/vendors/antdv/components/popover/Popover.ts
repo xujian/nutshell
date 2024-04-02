@@ -1,4 +1,4 @@
-import { h, SetupContext } from 'vue'
+import { h, onUpdated, ref, SetupContext } from 'vue'
 import { Popover as AntdvPopover } from 'ant-design-vue'
 import { PopoverProps } from '../../../../components'
 import { NsMenu } from '../../../../components'
@@ -10,7 +10,7 @@ export const Popover = (props: PopoverProps, cxt: SetupContext) => {
   return h(
     AntdvPopover,
     {
-      'overlay-class-name': 'ns-popover',
+      'overlay-class-name': ['ns-popover', props.overlayClassName],
       content: props.content,
       title: props.title,
       trigger: props.trigger || 'hover',
@@ -18,7 +18,12 @@ export const Popover = (props: PopoverProps, cxt: SetupContext) => {
       open: props.modelValue,
       'onUpdate:open': (value: boolean) => {
         props['onUpdate:modelValue']?.(value)
-      }
+      },
+      // onMouseenter: () => {
+      //   if (props.trigger === 'hover' && !props['onUpdate:modelValue']) {
+      //     props.modelValue = true
+      //   }
+      // },
     },
     {
       default: cxt.slots.default,
