@@ -14,9 +14,13 @@ export const transformRules = (rules: FullValidationRule[]) => {
       })
     } else {
       result.push({
-        validator (rule: any, value: string) {
-          if (!value) {
-            return Promise.resolve()
+        validator (rule: any, value: string | string[]) {
+          if (!r?.required) {
+            if (typeof value === 'object' && !value.length) {
+              return Promise.resolve()
+            } else if (!value) {
+              return Promise.resolve()
+            }
           }
           if (!r.method?.(value)) {
             return Promise.reject(r.message)
@@ -24,7 +28,8 @@ export const transformRules = (rules: FullValidationRule[]) => {
           return Promise.resolve()
         },
         message: r.message,
-        trigger: r.trigger ?? 'blur'
+        trigger: r.trigger ?? 'blur',
+        required: r?.required,
       })
     }
   })
