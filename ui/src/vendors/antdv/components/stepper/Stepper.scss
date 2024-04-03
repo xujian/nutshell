@@ -1,5 +1,17 @@
 .ns-stepper {
+  &.ant-steps {
+    color: var(--ns-text);
+  }
   --space: 16px;
+  .ant-steps-item-icon {
+    background-color: var(--ns-primary) !important;
+    .ant-steps-icon {
+      color: var(--ns-text) !important;
+    }
+  }
+  .ant-steps-item-title {
+    color: var(--ns-text) !important;
+  }
   &.stepper-variant-arrow {
     position: relative;
     display: flex;
@@ -41,6 +53,7 @@
       .ant-steps-item-title {
         padding-left: 1em;
         font-size: 12px;
+        color: var(--ns-text);
       }
     }
     .ant-steps-item-container[role='button'] {

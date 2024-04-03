@@ -2,6 +2,9 @@
   height: var(--ns-button-height);
   border-width: 1px;
   border-style: solid;
+  border-color: var(--ns-fill);
+  background-color: var(--ns-fill);
+  color: var(--ns-text);
   &:hover {
     filter: brightness(0.8);
   }

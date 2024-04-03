@@ -27,7 +27,7 @@ export type EssentialColor = typeof BRANDS[number]
 export type HexColor = `#${string}`
 export type RgbColor = `rgb(${string})`
 export type RgbaColor = `rgba(${string})`
-export type Color = BrandColor | EssentialColor | HexColor | RgbColor | RgbaColor
+export type Color = BrandColor | EssentialColor | HexColor | RgbColor | RgbaColor | 'transparent'
 
 type BaseColors = {
   [k in BrandColor]: HexColor

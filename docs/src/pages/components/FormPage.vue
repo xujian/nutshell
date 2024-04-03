@@ -10,12 +10,10 @@
       :model-value="validationFormDate.clientName"
       label="客户名称"
       :rules="['required']"
-      fill="white"
       @change="onNameChange" />
     <ns-select name="clientLocation" v-model="validationFormDate.clientLocation"
       :options="cities"
-      label="区域" :rules="['required']"
-      fill="white" />
+      label="区域" :rules="['required']" />
   </ns-form>
   <ns-button label="提交" @click="onFormSubmit"></ns-button>
   <p>&nbsp;</p>

@@ -8,11 +8,13 @@ export const Dropdown = defineComponent({
   setup (props, ctx) {
     const classes = [
       'ns-dropdown',
+      ...props.color ? [`color-${props.color}`] : []
     ].join(' ')
     const { slots, emit } = ctx
 
     return () => h(AntdvDropdownButton, {
       class: classes,
+      color: props.color,
       overlayClassName: classes,
       width: props.width,
       height: props.height,
@@ -22,7 +24,6 @@ export const Dropdown = defineComponent({
       overlay: () => h(AntdvMenu, {
         class: 'ns-dropdown',
         onClick: (item) => {
-          console.log('---------NsDropdown, menu onClick', item)
           emit('change', item)
         }
       }, () => props?.items?.map(item => h(AntdvMenuItem, {

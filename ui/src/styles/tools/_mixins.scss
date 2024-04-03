@@ -77,7 +77,12 @@ $alphas: (
     .color-#{$name} {
       background-color: var(--ns-#{$name});
       border-color: var(--ns-#{$name});
-      color: #fff;
+      @if lightness($value) > 80 {
+        color: var(--ns-text)
+      }
+      @else {
+        color: #fff;
+      }
       &.variant-outlined {
         background-color: transparent;
         border-color: $value;
