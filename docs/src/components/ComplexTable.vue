@@ -235,7 +235,7 @@ const onInviteFilterChange = (value: string[]) => {
     :row-height="32"
     has-column-control
     :filter-handler="filterHandler">
-    <ns-table-column-checkbox @change="onTableRowSelected" field="id" fixed="left" />
+    <ns-table-column-checkbox width="48" @change="onTableRowSelected" field="id" fixed="left" />
     <ns-table-column-number label="序号" width="50" align="center" fixed="left" />
     <ns-table-column field="name" label="姓名" align="left" sortable width="110" fixed="left" />
     <ns-table-column-crypto

@@ -29,6 +29,12 @@
         color: var(--ns-text);
       }
     }
+    .vxe-body--row {
+      &.row--hover {
+        // 鼠标 hover 行高亮
+        background-color: color-mix(in srgb, var(--ns-fill) 80%, #888);
+      }
+    }
   }
   &.variant-primary {
     .ant-table {
