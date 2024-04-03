@@ -331,7 +331,8 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       onCheckboxChange: onSelectedChange,
       onCheckboxAll: onSelectedChange,
       tooltipConfig: {
-      }
+      },
+      border: 'inner',
       // loading: loading,
       // pagination: false,
       // rowKey: props.rowKey,

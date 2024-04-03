@@ -13,6 +13,23 @@
   .fixed-right--wrapper .vxe-body--column:after {
     display: none;
   }
+  .vxe-table--render-default {
+    color: var(--ns-text);
+    .vxe-table--body-wrapper {
+      table {
+        background-color: var(--ns-fill);
+      }
+    }
+    &.border--default,
+    &.border--inner,
+    &.border--full,
+    &.border--outer {
+      .vxe-table--header-wrapper {
+        background-color: var(--ns-fill);
+        color: var(--ns-text);
+      }
+    }
+  }
   &.variant-primary {
     .ant-table {
         background-color: var(--ns-primary);

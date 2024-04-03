@@ -6,9 +6,11 @@
     }
     .ant-descriptions-item-label {
       padding: .5em;
+      color: var(--ns-text);
     }
     .ant-descriptions-item-content {
-      background-color: #fff;
+      background-color: var(--ns-fill);
+      color: var(--ns-text);
     }
   }
 }

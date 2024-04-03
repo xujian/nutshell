@@ -11,6 +11,12 @@
     display: inline-flex;
     align-items: center;
     .ant-rate-star {
+      .ant-rate-star-first {
+        color: inherit;
+      }
+      .ant-rate-star-second {
+        color: inherit;
+      }
       &.ant-rate-star-full {
         .anticon {
           color: var(--ns-neutral)
