@@ -21,7 +21,6 @@ export const NumberInput = defineComponent({
     const classes = ['ns-number-input', ...(props.classes || [])]
 
     const rules = transformRules(props.rules as FullValidationRule[])
-    console.log(rules)
     return () =>
       h(
         AntFormItem,

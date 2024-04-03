@@ -7,7 +7,6 @@ import { transformRules } from '../input/rules'
 export const RatingInput = (props: RatingInputProps, ctx: SetupContext) => {
 
   const rules = transformRules(props.rules as FullValidationRule[])
-  console.log(rules,'rules')
   return h(AntFormItem, {
     class: [
       'ns-rating-input',
