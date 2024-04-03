@@ -13,12 +13,12 @@
           message: '最少两个字'
         }]" />
       <ns-date-input
-          v-model="formData.divorceDate"
-          name="divorceDate"
-          class="divorce-date"
-          label="离婚日期"
-          placeholder="请输入离婚日期"
-          :disabled-date="disabledDateOfPicker" />
+        v-model="formData.divorceDate"
+        name="divorceDate"
+        class="divorce-date"
+        label="离婚日期"
+        placeholder="请输入离婚日期"
+        :disabled-date="disabledDateOfPicker" />
       <ns-id-input name="id"
         label="证件号码"
         v-model="formData.id" />
@@ -37,6 +37,12 @@
         name="tags"
         :options="chipsOptions"
         v-model="formData.tags" />
+      <ns-number-input
+        name="name"
+        label="数字输入"
+        show-amount
+        v-model="formData.amount"
+        :rules="['required']" />
     </ns-form>
   </ns-card>
 </template>
@@ -53,6 +59,7 @@ const formData = reactive({
   intention: 2,
   tags: [],
   divorceDate: null,
+  amount: null,
 })
 
 const chipsOptions = [
