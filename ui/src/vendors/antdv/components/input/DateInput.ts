@@ -45,6 +45,7 @@ export const DateInput = defineComponent({
         placeholder: props.placeholder,
         locale,
         value: value.value ? dayjs(value.value) : void 0,
+        getPopupContainer: (triggerNode) => triggerNode.parentNode,
         'onUpdate:value': (value: string | Dayjs) => {
           const val = value === null
             ? ''
