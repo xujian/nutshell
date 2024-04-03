@@ -36,6 +36,7 @@ export const Select = defineComponent({
         allowClear: clearable,
         showSearch: searchable,
         value: props.modelValue,
+        getPopupContainer: (triggerNode) => triggerNode.parentNode,
         'onUpdate:value': (value: SelectValue) => {
           props['onUpdate:modelValue']?.(value as string | number)
         },
