@@ -31,6 +31,7 @@ const TimelinePage = () => import('../pages/components/TimelinePage.vue')
 const UploadPage = () => import('../pages/components/UploadPage.vue')
 const ListPage = () => import('../pages/components/ListPage.vue')
 const MenuPage = () => import('../pages/components/MenuPage.vue')
+const DividerPage = () => import('../pages/components/DividerPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
 const DrawerPage = () => import('../pages/interactive/DrawerPage.vue')
@@ -186,6 +187,11 @@ const router = createRouter({
           path: '/components/upload',
           name: 'components-upload',
           component: UploadPage
+        },
+        {
+          path: '/components/divider',
+          name: 'components-divider',
+          component: DividerPage
         },
         {
           path: '/interactive/dialog',

@@ -117,11 +117,11 @@ const menuData = computed(() => [
             key: '/components/card'
           },
           {
-            label: 'Tabs',
+            label: '选项卡 Tabs',
             key: '/components/tabs'
           },
           {
-            label: 'Tabbar',
+            label: '标签栏 Tabbar',
             key: '/components/tabbar'
           },
           {
@@ -131,6 +131,10 @@ const menuData = computed(() => [
           {
             label: '图标 icon',
             key: '/components/icon'
+          },
+          {
+            label: '分割线 divider',
+            key: '/components/divider'
           }
         ]
       },
