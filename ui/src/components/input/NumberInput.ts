@@ -32,6 +32,10 @@ export const numberInputProps = {
   showAmount: {
     type: Boolean
   },
+  amountRate: {
+    type: Number,
+    default: 1
+  },
   ...useVariantProps(),
   ...useModelValuePropsForInput(),
   ...useFieldProps()

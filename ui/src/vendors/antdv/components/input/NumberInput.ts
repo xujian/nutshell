@@ -65,7 +65,7 @@ export const NumberInput = defineComponent({
             {}
           ),
           props.showAmount
-            ? h('div', { class: 'ns-number-amount' }, amountChinese(props.modelValue as string))
+            ? h('div', { class: 'ns-number-amount' }, amountChinese(Number(props.modelValue) * props.amountRate))
             : null
         ]
       )
