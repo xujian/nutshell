@@ -1,0 +1,22 @@
+.ns-pagination {
+  &.ant-pagination {
+    font-size: 12px;
+    color: var(--ns-text);
+    .ant-pagination-disabled,
+    .ant-pagination-disabled:hover {
+      .ant-pagination-item-link {
+        color: var(--ns-neutral);
+      }
+    }
+    .ant-pagination-item {
+      min-width: 24px;
+      height: 24px;
+      line-height: 22px;
+    }
+    .ant-pagination-item-active {
+      a {
+        color: var(--ns-neutral);
+      }
+    }
+  }
+}
