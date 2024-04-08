@@ -3,6 +3,8 @@ import { Color, GradientString } from '../composables/theme'
 import { buildProps } from '../utils/private/props'
 
 export type FlexDirection = 'row' | 'column'
+export type Align = 'start' | 'end' | 'between' | 'space'
+export type Justify = 'start' | 'end' | 'between' | 'space'
 
 const flexProps = {
   /**
@@ -25,18 +27,26 @@ const flexProps = {
   wrap: {
     type: Boolean,
     default: () => false
+  },
+  align: {
+    type: String as PropType<Align>
+  },
+  justify: {
+    type: String as PropType<Justify>
   }
 }
 
 export type FlexProps = ExtractPropTypes<typeof flexProps>
 
-export const computeFlexProps = (props: FlexProps) => {
+export const buildFlexStyles = (props: FlexProps) => {
   return {
     ...props.gutter && {
       '--flex-gutter': `${props.gutter}px`,
     },
     '--flex-direction': `${props.direction}px`,
-    '--flex-wrap': props.wrap ? 'wrap' : 'no-wrap'
+    '--flex-wrap': props.wrap ? 'wrap' : 'no-wrap',
+    ...props.align ? {'--flex-align': props.align} : {},
+    ...props.justify ? {'--flex-justify': props.justify} : {},
   }
 }
 

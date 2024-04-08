@@ -30,6 +30,7 @@ export * from './popover'
 export * from './timeline'
 export * from './files'
 export * from './upload'
+export * from './number'
 export * from './divider'
 
 import { NsApp } from './app'
@@ -64,6 +65,7 @@ import { NsFiles } from './files'
 import { NsUpload, NsCropUpload } from './upload'
 import { NsTimeline } from './timeline'
 import { NsDivider } from './divider'
+import { NsNumber } from './number'
 
 const components = {
   NsApp,
@@ -110,6 +112,7 @@ const components = {
   NsFacts,
   NsFiles,
   NsUpload,
+  NsNumber,
   NsCropUpload,
   NsTable,
   NsPopover,

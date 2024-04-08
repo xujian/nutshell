@@ -22,13 +22,13 @@
 }
 
 /* wrap */
-.flex.nowrap {
+.nowrap {
   flex-wrap: nowrap;
 }
-.flex.wrap {
+.wrap {
   flex-wrap: wrap;
 }
-.flex.wrap-reverse {
+.wrap-reverse {
   flex-wrap: wrap;
 }
 
@@ -103,6 +103,8 @@
   flex-direction: var(--flex-direction);
   margin: calc(-1/2 * var(--flex-gutter));
   flex-wrap: var(--flex-wrap);
+  align-items: var(--flex-align, center);
+  justify-content: var(--flex-justify);
   .flex-item {
     margin: calc(1/2 * var(--flex-gutter));
     flex-shrink: 0;

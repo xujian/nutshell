@@ -16,6 +16,12 @@ const designProps = {
   gradient: {
     type: String as PropType<GradientString>,
   },
+  borderColor: {
+    type: String as PropType<Color>
+  },
+  borderWidth: {
+    type: Number,
+  },
 }
 
 export type DesignProps = MakePropsType<typeof designProps>
@@ -28,8 +34,18 @@ const buildDesignClasses = (props: DesignProps) => [
 
 const buildDesignStyles = (props: DesignProps) => {
   const style = {
-    ...props.fill ? buildFillStyle(props.fill) : {},
-    ...buildGradientStyle(props.gradient)
+    ...props.fill
+      ? {
+          ...buildFillStyle(props.fill)
+        }
+      : {},
+    ...buildGradientStyle(props.gradient),
+    ...props.borderColor
+      ? { '--borderColor': props.borderColor }
+      : {},
+    ...props.borderColor
+      ? { '--borderWidth': props.borderWidth }
+      : {}
   }
   return style
 }

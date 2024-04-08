@@ -24,6 +24,7 @@ const TablePage = () => import('../pages/components/TablePage.vue')
 const IconPage = () => import('../pages/components/IconPage.vue')
 const PaginationPage = () => import('../pages/components/PaginationPage.vue')
 const TabsPage = () => import('../pages/components/TabsPage.vue')
+const NumberPage = () => import('../pages/components/NumberPage.vue')
 const TabbarPage = () => import('../pages/components/TabbarPage.vue')
 const StepperPage = () => import('../pages/components/StepperPage.vue')
 const RadioPage = () => import('../pages/components/RadioPage.vue')
@@ -107,6 +108,11 @@ const router = createRouter({
           path: '/components/icon',
           name: 'components-icon',
           component: IconPage
+        },
+        {
+          path: '/components/number',
+          name: 'components-number',
+          component: NumberPage
         },
         {
           path: '/components/input',

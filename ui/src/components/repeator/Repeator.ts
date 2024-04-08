@@ -1,7 +1,7 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { h } from 'vue'
-import { computeFlexProps, useFlexProps } from '../../props'
+import { buildFlexStyles, useFlexProps } from '../../props'
 
 export const repeatorProps = {
   /**
@@ -57,7 +57,7 @@ export const NsRepeator = defineComponent({
         'flex-with-vars'
       ],
       style: {
-        ...computeFlexProps(props)
+        ...buildFlexStyles(props)
       }
     }, {
       default: item

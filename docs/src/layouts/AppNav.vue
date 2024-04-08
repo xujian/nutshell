@@ -133,6 +133,10 @@ const menuData = computed(() => [
             key: '/components/icon'
           },
           {
+            label: '数字 number',
+            key: '/components/number'
+          },
+          {
             label: '分割线 divider',
             key: '/components/divider'
           }

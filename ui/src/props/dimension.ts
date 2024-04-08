@@ -32,15 +32,15 @@ export const useDimensionProps = buildProps({
   },
 })
 
-export function useDimension (props: DimensionProps) {
-  const dimensionStyles = computed(() => ({
+export function buildDimensionProps (props: DimensionProps) {
+  const dimensionStyles = {
     height: convertToUnit(props.height),
     maxHeight: convertToUnit(props.maxHeight),
     maxWidth: convertToUnit(props.maxWidth),
     minHeight: convertToUnit(props.minHeight),
     minWidth: convertToUnit(props.minWidth),
     width: convertToUnit(props.width),
-  }))
+  }
 
-  return { dimensionStyles }
+  return dimensionStyles
 }
