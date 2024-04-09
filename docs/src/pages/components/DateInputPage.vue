@@ -15,6 +15,18 @@
     v-model="rangedDate"
     @change="onRangeDateInputChange"
     :rules="['required']" />
+
+  <h1 class="my-lg">月份输入框 &lt;ns-month-input&gt;</h1>
+  <ns-month-input name="registerMonth" label="选择月份"
+      v-model="registerMonth"
+      variant="plain"
+      :rules="['required']" />
+
+  <h1 class="my-lg">年份输入框 &lt;ns-year-input&gt;</h1>
+  <ns-year-input name="registerYear" label="选择月份"
+      v-model="registerYear"
+      variant="plain"
+      :rules="['required']" />
 </template>
 
 <script lang="ts" setup>
@@ -22,6 +34,8 @@ import { ref } from 'vue'
 import { variants } from '../../props'
 
 const registerDate = ref<string>('2023-09-01')
+const registerMonth = ref<string>('')
+const registerYear = ref<string>('')
 const rangedDate = ref<string[]>()
 
 const onRangeDateInputChange = (value?: string[]) => {

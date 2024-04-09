@@ -1,5 +1,7 @@
 export * from './Input'
 export * from './DateInput'
+export * from './MonthInput'
+export * from './YearInput'
 export * from './DateRangeInput'
 export * from './Textarea'
 export * from './NumberInput'

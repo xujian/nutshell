@@ -36,7 +36,7 @@ export * from './divider'
 import { NsApp } from './app'
 import { NsButton } from './button'
 import { NsForm } from './form'
-import { NsInput, NsDateInput, NsDateRangeInput, NsMobileInput, NsIdInput, NsTextarea, NsNumberInput } from './input'
+import { NsInput, NsDateInput, NsDateRangeInput, NsMobileInput, NsIdInput, NsTextarea, NsNumberInput, NsMonthInput, NsYearInput } from './input'
 import { NsSwitch } from './switch'
 import { NsSelect, NsCascadingSelect, NsMultipleSelect } from './select'
 import { NsCheckbox } from './checkbox'
@@ -73,6 +73,8 @@ const components = {
   NsInput,
   NsDateInput,
   NsDateRangeInput,
+  NsMonthInput,
+  NsYearInput,
   NsMobileInput,
   NsIdInput,
   NsTextarea,
