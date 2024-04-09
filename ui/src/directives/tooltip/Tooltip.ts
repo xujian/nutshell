@@ -17,7 +17,6 @@ function getPositionClass(modifiers: any) {
 
 const Tooltip: Directive = {
   beforeMount (el, { modifiers, value }) {
-    console.log('v-tooltip........................beforeMount', el, modifiers, value)
     el.setAttribute('data-tooltip', value?.text || value)
     el.classList.add('with-tooltip')
     const position = value.position || getPositionClass(modifiers)

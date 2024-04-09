@@ -266,7 +266,13 @@ const menuData = computed(() => [
   },
   {
     label: 'Directives',
-    key: 'directives'
+    key: 'directives',
+    children: [
+      {
+        label: '提示 v-tooltip',
+        key: '/directives/tooltip'
+      },
+    ]
   },
   {
     label: 'Composables',

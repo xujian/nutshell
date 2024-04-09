@@ -39,6 +39,7 @@ const DrawerPage = () => import('../pages/interactive/DrawerPage.vue')
 const FontPage = () => import('../pages/tokens/FontPage.vue')
 const TablePerfPage = () => import('../pages/labs/TablePerfPage.vue')
 const ComponentListPage = () => import('../pages/labs/ComponentList.vue')
+const TooltipPage = () => import('../pages/directives/TooltipPage.vue')
 const NotFoundPage = () => import('../pages/NotFoundPage.vue')
 
 const router = createRouter({
@@ -238,6 +239,11 @@ const router = createRouter({
           path: '/labs/component-list',
           name: 'component-list',
           component: ComponentListPage
+        },
+        {
+          path: '/directives/tooltip',
+          name: 'directives-tooltip',
+          component: TooltipPage
         },
         {
           path: '/404',
