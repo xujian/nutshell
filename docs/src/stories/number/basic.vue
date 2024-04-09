@@ -7,6 +7,7 @@
       hight="400"
       justify="center"
       border-color="secondary"
+      :animated="true"
       v-model="value1" />
     <ns-number
       header="比特币实时总市值"
@@ -17,6 +18,7 @@
       :padding="8"
       :main-height="100"
       main-justify="end"
+      :animated="true"
       v-model="value2">
       <template #footer>
         <div class="row align-center">

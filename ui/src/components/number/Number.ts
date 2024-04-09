@@ -1,4 +1,6 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, onMounted, ref } from 'vue'
+import { CountUp } from 'countup.js'
+// import { Odometer } from 'odometer'
 import { MakePropsType } from '../../utils'
 import { useModelValuePropsForInput,
   buildDimensionProps,useDimensionProps, buildFlexStyles,
@@ -78,6 +80,10 @@ export const numberProps = {
     default: false,
   },
   ...useTooltipProps(),
+  animated: {
+    type: Boolean,
+    default: false
+  }
 }
 
 export type NumberEmits = {
@@ -103,7 +109,8 @@ export const NsNumber = defineComponent({
   emits: numberEmits,
   setup (props, { slots }) {
 
-    const root = ref<HTMLDivElement>()
+    const root = ref<HTMLDivElement>(),
+      digitsRef = ref<HTMLDivElement>()
 
     // 数字组件不同于 <ns-number-input>/<ns-table-column-number>
     // 用于数字的显示
@@ -125,7 +132,8 @@ export const NsNumber = defineComponent({
         class: [
           'digits',
           'number'
-        ]
+        ],
+        ref: digitsRef,
       }, finalDisplay),
       prefix = () => h('div', {
         class: [
@@ -217,6 +225,12 @@ export const NsNumber = defineComponent({
     onMounted(() => {
       if (props.tooltip) {
         makeTooltip(root.value!, props)
+      }
+      if (props.animated) {
+        const counter = new CountUp(digitsRef.value!, finalValue, {
+          duration: 2
+        })
+        counter.start()
       }
     })
 
