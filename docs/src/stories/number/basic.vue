@@ -19,7 +19,10 @@
       main-justify="end"
       v-model="value2">
       <template #footer>
-        (刷新频率 1 分钟)
+        <div class="row align-center">
+          <span>(刷新频率 1 分钟)</span>
+          <i class="circle" v-tooltip="'带饭'">?</i>
+        </div>
       </template>
       </ns-number>
     <ns-number
