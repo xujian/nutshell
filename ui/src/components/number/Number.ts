@@ -1,9 +1,14 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, onMounted, ref } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useModelValuePropsForInput,
   buildDimensionProps,useDimensionProps, buildFlexStyles,
   useFlexProps, Align, Justify, useDesignProps,
-  buildDesignStyles} from '../../props'
+  buildDesignStyles,
+  useTooltipProps,
+  makeTooltip,
+  convertDimension,
+} from '../../props'
+import { Dimension } from '../../types'
 
 const arrowDown = '▼',
   arrowUp = '▲'
@@ -23,6 +28,9 @@ export const numberProps = {
   },
   footer: {
     type: String,
+  },
+  fontSize: {
+    type: [Number, String] as PropType<Dimension>
   },
   maximumFractionDigits: {
     type: Number,
@@ -68,7 +76,8 @@ export const numberProps = {
   autoTrend: {
     type: Boolean,
     default: false,
-  }
+  },
+  ...useTooltipProps(),
 }
 
 export type NumberEmits = {
@@ -79,6 +88,8 @@ const numberEmits: NumberEmits = {
 
 export type NumberSlots = {
   default: never,
+  header: never,
+  footer: never,
 }
 
 export type NumberProps = MakePropsType<typeof numberProps, NumberEmits>
@@ -90,7 +101,9 @@ export const NsNumber = defineComponent({
   name: 'NsNumber',
   props: numberProps,
   emits: numberEmits,
-  setup (props, ctx) {
+  setup (props, { slots }) {
+
+    const root = ref<HTMLDivElement>()
 
     // 数字组件不同于 <ns-number-input>/<ns-table-column-number>
     // 用于数字的显示
@@ -169,9 +182,15 @@ export const NsNumber = defineComponent({
           'flex-with-vars',
         ]
       }, [
-        props.header ? header() : null,
+        slots.header
+          ? slots.header()
+          : props.header
+            ? header()
+            : null,
         main(),
-        props.footer ? footer() : null
+        slots.footer
+          ? slots.footer()
+          : props.footer ? footer() : null
       ])
 
     const styles = {
@@ -179,12 +198,10 @@ export const NsNumber = defineComponent({
       ...buildFlexStyles(props),
       ...buildDesignStyles(props),
       ...props.mainHeight
-        ? {
-          '--mainHeight':
-            typeof props.mainHeight === 'number'
-              ? `${props.mainHeight}px`
-              : props.mainHeight
-          }
+        ? { '--mainHeight': convertDimension(props.minHeight) }
+        : {},
+      ...props.fontSize
+        ? { '--fontSize': convertDimension(props.fontSize) }
         : {},
       ...props.mainAlign
         ? { '--mainAlign': props.mainAlign }
@@ -197,12 +214,19 @@ export const NsNumber = defineComponent({
         : {}
     }
 
+    onMounted(() => {
+      if (props.tooltip) {
+        makeTooltip(root.value!, props)
+      }
+    })
+
     return () => h('div', {
       class: [
         'ns-number',
         'column',
       ],
       style: styles,
+      ref: root,
     }, [
       content(),
     ])

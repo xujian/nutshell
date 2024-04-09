@@ -10,7 +10,6 @@
       v-model="value1" />
     <ns-number
       header="比特币实时总市值"
-      footer="(刷新频率 1 分钟)"
       suffix="美元"
       width="48%"
       align="center"
@@ -18,7 +17,11 @@
       :padding="8"
       :main-height="100"
       main-justify="end"
-      v-model="value2" />
+      v-model="value2">
+      <template #footer>
+        (刷新频率 1 分钟)
+      </template>
+      </ns-number>
     <ns-number
       header="上周营收"
       suffix="%"
@@ -48,6 +51,7 @@
       mainAlign="center"
       trend="down"
       :minimum-fraction-digits="2"
+      tooltip="数据存在1-2天延迟"
       v-model="value5" />
   </div>
 </template>
