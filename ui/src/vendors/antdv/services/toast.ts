@@ -7,7 +7,11 @@ type MesageType = 'info' | 'success'
 function toast (message: string, options: ToastOptions = {}) {
   const {type = 'info', duration = DEAULT_TOAST_DURATION} = options
   const call = antdvMessage[type as MesageType]
-  call?.(message, options.duration)
+  call?.({
+    content: message,
+    duration,
+    class: 'ns-toast'
+  })
 }
 
 export default toast
