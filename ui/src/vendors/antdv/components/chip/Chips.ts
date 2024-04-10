@@ -9,7 +9,7 @@ const modelValue = ref(false)
 const hovercheckbox = ref(false)
 
 export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
-  const options = props.data || []
+  const options = props.options || []
 
   const onItemClick = (item: NameValuePair) => {
     const value = props.modelValue || [],

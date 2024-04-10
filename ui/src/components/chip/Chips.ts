@@ -6,7 +6,10 @@ import { FullValidationRule, ValidationRule, formatRules } from '../../props/fie
 
 export const chipsProps = {
   ...useModelValuePropsForStringArray(),
-  ...useDataProps(),
+  options: {
+    type: Array as PropType<NameValuePair[]>,
+    default: [],
+  },
   dropdown: {
     type: Boolean,
     default: false,
