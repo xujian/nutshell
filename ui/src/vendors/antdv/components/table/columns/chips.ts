@@ -1,5 +1,5 @@
 import { h, ref } from 'vue'
-import { LabelValuePair } from '../../../../../shared/models'
+import { NameValuePair } from '../../../../../shared/models'
 import { NsButton, NsChip, NsMultipleSelect, TableColumnChipsProps, TableColumnData } from '../../../../../components'
 import { NsEditable } from '../../../../../components/editable'
 
@@ -10,7 +10,7 @@ import { NsEditable } from '../../../../../components/editable'
  */
 export default function chips (props: TableColumnChipsProps) {
   const style = props.extraStyle
-  const chip = (value: LabelValuePair, row: Record<string, any>) => h(NsChip, {
+  const chip = (value: NameValuePair, row: Record<string, any>) => h(NsChip, {
     label: value.label,
     color: props.color ?? 'primary',
     ...style && {
@@ -24,13 +24,13 @@ export default function chips (props: TableColumnChipsProps) {
 
     const editable = ref<typeof NsEditable>()
 
-    const items: LabelValuePair[] = typeof v === 'string'
+    const items: NameValuePair[] = typeof v === 'string'
         // 支持两种格式的 value
         // 1. 逗号分隔的字符串
         // 2. 字符串数组
         // 3. label/value 数组
         ? v.split(',').map(t => ({
-            label: t,
+            name: t,
             value: t
           }))
         : v.map(v =>

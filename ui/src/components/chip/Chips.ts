@@ -1,14 +1,12 @@
-import { useFieldProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { useDataProps, useFieldProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
-import { LabelValuePair } from '../../shared/models'
+import { NameValuePair } from '../../shared/models'
 import { PropType } from 'vue'
 import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 
 export const chipsProps = {
   ...useModelValuePropsForStringArray(),
-  options: {
-    type: Array as PropType<LabelValuePair[]>,
-  },
+  ...useDataProps(),
   dropdown: {
     type: Boolean,
     default: false,

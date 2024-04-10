@@ -1,7 +1,7 @@
 import { h, ref, SetupContext, VNode } from 'vue'
 import { FormItem as AntFormItem } from 'ant-design-vue'
 import { ChipsProps, NsButton, NsCheckboxGroup, NsChip, NsPopover } from '../../../../components'
-import { LabelValuePair } from '../../../../shared/models'
+import { NameValuePair } from '../../../../shared/models'
 import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from '../input/rules'
 
@@ -9,14 +9,14 @@ const modelValue = ref(false)
 const hovercheckbox = ref(false)
 
 export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
-  const options = props.options || []
+  const options = props.data || []
 
-  const onItemClick = (item: LabelValuePair) => {
+  const onItemClick = (item: NameValuePair) => {
     const value = props.modelValue || [],
-      itemIncludes = value.includes(item.value),
+      itemIncludes = value.includes(`${item.value}`),
       newValue = itemIncludes
-        ? value.filter((a) => a !== item.value)
-        : Array.from(new Set([...value, item.value]))
+        ? value.filter((a) => a !== `${item.value}`)
+        : Array.from(new Set([...value, `${item.value}`]))
     props['onUpdate:modelValue']?.(newValue)
   }
 
@@ -27,7 +27,7 @@ export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
   // 可下拉选择模式时
   if (props.dropdown) {
     const selectedSlot = options
-      .filter((o) => props.modelValue?.includes(o.value))
+      .filter((o) => props.modelValue?.includes(`{o.value}`))
       .map((o) => {
         return h(NsChip, {
           class: ['selected'],
