@@ -2,6 +2,10 @@
   .ns-number-input {
     width: 100%;
   }
+  .ant-input-number {
+    border: none;
+    border-radius: var(--ns-border-radius);
+  }
   .ns-number-amount {
     position: absolute;
     right: 0;

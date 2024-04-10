@@ -11,5 +11,22 @@
         }
       }
     }
+    .ant-picker-panel-container {
+      background: var(--ns-surface);
+      .ant-picker-header {
+        color: var(--ns-text);
+        >button {
+          color: var(--ns-text);
+        }
+      }
+      .ant-picker-content {
+        th {
+          color: var(--ns-text);
+        }
+      }
+      .ant-picker-cell-in-view {
+        color: var(--ns-text);
+      }
+    }
   }
 }
