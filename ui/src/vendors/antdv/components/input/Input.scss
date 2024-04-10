@@ -4,6 +4,7 @@
     border-color: transparent;
     border-style: solid;
     background-color: transparent;
+    color: var(--ns-text);
     &:hover {
       border-color: var(--ns-accent);
     }
@@ -11,6 +12,19 @@
       border-color: var(--ns-accent);
       box-shadow: 0 0 2px 1px color-mix(in srgb, var(--ns-accent) 30%, transparent);
       outline: none;
+    }
+  }
+  .ant-input-number {
+    background-color: var(--ns-fill);
+    border-color: var(--ns-stroke);
+    .ant-input-number-input {
+      color: var(--ns-text);
+    }
+  }
+  .ant-input-affix-wrapper {
+    background-color: var(--ns-fill);
+    .ant-input::placeholder {
+      color: var(--ns-neutral);
     }
   }
   .ant-form-item-explain-error {

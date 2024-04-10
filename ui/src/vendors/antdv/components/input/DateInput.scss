@@ -4,6 +4,12 @@
       width: 100%;
       border: none;
       background-color: var(--ns-fill);
+      input {
+        color: var(--ns-text);
+        &::placeholder {
+          color: var(--ns-neutral);
+        }
+      }
     }
   }
 }
