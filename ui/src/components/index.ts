@@ -59,7 +59,7 @@ import { NsEditable } from './editable'
 import { NsPagination } from './pagination'
 import { NsRepeator } from './repeator'
 import { NsTable, NsTableColumn, NsTableColumnSelector } from './table'
-import { NsPopover } from './popover'
+import { NsPopover, NsPopoverConfirm } from './popover'
 import { NsFacts } from './facts'
 import { NsFiles } from './files'
 import { NsUpload, NsCropUpload } from './upload'
@@ -118,6 +118,7 @@ const components = {
   NsCropUpload,
   NsTable,
   NsPopover,
+  NsPopoverConfirm,
   NsTimeline,
   NsDivider
 }

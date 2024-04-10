@@ -16,7 +16,7 @@ import { Timeline } from './timeline'
 import { Drawer } from './drawer'
 import { RadioGroup } from './radio'
 import { Pagination } from './pagination'
-import { Popover } from './popover'
+import { Popover, PopoverConfirm } from './popover'
 import { Facts } from './facts'
 import { Upload } from './upload'
 
@@ -50,6 +50,7 @@ const components = {
   RadioGroup,
   Pagination,
   Popover,
+  PopoverConfirm,
   Facts,
   Upload
 }

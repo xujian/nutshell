@@ -5,7 +5,6 @@ import { NsMenu } from '../../../../components'
 import { MenuInfo } from 'ant-design-vue/es/menu/src/interface'
 
 export const Popover = (props: PopoverProps, cxt: SetupContext) => {
-  // console.log('vendors/Popover', props)
 
   return h(
     AntdvPopover,

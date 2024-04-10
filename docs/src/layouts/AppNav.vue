@@ -243,6 +243,10 @@ const menuData = computed(() => [
             key: '/components/popover'
           },
           {
+            label: '气泡确认框 popover-confirm',
+            key: '/components/popover-confirm'
+          },
+          {
             label: '选单 menu',
             key: '/interactive/menu'
           }

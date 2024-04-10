@@ -43,13 +43,14 @@ export const DateInput = defineComponent({
         visible: visible.value,
         onClose: close,
         placeholder: props.placeholder,
+        showTime: props.showTime,
         locale,
         value: value.value ? dayjs(value.value) : void 0,
         getPopupContainer: (triggerNode) => triggerNode.parentNode,
         'onUpdate:value': (value: string | Dayjs) => {
           const val = value === null
             ? ''
-            : (typeof value === 'string' ? dayjs(value) : value).format('YYYY-MM-DD')
+            : (typeof value === 'string' ? dayjs(value) : value).format(!props.showTime ? 'YYYY-MM-DD': 'YYYY-MM-DD  HH:mm:ss')
           props['onUpdate:modelValue']?.(val)
         },
         disabledDate: props.disabledDate,

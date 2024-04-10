@@ -9,6 +9,9 @@ export const dateInputProps = {
   disabledDate: {
     type: Function as PropType<(currentDate: Dayjs) => boolean>
   },
+  showTime: {
+    type: Boolean
+  },
   ...useFieldProps(),
 }
 

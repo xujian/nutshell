@@ -15,6 +15,7 @@ const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const RatingInputPage = () => import('../pages/components/RatingInputPage.vue')
 const SwitchPage = () => import('../pages/components/SwitchPage.vue')
 const PopoverPage = () => import('../pages/components/PopoverPage.vue')
+const PopoverConfirmPage = () => import('../pages/components/PopoverConfirmPage.vue')
 const FactsPage = () => import('../pages/components/FactsPage.vue')
 const FilesPage = () => import('../pages/components/FilesPage.vue')
 const EmptyPage = () => import('../pages/components/EmptyPage.vue')
@@ -144,6 +145,11 @@ const router = createRouter({
           path: '/components/popover',
           name: 'components-popover',
           component: PopoverPage
+        },
+        {
+          path: '/components/popover-confirm',
+          name: 'components-popover-confirm',
+          component: PopoverConfirmPage
         },
         {
           path: '/components/rating-input',
