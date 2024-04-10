@@ -38,7 +38,7 @@
         :options="chipsOptions"
         v-model="formData.tags" />
       <ns-number-input
-        name="name"
+        name="amount"
         label="数字输入"
         show-amount
         v-model="formData.amount"

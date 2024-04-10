@@ -33,7 +33,10 @@ export const Menu = (props: MenuProps, ctx: SetupContext) => {
     style,
     items: antdvItems,
     onClick: (e: MenuInfo) => {
-      ctx.emit('click', e)
+      ctx.emit('click', {
+        key: e.key,
+        item: e.item
+      })
     }
   })
 }
