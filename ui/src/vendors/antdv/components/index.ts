@@ -1,4 +1,4 @@
-import { Form } from './form'
+import { Form, FormItem } from './form'
 import { Input, DateInput, DateRangeInput, Textarea, NumberInput, MonthInput, YearInput } from './input'
 import { Switch } from './switch'
 import { Empty } from './empty'
@@ -22,6 +22,7 @@ import { Upload } from './upload'
 
 const components = {
   Form,
+  FormItem,
   Input,
   DateInput,
   DateRangeInput,

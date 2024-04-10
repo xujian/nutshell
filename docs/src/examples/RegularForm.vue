@@ -43,6 +43,7 @@
         show-amount
         v-model="formData.amount"
         :rules="['required']" />
+      <ns-form-item label="formItem">formItemValue</ns-form-item>
     </ns-form>
   </ns-card>
 </template>
