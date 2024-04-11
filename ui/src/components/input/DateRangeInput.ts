@@ -2,6 +2,7 @@ import { ObjectEmitsOptions, PropType } from 'vue'
 import { MakePropsType, define } from '../../utils'
 import { usePlatform } from '../../composables'
 import { useFieldProps } from '../../props'
+import { formatRules, FullValidationRule, ValidationRule } from '../../props/field'
 
 export type DateAsStringOrNumber = string | number
 
@@ -44,7 +45,11 @@ export const NsDateRangeInput = define({
     emits: dataRangeInputEmits,
     setup (props, ctx) {
       const platform = usePlatform()
+      const finalRules = formatRules(props.rules as ValidationRule[], props)
       return {
+        props: {
+          rules: finalRules as FullValidationRule[]
+        }
       }
     }
   }

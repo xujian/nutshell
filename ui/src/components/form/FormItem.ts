@@ -1,7 +1,7 @@
 import { PropType, ObjectEmitsOptions, SlotsType, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useVariantProps } from '../../props'
-import { ValidationRule } from '../../props/field'
+import { formatRules, FullValidationRule, ValidationRule } from '../../props/field'
 
 export const formItemProps = {
   name: {
@@ -39,9 +39,11 @@ export const NsFormItem = define({
   props: formItemProps,
   emits,
   setup (props, ctx) {
+    const finalRules = formatRules(props.rules as ValidationRule[], props)
 
     return {
       props: {
+        rules: finalRules as FullValidationRule[]
       }
     }
   }
