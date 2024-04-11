@@ -39,10 +39,17 @@ export const inputProps = {
     default: 'text'
   },
   /**
-   *
+   * 最大长度
    */
   maxlength: {
     type: Number
+  },
+  /**
+   * 是否展示字数
+   */
+  showCount: {
+    type: Boolean,
+    default: false
   },
   lazy: {
     type: Boolean,
