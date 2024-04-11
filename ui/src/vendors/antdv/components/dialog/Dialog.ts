@@ -27,7 +27,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       cancelText: props.cancelText || '取消',
       keyboard: true,
       centered: props.centered,
-      ...slots.footer ? {
+      ...!slots.footer ? {
         footer: props.footer,
       }: {},
       'onUpdate:open': (value: boolean) => {

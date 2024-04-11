@@ -98,7 +98,7 @@ export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
     )
   } else {
     defaultSlot = () => options.map((o) => {
-      const on = props.modelValue && props.modelValue.includes(o.value)
+      const on = props.modelValue && props.modelValue.includes(o.value as string)
       return h(NsChip, {
         class: on ? ['selected'] : [],
         color: on ? 'primary' : 'neutral',
