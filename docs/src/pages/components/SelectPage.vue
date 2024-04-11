@@ -9,8 +9,9 @@
         :options="cities"
         :name="`client-variant-${variant}`"
         :key="'primary'"
-        :color="'primary'" 
-        :variant="variant" label="创建订单"></ns-select>
+        :color="'primary'"
+        :variant="variant" label="创建订单">
+      </ns-select>
     </ns-row>
   </ns-card>
   <p>&nbsp;</p>
@@ -22,7 +23,7 @@
         v-model="multipleValue"
         :options="cities"
         :key="'primary'"
-        :color="'primary'" 
+        :color="'primary'"
         label="客户区域"></ns-multiple-select>
     </ns-row>
   </ns-card>

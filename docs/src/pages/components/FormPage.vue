@@ -22,6 +22,11 @@
   <p>&nbsp;</p>
   <story file="form/custom-validate" />
   <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h2>多行输入框</h2>
+  <p>&nbsp;</p>
+  <story file="form/textarea" />
+  <p>&nbsp;</p>
 </template>
 
 <script lang="ts" setup>

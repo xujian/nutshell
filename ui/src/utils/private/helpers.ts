@@ -13,7 +13,7 @@ export type WithMarginProps<T = {}> = T & MarginProps
 
 export const marginProps = {
   classes: {
-    type: Array as PropType<String[]>,
+    type: Array as PropType<string[]>,
     default: []
   }
 }

@@ -108,7 +108,7 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
  * string[]? when validating form item whithin array/v-for
  * :name="[<form model field>, index, <child field>]"
  */
-type FormItemName = string | [string, number, string]
+export type FormItemName = string | [string, number, string]
 
 /**
  * 表单项共用属性

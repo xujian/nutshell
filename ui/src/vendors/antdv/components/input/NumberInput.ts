@@ -1,11 +1,12 @@
 import { h } from 'vue'
-import { FormItem as AntFormItem, InputNumber as AntInputNumber } from 'ant-design-vue'
+import { InputNumber as AntInputNumber } from 'ant-design-vue'
 import { defineComponent } from 'vue'
 import { numberInputProps, inputEmits } from '../../../../components/input'
 import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from './rules'
 import { marginProps } from '../../../../utils/private/helpers'
 import { amountFormatter, amountParser, amountChinese } from '../../../../composables/amount'
+import { renderFormItem } from '../../utils'
 
 /**
  * Antdv InputNumber
@@ -21,15 +22,7 @@ export const NumberInput = defineComponent({
     const classes = ['ns-number-input', ...(props.classes || [])]
 
     const rules = transformRules(props.rules as FullValidationRule[])
-    return () =>
-      h(
-        AntFormItem,
-        {
-          class: ['ns-form-item', props.variant ? `variant-${props.variant}` : ''],
-          label: props.label,
-          name: props.name,
-          rules
-        },
+    return () => renderFormItem(props, slots, () =>
         [
           h(
             AntInputNumber,

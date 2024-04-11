@@ -1,5 +1,5 @@
 import { h, SetupContext } from 'vue'
-import { Rate as AntdvRating, FormItem as AntFormItem } from 'ant-design-vue'
+import { Rate as AntdvRating } from 'ant-design-vue'
 import { RatingProps } from '../../../../components'
 
 export const Rating = (props: RatingProps, { emit }: SetupContext) => {

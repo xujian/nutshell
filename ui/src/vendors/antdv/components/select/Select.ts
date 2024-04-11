@@ -1,9 +1,8 @@
 import { selectProps } from '../../../../components/select'
 import { defineComponent, h } from 'vue'
-import { Select as AntSelect, FormItem as AntFormItem } from 'ant-design-vue'
-import { transformRules } from '../input/rules'
-import { FullValidationRule } from '../../../../props/field'
+import { Select as AntSelect } from 'ant-design-vue'
 import { SelectValue } from 'ant-design-vue/es/select'
+import { renderFormItem } from '../../utils'
 
 export const Select = defineComponent({
   name: 'AntdvSelect',
@@ -20,16 +19,15 @@ export const Select = defineComponent({
       clearable, searchable
     } = props
 
-    const rules = transformRules(props.rules as FullValidationRule[])
-    return () => h(AntFormItem, {
+    return () => renderFormItem({
         name: props.name,
         class: [
           'ns-form-item',
           props.variant ? `variant-${props.variant}` : '',
         ],
         label: props.label,
-        rules
-      }, () => h(AntSelect, {
+      }, ctx.slots,
+      () => h(AntSelect, {
         class: classes,
         name: props.name,
         options: props.options,

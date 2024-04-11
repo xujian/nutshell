@@ -1,14 +1,14 @@
 import { h, ref, SetupContext, VNode } from 'vue'
-import { FormItem as AntFormItem } from 'ant-design-vue'
 import { ChipsProps, NsButton, NsCheckboxGroup, NsChip, NsPopover } from '../../../../components'
 import { NameValuePair } from '../../../../shared/models'
 import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from '../input/rules'
+import { renderFormItem } from '../../utils'
 
 const modelValue = ref(false)
 const hovercheckbox = ref(false)
 
-export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
+export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
   const options = props.options || []
 
   const onItemClick = (item: NameValuePair) => {
@@ -22,7 +22,7 @@ export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
 
   const rules = transformRules(props.rules as FullValidationRule[])
 
-  let defaultSlot: VNode[] | VNode
+  let defaultSlot: () => VNode | VNode[]
 
   // 可下拉选择模式时
   if (props.dropdown) {
@@ -37,7 +37,7 @@ export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
           onClick: () => onItemClick(o)
         })
       })
-    defaultSlot = h(
+    defaultSlot = () => h(
       NsPopover,
       {
         'overlay-class-name': 'ns-chips-popover',
@@ -97,7 +97,7 @@ export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
       }
     )
   } else {
-    defaultSlot = options.map((o) => {
+    defaultSlot = () => options.map((o) => {
       const on = props.modelValue && props.modelValue.includes(o.value)
       return h(NsChip, {
         class: on ? ['selected'] : [],
@@ -109,15 +109,7 @@ export const Chips = (props: ChipsProps, { emit }: SetupContext) => {
     })
   }
 
-  return h(
-    AntFormItem,
-    {
-      class: ['ns-chips', 'ns-form-item'],
-      label: props.label,
-      name: props.name,
-      rules
-    },
-    () => defaultSlot
+  return renderFormItem (
+    props, slots, defaultSlot,
   )
 }
-// + import => ./index.ts, ../components.ts

@@ -1,11 +1,12 @@
 import {h, ref, defineComponent, Ref, computed, toRaw} from 'vue'
-import { FormItem as AntFormItem, DatePicker } from 'ant-design-vue'
+import { DatePicker } from 'ant-design-vue'
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
 import { dateInputProps } from '../../../../components'
 import { transformRules } from './rules'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import { FullValidationRule } from '../../../../props/field'
+import { renderFormItem } from '../../utils'
 
 /**
  * Antdv DateInput
@@ -30,12 +31,7 @@ export const MonthInput = defineComponent({
         : undefined
       )
 
-    return () => h(AntFormItem, {
-      name: props.name,
-      class: 'ns-form-item',
-      label: props.label,
-      rules,
-    }, () => h(DatePicker, {
+    return () => renderFormItem(props, ctx.slots, () => h(DatePicker, {
         class: classes,
         visible: visible.value,
         onClose: close,

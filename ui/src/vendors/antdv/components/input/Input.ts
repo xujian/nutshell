@@ -1,5 +1,5 @@
 import { h } from 'vue'
-import { FormItem as AntFormItem, Input as AntInput } from 'ant-design-vue'
+import { Input as AntInput } from 'ant-design-vue'
 import { defineComponent } from 'vue'
 import { inputProps, inputEmits } from '../../../../components/input'
 import { FullValidationRule } from '../../../../props/field'
@@ -7,6 +7,7 @@ import { transformRules } from './rules'
 import { ChangeEvent } from 'ant-design-vue/es/_util/EventInterface'
 import { marginProps } from '../../../../utils/private/helpers'
 import { withModifiers } from 'vue'
+import { renderFormItem } from '../../utils'
 
 export type AntInputType =
   | 'number'
@@ -44,19 +45,10 @@ export const Input = defineComponent({
   emits: inputEmits,
   setup: (props, { emit, slots }) => {
     const classes = ['ns-input', ...(props.classes || [])]
-
-    const rules = transformRules(props.rules as FullValidationRule[])
     return () =>
-      h(
-        AntFormItem,
-        {
-          class: ['ns-form-item', props.variant ? `variant-${props.variant}` : ''],
-          label: props.label,
-          name: props.name,
-          rules
-        },
-        () =>
-          h(
+      renderFormItem(
+        props, slots,
+        () => h(
             AntInput,
             {
               class: classes,
@@ -86,7 +78,7 @@ export const Input = defineComponent({
               ...(slots.prepend && { prefix: slots.prepend }),
               ...(slots.append && { suffix: slots.append })
             }
-          )
+          ),
       )
   }
 })

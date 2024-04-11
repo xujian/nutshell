@@ -1,5 +1,5 @@
-import {h, ref, defineComponent, Ref, computed, toRaw, ComputedRef, VNode} from 'vue'
-import { FormItem as AntFormItem, RangePicker } from 'ant-design-vue'
+import {h, ref, defineComponent, computed, ComputedRef } from 'vue'
+import { RangePicker } from 'ant-design-vue'
 import 'dayjs/locale/zh-cn'
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN'
 import { DateRangeInputProps, dataRangeInputEmits, dateRangeInputProps } from '../../../../components'
@@ -7,6 +7,7 @@ import { transformRules } from './rules'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import { FullValidationRule } from '../../../../props/field'
+import { renderFormItem } from '../../utils'
 
 dayjs.locale('zh-cn')
 type DateValue = string | Dayjs
@@ -18,7 +19,7 @@ export const DateRangeInput = defineComponent({
   name: 'DateRangeInput',
   props: dateRangeInputProps,
   emits: dataRangeInputEmits,
-  setup: (props, { emit }) => {
+  setup: (props, { emit, slots }) => {
     const classes = [
       'ns-date-range-input',
     ].join(' ')
@@ -46,12 +47,7 @@ export const DateRangeInput = defineComponent({
 
     const formItem = ref(null)
 
-    return () => h(AntFormItem, {
-      name: props.name,
-      class: 'ns-form-item',
-      label: props.label,
-      rules,
-    }, () => h(RangePicker, {
+    return () => renderFormItem(props, slots, () => h(RangePicker, {
         ref: formItem,
         class: classes,
         visible: visible.value,
