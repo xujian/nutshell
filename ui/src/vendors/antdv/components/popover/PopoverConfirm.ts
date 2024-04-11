@@ -14,7 +14,7 @@ export const PopoverConfirm = (props: PopoverConfirmProps, cxt: SetupContext) =>
   return h(
     AntdvPopconfirm,
     {
-      'overlay-class-name': classes,
+      'overlay-class-name': classes.join(' '),
       description: props.content,
       title: props.title,
       placement: props.position || 'top',
