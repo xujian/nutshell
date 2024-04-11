@@ -13,6 +13,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       'ns-dialog',
     ].join(' ')
     const { slots, emit } = ctx
+    console.log(props, 'props')
 
     return () => h(AntdvModal, {
       class: classes,
@@ -26,7 +27,9 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       cancelText: props.cancelText || '取消',
       keyboard: true,
       centered: props.centered,
-      footer: props.footer,
+      ...slots.footer ? {
+        footer: props.footer,
+      }: {},
       'onUpdate:open': (value: boolean) => {
         console.log('antdv modal.......onUpdate:open', value, Object.keys(props), props['onUpdate:modelValue'])
         props['onUpdate:modelValue']?.(value)
