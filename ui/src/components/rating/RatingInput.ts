@@ -36,6 +36,9 @@ export const NsRatingInput = define({
     const finalRules = formatRules(props.rules as ValidationRule[], props)
     return {
       props: {
+        class: [
+          'ns-rating-input'
+        ],
         rules: finalRules as FullValidationRule[]
       }
     }
