@@ -25,13 +25,13 @@
 
 .circle,
 .rounded-block {
-  display: inline-block;
+  display: block;
   font-family: sans-serif;
   text-align: center;
-  width: 1.2em;
-  height: 1.2em;
-  line-height: 1.2em;
-  font-size: 1em;
+  width: 14px;
+  height: 14px;
+  line-height: 12px;
+  font-size: 12px;
   border: 1px solid var(--ns-text);
   text-decoration: none;
   font-style: normal;
@@ -43,7 +43,7 @@
 }
 
 .circle {
-  border-radius: .6em;
+  border-radius: 50%;
 }
 
 .rounded-block {

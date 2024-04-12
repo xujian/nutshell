@@ -177,18 +177,16 @@ export const buildFieldHint = (props: FieldProps) => {
 
   const hint = () => h('i', {
     class: [
-      'question-mark',
       'circle',
       'icon-hint',
     ],
-    dataHint: props.hint,
+    'data-hint': props.hint,
     ref: ref,
   }, '?')
   return withDirectives(h('div', {
-      class: 'form-label'
+      class: 'form-label row align-center'
     }, [
-      h('label', {
-      }, props.label),
+      h('label', {}, props.label),
       hint(),
     ]), [
       [tippy]
@@ -201,7 +199,7 @@ export const buildFieldHint = (props: FieldProps) => {
  * @param props
  */
 export const makeFieldHint = (el: Element) => {
-  const mark = el.querySelector('.question-mark')
+  const mark = el.querySelector('.icon-hint')
   if (mark) {
     const hint = mark.getAttribute('data-hint') || ''
     useTippy(mark, {

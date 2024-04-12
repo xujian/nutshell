@@ -6,12 +6,15 @@
       <h3 class="mt-xl mb-lg">基础信息</h3>
       <ns-input
         name="name"
-        label="客户姓名"
         v-model="formData.name"
         :rules="['required', {
           method: (v: string) => v?.length > 1,
           message: '最少两个字'
-        }]" />
+        }]">
+        <template #label>
+          客户姓名
+        </template>
+        </ns-input>
       <ns-date-input
         v-model="formData.divorceDate"
         name="divorceDate"
@@ -30,11 +33,12 @@
         label="手机号"
         v-model="formData.mobile" />
       <h3 class="mt-xl mb-lg">基础信息</h3>
-      <ns-rating label="意向等级"
+      <ns-rating-input label="意向等级"
         name="intention"
         v-model="formData.intention" />
       <ns-chips label="客户标签"
         name="tags"
+        :dropdown="true"
         :options="chipsOptions"
         v-model="formData.tags" />
       <ns-number-input

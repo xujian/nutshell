@@ -9,12 +9,14 @@
       :rules="['required']" />
   </ns-row>
 
-  <h2 class="my-lg">日期区间输入框 &lt;ns-date-input&gt;</h2>
-  <ns-date-range-input name="rangedDate" label="选择日期"
+  <h2 class="my-lg">日期区间输入框 &lt;ns-date-range-input&gt;</h2>
+  <ns-date-range-input name="rangedDate" label="选择起止日期"
+    hint="日期是这个"
     :width="300"
     v-model="rangedDate"
     @change="onRangeDateInputChange"
-    :rules="['required']" />
+    :rules="['required']">
+  </ns-date-range-input>
 
   <h1 class="my-lg">月份输入框 &lt;ns-month-input&gt;</h1>
   <ns-month-input name="registerMonth" label="选择月份"

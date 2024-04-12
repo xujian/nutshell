@@ -14,21 +14,17 @@ export const DateInput = defineComponent({
   name: 'DateInput',
   props: dateInputProps,
   setup: (props, ctx) => {
-      console.log(toRaw(props))
     const visible = ref(false)
     const open = () => {
-      console.log('DateInput.Antdv......open')
       visible.value = true
     },
     close = () => {
-      console.log('DateInput.Antdv......close')
       visible.value = false
     }
     const value: Ref<string | Dayjs | undefined> = computed(() => props.modelValue
         ? dayjs(props.modelValue) || dayjs()
         : undefined
       )
-    console.log('===DateInput', props)
     return () => renderFormItem(
       props, ctx.slots,
       () => h(DatePicker, {
@@ -37,12 +33,17 @@ export const DateInput = defineComponent({
           placeholder: props.placeholder,
           showTime: props.showTime,
           locale,
-          value: value.value ? dayjs(value.value) : void 0,
-          getPopupContainer: (triggerNode) => triggerNode.parentNode,
+          ...value.value
+            ? { value: dayjs(value.value) }
+            : {},
+          getPopupContainer: (triggerNode) => triggerNode.parentElement || document.body,
           'onUpdate:value': (value: string | Dayjs) => {
             const val = value === null
               ? ''
-              : (typeof value === 'string' ? dayjs(value) : value).format(!props.showTime ? 'YYYY-MM-DD': 'YYYY-MM-DD  HH:mm:ss')
+              : (typeof value === 'string'
+                  ? dayjs(value)
+                  : value
+                ).format(!props.showTime ? 'YYYY-MM-DD': 'YYYY-MM-DD  HH:mm:ss')
             props['onUpdate:modelValue']?.(val)
           },
           disabledDate: props.disabledDate,
