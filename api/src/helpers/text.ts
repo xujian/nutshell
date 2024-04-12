@@ -1,4 +1,4 @@
-import { capitalize } from 'lodash-es'
+import capitalize from 'lodash/capitalize'
 
 export const kebabCase = (str: string) => {
   let kebab = ''

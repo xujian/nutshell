@@ -79,7 +79,6 @@
     "cropperjs": "^1.6.1",
     "dayjs": "^1.11.9",
     "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
     "odometer": "^0.4.8",
     "tippy.js": "^6.3.7",
     "typescript": "^5.2.2",
