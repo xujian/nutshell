@@ -5,7 +5,7 @@ import { RadioProps } from './Radio'
 
 export type RadioITem = {
   label: string,
-  value: string | number
+  value: string | number | boolean
 }
 
 export const radioGroupProps = {

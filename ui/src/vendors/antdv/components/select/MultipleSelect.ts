@@ -25,6 +25,7 @@ export const MultipleSelect = defineComponent({
           options: props.options,
           allowClear: clearable,
           showSearch: searchable,
+          showArrow: true,
           value: props.modelValue,
           getPopupContainer: (triggerNode) => triggerNode.parentNode,
           'onUpdate:value': (value: SelectValue) => {
