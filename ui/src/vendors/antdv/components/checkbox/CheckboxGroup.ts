@@ -8,7 +8,6 @@ import { CheckboxValueType } from 'ant-design-vue/es/checkbox/interface'
 export const CheckboxGroup = (props: CheckboxGroupProps & MarginProps, ctx: SetupContext) => {
 
   return h(AntdvCheckboxGroup, {
-    class: 'ns-checkbox-group',
     options: props.options,
     value: props.modelValue as CheckboxValueType[],
     'onUpdate:value': (value: CheckboxValueType[]) => {

@@ -61,7 +61,6 @@ export const Timeline = (props: TimelineProps, { slots, emit }: SetupContext) =>
   const items = transformItemsToSlots(props.items || [], slots)
 
   return h(AntdvTimeline, {
-    class: 'ns-timeline',
   }, {
     default: () => items,
   })

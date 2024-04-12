@@ -9,14 +9,10 @@ const buttonTypesMap: Record<string, LegacyButtonType> = {
 
 export const Dialog = defineComponent<DialogProps, DialogEmits>(
   (props, ctx) => {
-    const classes = [
-      'ns-dialog',
-    ].join(' ')
     const { slots, emit } = ctx
     console.log(props, 'props')
 
     return () => h(AntdvModal, {
-      class: classes,
       style: props.style,
       open: props.modelValue,
       title: props.title,

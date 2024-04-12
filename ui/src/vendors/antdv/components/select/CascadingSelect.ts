@@ -8,14 +8,12 @@ export const CascadingSelect = defineComponent({
   name: 'AntdvCascadingSelect',
   props: cascadingSelectProps,
   setup(props, ctx) {
-    const classes = ['ns-select', 'ns-cascading-select']
 
     const { clearable, searchable } = props
 
     return () => renderFormItem(props, ctx.slots,
       () =>
         h(AntCascader, {
-          class: classes,
           name: props.name,
           options: props.options,
           allowClear: clearable,

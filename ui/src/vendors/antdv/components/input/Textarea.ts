@@ -19,12 +19,9 @@ export const Textarea = defineComponent({
   },
   emits: textareaEmits,
   setup: (props, { emit, slots }) => {
-    const classes = ['ns-input', ...(props.classes || [])]
-
     const rules = transformRules(props.rules as FullValidationRule[])
     return () => renderFormItem(props, slots, () =>
       h(AntTextarea, {
-        class: classes,
         maxlength: props.maxlength ?? 200,
         disabled: props.disabled ?? false,
         value: props.modelValue,

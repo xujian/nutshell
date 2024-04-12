@@ -7,7 +7,6 @@ export const Dropdown = defineComponent({
   props: dropdownProps,
   setup (props, ctx) {
     const classes = [
-      'ns-dropdown',
       ...props.color ? [`color-${props.color}`] : []
     ].join(' ')
     const { slots, emit } = ctx

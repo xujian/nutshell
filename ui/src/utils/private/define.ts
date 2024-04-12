@@ -1,5 +1,5 @@
-import { ComponentObjectPropsOptions, ComponentOptionsMixin, 
-  ComponentOptionsWithObjectProps, 
+import { ComponentObjectPropsOptions, ComponentOptionsMixin,
+  ComponentOptionsWithObjectProps,
   SetupContext, SlotsType, ObjectEmitsOptions, PropType,
   Ref, ref, h,
   defineComponent,
@@ -8,6 +8,7 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
 import { LooseRequired } from '@vue/shared'
 import { MakePropsType } from './helpers'
 import { useVendor } from '../../shared'
+import { kebabCase } from '../text'
 
 const buildClasses = (props: any): string[] => {
   const { variant, color } = props
@@ -25,13 +26,13 @@ const buildClasses = (props: any): string[] => {
  * Our private defineComponent
  * 简化并专门化参数定义
  * 定义组件
- * @param options 
+ * @param options
  */
 export function define<
   /** 组件属性的定义 */
   PropsOptions extends ComponentObjectPropsOptions,
   /** 组件事件的定义 */
-  Emits extends ObjectEmitsOptions, 
+  Emits extends ObjectEmitsOptions,
   /** 组件 SLOT 的定义 */
   Slots extends SlotsType = {},
   // 从 PropsOptions 抽取组件的实际属性
@@ -82,8 +83,10 @@ export function define<
     }
 
     const vm = getCurrentInstance() as any
+    const className = kebabCase(options.name)
     vm.render = () => h(render.value, {
     // return () => h(render.value, {
+      class: className,
       ...props,
       ...extraProps,
       classes: buildClasses(props),
@@ -99,7 +102,7 @@ export function define<
   }
 
   const optionsSyth: ComponentOptionsWithObjectProps<
-    PropsOptions, {}, {}, {}, {}, 
+    PropsOptions, {}, {}, {}, {},
     ComponentOptionsMixin, ComponentOptionsMixin,
     Emits, string, {}, string, Slots
   > = {
@@ -117,14 +120,14 @@ export function define<
    */
   return defineComponent<
     PropsOptions,
-    {}, 
-    {}, 
-    {}, 
+    {},
+    {},
+    {},
     {},
     ComponentOptionsMixin,
     ComponentOptionsMixin,
-    Emits, // E extends EmitsOptions = {}, 
-    string, // EE extends string = string, 
+    Emits, // E extends EmitsOptions = {},
+    string, // EE extends string = string,
     Slots,
     {}, string
   >(optionsSyth)

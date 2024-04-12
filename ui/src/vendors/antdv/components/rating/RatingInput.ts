@@ -7,7 +7,6 @@ export const RatingInput = (props: RatingInputProps, ctx: SetupContext) => {
 
   return renderFormItem(props, ctx.slots,
     () => h(AntdvRating, {
-      class: 'ns-rating-input',
       value: props.modelValue,
       'onUpdate:value': (value: number) => {
         props['onUpdate:modelValue']?.(value)

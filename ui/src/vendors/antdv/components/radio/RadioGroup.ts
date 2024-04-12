@@ -40,13 +40,9 @@ export const RadioGroup = (props: RadioGroupProps, ctx: SetupContext) => {
   }, children)
 
   return h('div', {
-    class: [
-      'ns-radio-group',
-      props.class
-    ]
   }, [
       title(),
-      group() 
+      group()
     ]
   )
 }

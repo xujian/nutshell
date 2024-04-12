@@ -28,9 +28,7 @@ export const NsCardTitle = defineComponent({
   name: 'NsCardTitle',
   props: cardTitleProps,
   setup (props, { slots }) {
-    console.log('--------, cardTitle', slots)
     const classes = [
-      'ns-card',
       'flex',
       'flex-col',
     ].join(' ')

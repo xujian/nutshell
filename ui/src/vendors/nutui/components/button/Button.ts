@@ -23,7 +23,6 @@ export const Button = (props: ButtonProps) => {
   const { color } = props
   const colorIsBrand = BRANDS.includes(color as BrandColor)
   const classes = [
-    'ns-button',
     props.size ? `size-${props.size}` : '',
     ...(props.classes ?? []),
     colorIsBrand ? `color-${color}` : ''

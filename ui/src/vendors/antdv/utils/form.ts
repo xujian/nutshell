@@ -1,6 +1,6 @@
-import { FunctionalComponent, Slots, h } from 'vue'
+import { FunctionalComponent, Slots, h, onMounted } from 'vue'
 import { FormItem as AntFormItem } from 'ant-design-vue'
-import { FieldProps, FullValidationRule, VariantProps } from '../../../props'
+import { FieldProps, FullValidationRule, VariantProps, buildFieldHint } from '../../../props'
 import { transformRules } from '../components/input/rules'
 
 export type FormItemProps = FieldProps & VariantProps
@@ -37,21 +37,27 @@ export type FormItemProps = FieldProps & VariantProps
 export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: FunctionalComponent) => {
 
   const rules = transformRules(props.rules as FullValidationRule[])
+  const label = slots.label
+    || (
+      props.hint
+        ? () => buildFieldHint(props)
+        : null
+    )
 
+  console.log('===label', label, props.label)
   return h(
     AntFormItem,
     {
       class: [
         'ns-form-item',
         props.variant ? `variant-${props.variant}` : '',
-        `${props.class}-form-item`
       ],
-      label: props.label,
+      label: label !== null ? void 0 : props.label,
       name: props.name,
       rules
     },
     {
-      label: slots['label'],
+      label,
       default: defaultSlot,
     }
   )

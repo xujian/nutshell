@@ -6,7 +6,6 @@ export const Switch = (props: SwitchProps, ctx: SetupContext) => {
   // console.log('vendors/switch', props)
 
   return h(AntdvSwitch, {
-    class: 'ns-switch',
     checked: props.modelValue,
     disabled: props.disabled,
     size: props.size === 'xs' ? 'small' : 'default',

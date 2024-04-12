@@ -130,7 +130,6 @@ export const Upload = defineComponent<UploadProps, UploadEmits>({
     vm.render = () => h('div', {
       ref: me,
       class: [
-        'ns-upload',
         // 单一上传模式时 追加一个特殊样式
         ...maxFiles === 1 ? ['single'] : [],
       ],

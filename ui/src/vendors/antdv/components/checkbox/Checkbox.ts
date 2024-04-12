@@ -8,7 +8,6 @@ export const Checkbox = (props: CheckboxProps & MarginProps, ctx: SetupContext) 
 
   return h(AntdvCheckbox, {
     class: [
-      'ns-checkbox',
       ...props.classes || []
     ],
     checked: props.modelValue,

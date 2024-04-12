@@ -23,7 +23,6 @@ export const Tabs = (props: TabsProps, { emit, slots }: SetupContext) => {
 
   return h(AntdvTabs, {
     class: [
-      'ns-tabs',
       ...props.variant ? [`variant-${props.variant}`] : [],
       `tabs-align-${props.align || 'start'}`
     ],

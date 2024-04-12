@@ -15,9 +15,6 @@ export const MonthInput = defineComponent({
   name: 'MonthInput',
   props: dateInputProps,
   setup: (props, ctx) => {
-    const classes = [
-      'ns-month-input',
-    ].join(' ')
     const visible = ref(false)
     const open = () => {
       visible.value = true
@@ -32,7 +29,6 @@ export const MonthInput = defineComponent({
       )
 
     return () => renderFormItem(props, ctx.slots, () => h(DatePicker, {
-        class: classes,
         visible: visible.value,
         onClose: close,
         picker: 'month',

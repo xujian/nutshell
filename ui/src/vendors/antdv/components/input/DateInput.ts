@@ -15,9 +15,6 @@ export const DateInput = defineComponent({
   props: dateInputProps,
   setup: (props, ctx) => {
       console.log(toRaw(props))
-    const classes = [
-      'ns-date-input',
-    ].join(' ')
     const visible = ref(false)
     const open = () => {
       console.log('DateInput.Antdv......open')
@@ -31,11 +28,10 @@ export const DateInput = defineComponent({
         ? dayjs(props.modelValue) || dayjs()
         : undefined
       )
-
+    console.log('===DateInput', props)
     return () => renderFormItem(
       props, ctx.slots,
       () => h(DatePicker, {
-          class: classes,
           visible: visible.value,
           onClose: close,
           placeholder: props.placeholder,

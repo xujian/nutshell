@@ -12,7 +12,6 @@ export const Facts = (props: FactsProps, ctx: SetupContext) => {
   }, () => item.value))
 
   return h(Descriptions, {
-    class: 'ns-facts',
     bordered: true,
   }, slots)
 }

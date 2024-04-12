@@ -1,8 +1,10 @@
-import { PropType } from 'vue'
+import { PropType, h, ref, withDirectives } from 'vue'
 import { buildProps } from '../utils/private/props'
 import { isIdentityCard, isMobilePhone } from 'validator'
 import { Color } from '../composables/theme'
 import { MakePropsType } from '../utils'
+import { useTippy } from 'vue-tippy'
+import { TooltipProps } from './tooltip'
 
 const quickValidationMethods: string[] = [
   'required',
@@ -138,6 +140,12 @@ const fieldProps = {
   disabled: {
     type: Boolean,
   },
+  /**
+   * 提示词
+   */
+  hint: {
+    type: String
+  }
 }
 
 /**
@@ -152,4 +160,52 @@ export const buildStyles = (props: FieldProps) => {
     ...props.fill && { '--ns-fill': props.fill }
   }
   return style
+}
+
+const tippy = {
+  mounted (el: HTMLDivElement) {
+    makeFieldHint(el)
+  }
+}
+
+/**
+ * 输出输入框提示(问号)
+ * @param props
+ * @returns
+ */
+export const buildFieldHint = (props: FieldProps) => {
+
+  const hint = () => h('i', {
+    class: [
+      'question-mark',
+      'circle',
+      'icon-hint',
+    ],
+    dataHint: props.hint,
+    ref: ref,
+  }, '?')
+  return withDirectives(h('div', {
+      class: 'form-label'
+    }, [
+      h('label', {
+      }, props.label),
+      hint(),
+    ]), [
+      [tippy]
+  ])
+}
+
+/**
+ *
+ * @param el
+ * @param props
+ */
+export const makeFieldHint = (el: Element) => {
+  const mark = el.querySelector('.question-mark')
+  if (mark) {
+    const hint = mark.getAttribute('data-hint') || ''
+    useTippy(mark, {
+      content: hint
+    })
+  }
 }

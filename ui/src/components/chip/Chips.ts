@@ -32,7 +32,6 @@ export const NsChips = define({
       // 对参数做前期的处理
       return {
         props: {
-          class: ['ns-chips'],
           rules: finalRules as FullValidationRule[]
         }
       }

@@ -11,10 +11,6 @@ export const Select = defineComponent({
 
     const { emit } = ctx
 
-    const classes = [
-      'ns-select',
-    ].join(' ')
-
     const {
       clearable, searchable
     } = props
@@ -22,13 +18,11 @@ export const Select = defineComponent({
     return () => renderFormItem({
         name: props.name,
         class: [
-          'ns-form-item',
           props.variant ? `variant-${props.variant}` : '',
         ],
         label: props.label,
       }, ctx.slots,
       () => h(AntSelect, {
-        class: classes,
         name: props.name,
         options: props.options,
         allowClear: clearable,

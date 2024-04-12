@@ -19,7 +19,6 @@ export const NumberInput = defineComponent({
   },
   emits: inputEmits,
   setup: (props, { emit, slots }) => {
-    const classes = ['ns-number-input', ...(props.classes || [])]
 
     const rules = transformRules(props.rules as FullValidationRule[])
     return () => renderFormItem(props, slots, () =>
@@ -27,7 +26,7 @@ export const NumberInput = defineComponent({
           h(
             AntInputNumber,
             {
-              class: classes,
+              class: props.classes,
               maxlength: props.maxlength ?? 20,
               disabled: props.disabled ?? false,
               value: props.modelValue,

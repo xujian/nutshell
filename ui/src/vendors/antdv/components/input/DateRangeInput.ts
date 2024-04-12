@@ -20,9 +20,6 @@ export const DateRangeInput = defineComponent({
   props: dateRangeInputProps,
   emits: dataRangeInputEmits,
   setup: (props, { emit, slots }) => {
-    const classes = [
-      'ns-date-range-input',
-    ].join(' ')
     const visible = ref(false)
     const open = () => {
       visible.value = true
@@ -49,7 +46,6 @@ export const DateRangeInput = defineComponent({
 
     return () => renderFormItem(props, slots, () => h(RangePicker, {
         ref: formItem,
-        class: classes,
         visible: visible.value,
         onClose: close,
         locale,

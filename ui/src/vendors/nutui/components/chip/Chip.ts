@@ -6,7 +6,6 @@ export const Chip = (props: ChipProps & MarginProps) => {
   const { label, color, textColor } = props
   return h(NutTag, {
     class: [
-      'ns-chip',
       ...props.classes || []
     ],
     round: true,

@@ -8,7 +8,6 @@ export const Stepper = (props: StepsProps & MarginProps, ctx: SetupContext, emit
 
   return h(AntdvSteps as any, {
     class: [
-      'ns-stepper',
       `stepper-variant-${props.variant}`
     ],
     status: props.status ? props.status : ('process' as StepperStatus),

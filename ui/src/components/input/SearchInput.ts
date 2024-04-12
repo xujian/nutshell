@@ -3,10 +3,6 @@ import { InputProps, NsInput } from './Input'
 
 const defaultProps: Partial<InputProps> = {
   type: 'text',
-  class: [
-    'ns-input',
-    'ns-search-input'
-  ]
 }
 
 

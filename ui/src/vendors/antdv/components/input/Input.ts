@@ -44,14 +44,13 @@ export const Input = defineComponent({
   },
   emits: inputEmits,
   setup: (props, { emit, slots }) => {
-    const classes = ['ns-input', ...(props.classes || [])]
     return () =>
       renderFormItem(
         props, slots,
         () => h(
             AntInput,
             {
-              class: classes,
+              class: props.classes,
               type: props.type as AntInputType,
               maxlength: props.maxlength ?? 50,
               showCount: props.showCount ?? false,

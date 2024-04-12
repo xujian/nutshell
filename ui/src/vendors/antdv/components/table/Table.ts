@@ -37,7 +37,6 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
   const $n = useNutshell()!
 
   const classes = [
-    'ns-table',
     ...props.classes || [],
     ...props.hasPagination ? ['table-has-pagination'] : []
   ]
