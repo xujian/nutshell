@@ -6,7 +6,6 @@ export const Drawer = (props: DrawerProps, ctx: SetupContext) => {
 
   return h(AntdvDrawer, {
     rootClassName: [
-      'ns-drawer',
       props.className
     ].join(' '),
     open: props.modelValue,
