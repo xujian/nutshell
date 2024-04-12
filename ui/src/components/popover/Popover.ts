@@ -37,7 +37,7 @@ export const popoverProps = {
     type: Array as PropType<MenuItem[]>,
     require: false
   },
-  overlayClassName: {
+  className: {
     type: String,
   }
 }

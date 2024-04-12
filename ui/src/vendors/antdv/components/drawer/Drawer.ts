@@ -5,12 +5,14 @@ import { DrawerProps } from '../../../../components'
 export const Drawer = (props: DrawerProps, ctx: SetupContext) => {
 
   return h(AntdvDrawer, {
-    class: [
+    rootClassName: [
       'ns-drawer',
-    ],
+      props.className
+    ].join(' '),
     open: props.modelValue,
     title: props.title,
     closable: false,
+    width: props.width,
     placement: props.anchor as AntdvDrawerProps['placement'],
     mask: props.hasBackgrop === false ? false : true,
     maskClosable: true,

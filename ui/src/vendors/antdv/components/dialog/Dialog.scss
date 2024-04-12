@@ -12,6 +12,9 @@
     }
     .ant-modal-footer {
       border-top: none;
+      .nut-button + .nut-button {
+        margin-left: 14px;
+      }
     }
     .ant-modal-content {
       background-color: var(--dialog-content, #fff);

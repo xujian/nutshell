@@ -9,7 +9,7 @@ export const Popover = (props: PopoverProps, cxt: SetupContext) => {
   return h(
     AntdvPopover,
     {
-      'overlay-class-name': ['ns-popover', props.overlayClassName].join(' '),
+      'overlay-class-name': ['ns-popover', props.className].join(' '),
       content: props.content,
       title: props.title,
       trigger: props.trigger || 'hover',

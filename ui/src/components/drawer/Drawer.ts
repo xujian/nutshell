@@ -16,6 +16,12 @@ export const drawerProps = {
     type: Boolean,
     default: true,
   },
+  width: {
+    type: String,
+  },
+  className: {
+    type: String,
+  },
   ...useModelValuePropsForBoolean(),
   ...useSizeProps(),
 }

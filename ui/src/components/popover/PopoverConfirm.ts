@@ -18,7 +18,7 @@ export const popoverConfirmProps = {
     type: String as PropType<PopoverPositionType>,
     require: false
   },
-  overlayClassName: {
+  className: {
     type: String,
   },
   color: {

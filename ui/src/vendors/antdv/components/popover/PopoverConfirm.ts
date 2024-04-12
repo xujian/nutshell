@@ -7,7 +7,7 @@ export const PopoverConfirm = (props: PopoverConfirmProps, cxt: SetupContext) =>
   const { color } = props
   const colorIsBrand = BRANDS.includes(color as BrandColor)
   const classes = [
-    'ns-popover-confirm', props.overlayClassName,
+    'ns-popover-confirm', props.className,
     colorIsBrand ? `color-${color}` : ''
   ]
 
