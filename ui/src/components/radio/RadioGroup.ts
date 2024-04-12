@@ -20,6 +20,10 @@ export const radioGroupProps = {
     type: Array as PropType<RadioITem[]>,
     default: []
   },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
   ...useLayoutProps(),
 }
 

@@ -29,6 +29,7 @@ export const RadioGroup = (props: RadioGroupProps, ctx: SetupContext) => {
     ],
     name: props.name || 'radio',
     value: props.modelValue,
+    disabled: props.disabled ?? false,
     'onUpdate:value': (value: string | number) => {
       emit('update:modelValue', value)
     },
