@@ -58,6 +58,10 @@ export const stepperProps = {
     type: String as PropType<StepperVariant>,
     default: 'stone'
   },
+  clickable: {
+    type: Boolean,
+    default: true
+  },
   ...useSizeProps(),
   ...useModelValuePropsForInput()
 }

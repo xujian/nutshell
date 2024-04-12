@@ -3,11 +3,8 @@
     color: var(--ns-text);
   }
   --space: 16px;
-  .ant-steps-item-icon {
+  .ant-steps-item-process .ant-steps-item-icon {
     background-color: var(--ns-primary) !important;
-    .ant-steps-icon {
-      color: var(--ns-text) !important;
-    }
   }
   .ant-steps-item-title {
     color: var(--ns-text) !important;

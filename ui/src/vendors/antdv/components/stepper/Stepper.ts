@@ -18,6 +18,7 @@ export const Stepper = (props: StepsProps & MarginProps, ctx: SetupContext, emit
     items: props.items || [],
     current: props.modelValue as number,
     'onUpdate:current': (value: number) => {
+      if (!props.clickable) return
       props['onUpdate:modelValue']?.(value)
     },
     onChange: (value: number) => {

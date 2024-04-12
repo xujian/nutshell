@@ -1,5 +1,5 @@
 <template>
-  <h1 class="my-lg">Tabbar &lt;ns-tabbar&gt;</h1>
+  <h1 class="my-lg">Tabbar &lt;ns-stepper&gt;</h1>
   <h3>基本特性</h3>
   <p>&nbsp;</p>
   <story file="stepper/basic.vue" />
