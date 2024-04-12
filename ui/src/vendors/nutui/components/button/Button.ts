@@ -1,4 +1,4 @@
-import { h } from 'vue'
+import { SetupContext, h } from 'vue'
 import type { ButtonEmits, ButtonProps } from '../../../../components'
 import { Size } from '../../../../props/size'
 import type { ButtonSize, ButtonShape } from '@nutui/nutui-taro'
@@ -19,7 +19,7 @@ const getSize = (size?: Size): ButtonSize => {
   return sizeMapping[size]
 }
 
-export const Button = (props: ButtonProps) => {
+export const Button = (props: ButtonProps, cxt: SetupContext) => {
   const { color } = props
   const colorIsBrand = BRANDS.includes(color as BrandColor)
   const classes = [
@@ -40,7 +40,7 @@ export const Button = (props: ButtonProps) => {
             class: 'icon'
           })
       : () => null
-    : () => null
+    : cxt.slots.icon
 
   const shape = props.round === true ? void 0 : ('suqare' as ButtonShape)
 

@@ -26,7 +26,7 @@ const nutuiVendor: CoreVendor = {
     const name = parent?.type?.name?.slice(2)! //.toLowerCase() // NsButton -> Button
     const component = components[name] || makeDummy(name)
     const { slots } = ctx
-    return h(component, props, slots.default)
+    return h(component, props, slots)
   },
   dialog,
   confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => {},
