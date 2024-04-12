@@ -3,6 +3,13 @@
 .ns-table {
   --vxe-table-column-padding-default: var(--table-cell-padding);
   width: 100%;
+  .vxe-table {
+    border-color: var(--ns-table-border-color, var(--ns-stroke));
+    border-style: solid;
+    border-width: 1px;
+    border-radius: var(--ns-border-radius);
+    overflow: hidden;
+  }
   .vxe-table--body {
     height: 100%;
     width: 100%;
@@ -107,7 +114,7 @@
   }
 }
 
-.ns-table-pagination {
+.table-has-pagination {
   .ns-pagination {
     text-align: right;
   }

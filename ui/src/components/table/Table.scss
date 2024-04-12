@@ -1,16 +1,9 @@
 .ns-table {
   --table-cell-padding: 6px 0;
-  border-color: var(--ns-table-border-color, var(--ns-stroke));
-  border-style: solid;
-  border-width: 1px;
-  border-radius: var(--ns-border-radius);
-  overflow: hidden;
   &.no-table {
     border-width: 0;
   }
   margin-bottom: 1em;
-  .table-column {
-  }
   .table-column-chips {
     text-align: left;
   }

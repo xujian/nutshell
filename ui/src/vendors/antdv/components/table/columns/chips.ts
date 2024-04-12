@@ -35,14 +35,17 @@ export default function chips (props: TableColumnChipsProps) {
           }))
         : v.map(v =>
           typeof v === 'string'
-            ? { label: v, value: v }
+            ? { name: v, value: v }
             : v)
 
     const select = () => h(NsMultipleSelect, {
           class: 'editable-edit-content',
-          modelValue: items.map(i => i.value),
+          modelValue: items.map(i => `${i.value}`),
           name: 'chips',
-          options: props.editData,
+          options: props.editData?.map(i => ({
+            label: i.name,
+            value: i.value
+          })) || [],
           width: 200,
         }),
       okButton = () => h('i', {

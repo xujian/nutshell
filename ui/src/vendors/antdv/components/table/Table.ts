@@ -343,18 +343,12 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       onChange: props.onPageChange,
     })
 
-  return props.hasPagination
-    ? h('div', {
-        class: [
-          'ns-table-pagination'
-        ],
-      }, [
-        h('div', {
-          class: ['ns-table', ...classes]
-        }, vxe()),
-        pagination(),
-      ])
-    : h('div', {
-        class: ['ns-table', ...classes]
-      }, vxe())
+  return h('div', {
+      class: classes
+    }, [
+      vxe(),
+      props.hasPagination
+        ? pagination()
+        : null
+    ])
 }
