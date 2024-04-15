@@ -2,7 +2,7 @@ import { ObjectEmitsOptions, PropType } from 'vue'
 import { Dayjs } from 'dayjs'
 import { MakePropsType, define } from '../../utils'
 import { usePlatform } from '../../composables'
-import { useFieldProps, useModelValuePropsForInput } from '../../props'
+import { FullValidationRule, ValidationRule, formatRules, useFieldProps, useModelValuePropsForInput } from '../../props'
 
 export const dateInputProps = {
   ...useModelValuePropsForInput(),
@@ -36,7 +36,11 @@ export const NsDateInput = define({
     setup (props, ctx) {
       const platform = usePlatform()
       console.log('DateInput.ts................platform:', platform)
+      const finalRules = formatRules(props.rules as ValidationRule[], props)
       return {
+        props: {
+          rules: finalRules as FullValidationRule[]
+        }
       }
     }
   }

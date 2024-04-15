@@ -16,11 +16,10 @@ export const Select = defineComponent({
     } = props
 
     return () => renderFormItem({
-        name: props.name,
+        ...props,
         class: [
           props.variant ? `variant-${props.variant}` : '',
         ],
-        label: props.label,
       }, ctx.slots,
       () => h(AntSelect, {
         name: props.name,
