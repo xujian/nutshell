@@ -4,19 +4,19 @@ import { Upload as AntdvUpload } from 'ant-design-vue'
 import { NsButton, NsFile, uploadEmits, uploadProps, UploadEmits, UploadProps } from '../../../../components'
 import 'viewerjs/dist/viewer.min.css'
 
-export const Upload = defineComponent<UploadProps, UploadEmits>({
+export const Upload = defineComponent({
   name: 'AntdvUploadVendor',
-  // @ts-ignore
   props: uploadProps,
+  // @ts-ignore
   emits: uploadEmits,
-  setup (props, { slots }) {
+  setup (props: UploadProps, { slots }) {
 
     const vm = getCurrentInstance() as any,
       me = ref(),
       viewer = ref()
 
     const files = props.modelValue || [],
-      fileList = files.map(v => ({
+      fileList = files.map((v: any) => ({
         uid: v.id,
         name: v.name,
         status: v.status,
@@ -68,9 +68,9 @@ export const Upload = defineComponent<UploadProps, UploadEmits>({
         ])
 
     const defaultSlot = slots.default || button,
-      itemRender = ({file, actions}) => {
+      itemRender = ({file, actions}: {file: any, actions: any}) => {
         const id = file.uid,
-          item = props.modelValue.find(x => x.id === id)
+          item = props.modelValue?.find((x: any) => x.id === id)
         return h(NsFile, {
           ...item,
           onPreview (id?: string) {
@@ -110,16 +110,18 @@ export const Upload = defineComponent<UploadProps, UploadEmits>({
     })
 
     const trunk = () => h(AntdvUpload, {
-        showUploadList: props.hasFiles,
+        showUploadList: props.hasFiles || false,
         listType,
         fileList,
-        multiple: props.multiple,
+        multiple: props.multiple || false,
         maxCount: maxFiles,
-        beforeUpload (file) {
+        // @ts-ignore
+        beforeUpload (files: File[]) {
           // 留待以后扩充
           if (!props.beforeUpload) return false
           else {
-            return props.beforeUpload(file)
+            // @ts-ignore
+            return props.beforeUpload(files)
           }
         }
       }, {

@@ -2,7 +2,7 @@ import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
 import { Item } from 'src/shared/models'
 
-export type EditableCompleteCallback = (value: string[]) => boolean
+export type EditableCompleteCallback = (value?: string[]) => boolean
 
 export type EditableConfig = {
   options: Item[]
@@ -18,7 +18,7 @@ const editableProps = {
   },
   onEditComplete: {
     type: Function as PropType<EditableCompleteCallback>,
-    default: (value: string[]) => false
+    default: (value?: string[]) => false
   }
 }
 

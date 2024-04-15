@@ -7,12 +7,14 @@ import { Divider } from './divider'
 import { VendorComponent } from '../../../shared'
 
 const components: Record<string, VendorComponent> = {
+  // @ts-ignore
   Button,
   Input,
   DateInput,
   Chip,
   Icon,
   Select,
+  // @ts-ignore
   Divider,
 }
 

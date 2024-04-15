@@ -122,7 +122,7 @@ export const NsNumber = defineComponent({
     // [                         main ]
     // [              footer          ]
 
-    const finalValue = parseFloat(`${props.modelValue}` || '0', 10),
+    const finalValue = parseFloat(`${props.modelValue}` || '0'),
       finalDisplay = finalValue.toLocaleString('en-US', {
         maximumFractionDigits: props.maximumFractionDigits,
         minimumFractionDigits: props.minimumFractionDigits,

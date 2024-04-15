@@ -3,7 +3,7 @@ import { define, MakePropsType } from '../../utils'
 import { useDisplayProps, useModelValuePropsForArray, useModelValuePropsForStringArray } from '../../props'
 import type { File, FilesEmits } from '../files'
 
-export type BeforeUploadMethod = ((files: File[]) => Promise<File[]>)
+export type BeforeUploadMethod = ((files: File[]) => Promise<Blob>)
 
 export const uploadProps = {
   /**
@@ -49,7 +49,7 @@ export const uploadProps = {
   beforeUpload: {
     type: Function as PropType<BeforeUploadMethod>
   },
-  ...useModelValuePropsForArray<File>(),
+  ...useModelValuePropsForArray(),
   ...useDisplayProps(),
   ...useModelValuePropsForStringArray
 }

@@ -36,7 +36,7 @@ export const cropUploadProps = {
     type: Boolean,
     default: false,
   },
-  ...useModelValuePropsForArray<File>(),
+  ...useModelValuePropsForArray(),
   ...useDisplayProps(),
   ...useModelValuePropsForStringArray
 }
@@ -152,7 +152,7 @@ export const NsCropUpload = defineComponent({
 
     const initCropper = (img: HTMLImageElement) => {
       // https://github.com/fengyuanchen/cropperjs?tab=readme-ov-file#options
-      const options: Options<HTMLImageElement> = {
+      const options = {
         viewMode: 3,
         aspectRatio: 1,
         movable: false,
@@ -161,6 +161,7 @@ export const NsCropUpload = defineComponent({
         scalable: false,
         crop: onCrop,
       }
+      // @ts-ignore
       cropper.value = new Cropper(img, options)
     }
 
@@ -189,11 +190,11 @@ export const NsCropUpload = defineComponent({
         'ns-crop-upload',
         ...extraOpen.value ? ['extra-open'] : []
       ],
-      beforeUpload (file: File) {
+      beforeUpload (files: File[]) {
         // 拦截上传动作
         // 当 resolve 时恢复上传
         return new Promise<Blob>((resolve, reject) => {
-          makeImage(file)
+          makeImage(files[0])
           cropComplete.value = (blob: Blob) => {
             resolve(blob)
           }

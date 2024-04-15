@@ -6,6 +6,7 @@ export const Tabs = (props: TabsProps, { emit, slots }: SetupContext) => {
   // 确定 children
   // slots 优先级高于 items
   // 如果定义了 slots, items 失效
+  // @ts-ignore
   const items: TabsItem[] = slots.default?.().map((s, index) => {
     // @ts-ignore
     const tabSlot = s.children?.tab?.()

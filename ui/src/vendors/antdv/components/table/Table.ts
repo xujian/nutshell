@@ -78,7 +78,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
   }
 
   function onFilterChange ({filters}: any): boolean {
-    const queries: TableFilterQuery[] = filters.map(f => ({
+    const queries: TableFilterQuery[] = filters.map((f: any) => ({
       field: f.field,
       values: f.values
     }))
@@ -237,7 +237,8 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
                       'row', 'align-center', 'justify-between'
                     ]
                   }, [
-                  h(column.slots.header || predefinedColumnRender.header, {
+                    // @ts-ignore
+                  h(column.slots?.header || predefinedColumnRender.header, {
                     column: column.props,
                     columnIndex,
                   }),

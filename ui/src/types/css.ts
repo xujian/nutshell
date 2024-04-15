@@ -12,7 +12,7 @@ export type DimensionUnit = 'px' | '%' | 'em'
 /**
  * CSS 长度值
  */
-export type Dimension = number | `${number}${Unit}`
+export type Dimension = number | `${number}${DimensionUnit}`
 
 // 表示 padding
 // const s: Dimension = 10 只用数字 =10px

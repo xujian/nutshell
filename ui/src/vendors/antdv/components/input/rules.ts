@@ -22,7 +22,7 @@ export const transformRules = (rules: FullValidationRule[]) => {
               return Promise.resolve()
             }
           }
-          if (!r.method?.(value)) {
+          if (!r.method?.(value as string)) {
             return Promise.reject(r.message)
           }
           return Promise.resolve()

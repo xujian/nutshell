@@ -34,15 +34,19 @@ export const YearInput = defineComponent({
         picker: 'year',
         placeholder: props.placeholder,
         locale,
-        value: value.value ? dayjs(value.value) : void 0,
-        getPopupContainer: (triggerNode) => triggerNode.parentNode,
+        value: dayjs(value.value),
+        getPopupContainer: (triggerNode) => triggerNode.parentElement!,
         'onUpdate:value': (value: string | Dayjs) => {
           const val = value === null
             ? ''
             : (typeof value === 'string' ? dayjs(value) : value).format('YYYY-MM')
           props['onUpdate:modelValue']?.(val)
         },
-        disabledDate: props.disabledDate,
+        ...props.disabledDate
+          ? {
+              disabledDate: props.disabledDate,
+            }
+          : {},
         disabled: props.disabled ?? false,
       })
     )

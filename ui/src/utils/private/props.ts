@@ -7,7 +7,7 @@ import type { ComponentObjectPropsOptions, Prop, PropType } from 'vue'
 export function buildProps<
   PropsOptions extends ComponentObjectPropsOptions
 > (props: PropsOptions) {
-  return <Defaults extends PartialPropValues<PropsOptions> = {}>(   
+  return <Defaults extends PartialPropValues<PropsOptions> = {}>(
     defaults?: Defaults
   ): PropsOptions => {
     return Object.keys(props).reduce<any>((result, name) => {

@@ -77,8 +77,8 @@ export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
         content: [
           h('h3', {}, `${props.label}选择`),
           h(NsCheckboxGroup, {
-            modelValue: props.modelValue,
-            options: options,
+            modelValue: props.modelValue || [],
+            options: options || [],
             label: props.label,
             onMouseenter: () => {
               hovercheckbox.value = true

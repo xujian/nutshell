@@ -30,7 +30,7 @@ const quickRuleMapping: Record<QuickValidationMethod, (v: string) => boolean> = 
   mobile: v => !!v && isMobilePhone(v, 'zh-CN'),
 }
 
-export type FunctionValidationMethod = (value: string | string[]) => boolean
+export type FunctionValidationMethod = (value: string) => boolean
 export type ValidationTrigger = 'blur' | 'change'
 
 export type FullValidationRule = {

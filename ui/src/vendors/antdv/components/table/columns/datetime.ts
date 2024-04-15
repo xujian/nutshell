@@ -11,9 +11,9 @@ export default function datetime (
   ) {
     Object.keys(defaultProps)
       .forEach((k) => {
-          const defaultValue = defaultProps[k].default
-          if (typeof defaultValue !== 'undefined' && typeof props[k] === 'undefined') {
-              props[k] = defaultValue
+          const defaultValue = Reflect.get(defaultProps, k).default
+          if (typeof defaultValue !== 'undefined' && typeof Reflect.get(props, k) === 'undefined') {
+              Reflect.set(defaultValue, k, defaultProps)
           }
       })
     const formatRangedDateTime = (input: number | string): string => {
