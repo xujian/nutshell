@@ -1,11 +1,17 @@
 .ns-form {
   &.ant-form {
-    &.variant-outlined, .variant-outlined {
-      .ant-form-item-control {
+    &.variant-outlined,
+    .variant-outlined {
+      .ant-input,
+      .ant-input-number-input,
+      .ant-picker,
+      .ant-select {
         border-color: var(--ns-stroke);
-      }
-      .ant-form-item-control-input {
-        border-color: var(--ns-stroke);
+        border-radius: var(--ns-border-radius);
+        border-style: solid;
+        &:hover {
+          border-color: var(--ns-accent);
+        }
       }
     }
     &.variant-plain {

@@ -1,8 +1,11 @@
 .ns-select {
-  &.ant-select {
+  .ant-select {
+    border-width: 1px;
+    border-radius: var(--ns-border-radius);
+    border-style: solid;
     color: var(--ns-text);
+    border-color: transparent;
     .ant-select-selector {
-      border-color: var(--ns-stroke);
       color: var(--ns-text);
     }
     .ant-select-clear {

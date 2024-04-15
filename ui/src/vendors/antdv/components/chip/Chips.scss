@@ -1,8 +1,4 @@
 .ns-chips {
-  .ant-form-item-control-input {
-    background-color: transparent;
-    border-color: transparent !important;
-  }
   .ns-chips-dropdown-default {
     display: flex;
     align-items: center;
@@ -10,6 +6,9 @@
     .nut-tag {
       margin: 3px 4px;
     }
+  }
+  .ant-form-item-control-input {
+    background-color: transparent;
   }
 }
 .ns-chips-popover {

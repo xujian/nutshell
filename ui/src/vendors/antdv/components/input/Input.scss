@@ -20,7 +20,17 @@
       color: var(--ns-neutral);
     }
   }
+  .ant-input-status-error {
+    &:not(.ant-input-disabled) {
+      &:not(.ant-input-borderless) {
+        &.ant-input {
+           border-color: var(--ns-negtive);
+        }
+      }
+    }
+  }
   .ant-form-item-explain-error {
+    color: var(--ns-negtive);
     text-align: left;
     padding-left: 0;
     line-height: 16px;
