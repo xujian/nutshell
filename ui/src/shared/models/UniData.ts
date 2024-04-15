@@ -1,18 +1,30 @@
 
-// UniData 用于定义所有
+/**
+ * 通用数据项
+ * 强行定义所有遍历类组件
+ */
+export type Item = {
+  // 字段
+  // name/value 为强制字段 即使字段闲置
+  // id 可以有可以没有
+  // 允许添加其他任意字段
+  // (<ns-table>中的列)
+  name?: string,
+  value: number | string,
+  label?: string,
+  id?: string,
+  [x: string]: any
+}
 
-import { NameValuePair } from './NameValuePair'
-
-export type Series = {
+export type Layer = {
   label: string,
-  data: NameValuePair[],
+  data: Item[],
 }
 
 /**
  * 标准数据格式
  */
 export type UniData = {
-  series: Series[],
-  fields?: Fields,
+  layers: Layer[],
 }
 

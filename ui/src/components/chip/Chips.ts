@@ -1,13 +1,13 @@
 import { useDataProps, useFieldProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
-import { NameValuePair } from '../../shared/models'
+import { Item } from '../../shared/models'
 import { PropType } from 'vue'
 import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 
 export const chipsProps = {
   ...useModelValuePropsForStringArray(),
   options: {
-    type: Array as PropType<NameValuePair[]>,
+    type: Array as PropType<Item[]>,
     default: [],
   },
   dropdown: {

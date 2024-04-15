@@ -2,20 +2,14 @@ import { MakePropsType, define } from '../../utils'
 import { PropType } from 'vue'
 import { useFieldProps, useModelValuePropsForStringArray } from '../../props'
 import { ValidationRule, formatRules } from '../../props/field'
-
-export type MultipleSelectOption = {
-  value: string | number
-  label: string
-  disabled?: boolean
-  title?: string
-}
+import { SelectOption } from './Select'
 
 export const multipleSelectProps = {
   /**
    * 选项组数据
    */
   options: {
-    type: Array as PropType<MultipleSelectOption[]>
+    type: Array as PropType<SelectOption[]>
   },
   ...useModelValuePropsForStringArray(),
   ...useFieldProps(),

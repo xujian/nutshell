@@ -3,10 +3,9 @@ import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../.
 import { ValidationRule, buildStyles, formatRules } from '../../props/field'
 import { MakePropsType } from '../../utils/private/helpers'
 import { define } from '../../utils'
+import { Item } from '../../shared/models'
 
-export type SelectOption = {
-  value: string | number,
-  label: string,
+export type SelectOption = Item & {
   disabled?: boolean,
   title?: string,
 }

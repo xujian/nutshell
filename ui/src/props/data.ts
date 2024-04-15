@@ -1,11 +1,11 @@
 import { PropType } from 'vue'
-import { NameValuePair } from '../shared/models'
+import { Item } from '../shared/models'
 import { MakePropsType } from '../utils'
 import { buildProps } from '../utils/private/props'
 
 const dataProps = {
   data: {
-    type: Array as PropType<NameValuePair[]>,
+    type: Array as PropType<Item[]>,
     default: []
   }
 }

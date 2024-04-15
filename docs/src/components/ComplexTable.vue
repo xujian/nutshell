@@ -170,26 +170,24 @@ const gradeFilterableOptions = {
   ]
 }
 
-const allTags = {
-  data: [
-      {
-        "label": "微信",
-        "value": "WX"
-      },
-      {
-        "label": "有车",
-        "value": "YC"
-      },
-      {
-        "label": "有房",
-        "value": "YF"
-      },
-      {
-        "label": "本市户口",
-        "value": "BSHK"
-      }
-    ]
-  }
+const allTags = [
+    {
+      label: '微信',
+      value: 'WX'
+    },
+    {
+      label: '有车',
+      value: 'YC'
+    },
+    {
+      label: '有房',
+      value: 'YF'
+    },
+    {
+      label: '本市户口',
+      value: 'BSHK'
+    }
+  ]
 
 const selectedRows = ref<any[]>([])
 
@@ -261,8 +259,9 @@ const onInviteFilterChange = (value: string[]) => {
       color="#ff8400" label="客户等级" width="150" />
     <ns-table-column field="userId" label="创建用户" width="120" />
     <ns-table-column-chips field="tags"
-      :editable="true"
-      :editData="allTags"
+      :editable-config="{
+        options: allTags
+      }"
       :overflow="false"
       @edit-complete="onColumnEditComplete"
       color="secondary"
