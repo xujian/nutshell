@@ -5,6 +5,12 @@
   .ant-input-number {
     border: none;
     border-radius: var(--ns-border-radius);
+    width: 100%;
+    background-color: var(--ns-fill);
+    border-color: var(--ns-stroke);
+    .ant-input-number-input {
+      color: var(--ns-text);
+    }
   }
   .ns-number-amount {
     position: absolute;
