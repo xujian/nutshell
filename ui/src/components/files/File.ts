@@ -8,8 +8,8 @@ export type File = {
   id: string,
   name: string,
   type: FileType,
-  url: string,
-  thumb: string,
+  url?: string,
+  thumb?: string,
 }
 
 export const fileProps = {
@@ -70,7 +70,7 @@ function resolveFileName (name: string): FileName {
     }
 }
 
-const extTypeMapping: Record<string, FileType> = {
+export const extTypeMapping: Record<string, FileType> = {
   jpg: 'image',
   jpeg: 'image',
   pdf: 'pdf',
@@ -79,7 +79,7 @@ const extTypeMapping: Record<string, FileType> = {
   mkv: 'video',
 }
 
-function getFileType (name: string): FileType {
+export function getFileType (name: string): FileType {
   const { base, ext } = resolveFileName(name)
   return extTypeMapping[ext] || 'file'
 }

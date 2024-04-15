@@ -190,11 +190,11 @@ export const NsCropUpload = defineComponent({
         'ns-crop-upload',
         ...extraOpen.value ? ['extra-open'] : []
       ],
-      beforeUpload (files: File[]) {
+      beforeUpload (file: File) {
         // 拦截上传动作
         // 当 resolve 时恢复上传
         return new Promise<Blob>((resolve, reject) => {
-          makeImage(files[0])
+          makeImage(file)
           cropComplete.value = (blob: Blob) => {
             resolve(blob)
           }

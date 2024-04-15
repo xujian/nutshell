@@ -1,7 +1,7 @@
 import { defineComponent, getCurrentInstance, h, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import Viewer from 'viewerjs'
 import { Upload as AntdvUpload } from 'ant-design-vue'
-import { NsButton, NsFile, uploadEmits, uploadProps, UploadEmits, UploadProps } from '../../../../components'
+import { NsButton, NsFile, uploadEmits, uploadProps, UploadEmits, UploadProps, getFileType } from '../../../../components'
 import 'viewerjs/dist/viewer.min.css'
 
 export const Upload = defineComponent({
@@ -115,13 +115,15 @@ export const Upload = defineComponent({
         fileList,
         multiple: props.multiple || false,
         maxCount: maxFiles,
-        // @ts-ignore
-        beforeUpload (files: File[]) {
+        beforeUpload (file) {
           // 留待以后扩充
           if (!props.beforeUpload) return false
           else {
-            // @ts-ignore
-            return props.beforeUpload(files)
+            return props.beforeUpload({
+              id: file.uid,
+              name: file.name,
+              type: getFileType(file.name)
+            })
           }
         }
       }, {
