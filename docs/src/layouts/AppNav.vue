@@ -276,6 +276,10 @@ const menuData = computed(() => [
         label: '提示 v-tooltip',
         key: '/directives/tooltip'
       },
+      {
+        label: '加载中 v-loading',
+        key: '/directives/loading'
+      },
     ]
   },
   {

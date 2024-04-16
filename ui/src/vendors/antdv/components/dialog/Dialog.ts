@@ -10,8 +10,6 @@ const buttonTypesMap: Record<string, LegacyButtonType> = {
 export const Dialog = defineComponent<DialogProps, DialogEmits>(
   (props, ctx) => {
     const { slots, emit } = ctx
-    console.log(props, 'props')
-
     return () => h(AntdvModal, {
       style: props.style,
       open: props.modelValue,
