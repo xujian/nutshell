@@ -8,12 +8,14 @@
     .ant-select-clear {
       border-radius: 6px;
     }
+    .ant-select-arrow {
+      color: var(--ns-text);
+    }
   }
 }
 
 .ns-form-item {
   &.ant-form-item {
-    color: var(--ns-text);
     .ant-select {
       .ant-select-selector {
         border: none;

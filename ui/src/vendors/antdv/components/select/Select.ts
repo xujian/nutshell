@@ -38,6 +38,12 @@ export const Select = defineComponent({
         popupClassName: 'ns-select-dropdown',
         disabled: props.disabled ?? false,
         optionFilterProp: 'label'
+      }, {
+        suffixIcon: () => h('i', {
+          class: [
+            'arrow'
+          ]
+        }, '▼')
       })
     )
   }
