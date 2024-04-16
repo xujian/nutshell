@@ -3,7 +3,7 @@ import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForInput, useLayoutProps } from '../../props'
 import { RadioProps } from './Radio'
 
-export type RadioITem = {
+export type RadioItem = {
   label: string,
   value: string | number | boolean
 }
@@ -17,7 +17,7 @@ export const radioGroupProps = {
     type: String
   },
   items: {
-    type: Array as PropType<RadioITem[]>,
+    type: Array as PropType<RadioItem[]>,
     default: []
   },
   disabled: {
