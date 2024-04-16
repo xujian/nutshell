@@ -49,7 +49,6 @@
   }
   .ant-form-item-control-input {
     border-width: 0;
-    border-style: solid;
     border-radius: var(--ns-border-radius);
     background-color: var(--ns-fill);
     &:focus {
@@ -63,8 +62,13 @@
   &.variant-solid {
     background-color: var(--ns-fill);
   }
+  .ant-input,
   .ant-select,
   .ant-input-number {
+    border-width: 1px;
+    border-radius: var(--ns-border-radius);
+    border-style: solid;
+    border-color: transparent;
     &:hover {
       border-color: var(--ns-accent);
     }

@@ -1,0 +1,38 @@
+.ns-form-item {
+  .ant-input-status-error {
+    &:not(.ant-input-disabled) {
+      &:not(.ant-input-borderless) {
+        &.ant-input {
+           border-color: var(--ns-negtive);
+        }
+      }
+    }
+  }
+  .ant-input-number-status-error {
+    &:not(.ant-input-number-disabled) {
+      &:not(.ant-input-number-borderless) {
+        &.ant-number-input {
+           border-color: var(--ns-negtive);
+        }
+      }
+    }
+  }
+  .ant-select-status-error {
+    &:not(.ant-select-disabled) {
+      &:not(.ant-select-borderless) {
+        &.ant-select {
+           border-color: var(--ns-negtive);
+        }
+      }
+    }
+  }
+  .ant-picker-status-error {
+    &:not(.ant-picker-disabled) {
+      &:not(.ant-picker-borderless) {
+        &.ant-picker {
+           border-color: var(--ns-negtive);
+        }
+      }
+    }
+  }
+}
