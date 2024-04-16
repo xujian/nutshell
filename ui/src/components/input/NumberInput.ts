@@ -29,7 +29,7 @@ export const numberInputProps = {
   precision: {
     type: Number
   },
-  showAmount: {
+  hasAmount: {
     type: Boolean
   },
   amountRate: {

@@ -47,7 +47,7 @@ export const inputProps = {
   /**
    * 是否展示字数
    */
-  showCount: {
+  hasCount: {
     type: Boolean,
     default: false
   },

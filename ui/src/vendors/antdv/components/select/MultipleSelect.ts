@@ -21,7 +21,7 @@ export const MultipleSelect = defineComponent({
         h(AntSelect, {
           class: classes,
           name: props.name,
-          mode: props.showTagsMode ? 'tags' : 'multiple',
+          mode: props.tagsMode ? 'tags' : 'multiple',
           options: props.options,
           allowClear: clearable,
           showSearch: searchable,
@@ -37,7 +37,7 @@ export const MultipleSelect = defineComponent({
           popupClassName: 'ns-select-dropdown',
           disabled: props.disabled ?? false,
           placeholder: props.placeholder,
-          maxTagCount: props.maxTagShowCount,
+          maxTagCount: props.maxTags,
           optionFilterProp: 'label',
           tokenSeparators: [',']
         })

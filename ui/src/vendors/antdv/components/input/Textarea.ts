@@ -26,7 +26,7 @@ export const Textarea = defineComponent({
         disabled: props.disabled ?? false,
         value: props.modelValue,
         placeholder: props.placeholder,
-        showCount: props.showCount,
+        showCount: props.hasCount,
         autoSize: props.autoSize,
         rows: props.rows,
         valueModifiers: {

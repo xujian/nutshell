@@ -9,7 +9,7 @@ export const dateInputProps = {
   disabledDate: {
     type: Function as PropType<(currentDate: Dayjs) => boolean>
   },
-  showTime: {
+  hasTime: {
     type: Boolean
   },
   ...useFieldProps(),
@@ -34,8 +34,6 @@ export const NsDateInput = define({
     props: dateInputProps,
     emits,
     setup (props, ctx) {
-      const platform = usePlatform()
-      console.log('DateInput.ts................platform:', platform)
       const finalRules = formatRules(props.rules as ValidationRule[], props)
       return {
         props: {

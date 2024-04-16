@@ -31,7 +31,7 @@ export const DateInput = defineComponent({
           visible: visible.value,
           onClose: close,
           placeholder: props.placeholder,
-          showTime: props.showTime,
+          showTime: props.hasTime,
           locale,
           ...value.value
             ? { value: dayjs(value.value) }
@@ -43,7 +43,7 @@ export const DateInput = defineComponent({
               : (typeof value === 'string'
                   ? dayjs(value)
                   : value
-                ).format(!props.showTime ? 'YYYY-MM-DD': 'YYYY-MM-DD  HH:mm:ss')
+                ).format(!props.hasTime ? 'YYYY-MM-DD': 'YYYY-MM-DD  HH:mm:ss')
             props['onUpdate:modelValue']?.(val)
           },
           disabledDate: props.disabledDate,

@@ -9,7 +9,7 @@ export const textareaProps = {
   maxlength: {
     type: Number
   },
-  showCount: {
+  hasCount: {
     type: Boolean,
     default: false
   },

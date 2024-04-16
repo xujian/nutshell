@@ -30,13 +30,13 @@ export const multipleSelectProps = {
   /**
    * 最多显示多少个 tag, 默认不限制
    */
-  maxTagShowCount: {
+  maxTags: {
     type: [Number, String] as PropType<number | 'responsive'>
   },
   /**
    * 是否为 tags 模式，tags 模式可以输入
    */
-  showTagsMode: {
+  tagsMode: {
     type: Boolean,
     default: false
   }
