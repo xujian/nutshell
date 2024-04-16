@@ -9,10 +9,3 @@
     }
   }
 }
-
-.ns-select-dropdown {
-  .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled),
-  .ant-cascader-menu-item-active:not(.ant-cascader-menu-item-disabled):hover {
-    background-color: var(--ns-accent);
-  }
-}

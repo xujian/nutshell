@@ -1,19 +1,4 @@
 .ns-form-item {
-  .ant-input {
-    border-width: 1px;
-    border-color: transparent;
-    border-style: solid;
-    background-color: transparent;
-    color: var(--ns-text);
-    &:hover {
-      border-color: var(--ns-accent);
-    }
-    &:focus {
-      border-color: var(--ns-accent);
-      box-shadow: 0 0 2px 1px color-mix(in srgb, var(--ns-accent) 30%, transparent);
-      outline: none;
-    }
-  }
   .ant-input-affix-wrapper {
     background-color: var(--ns-fill);
     .ant-input::placeholder {

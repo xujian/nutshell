@@ -35,4 +35,30 @@
       }
     }
   }
+  .ant-input,
+  .ant-select,
+  .ant-input-number {
+    border-width: 1px;
+    border-radius: var(--ns-border-radius);
+    border-style: solid;
+    border-color: transparent;
+    &:hover {
+      border-color: var(--ns-accent);
+    }
+    &:focus {
+      border-color: var(--ns-accent);
+      box-shadow: 0 0 2px 1px color-mix(in srgb, var(--ns-accent) 30%, transparent);
+      outline: none;
+    }
+  }
+}
+
+.ns-select-dropdown {
+  .ant-cascader-menu-item-active {
+    &:not(.ant-cascader-menu-item-disabled) {
+      &:hover {
+        background-color: var(--ns-accent);
+      }
+    }
+  }
 }

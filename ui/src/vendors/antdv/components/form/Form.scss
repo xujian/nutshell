@@ -62,17 +62,6 @@
   &.variant-solid {
     background-color: var(--ns-fill);
   }
-  .ant-input,
-  .ant-select,
-  .ant-input-number {
-    border-width: 1px;
-    border-radius: var(--ns-border-radius);
-    border-style: solid;
-    border-color: transparent;
-    &:hover {
-      border-color: var(--ns-accent);
-    }
-  }
 }
 
 .ns-form {
