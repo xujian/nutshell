@@ -19,7 +19,7 @@ const getSize = (size?: Size): ButtonSize => {
   return sizeMapping[size]
 }
 
-export const Button = (props: ButtonProps, cxt: SetupContext) => {
+export const Button = (props: ButtonProps, { slots }: SetupContext) => {
   const { color } = props
   const colorIsBrand = BRANDS.includes(color as BrandColor)
   const classes = [
@@ -40,7 +40,7 @@ export const Button = (props: ButtonProps, cxt: SetupContext) => {
             class: 'icon'
           })
       : () => null
-    : cxt.slots.icon
+    : slots.icon
 
   const shape = props.round === true ? void 0 : ('suqare' as ButtonShape)
 
@@ -56,7 +56,10 @@ export const Button = (props: ButtonProps, cxt: SetupContext) => {
       onClick: props.onClick
     },
     {
-      default: () => props.label,
+      default: () => [
+        slots.default?.(),
+        props.label,
+      ],
       icon
     }
   )

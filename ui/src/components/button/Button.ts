@@ -15,7 +15,8 @@ export const useButtonProps = () => ({
    * 按钮底色
    */
   color: {
-    type: String as PropType<Color>
+    type: String as PropType<Color>,
+    default: 'primary',
   },
   /**
    * 圆角按钮

@@ -1,11 +1,6 @@
 import {
   PropType,
-  ExtractPublicPropTypes,
-  SlotsType,
   useSlots,
-  VNode,
-  RendererNode,
-  RendererElement
 } from 'vue'
 import { MakePropsType, define } from '../../utils'
 import { useModelValuePropsForInput, useSizeProps } from '../../props'

@@ -1,0 +1,38 @@
+@import 'tippy.js/dist/tippy.css';
+@import 'tippy.js/themes/light.css';
+
+.tippy-box {
+  background-color: var(--ns-fill);
+  color: var(--ns-text);
+  .tippy-content {
+    padding: 1em;
+  }
+  &[data-placement^='top'] {
+    .tippy-arrow {
+      &::before {
+        border-top-color: var(--ns-fill);
+      }
+    }
+  }
+  &[data-placement^='bottom'] {
+    .tippy-arrow {
+      &::before {
+        border-bottom-color: var(--ns-fill);
+      }
+    }
+  }
+  &[data-placement^='left'] {
+    .tippy-arrow {
+      &::before {
+        border-left-color: var(--ns-fill);
+      }
+    }
+  }
+  &[data-placement^='right'] {
+    .tippy-arrow {
+      &::before {
+        border-right-color: var(--ns-fill);
+      }
+    }
+  }
+}

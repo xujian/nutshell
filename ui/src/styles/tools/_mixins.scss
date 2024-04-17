@@ -86,20 +86,20 @@ $alphas: (
       &.variant-outlined {
         background-color: transparent;
         border-color: $value;
-        color: $value
+        color: $value;
       }
       &.variant-soft {
         background-color: color.adjust($value, $alpha: -0.25);
-        border-color: color.adjust($value, $lightness: +50%);
-        color: color.adjust($value, $lightness: +75%, $alpha: -0.4)
+        border-color: color.adjust($value, $lightness: +50%, $alpha: -0.4);
+        color: color.adjust($value, $lightness: +25%, $alpha: -0.2);
       }
       &.variant-plain {
         background-color: transparent;
         border-color: transparent;
-        color: $value;
-        // &:hover {
-        //   background-color: #00000033;
-        // }
+        color: color.adjust($value, $lightness: +25%);
+        &:hover {
+          background-color: #00000022;
+        }
       }
     }
   }

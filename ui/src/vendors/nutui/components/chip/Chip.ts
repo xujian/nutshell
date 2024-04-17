@@ -1,13 +1,15 @@
-import { h } from 'vue'
+import { SetupContext, h } from 'vue'
 import type { ChipProps } from '../../../../components'
 import { MarginProps } from '../../../../utils'
 
-export const Chip = (props: ChipProps & MarginProps) => {
-  const { label, color, textColor } = props
+export const Chip = (props: ChipProps & MarginProps, { slots }: SetupContext) => {
   return h(NutTag, {
     class: [
       ...props.classes || []
     ],
     round: true,
-  }, () => label)
+  }, [
+    slots.default?.(),
+    props.label,
+  ])
 }
