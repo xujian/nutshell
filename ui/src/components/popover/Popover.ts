@@ -22,9 +22,6 @@ export const popoverProps = {
     type: String,
     default: 'mouseenter',
   },
-  className: {
-    type: String,
-  }
 }
 
 export type PopoverEmits = {
