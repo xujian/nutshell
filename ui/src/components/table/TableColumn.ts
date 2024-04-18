@@ -2,7 +2,7 @@ import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext, VNode } fr
 import { define, MakePropsType } from '../../utils'
 import { TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
 import { buildProps } from '../../utils/private/props'
-import { Item } from '../../shared/models'
+import { UnitDataItem } from '../../shared/models'
 import { Color } from 'src/composables'
 
 export type TableColumnAlign = 'left' | 'center' | 'right'
@@ -14,7 +14,7 @@ export type TableColumnFixed = undefined | 'left' | 'right'
  * 或者显示一个输入框
  */
 export type TableColumnFilterSettings = {
-  data: Item[],
+  data: UnitDataItem[],
   component: VNode | (() => VNode),
   props: any
 }
@@ -91,7 +91,7 @@ export const useTableColumnProps = buildProps({
     default: false
   },
   editData: {
-    type: Array as PropType<Item[]>,
+    type: Array as PropType<UnitDataItem[]>,
     default: []
   }
 })
