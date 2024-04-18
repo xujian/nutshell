@@ -36,7 +36,10 @@ export const NsRow = defineComponent({
         `justify-${props.justify}`,
         `align-${props.align}`,
         ...props.gap ? [`gap-${props.gap}`] : []
-      ]
+      ],
+      style: {
+        '--gap': props.gap
+      }
     }, slots)
   }
 })

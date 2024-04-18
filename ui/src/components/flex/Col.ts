@@ -9,7 +9,7 @@ const ALIGN = ['start', 'end', 'center', 'stretch'] as const
 type AlignValue = typeof ALIGN[number]
 
 const props = {
-  gutter: {
+  gap: {
     type: [Number, String],
     default: 10,
   },
@@ -47,7 +47,12 @@ export const NsCol = defineComponent({
         ...props.grow ? ['flex-grow'] : [],
         `justify-${props.justify}`,
         `align-${props.align}`,
-      ]
+      ],
+      style: {
+        '--gap': typeof props.gap === 'number'
+          ? `${props.gap}px`
+          : props.gap
+      }
     }, slots)
   }
 })
