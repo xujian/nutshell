@@ -1,5 +1,5 @@
 import { h, ref } from 'vue'
-import { Item } from '../../../../../shared/models'
+import { UnitDataItem } from '../../../../../shared/models'
 import { NsButton, NsChip, NsMultipleSelect, TableColumnChipsProps, TableColumnData } from '../../../../../components'
 import { NsEditable } from '../../../../../components/editable'
 
@@ -10,7 +10,7 @@ import { NsEditable } from '../../../../../components/editable'
  */
 export default function chips (props: TableColumnChipsProps) {
   const style = props.extraStyle
-  const chip = (value: Item, row: Record<string, any>) => h(NsChip, {
+  const chip = (value: UnitDataItem, row: Record<string, any>) => h(NsChip, {
     label: value.label,
     color: props.color ?? 'primary',
     ...style && {
@@ -24,7 +24,7 @@ export default function chips (props: TableColumnChipsProps) {
 
     const editable = ref<typeof NsEditable>()
 
-    const items: Item[] = typeof v === 'string'
+    const items: UnitDataItem[] = typeof v === 'string'
         // 支持两种格式的 value
         // 1. 逗号分隔的字符串
         // 2. 字符串数组

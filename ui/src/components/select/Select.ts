@@ -3,9 +3,9 @@ import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../.
 import { ValidationRule, buildStyles, formatRules } from '../../props/field'
 import { MakePropsType } from '../../utils/private/helpers'
 import { define } from '../../utils'
-import { Item } from '../../shared/models'
+import { UnitDataItem } from '../../shared/models'
 
-export type SelectOption = Item & {
+export type SelectOption = UnitDataItem & {
   disabled?: boolean,
   title?: string,
 }

@@ -1,6 +1,6 @@
 import { h, ref, SetupContext, VNode } from 'vue'
 import { ChipsProps, NsButton, NsCheckboxGroup, NsChip, NsPopover } from '../../../../components'
-import { Item } from '../../../../shared/models'
+import { UnitDataItem } from '../../../../shared/models'
 import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from '../input/rules'
 import { renderFormItem } from '../../utils'
@@ -11,7 +11,7 @@ const hovercheckbox = ref(false)
 export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
   const options = props.options || []
 
-  const onItemClick = (item: Item) => {
+  const onItemClick = (item: UnitDataItem) => {
     const value = props.modelValue || [],
       itemIncludes = value.includes(`${item.value}`),
       newValue = itemIncludes
