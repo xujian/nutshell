@@ -24,7 +24,7 @@
     color: var(--ns-text);
     .vxe-table--body-wrapper {
       table {
-        background-color: var(--ns-fill);
+        background-color: var(--ns-paper);
       }
     }
     &.border--default,
@@ -32,7 +32,7 @@
     &.border--full,
     &.border--outer {
       .vxe-table--header-wrapper {
-        background-color: var(--ns-fill);
+        background-color: var(--ns-paper);
         color: var(--ns-text);
       }
     }

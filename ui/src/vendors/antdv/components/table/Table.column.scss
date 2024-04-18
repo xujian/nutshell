@@ -1,0 +1,7 @@
+.ns-table {
+  @for $i from 1 through 20 {
+    .fill-#{$i} {
+      background-color: var(--column-fill-#{$i});
+    }
+  }
+}

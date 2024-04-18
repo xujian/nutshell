@@ -1,5 +1,5 @@
 import { SetupContext, computed, h,VNode, ref, reactive } from 'vue'
-import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance } from 'vxe-table'
+import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance, Column } from 'vxe-table'
 import type { CustomColumnFunctionalRender, TableColumnData, TableProps, CustomColumnSlots, TableColumnDefinition, TableColumnProps, TableFilterQuery, TableColumnFilterSettings } from '../../../../components'
 import { NsPagination, isCustomColumnSlots  } from '../../../../components'
 import columnCustomRenders from './columns'
@@ -86,6 +86,9 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     return true
   }
 
+
+  const fills: Record<string, string> = {}
+
   /**
    * 为 VxeTable 构造volumns
    * @param customColumns
@@ -131,6 +134,10 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
     let columnCount = 0
     for (const column of columns) {
 
+      if (column.props.fill) {
+        fills[`--column-fill-${columnCount}`] = column.props.fill
+      }
+
       // NsTableColumn 的属性 转换为-> VxeColumn 的属性
       const colummConfig: ColumnConfig = {
         props: {
@@ -149,11 +156,18 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
             }
           },
           // 给列头加上特定的 css class
-          headerClassName: column.props.description
-            ? [
-                'has-description',
-              ].join(' ')
-            : ''
+          headerClassName: [
+            ...column.props.description ? ['has-description'] : [],
+            // 输出 特定的 class 以便给单元格填色
+            ...column.props.fill ? [`fill-${columnCount}`] : [],
+          ].join(' '),
+          // 给单元格加上特定的 css class
+          className: [
+            // 输出 特定的 class 以便给单元格填色
+            ...column.props.fill
+              ? [`fill-${columnCount}`]
+              : []
+          ].join(' '),
         },
         slots: {}
       }
@@ -265,6 +279,7 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
         }
       }
       const node = h(VxeColumn, colummConfig.props, colummConfig.slots)
+      console.log('===node', node.type)
       result.push(node)
       columnCount ++
     }
@@ -337,6 +352,9 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
       // pagination: false,
       // rowKey: props.rowKey,
       // rowSelection
+      style: {
+        ...fills
+      }
     }, () => columns),
     pagination = () => h(NsPagination, {
       class: [],

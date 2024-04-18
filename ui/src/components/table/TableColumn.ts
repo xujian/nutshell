@@ -3,6 +3,7 @@ import { define, MakePropsType } from '../../utils'
 import { TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
 import { buildProps } from '../../utils/private/props'
 import { Item } from '../../shared/models'
+import { Color } from 'src/composables'
 
 export type TableColumnAlign = 'left' | 'center' | 'right'
 export type TableColumnFixed = undefined | 'left' | 'right'
@@ -37,6 +38,12 @@ export const useTableColumnProps = buildProps({
   align: {
     type: String as PropType<TableColumnAlign>,
     default: 'center'
+  },
+  /**
+   * 列独立填色
+   */
+  fill: {
+    type: String as PropType<Color>,
   },
   fixed: {
     type: String as PropType<TableColumnFixed>,

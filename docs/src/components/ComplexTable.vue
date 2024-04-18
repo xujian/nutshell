@@ -237,6 +237,7 @@ const onInviteFilterChange = (value: string[]) => {
     <ns-table-column-number label="序号" width="50" align="center" fixed="left" />
     <ns-table-column field="name" label="姓名" align="left" sortable width="110" fixed="left" />
     <ns-table-column-crypto
+      fill="#cddc39"
       :enabled="false"
       field="phone" label="手机号码" width="140"
       @decrypt="decryptPhoneNumber" />
