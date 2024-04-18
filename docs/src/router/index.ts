@@ -5,6 +5,7 @@ const HomePage = () => import('../pages/HomePage.vue')
 const AboutPage = () => import('../pages/AboutPage.vue')
 const PalettesPage = () => import('../pages/themes/PalettesPage.vue')
 const ButtonPage = () => import('../pages/components/ButtonPage.vue')
+const ButtonGroupPage = () => import('../pages/components/ButtonGroupPage.vue')
 const DropdownPage = () => import('../pages/components/DropdownPage.vue')
 const ChipPage = () => import('../pages/components/ChipPage.vue')
 const CardPage = () => import('../pages/components/CardPage.vue')
@@ -136,6 +137,11 @@ const router = createRouter({
           path: '/components/switch',
           name: 'components-switch',
           component: SwitchPage
+        },
+        {
+          path: '/components/button-group',
+          name: 'components-button-group',
+          component: ButtonGroupPage
         },
         {
           path: '/components/empty',

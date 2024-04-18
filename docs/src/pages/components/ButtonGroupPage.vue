@@ -1,8 +1,6 @@
 <template>
-  <h1 class="my-lg">按钮</h1>
-  <story file="button/basic.vue" />
-  <!--panel file="forms/tasks.vue" /-->
-  <!--board file="contracts/query.vue" /-->
+  <h1 class="my-lg">按钮组</h1>
+  <story file="button-group/basic" />
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h2 class="my-md">Size</h2>
@@ -27,17 +25,6 @@
   </ns-row>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
-  <h2 class="my-md">形状</h2>
-  <p>&nbsp;</p>
-  <story file="button/shapes.vue" />
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <ns-row class="with-icon" align="center">
-    <ns-button class="my-xs"
-      color="primary"
-      icon="https://cdn.ddjf.com/static/images/ai-approve-mini/scan.png"
-      label="证件识别"></ns-button>
-  </ns-row>
   <p>&nbsp;</p>
 </template>
 

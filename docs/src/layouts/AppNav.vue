@@ -171,6 +171,10 @@ const menuData = computed(() => [
             key: '/components/checkbox'
           },
           {
+            label: '按钮组',
+            key: '/components/button-group'
+          },
+          {
             label: '单选框 radio',
             key: '/components/radio'
           },
