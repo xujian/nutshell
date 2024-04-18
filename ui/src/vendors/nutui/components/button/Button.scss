@@ -37,12 +37,4 @@
   .nut-icon-loading {
     margin-right: 5px;
   }
-  &.nut-button--default {
-    &:not([disabled]) {
-      &:active {
-        background-color: inherit;
-        border-color: inherit;
-      }
-    }
-  }
 }

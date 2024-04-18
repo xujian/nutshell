@@ -77,6 +77,13 @@ $alphas: (
     .color-#{$name} {
       background-color: var(--ns-#{$name});
       border-color: var(--ns-#{$name});
+      &:not([disabled]) {
+        &:active {
+          background-color: var(--ns-#{$name});
+          border-color: var(--ns-#{$name});
+          color: #fff;
+        }
+      }
       @if lightness($value) > 80 {
         color: var(--ns-text)
       }
@@ -90,8 +97,8 @@ $alphas: (
       }
       &.variant-soft {
         background-color: color.adjust($value, $alpha: -0.25);
-        border-color: color.adjust($value, $lightness: +50%, $alpha: -0.4);
-        color: color.adjust($value, $lightness: +25%, $alpha: -0.2);
+        border-color: color.adjust($value, $whiteness: +50%, $alpha: -0.4);
+        color: color.adjust($value, $lightness: +40%);
       }
       &.variant-plain {
         background-color: transparent;

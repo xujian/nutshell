@@ -32,6 +32,7 @@ export * from './files'
 export * from './upload'
 export * from './number'
 export * from './divider'
+export * from './button-group'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -66,6 +67,7 @@ import { NsUpload, NsCropUpload } from './upload'
 import { NsTimeline } from './timeline'
 import { NsDivider } from './divider'
 import { NsNumber } from './number'
+import { NsButtonGroup } from './button-group'
 
 const components = {
   NsApp,
@@ -120,7 +122,8 @@ const components = {
   NsPopover,
   NsPopoverConfirm,
   NsTimeline,
-  NsDivider
+  NsDivider,
+  NsButtonGroup
 }
 
 const properties = Object.fromEntries(

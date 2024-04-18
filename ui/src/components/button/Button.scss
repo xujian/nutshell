@@ -8,6 +8,9 @@
   &:hover {
     filter: brightness(0.8);
   }
+  &:active {
+    filter: brightness(0.75);
+  }
   + .ns-button {
     margin-left: 0.5em;
   }

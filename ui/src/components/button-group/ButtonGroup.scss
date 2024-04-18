@@ -1,0 +1,8 @@
+.ns-button-group {
+  display: inline-block;
+  border-radius: var(--ns-border-radius);
+  width: fit-content;
+  &.round {
+    border-radius: 25px;
+  }
+}
