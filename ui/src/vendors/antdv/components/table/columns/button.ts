@@ -3,8 +3,8 @@ import { h } from 'vue'
 
 /**
  * Table custom column: button
- * @param column 
- * @param custom 
+ * @param column
+ * @param custom
  */
 export default function button (
     props: TableColumnButtonProps,
@@ -18,5 +18,5 @@ export default function button (
     onClick: () => {
       props.onClick?.({value, row, rowIndex})
     }
-  }, () => value)
+  })
 }
