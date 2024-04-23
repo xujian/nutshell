@@ -3,7 +3,7 @@
  * 通用数据项
  * 强行定义所有遍历类组件
  */
-export type UnitDataItem = {
+export type UniDataItem = {
   // 字段
   // name/value 为强制字段 即使字段闲置
   // id 可以有可以没有
@@ -18,7 +18,7 @@ export type UnitDataItem = {
 
 export type Layer = {
   label: string,
-  data: UnitDataItem[],
+  data: UniDataItem[],
 }
 
 /**

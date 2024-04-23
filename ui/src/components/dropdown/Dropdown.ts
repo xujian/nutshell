@@ -2,7 +2,7 @@ import { PropType, ObjectEmitsOptions } from 'vue'
 import { useSizeProps, useDimensionProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 import { Color } from '../../composables/theme'
-import { UnitDataItem } from '../../shared/models'
+import { UniDataItem } from '../../shared'
 
 export const dropdownProps = {
   /**
@@ -18,7 +18,7 @@ export const dropdownProps = {
     type: String as PropType<Color>,
   },
   items: {
-    type: Array as PropType<UnitDataItem[]>,
+    type: Array as PropType<UniDataItem[]>,
   },
   ...useSizeProps(),
   /**

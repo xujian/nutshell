@@ -1,6 +1,6 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { MakePropsType, define } from '../../utils'
-import { UnitDataItem } from '../../shared/models'
+import { UniDataItem } from '../../shared'
 
 export const checkboxGroupProps = {
   modelValue: {
@@ -11,7 +11,7 @@ export const checkboxGroupProps = {
     type: Function as PropType<(value: string[]) => void>
   },
   options: {
-    type: Array as PropType<UnitDataItem[]>,
+    type: Array as PropType<UniDataItem[]>,
   }
 }
 

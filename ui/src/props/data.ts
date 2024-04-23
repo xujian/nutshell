@@ -1,11 +1,11 @@
 import { PropType } from 'vue'
-import { UnitDataItem } from '../shared/models'
+import { UniDataItem } from '../shared'
 import { MakePropsType } from '../utils'
 import { buildProps } from '../utils/private/props'
 
 const dataProps = {
   data: {
-    type: Array as PropType<UnitDataItem[]>,
+    type: Array as PropType<UniDataItem[]>,
     default: []
   }
 }

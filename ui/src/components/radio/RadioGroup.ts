@@ -2,7 +2,7 @@ import { PropType, ObjectEmitsOptions, SlotsType, useSlots } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForInput, useLayoutProps } from '../../props'
 import { RadioProps } from './Radio'
-import { UnitDataItem } from '../../shared'
+import { UniDataItem } from '../../shared'
 
 export const radioGroupProps = {
   ...useModelValuePropsForInput(),
@@ -13,7 +13,7 @@ export const radioGroupProps = {
     type: String
   },
   items: {
-    type: Array as PropType<UnitDataItem[]>,
+    type: Array as PropType<UniDataItem[]>,
     default: []
   },
   disabled: {

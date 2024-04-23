@@ -1,11 +1,11 @@
 import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
-import { UnitDataItem } from 'src/shared/models'
+import { UniDataItem } from '../shared'
 
 export type EditableCompleteCallback = (value?: string[]) => boolean
 
 export type EditableConfig = {
-  options: UnitDataItem[]
+  options: UniDataItem[]
 }
 
 const editableProps = {

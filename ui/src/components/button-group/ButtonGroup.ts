@@ -1,7 +1,7 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDimensionProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
-import { UnitDataItem } from '../../shared/models'
+import { UniDataItem } from '../../shared'
 import { BRANDS, Color, type BrandColor } from '../../composables/theme'
 import { NsButton } from '../button/Button'
 
@@ -17,7 +17,7 @@ export const buttonGroupProps = {
     type: String as PropType<Color>,
   },
   options: {
-    type: Array as PropType<UnitDataItem[]>,
+    type: Array as PropType<UniDataItem[]>,
     default: []
   },
   round: {
@@ -49,7 +49,7 @@ export const NsButtonGroup = defineComponent({
     const { color } = props
     const colorIsBrand = BRANDS.includes(color as BrandColor)
 
-    const item = (item: UnitDataItem) => h(NsButton, {
+    const item = (item: UniDataItem) => h(NsButton, {
       class: [
         ...props.size ? [`size-${props.size}`] : [],
         ...colorIsBrand ? [`color-${color}`] : [],

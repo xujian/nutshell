@@ -1,10 +1,10 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { UnitDataItem } from '../../shared/models'
+import { UniDataItem } from '../../shared'
 
 export type FactsItem = {
   span?: number,
-} & UnitDataItem
+} & UniDataItem
 
 export const factsProps = {
   items: Array as PropType<FactsItem[]>

@@ -1,11 +1,11 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDesignProps } from '../../props'
-import { UnitDataItem } from '../../shared/models'
+import { UniDataItem } from '../../shared'
 
 export type MenuItem = {
   children?: MenuItem[]
-} & UnitDataItem
+} & UniDataItem
 
 export const menuProps = {
   items: {
