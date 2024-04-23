@@ -16,7 +16,6 @@ export const useButtonProps = () => ({
    */
   color: {
     type: String as PropType<Color>,
-    default: 'primary',
   },
   /**
    * 圆角按钮

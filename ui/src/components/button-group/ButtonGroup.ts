@@ -2,7 +2,7 @@ import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue
 import { define, MakePropsType } from '../../utils'
 import { useDimensionProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { UnitDataItem } from '../../shared/models'
-import { BRANDS, type BrandColor } from '../../composables/theme'
+import { BRANDS, Color, type BrandColor } from '../../composables/theme'
 import { NsButton } from '../button/Button'
 
 export const buttonGroupProps = {
@@ -15,7 +15,6 @@ export const buttonGroupProps = {
    */
   color: {
     type: String as PropType<Color>,
-    default: 'primary',
   },
   options: {
     type: Array as PropType<UnitDataItem[]>,
