@@ -36,7 +36,6 @@ export const DateInput = defineComponent({
           ...value.value
             ? { value: dayjs(value.value) }
             : {},
-          getPopupContainer: (triggerNode) => triggerNode.parentElement || document.body,
           'onUpdate:value': (value: string | Dayjs) => {
             const val = value === null
               ? ''

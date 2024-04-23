@@ -20,7 +20,6 @@ export const CascadingSelect = defineComponent({
           showSearch: searchable,
           value: props.modelValue,
           placeholder: props.placeholder,
-          getPopupContainer: (triggerNode) => triggerNode.parentNode,
           'onUpdate:value': (value: ValueType) => {
             props['onUpdate:modelValue']?.(value as string[])
           },
