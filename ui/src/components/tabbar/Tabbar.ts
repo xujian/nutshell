@@ -2,17 +2,12 @@ import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue
 import { define, MakePropsType } from '../../utils'
 import { NsIcon } from '../icon'
 import { useModelValuePropsForString } from '../../props/model'
-
-export type TabbarItem = {
-  label: string,
-  value: string,
-  icon: string,
-}
+import { UnitDataItem } from '../../shared'
 
 export const tabbarProps = {
   ...useModelValuePropsForString(),
   items: {
-    type: Array as PropType<TabbarItem[]>
+    type: Array as PropType<UnitDataItem[]>
   }
 }
 
