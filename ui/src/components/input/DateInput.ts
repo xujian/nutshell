@@ -2,7 +2,7 @@ import { ObjectEmitsOptions, PropType } from 'vue'
 import { Dayjs } from 'dayjs'
 import { MakePropsType, define } from '../../utils'
 import { usePlatform } from '../../composables'
-import { FullValidationRule, ValidationRule, formatRules, useFieldProps, useModelValuePropsForInput } from '../../props'
+import { FullValidationRule, ValidationRule, formatRules, useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 
 export const dateInputProps = {
   ...useModelValuePropsForInput(),
@@ -13,6 +13,7 @@ export const dateInputProps = {
     type: Boolean
   },
   ...useFieldProps(),
+  ...useVariantProps(),
 }
 
 export type DateInputEmits = {

@@ -1,4 +1,5 @@
 .ns-form-item {
+  margin-right: 40px;
   .ant-input-status-error {
     &:not(.ant-input-disabled) {
       &:not(.ant-input-borderless) {
@@ -35,20 +36,33 @@
       }
     }
   }
-  .ant-input,
-  .ant-select,
-  .ant-input-number {
-    border-width: 1px;
-    border-radius: var(--ns-border-radius);
-    border-style: solid;
-    border-color: transparent;
-    &:hover {
-      border-color: var(--ns-accent);
+  &:not(.variant-solid) {
+    .ant-input,
+    .ant-select,
+    .ant-input-number {
+      border-width: 1px;
+      border-radius: var(--ns-border-radius);
+      border-style: solid;
+      border-color: transparent;
+      &:hover {
+        border-color: var(--ns-accent);
+      }
+      &:focus {
+        border-color: var(--ns-accent);
+        box-shadow: 0 0 2px 1px color-mix(in srgb, var(--ns-accent) 30%, transparent);
+        outline: none;
+      }
     }
-    &:focus {
-      border-color: var(--ns-accent);
-      box-shadow: 0 0 2px 1px color-mix(in srgb, var(--ns-accent) 30%, transparent);
+  }
+  &.variant-solid {
+    .ant-picker,
+    .ant-input,
+    .ant-select,
+    .ant-select-selector,
+    .ant-input-number {
+      border: none !important;
       outline: none;
+      box-shadow: none !important;
     }
   }
 }
