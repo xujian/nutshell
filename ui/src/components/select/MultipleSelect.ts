@@ -1,6 +1,6 @@
 import { MakePropsType, define } from '../../utils'
 import { PropType } from 'vue'
-import { useFieldProps, useModelValuePropsForStringArray } from '../../props'
+import { useFieldProps, useModelValuePropsForStringArray, useVariantProps } from '../../props'
 import { ValidationRule, formatRules } from '../../props/field'
 import { SelectOption } from './Select'
 
@@ -13,6 +13,7 @@ export const multipleSelectProps = {
   },
   ...useModelValuePropsForStringArray(),
   ...useFieldProps(),
+  ...useVariantProps(),
   /**
    * 显示清空按钮
    */
