@@ -11,6 +11,7 @@ const components: Record<string, VendorComponent> = {
   Button,
   Input,
   DateInput,
+  // @ts-ignore
   Chip,
   Icon,
   Select,

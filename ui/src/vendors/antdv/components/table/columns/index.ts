@@ -4,6 +4,7 @@ import rating from './rating'
 import button from './button'
 import icon from './icon'
 import datetime from './datetime'
+import currency from './currency'
 import crypto from './crypto'
 import custom from './custom'
 import { CustomColumnRender } from '../../../../../components/table/TableColumn'
@@ -16,6 +17,7 @@ const columnCustomRenders: Record<string, CustomColumnRender> = {
   button,
   icon,
   datetime,
+  currency,
   crypto,
   custom
 }
