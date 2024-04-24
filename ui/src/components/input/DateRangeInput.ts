@@ -1,7 +1,7 @@
 import { ObjectEmitsOptions, PropType } from 'vue'
 import { MakePropsType, define } from '../../utils'
 import { usePlatform } from '../../composables'
-import { useFieldProps } from '../../props'
+import { useFieldProps, useVariantProps } from '../../props'
 import { formatRules, FullValidationRule, ValidationRule } from '../../props/field'
 
 export type DateAsStringOrNumber = string | number
@@ -19,6 +19,7 @@ export const dateRangeInputProps = {
     type: Function as PropType<(currentDate: DateRange) => boolean>
   },
   ...useFieldProps(),
+  ...useVariantProps(),
   inside: {
     type: Boolean,
     default: false,
