@@ -13,6 +13,7 @@ export type UniDataItem = {
   value: number | string,
   label?: string,
   id?: string,
+  disabled?: boolean,
   [x: string]: any
 }
 

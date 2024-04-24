@@ -9,6 +9,7 @@ export const RadioGroup = (props: RadioGroupProps, ctx: SetupContext) => {
   const children = () => props.items?.map(item => h(AntdvRadio, {
     name: props.name,
     value: item.value,
+    disabled: item.disabled,
   }, () => item.label))
 
   const title = props.label
