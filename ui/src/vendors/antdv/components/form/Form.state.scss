@@ -36,7 +36,21 @@
       }
     }
   }
-  &:not(.variant-solid) {
+  &.variant-solid {
+    .ant-picker,
+    .ant-input,
+    .ant-select,
+    .ant-select-selector,
+    .ant-input-number {
+      border: none !important;
+      outline: none;
+      box-shadow: none !important;
+    }
+  }
+}
+
+.ns-form:not(.variant-solid) {
+  .ns-form-item:not(.variant-solid) {
     .ant-input,
     .ant-select,
     .ant-input-number {
@@ -52,17 +66,6 @@
         box-shadow: 0 0 2px 1px color-mix(in srgb, var(--ns-accent) 30%, transparent);
         outline: none;
       }
-    }
-  }
-  &.variant-solid {
-    .ant-picker,
-    .ant-input,
-    .ant-select,
-    .ant-select-selector,
-    .ant-input-number {
-      border: none !important;
-      outline: none;
-      box-shadow: none !important;
     }
   }
 }
