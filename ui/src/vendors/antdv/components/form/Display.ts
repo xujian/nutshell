@@ -2,7 +2,7 @@ import { h, SetupContext } from 'vue'
 import { FormItem as AntFormItem } from 'ant-design-vue'
 import { DisplayProps } from '../../../../components'
 
-export const Display = (props: DisplayProps, ctx: SetupContext) => {
+export const Display = (props: DisplayProps, { slots }: SetupContext) => {
 
   return h(AntFormItem,
     {
@@ -12,8 +12,9 @@ export const Display = (props: DisplayProps, ctx: SetupContext) => {
       label: props.label,
     },
     {
-      default: props.value,
+      default: () => slots.default
+        ? slots.default()
+        : props.value
     }
   )
 }
-// + import => ./index.ts, ../components.ts

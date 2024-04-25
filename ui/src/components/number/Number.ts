@@ -9,6 +9,7 @@ import { useModelValuePropsForInput,
   useTooltipProps,
   makeTooltip,
   convertDimension,
+  useSizeProps,
 } from '../../props'
 import { Dimension } from '../../types'
 
@@ -43,6 +44,7 @@ export const numberProps = {
     defineComponent: 0
   },
   ...useDimensionProps(),
+  ...useSizeProps(),
   /**
    * 主干行高度
    */
@@ -237,6 +239,7 @@ export const NsNumber = defineComponent({
     return () => h('div', {
       class: [
         'ns-number',
+        `size-${props.size}`,
         'column',
       ],
       style: styles,

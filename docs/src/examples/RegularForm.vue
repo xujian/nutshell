@@ -4,7 +4,11 @@
       name="client" variant="outlined" autocomplete="off"
       v-model="formData">
       <h3 class="mt-xl mb-lg">基础信息</h3>
-      <ns-display label="编号" value="NS-2024" />
+      <ns-display label="金额">
+        <ns-number :model-value="1024"
+          size="xs"
+          :minimumFractionDigits="2" />
+      </ns-display>
       <ns-input
         name="name"
         v-model="formData.name"
@@ -52,18 +56,6 @@
           append插槽
         </template>
       </ns-number-input>
-      <ns-text
-        label="只读数字"
-        has-amount
-        v-model="formData.amount1" />
-      <ns-text
-        label="只读文案"
-        has-amount
-        v-model="formData.text">
-        <template #append>
-          append插槽
-        </template>
-      </ns-text>
     </ns-form>
   </ns-card>
 </template>
