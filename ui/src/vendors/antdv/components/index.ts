@@ -18,6 +18,7 @@ import { RadioGroup } from './radio'
 import { Pagination } from './pagination'
 import { Facts } from './facts'
 import { Upload } from './upload'
+import { Text } from './text'
 
 const components = {
   Form,
@@ -49,7 +50,8 @@ const components = {
   RadioGroup,
   Pagination,
   Facts,
-  Upload
+  Upload,
+  Text
 }
 
 export default components

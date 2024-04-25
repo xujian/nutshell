@@ -44,9 +44,25 @@
       <ns-number-input
         name="amount"
         label="数字输入"
-        show-amount
+        has-amount
         v-model="formData.amount"
-        :rules="['required']" />
+        :rules="['required']">
+        <template #append>
+          append插槽
+        </template>
+      </ns-number-input>
+      <ns-text
+        label="只读数字"
+        has-amount
+        v-model="formData.amount1" />
+      <ns-text
+        label="只读文案"
+        has-amount
+        v-model="formData.text">
+        <template #append>
+          append插槽
+        </template>
+      </ns-text>
     </ns-form>
   </ns-card>
 </template>
@@ -64,6 +80,8 @@ const formData = reactive({
   tags: [],
   divorceDate: null,
   amount: null,
+  amount1: 5555555,
+  text: '这是一个只读的文案'
 })
 
 const chipsOptions = [
