@@ -1,9 +1,11 @@
 .ns-radio-group {
+  display: inline-flex;
   .ant-radio-group {
     .ant-radio-wrapper {
       height: 2em;
       line-height: 2em;
       color: var(--ns-text);
+      margin-right: 12px;
     }
   }
   .radio-group-title {
