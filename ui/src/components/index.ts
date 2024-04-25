@@ -37,7 +37,7 @@ export * from './text'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
-import { NsForm } from './form'
+import { NsForm, NsDisplay } from './form'
 import { NsInput, NsDateInput, NsDateRangeInput, NsMobileInput, NsIdInput, NsTextarea, NsNumberInput, NsMonthInput, NsYearInput } from './input'
 import { NsSwitch } from './switch'
 import { NsSelect, NsCascadingSelect, NsMultipleSelect } from './select'
@@ -85,6 +85,7 @@ const components = {
   NsNumberInput,
   NsSwitch,
   NsForm,
+  NsDisplay,
   NsSelect,
   NsMultipleSelect,
   NsCascadingSelect,

@@ -44,7 +44,6 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
         : null
     )
 
-  console.log('===label', label, props.label)
   return h(
     AntFormItem,
     {

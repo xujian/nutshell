@@ -68,3 +68,9 @@
     background-color: var(--ns-fill);
   }
 }
+
+.ns-display {
+  .ant-form-item-control-input {
+    background-color: transparent;
+  }
+}

@@ -1,9 +1,10 @@
 <template>
-  <ns-card title="新建意向客户">
+  <ns-card title="新建意向客户" fill="#ffffff">
     <ns-form
       name="client" variant="outlined" autocomplete="off"
       v-model="formData">
       <h3 class="mt-xl mb-lg">基础信息</h3>
+      <ns-display label="编号" value="NS-2024" />
       <ns-input
         name="name"
         v-model="formData.name"
