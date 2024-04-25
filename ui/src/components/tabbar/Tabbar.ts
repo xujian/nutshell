@@ -56,15 +56,15 @@ export const NsTabbar = defineComponent({
               props.modelValue == item.value && 'selected'
           ],
           onClick () {
-            const value = item.value || item.label
+            const value = item.value || item.label || ''
             if (value == props.modelValue) {
               return
             }
-            props['onUpdate:modelValue']?.(value)
+            props['onUpdate:modelValue']?.(`${value}`)
           }
         }, [
           icon(item.icon),
-          label(item.label)
+          label(item.label || '')
         ])
       })
     )

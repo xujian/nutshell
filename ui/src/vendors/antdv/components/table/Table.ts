@@ -279,7 +279,6 @@ export const Table = (props: TableProps & MarginProps, ctx: SetupContext) => {
         }
       }
       const node = h(VxeColumn, colummConfig.props, colummConfig.slots)
-      console.log('===node', node.type)
       result.push(node)
       columnCount ++
     }

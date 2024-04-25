@@ -70,6 +70,21 @@
       font-size: var(--fontSize, 14px)
     }
   }
+  &.size-sm {
+    .digits {
+      font-size: var(--fontSize, 20px)
+    }
+  }
+  &.size-md {
+    .digits {
+      font-size: var(--fontSize, 32px)
+    }
+  }
+  &.size-lg {
+    .digits {
+      font-size: var(--fontSize, 40px)
+    }
+  }
   .prefix {
     padding-inline-end: .5em;
   }

@@ -14,7 +14,7 @@ const Loading: Directive = {
 }
 
 // 动态添加loading子节点
-function addLoadingEle(el: Element) {
+function addLoadingEle(el: HTMLElement) {
   if (el.lastElementChild?.classList.contains('ns-loading')) return
 
   // 判断当前元素定位方式
