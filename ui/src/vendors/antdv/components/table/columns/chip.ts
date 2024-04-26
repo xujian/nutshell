@@ -3,8 +3,8 @@ import { h } from 'vue'
 
 /**
  * Table custom column: chip
- * @param column 
- * @param props 
+ * @param column
+ * @param props
  */
 export default function chip (props: TableColumnChipProps) {
   const style = props.extraStyle
@@ -15,5 +15,5 @@ export default function chip (props: TableColumnChipProps) {
           ? style
           : style(value, row)
     }
-  }, () => value)
+  })
 }
