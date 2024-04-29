@@ -2,7 +2,7 @@
  * 金额格式化
  */
 export function amountFormatter(value: string) {
-  if (!value) return
+  if (!value) return value
   return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
@@ -10,7 +10,7 @@ export function amountFormatter(value: string) {
  * 金额解析
  */
 export function amountParser(value: string) {
-  if (!value) return
+  if (!value) return value
   return value.replace(/\$\s?|(,*)/g, '')
 }
 
