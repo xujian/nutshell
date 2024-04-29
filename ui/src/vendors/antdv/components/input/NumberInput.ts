@@ -34,7 +34,7 @@ export const NumberInput = defineComponent({
             min: props.min ?? 0,
             step: props.step ?? 1,
             precision: props.precision,
-            formatter: props.formatter ?? amountFormatter,
+            formatter: props.precision === 0 ? null : props.formatter ?? amountFormatter,
             parser: props.parser ?? amountParser,
             valueModifiers: {
               lazy: props.lazy === false ? false : true
