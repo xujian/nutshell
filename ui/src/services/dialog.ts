@@ -1,9 +1,8 @@
-import { h, inject, ref, App, VueElement } from 'vue'
+import { App } from 'vue'
 import { VendorSymbol } from '../shared/symbols'
 import { DollarNutshell } from '../framework'
 import { Color } from '../composables'
 import {  } from 'vue'
-import { VueElementConstructor } from 'vue'
 
 export type DialogOptions = {
   title?: string,
@@ -23,8 +22,8 @@ export type DialogOptions = {
   cancelText?: string,
   okColor?: Color,
   footer?: boolean,
-  onOk?: (result?: any) => void
-  onCancel?: () => void
+  onOk?: (result?: any) => boolean | undefined
+  onCancel?: () => boolean | undefined
   centered?: boolean
 }
 

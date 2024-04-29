@@ -18,13 +18,32 @@ function createDialog (options: DialogOptions, app: App) {
     completeResult = result
   }
 
+  const contentRef = ref<any>(null)
+
   // 定义 body
   // component 优先级高于 message
   const body = component
     ? typeof component === 'function'
       ? () => h(defineAsyncComponent(component as AsyncComponentLoader), { ...props, onComplete })
-      : () => h(component, { ...props, onComplete })
+      : () => h(component, {
+          ...props,
+          ref: contentRef,
+          onComplete
+        })
     : () => message
+
+  const onOk = () => {
+    if (options.onOk) {
+      visible.value = options.onOk(completeResult) === false
+    } else if (typeof options.component !== 'function') {
+        Promise.resolve(contentRef.value.couldClose()).then((couldClose: boolean) => {
+          visible.value = !(couldClose === true)
+        })
+    } else {
+      visible.value = false
+    }
+    return true
+  }
 
   const visible = ref(true)
   const dialog = createApp({
@@ -38,10 +57,9 @@ function createDialog (options: DialogOptions, app: App) {
       'onUpdate:modelValue': (value: boolean) => {
         visible.value = value
       },
-      onOk: () => {
-        options.onOk?.(completeResult)
-        visible.value = false
-      },
+      okText: options.okText,
+      footer: options.footer ?? true,
+      onOk,
       onClose: () => {
         visible.value = false
         options.onCancel?.()

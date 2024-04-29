@@ -32,7 +32,7 @@ export const dialogProps = {
 
 export type DialogEmits = {
   'update:modelValue': (value: boolean) => void,
-  ok (): void,
+  ok (): boolean,
   show (): void,
   hide (): void,
   close (): void,
@@ -40,7 +40,7 @@ export type DialogEmits = {
 
 export const dialogEmits: DialogEmits = {
   'update:modelValue': (value: boolean) => void 0,
-  ok () {},
+  ok () { return true},
   show () {},
   hide () {},
   close () {},
