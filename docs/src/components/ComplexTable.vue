@@ -231,6 +231,7 @@ const onInviteFilterChange = (value: string[]) => {
 <template>
   <ns-table :rows="tableData" class="no-border"
     :row-height="32"
+    cache-columns="1"
     has-column-control
     :filter-handler="filterHandler">
     <ns-table-column-checkbox width="48" @change="onTableRowSelected" field="id" fixed="left" />

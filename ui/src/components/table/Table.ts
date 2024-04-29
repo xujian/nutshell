@@ -169,6 +169,14 @@ export const tableProps = {
    */
   paginationData: {
     type: Object as PropType<PaginationProps>,
+  },
+  /**
+   * 可见列数据缓存到 local storage
+   * 必须给出 storage key
+   */
+  cacheColumns: {
+    type: String,
+    default: '',
   }
 }
 
@@ -177,7 +185,7 @@ export type TableEmits = {
   pageChange: (value: number) => void
 }
 
-const tableEmits: TableEmits = {
+export const tableEmits: TableEmits = {
   pageChange: (value: number) => void 0,
 }
 

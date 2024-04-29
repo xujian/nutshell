@@ -3,6 +3,8 @@
   <h3>全特性表格</h3>
   <p>&nbsp;</p>
   <complex-table />
+  <p>&nbsp;</p>
+  <balance-table />
 </template>
 
 <script lang="ts" setup>
