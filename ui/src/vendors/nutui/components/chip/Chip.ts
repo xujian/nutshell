@@ -8,7 +8,7 @@ export const Chip = (props: ChipProps & MarginProps, { slots }: SetupContext) =>
       ...props.classes || []
     ],
     round: true,
-  }, [
+  }, () => [
     slots.default?.(),
     props.label,
   ])
