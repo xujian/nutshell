@@ -18,7 +18,7 @@ export default function chips (props: TableColumnChipsProps) {
           ? style
           : style(value.label!, row)
     }
-  }, () => value.label)
+  })
   return ({value, row, rowIndex}: TableColumnData) => {
     let v: string | string[] = value || []
 
