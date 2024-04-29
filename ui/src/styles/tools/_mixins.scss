@@ -85,8 +85,8 @@ $alphas: (
       }
       &.variant-outlined {
         background-color: transparent;
-        border-color: $value;
-        color: $value;
+        border-color: var(--ns-#{$name});
+        color: var(--ns-#{$name});
       }
       &.variant-soft {
         background-color: color.adjust($value, $alpha: -0.25);
@@ -101,8 +101,8 @@ $alphas: (
           background-color: #00000022;
         }
       }
-      --nut-button-default-bg-color: #{$value};
-      --nut-button-default-border-color: #{$value};
+      --nut-button-default-bg-color: var(--ns-#{$name});
+      --nut-button-default-border-color: var(--ns-#{$name});
     }
   }
 }
