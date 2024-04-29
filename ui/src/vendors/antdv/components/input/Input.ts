@@ -74,10 +74,6 @@ export const Input = defineComponent({
                 emit('focus', props.modelValue)
               }
             },
-            {
-              ...(slots.prepend && { prefix: slots.prepend }),
-              ...(slots.append && { suffix: slots.append })
-            }
           ),
       )
   }
