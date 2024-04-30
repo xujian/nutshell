@@ -15,7 +15,8 @@ export const marginProps = {
   classes: {
     type: Array as PropType<string[]>,
     default: []
-  }
+  },
+  vendorRef: null,
 }
 
 export type EmitsToProps<T extends ObjectEmitsOptions> = {
