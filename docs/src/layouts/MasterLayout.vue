@@ -47,7 +47,10 @@ const toggleNav = () => {
     left: var(--layout-nav-width);
     right: 0;
     transition: left .5s;
-    z-index: 100
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(11.7px);
   }
   .app-main {
     margin-top: 48px;
