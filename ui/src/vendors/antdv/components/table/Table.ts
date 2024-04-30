@@ -69,8 +69,8 @@ export const Table = defineComponent({
     // 以上几项存在设置冲突 按以上优先级
     const allColumns: TableColumnDefinition[] = props.columns || []
     let columnsNotHidden = allColumns
-        .filter(c => c.props.hidden !== true)
-         || []
+        // .filter(c => c.props.hidden !== true)
+        //  || []
       if (props.visibleColumns?.length) {
         columnsNotHidden = columnsNotHidden.filter(c => props.visibleColumns?.includes(c.label))
       }
@@ -176,6 +176,7 @@ export const Table = defineComponent({
             width: column.props.fixed ? column.props.width : undefined,
             minWidth: column.props.width,
             title: column.props.label,
+            visible: column.props.hidden !== true,
             align: column.props.align,
             sortable: column.props.sortable,
             ...buildFilterConfig(column.props),

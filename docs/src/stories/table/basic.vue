@@ -5,7 +5,7 @@
     :rows="balanceRows" :row-height="40"
     :hidden-columns="hiddenColumns">
     <ns-table-column field="科目名称" label="科目名称" width="180" />
-    <ns-table-column field="科目类型" label="科目类型" width="180" />
+    <ns-table-column field="科目类型" label="科目类型" width="180" hidden />
     <ns-table-column field="科目编码" label="科目编码" width="180" />
     <ns-table-column field="科目级次" label="科目级次" width="180" />
     <ns-table-column-currency field="借方合计" label="借方合计" width="180" />
@@ -34,6 +34,13 @@ export type 科目余额 = {
   贷方合计: number,
   余额: number,
 }
+
+// 三种方法设置 显示/隐藏列
+// 1. 使用 visibleColumns 白名单
+// 2. 使用 hiddenColumns 黑名单
+// 3. 使用 <ns-table-column hidden />
+//    列依旧输出只是初始状态隐藏
+// 4. 使用 tableRef.value.hideColumns() / showClumns() 方法
 
 const visibleColumns = [
   '科目名称',
