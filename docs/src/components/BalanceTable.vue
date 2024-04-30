@@ -1,15 +1,20 @@
 <template>
   <h3>资金余额</h3>
   <p>&nbsp;</p>
-  <ns-table :rows="balanceRows" :row-height="40">
-      <ns-table-column field="科目名称" label="科目名称" width="180" />
-      <ns-table-column field="科目类型" label="科目类型" width="180" />
-      <ns-table-column field="科目编码" label="科目编码" width="180" />
-      <ns-table-column field="科目级次" label="科目级次" width="180" />
-      <ns-table-column-currency field="借方合计" label="借方合计" width="180" />
-      <ns-table-column-currency field="贷方合计" label="贷方合计" width="180" />
-      <ns-table-column-currency field="余额" label="余额" width="180" />
-    </ns-table>
+  <ns-table ref="tableRef"
+    :rows="balanceRows" :row-height="40"
+    :hidden-columns="hiddenColumns">
+    <ns-table-column field="科目名称" label="科目名称" width="180" />
+    <ns-table-column field="科目类型" label="科目类型" width="180" />
+    <ns-table-column field="科目编码" label="科目编码" width="180" />
+    <ns-table-column field="科目级次" label="科目级次" width="180" />
+    <ns-table-column-currency field="借方合计" label="借方合计" width="180" />
+    <ns-table-column-currency field="贷方合计" label="贷方合计" width="180" />
+    <ns-table-column-currency field="余额" label="余额" width="180" />
+  </ns-table>
+  <p>&nbsp;</p>
+  <ns-button color="primary" @click="onHideButtonClick">隐藏科目类型</ns-button>
+  <ns-button color="primary" @click="onShowButtonClick">显示科目类型</ns-button>
 </template>
 
 <script lang="ts" setup>
@@ -17,6 +22,8 @@ import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import { NsTable, NsTableColumn, NsTableColumnNumber, NsTableColumnDatetime,
   NsTableColumnCurrency } from '@uxda/nutshell'
+
+const tableRef = ref(null)
 
 export type 科目余额 = {
   科目名称: string,
@@ -28,6 +35,19 @@ export type 科目余额 = {
   余额: number,
 }
 
+const visibleColumns = [
+  '科目名称',
+  '科目类型',
+  '科目编码',
+  '科目级次',
+  '借方合计',
+  '余额',
+]
+
+const hiddenColumns = [
+  '科目级次'
+]
+
 const balanceRows = ref<科目余额[]>([])
 
 function load () {
@@ -35,6 +55,15 @@ function load () {
     balanceRows.value = rsp.data
   })
 }
+
+function onHideButtonClick () {
+  tableRef.value.hideColumns(['科目类型'])
+}
+
+function onShowButtonClick () {
+  tableRef.value.showColumns(['科目类型'])
+}
+
 
 onMounted(() => {
   load()

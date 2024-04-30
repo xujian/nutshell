@@ -40,7 +40,6 @@ export const NsForm = define({
     function validate (): Promise<boolean> {
       return new Promise<boolean>((resolve, reject) => {
         vendorRef.value.validate().then((result: any) => {
-          console.log('after-validate------', result)
           resolve(true)
         }).catch((result: any) => {
           resolve(result.errorFields.length === 0)

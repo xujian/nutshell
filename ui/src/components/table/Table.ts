@@ -4,7 +4,8 @@ import {
   RendererNode,
   RendererElement,
   useSlots,
-  VNodeNormalizedChildren
+  VNodeNormalizedChildren,
+  ref
 } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { TableColumnFixed, TableColumnProps } from './TableColumn'
@@ -110,10 +111,20 @@ export const tableProps = {
     type: Boolean,
     default: () => false,
   },
-  // visibleColumns: {
-  //   type: Array,
-  //   require: false,
-  // },
+  /**
+   * 初始状态显示的列
+   */
+  visibleColumns: {
+    type: Array as PropType<string[]>,
+    require: false,
+  },
+  /**
+   * 初始状态隐藏的列
+   */
+  hiddenColumns: {
+    type: Array as PropType<string[]>,
+    require: false,
+  },
   maxHeight: {
     type: [String, Number]
   },
@@ -194,7 +205,10 @@ export type TableProps = MakePropsType<typeof tableProps, TableEmits>
 export const NsTable = define({
   name: 'NsTable',
   props: tableProps,
+  emits: tableEmits,
   setup(props, ctx) {
+
+    const vendorRef = ref()
 
     function getColumnName(slot: TableColumnSlot): string {
       const slotType = slot.type as any,
@@ -248,6 +262,14 @@ export const NsTable = define({
      */
     const columns = getCustomizedColumns()
 
+    const hideColumns = (columns: string[]) => {
+      vendorRef.value.hideColumns(columns)
+    }
+
+    const showColumns = (columns: string[]) => {
+        vendorRef.value.showColumns(columns)
+    }
+
     return {
       // 只返回修改后的属性
       // 将会和原有 props 合并
@@ -255,7 +277,12 @@ export const NsTable = define({
       props: {
         // 对 customColumns 的处理在 vendors/components/table
         columns
-      }
+      },
+      methods: {
+        hideColumns,
+        showColumns,
+      },
+      vendorRef,
     }
   }
 })

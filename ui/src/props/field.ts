@@ -35,7 +35,7 @@ export type ValidationTrigger = 'blur' | 'change'
 
 export type FullValidationRule = {
   name: QuickValidationMethod | 'function' | 'custom',
-  method: FunctionValidationMethod,
+  method?: FunctionValidationMethod,
   message?: string,
   trigger?: ValidationTrigger
   required?: boolean

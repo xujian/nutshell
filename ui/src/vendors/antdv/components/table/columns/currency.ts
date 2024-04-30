@@ -15,7 +15,6 @@ export default function currency (
     let value = typeof input === 'string'
       ? +input
       : input
-    console.log('===result', value)
     if (props.unit === '万') {
       value = value / 1e4
     }

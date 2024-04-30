@@ -1,9 +1,9 @@
-import { SetupContext, computed, h,VNode, ref, reactive, defineComponent } from 'vue'
+import { SetupContext, computed, h,VNode, ref, reactive, defineComponent, getCurrentInstance } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance, Column } from 'vxe-table'
 import type { CustomColumnFunctionalRender, TableColumnData, TableProps, CustomColumnSlots, TableColumnDefinition, TableColumnProps, TableFilterQuery, TableColumnFilterSettings } from '../../../../components'
 import { NsPagination, isCustomColumnSlots, tableProps, NsTableColumnSelector, tableEmits  } from '../../../../components'
 import columnCustomRenders from './columns'
-import { MarginProps } from '../../../../utils'
+import { MarginProps, marginProps } from '../../../../utils'
 import { useNutshell } from '../../../../framework'
 import { useRoute } from 'vue-router'
 
@@ -20,16 +20,21 @@ const columnNameToTypeMapping: {[key: string]: VxeColumnPropTypes.Type} = {
   checkbox: 'checkbox',
 }
 
+export type TableState = {
+  inited: boolean,
+  visibleColumns: string[]
+}
+
 export const Table = defineComponent({
   name: 'NsTable',
-  props: tableProps,
+  props: {
+    ...tableProps,
+    ...marginProps,
+  },
   emits: tableEmits,
   setup (props: TableProps & MarginProps, ctx: SetupContext) {
 
-    const state = reactive<{
-      inited: boolean,
-      visibleColumns: string[]}
-    >({
+    const state = reactive<TableState>({
       inited: false,
       visibleColumns: []
     })
@@ -47,7 +52,8 @@ export const Table = defineComponent({
       ...props.hasPagination ? ['table-has-pagination'] : []
     ]
 
-    const tableRef = ref<VxeTableInstance | null>(null)
+    // 改为使用从
+    // const tableRef = ref<VxeTableInstance | null>(null)
 
     // 用来处理复选框逻辑
     const selectionOptions = {
@@ -55,9 +61,24 @@ export const Table = defineComponent({
       onChange: (selected: any[]) => {}
     }
 
-    const allColumns: TableColumnDefinition[] = props.columns || [],
-      columnsNotHidden = allColumns.filter(c => c.props.hidden !== true) || [],
-      columnsCached = columnsCacheKey
+    // 处理可见列
+    // 1. 缓存到 local storage 里的列
+    // 2. visibleColumns 属性给出的列
+    // 3. hiddenColumns 给定的隐藏列
+    // 4. 设定为 hidden 的 column
+    // 以上几项存在设置冲突 按以上优先级
+    const allColumns: TableColumnDefinition[] = props.columns || []
+    let columnsNotHidden = allColumns
+        .filter(c => c.props.hidden !== true)
+         || []
+      if (props.visibleColumns?.length) {
+        columnsNotHidden = columnsNotHidden.filter(c => props.visibleColumns?.includes(c.label))
+      }
+      if (props.hiddenColumns?.length) {
+        columnsNotHidden = columnsNotHidden.filter(c => !props.hiddenColumns?.includes(c.label))
+      }
+    console.log('===columnsNotHidden', columnsNotHidden)
+    const columnsCached = columnsCacheKey
         ? localStorage.getItem(columnsCacheKey) || ''
         : '',
       columnsNotHiddenNames = columnsCached
@@ -150,6 +171,7 @@ export const Table = defineComponent({
         // NsTableColumn 的属性 转换为-> VxeColumn 的属性
         const colummConfig: ColumnConfig = {
           props: {
+            colId: column.label,
             ...column.props.field && {field: column.props.field},
             width: column.props.fixed ? column.props.width : undefined,
             minWidth: column.props.width,
@@ -303,7 +325,7 @@ export const Table = defineComponent({
     // 处理行选中事件
     const onSelectedChange: VxeTableEvents.CheckboxChange = (checked) => {
       // 拿到所有选中行数据
-      let selected = tableRef.value?.getCheckboxRecords() || []
+      let selected = props.vendorRef?.value?.getCheckboxRecords() || []
       // 解释以下逻辑
       // 1. 当表格添加了 checkbox 列时，将改动 selectionOptions 内的配置
       // 2. <ns-table-column-checkbox> 给了 field 属性时, 仅输出该列的值
@@ -311,13 +333,15 @@ export const Table = defineComponent({
       // 4. 将 checkbox 列给出的 v-model 回写选中行的数据
       const { field, onChange } = selectionOptions
       if (field) {
-        selected = selected.map(r => r[field])
+        selected = selected.map((r: any) => r[field])
       }
       onChange(selected)
     }
 
+    const vxeRef = ref<any>(null)
+
     const vxe = () => h(VxeTable, {
-        ref: tableRef,
+        ref: vxeRef,
         data: rows.value,
         maxHeight: props.maxHeight,
         // columns: columns as ColumnsType,
@@ -370,7 +394,40 @@ export const Table = defineComponent({
         onChange: props.onPageChange,
       })
 
-    return () => h('div', {
+    const vm = getCurrentInstance() as any
+
+    // 依据列 label 获取 field
+    function getFieldFromLabel (label: string) {
+      const found = allColumns.find(co => co.label === label)
+      if (found) {
+        return found.props.field
+      }
+      return undefined
+    }
+
+    const hideColumns = (cs: string[]) => {
+      const table = vxeRef.value!
+      cs.forEach(label => {
+        let field: string | undefined = label
+        if (!table.getColumnByField(label)) {
+          field = getFieldFromLabel(label)
+        }
+        table.hideColumn(field)
+      })
+    }
+
+    const showColumns = (cs: string[]) => {
+      const table = vxeRef.value!
+      cs.forEach(label => {
+        let field: string | undefined = label
+        if (!table.getColumnByField(label)) {
+          field = getFieldFromLabel(label)
+        }
+        table.showColumn(field)
+      })
+    }
+
+    vm.render = () => h('div', {
         class: classes
       }, [
         vxe(),
@@ -378,5 +435,10 @@ export const Table = defineComponent({
           ? pagination()
           : null
       ])
+
+    props.vendorRef!.value = {
+      hideColumns,
+      showColumns,
+    }
   }
 })
