@@ -6,6 +6,7 @@ import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import { FullValidationRule } from '../../../../props/field'
 import { renderFormItem } from '../../utils'
+import { ChangeEvent } from 'ant-design-vue/es/_util/EventInterface';
 
 /**
  * Antdv DateInput
@@ -44,6 +45,9 @@ export const DateInput = defineComponent({
                   : value
                 ).format(!props.hasTime ? 'YYYY-MM-DD': 'YYYY-MM-DD  HH:mm:ss')
             props['onUpdate:modelValue']?.(val)
+          },
+          onChange: (value: string | Dayjs, dateString: string) => {
+            ctx.emit('change', value)
           },
           disabledDate: props.disabledDate,
           disabled: props.disabled ?? false,

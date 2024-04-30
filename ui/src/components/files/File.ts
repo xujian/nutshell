@@ -99,7 +99,7 @@ export const NsFile = defineComponent({
           'justify-between',
           'align-center'
         ],
-        onClick (ev) {
+        onClick (ev: any) {
           ev.stopPropagation()
         }
       }, [

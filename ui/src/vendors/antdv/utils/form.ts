@@ -36,7 +36,6 @@ export type FormItemProps = FieldProps & VariantProps
  */
 export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: FunctionalComponent) => {
 
-  console.log(props, slots)
   const rules = transformRules(props.rules as FullValidationRule[])
   const label = slots.label
     || (
