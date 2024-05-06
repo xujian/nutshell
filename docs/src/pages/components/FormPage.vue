@@ -1,6 +1,6 @@
 <template>
   <h1 class="my-lg">表单 &lt;ns-form&gt;</h1>
-  <regular-form />
+  <story file="form/regular" />
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h2>用户输入校验</h2>
@@ -33,7 +33,6 @@
 import { onMounted, ref, reactive } from 'vue'
 import axios from 'axios'
 import { NsForm } from '@uxda/nutshell'
-import RegularForm from '../../examples/RegularForm.vue'
 
 const formRef = ref<any>(null)
 
