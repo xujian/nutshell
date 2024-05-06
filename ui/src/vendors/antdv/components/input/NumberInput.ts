@@ -20,6 +20,7 @@ export const NumberInput = defineComponent({
   emits: inputEmits,
   setup: (props, { emit, slots }) => {
     const rules = transformRules(props.rules as FullValidationRule[])
+
     return () =>
       renderFormItem(props, slots, () => [
         h(
