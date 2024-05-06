@@ -16,7 +16,7 @@ import { Timeline } from './timeline'
 import { Drawer } from './drawer'
 import { RadioGroup } from './radio'
 import { Pagination } from './pagination'
-import { Facts } from './facts'
+import { Facts, FactsItem } from './facts'
 import { Upload } from './upload'
 
 const components = {
@@ -49,6 +49,7 @@ const components = {
   RadioGroup,
   Pagination,
   Facts,
+  FactsItem,
   Upload,
   Display,
 }

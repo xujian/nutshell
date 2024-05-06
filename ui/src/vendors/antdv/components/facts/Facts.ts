@@ -6,13 +6,17 @@ export const Facts = (props: FactsProps, ctx: SetupContext) => {
 
   const items = props.items || []
 
-  const slots = () => items.map(item => h(DescriptionsItem, {
-    label: item.label,
-    span: item.span ?? 1,
-  }, () => item.value))
+  const slots = items.length !== 0
+    ? items.map(item => h(DescriptionsItem, {
+        label: item.label,
+        span: item.span ?? 1,
+      }, () => item.value))
+    : ctx.slots
 
   return h(Descriptions, {
+    class: [
+      'ns-facts'
+    ],
     bordered: true,
   }, slots)
 }
-// + import => ./index.ts, ../components.ts

@@ -34,3 +34,36 @@ export const NsFacts = define({
     }
   }
 })
+
+export const factsItemProps = {
+  label: {
+    type: String,
+  },
+  span: {
+    type: Number,
+    default: 1,
+  },
+}
+
+export type FactsItemSlots = {
+  default: never,
+}
+
+export type FactsItemEmits = {
+}
+
+const factsItemEmits: FactsItemEmits = {
+}
+
+export type FactsItemProps = MakePropsType<typeof factsItemProps, FactsItemSlots>
+
+export const NsFactsItem = define({
+  name: 'NsFactsItem',
+  props: factsItemProps,
+  emits: factsItemEmits,
+  setup (props, ctx) {
+    console.log('===props.value//////', props.value)
+    return {
+    }
+  }
+})
