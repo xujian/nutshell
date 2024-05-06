@@ -48,7 +48,7 @@ export const NsCard = defineComponent({
     ].join(' ')
 
     const style = {
-      ...buildFillStyle(props.fill || 'transparent'),
+      ...buildFillStyle(props.fill),
       ...buildGradientStyle(props.gradient)
     }
 
