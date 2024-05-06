@@ -59,6 +59,17 @@
   &.ant-form-item-with-help {
     margin-bottom: 24px;
   }
+  .ant-form-item-extra {
+    position: absolute;
+    right: 0;
+    width: 0;
+    .form-item-append {
+      padding-inline-start: 4px;
+      min-width: 64px;
+      height: 32px;
+      border: solid 1px transparent;
+    }
+  }
 }
 
 .ns-form {

@@ -1,5 +1,5 @@
 <template>
-  <ns-card title="新建意向客户" fill="#ffffff">
+  <ns-card title="新建意向客户">
     <ns-form
       name="client" variant="outlined" autocomplete="off"
       v-model="formData">
@@ -48,12 +48,12 @@
         v-model="formData.tags" />
       <ns-number-input
         name="amount"
-        label="数字输入"
-        has-amount
+        label="金额"
+        has-daxie
         v-model="formData.amount"
         :rules="['required']">
         <template #append>
-          append插槽
+          <ns-button color="neutral" variant="outlined">检查</ns-button>
         </template>
       </ns-number-input>
     </ns-form>

@@ -29,7 +29,10 @@ export const numberInputProps = {
   precision: {
     type: Number
   },
-  hasAmount: {
+  /**
+   * 带有金额大写
+   */
+  hasDaxie: {
     type: Boolean
   },
   amountRate: {

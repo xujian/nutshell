@@ -30,7 +30,7 @@ export const NumberInput = defineComponent({
             disabled: props.disabled ?? false,
             value: props.modelValue,
             placeholder: props.placeholder,
-            max: props.max ?? 99999999999999999999,
+            max: props.max ?? Infinity,
             min: props.min ?? 0,
             step: props.step ?? 1,
             precision: props.precision,
@@ -55,7 +55,7 @@ export const NumberInput = defineComponent({
           } as any,
           {}
         ),
-        props.hasAmount
+        props.hasDaxie
           ? h(
               'div',
               { class: 'ns-number-amount' },
