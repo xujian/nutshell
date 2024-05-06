@@ -62,7 +62,6 @@ export const NsFactsItem = define({
   props: factsItemProps,
   emits: factsItemEmits,
   setup (props, ctx) {
-    console.log('===props.value//////', props.value)
     return {
     }
   }
