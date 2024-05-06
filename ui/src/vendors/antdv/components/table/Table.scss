@@ -17,6 +17,11 @@
   .vxe-body--column {
     vertical-align: middle;
   }
+  .vxe-body--column,
+  .vxe-footer--column,
+  .vxe-header--column {
+    text-align: center;
+  }
   .fixed-right--wrapper .vxe-body--column:after {
     display: none;
   }
