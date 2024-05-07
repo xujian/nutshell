@@ -8,9 +8,9 @@
     <ns-table-column field="科目类型" label="科目类型" width="180" hidden />
     <ns-table-column field="科目编码" label="科目编码" width="180" />
     <ns-table-column field="科目级次" label="科目级次" width="180" />
-    <ns-table-column-currency field="借方合计" label="借方合计" width="180" />
-    <ns-table-column-currency field="贷方合计" label="贷方合计" width="180" />
-    <ns-table-column-currency field="余额" label="余额" width="180" />
+    <ns-table-column-currency field="借方合计" label="借方合计" align="right" width="180" />
+    <ns-table-column-currency field="贷方合计" label="贷方合计" align="right" width="180" />
+    <ns-table-column-currency field="余额" label="余额" align="right" width="180" />
   </ns-table>
   <p>&nbsp;</p>
   <ns-button color="primary" @click="onHideButtonClick">隐藏科目类型</ns-button>

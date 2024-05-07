@@ -48,6 +48,13 @@
     border-width: 1px;
     border-style: solid;
   }
+  &.variant-plain {
+    background-color: transparent;
+    border-color: transparent;
+    .card-body {
+      padding-inline: 0;
+    }
+  }
   // 无内边距
   &.no-padding {
     .card-body {

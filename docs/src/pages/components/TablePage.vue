@@ -2,8 +2,9 @@
   <h1 class="my-lg">数据表格 &lt;ns-table&gt;</h1>
   <h3>全特性表格</h3>
   <p>&nbsp;</p>
-  <complex-table />
-  <story file="table/basic" />
+  <story is-plain file="table/full-featured" />
+  <p>&nbsp;</p>
+  <story is-plain file="table/basic" />
 </template>
 
 <script lang="ts" setup>

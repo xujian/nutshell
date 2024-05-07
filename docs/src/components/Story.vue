@@ -1,5 +1,5 @@
 <template>
-  <ns-card variant="outlined" class="story-card">
+  <ns-card :variant="props.isPlain ? 'plain' : 'solid'" class="story-card">
     <component :is="StoryComponent" v-if="isLoaded" />
     <template #footer>
       <div class="full-width flex-row">
@@ -32,6 +32,10 @@ const props = defineProps({
     file: {
       type: String,
       required: true,
+    },
+    isPlain: {
+      type: Boolean,
+      default: false,
     }
   })
 
@@ -76,7 +80,7 @@ onMounted(importStory)
   align-items: stretch;
   justify-content: center;
   .card-footer {
-    border-top: 1px solid var(--ns-stroke);
+    // border-top: 1px solid var(--ns-stroke);
   }
   .expand-leave-active,
   .expand-enter-active {
