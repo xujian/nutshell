@@ -4,7 +4,7 @@
   border-radius: var(--ns-border-radius);
   border-width: var(--ns-border, 1px);
   border-style: var(--borderStyle, solid);
-  border-color: var(--borderColor, transparent);
+  border-color: var(--border-color, transparent);
   .content {
     width: 100%;
     white-space: nowrap;

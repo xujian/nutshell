@@ -10,6 +10,7 @@ import {
 import { define, MakePropsType } from '../../utils'
 import { TableColumnFixed, TableColumnProps } from './TableColumn'
 import { PaginationProps } from '../pagination'
+import { buildDesignVariables, useDesignProps } from '../../props'
 
 /**
  * 填充表格的数据
@@ -99,14 +100,13 @@ export const tableProps = {
     type: String,
     default: () => 'id'
   },
-  hasNumberColumn: {
-    type: Boolean,
-    default: false
-  },
   customColumns: {
     type: Array,
     require: false
   },
+  /**
+   * 列可见性控制器
+   */
   hasColumnControl: {
     type: Boolean,
     default: () => false,
@@ -188,7 +188,8 @@ export const tableProps = {
   cacheColumns: {
     type: String,
     default: '',
-  }
+  },
+  ...useDesignProps(),
 }
 
 
@@ -267,8 +268,11 @@ export const NsTable = define({
     }
 
     const showColumns = (columns: string[]) => {
-        vendorRef.value.showColumns(columns)
+      vendorRef.value.showColumns(columns)
     }
+
+    const style = buildDesignVariables(props)
+    console.log('===style', style)
 
     return {
       // 只返回修改后的属性
@@ -276,7 +280,8 @@ export const NsTable = define({
       // 并作为最终 props 交给 vendor
       props: {
         // 对 customColumns 的处理在 vendors/components/table
-        columns
+        columns,
+        style
       },
       methods: {
         hideColumns,

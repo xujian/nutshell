@@ -1,9 +1,10 @@
 import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
+import { TableBorders, TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
 import { buildProps } from '../../utils/private/props'
 import { UniDataItem } from '../../shared'
 import { Color } from 'src/composables'
+import { isConditionalExpression } from 'typescript'
 
 export type TableColumnAlign = 'left' | 'center' | 'right'
 export type TableColumnFixed = undefined | 'left' | 'right'
@@ -17,6 +18,14 @@ export type TableColumnFilterSettings = {
   data: UniDataItem[],
   component: VNode | (() => VNode),
   props: any
+}
+
+/**
+ * 单元格条件样式规则
+ */
+export type TableColumnConditionalStyleRule = {
+  match: (value: string | number) => boolean,
+  style: string
 }
 
 export const useTableColumnProps = buildProps({
@@ -36,6 +45,10 @@ export const useTableColumnProps = buildProps({
     type: [Number, String]
   },
   align: {
+    type: String as PropType<TableColumnAlign>,
+    default: 'center'
+  },
+  headerAlign: {
     type: String as PropType<TableColumnAlign>,
     default: 'center'
   },
@@ -93,6 +106,21 @@ export const useTableColumnProps = buildProps({
   editData: {
     type: Array as PropType<UniDataItem[]>,
     default: []
+  },
+  borders: {
+    type: String as PropType<TableBorders>,
+  },
+  /**
+   * 底色依据值做色阶映射
+   */
+  colorScales: {
+    type: Array as PropType<Color[]>
+  },
+  /**
+   * 条件样式
+   */
+  conditionalStyles: {
+    type: Array as PropType<TableColumnConditionalStyleRule[]>,
   }
 })
 

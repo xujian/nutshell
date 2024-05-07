@@ -25,6 +25,11 @@ export type TableState = {
   visibleColumns: string[]
 }
 
+/**
+ * 从 NsTable 拿到属性、
+ * 行、列数据
+ * 用第三方组件 (VxeTable) 绘制表格
+ */
 export const Table = defineComponent({
   name: 'NsTable',
   props: {
@@ -34,11 +39,15 @@ export const Table = defineComponent({
   emits: tableEmits,
   setup (props: TableProps & MarginProps, ctx: SetupContext) {
 
+    /**
+     * 状态
+     */
     const state = reactive<TableState>({
       inited: false,
       visibleColumns: []
     })
 
+    // 可见列缓存
     const $route = useRoute(),
       routePath = $route.path,
       // 需要缓存可见列
@@ -178,6 +187,7 @@ export const Table = defineComponent({
             title: column.props.label,
             visible: column.props.hidden !== true,
             align: column.props.align,
+            headerAlign: column.props.headerAlign,
             sortable: column.props.sortable,
             ...buildFilterConfig(column.props),
             fixed: column.props.fixed as VxeColumnPropTypes.Fixed,
@@ -429,7 +439,8 @@ export const Table = defineComponent({
     }
 
     vm.render = () => h('div', {
-        class: classes
+        class: classes,
+        style: props.style,
       }, [
         vxe(),
         props.hasPagination

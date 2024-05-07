@@ -61,7 +61,7 @@ export function useTheme () {
   return { theme, setTheme }
 }
 
-function makeColor (color: Color): string {
+export function makeColor (color: Color): string {
   return BRANDS.includes(color as typeof BRANDS[number]) ||
     ESSENTIALS.includes(color as typeof ESSENTIALS[number])
       ? `var(--ns-${color})`

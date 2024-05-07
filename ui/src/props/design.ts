@@ -1,13 +1,18 @@
 import { PropType } from 'vue'
-import { Color, GradientString, buildFillStyle, buildGradientStyle } from '../composables/theme'
+import { Color, GradientString, buildFillStyle, buildGradientStyle, makeColor } from '../composables/theme'
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
+
+export type Borders = 'all' | 'vertical' | 'horizonal' | 'none'
 
 const designProps = {
   /**
    * 填色
    */
   fill: {
+    type: String as PropType<Color>,
+  },
+  foreground: {
     type: String as PropType<Color>,
   },
   /**
@@ -22,6 +27,15 @@ const designProps = {
   borderWidth: {
     type: Number,
   },
+  borderStyle: {
+    type: Number,
+  },
+  /**
+  * 边框线模式
+  */
+ borders: {
+   type: String as PropType<Borders>,
+ },
 }
 
 export type DesignProps = MakePropsType<typeof designProps>
@@ -40,20 +54,32 @@ const buildDesignStyles = (props: DesignProps) => {
         }
       : {},
     ...buildGradientStyle(props.gradient),
-    ...props.borderColor
-      ? { '--borderColor': props.borderColor }
-      : {},
-    ...props.borderColor
-      ? { '--borderWidth': props.borderWidth }
-      : {}
   }
   return style
+}
+
+const buildDesignVariables = (props: DesignProps) => {
+  return {
+    ...props.fill
+      ? {'--fill': makeColor(props.fill) }
+      : {},
+    ...props.borderColor
+      ? { '--border-color': props.borderColor }
+      : {},
+    ...props.borderWidth
+      ? { '--border-width': props.borderWidth }
+      : {},
+    ...props.foreground
+      ? { '--foreground': props.foreground }
+      : {},
+  }
 }
 
 const useDesignProps = buildProps(designProps)
 
 export {
   buildDesignStyles,
+  buildDesignVariables,
   buildDesignClasses,
   useDesignProps,
 }

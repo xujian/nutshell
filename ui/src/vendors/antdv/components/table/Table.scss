@@ -4,7 +4,7 @@
   --vxe-table-column-padding-default: var(--table-cell-padding);
   width: 100%;
   .vxe-table {
-    border-color: var(--ns-table-border-color, var(--ns-stroke));
+    border-color: var(--ns-table-border-color, var(--border-color, var(--ns-stroke)));
     border-style: solid;
     border-width: 1px;
     border-radius: var(--ns-border-radius);
@@ -20,16 +20,15 @@
   .vxe-body--column,
   .vxe-footer--column,
   .vxe-header--column {
-    text-align: center;
   }
   .fixed-right--wrapper .vxe-body--column:after {
     display: none;
   }
   .vxe-table--render-default {
-    color: var(--ns-text);
+    color: var(--foreground, var(--ns-text));
     .vxe-table--body-wrapper {
       table {
-        background-color: var(--ns-paper);
+        background-color: var(--fill, var(--ns-paper));
       }
     }
     &.border--default,
@@ -37,14 +36,14 @@
     &.border--full,
     &.border--outer {
       .vxe-table--header-wrapper {
-        background-color: var(--ns-paper);
-        color: var(--ns-text);
+        background-color: var(--fill, var(--ns-paper));
+        color: var(--foreground, var(--ns-text));
       }
     }
     .vxe-body--row {
       &.row--hover {
         // 鼠标 hover 行高亮
-        background-color: color-mix(in srgb, var(--ns-fill) 80%, #888);
+        background-color: color-mix(in srgb, var(--fill, var(--ns-fill)) 80%, #888);
       }
     }
   }
