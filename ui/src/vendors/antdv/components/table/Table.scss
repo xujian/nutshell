@@ -8,6 +8,7 @@
   --vxe-table-border-color: var(--stroke, var(--ns-stroke));
   --vxe-table-column-padding-default: var(--table-cell-padding);
   --vxe-table-border-radius: var(--border-radius, var(--ns-border-radius));
+  --vxe-table-row-height-default: 40px;
   width: 100%;
   .vxe-table {
     border-color: var(--ns-table-border-color, var(--ns-stroke));
@@ -30,17 +31,28 @@
   }
   .vxe-table--render-default {
     color: var(--foreground, var(--ns-text));
+    .vxe-header--column {
+      height: var(--header-height, var(--row-height, var(--vxe-table-row-height-default)));
+    }
+    .vxe-table--header-wrapper {
+      background-color: var(--fill, var(--ns-fill));
+      table {
+        background-color: var(--header-color);
+      }
+    }
     .vxe-table--body-wrapper {
       table {
         background-color: var(--fill, var(--ns-paper));
       }
+    }
+    .vxe-body--column {
+      height: var(--row-height, var(--vxe-table-row-height-default));
     }
     &.border--default,
     &.border--inner,
     &.border--full,
     &.border--outer {
       .vxe-table--header-wrapper {
-        background-color: var(--fill, var(--ns-paper));
         color: var(--foreground, var(--ns-text));
       }
     }

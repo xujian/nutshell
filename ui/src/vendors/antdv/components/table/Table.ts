@@ -374,12 +374,12 @@ export const Table = defineComponent({
         ref: vxeRef,
         data: rows.value,
         maxHeight: props.maxHeight,
+        rowHeight: props.rowHeight,
         // columns: columns as ColumnsType,
         rowConfig: {
           useKey: true,
           keyField: props.rowKey,
           isHover: !props.rowHoverable === false,
-          height: props.rowHeight
         },
         treeConfig: {
           transform: props.treeConfig?.enable,

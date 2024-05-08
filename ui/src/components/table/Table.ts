@@ -163,6 +163,9 @@ export const tableProps = {
   rowHeight: {
     type: Number
   },
+  headerHeight: {
+    type: Number,
+  },
   /**
    * 执行筛选的方法
    */
@@ -278,6 +281,8 @@ export const NsTable = define({
     const style = {
       ...buildDesignVariables(props),
       ...props.headerColor ? { '--header-color': props.headerColor } : {},
+      ...props.rowHeight ? { '--row-height': `${props.rowHeight}px` } : {},
+      ...props.headerHeight ? { '--header-height': `${props.headerHeight}px` } : {},
     }
 
     const classes = {

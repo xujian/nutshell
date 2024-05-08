@@ -1,13 +1,17 @@
 <template>
   <h1 class="my-lg">数据表格 &lt;ns-table&gt;</h1>
+  <p>&nbsp;</p>
+  <h3>缺省样式</h3>
+  <p>&nbsp;</p>
+  <story is-plain file="table/basic" />
   <h3>全特性表格</h3>
   <p>&nbsp;</p>
   <story is-plain file="table/full-featured" />
   <p>&nbsp;</p>
   <p>&nbsp;</p>
-  <h3>简洁表格</h3>
+  <h3>外观配置</h3>
   <p>&nbsp;</p>
-  <story is-plain file="table/basic" />
+  <story is-plain file="table/design" />
 </template>
 
 <script lang="ts" setup>
