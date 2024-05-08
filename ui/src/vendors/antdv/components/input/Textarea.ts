@@ -30,7 +30,7 @@ export const Textarea = defineComponent({
         autoSize: props.autoSize,
         rows: props.rows,
         valueModifiers: {
-          lazy: props.lazy === false ? false : true
+          lazy: props.lazy
         },
         'onUpdate:value': (value: string) => {
           const val = props.modelModifiers?.trim ? value.trim() : value

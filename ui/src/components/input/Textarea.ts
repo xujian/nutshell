@@ -23,7 +23,7 @@ export const textareaProps = {
   },
   lazy: {
     type: Boolean,
-    default: true
+    default: false
   },
   ...useVariantProps(),
   ...useModelValuePropsForInput(),
