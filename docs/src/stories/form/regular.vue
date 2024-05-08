@@ -43,7 +43,7 @@
         v-model="formData.intention" />
       <ns-chips label="客户标签"
         name="tags"
-        :dropdown="true"
+        dropdown
         :options="chipsOptions"
         v-model="formData.tags" />
       <ns-number-input
@@ -73,7 +73,6 @@ const formData = reactive({
   tags: [],
   divorceDate: null,
   amount: null,
-  amount1: 5555555,
   text: '这是一个只读的文案'
 })
 

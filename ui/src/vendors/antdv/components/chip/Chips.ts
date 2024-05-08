@@ -5,9 +5,6 @@ import { FullValidationRule } from '../../../../props/field'
 import { transformRules } from '../input/rules'
 import { renderFormItem } from '../../utils'
 
-const modelValue = ref(false)
-const hovercheckbox = ref(false)
-
 export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
   const options = props.options || []
 
@@ -26,8 +23,9 @@ export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
 
   // 可下拉选择模式时
   if (props.dropdown) {
+    console.log(props.modelValue)
     const selectedSlot = options
-      .filter((o) => props.modelValue?.includes(`{o.value}`))
+      .filter((o) => props.modelValue?.includes(o.value as string))
       .map((o) => {
         return h(NsChip, {
           class: ['selected'],
@@ -38,64 +36,41 @@ export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
         })
       })
     defaultSlot = () => h(
-      NsPopover,
+      'div',
       {
-        'overlay-class-name': 'ns-chips-popover',
-        modelValue: modelValue.value,
-        onMouseenter: () => {
-          modelValue.value = true
-        },
-        onMouseleave: () => {
-          setTimeout(() => {
-            if (hovercheckbox.value) return
-
-            modelValue.value = false
-          }, 300)
-        }
+        class: 'ns-chips-dropdown-default'
       },
-      {
-        default: () =>
-          h(
-            'div',
-            {
-              class: 'ns-chips-dropdown-default'
-            },
-            [
-              selectedSlot,
-              h(NsButton, {
-                round: false,
-                label: '+ 添加',
-                variant: 'outlined',
-                color: 'primary',
-                size: 'xs',
-                style: {
-                  'margin-left': '5px'
-                }
-              })
-            ]
-          ),
-        content: [
-          h('h3', {}, `${props.label}选择`),
-          h(NsCheckboxGroup, {
-            modelValue: props.modelValue || [],
-            options: options || [],
-            label: props.label,
-            onMouseenter: () => {
-              hovercheckbox.value = true
-            },
-            onMouseleave: () => {
-              setTimeout(() => {
-                modelValue.value = false
-                hovercheckbox.value = false
-              }, 200)
-            },
-            onChange: (value: string[]) => {
-              emit('update:modelValue', value)
-            }
-          })
-        ]
-      }
+      [
+        selectedSlot,
+        h(NsButton, {
+          round: false,
+          label: '+ 添加',
+          variant: 'outlined',
+          color: 'primary',
+          size: 'xs',
+          style: {
+            'margin-left': '5px'
+          }
+        }, () => h(
+          NsPopover,
+          {
+            'overlay-class-name': 'ns-chips-popover',
+          },
+          [
+            h('h3', {}, `${props.label}选择`),
+            h(NsCheckboxGroup, {
+              modelValue: props.modelValue || [],
+              options: options || [],
+              label: props.label,
+              onChange: (value: string[]) => {
+                emit('update:modelValue', value)
+              }
+            })
+          ]
+        ))
+      ]
     )
+
   } else {
     defaultSlot = () => options.map((o) => {
       const on = props.modelValue && props.modelValue.includes(o.value as string)
