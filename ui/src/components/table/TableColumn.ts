@@ -1,10 +1,11 @@
 import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { TableBorders, TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
+import { TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
 import { buildProps } from '../../utils/private/props'
 import { UniDataItem } from '../../shared'
-import { Color } from 'src/composables'
+import { Color } from '../../composables'
 import { isConditionalExpression } from 'typescript'
+import type { Borders } from '../../props'
 
 export type TableColumnAlign = 'left' | 'center' | 'right'
 export type TableColumnFixed = undefined | 'left' | 'right'
@@ -108,7 +109,7 @@ export const useTableColumnProps = buildProps({
     default: []
   },
   borders: {
-    type: String as PropType<TableBorders>,
+    type: String as PropType<Borders>,
   },
   /**
    * 底色依据值做色阶映射

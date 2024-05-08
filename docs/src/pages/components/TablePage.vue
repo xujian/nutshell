@@ -4,6 +4,9 @@
   <p>&nbsp;</p>
   <story is-plain file="table/full-featured" />
   <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h3>简洁表格</h3>
+  <p>&nbsp;</p>
   <story is-plain file="table/basic" />
 </template>
 

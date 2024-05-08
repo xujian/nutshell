@@ -1,16 +1,22 @@
 <template>
-  <h3>资金余额</h3>
-  <p>&nbsp;</p>
   <ns-table ref="tableRef"
-    :rows="balanceRows" :row-height="40"
-    :hidden-columns="hiddenColumns">
-    <ns-table-column field="科目名称" label="科目名称" width="180" />
-    <ns-table-column field="科目类型" label="科目类型" width="180" hidden />
-    <ns-table-column field="科目编码" label="科目编码" width="180" />
-    <ns-table-column field="科目级次" label="科目级次" width="180" />
-    <ns-table-column-currency field="借方合计" label="借方合计" align="right" width="180" />
-    <ns-table-column-currency field="贷方合计" label="贷方合计" align="right" width="180" />
-    <ns-table-column-currency field="余额" label="余额" align="right" width="180" />
+    :rows="balanceRows"
+    :row-height="28"
+    :hidden-columns="hiddenColumns"
+    fill="primary"
+    borders="all"
+    foreground="#ffffff"
+    header-color="#014080"
+    :border-radius="0"
+    border-color="#014080"
+    round>
+    <ns-table-column field="科目名称" label="科目名称" width="800" align="left" />
+    <ns-table-column field="科目类型" label="科目类型" width="120" hidden />
+    <ns-table-column field="科目编码" label="科目编码" width="120" />
+    <ns-table-column field="科目级次" label="科目级次" width="120" />
+    <ns-table-column-currency field="借方合计" label="借方合计" align="right" width="120" />
+    <ns-table-column-currency field="贷方合计" label="贷方合计" align="right" width="120" />
+    <ns-table-column-currency field="余额" label="余额" align="right" width="120" />
   </ns-table>
   <p>&nbsp;</p>
   <ns-button color="primary" @click="onHideButtonClick">隐藏科目类型</ns-button>

@@ -1,11 +1,13 @@
 import { SetupContext, computed, h,VNode, ref, reactive, defineComponent, getCurrentInstance } from 'vue'
-import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents, VxeTableInstance, Column } from 'vxe-table'
+import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents } from 'vxe-table'
+import type { VxeTableInstance, Column, VxeTablePropTypes } from 'vxe-table'
 import type { CustomColumnFunctionalRender, TableColumnData, TableProps, CustomColumnSlots, TableColumnDefinition, TableColumnProps, TableFilterQuery, TableColumnFilterSettings } from '../../../../components'
 import { NsPagination, isCustomColumnSlots, tableProps, NsTableColumnSelector, tableEmits  } from '../../../../components'
 import columnCustomRenders from './columns'
 import { MarginProps, marginProps } from '../../../../utils'
 import { useNutshell } from '../../../../framework'
 import { useRoute } from 'vue-router'
+import { Borders } from '../../../../props'
 
 type ColumnConfig = {
   props: VxeColumnProps,
@@ -18,6 +20,19 @@ type ColumnConfig = {
 const columnNameToTypeMapping: {[key: string]: VxeColumnPropTypes.Type} = {
   number: 'seq',
   checkbox: 'checkbox',
+}
+
+/**
+ * 映射边框线属性
+ */
+const bordersMapping: Record<Borders, VxeTablePropTypes.Border | undefined> = {
+  all: 'full',
+  // 暂时不支持
+  vertical: void 0,
+  horizonal: 'default',
+  inner: 'inner',
+  outer: 'outer',
+  none: 'none'
 }
 
 export type TableState = {
@@ -351,6 +366,10 @@ export const Table = defineComponent({
 
     const vxeRef = ref<any>(null)
 
+    const border = props.borders
+      ? bordersMapping[props.borders]
+      : void 0
+
     const vxe = () => h(VxeTable, {
         ref: vxeRef,
         data: rows.value,
@@ -390,7 +409,8 @@ export const Table = defineComponent({
         onCheckboxAll: onSelectedChange,
         tooltipConfig: {
         },
-        border: 'inner',
+        border,
+        round: props.round,
         // loading: loading,
         // pagination: false,
         // rowKey: props.rowKey,

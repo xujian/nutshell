@@ -10,7 +10,8 @@ import {
 import { define, MakePropsType } from '../../utils'
 import { TableColumnFixed, TableColumnProps } from './TableColumn'
 import { PaginationProps } from '../pagination'
-import { buildDesignVariables, useDesignProps } from '../../props'
+import { buildDesignVariables, useDesignProps, buildDesignClasses } from '../../props'
+import { Color } from '../../composables/theme'
 
 /**
  * 填充表格的数据
@@ -190,6 +191,9 @@ export const tableProps = {
     default: '',
   },
   ...useDesignProps(),
+  headerColor: {
+    type: String as PropType<Color>,
+  }
 }
 
 
@@ -271,8 +275,14 @@ export const NsTable = define({
       vendorRef.value.showColumns(columns)
     }
 
-    const style = buildDesignVariables(props)
-    console.log('===style', style)
+    const style = {
+      ...buildDesignVariables(props),
+      ...props.headerColor ? { '--header-color': props.headerColor } : {},
+    }
+
+    const classes = {
+      ...buildDesignClasses(props)
+    }
 
     return {
       // 只返回修改后的属性
@@ -281,7 +291,8 @@ export const NsTable = define({
       props: {
         // 对 customColumns 的处理在 vendors/components/table
         columns,
-        style
+        style,
+        classes: classes,
       },
       methods: {
         hideColumns,

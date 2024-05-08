@@ -3,7 +3,7 @@ import { Color, GradientString, buildFillStyle, buildGradientStyle, makeColor } 
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
 
-export type Borders = 'all' | 'vertical' | 'horizonal' | 'none'
+export type Borders = 'all' | 'vertical' | 'horizonal' | 'inner' | 'outer' | 'none'
 
 const designProps = {
   /**
@@ -20,6 +20,15 @@ const designProps = {
    */
   gradient: {
     type: String as PropType<GradientString>,
+  },
+  /**
+   * 圆角 使用系统 --ns-border-radius
+   */
+  round: {
+    type: Boolean,
+  },
+  borderRadius: {
+    type: Number
   },
   borderColor: {
     type: String as PropType<Color>
@@ -44,6 +53,12 @@ const buildDesignClasses = (props: DesignProps) => [
   ...props.fill ? [
     `fill-${props.fill}`
    ] : [],
+   ...props.borders ? [
+     `borders-${props.borders}`
+    ] : [],
+    ...props.round ? [
+      'round'
+     ] : [],
   ]
 
 const buildDesignStyles = (props: DesignProps) => {
@@ -64,7 +79,7 @@ const buildDesignVariables = (props: DesignProps) => {
       ? {'--fill': makeColor(props.fill) }
       : {},
     ...props.borderColor
-      ? { '--border-color': props.borderColor }
+      ? { '--stroke': props.borderColor }
       : {},
     ...props.borderWidth
       ? { '--border-width': props.borderWidth }
