@@ -59,7 +59,7 @@
     .vxe-body--row {
       &.row--hover {
         // 鼠标 hover 行高亮
-        background-color: color-mix(in srgb, var(--fill, var(--ns-fill)) 80%, #888);
+        background-color: color-mix(in srgb, var(--fill, var(--ns-fill)) 90%, #000);
       }
     }
   }
