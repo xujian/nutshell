@@ -49,9 +49,13 @@
       <ns-number-input
         name="amount"
         label="金额"
+        :precision="2"
         has-daxie
         v-model="formData.amount"
-        :rules="['required']">
+        :rules="['required', {
+          method: (v: string) => Number(v) > 1000,
+          message: '金额要大于1000'
+        }]">
         <template #append>
           <ns-button color="neutral" variant="outlined">检查</ns-button>
         </template>

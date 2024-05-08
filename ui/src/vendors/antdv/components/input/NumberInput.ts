@@ -1,4 +1,4 @@
-import { h } from 'vue'
+import { h, nextTick, ref } from 'vue'
 import { InputNumber as AntInputNumber } from 'ant-design-vue'
 import { defineComponent } from 'vue'
 import { numberInputProps, inputEmits } from '../../../../components/input'
@@ -21,11 +21,13 @@ export const NumberInput = defineComponent({
   setup: (props, { emit, slots }) => {
     const rules = transformRules(props.rules as FullValidationRule[])
 
+    const inputNumberRef = ref()
     return () =>
       renderFormItem(props, slots, () => [
         h(
           AntInputNumber,
           {
+            ref: inputNumberRef,
             class: props.classes,
             maxlength: props.maxlength ?? 20,
             disabled: props.disabled ?? false,
@@ -38,11 +40,14 @@ export const NumberInput = defineComponent({
             formatter: props.precision === 0 ? null : props.formatter ?? amountFormatter,
             parser: props.precision === 0 ? null : props.parser ?? amountParser,
             valueModifiers: {
-              lazy: props.lazy === false ? false : true
+              lazy: props.lazy
             },
             'onUpdate:value': (value: string) => {
-              const val = props.modelModifiers?.trim ? value.trim() : value
-              props['onUpdate:modelValue']?.(val)
+              nextTick(() => {
+                const val = props.modelModifiers?.trim ? value.trim() : value
+                props['onUpdate:modelValue']?.(val)
+                inputNumberRef.value?.focus()
+              })
             },
             onChange: (e: string | number) => {
               emit('change', e)

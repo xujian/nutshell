@@ -18,4 +18,7 @@
     color: var(--ns-primary);
     white-space: nowrap;
   }
+  .ant-input-number-status-error + .ns-number-amount {
+    display: none;
+  }
 }

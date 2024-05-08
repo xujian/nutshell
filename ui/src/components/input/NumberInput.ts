@@ -9,7 +9,7 @@ export const numberInputProps = {
   },
   lazy: {
     type: Boolean,
-    default: true
+    default: false
   },
   max: {
     type: Number
