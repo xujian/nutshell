@@ -5,7 +5,8 @@ import {
   RendererElement,
   useSlots,
   VNodeNormalizedChildren,
-  ref
+  ref,
+  computed
 } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { TableColumnFixed, TableColumnProps } from './TableColumn'
@@ -278,16 +279,16 @@ export const NsTable = define({
       vendorRef.value.showColumns(columns)
     }
 
-    const style = {
+    const style = computed(() => ({
       ...buildDesignVariables(props),
       ...props.headerColor ? { '--header-color': props.headerColor } : {},
       ...props.rowHeight ? { '--row-height': `${props.rowHeight}px` } : {},
       ...props.headerHeight ? { '--header-height': `${props.headerHeight}px` } : {},
-    }
+    }))
 
-    const classes = {
+    const classes = computed(() => ({
       ...buildDesignClasses(props)
-    }
+    }))
 
     return {
       // 只返回修改后的属性
@@ -296,13 +297,13 @@ export const NsTable = define({
       props: {
         // 对 customColumns 的处理在 vendors/components/table
         columns,
-        style,
-        classes: classes,
       },
       methods: {
         hideColumns,
         showColumns,
       },
+      style,
+      classes,
       vendorRef,
     }
   }

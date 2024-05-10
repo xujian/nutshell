@@ -49,6 +49,7 @@
       height: var(--row-height, var(--vxe-table-row-height-default));
     }
     &.border--default,
+    &.border--none,
     &.border--inner,
     &.border--full,
     &.border--outer {

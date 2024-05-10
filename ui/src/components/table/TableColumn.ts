@@ -4,7 +4,6 @@ import { TableColumnDefinition, TableColumnStyleDefination } from '../../compone
 import { buildProps } from '../../utils/private/props'
 import { UniDataItem } from '../../shared'
 import { Color } from '../../composables'
-import { isConditionalExpression } from 'typescript'
 import type { Borders } from '../../props'
 
 export type TableColumnAlign = 'left' | 'center' | 'right'

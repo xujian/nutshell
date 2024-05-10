@@ -204,6 +204,7 @@ export const Table = defineComponent({
             align: column.props.align,
             headerAlign: column.props.headerAlign,
             sortable: column.props.sortable,
+            resizable: false,
             ...buildFilterConfig(column.props),
             fixed: column.props.fixed as VxeColumnPropTypes.Fixed,
             treeNode: column.props.tree,
@@ -366,9 +367,10 @@ export const Table = defineComponent({
 
     const vxeRef = ref<any>(null)
 
-    const border = props.borders
+    const border = computed(() => props.borders
       ? bordersMapping[props.borders]
       : void 0
+    )
 
     const vxe = () => h(VxeTable, {
         ref: vxeRef,
@@ -409,7 +411,7 @@ export const Table = defineComponent({
         onCheckboxAll: onSelectedChange,
         tooltipConfig: {
         },
-        border,
+        border: border.value,
         round: props.round,
         // loading: loading,
         // pagination: false,
