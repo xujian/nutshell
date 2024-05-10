@@ -1,4 +1,4 @@
-import { ExtractPublicPropTypes, PropType, defineComponent, getCurrentInstance, h, onMounted, ref } from 'vue'
+import { ExtractPublicPropTypes, PropType, defineComponent, getCurrentInstance, h, onMounted, ref, watch } from 'vue'
 import tippy, { type Placement } from 'tippy.js'
 import { MakePropsType } from '../../utils'
 import { useModelValuePropsForBoolean } from '../../props'
@@ -20,8 +20,10 @@ export const popoverConfirmProps = {
   },
   trigger: {
     type: String,
-    default: 'mouseenter',
+    default: 'click',
   },
+  onOk: Function,
+  onCancel: Function
 }
 
 export type PopoverConfirmEmits = {
@@ -51,19 +53,34 @@ export const NsPopoverConfirm = defineComponent({
   setup(props, { slots, emit }) {
 
     const contentRef = ref()
+    let panel: any
 
     onMounted(() => {
       const vm = getCurrentInstance() as any
-      const panel = tippy(vm.parent.vnode.el, {
+      panel = tippy(vm.parent.vnode.el, {
         content: contentRef.value,
         allowHTML: true,
         duration: 300,
         delay: [200, 20_000],
-        trigger: props.trigger || 'mouseenter',
+        trigger: props.trigger || 'click',
         interactive: true,
         theme: 'light',
         placement: props.placement || 'top',
+        onShow: () => {
+          props['onUpdate:modelValue']?.(true)
+        },
+        onHide: () => {
+          props['onUpdate:modelValue']?.(false)
+        }
       })
+    })
+
+    watch(() => props.modelValue, () => {
+      if (props.modelValue) {
+        panel?.show()
+      } else {
+        panel?.hide()
+      }
     })
 
     const buttons = () => h('div', {
@@ -79,8 +96,13 @@ export const NsPopoverConfirm = defineComponent({
           size: 'xs',
           color: 'neutral',
           label: '取消',
-          onClick () {
-            emit('cancel')
+          onClick: async () => {
+            if (props?.onCancel) {
+              await props?.onCancel()
+            } else {
+              emit('cancel')
+            }
+            panel?.hide()
           }
         }),
         h(NsButton, {
@@ -88,8 +110,13 @@ export const NsPopoverConfirm = defineComponent({
           size: 'xs',
           color: 'primary',
           label: '确定',
-          onClick () {
-            emit('ok')
+          onClick: async () => {
+            if (props?.onOk) {
+              await props?.onOk()
+            } else {
+              emit('ok')
+            }
+            panel?.hide()
           }
         })
       ]),
