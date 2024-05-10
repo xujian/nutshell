@@ -50,7 +50,7 @@ export function define<
     ) => {
       props?: Partial<Props>,
       methods?: Record<string, any>,
-      style?: ComputedRef<Record<string, string>>,
+      style?: ComputedRef<Record<string, string | number>>,
       classes?: ComputedRef<string[]>,
       vendorRef?: Ref
     }
