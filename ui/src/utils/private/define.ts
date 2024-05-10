@@ -4,7 +4,8 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   Ref, ref, h,
   defineComponent,
   EmitsOptions, FunctionalComponent,
-  getCurrentInstance} from 'vue'
+  getCurrentInstance,
+  ComputedRef} from 'vue'
 import { LooseRequired } from '@vue/shared'
 import { MakePropsType } from './helpers'
 import { useVendor } from '../../shared'
@@ -49,6 +50,8 @@ export function define<
     ) => {
       props?: Partial<Props>,
       methods?: Record<string, any>,
+      style?: ComputedRef<Record<string, string>>,
+      classes?: ComputedRef<string[]>,
       vendorRef?: Ref
     }
   },
@@ -68,7 +71,7 @@ export function define<
     // the real setup
     const { setup: setupOriginal } = options
     const v = useVendor()
-    const { props: extraProps, methods, vendorRef } = setupOriginal(props, ctx)
+    const { props: extraProps, methods, vendorRef, style, classes } = setupOriginal(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
     const render: Ref<FunctionalComponent<Props, EmitsOptions, any>>
@@ -89,6 +92,7 @@ export function define<
       class: className,
       ...props,
       ...extraProps,
+      style: style?.value,
       classes: buildClasses(props),
       vendorRef,
     }, ctx.slots)
