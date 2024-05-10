@@ -3,7 +3,9 @@ import { Color, GradientString, buildFillStyle, buildGradientStyle, makeColor } 
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
 
-export type Borders = 'all' | 'vertical' | 'horizonal' | 'inner' | 'outer' | 'none'
+export const BORDERS_VALUES =  ['all', 'vertical', 'horizonal', 'inner', 'outer', 'none'] as const
+
+export type Borders = typeof BORDERS_VALUES[number]
 
 const designProps = {
   /**
