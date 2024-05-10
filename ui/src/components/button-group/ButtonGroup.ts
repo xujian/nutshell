@@ -1,6 +1,6 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDimensionProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { useDimensionProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { UniDataItem } from '../../shared'
 import { BRANDS, Color, type BrandColor } from '../../composables/theme'
 import { NsButton } from '../button/Button'
@@ -23,13 +23,18 @@ export const buttonGroupProps = {
   round: {
     type: Boolean,
     default: false,
-  }
+  },
+  ...useModelValuePropsForString(),
 }
 
 export type ButtonGroupEmits = {
+  click: (value: string) => void,
+  change: (value: string) => void
 }
 
 const buttonGroupEmits: ButtonGroupEmits = {
+  click: (value: string) => void 0,
+  change: (value: string) => void 0
 }
 
 export type ButtonGroupSlots = {
@@ -45,16 +50,23 @@ export const NsButtonGroup = defineComponent({
   name: 'NsButtonGroup',
   props: buttonGroupProps,
   emits: buttonGroupEmits,
-  setup (props, ctx) {
-    const { color } = props
-    const colorIsBrand = BRANDS.includes(color as BrandColor)
+  setup (props, { emit }) {
+    const colorIsBrand = BRANDS.includes(props.color as BrandColor)
 
     const item = (item: UniDataItem) => h(NsButton, {
       class: [
         ...props.size ? [`size-${props.size}`] : [],
-        ...colorIsBrand ? [`color-${color}`] : [],
+        ...colorIsBrand ? [`color-${props.color}`] : [],
         ...props.variant ? [`variant-${props.variant}`] : [],
+        ...item.value === props.modelValue ? ['active'] : [],
       ],
+      onClick () {
+        props['onUpdate:modelValue']?.(`${item.value}`)
+        emit('change', `${item.value}`)
+      },
+      size: props.size,
+      color: props.color,
+      variant: props.variant,
       round: props.round,
       label: item.label || ''
     })
@@ -64,11 +76,7 @@ export const NsButtonGroup = defineComponent({
     return () => h('div', {
       class: [
         'ns-button-group',
-        ...props.size ? [`size-${props.size}`] : [],
-        ...colorIsBrand ? [`color-${color}`] : [],
-        ...props.variant ? [`variant-${props.variant}`] : [],
-        ...props.round ? ['round'] : [],
       ]
-    }, items())
+    }, { default: items })
   }
 })
