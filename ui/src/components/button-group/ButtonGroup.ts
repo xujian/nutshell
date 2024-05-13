@@ -25,6 +25,10 @@ export const buttonGroupProps = {
     default: false,
   },
   ...useModelValuePropsForString(),
+  selectable: {
+    type: Boolean,
+    default: true,
+  }
 }
 
 export type ButtonGroupEmits = {
@@ -61,6 +65,9 @@ export const NsButtonGroup = defineComponent({
         ...item.value === props.modelValue ? ['active'] : [],
       ],
       onClick () {
+        if (props.selectable === false) {
+          return
+        }
         props['onUpdate:modelValue']?.(`${item.value}`)
         emit('change', `${item.value}`)
       },

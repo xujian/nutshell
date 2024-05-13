@@ -1,12 +1,13 @@
 .ns-dropdown {
   border-radius: var(--ns-border-radius);
+  .ant-btn {
+    color: unset;
+  }
   .ant-btn-default {
     border-color: transparent;
     background-color: transparent;
-    color: unset;
     &:not(:disabled) {
       &:hover {
-        color: unset;
         border-color: var(--ns-stroke);
       }
     }
@@ -16,7 +17,6 @@
       border-color: var(--ns-fill);
       background-color: var(--ns-fill);
       border-width: 1px;
-      color: unset;
       .ant-dropdown-menu-item {
         min-width: 140px;
       }

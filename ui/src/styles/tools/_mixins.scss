@@ -83,6 +83,9 @@ $alphas: (
       @else {
         color: #fff;
       }
+      &.active {
+        background-color: color.adjust($value, $lightness: -20%);
+      }
       &.variant-outlined {
         background-color: transparent;
         border-color: var(--ns-#{$name});

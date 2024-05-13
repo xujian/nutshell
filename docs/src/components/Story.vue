@@ -1,5 +1,7 @@
 <template>
-  <ns-card :variant="props.isPlain ? 'plain' : 'solid'" class="story-card">
+  <ns-card :variant="props.isPlain ? 'plain' : 'solid'"
+    :fill="props.isPlain ? 'transparent' : '#ffffff'"
+    class="story-card">
     <component :is="StoryComponent" v-if="isLoaded" />
     <template #footer>
       <div class="full-width flex-row">

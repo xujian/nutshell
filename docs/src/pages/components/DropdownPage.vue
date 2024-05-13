@@ -2,8 +2,8 @@
   <h1 class="my-lg">下拉菜单 &lt;ns-dropdown&gt;</h1>
   <h2 class="my-md">Size</h2>
   <ns-row class="sizes">
-    <ns-dropdown color="primary"
-      v-for="size in sizes" :key="size" 
+    <ns-dropdown
+      v-for="size in sizes" :key="size"
       :items="menuItems"
       label="排序" :size="size"></ns-dropdown>
   </ns-row>
@@ -18,7 +18,7 @@
     <h4 class="variant-label">{{ variant }}</h4>
     <ns-dropdown v-for="(color) in colors" class="my-xs"
       :key="color"
-      :color="color" 
+      :color="color"
       :items="menuItems"
       :variant="variant" label="排序"></ns-dropdown>
     </ns-row>
