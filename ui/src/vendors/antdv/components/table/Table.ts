@@ -372,6 +372,62 @@ export const Table = defineComponent({
       : void 0
     )
 
+    /**
+     * 合并行的规则配置
+     */
+    const spanMethod: VxeTablePropTypes.SpanMethod | undefined =
+      props.mergingCells && props.mergingCells.length > 0
+      // VxeTable 提供的行合并函数
+      // 执行时机: 每一列的每一格
+      ? ({row, _rowIndex, column, visibleData}) => {
+        const fields = props.mergingCells!,
+          field = column.field,
+          value = row[field]
+        if (value && fields.includes(field)) {
+            let prevRow = visibleData[_rowIndex - 1],
+              nextRow = visibleData[_rowIndex + 1]
+            const master = props.mergingCellsMaster
+            if (master) {
+              // 按主列合并 mergingCellsMaster
+              const master = props.mergingCellsMaster!
+              if (
+                prevRow &&
+                  prevRow[master] === row[master] &&
+                  prevRow[field] === value
+                ) {
+                return { rowspan: 0, colspan: 0 }
+              } else {
+                let rowCount = 1
+                while (
+                  nextRow &&
+                  nextRow[master] === row[master] &&
+                  nextRow[field] === value
+                ) {
+                  nextRow = visibleData[++rowCount + _rowIndex]
+                }
+                if (rowCount > 1) {
+                  return { rowspan: rowCount, colspan: 1 }
+                }
+              }
+            } else {
+              // 按值合并, 没有主列
+              // 能合并就合并
+              if (prevRow && prevRow[field] === value) {
+                return { rowspan: 0, colspan: 0 }
+              } else {
+                let rowCount = 1
+                while (nextRow && nextRow[field] === value) {
+                  nextRow = visibleData[++rowCount + _rowIndex]
+                }
+                if (rowCount > 1) {
+                  return { rowspan: rowCount, colspan: 1 }
+                }
+              }
+            }
+          }
+        }
+      : void 0
+
     const vxe = () => h(VxeTable, {
         ref: vxeRef,
         data: rows.value,
@@ -416,7 +472,8 @@ export const Table = defineComponent({
         // loading: loading,
         // pagination: false,
         // rowKey: props.rowKey,
-        // rowSelection
+        // rowSelection,
+        spanMethod,
         style: {
           ...fills
         }

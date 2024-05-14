@@ -197,7 +197,24 @@ export const tableProps = {
   ...useDesignProps(),
   headerColor: {
     type: String as PropType<Color>,
+  },
+  /**
+   * 纵向合并单元格
+   * 多行的列合并为一行
+   * 配置纵向合并单元格的规则
+   */
+  mergingCells: {
+    type: Array as PropType<string[]>,
+  },
+  /**
+   * 合并单元格的主列
+   * 合并单元格时按主列合并
+   * 这个概念比较难理解
+   */
+  mergingCellsMaster: {
+    type: String,
   }
+
 }
 
 

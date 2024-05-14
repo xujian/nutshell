@@ -12,6 +12,16 @@
   <h3>外观配置</h3>
   <p>&nbsp;</p>
   <story is-plain file="table/design" />
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h3>隐藏列</h3>
+  <p>&nbsp;</p>
+  <story is-plain file="table/hidden-columns" />
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h3>合并单元格</h3>
+  <p>&nbsp;</p>
+  <story is-plain file="table/merge" />
 </template>
 
 <script lang="ts" setup>
