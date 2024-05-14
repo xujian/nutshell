@@ -7,7 +7,7 @@
     background-color: var(--ns-primary) !important;
   }
   .ant-steps-item-title {
-    color: var(--ns-text) !important;
+    color: var(--ns-text);
   }
   &.stepper-variant-arrow {
     position: relative;
@@ -24,7 +24,7 @@
       display: none;
     }
     .ant-steps-item {
-      background-color: #ffffff;
+      background-color: var(--ns-fill);
       margin: 0 0 0 calc(calc(-1 * var(--space)) + 1px);
       -webkit-clip-path: polygon(
         var(--space) 50%,

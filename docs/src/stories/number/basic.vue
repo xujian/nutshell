@@ -19,6 +19,7 @@
       :main-height="100"
       main-justify="end"
       :animated="true"
+      foreground="#fff"
       v-model="value2">
       <template #footer>
         <div class="row align-center">

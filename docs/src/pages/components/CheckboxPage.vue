@@ -19,18 +19,14 @@
     <ns-checkbox v-for="(color) in colors" class="my-xs"
       :key="color"
       v-model="checked"
-      :color="color" 
+      :color="color"
       :variant="variant" :label="label"></ns-checkbox>
   </ns-row>
   <p>&nbsp;</p>
-  <h2>复选框组</h2>
-  <ns-row>
-    <ns-checkbox-group color="primary"
-      v-model="callResults"
-      :options="options"
-      :label="label"></ns-checkbox-group>
-  </ns-row>
-  {{ callResults }}
+  <p>&nbsp;</p>
+  <h3>复选框组</h3>
+  <p>&nbsp;</p>
+  <story file="checkbox/group" />
 </template>
 
 <script lang="ts" setup>
@@ -39,14 +35,6 @@ import { colors, sizes, variants } from '../../props'
 
 const label = '受限用户',
   checked = ref(false)
-
-const callResults = ref<string[]>([])
-
-const options = [
-  { label: '接通', value: 'connected' },
-  { label: '繁忙', value: 'busy' },
-  { label: '拒接', value: 'rejected' },
-]
 
 </script>
 

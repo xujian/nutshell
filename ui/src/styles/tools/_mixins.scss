@@ -78,10 +78,14 @@ $alphas: (
       background-color: var(--ns-#{$name});
       border-color: var(--ns-#{$name});
       @if lightness($value) > 80 {
-        color: var(--ns-text)
+        color: var(--ns-text);
+        #{'--ns-'}#{$name}#{'--text'}: var(--ns-text);
+        #{'--ns-'}#{$name}#{'--hover'}: #00000044;
       }
       @else {
         color: #fff;
+        #{'--ns-'}#{$name}#{'--text'}: #fff;
+        #{'--ns-'}#{$name}#{'--hover'}: #ffffff44;
       }
       &.active {
         background-color: color.adjust($value, $lightness: -20%);
@@ -113,6 +117,7 @@ $alphas: (
           background-color: #00000022;
         }
       }
+      --nut-button-default-color: var(--ns-#{$name}--text);
       --nut-button-default-bg-color: var(--ns-#{$name});
       --nut-button-default-border-color: var(--ns-#{$name});
     }

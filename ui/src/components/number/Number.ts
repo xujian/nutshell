@@ -184,7 +184,7 @@ export const NsNumber = defineComponent({
       }, props.header || ''),
       footer = () => h('div', {
         class: [
-          'header'
+          'footer'
         ]
       }, props.footer || ''),
       content = () => h('div', {
@@ -200,7 +200,7 @@ export const NsNumber = defineComponent({
             : null,
         main(),
         slots.footer
-          ? slots.footer()
+          ? h('div', {class: 'footer'}, slots.footer())
           : props.footer ? footer() : null
       ])
 
