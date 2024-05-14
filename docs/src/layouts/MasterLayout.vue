@@ -44,6 +44,7 @@ const toggleNav = () => {
   .app-header {
     position: fixed;
     height: 48px;
+    padding-inline: .5em;
     left: var(--layout-nav-width);
     right: 0;
     transition: left .5s;
