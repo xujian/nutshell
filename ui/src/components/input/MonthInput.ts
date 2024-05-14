@@ -7,7 +7,7 @@ const emits: DateInputEmits = {
 }
 
 /**
- * 输入框 <ns-month-input>
+ * 月份选择框 <ns-month-input>
  */
 export const NsMonthInput = define({
     name: 'NsMonthInput',

@@ -44,7 +44,7 @@ export type PopoverConfirmSlots = {
 export type PopoverConfirmProps = MakePropsType<typeof popoverConfirmProps, PopoverConfirmEmits>
 
 /**
- *  组件 <ns-popover-confirm>
+ *  气泡确认组件 <ns-popover-confirm>
  */
 export const NsPopoverConfirm = defineComponent({
   name: 'NsPopoverConfirm',

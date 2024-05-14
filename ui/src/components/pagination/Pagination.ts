@@ -17,6 +17,9 @@ const paginationEmits: PaginationEmits = {
 
 export type PaginationProps = MakePropsType<typeof paginationProps, PaginationEmits>
 
+/**
+ * 分页组件 <ns-pagination>
+ */
 export const NsPagination = define({
   name: 'NsPagination',
   props: paginationProps,

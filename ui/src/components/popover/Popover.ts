@@ -44,7 +44,7 @@ export type PopoverSlots = {
 export type PopoverProps = MakePropsType<typeof popoverProps, PopoverEmits>
 
 /**
- *  组件 <ns-popover>
+ *  气泡卡片组件 <ns-popover>
  */
 export const NsPopover = defineComponent({
   name: 'NsPopover',

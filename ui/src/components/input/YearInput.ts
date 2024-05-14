@@ -7,7 +7,7 @@ const emits: DateInputEmits = {
 }
 
 /**
- * 输入框 <ns-date-input>
+ * 年份选择框 <ns-year-input>
  */
 export const NsYearInput = define({
     name: 'NsYearInput',

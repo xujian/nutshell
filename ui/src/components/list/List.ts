@@ -40,7 +40,7 @@ export interface ListSlots extends SlotsType {
 export type ListProps = MakePropsType<typeof listProps, ListEmits>
 
 /**
- * 列表 <ns-list>
+ * 列表组件 <ns-list>
  */
 export const NsList = defineComponent({
   name: 'NsList',

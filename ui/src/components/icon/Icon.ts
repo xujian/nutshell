@@ -93,7 +93,7 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
 }
 
 /**
- * 图标组件
+ * 图标组件 <ns-icon>
  */
 export const NsIcon = defineComponent({
   name: 'NsIcon',

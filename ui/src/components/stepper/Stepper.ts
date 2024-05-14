@@ -82,7 +82,7 @@ const stepSlots = () => {
 }
 
 /**
- * Stepper 组件 <ns-stepper>
+ * 步骤条组件 <ns-stepper>
  */
 export const NsStepper = define({
   name: 'NsStepper',

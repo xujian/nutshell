@@ -43,7 +43,7 @@ export type TabsSlots = {
 
 export type TabsProps = MakePropsType<typeof tabsProps, TabsEmits>
 /**
- * Tabs 组件 <ns-tabs>
+ * 标签页组件 <ns-tabs>
  */
 export const NsTabs = define({
   name: 'NsTabs',

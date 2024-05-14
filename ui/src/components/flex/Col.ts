@@ -36,6 +36,9 @@ const props = {
 
 export type ColProps = MakePropsType<typeof props>
 
+/**
+ * 列组件 <ns-col>
+ */
 export const NsCol = defineComponent({
   name: 'NsCol',
   props,

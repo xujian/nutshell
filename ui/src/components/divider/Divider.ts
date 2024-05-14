@@ -30,7 +30,7 @@ export type DividerSlots = {
 export type DividerProps = MakePropsType<typeof dividerProps, DividerEmits>
 
 /**
- *  组件 <ns->
+ *  分割线组件 <ns-divider>
  */
 export const NsDivider = define({
   name: 'NsDivider',

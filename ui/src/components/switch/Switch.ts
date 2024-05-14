@@ -27,7 +27,7 @@ export type SwitchSlots = {
 export type SwitchProps = MakePropsType<typeof switchProps, SwitchEmits>
 
 /**
- * Switch 组件 <ns-switch>
+ * 开关组件 <ns-switch>
  */
 export const NsSwitch = define({
   name: 'NsSwitch',

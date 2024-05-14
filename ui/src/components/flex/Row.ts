@@ -24,6 +24,9 @@ export const rowProps = {
 
 export type RowProps = ExtractPropTypes<typeof rowProps>
 
+/**
+ * 行组件 <ns-row>
+ */
 export const NsRow = defineComponent({
   name: 'NsRow',
   props: rowProps,

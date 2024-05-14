@@ -26,7 +26,7 @@ export type RatingInputSlots = {
 export type RatingInputProps = MakePropsType<typeof ratingInputProps, RatingInputEmits>
 
 /**
- * Rating <ns-rating-input>
+ * Rating表单组件 <ns-rating-input>
  */
 export const NsRatingInput = define({
   name: 'NsRatingInput',

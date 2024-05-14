@@ -30,7 +30,7 @@ export type TimelineSlots = {
 export type TimelineProps = MakePropsType<typeof timelineProps, TimelineEmits>
 
 /**
- *  组件 <ns-timeline>
+ *  时间轴组件 <ns-timeline>
  */
 export const NsTimeline = define({
   name: 'NsTimeline',

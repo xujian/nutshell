@@ -54,7 +54,7 @@ const emits: MultipleSelectEmits = {
 export type MultipleSelectProps = MakePropsType<typeof multipleSelectProps>
 
 /**
- * 下拉选框
+ * 多选下拉选框 <ns-multiple-select>
  */
 export const NsMultipleSelect = define({
   name: 'NsMultipleSelect',

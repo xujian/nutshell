@@ -23,7 +23,7 @@ export const numberRangeInputProps = {
 export type NumberRangeInputProps = MakePropsType<typeof numberRangeInputProps, InputEmits>
 
 /**
- * 数字输入框 <ns-number-input>
+ * 数字区间输入框 <ns-number-range-input>
  */
 export const NsNumberRangeInput = define({
   name: 'NsNumberRangeInput',

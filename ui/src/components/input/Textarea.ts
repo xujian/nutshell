@@ -45,7 +45,7 @@ export const textareaEmits: TextareaEmits = {
 export type TextareaProps = MakePropsType<typeof textareaProps, TextareaEmits>
 
 /**
- * 输入框 <ns-textarea>
+ * 文本域组件 <ns-textarea>
  */
 export const NsTextarea = define({
   name: 'NsTextarea',

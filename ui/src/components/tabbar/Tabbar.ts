@@ -24,7 +24,7 @@ export type TabbarSlots = {
 export type TabbarProps = MakePropsType<typeof tabbarProps, TabbarEmits>
 
 /**
- * Tabbar 组件 <ns-tabbar>
+ * 标签栏组件 <ns-tabbar>
  */
 export const NsTabbar = defineComponent({
   name: 'NsTabbar',

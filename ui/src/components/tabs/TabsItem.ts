@@ -39,7 +39,7 @@ export type TabsItemSlots = {
 export type TabsItemProps = MakePropsType<typeof tabsItemProps, TabsItemEmits>
 
 /**
- * TabsItem 组件 <ns-tabs-pane>,
+ * TabsItem 组件 <ns-tabs-item>,
  * <ns-tabs> 的子组件
  */
 export const NsTabsItem = define({

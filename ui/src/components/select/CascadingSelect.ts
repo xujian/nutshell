@@ -46,7 +46,7 @@ export const cascadingSelectProps = {
 export type CascadingSelectProps = MakePropsType<typeof cascadingSelectProps>
 
 /**
- * 下拉选框
+ * 级联下拉选框 <ns-cascading-select>
  */
 export const NsCascadingSelect = define({
   name: 'NsCascadingSelect',

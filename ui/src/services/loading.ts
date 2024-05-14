@@ -6,10 +6,10 @@ export type LoadingOptions = {
 }
 
 /**
- * Toast Service
- * Dynamically create a toast
+ * Loading Service
+ * Dynamically create a loging
  * Usage:
- *  $n.dialog(options: ToastOptions)
+ *  $n.dialog(options: LoadingOptions)
  */
 export default {
   install (app: App, $n: DollarNutshell) {

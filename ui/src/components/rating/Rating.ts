@@ -32,7 +32,7 @@ export interface RatingSlots extends SlotsType {
 export type RatingProps = MakePropsType<typeof ratingProps, RatingEmits>
 
 /**
- * Rating <ns-rating>
+ * 评分组件 <ns-rating>
  */
 export const NsRating = define({
   name: 'NsRating',

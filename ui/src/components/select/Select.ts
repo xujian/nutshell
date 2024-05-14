@@ -47,7 +47,7 @@ const emits: SelectEmits = {
 export type SelectProps = MakePropsType<typeof selectProps, SelectEmits>
 
 /**
- * 下拉选框
+ * 下拉选框 <ns-select>
  */
 export const NsSelect = define({
   name: 'NsSelect',

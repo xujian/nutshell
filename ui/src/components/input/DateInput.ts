@@ -28,7 +28,7 @@ export type DateInputProps = MakePropsType<typeof dateInputProps, DateInputEmits
 
 
 /**
- * 输入框 <ns-date-input>
+ * 日期选择组件 <ns-date-input>
  */
 export const NsDateInput = define({
     name: 'NsDateInput',

@@ -190,7 +190,7 @@ export function isCustomColumnSlots(def: CustomColumnFunctionalRender | CustomCo
 }
 
 /**
- * 表格列
+ * 表格列 <ns-table-column>
  */
 export const NsTableColumn = define({
   name: 'NsTableColumn',

@@ -27,7 +27,7 @@ export type MenuSlots = {
 export type MenuProps = MakePropsType<typeof menuProps, MenuEmits>
 
 /**
- *  组件 <ns-menu>
+ *  菜单栏组件 <ns-menu>
  */
 export const NsMenu = define({
   name: 'NsMenu',

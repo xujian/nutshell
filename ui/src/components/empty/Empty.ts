@@ -44,7 +44,7 @@ export type EmptySlots = {
 export type EmptyProps = MakePropsType<typeof emptyProps, EmptyEmits>
 
 /**
- * Empty 组件 <ns-empty>
+ * 缺省组件 <ns-empty>
  */
 export const NsEmpty = define({
   name: 'NsEmpty',

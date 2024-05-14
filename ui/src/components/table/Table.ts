@@ -228,6 +228,9 @@ export const tableEmits: TableEmits = {
 
 export type TableProps = MakePropsType<typeof tableProps, TableEmits>
 
+/**
+ * 表格组件 <ns-table>
+ */
 export const NsTable = define({
   name: 'NsTable',
   props: tableProps,

@@ -38,7 +38,7 @@ export type RadioGroupSlots = {
 export type RadioGroupProps = MakePropsType<typeof radioGroupProps, RadioGroupEmits>
 
 /**
- * 单选框组件 <ns-radio-group>
+ * 单选框组组件 <ns-radio-group>
  */
 export const NsRadioGroup = define({
   name: 'NsRadioGroup',
