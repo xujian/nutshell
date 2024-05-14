@@ -22,6 +22,10 @@ export const drawerProps = {
   className: {
     type: String,
   },
+  destroyOnClose: {
+    type: Boolean,
+    default: false,
+  },
   ...useModelValuePropsForBoolean(),
   ...useSizeProps(),
 }

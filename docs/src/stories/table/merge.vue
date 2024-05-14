@@ -2,8 +2,8 @@
   <ns-table :rows="records"
     :row-height="28"
     borders="all"
-    :mergingCells
-    :mergingCellsMaster
+    :mergingCells="mergingCells"
+    :mergingCellsMaster="mergingCellsMaster"
     :row-hoverable="false">
     <ns-table-column field="流水号" label="流水号" width="120" />
     <ns-table-column-datetime field="记账日期" label="记账日期" width="140" format="YYYY-MM-DD" />
