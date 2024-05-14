@@ -40,6 +40,7 @@ const toggleNav = () => {
     will-change: transform;
     transform: translate3d(0, 0, 0);
     transition: transform .5s;
+    height: 100vh;
   }
   .app-header {
     position: fixed;
