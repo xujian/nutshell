@@ -51,7 +51,10 @@
   &.variant-plain {
     background-color: transparent;
     border-color: transparent;
-    .card-body {
+    >.card-body {
+      padding: 0;
+    }
+    >.card-footer {
       padding-inline: 0;
     }
   }
