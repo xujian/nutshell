@@ -1,34 +1,30 @@
 import { defineComponent, h } from 'vue'
-import { DropdownProps, dropdownProps } from '../../../../components/dropdown'
+import { type DropdownProps, dropdownProps, NsMenu } from '../../../../components'
 import { DropdownButton as AntdvDropdownButton, Menu as AntdvMenu, MenuItem as AntdvMenuItem } from 'ant-design-vue'
 
 export const Dropdown = defineComponent({
   name: 'AntdvDropdownVendor',
   props: dropdownProps,
   setup (props, ctx) {
-    const classes = [
-      ...props.color ? [`color-${props.color}`] : []
-    ].join(' ')
+    const classes =
+      props.color ? [`color-${props.color}`] : []
     const { slots, emit } = ctx
 
     return () => h(AntdvDropdownButton, {
-      class: classes,
-      color: props.color,
-      overlayClassName: classes,
+      class: ['ns-dropdown', ...classes],
       width: props.width,
       height: props.height,
       arrow: true,
     }, {
       default: () => props.label,
-      overlay: () => h(AntdvMenu, {
-        class: 'ns-dropdown',
-        onClick: (item) => {
+      overlay: () => h(NsMenu, {
+        class: 'ns-dropdown-menu',
+        color: props.color,
+        onClick: (item: any) => {
           emit('change', item)
-        }
-      }, () => props?.items?.map(item => h(AntdvMenuItem, {
-          key: item.value,
-        }, () => item.label)
-      ))
+        },
+        items: props.items,
+      })
     })
   }
 })

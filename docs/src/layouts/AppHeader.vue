@@ -37,8 +37,5 @@ const onDropdownChange = (item: any) => {
     line-height: 48px;
     cursor: default;
   }
-  .theme-dropdown {
-    padding-right: 1em;
-  }
 }
 </style>

@@ -1,5 +1,6 @@
 .ns-dropdown {
   border-radius: var(--ns-border-radius);
+  background-color: var(--ns-fill);
   .ant-btn {
     color: unset;
   }
@@ -12,13 +13,19 @@
       }
     }
   }
-  &.ant-dropdown {
-    .ant-dropdown-menu {
-      border-color: var(--ns-fill);
-      background-color: var(--ns-fill);
-      border-width: 1px;
-      .ant-dropdown-menu-item {
-        min-width: 140px;
+}
+
+.ns-dropdown-menu {
+  &.ant-dropdown-menu {
+    background-color: var(--ns-paper);
+    border-color: var(--ns-fill);
+    background-color: var(--ns-fill);
+    border-width: 1px;
+    .ant-dropdown-menu-item {
+      color: var(--ns-text);
+      min-width: 140px;
+      &:hover {
+        background-color: #ffffff33;
       }
     }
   }
