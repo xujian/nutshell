@@ -352,7 +352,7 @@ export const Table = defineComponent({
     // 处理行选中事件
     const onSelectedChange: VxeTableEvents.CheckboxChange = (checked) => {
       // 拿到所有选中行数据
-      let selected = props.vendorRef?.value?.getCheckboxRecords() || []
+      let selected = vxeRef?.value?.getCheckboxRecords() || []
       // 解释以下逻辑
       // 1. 当表格添加了 checkbox 列时，将改动 selectionOptions 内的配置
       // 2. <ns-table-column-checkbox> 给了 field 属性时, 仅输出该列的值
