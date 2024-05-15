@@ -299,6 +299,10 @@ export const NsTable = define({
       vendorRef.value.showColumns(columns)
     }
 
+    const clearChecked = () => {
+      vendorRef.value.clearChecked()
+    }
+
     const style = computed(() => ({
       ...buildDesignVariables(props),
       ...props.headerColor ? { '--header-color': props.headerColor } : {},
@@ -321,6 +325,7 @@ export const NsTable = define({
       methods: {
         hideColumns,
         showColumns,
+        clearChecked
       },
       style,
       classes,

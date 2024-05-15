@@ -365,6 +365,13 @@ export const Table = defineComponent({
       onChange(selected)
     }
 
+    // 用于 type=checkbox，手动清空用户的选择
+    const clearChecked = () => {
+      vxeRef?.value?.clearCheckboxRow()
+      const { onChange } = selectionOptions
+      onChange([])
+    }
+
     const vxeRef = ref<any>(null)
 
     const border = computed(() => props.borders
@@ -530,6 +537,7 @@ export const Table = defineComponent({
     props.vendorRef!.value = {
       hideColumns,
       showColumns,
+      clearChecked
     }
   }
 })
