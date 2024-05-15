@@ -1,4 +1,4 @@
-import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext, VNode } from 'vue'
+import { DefineComponent, ObjectEmitsOptions, PropType, SetupContext, VNode, Ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { TableColumnDefinition, TableColumnStyleDefination } from '../../components/table'
 import { buildProps } from '../../utils/private/props'
@@ -17,7 +17,8 @@ export type TableColumnFixed = undefined | 'left' | 'right'
 export type TableColumnFilterSettings = {
   data: UniDataItem[],
   component: VNode | (() => VNode),
-  props: any
+  props: any,
+  model: Ref,
 }
 
 /**

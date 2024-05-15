@@ -1,7 +1,7 @@
 <template>
   <ns-table ref="tableRef"
     :rows="balanceRows">
-    <ns-table-column field="科目名称" label="科目名称" width="800" align="left" />
+    <ns-table-column field="科目名称" label="科目名称" width="600" align="left" />
     <ns-table-column field="科目类型" label="科目类型" width="120" hidden />
     <ns-table-column field="科目编码" label="科目编码" width="120" />
     <ns-table-column field="科目级次" label="科目级次" width="120" />

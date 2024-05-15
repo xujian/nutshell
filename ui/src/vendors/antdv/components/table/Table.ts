@@ -321,18 +321,21 @@ export const Table = defineComponent({
             }
             // 开始处理自定义列头筛选
             const filterable = column.props.filterable
-            if (filterable &&
-              filterable.component
-            ) {
+            if (filterable && filterable.component) {
               // @ts-ignore
-              colummConfig.slots['filter'] = ({columnIndex}) => h('div', {
-                class: [
-                  'table-column-custom-filter'
-                ]
-              }, h(filterable.component, {
-                ...filterable.props,
-                onChange: column.props.onChange
-              }))
+              colummConfig.slots['filter'] = ({columnIndex}) =>
+                h('div',
+                  {
+                    class: ['table-column-custom-filter']
+                  },
+                  h(filterable.component, {
+                    ...filterable.props,
+                    modelValue: filterable.model.value,
+                    'onUpdate:modelValue': (v: string[]) => {
+                      filterable.model.value = v
+                    }
+                  })
+                )
             }
           }
         }

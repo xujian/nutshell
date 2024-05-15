@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import dayjs from 'dayjs'
 import { NsDateRangeInput, type CryptoSecret, type TableFilterHandler } from '@uxda/nutshell'
@@ -213,6 +213,9 @@ const onRatingColumnChange = (value: number, row) => {
   console.log('===ComplexTable.vue onRatingColumnChange', value, row)
 }
 
+// 邀约时间
+const inviteFiltersValue = ref()
+
 /**
  * 邀约时间的自定义筛选
  */
@@ -220,13 +223,19 @@ const inviteFilterSettings = {
   component: NsDateRangeInput,
   props: {
     inside: true,
-  }
+    variant: 'plain',
+  },
+  // v-model 对应的 ref 单独传入
+  model: inviteFiltersValue,
 }
 
 // * 邀约时间的筛选处理
 const onInviteFilterChange = (value: string[]) => {
   console.log('===onInviteFilterChange value', value)
 }
+
+onMounted(() => {
+})
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border"
