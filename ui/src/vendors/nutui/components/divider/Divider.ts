@@ -2,7 +2,6 @@ import { SetupContext, h } from 'vue'
 import { DividerProps } from '../../../../components'
 
 export const Divider = (props: DividerProps, {slots}: SetupContext) => {
-  console.log(props)
 
   const classes = [
     'ns-divider',

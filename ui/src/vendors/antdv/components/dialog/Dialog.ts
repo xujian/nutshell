@@ -86,6 +86,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       okType: props.okColor ? buttonTypesMap[props.okColor] || 'primary' : 'primary',
       cancelText: props.cancelText || '取消',
       keyboard: true,
+      mask: props.mask,
       centered: props.centered,
       ...props.footer !== false ? {
         footer: slots.footer?.() || defaultFooter(),

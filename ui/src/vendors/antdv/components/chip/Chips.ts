@@ -23,7 +23,6 @@ export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
 
   // 可下拉选择模式时
   if (props.dropdown) {
-    console.log(props.modelValue)
     const selectedSlot = options
       .filter((o) => props.modelValue?.includes(o.value as string))
       .map((o) => {

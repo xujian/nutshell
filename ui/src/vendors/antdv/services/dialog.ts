@@ -58,6 +58,7 @@ function createDialog (options: DialogOptions, app: App) {
         visible.value = value
       },
       okText: options.okText,
+      mask: options.mask ?? true,
       footer: options.footer ?? true,
       onOk,
       onClose: () => {

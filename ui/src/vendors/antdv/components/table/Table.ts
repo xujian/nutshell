@@ -117,6 +117,7 @@ export const Table = defineComponent({
       $n.dialog({
         width: 250,
         component: NsTableColumnSelector,
+        mask: false,
         props: {
           columns: props.columns?.filter(column =>
             column.name !== 'checkbox'

@@ -31,6 +31,10 @@ export const dialogProps = {
   left: {
     type: Number,
   },
+  mask: {
+    type: Boolean,
+    default: true,
+  },
   ...useDesignProps(),
   ...useModelValuePropsForBoolean(),
   ...useDimensionProps(),
