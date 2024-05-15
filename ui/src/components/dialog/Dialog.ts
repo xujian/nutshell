@@ -25,6 +25,12 @@ export const dialogProps = {
     type: Boolean,
     default: false,
   },
+  top: {
+    type: Number,
+  },
+  left: {
+    type: Number,
+  },
   ...useDesignProps(),
   ...useModelValuePropsForBoolean(),
   ...useDimensionProps(),
@@ -44,6 +50,11 @@ export const dialogEmits: DialogEmits = {
   show () {},
   hide () {},
   close () {},
+}
+
+export type DialogSlots = {
+  default: never,
+  footer: never
 }
 
 export type DialogProps = MakePropsType<typeof dialogProps, DialogEmits>

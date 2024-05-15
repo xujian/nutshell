@@ -12,6 +12,17 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
   (props, ctx) => {
     const { slots, emit } = ctx
 
+    const styleFromProps = {
+      ...props.top
+        ? {
+          top: `${props.top}px`
+        } : {},
+      ...props.left
+        ? {
+          left: `${props.left}px`
+        } : {}
+    }
+
     const onOk = async () => {
       if (props.onOk) {
         const result = await props.onOk()
@@ -61,7 +72,9 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
     ])
 
     return () => h(AntdvModal, {
-      style: props.style,
+      style: {
+        ...styleFromProps
+      },
       open: props.modelValue,
       title: props.title,
       width: props.width,
@@ -75,7 +88,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       keyboard: true,
       centered: props.centered,
       ...props.footer !== false ? {
-        footer: slots.footer || defaultFooter(),
+        footer: slots.footer?.() || defaultFooter(),
       }: {},
       'onUpdate:open': (value: boolean) => {
         props['onUpdate:modelValue']?.(value)
