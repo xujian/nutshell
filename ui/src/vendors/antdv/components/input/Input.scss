@@ -1,10 +1,10 @@
 .ns-form-item {
   .ant-input {
-    background-color: var(--ns-fill);
+    background-color: var(--fill, var(--ns-fill));
     color: var(--ns-text);
   }
   .ant-input-affix-wrapper {
-    background-color: var(--ns-fill);
+    background-color: var(--fill, var(--ns-fill));
     .ant-input::placeholder {
       color: var(--ns-neutral);
     }

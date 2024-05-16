@@ -87,6 +87,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       cancelText: props.cancelText || '取消',
       keyboard: true,
       mask: props.mask,
+      destroyOnClose: props.destroyOnClose,
       centered: props.centered,
       ...props.footer !== false ? {
         footer: slots.footer?.() || defaultFooter(),

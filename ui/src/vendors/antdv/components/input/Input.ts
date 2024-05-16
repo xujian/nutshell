@@ -2,11 +2,8 @@ import { h } from 'vue'
 import { Input as AntInput } from 'ant-design-vue'
 import { defineComponent } from 'vue'
 import { inputProps, inputEmits } from '../../../../components/input'
-import { FullValidationRule } from '../../../../props/field'
-import { transformRules } from './rules'
 import { ChangeEvent } from 'ant-design-vue/es/_util/EventInterface'
 import { marginProps } from '../../../../utils/private/helpers'
-import { withModifiers } from 'vue'
 import { renderFormItem } from '../../utils'
 
 export type AntInputType =
@@ -74,6 +71,9 @@ export const Input = defineComponent({
                 emit('focus', props.modelValue)
               }
             },
+            {
+              prefix: slots.prepend
+            }
           ),
       )
   }

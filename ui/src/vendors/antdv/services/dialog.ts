@@ -57,6 +57,7 @@ function createDialog (options: DialogOptions, app: App) {
       'onUpdate:modelValue': (value: boolean) => {
         visible.value = value
       },
+      class: options.classes,
       okText: options.okText,
       mask: options.mask ?? true,
       footer: options.footer ?? true,

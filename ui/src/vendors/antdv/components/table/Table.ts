@@ -114,10 +114,17 @@ export const Table = defineComponent({
     }
 
     const openColumnControl = () => {
-      $n.dialog({
+      const a = $n.dialog({
         width: 250,
         component: NsTableColumnSelector,
         mask: false,
+        footer: false,
+        destroyOnClose: true,
+        classes: ['ns-table-column-control-dialog'],
+        onCancel: (): undefined => {
+          document.querySelector('.ns-table-column-control-dialog')?.remove()
+          console.log(state.visibleColumns, 'state.visibleColumns')
+        },
         props: {
           columns: props.columns?.filter(column =>
             column.name !== 'checkbox'

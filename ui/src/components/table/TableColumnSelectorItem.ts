@@ -16,6 +16,10 @@ export const tableColumnSelectorItemProps = {
   hasHandler: {
     type: Boolean,
     default: () => true
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   }
 }
 
@@ -66,9 +70,9 @@ export const NsTableColumnSelectorItem = defineComponent({
       h(NsSwitch, {
         name: 'column',
         size: 'xs',
+        disabled: props.disabled,
         modelValue: props.selected,
         'onUpdate:modelValue': (value: boolean) => {
-          console.log('NsTableColumnSelectorItem switch on change===value', value, props)
           props.onChange?.(props.label)
         }
       })

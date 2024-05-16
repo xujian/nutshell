@@ -7,6 +7,8 @@ import { NsTableColumnSelectorItem } from './TableColumnSelectorItem'
 import { NsButton } from '../button'
 import { TableColumnDefinition } from './Table'
 import { TableColumnFixed } from '.'
+import { NsDivider } from '../divider'
+import { NsInput } from '../input'
 
 export const tableColumnSelectorProps = {
   columns: {
@@ -125,85 +127,124 @@ export const NsTableColumnSelector = defineComponent({
     }
 
     return () => {
-      const visibleList = h(VueDraggable, {
-        class: 'column-list',
-        modelValue: sortableItems.value,
-        'onUpdate:modelValue': reSortsortableItems,
-        animation: 150,
-      }, () => sortableItems.value?.map(
-        item => h(NsTableColumnSelectorItem, {
+      const visibleList = h(
+        VueDraggable,
+        {
+          class: 'column-list',
+          modelValue: sortableItems.value,
+          'onUpdate:modelValue': reSortsortableItems,
+          animation: 150
+        },
+        () =>
+          sortableItems.value?.map((item) =>
+            h(NsTableColumnSelectorItem, {
+              label: item.label,
+              selected: sortableItems.value.includes(item),
+              onChange: onSortableItemChange
+            })
+          )
+      )
+
+      const renderFixedItem = (item: TableColumnSelectorItem) =>
+        h(NsTableColumnSelectorItem, {
           label: item.label,
-          selected: sortableItems.value.includes(item),
-          onChange: onSortableItemChange,
+          hasHandler: false,
+          disabled: true,
+          selected: hiddenItems.value.findIndex((i) => i.label === item.label) === -1,
+          onChange: onFixedItemChange
+        })
+
+      const renderHiddenItem = (item: TableColumnSelectorItem) =>
+        h(NsTableColumnSelectorItem, {
+          label: item.label,
+          hasHandler: false,
+          selected: hiddenItems.value.findIndex((i) => i.label === item.label) === -1,
+          onChange: onHiddenItemChange
+        })
+
+      const topFixedList = h(
+          'div',
+          {
+            class: ['fiexed-list']
+          },
+          fixedItems.value.filter((i) => i.fixed === 'left').map(renderFixedItem)
+        ),
+        bottomFixedList = h(
+          'div',
+          {
+            class: ['fiexed-list']
+          },
+          fixedItems.value.filter((i) => i.fixed === 'right').map(renderFixedItem)
+        ),
+        hiddenList = h(
+          'div',
+          {
+            class: ['hidden-list']
+          },
+          hiddenItems.value.map(renderHiddenItem)
+        )
+
+      const onOk = () => {
+        const value = [
+          ...fixedItems.value.filter((i) => i.fixed == 'left'),
+          ...sortableItems.value,
+          ...fixedItems.value.filter((i) => i.fixed == 'right')
+        ].map((item) => item.label)
+        props['onUpdate:modelValue']?.(value)
+      }
+
+      const footer = h(
+        'div',
+        {
+          class: ['footer', 'row', 'justify-end']
+        },
+        h(NsButton, {
+          color: 'primary',
+          size: 'sm',
+          label: '确定',
+          onClick: onOk
         })
       )
-    )
 
-    const renderFixedItem = (item: TableColumnSelectorItem) => h(NsTableColumnSelectorItem, {
-      label: item.label,
-      hasHandler: false,
-      selected: hiddenItems.value.findIndex(i => i.label === item.label) === -1,
-      onChange: onFixedItemChange,
-    })
-
-    const renderHiddenItem = (item: TableColumnSelectorItem) => h(NsTableColumnSelectorItem, {
-      label: item.label,
-      hasHandler: false,
-      selected: hiddenItems.value.findIndex(i => i.label === item.label) === -1,
-      onChange: onHiddenItemChange,
-    })
-
-    const topFixedList = h('div', {
-          class: [
-            'fiexed-list',
-          ]
-        }, fixedItems.value
-          .filter(i => i.fixed === 'left')
-          .map(renderFixedItem)),
-      bottomFixedList = h('div', {
-          class: [
-            'fiexed-list',
-          ]
-        }, fixedItems.value
-          .filter(i => i.fixed === 'right')
-          .map(renderFixedItem)),
-      hiddenList = h('div', {
-          class: [
-            'hidden-list',
-          ]
-        }, hiddenItems.value.map(renderHiddenItem))
-
-    const onOk = () => {
-      const value = [
-        ...fixedItems.value.filter(i => i.fixed == 'left'),
-        ...sortableItems.value,
-        ...fixedItems.value.filter(i => i.fixed == 'right'),
-      ].map(item => item.label)
-      props['onUpdate:modelValue']?.(value)
-    }
-
-    const footer = h('div', {
-      class: [
-        'footer', 'row', 'justify-end'
-      ]
-    }, h(NsButton, {
-      color: 'primary',
-      size: 'sm',
-      label: '确定',
-      onClick: onOk
-    }))
-
-    return h('div', {
-        class: 'ns-table-column-control',
-      }, [
-        h('h3', {}, '可见字段'),
-        topFixedList,
-        visibleList,
-        bottomFixedList,
-        hiddenItems.value.length ? h('h3', {}, '隐藏字段') : null,
-        hiddenList,
-        footer
-      ])
+      return h(
+        'div',
+        {
+          class: 'ns-table-column-control'
+        },
+        [
+          h('div', { class: 'ns-table-column-control-header' }, [
+            h('span', { class: 'ns-table-column-control-header-tit' }, '设置表头显示字段'),
+            h(NsButton, {
+              label: '重置',
+              variant: 'plain',
+              color: 'primary'
+            })
+          ]),
+          h(
+            NsInput,
+            { placeholder: '搜索', fill: '#fff' },
+            {
+              prepend: () =>
+                h('i', {
+                  class: ['ns-icon', 'ns-icon-search']
+                })
+            }
+          ),
+          h(NsDivider, { fill: 'rgba(53, 53, 53, 0.2)' }),
+          topFixedList,
+          visibleList,
+          bottomFixedList,
+          hiddenItems.value.length
+            ? h(
+                NsDivider,
+                { fill: 'rgba(53, 53, 53, 0.2)', style: { 'font-size': '12px' } },
+                '隐藏字段'
+              )
+            : null,
+          hiddenList,
+          footer
+        ]
+      )
     }
   }
 })

@@ -35,6 +35,10 @@ export const dialogProps = {
     type: Boolean,
     default: true,
   },
+  destroyOnClose: {
+    type: Boolean,
+    default: false,
+  },
   ...useDesignProps(),
   ...useModelValuePropsForBoolean(),
   ...useDimensionProps(),

@@ -1,0 +1,61 @@
+.ns-table-column-control {
+  &-dialog {
+    min-width: 220px;
+    background: #fff;
+    border-radius: 8px;
+    position: fixed;
+    right: 20px;
+    top: 140px;
+    bottom: 0;
+    z-index: 1000;
+    box-shadow: -5px 0px 12px rgba(53, 53, 53, 0.1);
+    padding-bottom: 0;
+    .ant-modal-content {
+      height: 100%;
+    }
+    .ant-modal-body {
+      padding: 20px !important;
+    }
+    .ns-input {
+      margin-top: 10px;
+      margin-bottom: 0;
+      width: 100%;
+    }
+    .ant-form-item-control-input {
+      min-height: auto;
+    }
+    .ant-input-affix-wrapper {
+      padding-top: 0;
+      padding-bottom: 0;
+      height: 28px;
+      font-size: 12px;
+    }
+  }
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-tit {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  .ns-table-column-selector-item {
+    height: 32px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 0 15px;
+    font-size: 12px;
+    &:hover {
+      background: rgba(53, 53, 53, 0.05);
+    }
+  }
+  .sortable-chosen {
+    border-radius: 8px;
+    border: 1px dashed rgb(24, 144, 255);
+  }
+}
