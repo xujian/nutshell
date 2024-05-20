@@ -465,5 +465,44 @@
       "userIds": "1656195784527958017,1663496697578954753",
       "num": 1,
       "grade": 1
+  },
+  {
+    "id": "1663846600579088384",
+    "customerId": "1663083039644844032",
+    "name": "薪伊蓉",
+    "stage": "clue",
+    "phone": "{}",
+    "userId": "1562609610625388546",
+    "followerId": "1562609610625388546",
+    "inviteStart": 1694048400000,
+    "inviteEnd": 1694052000000,
+    "invitePlace": "深圳市南山区大冲国际商务中心",
+    "confirmStart": 1694048400000,
+    "confirmEnd": 1694052000000,
+    "submitUserId": "1555465543356526594",
+    "inputDate": "1685959382000",
+    "confirmUserId": "1555465543356526594",
+    "confirmDate": 1689058531000,
+    "userIds": "1590542980487454722",
+    "tags": [
+      {
+        "label": "微信",
+        "value": "WX"
+      },
+      {
+        "label": "有车",
+        "value": "YC"
+      },
+      {
+        "label": "有房",
+        "value": "YF"
+      },
+      {
+        "label": "本市户口",
+        "value": "BSHK"
+      }
+    ],
+    "num": 111,
+    "grade": 1
   }
 ]

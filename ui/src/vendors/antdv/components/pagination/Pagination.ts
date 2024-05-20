@@ -14,10 +14,10 @@ export const Pagination = (props: PaginationProps, ctx: SetupContext) => {
         // emit('change', page, pageSize)
       },
       // showSizeChanger: props.showSizeChanger,
-      // showQuickJumper: props.showQuickJumper,
+      showQuickJumper: props.jumpable,
       disabled: props.disabled,
       showTotal: (total: number) => `共${total}条`,
-      // pageSizeOptions: props.pageSizeOptions
+      pageSizeOptions: props.pageSizeOptions
     },
     () => ''
   )

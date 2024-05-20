@@ -8,15 +8,17 @@
         color: var(--ns-neutral);
       }
     }
-    .ant-pagination-item {
-      min-width: 24px;
-      height: 24px;
-      line-height: 22px;
-    }
     .ant-pagination-item-active {
+      background-color: var(--ns-primary);
+      border-color: var(--ns-primary);
       a {
-        color: var(--ns-neutral);
+        color: #fff;
       }
+    }
+    .ant-pagination-item {
+      // min-width: 24px;
+      // height: 24px;
+      // line-height: 22px;
     }
   }
 }

@@ -498,6 +498,7 @@ export const Table = defineComponent({
       }, () => columns),
       pagination = () => h(NsPagination, {
         class: [],
+        totalPages: rows.value?.length,
         ...props.paginationData,
         onChange: props.onPageChange,
       })

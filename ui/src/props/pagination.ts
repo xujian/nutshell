@@ -32,6 +32,6 @@ export const usePaginationProps = buildProps({
   },
   pageSizeOptions: {
     type: Array as PropType<string[]>,
-    default: undefined
+    default: ['10', '20', '50', '100']
   }
 })
