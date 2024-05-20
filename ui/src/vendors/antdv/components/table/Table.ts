@@ -293,22 +293,8 @@ export const Table = defineComponent({
                 }
               }
 
-              const headerTailOptionsIcon =
-                columnCount === columns.length -1
-                  ? h ('i', {
-                      class: [
-                        'icon',
-                        'icon-options',
-                        'clickable'
-                      ].join(' '),
-                      onClick: openColumnControl
-                    })
-                  : null,
-                // 显示 列操作 齿轮图标
-                shouldDisplayColumnOptionsIcon = props.hasColumnControl && columnCount === columns.length -1
-
               // custom column header slot
-              if (column?.slots?.hasOwnProperty('header') || shouldDisplayColumnOptionsIcon) {
+              if (column?.slots?.hasOwnProperty('header')) {
                 colummConfig.slots['header'] = ({columnIndex}) => {
                   return h('div', {
                       class: [
@@ -322,7 +308,7 @@ export const Table = defineComponent({
                       column: column.props,
                       columnIndex,
                     }),
-                    headerTailOptionsIcon
+                    ''
                   ])
                 }
               }
@@ -351,6 +337,37 @@ export const Table = defineComponent({
         result.push(node)
         columnCount ++
       }
+
+      if (props.hasColumnControl) {
+        const headerTailOptionsIcon = h ('i', {
+          class: [
+            'icon',
+            'icon-options',
+            'clickable'
+          ].join(' '),
+          style: {
+            display: 'block'
+          },
+          onClick: openColumnControl
+        })
+        result.push(
+          h(
+            VxeColumn,
+            {
+              fixed: 'right',
+              width: 35,
+              minWidth: 35,
+              headerClassName: 'ns-table-column-btn ns-table-column-btn-th',
+              className: 'ns-table-column-btn',
+            },
+            {
+              header: headerTailOptionsIcon,
+              content: ''
+            }
+          )
+        )
+      }
+
       return result
     }
 
