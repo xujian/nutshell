@@ -85,6 +85,8 @@ export const NsTableColumnSelector = defineComponent({
         item
       ].sort((a, b) => a.order - b.order)
       console.log('===hiddenItems.value', item, hiddenItems.value)
+
+      onOk()
     }
 
     // 隐藏字段改成可见
@@ -102,6 +104,8 @@ export const NsTableColumnSelector = defineComponent({
         ].sort((a, b) => a.order - b.order)
       }
       hiddenItems.value = hiddenItems.value.filter(i => i !== item)
+
+      onOk()
     }
 
     // 隐藏字段改成可见
@@ -112,6 +116,8 @@ export const NsTableColumnSelector = defineComponent({
         item
       ].sort((a, b) => a.order - b.order)
       fixedItems.value = fixedItems.value.filter(i => i !== item)
+
+      onOk()
     }
 
     // 拖动排序后的处理过程
@@ -124,6 +130,18 @@ export const NsTableColumnSelector = defineComponent({
         order: index * 100
       }))
       sortableItems.value = v
+
+      onOk()
+    }
+
+    // 排序、字段显示隐藏后均应该触发
+    function onOk() {
+      const value = [
+        ...fixedItems.value.filter((i) => i.fixed == 'left'),
+        ...sortableItems.value,
+        ...fixedItems.value.filter((i) => i.fixed == 'right')
+      ].map((item) => item.label)
+      props['onUpdate:modelValue']?.(value)
     }
 
     return () => {
@@ -184,15 +202,6 @@ export const NsTableColumnSelector = defineComponent({
           hiddenItems.value.map(renderHiddenItem)
         )
 
-      const onOk = () => {
-        const value = [
-          ...fixedItems.value.filter((i) => i.fixed == 'left'),
-          ...sortableItems.value,
-          ...fixedItems.value.filter((i) => i.fixed == 'right')
-        ].map((item) => item.label)
-        props['onUpdate:modelValue']?.(value)
-      }
-
       const footer = h(
         'div',
         {
@@ -230,19 +239,21 @@ export const NsTableColumnSelector = defineComponent({
                 })
             }
           ),
-          h(NsDivider, { fill: 'rgba(53, 53, 53, 0.2)' }),
-          topFixedList,
-          visibleList,
-          bottomFixedList,
-          hiddenItems.value.length
-            ? h(
-                NsDivider,
-                { fill: 'rgba(53, 53, 53, 0.2)', style: { 'font-size': '12px' } },
-                '隐藏字段'
-              )
-            : null,
-          hiddenList,
-          footer
+          h(NsDivider, { fill: 'rgba(53, 53, 53, 0.2)', }),
+          h('div', { class: 'ns-table-column-control-body fix-scrollbar' }, [
+            topFixedList,
+            visibleList,
+            bottomFixedList,
+            hiddenItems.value.length
+              ? h(
+                  NsDivider,
+                  { fill: 'rgba(53, 53, 53, 0.2)', style: { 'font-size': '12px', margin: '10px 15px' } },
+                  '隐藏字段'
+                )
+              : null,
+            hiddenList
+          ]),
+          // footer
         ]
       )
     }

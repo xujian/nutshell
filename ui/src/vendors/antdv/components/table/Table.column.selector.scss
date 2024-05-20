@@ -1,5 +1,8 @@
 .ns-table-column-control {
-  &-dialog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  &-dialog.ns-dialog {
     min-width: 220px;
     background: #fff;
     border-radius: 8px;
@@ -12,9 +15,30 @@
     padding-bottom: 0;
     .ant-modal-content {
       height: 100%;
+      .ant-modal-close {
+        top: -8px;
+        left: -8px;
+        background: rgba(208, 219, 230, 1);
+        border-radius: 50%;
+        &:hover {
+          background: rgba(208, 219, 230, 0.7);
+        }
+      }
+      span.ant-modal-close-x {
+        width: 16px;
+        height: 16px;
+        font-size: 13px;
+      }
+      .anticon-close svg {
+        --ns-stroke: #fff;
+      }
     }
     .ant-modal-body {
+      height: 100%;
       padding: 20px !important;
+    }
+    .dialog-content {
+      height: 100%;
     }
     .ns-input {
       margin-top: 10px;
@@ -40,14 +64,26 @@
       font-weight: 600;
     }
   }
+  &-body {
+    flex: 1;
+    overflow: auto;
+    margin-left: -15px;
+    margin-right: -15px;
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 7px;
+    }
+  }
   .ns-table-column-selector-item {
     height: 32px;
     line-height: 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-left: -15px;
-    margin-right: -15px;
     padding: 0 15px;
     font-size: 12px;
     &:hover {
