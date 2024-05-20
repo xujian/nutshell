@@ -122,7 +122,14 @@ export const useTableColumnProps = buildProps({
    */
   conditionalStyles: {
     type: Array as PropType<TableColumnConditionalStyleRule[]>,
-  }
+  },
+  /**
+   * 是否可拖动
+   */
+  resizable: {
+    type: Boolean,
+    default: false
+  },
 })
 
 const tableColumnProps = useTableColumnProps()

@@ -212,7 +212,7 @@ export const Table = defineComponent({
             align: column.props.align,
             headerAlign: column.props.headerAlign,
             sortable: column.props.sortable,
-            resizable: false,
+            resizable: column.props.resizable ??false,
             ...buildFilterConfig(column.props),
             fixed: column.props.fixed as VxeColumnPropTypes.Fixed,
             treeNode: column.props.tree,
