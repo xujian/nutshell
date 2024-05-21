@@ -2,7 +2,8 @@
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import dayjs from 'dayjs'
-import { NsDateRangeInput, type CryptoSecret, type TableFilterHandler } from '@uxda/nutshell'
+import { NsDateRangeInput, NsChips,
+  type CryptoSecret, type TableFilterHandler } from '@uxda/nutshell'
 
 const tableData = ref<any[]>([])
 
@@ -270,14 +271,19 @@ onMounted(() => {
       color="#ff8400" label="客户等级" width="150" />
     <ns-table-column field="userId" label="创建用户" width="120" />
     <ns-table-column-chips field="tags"
-      :editable-config="{
+      :editable="{
+        component: NsChips,
         options: allTags
       }"
       :overflow="false"
       @edit-complete="onColumnEditComplete"
       color="secondary"
       label="标签" width="300" />
-    <ns-table-column field="followerId" label="当前跟进用户" width="120" />
+    <ns-table-column
+      editable
+      field="followerId"
+      label="当前跟进用户"
+      width="140" />
     <ns-table-column-chip
       field="stage"
       width="100"

@@ -21,6 +21,29 @@ export type TableColumnFilterSettings = {
   model: Ref,
 }
 
+export type TableColumnEditableMode = 'input' | 'number-input' | 'date-input' | 'select' | 'multiple-select'
+
+// 格内编辑
+// 1. 缺省情形 文本输入框
+// 2. 使用 mode 指定 下拉选择单选/多选/时间日期输入/数字输入
+
+export type TableColumnEditableChange = {
+  row: Record<string, any>,
+  field: string,
+  value: string | number
+}
+
+/**
+ * 格内编辑配置
+ */
+export type TableColumnEditable = {
+  component: TableColumnEditableMode | VNode | (() => VNode),
+  props?: any,
+  // 负责提供给下拉菜单的选项
+  options?: UniDataItem[] | Ref<UniDataItem[]>,
+  onChange?: (params: TableColumnEditableChange) => void
+}
+
 /**
  * 单元格条件样式规则
  */
@@ -100,14 +123,16 @@ export const useTableColumnProps = buildProps({
     type: Boolean,
     default: false
   },
+  /**
+   * 单元格可编辑
+   */
   editable: {
-    type: Boolean,
-    default: false
+    type: [Boolean, String, Object] as PropType<boolean | TableColumnEditableMode | TableColumnEditable>,
   },
-  editData: {
-    type: Array as PropType<UniDataItem[]>,
-    default: []
-  },
+  // editData: {
+  //   type: Array as PropType<UniDataItem[]>,
+  //   default: []
+  // },
   borders: {
     type: String as PropType<Borders>,
   },
@@ -136,12 +161,17 @@ const tableColumnProps = useTableColumnProps()
 
 export type TableColumnEmits = {
   click: ({ value, row, rowIndex }: TableColumnData) => void
-  change: (value: string[]) => void
+  /**
+   * 用于可编辑列
+   * @param params
+   * @returns
+   */
+  change: (params: TableColumnEditableChange) => void
 }
 
 const emits: TableColumnEmits = {
   click: ({ value, row, rowIndex }: TableColumnData) => void 0,
-  change: (value: string[]) => void 0
+  change: (params: TableColumnEditableChange) => void 0
 }
 
 /**

@@ -6,6 +6,8 @@ export const transformRules = (rules: FullValidationRule[]) => {
   if (!rules) return []
   const result: Rule[] = []
   rules.forEach(r => {
+    // NsInput 的校验规则与 Ant Design Vue 不一样
+    // 必填('required')是一个单独规则项
     if (r.name === 'required') {
       result.push({
         required: true,
@@ -15,12 +17,9 @@ export const transformRules = (rules: FullValidationRule[]) => {
     } else {
       result.push({
         validator (rule: any, value: string | string[]) {
-          if (!r?.required) {
-            if (typeof value === 'object' && !value.length) {
-              return Promise.resolve()
-            } else if (!value) {
-              return Promise.resolve()
-            }
+          // 未填写 不继续校验
+          if (!value) {
+            return Promise.resolve()
           }
           if (!r.method?.(value as string)) {
             return Promise.reject(r.message)
@@ -29,7 +28,6 @@ export const transformRules = (rules: FullValidationRule[]) => {
         },
         message: r.message,
         trigger: r.trigger ?? 'blur',
-        required: r?.required,
       })
     }
   })

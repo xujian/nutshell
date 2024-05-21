@@ -64,11 +64,11 @@ export const Input = defineComponent({
               onChange: (e: ChangeEvent) => {
                 emit('change', e.target.value)
               },
-              onBlur: (e: FocusEvent) => {
-                emit('blur', props.modelValue)
+              onBlur: (e) => {
+                emit('blur')
               },
               onFocus: (e: FocusEvent) => {
-                emit('focus', props.modelValue)
+                emit('focus')
               }
             },
             {

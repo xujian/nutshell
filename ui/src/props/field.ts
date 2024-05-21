@@ -145,6 +145,12 @@ const fieldProps = {
    */
   hint: {
     type: String
+  },
+  /**
+   * 组件内的浮层放在 document.body 内
+   */
+  popupDetatched: {
+    type: Boolean,
   }
 }
 

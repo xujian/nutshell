@@ -22,6 +22,11 @@
   <h3>合并单元格</h3>
   <p>&nbsp;</p>
   <story is-plain file="table/merge" />
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h3>单元格内编辑</h3>
+  <p>&nbsp;</p>
+  <story is-plain file="table/editable" />
 </template>
 
 <script lang="ts" setup>

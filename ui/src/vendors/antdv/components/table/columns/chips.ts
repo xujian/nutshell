@@ -1,6 +1,6 @@
 import { h, ref } from 'vue'
 import { UniDataItem } from '../../../../../shared'
-import { NsButton, NsChip, NsMultipleSelect, TableColumnChipsProps, TableColumnData } from '../../../../../components'
+import { NsButton, NsChip, NsChips, NsMultipleSelect, TableColumnChipsProps, TableColumnData } from '../../../../../components'
 import { NsEditable } from '../../../../../components/editable'
 
 /**
@@ -60,27 +60,30 @@ export default function chips (props: TableColumnChipsProps) {
             editable.value?.exitEdit()
           }
         })
-    return h(NsEditable, {
-          ref: editable,
-          class: [
-            'table-column-editable',
-          ]
-        }, {
-          display: () => h('div', {
-            class: 'editable-display-content'
-          }, items.map(item => chip(item, row))),
-          edit: () => h('div', {
-            class: [
-              'editable-display-content',
-              'row',
-              'align-center'
-            ]
-          }, [
-            select(),
-            okButton(),
-            cancelButton(),
-          ])
-        }
-      )
+    // return h(NsEditable, {
+    //       ref: editable,
+    //       class: [
+    //         'table-column-editable',
+    //       ]
+    //     }, {
+    //       display: () => h('div', {
+    //         class: 'editable-display-content'
+    //       }, items.map(item => chip(item, row))),
+    //       edit: () => h('div', {
+    //         class: [
+    //           'editable-display-content',
+    //           'row',
+    //           'align-center'
+    //         ]
+    //       }, [
+    //         select(),
+    //         okButton(),
+    //         cancelButton(),
+    //       ])
+    //     }
+    //   )
+    return h(NsChips, {
+      items
+    })
   }
 }

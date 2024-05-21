@@ -1,4 +1,4 @@
-import { selectProps } from '../../../../components/select'
+import { selectProps, NsMenu } from '../../../../components'
 import { defineComponent, h } from 'vue'
 import { Select as AntSelect } from 'ant-design-vue'
 import { SelectValue } from 'ant-design-vue/es/select'
@@ -14,6 +14,8 @@ export const Select = defineComponent({
     const {
       clearable, searchable
     } = props
+
+    console.log('===props.popupDetatched', props.popupDetatched)
 
     return () => renderFormItem({
         ...props,
@@ -33,16 +35,24 @@ export const Select = defineComponent({
         'onChange': (value: SelectValue) => {
           emit('change', value)
         },
+        /**
+         * 选项浮层插入到本地
+         * 某些场景(表格单元格内/对话框内)不允许将浮层插到 document.body
+         */
+        ...props.popupDetatched === false
+          ? { getPopupContainer: (me: any) => me.parentNode }
+          : {},
         placeholder: props.placeholder,
         popupClassName: 'ns-select-dropdown',
         disabled: props.disabled ?? false,
         optionFilterProp: 'label'
-      }, {
+      },
+      {
         suffixIcon: () => h('i', {
           class: [
             'arrow'
           ]
-        }, '▼')
+        }, '▼'),
       })
     )
   }

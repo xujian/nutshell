@@ -64,9 +64,9 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
       label,
       default: () => h(defaultSlot, { style: { flex: 1 } }),
       extra: slots.append
-        ? h('div', {
-          class: 'form-item-append'
-        }, slots.append())
+        ? () => h('div', {
+            class: 'form-item-append'
+          }, slots.append)
         : null
     }
   )

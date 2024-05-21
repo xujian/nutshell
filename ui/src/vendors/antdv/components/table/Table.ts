@@ -1,10 +1,14 @@
-import { SetupContext, computed, h,VNode, ref, reactive, defineComponent, getCurrentInstance } from 'vue'
+import { SetupContext, computed, h, VNode, ref, compile, reactive, defineComponent, getCurrentInstance, VueElement, VueElementConstructor, resolveComponent, CreateComponentPublicInstance, DefineComponent } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents } from 'vxe-table'
 import type { VxeTableInstance, Column, VxeTablePropTypes } from 'vxe-table'
-import type { CustomColumnFunctionalRender, TableColumnData, TableProps, CustomColumnSlots, TableColumnDefinition, TableColumnProps, TableFilterQuery, TableColumnFilterSettings } from '../../../../components'
-import { NsPagination, isCustomColumnSlots, tableProps, NsTableColumnSelector, tableEmits  } from '../../../../components'
+import type { CustomColumnFunctionalRender, TableColumnData, TableProps,
+    CustomColumnSlots, TableColumnDefinition, TableColumnProps,
+    TableFilterQuery, TableColumnFilterSettings,
+    TableColumnEditableMode,
+  } from '../../../../components'
+import { NsPagination, isCustomColumnSlots, tableProps, NsTableColumnSelector, tableEmits, NsInput, NsNumberInput, NsDateInput, NsSelect, NsMultipleSelect  } from '../../../../components'
 import columnCustomRenders from './columns'
-import { MarginProps, marginProps } from '../../../../utils'
+import { MarginProps, marginProps, pascalize } from '../../../../utils'
 import { useNutshell } from '../../../../framework'
 import { useRoute } from 'vue-router'
 import { Borders } from '../../../../props'
@@ -14,6 +18,7 @@ type ColumnConfig = {
   slots: {
     default?: (args: TableColumnData) => VNode,
     header?: (args: TableColumnData) => VNode,
+    edit?: (args: TableColumnData) => VNode,
   }
 }
 
@@ -101,7 +106,7 @@ export const Table = defineComponent({
       if (props.hiddenColumns?.length) {
         columnsNotHidden = columnsNotHidden.filter(c => !props.hiddenColumns?.includes(c.label))
       }
-    console.log('===columnsNotHidden', columnsNotHidden)
+    // console.log('===columnsNotHidden', columnsNotHidden)
     const columnsCached = columnsCacheKey
         ? localStorage.getItem(columnsCacheKey) || ''
         : '',
@@ -123,7 +128,7 @@ export const Table = defineComponent({
         classes: ['ns-table-column-control-dialog'],
         onCancel: (): undefined => {
           document.querySelector('.ns-table-column-control-dialog')?.remove()
-          console.log(state.visibleColumns, 'state.visibleColumns')
+          // console.log(state.visibleColumns, 'state.visibleColumns')
         },
         props: {
           columns: props.columns?.filter(column =>
@@ -149,6 +154,56 @@ export const Table = defineComponent({
 
 
     const fills: Record<string, string> = {}
+
+    const componentsNameMapping = {
+      input: NsInput,
+      'number-input': NsNumberInput,
+      'date-input': NsDateInput,
+      select: NsSelect,
+      'multiple-select': NsMultipleSelect,
+    }
+
+    const buildEditableInput = ({row, column}: TableColumnData) => {
+      const editable = column!.props.editable,
+        field = column!.props.field!
+      if (typeof editable === 'string' && editable.length) {
+        const input = componentsNameMapping[editable]
+        // @ts-ignore
+        return h(input, {
+          modelValue: row[field],
+          onChange: (value: any) => {
+            // editable 属性值是简写形式
+            // 需要在 ns-table-column 另外提供 @change 处理
+            row[field] = value
+            column?.props.onChange?.({row, field, value})
+            // vxeRef.value.clearEdit()
+          }
+        })
+      } else if (typeof editable === 'object') {
+        const c = editable.component
+        // @ts-ignore
+        const input = typeof c === 'string'
+        // @ts-ignore
+          ? componentsNameMapping[c]
+          : c
+        // @ts-ignore
+        return h(input, {
+          modelValue: row[field],
+          options: editable.options || [],
+          // popupDetached: false,
+          onChange: (value: any) => {
+            row[field] = value
+            editable.onChange?.({row, field, value})
+            // 有时间 onChange 写在 table column 上
+            column!.props.onChange?.({row, field, value})
+            // vxeRef.value.clearEdit()
+          }
+        })
+      }
+      return h(NsInput, {
+        modelValue: row[column!.props.field!]
+      })
+    }
 
     /**
      * 为 VxeTable 构造volumns
@@ -263,7 +318,8 @@ export const Table = defineComponent({
                   return h('div', {
                       class: [
                         'table-column',
-                        `table-column-${column.name}`
+                        `table-column-${column.name}`,
+                        'fade-it'
                       ]
                     },
                     h(predefinedColumnRender, {
@@ -332,6 +388,20 @@ export const Table = defineComponent({
                 )
             }
           }
+        }
+        // 开始处理单元格内编辑
+        const editable = column.props.editable
+        if (editable !== false) {
+          // console.log('===COLUMN editable', column.props.label)
+          colummConfig.props.editRender = {}
+          // @ts-ignore
+          colummConfig.slots['edit'] = ({row}) =>
+            h('div',
+              {
+                class: ['table-column-editable']
+              },
+              buildEditableInput({row, column} as TableColumnData)
+            )
         }
         const node = h(VxeColumn, colummConfig.props, colummConfig.slots)
         result.push(node)
@@ -482,10 +552,15 @@ export const Table = defineComponent({
         loading: props.loading,
         columnConfig: {
           useKey: true,
-          resizable: true
+          resizable: false
         },
         editConfig: {
-          mode: 'row'
+          trigger: 'click',
+          // 选单元格内编辑模式
+          mode: 'cell',
+          // 自动清除编辑状态
+          autoClear: true,
+          showIcon: false,
         },
         checkboxConfig: {
           checkStrictly: props.treeConfig?.checkStrictly

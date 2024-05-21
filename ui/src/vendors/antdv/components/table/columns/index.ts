@@ -11,6 +11,7 @@ import { CustomColumnRender } from '../../../../../components/table/TableColumn'
 
 const columnCustomRenders: Record<string, CustomColumnRender> = {
   chip,
+  // @ts-ignore
   chips,
   // @ts-ignore
   rating,

@@ -31,35 +31,49 @@ export const NumberInput = defineComponent({
             class: props.classes,
             maxlength: props.maxlength ?? 20,
             disabled: props.disabled ?? false,
+            // @ts-ignore
             value: props.modelValue,
             placeholder: props.placeholder,
             max: props.max ?? Infinity,
             min: props.min ?? 0,
             step: props.step ?? 1,
             precision: props.precision,
+            // @ts-ignore
             formatter: props.precision === 0 ? null : props.formatter ?? amountFormatter,
+            // @ts-ignore
             parser: props.precision === 0 ? null : props.parser ?? amountParser,
-            valueModifiers: {
-              lazy: props.lazy
-            },
+            ...props.lazy
+              ? {
+                  valueModifiers: {
+                    lazy: true,
+                  }
+                }
+              : {},
+            // @ts-ignore
             'onUpdate:value': (value: string) => {
+              const val = props.modelModifiers?.trim ? value.trim() : value
+              props['onUpdate:modelValue']?.(val)
               nextTick(() => {
-                const val = props.modelModifiers?.trim ? value.trim() : value
-                props['onUpdate:modelValue']?.(val)
                 inputNumberRef.value?.focus()
               })
             },
-            onChange: (e: string | number) => {
-              emit('change', e)
+            onChange: (value?: string | number) => {
+              const val = value
+                ? +value
+                : void 0
+              emit('change', val)
             },
             onBlur: (e: FocusEvent) => {
-              emit('blur', props.modelValue)
+              e.preventDefault()
+              e.stopImmediatePropagation()
+              // emit('blur')
             },
             onFocus: (e: FocusEvent) => {
-              emit('focus', props.modelValue)
+              e.preventDefault()
+              e.stopImmediatePropagation()
+              // emit('focus')
             }
-          } as any,
-          {}
+          }
         ),
         props.hasDaxie
           ? h(

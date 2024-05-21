@@ -54,6 +54,7 @@ export type TableColumnSlot = VNode<
 
 export type TableColumnDefinition = {
   name?: string
+  field?: string,
   label: string,
   props: TableColumnProps
   slots?: VNodeNormalizedChildren
