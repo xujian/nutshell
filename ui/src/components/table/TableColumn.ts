@@ -128,6 +128,7 @@ export const useTableColumnProps = buildProps({
    */
   editable: {
     type: [Boolean, String, Object] as PropType<boolean | TableColumnEditableMode | TableColumnEditable>,
+    default: false,
   },
   // editData: {
   //   type: Array as PropType<UniDataItem[]>,

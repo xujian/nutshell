@@ -64,12 +64,16 @@ export type InputEmits = {
   change: (value?: string | number) => void
   blur: () => void
   focus: () => void
+  keyup: (code: string) => void
+  enter: () => void
 }
 
 export const inputEmits: InputEmits = {
   change: (value?: string | number) => {},
   blur: () => {},
-  focus: () => {}
+  focus: () => {},
+  keyup: (code: string) => {},
+  enter: () => {},
 }
 
 export type InputSlots = {

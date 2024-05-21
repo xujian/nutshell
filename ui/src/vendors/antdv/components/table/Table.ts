@@ -163,45 +163,59 @@ export const Table = defineComponent({
       'multiple-select': NsMultipleSelect,
     }
 
+    // 输出单元格内编辑的输入框
     const buildEditableInput = ({row, column}: TableColumnData) => {
       const editable = column!.props.editable,
-        field = column!.props.field!
+        field = column!.props.field!,
+        modelValue = row[field],
+        modelModifiers = {
+          lazy: true,
+        },
+        onChange = (value: any) => {
+          // 改变原值 (撤销编辑状态后单元格显示新值)
+          row[field] = value
+          // 如果 column 提供了 @change
+          column?.props.onChange?.({row, field, value})
+        },
+        onEnter = () => {
+          vxeRef.value.clearEdit()
+        }
       if (typeof editable === 'string' && editable.length) {
+        // editable="input"/"input-number" 简写形式
         const input = componentsNameMapping[editable]
         // @ts-ignore
         return h(input, {
-          modelValue: row[field],
-          onChange: (value: any) => {
-            // editable 属性值是简写形式
-            // 需要在 ns-table-column 另外提供 @change 处理
-            row[field] = value
-            column?.props.onChange?.({row, field, value})
-            // vxeRef.value.clearEdit()
-          }
+          modelValue,
+          modelModifiers,
+          onEnter,
+          onChange
         })
       } else if (typeof editable === 'object') {
+        // :editable="{}" 详写形式
         const c = editable.component
-        // @ts-ignore
         const input = typeof c === 'string'
-        // @ts-ignore
           ? componentsNameMapping[c]
           : c
-        // @ts-ignore
+          // @ts-ignore
         return h(input, {
-          modelValue: row[field],
+          modelValue,
+          modelModifiers,
           options: editable.options || [],
-          // popupDetached: false,
+          popupDetached: false,
+          onEnter,
           onChange: (value: any) => {
-            row[field] = value
+            onChange(value)
             editable.onChange?.({row, field, value})
-            // 有时间 onChange 写在 table column 上
-            column!.props.onChange?.({row, field, value})
-            // vxeRef.value.clearEdit()
           }
         })
       }
+      // :editable="true" 超简写形式 editable
+      // 缺省的编辑框是文本输入 NsInput
       return h(NsInput, {
-        modelValue: row[column!.props.field!]
+        modelValue,
+        modelModifiers,
+        onEnter,
+        onChange
       })
     }
 

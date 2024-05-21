@@ -64,14 +64,13 @@ export const NumberInput = defineComponent({
               emit('change', val)
             },
             onBlur: (e: FocusEvent) => {
-              e.preventDefault()
-              e.stopImmediatePropagation()
-              // emit('blur')
+              emit('blur')
             },
             onFocus: (e: FocusEvent) => {
-              e.preventDefault()
-              e.stopImmediatePropagation()
-              // emit('focus')
+              emit('focus')
+            },
+            onPressEnter: () => {
+              emit('enter')
             }
           }
         ),

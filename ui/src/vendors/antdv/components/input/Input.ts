@@ -69,6 +69,13 @@ export const Input = defineComponent({
               },
               onFocus: (e: FocusEvent) => {
                 emit('focus')
+              },
+              onKeyup: (e: KeyboardEvent) => {
+                console.log('===keyupupoupupup')
+                emit('keyup', e.key)
+              },
+              onPressEnter: (e: KeyboardEvent) => {
+                emit('enter')
               }
             },
             {

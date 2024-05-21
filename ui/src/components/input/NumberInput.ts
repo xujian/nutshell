@@ -50,12 +50,14 @@ export type NumberInputEmits = {
   change: (value?: number) => void
   blur: () => void
   focus: () => void
+  enter: () => void
 }
 
 export const numberInputEmits: NumberInputEmits = {
   change: (value?: number) => {},
   blur: () => {},
-  focus: () => {}
+  focus: () => {},
+  enter: () => {},
 }
 
 export type NumberInputProps = MakePropsType<typeof numberInputProps, NumberInputEmits>
