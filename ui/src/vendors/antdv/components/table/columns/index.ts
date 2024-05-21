@@ -2,6 +2,7 @@ import chip from './chip'
 import chips from './chips'
 import rating from './rating'
 import button from './button'
+import link from './link'
 import icon from './icon'
 import datetime from './datetime'
 import currency from './currency'
@@ -16,6 +17,7 @@ const columnCustomRenders: Record<string, CustomColumnRender> = {
   // @ts-ignore
   rating,
   button,
+  link,
   icon,
   datetime,
   currency,

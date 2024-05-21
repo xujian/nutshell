@@ -55,6 +55,39 @@
     }
     .vxe-body--column {
       height: var(--row-height, var(--vxe-table-row-height-default));
+      .table-column {
+        position: relative;
+      }
+      .edit {
+        position: absolute;
+        font-style: normal;
+        right: 0;
+        top: 0;
+        height: var(--vxe-table-row-line-height);
+        aspect-ratio: 1;
+        border: 0;
+        border-radius: 4px;
+        text-align: center;
+        background-color: #ffffff;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        &::after {
+          font-family: vxeiconfont !important;
+          content: "\e66e";
+          font-size: 12px;
+        }
+        &:hover {
+          background-color: #fff;
+        }
+      }
+      &:hover {
+        .edit {
+          display: flex;
+          opacity: 1;
+        }
+      }
     }
     &.border--default,
     &.border--none,
