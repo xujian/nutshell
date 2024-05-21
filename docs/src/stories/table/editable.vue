@@ -1,11 +1,12 @@
 <template>
   <ns-table ref="tableRef"
     :rows="balanceRows">
-    <ns-table-column
+    <ns-table-column-link
       editable
       field="科目名称"
       label="科目名称"
       width="600"
+      @click="onLinkClick"
       align="left" />
     <ns-table-column
       field="科目类型"
@@ -81,6 +82,10 @@ function load () {
 
 function onNumberInputChange ({row, field, value}) {
   console.log('===onNumberInputChange row column value', row, field, value)
+}
+
+function onLinkClick ({row}) {
+  console.log('===table column link click', row)
 }
 
 onMounted(() => {

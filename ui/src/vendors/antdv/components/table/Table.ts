@@ -81,9 +81,6 @@ export const Table = defineComponent({
       ...props.hasPagination ? ['table-has-pagination'] : []
     ]
 
-    // 改为使用从
-    // const tableRef = ref<VxeTableInstance | null>(null)
-
     // 用来处理复选框逻辑
     const selectionOptions = {
       field: '',
@@ -301,12 +298,20 @@ export const Table = defineComponent({
               // 输出 特定的 class 以便给单元格填色
               ...column.props.fill
                 ? [`fill-${columnCount}`]
+                : [],
+              ...column.props.editable !== false
+                ? ['editable']
                 : []
             ].join(' '),
           },
           slots: {}
         }
-        if (column.name) { // 带有 name 调用 columns/之下的渲染器
+        const editIcon = () => h('i', {
+          class: ['edit']
+        })
+        const field = column.props.field!
+        if (column.name) {
+          // 带有 name 调用 columns/之下的渲染器
           // 某些 column name 映射为 vxe table type
           // 例如 checkbox
           if (column.name in columnNameToTypeMapping) {
@@ -336,12 +341,16 @@ export const Table = defineComponent({
                         'fade-it'
                       ]
                     },
-                    h(predefinedColumnRender, {
-                      value: row[column.props.field!],
-                      row,
-                      rowIndex,
-                      columnIndex,
-                    }, column.slots || {}))
+                    [
+                      h(predefinedColumnRender, {
+                          value: row[field],
+                          row,
+                          rowIndex,
+                          columnIndex,
+                        }, column.slots || {}),
+                      column.props.editable !== false && editIcon()
+                    ]
+                  )
                 }
               }
             } else {
@@ -351,15 +360,20 @@ export const Table = defineComponent({
                   return h('div', {
                       class: [
                         'table-column',
+                        'table-column-custom',
                         `table-column-${column.name}`
                       ]
                     },
-                    h(predefinedColumnRender.content, {
-                      value: row[column.props.field!],
-                      row,
-                      rowIndex,
-                      columnIndex,
-                    }, column.slots || {}))
+                    [
+                      h(predefinedColumnRender.content, {
+                          value: row[field],
+                          row,
+                          rowIndex,
+                          columnIndex,
+                        }, column.slots || {}),
+                      column.props.editable !== false && editIcon()
+                    ]
+                  )
                 }
               }
 
@@ -400,6 +414,26 @@ export const Table = defineComponent({
                     }
                   })
                 )
+            }
+          }
+        } else {
+          // column.name == ''
+          // 没有渲染器
+          // 但是要输出
+          colummConfig.slots = {
+            default: ({row, rowIndex, columnIndex}) => {
+              return h('div', {
+                  class: ['table-column']
+                },
+                [
+                  h('div', {
+                    class: [
+                      'table-column-content'
+                    ]
+                  }, row[field]),
+                  column.props.editable !== false && editIcon()
+                ]
+              )
             }
           }
         }
@@ -451,7 +485,6 @@ export const Table = defineComponent({
           )
         )
       }
-
       return result
     }
 
