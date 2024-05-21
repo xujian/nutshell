@@ -1,7 +1,7 @@
 /**
  * 金额格式化
  */
-export function amountFormatter(value: string) {
+export function amountFormatter(value: number | string) {
   if (!value) return value
   return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }

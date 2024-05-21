@@ -1,7 +1,9 @@
-import { InputEmits, inputEmits } from './Input'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 import { FullValidationRule, ValidationRule, buildStyles, formatRules } from '../../props/field'
+import { PropType } from 'vue'
+
+export type NumberInputFormatter = (value: string | number) => string
 
 export const numberInputProps = {
   maxlength: {
@@ -21,7 +23,7 @@ export const numberInputProps = {
     type: Number
   },
   formatter: {
-    type: Function
+    type: Function as PropType<NumberInputFormatter>
   },
   parser: {
     type: Function
@@ -44,7 +46,19 @@ export const numberInputProps = {
   ...useFieldProps()
 }
 
-export type NumberInputProps = MakePropsType<typeof numberInputProps, InputEmits>
+export type NumberInputEmits = {
+  change: (value?: number) => void
+  blur: () => void
+  focus: () => void
+}
+
+export const numberInputEmits: NumberInputEmits = {
+  change: (value?: number) => {},
+  blur: () => {},
+  focus: () => {}
+}
+
+export type NumberInputProps = MakePropsType<typeof numberInputProps, NumberInputEmits>
 
 /**
  * 数字输入框 <ns-number-input>
@@ -52,7 +66,7 @@ export type NumberInputProps = MakePropsType<typeof numberInputProps, InputEmits
 export const NsNumberInput = define({
   name: 'NsNumberInput',
   props: numberInputProps,
-  emits: inputEmits,
+  emits: numberInputEmits,
   setup(props, ctx) {
     const finalRules = formatRules(props.rules as ValidationRule[], props)
     return {

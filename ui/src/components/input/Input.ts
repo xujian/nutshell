@@ -62,14 +62,14 @@ export const inputProps = {
 
 export type InputEmits = {
   change: (value?: string | number) => void
-  blur: (value?: string | number) => void
-  focus: (value?: string | number) => void
+  blur: () => void
+  focus: () => void
 }
 
 export const inputEmits: InputEmits = {
-  change: (value?: string | number) => void 0,
-  blur: (value?: string | number) => void 0,
-  focus: (value?: string | number) => void 0
+  change: (value?: string | number) => {},
+  blur: () => {},
+  focus: () => {}
 }
 
 export type InputSlots = {

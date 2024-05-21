@@ -37,11 +37,13 @@ export const selectProps = {
 }
 
 export type SelectEmits = {
-  change: (value: string | number) => void
+  change: (value: string | number) => void,
+  blur: () => void
 }
 
 const emits: SelectEmits = {
-  change: (value: string | number) => {}
+  change: (value: string | number) => {},
+  blur: () => {},
 }
 
 export type SelectProps = MakePropsType<typeof selectProps, SelectEmits>
