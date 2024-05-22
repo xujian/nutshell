@@ -27,6 +27,10 @@
   <p>&nbsp;</p>
   <story file="form/textarea" />
   <p>&nbsp;</p>
+  <h2>输入框组合</h2>
+  <p>&nbsp;</p>
+  <story file="form/input-group" />
+  <p>&nbsp;</p>
 </template>
 
 <script lang="ts" setup>

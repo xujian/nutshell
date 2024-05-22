@@ -1,6 +1,6 @@
 import { Form, Display } from './form'
 import { Input, DateInput, DateRangeInput, Textarea,
-  NumberInput, NumberRangeInput, MonthInput, YearInput } from './input'
+  NumberInput, NumberRangeInput, MonthInput, YearInput, InputGroup } from './input'
 import { Switch } from './switch'
 import { Empty } from './empty'
 import { Checkbox, CheckboxGroup } from './checkbox'
@@ -30,6 +30,7 @@ const components = {
   YearInput,
   Textarea,
   NumberInput,
+  InputGroup,
   Switch,
   Table,
   Dialog,

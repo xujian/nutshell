@@ -51,6 +51,13 @@ export const inputProps = {
     type: Boolean,
     default: false
   },
+  /**
+   * 显示清空按钮
+   */
+  clearable: {
+    type: Boolean,
+    default: true,
+  },
   lazy: {
     type: Boolean,
     default: true

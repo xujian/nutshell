@@ -52,6 +52,7 @@ export const Input = defineComponent({
               maxlength: props.maxlength ?? 50,
               showCount: props.hasCount ?? false,
               disabled: props.disabled ?? false,
+              allowClear: props.clearable,
               value: props.modelValue,
               placeholder: props.placeholder,
               valueModifiers: {

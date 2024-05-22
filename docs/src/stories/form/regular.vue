@@ -19,7 +19,7 @@
         <template #label>
           客户姓名
         </template>
-        </ns-input>
+      </ns-input>
       <ns-date-input
         v-model="formData.divorceDate"
         name="divorceDate"
