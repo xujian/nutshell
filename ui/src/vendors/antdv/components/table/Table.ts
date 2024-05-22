@@ -124,7 +124,6 @@ export const Table = defineComponent({
         destroyOnClose: true,
         classes: ['ns-table-column-control-dialog'],
         onCancel: (): undefined => {
-          document.querySelector('.ns-table-column-control-dialog')?.remove()
           // console.log(state.visibleColumns, 'state.visibleColumns')
         },
         props: {
