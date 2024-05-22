@@ -1,26 +1,18 @@
-import { PropType, ObjectEmitsOptions, SlotsType, useSlots } from 'vue'
+import { PropType, useSlots } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useModelValuePropsForInput, useLayoutProps } from '../../props'
-import { RadioProps } from './Radio'
+import { useFieldProps, useModelValuePropsForInput, useLayoutProps, useVariantProps } from '../../props'
 import { UniDataItem } from '../../shared'
+import { ValidationRule, buildStyles, formatRules } from '../../props/field'
 
 export const radioGroupProps = {
   ...useModelValuePropsForInput(),
-  name: {
-    type: String,
-  },
-  label: {
-    type: String
-  },
   items: {
     type: Array as PropType<UniDataItem[]>,
     default: []
   },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
+  ...useFieldProps(),
   ...useLayoutProps(),
+  ...useVariantProps(),
 }
 
 export type RadioGroupEmits = {
@@ -45,6 +37,8 @@ export const NsRadioGroup = define({
   props: radioGroupProps,
   emits: radioGroupEmits,
   setup (props, ctx) {
+    const rules = formatRules(props.rules as ValidationRule[], props)
+
     // 从子组件读取 items
     const { default: defaultSlot } = useSlots(),
       slots = defaultSlot && defaultSlot()
@@ -57,10 +51,13 @@ export const NsRadioGroup = define({
           label: slot.props?.label,
           value: slot.props?.value,
         }))
+
     return {
       props: {
+        style: buildStyles(props),
         // 这样写是为了避免用 undefine 覆盖掉原值 丢失 reactive
-        ...items && { items }
+        ...items && { items },
+        rules
       }
     }
   }

@@ -1,6 +1,6 @@
 .ns-radio-group {
-  display: inline-flex;
   .ant-radio-group {
+    flex-wrap: wrap;
     .ant-radio-wrapper {
       height: 2em;
       line-height: 2em;
@@ -8,11 +8,7 @@
       margin-right: 12px;
     }
   }
-  .radio-group-title {
-    line-height: 1.5em;
-    margin: 8px 0;
-    padding-right: 12px;
-    min-width: 100px;
-    text-align: right;
+  .ant-form-item-control-input {
+    background: transparent;
   }
 }

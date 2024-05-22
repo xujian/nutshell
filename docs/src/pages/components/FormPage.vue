@@ -14,6 +14,12 @@
     <ns-select name="clientLocation" v-model="validationFormDate.clientLocation"
       :options="cities"
       label="区域" :rules="['required']" />
+    <ns-radio-group v-model="validationFormDate.param" label="自定义参数" name="param" :rules="['required']">
+      <ns-radio value="1" label="客户姓名"></ns-radio>
+      <ns-radio value="2" label="手机号码"></ns-radio>
+      <ns-radio value="3" label="身份证号"></ns-radio>
+      <ns-radio value="4" label="单位名称"></ns-radio>
+    </ns-radio-group>
   </ns-form>
   <ns-button label="提交" @click="onFormSubmit"></ns-button>
   <p>&nbsp;</p>
@@ -43,6 +49,7 @@ const formRef = ref<any>(null)
 const validationFormDate = reactive({
   clientName: '',
   clientLocation: '',
+  param: ''
 })
 
 const cities = ref<any[]>([])
