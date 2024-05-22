@@ -22,6 +22,7 @@
     </ns-radio-group>
   </ns-form>
   <ns-button label="提交" @click="onFormSubmit"></ns-button>
+  <ns-button label="重置" @click="onFormReset"></ns-button>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h2>自定义校验方法</h2>
@@ -56,6 +57,10 @@ const cities = ref<any[]>([])
 
 const onFormSubmit = () => {
   formRef.value && formRef.value.validate()
+}
+
+const onFormReset = () => {
+  formRef.value && formRef.value.resetFields()
 }
 
 const onNameChange = (value: string) => {

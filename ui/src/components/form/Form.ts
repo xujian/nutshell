@@ -1,6 +1,7 @@
 import { PropType, ObjectEmitsOptions, SlotsType, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useVariantProps } from '../../props'
+import { NamePath } from 'ant-design-vue/es/form/interface'
 
 export const formProps = {
   name: {
@@ -37,6 +38,7 @@ export const NsForm = define({
   setup (props, ctx) {
     const vendorRef = ref()
 
+    // 触发表单验证
     function validate (): Promise<boolean> {
       return new Promise<boolean>((resolve, reject) => {
         vendorRef.value.validate().then((result: any) => {
@@ -47,9 +49,21 @@ export const NsForm = define({
       })
     }
 
+    // 表单重置
+    function resetFields (nameList?: NamePath[]) {
+      vendorRef.value.resetFields(nameList)
+    }
+
+    // 移除表单校验结果
+    function clearValidate (nameList?: NamePath[]) {
+      vendorRef.value.clearValidate(nameList)
+    }
+
     return {
       methods: {
-        validate
+        validate,
+        resetFields,
+        clearValidate
       },
       props: {
       },
