@@ -5,6 +5,7 @@ import { DialogOptions } from '../../../services/dialog'
 import { NsDialog } from '../../../components'
 import { CoreVendor } from '../../../shared/vendor'
 import type { AsyncComponentLoader } from 'vue'
+import { Modal } from 'ant-design-vue'
 
 
 function createDialog (options: DialogOptions, app: App) {
@@ -59,6 +60,7 @@ function createDialog (options: DialogOptions, app: App) {
       },
       class: options.classes,
       okText: options.okText,
+      destroyOnClose: options.destroyOnClose ?? true,
       mask: options.mask ?? true,
       footer: options.footer ?? true,
       onOk,

@@ -121,7 +121,6 @@ export const Table = defineComponent({
         component: NsTableColumnSelector,
         mask: false,
         footer: false,
-        destroyOnClose: true,
         classes: ['ns-table-column-control-dialog'],
         onCancel: (): undefined => {
           // console.log(state.visibleColumns, 'state.visibleColumns')
