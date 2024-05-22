@@ -13,6 +13,7 @@ import { useModelValuePropsForInput,
   buildDesignVariables,
 } from '../../props'
 import { Dimension } from '../../types'
+import { amountChinese } from '../../composables/amount'
 
 const arrowDown = '▼',
   arrowUp = '▲'
@@ -86,7 +87,13 @@ export const numberProps = {
   animated: {
     type: Boolean,
     default: false
-  }
+  },
+  /**
+   * 带有金额大写
+   */
+  hasDaxie: {
+    type: Boolean
+  },
 }
 
 export type NumberEmits = {
@@ -238,16 +245,25 @@ export const NsNumber = defineComponent({
       }
     })
 
-    return () => h('div', {
-      class: [
-        'ns-number',
-        `size-${props.size}`,
-        'column',
-      ],
-      style: styles,
-      ref: root,
-    }, [
-      content(),
-    ])
+    return () => [
+      h(
+        'div',
+        {
+          class: ['ns-number', `size-${props.size}`, 'column'],
+          style: styles,
+          ref: root
+        },
+        [content()]
+      ),
+      props.hasDaxie
+        ? h(
+            'div',
+            {
+              class: 'ns-number-amount'
+            },
+            amountChinese(Number(props.modelValue))
+          )
+        : null
+    ]
   }
 })

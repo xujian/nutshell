@@ -7,7 +7,8 @@
       <ns-display label="金额">
         <ns-number :model-value="1024"
           size="xs"
-          :minimumFractionDigits="2" />
+          :minimumFractionDigits="2"
+          hasDaxie />
       </ns-display>
       <ns-input
         name="name"
