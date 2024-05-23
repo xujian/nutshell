@@ -4,6 +4,7 @@
 .tippy-box {
   background-color: var(--ns-fill);
   color: var(--ns-text);
+  text-align: left;
   .tippy-content {
     padding: 1em;
   }
@@ -34,6 +35,11 @@
         border-right-color: var(--ns-fill);
       }
     }
+  }
+
+  .ns-popover-title {
+    font-size: 15px;
+    margin-bottom: 8px;
   }
 }
 

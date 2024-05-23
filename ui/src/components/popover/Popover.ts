@@ -71,8 +71,11 @@ export const NsPopover = defineComponent({
     return () => h('div', {
       class: ['ns-popover-content'],
       ref: contentRef,
-    }, {
-      default: slots.default
-    })
+    }, [
+      h('div', {
+        class: ['ns-popover-title'],
+      }, props.title),
+      slots.default?.()
+    ])
   }
 })
