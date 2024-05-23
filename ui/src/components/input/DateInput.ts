@@ -21,6 +21,9 @@ export const dateInputProps = {
     type: Boolean,
     default: true
   },
+  disabledTime: {
+    type: Function as PropType<(date: Dayjs) => {}>
+  },
   ...useFieldProps(),
   ...useVariantProps(),
 }

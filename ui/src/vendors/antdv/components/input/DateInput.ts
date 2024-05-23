@@ -53,6 +53,7 @@ export const DateInput = defineComponent({
             ctx.emit('change', value)
           },
           disabledDate: props.disabledDate,
+          disabledTime: props.disabledTime,
           disabled: props.disabled ?? false,
         })
     )
