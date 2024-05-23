@@ -2,8 +2,8 @@
   <ns-table :rows="records"
     :row-height="28"
     borders="all"
-    :mergingCells="mergingCells"
-    :mergingCellsMaster="mergingCellsMaster"
+    :merging="merging"
+    :mergingMaster="mergingMaster"
     :row-hoverable="false">
     <ns-table-column field="流水号" label="流水号" width="120" />
     <ns-table-column-datetime field="记账日期" label="记账日期" width="140" format="YYYY-MM-DD" />
@@ -31,25 +31,25 @@ import { NsTable, NsTableColumn,
 
 const records: Ref<any[]> = ref([])
 
-const mergingCellsColumns = ['流水号', '记账日期', '记账凭证号', '制单人', '复核人', '记账人']
+const mergingColumns = ['流水号', '记账日期', '记账凭证号', '制单人', '复核人', '记账人']
 
-const mergingCells = ref(mergingCellsColumns),
-  mergingCellsMaster = ref()
+const merging = ref(mergingColumns),
+  mergingMaster = ref()
 
 
 
 function mergeByValue () {
-  mergingCellsMaster.value = void 0
-  mergingCells.value = mergingCellsColumns
+  mergingMaster.value = void 0
+  merging.value = mergingColumns
 }
 
 function mergeByMaster () {
-  mergingCellsMaster.value = '流水号'
-  mergingCells.value = mergingCellsColumns
+  mergingMaster.value = '流水号'
+  merging.value = mergingColumns
 }
 
 function dontMerge () {
-  mergingCells.value = []
+  merging.value = []
 }
 
 function load () {

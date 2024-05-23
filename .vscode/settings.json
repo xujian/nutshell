@@ -55,7 +55,7 @@
       "quickInputList.focusBackground": "#ff009d",
       "quickInputTitle.background": "#ff0000",
       "quickInput.foreground": "#00ff73",
-      "input.background": "#060f3d",
+      "input.background": "#060f3d"
     }
   },
   "editor.semanticTokenColorCustomizations": {

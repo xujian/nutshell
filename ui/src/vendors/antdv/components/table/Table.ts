@@ -526,20 +526,20 @@ export const Table = defineComponent({
      * 合并行的规则配置
      */
     const spanMethod: VxeTablePropTypes.SpanMethod | undefined =
-      props.mergingCells && props.mergingCells.length > 0
+      props.merging && props.merging.length > 0
       // VxeTable 提供的行合并函数
       // 执行时机: 每一列的每一格
       ? ({row, _rowIndex, column, visibleData}) => {
-        const fields = props.mergingCells!,
+        const fields = props.merging!,
           field = column.field,
           value = row[field]
         if (value && fields.includes(field)) {
             let prevRow = visibleData[_rowIndex - 1],
               nextRow = visibleData[_rowIndex + 1]
-            const master = props.mergingCellsMaster
+            const master = props.mergingMaster
             if (master) {
-              // 按主列合并 mergingCellsMaster
-              const master = props.mergingCellsMaster!
+              // 按主列合并 mergingMaster
+              const master = props.mergingMaster!
               if (
                 prevRow &&
                   prevRow[master] === row[master] &&

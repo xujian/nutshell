@@ -204,7 +204,7 @@ export const tableProps = {
    * 多行的列合并为一行
    * 配置纵向合并单元格的规则
    */
-  mergingCells: {
+  merging: {
     type: Array as PropType<string[]>,
   },
   /**
@@ -212,7 +212,7 @@ export const tableProps = {
    * 合并单元格时按主列合并
    * 这个概念比较难理解
    */
-  mergingCellsMaster: {
+  mergingMaster: {
     type: String,
   }
 
