@@ -4,13 +4,22 @@ import { MakePropsType, define } from '../../utils'
 import { usePlatform } from '../../composables'
 import { FullValidationRule, ValidationRule, formatRules, useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 
+export type HasTimeType = Boolean | Object
+
 export const dateInputProps = {
   ...useModelValuePropsForInput(),
   disabledDate: {
     type: Function as PropType<(currentDate: Dayjs) => boolean>
   },
   hasTime: {
-    type: Boolean
+    type: Boolean as PropType<HasTimeType> | Object as PropType<HasTimeType>
+  },
+  format: {
+    default: 'YYYY-MM-DD'
+  },
+  hasNow: {
+    type: Boolean,
+    default: true
   },
   ...useFieldProps(),
   ...useVariantProps(),

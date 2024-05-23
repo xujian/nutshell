@@ -1,7 +1,7 @@
 import {h, ref, defineComponent, Ref, computed, toRaw} from 'vue'
 import { DatePicker } from 'ant-design-vue'
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
-import { dateInputProps } from '../../../../components'
+import { HasTimeType, dateInputProps } from '../../../../components'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import { FullValidationRule } from '../../../../props/field'
@@ -26,13 +26,16 @@ export const DateInput = defineComponent({
         ? dayjs(props.modelValue) || dayjs()
         : undefined
       )
+
     return () => renderFormItem(
       props, ctx.slots,
       () => h(DatePicker, {
           visible: visible.value,
           onClose: close,
           placeholder: props.placeholder,
-          showTime: props.hasTime,
+          showTime: props.hasTime as boolean,
+          showNow: props.hasNow,
+          format: props.format,
           locale,
           ...value.value
             ? { value: dayjs(value.value) }
@@ -43,7 +46,7 @@ export const DateInput = defineComponent({
               : (typeof value === 'string'
                   ? dayjs(value)
                   : value
-                ).format(!props.hasTime ? 'YYYY-MM-DD': 'YYYY-MM-DD  HH:mm:ss')
+                ).format(props.format)
             props['onUpdate:modelValue']?.(val)
           },
           onChange: (value: string | Dayjs, dateString: string) => {

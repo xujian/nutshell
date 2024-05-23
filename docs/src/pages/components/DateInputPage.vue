@@ -1,13 +1,17 @@
 <template>
   <h1 class="my-lg">日期输入框 &lt;ns-date-input&gt;</h1>
-  <h2 class="my-md">Variants</h2>
-  <ns-row class="variants" v-for="(variant) in variants" align="center" :key="variant">
-    <h4 class="variant-label">{{ variant }}</h4>
-    <ns-date-input name="registerDate" label="选择日期"
-      v-model="registerDate"
-      :variant="variant"
-      :rules="['required']" />
-  </ns-row>
+  <ns-date-input name="registerDate" label="选择日期"
+    v-model="registerDate"
+    :rules="['required']" />
+
+  <h1 class="my-lg">日期输入框带时间</h1>
+  <ns-date-input name="registerDate" label="选择日期"
+    :has-time="{
+      format: 'HH',
+    }"
+    format="YYYY-MM-DD HH"
+    v-model="registerDate"
+    :rules="['required']" />
 
   <h2 class="my-lg">日期区间输入框 &lt;ns-date-range-input&gt;</h2>
   <ns-date-range-input name="rangedDate" label="选择起止日期"
