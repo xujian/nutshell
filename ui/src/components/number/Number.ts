@@ -21,7 +21,9 @@ const arrowDown = '▼',
 export type Trend  = 'up' | 'down'
 
 export const numberProps = {
-  ...useModelValuePropsForInput(),
+  value: {
+    type: Number,
+  },
   prefix: {
     type: String,
   },
@@ -132,7 +134,7 @@ export const NsNumber = defineComponent({
     // [                         main ]
     // [              footer          ]
 
-    const finalValue = parseFloat(`${props.modelValue}` || '0'),
+    const finalValue = parseFloat(`${props.value}` || '0'),
       finalDisplay = finalValue.toLocaleString('en-US', {
         maximumFractionDigits: props.maximumFractionDigits,
         minimumFractionDigits: props.minimumFractionDigits,
@@ -261,7 +263,7 @@ export const NsNumber = defineComponent({
             {
               class: 'ns-number-amount'
             },
-            amountChinese(Number(props.modelValue))
+            amountChinese(Number(props.value))
           )
         : null
     ]

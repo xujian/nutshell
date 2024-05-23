@@ -8,7 +8,7 @@
       justify="center"
       border-color="secondary"
       :animated="true"
-      v-model="value1" />
+      :value="value1" />
     <ns-number
       header="比特币实时总市值"
       suffix="美元"
@@ -20,7 +20,7 @@
       main-justify="end"
       :animated="true"
       foreground="#fff"
-      v-model="value2">
+      :value="value2">
       <template #footer>
         <div class="row align-center">
           <span>(刷新频率 1 分钟)</span>
@@ -37,7 +37,7 @@
       mainAlign="center"
       :auto-trend="true"
       :minimum-fraction-digits="2"
-      v-model="value3" />
+      :value="value3" />
     <ns-number
       header="本月活跃"
       suffix="%"
@@ -47,7 +47,7 @@
       mainAlign="center"
       :auto-trend="true"
       :minimum-fraction-digits="2"
-      v-model="value4" />
+      :value="value4" />
     <ns-number
       header="季度环比"
       suffix="%"
@@ -58,7 +58,7 @@
       trend="down"
       :minimum-fraction-digits="2"
       tooltip="数据存在1-2天延迟"
-      v-model="value5" />
+      :value="value5" />
   </div>
 </template>
 
