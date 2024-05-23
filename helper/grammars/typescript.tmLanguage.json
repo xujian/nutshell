@@ -1,0 +1,14 @@
+{
+  "scopeName": "source.ts",
+  "patterns": [
+    {
+      "include": "#console-log"
+    }
+  ],
+  "repository": {
+    "console-log": {
+      "match": "\\b(console\\.log)\\b",
+      "name": "debug.console-log.ts"
+    }
+  }
+}
