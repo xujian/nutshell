@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, onMounted, ref } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, onMounted, ref, computed } from 'vue'
 import { CountUp } from 'countup.js'
 // import { Odometer } from 'odometer'
 import { MakePropsType } from '../../utils'
@@ -120,6 +120,7 @@ export const NsNumber = defineComponent({
   props: numberProps,
   emits: numberEmits,
   setup (props, { slots }) {
+    console.log('===nsnumber setup', props.value)
 
     const root = ref<HTMLDivElement>(),
       digitsRef = ref<HTMLDivElement>()
@@ -134,19 +135,25 @@ export const NsNumber = defineComponent({
     // [                         main ]
     // [              footer          ]
 
-    const finalValue = parseFloat(`${props.value}` || '0'),
-      finalDisplay = finalValue.toLocaleString('en-US', {
-        maximumFractionDigits: props.maximumFractionDigits,
-        minimumFractionDigits: props.minimumFractionDigits,
-      })
+    const finalValue = computed(
+        () => parseFloat(`${props.value}` || '0')
+      ),
+      finalDisplay = computed(
+        () => isNaN(finalValue.value)
+          ? '-'
+          : finalValue.value.toLocaleString('en-US', {
+              maximumFractionDigits: props.maximumFractionDigits,
+              minimumFractionDigits: props.minimumFractionDigits,
+            })
+      )
 
     const digits = () => h('div', {
-        class: [
-          'digits',
-          'number'
-        ],
-        ref: digitsRef,
-      }, finalDisplay),
+          class: [
+            'digits',
+            'number'
+          ],
+          ref: digitsRef,
+        }, finalDisplay.value),
       prefix = () => h('div', {
         class: [
           'prefix'
@@ -160,9 +167,9 @@ export const NsNumber = defineComponent({
       trend = props.trend ||
         (
           props.autoTrend
-          ? finalValue > 0
+          ? finalValue.value > 0
             ? 'up'
-            : finalValue === 0
+            : finalValue.value === 0
               ? void 0
               : 'down'
           : void 0
@@ -240,7 +247,7 @@ export const NsNumber = defineComponent({
         makeTooltip(root.value!, props)
       }
       if (props.animated) {
-        const counter = new CountUp(digitsRef.value!, finalValue, {
+        const counter = new CountUp(digitsRef.value!, finalValue.value, {
           duration: 2
         })
         counter.start()
@@ -255,17 +262,19 @@ export const NsNumber = defineComponent({
           style: styles,
           ref: root
         },
-        [content()]
+        [
+          content(),
+          props.hasDaxie
+          ? h(
+              'div',
+              {
+                class: 'ns-number-amount'
+              },
+              amountChinese(Number(props.value))
+            )
+          : null
+        ]
       ),
-      props.hasDaxie
-        ? h(
-            'div',
-            {
-              class: 'ns-number-amount'
-            },
-            amountChinese(Number(props.value))
-          )
-        : null
     ]
   }
 })
