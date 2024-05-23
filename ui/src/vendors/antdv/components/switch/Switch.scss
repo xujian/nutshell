@@ -1,0 +1,17 @@
+.ns-switch {
+  &:not(.ant-switch-checked) {
+    background: #C4C4C4;
+  }
+  min-width: 36px;
+  height: 20px;
+  .ant-switch-handle {
+    top: 1px;
+    inset-inline-start: 1px;
+  }
+
+  &.ant-switch-small {
+    min-width: 24px;
+    height: 14px;
+    line-height: 14px;
+  }
+}
