@@ -22,7 +22,7 @@ export const dateInputProps = {
     default: true
   },
   disabledTime: {
-    type: Function as PropType<(date: Dayjs) => {}>
+    type: Function as PropType<(date: any) => {}>
   },
   ...useFieldProps(),
   ...useVariantProps(),

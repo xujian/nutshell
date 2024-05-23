@@ -27,6 +27,8 @@ export const DateInput = defineComponent({
         : undefined
       )
 
+    const format = typeof props.hasTime === 'boolean' ? 'YYYY-MM-DD HH:mm:ss' : props.format
+
     return () => renderFormItem(
       props, ctx.slots,
       () => h(DatePicker, {
@@ -35,7 +37,7 @@ export const DateInput = defineComponent({
           placeholder: props.placeholder,
           showTime: props.hasTime as boolean,
           showNow: props.hasNow,
-          format: props.format,
+          format: format,
           locale,
           ...value.value
             ? { value: dayjs(value.value) }
@@ -46,7 +48,7 @@ export const DateInput = defineComponent({
               : (typeof value === 'string'
                   ? dayjs(value)
                   : value
-                ).format(props.format)
+                ).format(format)
             props['onUpdate:modelValue']?.(val)
           },
           onChange: (value: string | Dayjs, dateString: string) => {
