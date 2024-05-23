@@ -39,9 +39,9 @@ export const NsForm = define({
     const vendorRef = ref()
 
     // 触发表单验证
-    function validate (): Promise<boolean> {
+    function validate (nameList?: NamePath[]): Promise<boolean> {
       return new Promise<boolean>((resolve, reject) => {
-        vendorRef.value.validate().then((result: any) => {
+        vendorRef.value.validate(nameList).then((result: any) => {
           resolve(true)
         }).catch((result: any) => {
           resolve(result.errorFields.length === 0)

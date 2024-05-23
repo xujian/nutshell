@@ -83,7 +83,6 @@ export const NsList = defineComponent({
         class: ['ns-empty']
       })
 
-    console.log('dfdfdfdfdf', props.hasNumbers)
     return () => h('div', {
       class: ['ns-list', 'r-md', 'flex', 'flex-col'],
     }, [
