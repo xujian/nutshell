@@ -1,12 +1,13 @@
 import { PropType, defineComponent, h, onMounted, ref } from 'vue'
 import Viewer from 'viewerjs'
 import { MakePropsType } from '../../utils'
-import { NsFile, File } from './File'
+import { NsFile } from './File'
+import { Media } from '../../types'
 import 'viewerjs/dist/viewer.min.css'
 
 export const filesProps = {
   items: {
-    type: Array as PropType<File[]>
+    type: Array as PropType<Media[]>
   }
 }
 
@@ -34,7 +35,7 @@ export const NsFiles = defineComponent({
     const me = ref<HTMLElement>(),
       viewer = ref()
 
-    const item = (item: File) => h(NsFile, {
+    const item = (item: Media) => h(NsFile, {
       class: [
         'files-item',
         `files-items-type-${item.type}`,

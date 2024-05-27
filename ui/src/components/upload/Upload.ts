@@ -1,9 +1,11 @@
 import { PropType, ObjectEmitsOptions, SlotsType, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDisplayProps, useModelValuePropsForArray, useModelValuePropsForStringArray } from '../../props'
-import type { File, FilesEmits } from '../files'
+import { Media } from '../../types'
 
-export type BeforeUploadMethod = ((file: File) => Promise<Blob>)
+export type BeforeUploadMethod = ((file: Media) => Promise<Blob>)
+
+export type UploadHandler = (file: Media) => Promise<Media>
 
 export const uploadProps = {
   /**
@@ -31,6 +33,7 @@ export const uploadProps = {
   },
   maxFileSize: {
     type: Number,
+    default: 30,
   },
   /**
    * 上传数量限制
@@ -49,17 +52,19 @@ export const uploadProps = {
   beforeUpload: {
     type: Function as PropType<BeforeUploadMethod>
   },
+  handler: {
+    type: Function as PropType<UploadHandler>
+  },
   ...useModelValuePropsForArray(),
   ...useDisplayProps(),
-  ...useModelValuePropsForStringArray
 }
 
 export type UploadEmits = {
-  complete: () => void
-} | FilesEmits
+  complete: (file: Media) => void
+}
 
 export const uploadEmits: UploadEmits = {
-  complete: () => void 0
+  complete: (file: Media) => {},
 }
 
 export type UploadSlots = {
@@ -77,7 +82,6 @@ export const NsUpload = define({
   props: uploadProps,
   emits: uploadEmits,
   setup (props, slots) {
-
     return {
     }
   }

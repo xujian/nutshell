@@ -28,6 +28,11 @@
       line-height: 1em;
     }
   }
+  .ns-file {
+    .icon-item {
+      background-color: var(--ns-fill);
+    }
+  }
   // 用于显示裁切面板的容器
   .extra {
     position: absolute;

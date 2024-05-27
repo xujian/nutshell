@@ -1,12 +1,12 @@
 import { PropType, ObjectEmitsOptions, SlotsType, ref, defineComponent, h, reactive } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useDisplayProps, useModelValuePropsForArray, useModelValuePropsForStringArray } from '../../props'
-import type { File, FilesEmits } from '../files'
 import { NsUpload } from './Upload'
 import Cropper from 'cropperjs'
 import throttle from 'lodash/throttle'
 import 'cropperjs/dist/cropper.css'
 import { NsButton } from '../button'
+import { Media } from '../../types'
 
 export const cropUploadProps = {
   /**
@@ -169,20 +169,20 @@ export const NsCropUpload = defineComponent({
      * 上传以前讲本地图片显示预览
      * 并且初始化 Cropper
      */
-    const makeImage = (file: File) => {
+    const makeImage = (file: Media) => {
       const reader = new FileReader()
       reader.onload = function (evt) {
         var base64 = evt.target?.result || ''
         url.value = base64 as string
       }
-      reader.readAsDataURL(file as unknown as Blob)
+      reader.readAsDataURL(file.blob as unknown as Blob)
     }
 
     return () => h(NsUpload, {
       name: props.name,
       label: props.label,
       modelValue: props.modelValue,
-      maxFileSize: props.maxFileSize,
+      maxFileSize: props.maxFileSize || 30,
       maxFiles: 1, // 仅允许上传一个文件(单一模式)
       multiple: false, // 不允许选取多个文件
       accept: 'image/jpeg, image/png',
@@ -190,7 +190,7 @@ export const NsCropUpload = defineComponent({
         'ns-crop-upload',
         ...extraOpen.value ? ['extra-open'] : []
       ],
-      beforeUpload (file: File) {
+      beforeUpload (file: Media) {
         // 拦截上传动作
         // 当 resolve 时恢复上传
         return new Promise<Blob>((resolve, reject) => {

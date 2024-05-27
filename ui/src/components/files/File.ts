@@ -1,16 +1,6 @@
 import { PropType, defineComponent, h } from 'vue'
 import { MakePropsType } from '../../utils'
-
-export type FileType =
-  'pdf' | 'image' | 'video' | 'file'
-
-export type File = {
-  id: string,
-  name: string,
-  type: FileType,
-  url?: string,
-  thumb?: string,
-}
+import { MediaType } from '../../types'
 
 export const fileProps = {
   id: {
@@ -21,7 +11,7 @@ export const fileProps = {
     require: true,
   },
   type: {
-    type: String as PropType<FileType>
+    type: String as PropType<MediaType>
   },
   url: {
     type: String,
@@ -70,7 +60,7 @@ function resolveFileName (name: string): FileName {
     }
 }
 
-export const extTypeMapping: Record<string, FileType> = {
+export const extTypeMapping: Record<string, MediaType> = {
   jpg: 'image',
   jpeg: 'image',
   pdf: 'pdf',
@@ -79,7 +69,7 @@ export const extTypeMapping: Record<string, FileType> = {
   mkv: 'video',
 }
 
-export function getFileType (name: string): FileType {
+export function getMediaType (name: string): MediaType {
   const { base, ext } = resolveFileName(name)
   return extTypeMapping[ext] || 'file'
 }
@@ -108,7 +98,7 @@ export const NsFile = defineComponent({
         h('i', { class: ['icon', 'icon-download'], onClick: () => emit('download', props.id)}),
       ]),
       icon = () => {
-        const type: FileType = props.type || getFileType(props.name!) || ''
+        const type: MediaType = props.type || getMediaType(props.name!) || ''
         return h('div', {
             class: [
               'icon-item',
