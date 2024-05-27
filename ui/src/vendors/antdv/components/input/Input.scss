@@ -20,8 +20,7 @@
       content: "";
       width: 16px;
       height: 16px;
-      left: 0;
-      top: 2px;
+      margin-top: 1px;
       background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="%23ff4d4f" stroke-width=".857"/><path d="M7.36 4.328l.236 5.268h.812l.237-5.268H7.359zm.636 5.873a.706.706 0 0 0-.523.206.656.656 0 0 0-.227.525c0 .206.072.381.227.525a.714.714 0 0 0 .523.216.813.813 0 0 0 .545-.206.718.718 0 0 0 .217-.535.68.68 0 0 0-.217-.525.737.737 0 0 0-.545-.206z" fill="%23ff4d4f"/></svg>') center no-repeat;
     }
     &::after {

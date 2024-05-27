@@ -60,7 +60,7 @@ export const inputProps = {
   },
   lazy: {
     type: Boolean,
-    default: true
+    default: false
   },
   ...useVariantProps(),
   ...useModelValuePropsForInput(),

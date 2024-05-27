@@ -1,4 +1,4 @@
-import { h } from 'vue'
+import { h, nextTick, ref } from 'vue'
 import { Input as AntInput } from 'ant-design-vue'
 import { defineComponent } from 'vue'
 import { inputProps, inputEmits } from '../../../../components/input'
@@ -41,12 +41,15 @@ export const Input = defineComponent({
   },
   emits: inputEmits,
   setup: (props, { emit, slots }) => {
+    const inputRef = ref()
+
     return () =>
       renderFormItem(
         props, slots,
         () => h(
             AntInput,
             {
+              ref: inputRef,
               class: props.classes,
               type: props.type as AntInputType,
               maxlength: props.maxlength ?? 50,
@@ -55,12 +58,19 @@ export const Input = defineComponent({
               allowClear: props.clearable,
               value: props.modelValue,
               placeholder: props.placeholder,
-              valueModifiers: {
-                lazy: props.lazy === false ? false : true
-              },
+              ...props.lazy
+              ? {
+                  valueModifiers: {
+                    lazy: true,
+                  }
+                }
+              : {},
               'onUpdate:value': (value: string) => {
                 const val = props.modelModifiers?.trim ? value.trim() : value
                 props['onUpdate:modelValue']?.(val)
+                nextTick(() => {
+                  inputRef.value?.focus()
+                })
               },
               onChange: (e: ChangeEvent) => {
                 emit('change', e.target.value)

@@ -1,7 +1,8 @@
 import { h } from 'vue'
-import { InputProps, InputType, NsInput } from './Input'
+import { InputProps, NsInput } from './Input'
+import { ValidationRule } from '../../props/field'
 
-const defaultProps: Partial<InputProps> = {
+const defaultProps = {
   maxlength: 11,
   rules: ['mobile']
 }
@@ -10,8 +11,13 @@ const defaultProps: Partial<InputProps> = {
  * 手机号输入框 <ns-mobile-input>
  */
 export const NsMobileInput = (props: InputProps) => {
+  const rules: ValidationRule[] = [
+    ...props.rules || [],
+    ...defaultProps.rules
+  ]
   return h(NsInput, {
-    ...defaultProps,
-    ...props
+    ...props,
+    maxlength: defaultProps.maxlength,
+    rules
   })
 }
