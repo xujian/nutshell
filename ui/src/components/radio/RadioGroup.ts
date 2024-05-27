@@ -36,6 +36,7 @@ export const NsRadioGroup = define({
   name: 'NsRadioGroup',
   props: radioGroupProps,
   emits: radioGroupEmits,
+  // @ts-ignore
   setup (props, ctx) {
     const rules = formatRules(props.rules as ValidationRule[], props)
 
