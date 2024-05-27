@@ -1,5 +1,5 @@
 .ns-button {
-  padding: 0 12px;
+  padding: 0 16px;
   &.nut-button {
     .nut-button__text {
       margin-left: 0; // fix nut-button style
@@ -25,6 +25,9 @@
       height: var(--ns-size-xl);
       padding: 0 48px;
     }
+  }
+  .nut-button--disabled {
+    opacity: 0.5;
   }
   .icon {
     width: 16px;
