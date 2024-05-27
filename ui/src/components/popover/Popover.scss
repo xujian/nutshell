@@ -6,7 +6,9 @@
   color: var(--ns-text);
   text-align: left;
   .tippy-content {
-    padding: 1em;
+    padding: 4px 10px;
+    max-width: 396px;
+    border-radius: 4px;
   }
   &[data-placement^='top'] {
     .tippy-arrow {
@@ -40,6 +42,7 @@
   .ns-popover-title {
     font-size: 15px;
     margin-bottom: 8px;
+    font-weight: 600;
   }
 }
 
