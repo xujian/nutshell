@@ -1,5 +1,5 @@
 import { Form, Display } from './form'
-import { Input, DateInput, DateRangeInput, Textarea,
+import { Input, DateInput, DateRangeInput, MonthRangeInput, Textarea,
   NumberInput, NumberRangeInput, MonthInput, YearInput, InputGroup } from './input'
 import { Switch } from './switch'
 import { Empty } from './empty'
@@ -25,6 +25,7 @@ const components = {
   Input,
   DateInput,
   DateRangeInput,
+  MonthRangeInput,
   MonthInput,
   NumberRangeInput,
   YearInput,

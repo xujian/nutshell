@@ -37,7 +37,8 @@ export * from './button-group'
 import { NsApp } from './app'
 import { NsButton } from './button'
 import { NsForm, NsDisplay } from './form'
-import { NsInput, NsDateInput, NsDateRangeInput, NsMobileInput,
+import { NsInput, NsDateInput, NsDateRangeInput, NsMonthRangeInput,
+  NsMobileInput,
   NsIdInput, NsTextarea, NsNumberInput, NsNumberRangeInput,
   NsMonthInput, NsYearInput } from './input'
 import { NsSwitch } from './switch'
@@ -77,6 +78,7 @@ const components = {
   NsInput,
   NsDateInput,
   NsDateRangeInput,
+  NsMonthRangeInput,
   NsMonthInput,
   NsYearInput,
   NsMobileInput,

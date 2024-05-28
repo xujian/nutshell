@@ -2,13 +2,12 @@ import {h, ref, defineComponent, computed, ComputedRef } from 'vue'
 import { RangePicker } from 'ant-design-vue'
 import 'dayjs/locale/zh-cn'
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN'
-import { DateRangeInputProps, dateRangeInputEmits, dateRangeInputProps } from '../../../../components'
+import { MonthRangeInputProps, monthRangeInputEmits, monthRangeInputProps } from '../../../../components'
 import { transformRules } from './rules'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import { FullValidationRule } from '../../../../props/field'
 import { renderFormItem } from '../../utils'
-import { DateRange } from '../../../../types'
 
 dayjs.locale('zh-cn')
 type DateValue = string | Dayjs
@@ -16,10 +15,10 @@ type DateValue = string | Dayjs
 /**
  * 使用 ant-designv-vue 实现日期区间输入框
  */
-export const DateRangeInput = defineComponent({
-  name: 'DateRangeInput',
-  props: dateRangeInputProps,
-  emits: dateRangeInputEmits,
+export const MonthRangeInput = defineComponent({
+  name: 'MonthRangeInput',
+  props: monthRangeInputProps,
+  emits: monthRangeInputEmits,
   setup: (props, { emit, slots }) => {
     const visible = ref(false)
     const open = () => {
@@ -47,6 +46,7 @@ export const DateRangeInput = defineComponent({
 
     return () => renderFormItem(props, slots, () => h(RangePicker, {
         ref: formItem,
+        picker: 'month',
         visible: visible.value,
         onClose: close,
         locale,

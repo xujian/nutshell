@@ -3,17 +3,19 @@ import { MakePropsType, define } from '../../utils'
 import { usePlatform } from '../../composables'
 import { useFieldProps, useVariantProps } from '../../props'
 import { formatRules, FullValidationRule, ValidationRule } from '../../props/field'
-import { DateAsStringOrNumber, DateRange } from '../../types'
+import { DateAsStringOrNumber } from '../../types'
 
-export const dateRangeInputProps = {
+export type MonthRange = [DateAsStringOrNumber, DateAsStringOrNumber]
+
+export const monthRangeInputProps = {
   modelValue: {
-    type: Array as unknown as PropType<DateRange>
+    type: Array as unknown as PropType<MonthRange>
   },
   'onUpdate:modelValue': {
     type: Function as PropType<(value: [string | undefined, string | undefined]) => void>
   },
   disabledDate: {
-    type: Function as PropType<(currentDate: DateRange) => boolean>
+    type: Function as PropType<(currentDate: MonthRange) => boolean>
   },
   ...useFieldProps(),
   ...useVariantProps(),
@@ -23,24 +25,24 @@ export const dateRangeInputProps = {
   }
 }
 
-export type DateRangeInputEmits = {
-  change: (value?: DateRange) => void
+export type MonthRangeInputEmits = {
+  change: (value?: [string | undefined, string | undefined]) => void
 }
 
-export const dateRangeInputEmits: DateRangeInputEmits = {
-  change: (value?: DateRange) => {}
+export const monthRangeInputEmits: MonthRangeInputEmits = {
+  change: (value?: [string | undefined, string | undefined]) => {}
 }
 
-export type DateRangeInputProps = MakePropsType<typeof dateRangeInputProps, DateRangeInputEmits>
+export type MonthRangeInputProps = MakePropsType<typeof monthRangeInputProps, MonthRangeInputEmits>
 
 
 /**
- * 时间区间输入框 <ns-date-range-input>
+ * 月份区间输入框 <ns-month-range-input>
  */
-export const NsDateRangeInput = define({
-    name: 'NsDateRangeInput',
-    props: dateRangeInputProps,
-    emits: dateRangeInputEmits,
+export const NsMonthRangeInput = define({
+    name: 'NsMonthRangeInput',
+    props: monthRangeInputProps,
+    emits: monthRangeInputEmits,
     setup (props, ctx) {
       const platform = usePlatform()
       const finalRules = formatRules(props.rules as ValidationRule[], props)

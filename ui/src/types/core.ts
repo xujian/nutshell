@@ -6,3 +6,6 @@ import { defineAsyncComponent } from 'vue'
  */
 export type ChildComponent = DefineComponent<any> | AsyncComponentLoader
 
+export type DateAsStringOrNumber = string | number | undefined
+
+export type DateRange = [DateAsStringOrNumber, DateAsStringOrNumber]
