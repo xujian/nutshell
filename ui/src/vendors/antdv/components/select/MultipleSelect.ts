@@ -39,6 +39,13 @@ export const MultipleSelect = defineComponent({
           maxTagCount: props.maxTags,
           optionFilterProp: 'label',
           tokenSeparators: [',']
+        },
+        {
+          suffixIcon: () => h('i', {
+            class: [
+              'arrow'
+            ]
+          }, '▼'),
         })
       )
   }

@@ -11,9 +11,12 @@ export const CascadingSelect = defineComponent({
 
     const { clearable, searchable } = props
 
+    const classes = ['ns-select', 'ns-cascading-select'].join(' ')
+
     return () => renderFormItem(props, ctx.slots,
       () =>
         h(AntCascader, {
+          class: classes,
           name: props.name,
           options: props.options,
           allowClear: clearable,
@@ -25,6 +28,13 @@ export const CascadingSelect = defineComponent({
           },
           popupClassName: 'ns-select-dropdown',
           disabled: props.disabled ?? false
+        },
+        {
+          suffixIcon: () => h('i', {
+            class: [
+              'arrow'
+            ]
+          }, '▼'),
         })
       )
   }

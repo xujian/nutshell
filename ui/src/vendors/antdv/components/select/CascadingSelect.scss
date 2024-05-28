@@ -1,11 +1,15 @@
 .ns-cascading-select {
-  &.ant-select {
+  .ant-select {
     .ant-select-selector {
       border-color: var(--ns-stroke);
       color: var(--na-text);
     }
     .ant-select-clear {
       border-radius: 6px;
+    }
+    .ant-select-arrow {
+      color: var(--ns-primary);
+      font-size: 8px;
     }
   }
 }
