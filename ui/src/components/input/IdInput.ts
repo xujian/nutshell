@@ -1,4 +1,4 @@
-import { h } from 'vue'
+import { SetupContext, h } from 'vue'
 import { InputProps, NsInput } from './Input'
 import { ValidationRule } from '../../props/field'
 
@@ -11,7 +11,7 @@ const defaultProps = {
 /**
  * 证件号输入框 <ns-id-input>
  */
-export const NsIdInput = (props: InputProps) => {
+export const NsIdInput = (props: InputProps, ctx: SetupContext) => {
   const rules: ValidationRule[] = [
     ...props.rules || [],
     ...defaultProps.rules
@@ -20,5 +20,5 @@ export const NsIdInput = (props: InputProps) => {
     ...props,
     maxlength: defaultProps.maxlength,
     rules
-  })
+  }, ctx.slots)
 }
