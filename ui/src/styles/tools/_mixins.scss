@@ -119,8 +119,7 @@ $alphas: (
       &.variant-plain {
         background-color: transparent;
         border-color: transparent;
-        // color: color.adjust($value, $lightness: +25%);
-        color: var(--ns-primary);
+        color: color.adjust($value, $lightness: 0);
         padding: 0;
         &:hover {
           color: color.adjust($value, $alpha: -0.3);
