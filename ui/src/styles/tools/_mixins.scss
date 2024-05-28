@@ -120,7 +120,6 @@ $alphas: (
         background-color: transparent;
         border-color: transparent;
         color: color.adjust($value, $lightness: 0);
-        padding: 0;
         &:hover {
           color: color.adjust($value, $alpha: -0.3);
           // background-color: #00000022;
