@@ -61,7 +61,7 @@
       //   border-color: var(--ns-accent);
       // }
       &:focus {
-        border-color: var(--ns-accent);
+        // border-color: var(--ns-accent);
         box-shadow: 0 0 2px 1px color-mix(in srgb, var(--ns-accent) 30%, transparent);
         outline: none;
       }
