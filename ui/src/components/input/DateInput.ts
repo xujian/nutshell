@@ -4,15 +4,10 @@ import { MakePropsType, define } from '../../utils'
 import { usePlatform } from '../../composables'
 import { FullValidationRule, ValidationRule, formatRules, useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 
-export type HasTimeType = Boolean | Object
-
 export const dateInputProps = {
   ...useModelValuePropsForInput(),
   disabledDate: {
     type: Function as PropType<(currentDate: Dayjs) => boolean>
-  },
-  hasTime: {
-    type: Boolean as PropType<HasTimeType> | Object as PropType<HasTimeType>
   },
   format: {
     default: 'YYYY-MM-DD'
@@ -23,6 +18,28 @@ export const dateInputProps = {
   },
   disabledTime: {
     type: Function as PropType<(date: any) => {}>
+  },
+  /**
+   * 显示时间栏
+   */
+  hasTime: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * 时间栏分钟步数
+   */
+  minuteStep: {
+    type: Number,
+    default: 1,
+  },
+  /**
+   * 时间栏的表示形式
+   * 可控制显示时:分:秒
+   */
+  timeFormat: {
+    type: String,
+    default: 'HH:mm' // 'HH' 表示只显示小时
   },
   ...useFieldProps(),
   ...useVariantProps(),

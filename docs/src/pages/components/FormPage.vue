@@ -34,6 +34,7 @@
   <p>&nbsp;</p>
   <story file="form/textarea" />
   <p>&nbsp;</p>
+  <p>&nbsp;</p>
   <h2>输入框组合</h2>
   <p>&nbsp;</p>
   <story file="form/input-group" />

@@ -1,12 +1,10 @@
 import {h, ref, defineComponent, Ref, computed, toRaw} from 'vue'
 import { DatePicker } from 'ant-design-vue'
 import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
-import { HasTimeType, dateInputProps } from '../../../../components'
+import { dateInputProps } from '../../../../components'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
-import { FullValidationRule } from '../../../../props/field'
 import { renderFormItem } from '../../utils'
-import { ChangeEvent } from 'ant-design-vue/es/_util/EventInterface';
 
 /**
  * Antdv DateInput
@@ -27,17 +25,20 @@ export const DateInput = defineComponent({
         : undefined
       )
 
-    const format = typeof props.hasTime === 'boolean' ? 'YYYY-MM-DD HH:mm:ss' : props.format
-
     return () => renderFormItem(
       props, ctx.slots,
       () => h(DatePicker, {
           visible: visible.value,
           onClose: close,
           placeholder: props.placeholder,
-          showTime: props.hasTime as boolean,
+          showTime: props.hasTime === true
+            ? {
+                format: props.timeFormat,
+                minuteStep: props.minuteStep,
+              }
+            : false,
           showNow: props.hasNow,
-          format: format,
+          format: props.format,
           locale,
           ...value.value
             ? { value: dayjs(value.value) }
@@ -48,7 +49,7 @@ export const DateInput = defineComponent({
               : (typeof value === 'string'
                   ? dayjs(value)
                   : value
-                ).format(format)
+                ).format(props.format)
             props['onUpdate:modelValue']?.(val)
           },
           onChange: (value: string | Dayjs, dateString: string) => {
