@@ -5,6 +5,23 @@ import { HttpInstance, HttpClientConfig,
   ResponseRaw,
 PagingParams} from './types'
 
+export type DownloadFileParams = {
+  data: string,
+  contentType: string,
+  fileName: string,
+}
+
+const downloadFile = ({data, contentType, fileName}: DownloadFileParams) => {
+  const blob = new Blob([data], { type: contentType })
+  const element = document.createElement('a')
+  const href = window.URL.createObjectURL(blob)
+  element.href = href
+  element.download = fileName
+  element.click()
+  element.remove()
+  window.URL.revokeObjectURL(href) // 主动释放
+}
+
 /**
  * Useage:
  * const $http = createHttp({
@@ -44,9 +61,15 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
       url: `${c.baseUrl}${c.url}`,
       data,
       headers: c.headers,
-      method: c.method,
+      method: c.method === HttpMethod.download || c.method === HttpMethod.stream
+        ? HttpMethod.get
+        : c.method,
+      ...c.method === HttpMethod.download || c.method === HttpMethod.stream
+        ? { responseType: 'blob' }
+        : {}
     }).then((raw: ResponseRaw) => {
       // 按顺序执行拦截器
+      const headers = raw.headers as any
       for (const interc of c.interceptors || []) {
         const r = interc(raw)
         if (r) {
@@ -55,6 +78,38 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
           reject('===INTERCEPTED===' + raw.status)
           return false
         }
+      }
+      const cd = headers.get('Content-Disposition') as string
+      if (cd) {
+        // 进入下载处理或 stream 处理
+        // 丛 http headers 获取 文件名/content-type
+        const [, fileName] = cd.split('filename='),
+          contentType = headers.get('Content-Type') as string
+        console.log('===c.method', contentType, fileName)
+        if (c.method === HttpMethod.download) {
+          downloadFile({
+
+            // @ts-ignore
+            data: raw.data,
+            contentType,
+            // contentType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel',
+            fileName: decodeURIComponent(fileName)
+          })
+          resolve({
+            file: fileName
+          } as T)
+        } else {
+          // 处理非下载的 stream 请求
+          // @ts-ignore
+          const blob = new Blob([raw.data], {
+            // type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8'
+            // type: 'application/vnd.ms-excel'
+            type: contentType
+          })
+          const file = new File([blob], 'm.xlsx')
+          resolve (file as T)
+        }
+        return
       }
       if (raw.data) {
         // 当用户配置含有 transforms 时, 使用用户提供的 transform
@@ -104,6 +159,40 @@ const post: HttpInstance['post'] = <T = ResponseData>(url: string, data: Request
 }
 
 /**
+ * 下载文件
+ */
+const download: HttpInstance['download'] = (url: string, data: RequestData) => {
+  return new Promise((resolve, reject) => {
+    request({
+      url,
+      data,
+      method: HttpMethod.download
+    }).then((rsp) => {
+      resolve()
+    }).catch(() => {
+      reject()
+    })
+  })
+}
+
+/**
+ * 获取文件流
+ */
+const stream: HttpInstance['stream'] = (url: string, data: RequestData) => {
+  return new Promise((resolve, reject) => {
+    request<File>({
+      url,
+      data,
+      method: HttpMethod.stream
+    }).then((file) => {
+      resolve(file)
+    }).catch(() => {
+      reject()
+    })
+  })
+}
+
+/**
  * 场景配置
  * 本地后台团队统一返回值外层
  */
@@ -132,6 +221,8 @@ export function createHttp (config: HttpClientConfig): HttpInstance {
   return {
     request,
     get,
-    post
+    post,
+    download,
+    stream
   }
 }

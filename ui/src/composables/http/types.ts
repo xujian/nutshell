@@ -39,6 +39,7 @@ export type HttpRequestConfig<D = RequestData> = {
   method?: HttpMethod,
   baseUrl?: string,
   headers?: HeaderData,
+  responseType?: string,
   data?: D,
 }
 
@@ -52,6 +53,7 @@ export type RequestData = Record<string, any>
  */
 export type ResponseRaw<T = ResponseData> = {
   status: number,
+  headers?: Record<string, string | number>,
   message: string,
   data: T
 }
@@ -59,12 +61,14 @@ export type ResponseRaw<T = ResponseData> = {
 /**
  * 拆箱之后前端拿到的数据
  */
-export type ResponseData = Record<string, any> | any[]
+export type ResponseData = Record<string, any> | any[] | undefined
 
 export type HttpInstance = {
   request<T = ResponseData>(config: HttpRequestConfig): Promise<T>
   get<T = ResponseData>(url: string, data?: RequestData): Promise<T>,
   post<T = ResponseData>(url: string, data?: RequestData): Promise<T>,
+  download(url: string, data?: RequestData): Promise<void>,
+  stream(url: string, data?: RequestData): Promise<File>,
 }
 
 /**
@@ -84,6 +88,8 @@ export enum HttpMethod {
   post = 'POST',
   put = 'PUT',
   delete = 'DELETE',
+  download = 'DOWNLOAD',
+  stream = 'STREAM'
 }
 
 export enum HttpError {
