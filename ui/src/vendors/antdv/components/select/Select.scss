@@ -12,6 +12,10 @@
     .ant-select-arrow {
       color: var(--ns-primary);
       font-size: 8px;
+      .arrow {
+        width: 8px;
+        height: 8px;
+      }
     }
   }
 }
@@ -22,7 +26,7 @@
       .ant-select-selector {
         border: none;
         background-color: transparent;
-        min-height: 30px;
+        min-height: 32px;
       }
     }
   }
