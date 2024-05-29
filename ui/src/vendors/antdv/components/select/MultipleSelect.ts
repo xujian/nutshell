@@ -45,7 +45,7 @@ export const MultipleSelect = defineComponent({
             class: [
               'arrow'
             ]
-          }, '▼'),
+          }, ''),
         })
       )
   }

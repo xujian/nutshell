@@ -52,7 +52,7 @@ export const Select = defineComponent({
           class: [
             'arrow'
           ]
-        }, '▼'),
+        }, ''),
       })
     )
   }

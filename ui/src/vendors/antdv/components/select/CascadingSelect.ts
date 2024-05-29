@@ -34,7 +34,7 @@ export const CascadingSelect = defineComponent({
             class: [
               'arrow'
             ]
-          }, '▼'),
+          }, ''),
         })
       )
   }

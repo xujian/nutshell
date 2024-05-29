@@ -5,6 +5,9 @@
   background-color: var(--ns-fill);
   color: var(--ns-text);
   text-align: left;
+  &[data-theme~=light]{
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+  }
   .tippy-content {
     padding: 4px 10px;
     max-width: 396px;
@@ -40,8 +43,8 @@
   }
 
   .ns-popover-title {
+    line-height: 40px;
     font-size: 15px;
-    margin-bottom: 8px;
     font-weight: 600;
   }
 }
