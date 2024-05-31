@@ -7,7 +7,8 @@ import 'viewerjs/dist/viewer.min.css'
 
 export const filesProps = {
   items: {
-    type: Array as PropType<Media[]>
+    type: Array as PropType<Media[]>,
+    default: []
   }
 }
 
@@ -51,9 +52,6 @@ export const NsFiles = defineComponent({
       ...item,
     })
 
-    const items = props.items || [],
-      slots = items.map(item)
-
     const initViewer = () => {
       viewer.value = new Viewer(me.value!, {
         container: document.body,
@@ -65,7 +63,7 @@ export const NsFiles = defineComponent({
           // 参数 image 是缩略图
           const id = image.getAttribute('data-id')
           if (!id) return image.src
-          const item = items.find((f: any) => f.id === id)
+          const item = props.items.find((f: any) => f.id === id)
           if (!item) return image.src
           return item.url
         }
@@ -81,6 +79,9 @@ export const NsFiles = defineComponent({
         'row',
         'justify-start'
       ]
-    }, slots)
+    },
+    {
+      default: () => props.items.map(item)
+    })
   }
 })

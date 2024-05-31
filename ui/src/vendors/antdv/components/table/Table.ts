@@ -1,12 +1,13 @@
-import { SetupContext, computed, h, VNode, ref, compile, reactive, defineComponent, getCurrentInstance, VueElement, VueElementConstructor, resolveComponent, CreateComponentPublicInstance, DefineComponent } from 'vue'
+import { SetupContext, computed, h, VNode, ref, reactive, defineComponent, getCurrentInstance } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents } from 'vxe-table'
-import type { VxeTableInstance, Column, VxeTablePropTypes } from 'vxe-table'
+import type { VxeTablePropTypes } from 'vxe-table'
 import type { CustomColumnFunctionalRender, TableColumnData, TableProps,
     CustomColumnSlots, TableColumnDefinition, TableColumnProps,
     TableFilterQuery, TableColumnFilterSettings,
     TableColumnEditableMode,
   } from '../../../../components'
-import { NsPagination, isCustomColumnSlots, tableProps, NsTableColumnSelector, tableEmits, NsInput, NsNumberInput, NsDateInput, NsSelect, NsMultipleSelect  } from '../../../../components'
+import { NsPagination, isCustomColumnSlots, tableProps, NsTableColumnSelector,
+  tableEmits, NsInput, NsNumberInput, NsDateInput, NsSelect, NsMultipleSelect  } from '../../../../components'
 import columnCustomRenders from './columns'
 import { MarginProps, marginProps, pascalize } from '../../../../utils'
 import { useNutshell } from '../../../../framework'
@@ -116,21 +117,21 @@ export const Table = defineComponent({
     }
 
     const openColumnControl = () => {
+      // 打开列控制浮窗
       const a = $n.dialog({
         width: 250,
+        closable: false,
         component: NsTableColumnSelector,
         mask: false,
         footer: false,
         classes: ['ns-table-column-control-dialog'],
-        onCancel: (): undefined => {
-          // console.log(state.visibleColumns, 'state.visibleColumns')
-        },
         props: {
           columns: props.columns?.filter(column =>
             column.name !== 'checkbox'
           ),
           modelValue: state.visibleColumns,
           'onUpdate:modelValue': (labels: string[]) => {
+            console.log('===labels', labels)
             state.visibleColumns = labels
             localStorage.setItem(columnsCacheKey, labels.join(','))
           }
@@ -280,6 +281,7 @@ export const Table = defineComponent({
             ...buildFilterConfig(column.props),
             fixed: column.props.fixed as VxeColumnPropTypes.Fixed,
             treeNode: column.props.tree,
+            editRender: {},
             ...column.props.description && {
               titlePrefix: {
                 content: column.props.description
@@ -438,16 +440,16 @@ export const Table = defineComponent({
         // 开始处理单元格内编辑
         const editable = column.props.editable
         if (editable !== false) {
-          // console.log('===COLUMN editable', column.props.label)
-          colummConfig.props.editRender = {}
-          // @ts-ignore
-          colummConfig.slots['edit'] = ({row}) =>
-            h('div',
+          // console.log('===COLUMN editable', column.props.label, column.props.editable)
+          // colummConfig.props.editRender = {}
+          colummConfig.slots['edit'] = function ({row}) {
+            return h('div',
               {
                 class: ['table-column-editable']
               },
               buildEditableInput({row, column} as TableColumnData)
             )
+          }
         }
         const node = h(VxeColumn, colummConfig.props, colummConfig.slots)
         result.push(node)
@@ -455,7 +457,7 @@ export const Table = defineComponent({
       }
 
       if (props.hasColumnControl) {
-        const headerTailOptionsIcon = h ('i', {
+        const headerTailOptionsIcon = () => h('i', {
           class: [
             'icon',
             'icon-options',
@@ -478,7 +480,6 @@ export const Table = defineComponent({
             },
             {
               header: headerTailOptionsIcon,
-              content: ''
             }
           )
         )
@@ -489,8 +490,6 @@ export const Table = defineComponent({
     const rows = computed(() => props?.rows?.map((row, rowIndex: number) => ({
       ...row,
     })))
-
-    let columns = buildFinalColumns()
 
     // 处理行选中事件
     const onSelectedChange: VxeTableEvents.CheckboxChange = (checked) => {
@@ -578,61 +577,65 @@ export const Table = defineComponent({
         }
       : void 0
 
-    const vxe = () => h(VxeTable, {
-        ref: vxeRef,
-        data: rows.value,
-        maxHeight: props.maxHeight,
-        rowHeight: props.rowHeight,
-        // columns: columns as ColumnsType,
-        rowConfig: {
-          useKey: true,
-          keyField: props.rowKey,
-          isHover: !props.rowHoverable === false,
-        },
-        treeConfig: {
-          transform: props.treeConfig?.enable,
-          rowField: 'id',
-          parentField: 'parentId'
-        },
-        loading: props.loading,
-        columnConfig: {
-          useKey: true,
-          resizable: false
-        },
-        editConfig: {
-          trigger: 'click',
-          // 选单元格内编辑模式
-          mode: 'cell',
-          // 自动清除编辑状态
-          autoClear: true,
-          showIcon: false,
-        },
-        checkboxConfig: {
-          checkStrictly: props.treeConfig?.checkStrictly
-        },
-        // 写死
-        // 所有筛选都是远端
-        filterConfig: {
-          remote: true,
-        },
-        onFilterChange,
-        showOverflow: props.overflow === true ? false : true,
-        scrollY: { enabled: true, gt: 20 },
-        onCheckboxChange: onSelectedChange,
-        onCheckboxAll: onSelectedChange,
-        tooltipConfig: {
-        },
-        border: border.value,
-        round: props.round,
-        // loading: loading,
-        // pagination: false,
-        // rowKey: props.rowKey,
-        // rowSelection,
-        spanMethod,
-        style: {
-          ...fills
-        }
-      }, () => columns),
+    const vxe = () => {
+      let columns = buildFinalColumns()
+      console.log('===---0---00---00---00---000', columns)
+      return h(VxeTable, {
+          ref: vxeRef,
+          data: rows.value,
+          maxHeight: props.maxHeight,
+          rowHeight: props.rowHeight,
+          // columns: columns as ColumnsType,
+          rowConfig: {
+            useKey: true,
+            keyField: props.rowKey,
+            isHover: !props.rowHoverable === false,
+          },
+          treeConfig: {
+            transform: props.treeConfig?.enable,
+            rowField: 'id',
+            parentField: 'parentId'
+          },
+          loading: props.loading,
+          columnConfig: {
+            useKey: true,
+            resizable: false
+          },
+          editConfig: {
+            trigger: 'click',
+            // 选单元格内编辑模式
+            mode: 'cell',
+            // 自动清除编辑状态
+            autoClear: true,
+            showIcon: false,
+          },
+          checkboxConfig: {
+            checkStrictly: props.treeConfig?.checkStrictly
+          },
+          // 写死
+          // 所有筛选都是远端
+          filterConfig: {
+            remote: true,
+          },
+          onFilterChange,
+          showOverflow: props.overflow === true ? false : true,
+          scrollY: { enabled: true, gt: 20 },
+          onCheckboxChange: onSelectedChange,
+          onCheckboxAll: onSelectedChange,
+          tooltipConfig: {
+          },
+          border: border.value,
+          round: props.round,
+          // loading: loading,
+          // pagination: false,
+          // rowKey: props.rowKey,
+          // rowSelection,
+          spanMethod,
+          style: {
+            ...fills
+          }
+        }, () => columns)
+      },
       pagination = () => h(NsPagination, {
         class: [],
         totalPages: rows.value?.length,
@@ -676,12 +679,15 @@ export const Table = defineComponent({
     vm.render = () => h('div', {
         class: classes,
         style: props.style,
-      }, [
-        vxe(),
-        props.hasPagination
-          ? pagination()
-          : null
-      ])
+      }, {
+          default: () => [
+            vxe(),
+            props.hasPagination
+              ? pagination()
+              : null
+          ]
+        }
+    )
 
     props.vendorRef!.value = {
       hideColumns,

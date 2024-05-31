@@ -15,6 +15,7 @@ export type DialogOptions = {
    * 透传给子组件的属性
    */
   props?: any,
+  closable?: boolean,
   width?: number,
   height?: number,
   fill?: Color,
