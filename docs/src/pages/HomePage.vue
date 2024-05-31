@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import ComplexTable from '@/components/ComplexTable.vue'
 import HomeHero from '@/components/HomeHero.vue'
 import LatestReleases from '@/components/LatestReleases.vue'
 // import { test } from 'virtual:test'
@@ -50,14 +49,13 @@ const items = ref<any>([
     <template #corner>
       <ns-chip label="政策1"></ns-chip>
     </template>
-    <complex-table />
   </ns-card>
   <p>&nbsp;</p>
   <div class="buttons">
     <ns-row v-for="(variant) in variants" :key="variant">
       <ns-button v-for="(color) in colors"
         :key="color"
-        :color="color" 
+        :color="color"
         :variant="variant" label="创建订单"></ns-button>
     </ns-row>
   </div>
