@@ -72,7 +72,7 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
         message: rule === 'required'
           ? props.placeholder || `请输入${props.label || ''}`
           : '格式错误',
-        trigger: 'blur'
+        trigger: props?.ruleTrigger || 'blur'
       })
     }
     if (typeof rule === 'function') {
@@ -80,7 +80,7 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
         name: 'function',
         method: rule,
         message: '格式错误',
-        trigger: 'blur'
+        trigger: props?.ruleTrigger || 'blur'
       })
     }
     if (typeof rule === 'object') {
@@ -111,6 +111,7 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
  * :name="[<form model field>, index, <child field>]"
  */
 export type FormItemName = string | [string, number, string]
+export type RuleTrigger = 'blur' | 'change' | ['change', 'blur']
 
 /**
  * 表单项共用属性
@@ -130,6 +131,9 @@ const fieldProps = {
    */
   rules: {
     type: Array as PropType<ValidationRule[]>
+  },
+  ruleTrigger: {
+    type: [String, Array] as PropType<RuleTrigger>
   },
   placeholder: {
     type: String,
