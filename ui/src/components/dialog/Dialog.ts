@@ -11,6 +11,10 @@ export const dialogProps = {
   okText: {
     type: String,
   },
+  closable: {
+    type: Boolean,
+    default: true
+  },
   okColor: {
     type: String as PropType<Color>,
   },
