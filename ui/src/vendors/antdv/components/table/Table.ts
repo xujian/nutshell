@@ -281,7 +281,9 @@ export const Table = defineComponent({
             ...buildFilterConfig(column.props),
             fixed: column.props.fixed as VxeColumnPropTypes.Fixed,
             treeNode: column.props.tree,
-            editRender: {},
+            editRender: {
+              enabled: false
+            },
             ...column.props.description && {
               titlePrefix: {
                 content: column.props.description
@@ -441,7 +443,9 @@ export const Table = defineComponent({
         const editable = column.props.editable
         if (editable !== false) {
           // console.log('===COLUMN editable', column.props.label, column.props.editable)
-          // colummConfig.props.editRender = {}
+          colummConfig.props.editRender = {
+            enabled: true
+          }
           colummConfig.slots['edit'] = function ({row}) {
             return h('div',
               {
