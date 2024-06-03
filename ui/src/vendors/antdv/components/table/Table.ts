@@ -5,6 +5,7 @@ import type { CustomColumnFunctionalRender, TableColumnData, TableProps,
     CustomColumnSlots, TableColumnDefinition, TableColumnProps,
     TableFilterQuery, TableColumnFilterSettings,
     TableColumnEditableMode,
+    PaginationProps,
   } from '../../../../components'
 import { NsPagination, isCustomColumnSlots, tableProps, NsTableColumnSelector,
   tableEmits, NsInput, NsNumberInput, NsDateInput, NsSelect, NsMultipleSelect  } from '../../../../components'
@@ -583,7 +584,7 @@ export const Table = defineComponent({
 
     const vxe = () => {
       let columns = buildFinalColumns()
-      console.log('===---0---00---00---00---000', columns)
+      // console.log('===---0---00---00---00---000', columns)
       return h(VxeTable, {
           ref: vxeRef,
           data: rows.value,
@@ -641,10 +642,13 @@ export const Table = defineComponent({
         }, () => columns)
       },
       pagination = () => h(NsPagination, {
-        class: [],
-        totalPages: rows.value?.length,
-        ...props.paginationData,
-        onChange: props.onPageChange,
+        class: [
+          'table-pagination'
+        ],
+        ...props.paging,
+        onChange: (value: number) => {
+          ctx.emit('pageChange', value)
+        }
       })
 
     const vm = getCurrentInstance() as any

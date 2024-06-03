@@ -11,8 +11,9 @@ import {
 import { define, MakePropsType } from '../../utils'
 import { TableColumnFixed, TableColumnProps } from './TableColumn'
 import { PaginationProps } from '../pagination'
-import { buildDesignVariables, useDesignProps, buildDesignClasses } from '../../props'
+import { buildDesignVariables, useDesignProps, buildDesignClasses, usePaginationProps } from '../../props'
 import { Color } from '../../composables/theme'
+import { PagingConfig, Paging } from 'src/composables'
 
 /**
  * 填充表格的数据
@@ -184,8 +185,8 @@ export const tableProps = {
   /**
    * 分页数据
    */
-  paginationData: {
-    type: Object as PropType<PaginationProps>,
+  paging: {
+    type: Object as PropType<Paging>,
   },
   /**
    * 可见列数据缓存到 local storage
@@ -214,8 +215,7 @@ export const tableProps = {
    */
   mergingMaster: {
     type: String,
-  }
-
+  },
 }
 
 
@@ -224,7 +224,9 @@ export type TableEmits = {
 }
 
 export const tableEmits: TableEmits = {
-  pageChange: (value: number) => void 0,
+  pageChange: (value: number) => {
+    return true
+  },
 }
 
 export type TableProps = MakePropsType<typeof tableProps, TableEmits>
