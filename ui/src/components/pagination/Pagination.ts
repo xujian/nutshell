@@ -3,7 +3,6 @@ import { MakePropsType, define } from '../../utils'
 import { useModelValuePropsForInput, usePaginationProps } from '../../props'
 
 export const paginationProps = {
-  ...useModelValuePropsForInput(),
   ...usePaginationProps(),
 }
 
@@ -11,8 +10,10 @@ export type PaginationEmits = {
   change: (value: number) => void
 }
 
-const paginationEmits: PaginationEmits = {
-  change: (value: number) => void 0,
+export const paginationEmits: PaginationEmits = {
+  change: (value: number) => {
+    return true
+  },
 }
 
 export type PaginationProps = MakePropsType<typeof paginationProps, PaginationEmits>

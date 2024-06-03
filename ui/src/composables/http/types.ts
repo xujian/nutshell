@@ -10,7 +10,7 @@ export type HttpClientConfig = {
    * 通常含有 JWT token 以及其他参数
    */
   headers?: HeaderParams,
-  paging?: Paging,
+  paging?: PagingConfig,
   /**
    * 拦截器组
    * 请求返回异常时进行一定的操作
@@ -140,22 +140,26 @@ export type PagingParams = {
   [key: string]: any,
 }
 
-export type PagingData = {
+/**
+ * 分页器的翻页状态
+ */
+export type Paging = {
   /**
-   * 页总数
+   * 当前页
    */
-  totalPages: number,
+  current: number,
   /**
    * 数据总数
    */
   total: number,
+  pageSize: number,
 }
 
 /**
  * Wrapped with Paging Data
  */
 export type WithPaging<T = ResponseData> = {
-  [K in keyof PagingData]: PagingData[K];
+  paging: Paging;
 } & {
   data: T;
 }
@@ -163,7 +167,7 @@ export type WithPaging<T = ResponseData> = {
 /**
  * 分页设置
  */
-export type Paging = {
+export type PagingConfig = {
   translate (params: PagingParams): any,
-  transform (resonse: any): PagingData,
+  transform (resonse: any): Paging,
 }

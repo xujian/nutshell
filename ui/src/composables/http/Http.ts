@@ -2,8 +2,8 @@ import omit from 'lodash/omit'
 import { HttpInstance, HttpClientConfig,
   HttpMethod, HttpRequestConfig,
   RequestData, ResponseData,
-  ResponseRaw,
-PagingParams} from './types'
+  ResponseRaw, PagingParams
+} from './types'
 
 export type DownloadFileParams = {
   data: string,
@@ -79,7 +79,7 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
           return false
         }
       }
-      const cd = headers.get('Content-Disposition') as string
+      const cd = headers?.get('Content-Disposition') as string
       if (cd) {
         // 进入下载处理或 stream 处理
         // 丛 http headers 获取 文件名/content-type
@@ -118,7 +118,7 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
         const response = clientConfig.transforms
           && clientConfig.transforms[c.url]
             ? clientConfig.transforms[c.url]?.(raw.data) as T
-            : data as T
+            : raw.data as T
         // 前端要求分页
         // 在 endpoints transform 之前格式化分页数据
         // 并拼装回原 raw 数据
@@ -128,7 +128,7 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
         resolve(
           paging
             ? {
-                ...paging,
+                paging,
                 data: response
               } as T
             : response

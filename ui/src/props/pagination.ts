@@ -1,16 +1,15 @@
 import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
-import { PaginationProps } from '../components'
 
 export const usePaginationProps = buildProps({
-  /**
-   * 自带分页
-   */
-  hasPagination: {
-    type: Boolean,
-    default: false,
+  current: {
+    type: Number,
+    default: 1,
   },
-  totalPages: {
+  /**
+   * 总条数
+   */
+  total: {
     type: Number,
     default: 1
   },
@@ -18,6 +17,9 @@ export const usePaginationProps = buildProps({
     type: Number,
     default: 20
   },
+  /**
+   * 可变更每页数据数
+   */
   pageSizeChangable: {
     type: Boolean,
     default: true
@@ -33,5 +35,9 @@ export const usePaginationProps = buildProps({
   pageSizeOptions: {
     type: Array as PropType<string[]>,
     default: ['10', '20', '50', '100']
+  },
+  autoHide: {
+    type: Boolean,
+    default: true,
   }
 })
