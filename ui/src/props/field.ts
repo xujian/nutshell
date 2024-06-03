@@ -192,7 +192,7 @@ export const buildFieldHint = (props: FieldProps) => {
     ],
     'data-hint': props.hint,
     ref: ref,
-  }, '?')
+  }, 'i')
   return withDirectives(h('div', {
       class: 'form-label row align-center'
     }, [
