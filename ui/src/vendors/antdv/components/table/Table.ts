@@ -633,6 +633,7 @@ export const Table = defineComponent({
           tooltipConfig: {
             showAll: true,
             enterable: true,
+            ...props.tooltipMethod ? {contentMethod: props.tooltipMethod} : {}
           },
           border: border.value,
           round: props.round,

@@ -216,6 +216,12 @@ export const tableProps = {
   mergingMaster: {
     type: String,
   },
+  /**
+   * 自定义 tooltip 显示内容
+   */
+  tooltipMethod: {
+    type: Function as PropType<(value: any) => string>
+  }
 }
 
 
