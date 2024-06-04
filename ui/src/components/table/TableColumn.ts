@@ -70,11 +70,11 @@ export const useTableColumnProps = buildProps({
   },
   align: {
     type: String as PropType<TableColumnAlign>,
-    default: 'center'
+    default: 'left'
   },
   headerAlign: {
     type: String as PropType<TableColumnAlign>,
-    default: 'center'
+    default: 'left'
   },
   /**
    * 列独立填色

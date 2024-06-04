@@ -266,6 +266,8 @@ export const Table = defineComponent({
           fills[`--column-fill-${columnCount}`] = column.props.fill
         }
 
+        const headerAlign = (column.props as any)['header-align'] || column.props.headerAlign
+
         // NsTableColumn 的属性 转换为-> VxeColumn 的属性
         const colummConfig: ColumnConfig = {
           props: {
@@ -276,7 +278,7 @@ export const Table = defineComponent({
             title: column.props.label,
             visible: column.props.hidden !== true,
             align: column.props.align,
-            headerAlign: column.props.headerAlign,
+            headerAlign,
             sortable: column.props.sortable,
             resizable: column.props.resizable ??false,
             ...buildFilterConfig(column.props),
@@ -292,6 +294,7 @@ export const Table = defineComponent({
             },
             // 给列头加上特定的 css class
             headerClassName: [
+              column.props.resizable ? 'resizable' : '',
               ...column.props.description ? ['has-description'] : [],
               // 输出 特定的 class 以便给单元格填色
               ...column.props.fill ? [`fill-${columnCount}`] : [],
@@ -387,7 +390,7 @@ export const Table = defineComponent({
                       class: [
                         'table-column-header',
                         `table-column-${column.name}`,
-                        'row', 'align-center', 'justify-between'
+                        'row', 'align-center', headerAlign === 'right' ? 'justify-end' : headerAlign === 'left' ? 'justify-start' : 'justify-center'
                       ]
                     }, [
                       // @ts-ignore
@@ -628,6 +631,8 @@ export const Table = defineComponent({
           onCheckboxChange: onSelectedChange,
           onCheckboxAll: onSelectedChange,
           tooltipConfig: {
+            showAll: true,
+            enterable: true,
           },
           border: border.value,
           round: props.round,

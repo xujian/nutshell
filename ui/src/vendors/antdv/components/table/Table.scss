@@ -162,6 +162,19 @@
         justify-content: center;
       }
     }
+    &:not(.resizable) {
+      .vxe-cell {
+        &::after {
+          position: absolute;
+          content: '';
+          right: 0;
+          top: 25%;
+          width: 1px;
+          height: 50%;
+          background: var(--ns-table-border-color, var(--ns-stroke));
+        }
+      }
+    }
   }
   .ant-form-item {
     margin-bottom: 0;
