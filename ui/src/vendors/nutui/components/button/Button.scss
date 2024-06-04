@@ -7,6 +7,27 @@
     &:not(.variant-plain):hover {
       box-shadow: 0 1px 2px var(--ns-primary--80);
     }
+    &.color-primary.variant-solid:hover, &.color-primary:not([class*="variant-"]):hover {
+      background-color: var(--ns-primary--10);
+    }
+    &.color-secondary.variant-solid:hover, &.color-secondary:not([class*="variant-"]):hover {
+      background-color: var(--ns-secondary--10);
+    }
+    &.color-accent.variant-solid:hover, &.color-accent:not([class*="variant-"]):hover {
+      background-color: var(--ns-accent--10);
+    }
+    &.color-neutral.variant-solid:hover, &.color-neutral:not([class*="variant-"]):hover {
+      background-color: var(--ns-neutral--10);
+    }
+    &.color-positive.variant-solid:hover, &.color-positive:not([class*="variant-"]):hover {
+      background-color: var(--ns-positive--10);
+    }
+    &.color-negtive.variant-solid:hover, &.color-negtive:not([class*="variant-"]):hover {
+      background-color: var(--ns-negtive--20);
+    }
+    &.color-warning.variant-solid:hover, &.color-warning:not([class*="variant-"]):hover {
+      background-color: var(--ns-warning--10);
+    }
   }
   &:not(.nut-button--round) {
     border-radius: var(--ns-border-radius-xs);
