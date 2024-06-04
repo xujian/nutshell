@@ -1,5 +1,5 @@
 import { h } from 'vue'
-import { InputNumber as AntInputNumber } from 'ant-design-vue'
+import { InputNumber as AntInputNumber, FormItemRest } from 'ant-design-vue'
 import { defineComponent } from 'vue'
 import { numberRangeInputProps, inputEmits } from '../../../../components/input'
 import { FullValidationRule } from '../../../../props/field'
@@ -66,31 +66,32 @@ export const NumberRangeInput = defineComponent({
           {}
         ),
         sepertor(),
-        h(
-          AntInputNumber,
-          {
-            class: props.classes,
-            disabled: props.disabled ?? false,
-            value: props.modelValue?.[1],
-            placeholder: props.placeholder,
-            max: Infinity,
-            min: 0,
-            step: 1,
-            precision: props.precision,
-            formatter: amountFormatter,
-            valueModifiers: {
-              lazy: props.lazy === false ? false : true
-            },
-            'onUpdate:value': (value: string | number) => {
-              props['onUpdate:modelValue']?.(getCurrentValue(value, 1))
-            },
-            onChange: (e: string | number) => {
-              // @ts-ignore
-              emit('change', getCurrentValue(e, 1))
-            },
-          } as any,
-          {}
-        )
+        h(FormItemRest, {}, {
+          default: () => h(AntInputNumber,
+            {
+              class: props.classes,
+              disabled: props.disabled ?? false,
+              value: props.modelValue?.[1],
+              placeholder: props.placeholder,
+              max: Infinity,
+              min: 0,
+              step: 1,
+              precision: props.precision,
+              formatter: amountFormatter,
+              valueModifiers: {
+                lazy: props.lazy === false ? false : true
+              },
+              'onUpdate:value': (value: string | number) => {
+                props['onUpdate:modelValue']?.(getCurrentValue(value, 1))
+              },
+              onChange: (e: string | number) => {
+                // @ts-ignore
+                emit('change', getCurrentValue(e, 1))
+              },
+            } as any,
+            {}
+          )
+        })
       ])
   }
 })
