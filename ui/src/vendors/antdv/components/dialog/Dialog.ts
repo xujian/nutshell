@@ -97,7 +97,10 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       },
       onOk,
       onCancel,
-    }, slots)
+    }, {
+      ...slots,
+      closeIcon: h('i', { class: 'ns-dailog-x'}, '×')
+    })
   },
   {
     name: 'AntdvDialogVendor',
