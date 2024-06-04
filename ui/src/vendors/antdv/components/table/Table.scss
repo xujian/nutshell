@@ -9,6 +9,8 @@
   --vxe-table-column-padding-default: var(--table-cell-padding);
   --vxe-table-border-radius: var(--border-radius, var(--ns-border-radius));
   --vxe-table-row-height-default: 40px;
+  --vxe-primary-color: var(--ns-primary);
+
   width: 100%;
   .vxe-table {
     border-color: var(--ns-table-border-color, var(--ns-stroke));
