@@ -62,7 +62,7 @@ function createDialog (options: DialogOptions, app: App) {
     name: 'NsDynamicDialog',
     setup: () => () => h(NsDialog, {
       title,
-      width: options.width,
+      width: options.width || 540,
       closable: options.closable === false ? false : true,
       centered: options.centered,
       modelValue: visible.value,

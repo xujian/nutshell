@@ -77,7 +77,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       open: props.modelValue,
       closable: props.closable === false ? false : true,
       title: props.title,
-      width: props.width,
+      width: props.width || 540,
       height: props.height,
       okText: props.okText || '确定',
       footer: props.footer === false
