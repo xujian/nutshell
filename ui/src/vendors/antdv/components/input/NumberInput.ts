@@ -35,7 +35,7 @@ export const NumberInput = defineComponent({
             value: props.modelValue,
             placeholder: props.placeholder,
             max: props.max ?? Infinity,
-            min: props.min ?? 0,
+            min: props.min ?? 0 - Infinity,
             step: props.step ?? 1,
             precision: props.precision,
             // @ts-ignore
@@ -50,8 +50,8 @@ export const NumberInput = defineComponent({
                 }
               : {},
             // @ts-ignore
-            'onUpdate:value': (value: string) => {
-              const val = props.modelModifiers?.trim ? value.trim() : value
+            'onUpdate:value': (value: string | null) => {
+              const val = value ?? void 0
               props['onUpdate:modelValue']?.(val)
               nextTick(() => {
                 inputNumberRef.value?.focus()
