@@ -36,10 +36,11 @@ export const useModelValuePropsForBoolean = buildProps({
 export const useModelValuePropsForInput = buildProps({
   modelValue: {
     type: [Number, String],
-    default: undefined
+    required: false,
+    default: void 0
   },
   'onUpdate:modelValue': {
-    type: Function as PropType<(value: number | string) => void>
+    type: Function as PropType<(value: number | string | undefined) => void>
   },
   modelModifiers: {
     type: Object as PropType<ModelModifiers>,
