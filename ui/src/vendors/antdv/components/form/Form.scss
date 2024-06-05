@@ -3,14 +3,13 @@
   border-radius: var(--ns-border-radius);
   display: inline-block;
   .ant-form-item-label {
-    min-width: 100px;
+    min-width: 120px;
     >label {
       display: inline-flex;
       align-items: center;
       border-color: transparent;
       border-width: 1px;
       border-style: solid;
-      min-width: 100px;
       text-align: right;
       min-height: 32px;
       padding-right: 8px;
