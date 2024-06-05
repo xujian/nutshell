@@ -25,6 +25,14 @@ export const fileProps = {
   hasName: {
     type: Boolean,
     default: true,
+  },
+  deletable: {
+    type: Boolean,
+    default: false
+  },
+  downloadable: {
+    type: Boolean,
+    default: false
   }
 }
 
@@ -35,9 +43,15 @@ export type FileEmits = {
 }
 
 const fileEmits: FileEmits = {
-  preview: (id?: string) => void 0,
-  delete: (id?: string) => void 0,
-  download: (id?: string) => void 0,
+  preview: (id?: string) => {
+    return true
+  },
+  delete: (id?: string) => {
+    return true
+  },
+  download: (id?: string) => {
+    return true
+  },
 }
 
 export type FileSlots = {
@@ -94,8 +108,12 @@ export const NsFile = defineComponent({
         }
       }, [
         h('i', { class: ['icon', 'icon-preview'], onClick: () => emit('preview', props.id)}),
-        h('i', { class: ['icon', 'icon-delete'], onClick: () => emit('delete', props.id)}),
-        h('i', { class: ['icon', 'icon-download'], onClick: () => emit('download', props.id)}),
+        props.deletable === true
+          ? h('i', { class: ['icon', 'icon-delete'], onClick: () => emit('delete', props.id)})
+          : null,
+        props.downloadable === true
+          ? h('i', { class: ['icon', 'icon-download'], onClick: () => emit('download', props.id)})
+          : null
       ]),
       icon = () => {
         const type: MediaType = props.type || getMediaType(props.name!) || ''
@@ -111,7 +129,7 @@ export const NsFile = defineComponent({
           'thumb-item',
         ],
         onClick: () => {
-          console.log('===props.id', props.id)
+          // console.log('===props.id', props.id)
           emit('preview', props.id)
         }
       }, [

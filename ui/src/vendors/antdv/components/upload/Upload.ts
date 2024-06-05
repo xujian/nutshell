@@ -64,6 +64,7 @@ export const Upload = defineComponent({
             ? h(NsFile, {
                 class: 'thumb',
                 hasName: false,
+                deletable: true,
                 ...fileList.value[0]
               })
             : null,

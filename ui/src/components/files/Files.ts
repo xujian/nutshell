@@ -9,6 +9,14 @@ export const filesProps = {
   items: {
     type: Array as PropType<Media[]>,
     default: []
+  },
+  deletable: {
+    type: Boolean,
+    default: false
+  },
+  downloadable: {
+    type: Boolean,
+    default: false
   }
 }
 
@@ -33,39 +41,52 @@ export const NsFiles = defineComponent({
   emits: filesEmits,
   setup (props, ctx) {
 
-    const me = ref<HTMLElement>(),
-      viewer = ref()
+    const me = ref<HTMLElement>()
+    let viewer: Viewer | null = null
 
-    const item = (item: Media) => h(NsFile, {
+    const getRealUrlFromId = (id?: string) => {
+      const item = props.items.find((f: any) => f.id === id)
+      return item!.url
+    }
+
+    const item = (item: Media, index: number) => h(NsFile, {
       class: [
         'files-item',
         `files-items-type-${item.type}`,
         'm-xs'
       ],
+      key: index,
+      deletable: props.deletable,
+      downloadable: props.downloadable,
       onDelete (id?: string) {
         console.log('===NsFile onDelete id', id)
       },
       onPreview (id?: string) {
-        console.log('===NsFile onPreview id', id)
-        // viewer.value.view()
+        const item = props.items.find(x => x.id === id)
+        if (!item) return
+        if (item.type === 'file') {
+          const index = props.items
+            .filter(x => x.type === 'image')
+            .findIndex(x => x.id === id)
+          viewer && viewer.view(index)
+        } else {
+          const url = getRealUrlFromId(id)
+          window.open(url)
+        }
       },
       ...item,
     })
 
     const initViewer = () => {
-      viewer.value = new Viewer(me.value!, {
+      viewer = new Viewer(me.value!, {
         container: document.body,
         navbar: false,
         toolbar: false,
         zoomable: false,
-        url (image: HTMLImageElement) {
-          // 查原图的 url
-          // 参数 image 是缩略图
-          const id = image.getAttribute('data-id')
-          if (!id) return image.src
-          const item = props.items.find((f: any) => f.id === id)
-          if (!item) return image.src
-          return item.url
+        transition: false,
+        url: (img: HTMLElement) => {
+          const id = img.getAttribute('data-id') as string
+          return getRealUrlFromId(id)
         }
       })
     }
