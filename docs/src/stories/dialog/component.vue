@@ -8,12 +8,12 @@
 
 <script lang="ts" setup>
 import { defineComponent, getCurrentInstance, h, reactive, ref } from 'vue'
-import { useNutshell, NsInput, NsForm } from '@uxda/nutshell'
+import { useNutshell, NsInput, NsForm, type DialogChildComponent } from '@uxda/nutshell'
 
 const $n = useNutshell()
 
 // 以下模拟一个 Vue 组件
-const ExcampleComponent = defineComponent({
+const ExcampleComponent: DialogChildComponent = defineComponent({
   name: 'ExamplecComponent',
   props: {
     label: {
@@ -28,10 +28,16 @@ const ExcampleComponent = defineComponent({
       }),
       formRef = ref<any>(null)
 
-    // 可以在 couldClose 返回 false 阻止对话框关闭
+    // 可以在 couldComplete 返回 false 阻止对话框关闭
     // 场景: 确定按钮需要确保内含的 form 完成输入校验
-    const couldClose = async () => {
+    const couldComplete = async () => {
       return formRef.value.validate()
+    }
+
+    // 阻止取消
+    const couldClose = async () => {
+      console.log('===dialog component couldClose')
+      return true
     }
 
     vm.render = () => h('div', {
@@ -41,18 +47,18 @@ const ExcampleComponent = defineComponent({
           modelValue: formData,
         },
         h(NsInput, {
-            name: 'name',
-            label: props.label,
-            modelValue: formData.name,
-            'onUpdate:modelValue': (v: string) => { formData.name = v},
-            rules: ['required']
-          })
-        )
+          name: 'name',
+          label: props.label,
+          modelValue: formData.name,
+          'onUpdate:modelValue': (v: string) => { formData.name = v},
+          rules: ['required']
+        }))
     )
 
     // component 需要实现的 API
     return {
-      couldClose
+      couldComplete,
+      couldClose,
     }
   }
 })

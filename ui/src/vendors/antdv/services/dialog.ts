@@ -41,8 +41,8 @@ function createDialog (options: DialogOptions, app: App) {
       visible.value = options.onOk(completeResult) === false
     } else if (typeof options.component !== 'function') {
       // 内嵌组件 可阻止弹窗关闭
-      Promise.resolve(contentRef.value.couldComplete?.()).then((couldClose: boolean) => {
-        visible.value = !(couldClose === true)
+      Promise.resolve(contentRef.value.couldComplete?.()).then((could: boolean) => {
+        visible.value = !(could === true)
       })
     } else {
       visible.value = false
