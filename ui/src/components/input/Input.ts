@@ -76,11 +76,21 @@ export type InputEmits = {
 }
 
 export const inputEmits: InputEmits = {
-  change: (value?: string | number) => {},
-  blur: () => {},
-  focus: () => {},
-  keyup: (code: string) => {},
-  enter: () => {},
+  change: (value?: string | number) => {
+    return true
+  },
+  blur: () => {
+    return true
+  },
+  focus: () => {
+    return true
+  },
+  keyup: (code: string) => {
+    return true
+  },
+  enter: () => {
+    return true
+  },
 }
 
 export type InputSlots = {

@@ -1,9 +1,9 @@
 <template>
-  <ns-card title="新建意向客户">
+  <ns-card fill="#fff">
     <ns-form
       name="client" variant="outlined" autocomplete="off"
       v-model="formData">
-      <h3 class="mt-xl mb-lg">基础信息</h3>
+      <h3 class="mb-md">基础信息</h3>
       <ns-display label="金额">
         <ns-number :model-value="1024"
           size="xs"
@@ -11,16 +11,14 @@
           hasDaxie />
       </ns-display>
       <ns-input
+        label="申请人姓名"
         name="name"
         v-model="formData.name"
+        @change="onNameChange"
         :rules="['required', {
           method: (v: string) => v?.length > 1,
           message: '最少两个字'
-        }]">
-        <template #label>
-          客户姓名
-        </template>
-      </ns-input>
+        }]" />
       <ns-date-input
         v-model="formData.divorceDate"
         name="divorceDate"
@@ -38,7 +36,7 @@
       <ns-mobile-input name="mobile"
         label="手机号"
         v-model="formData.mobile" />
-      <h3 class="mt-xl mb-lg">基础信息</h3>
+      <h3 class="mb-md">基础信息</h3>
       <ns-rating-input label="意向等级"
         name="intention"
         v-model="formData.intention" />
@@ -99,6 +97,10 @@ const marrageOptions = [
 
 function disabledDateOfPicker(current: any) {
   return current && dayjs().isBefore(current, 'day')
+}
+
+function onNameChange (value: string) {
+  console.log('===onNameChange, value=', value)
 }
 
 onMounted(() => {

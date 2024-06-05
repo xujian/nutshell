@@ -1,30 +1,9 @@
-import { FunctionalComponent, Slots, h, onMounted } from 'vue'
-import { FormItem as AntFormItem } from 'ant-design-vue'
-import { FieldProps, FullValidationRule, VariantProps, buildDesignVariables, buildFieldHint } from '../../../props'
+import { FunctionalComponent, Slots, defineComponent, h, onMounted } from 'vue'
+import { FormItem as AntFormItem, Form } from 'ant-design-vue'
+import { DesignProps, FieldProps, FullValidationRule, VariantProps, buildDesignVariables, buildFieldHint } from '../../../props'
 import { transformRules } from '../components/input/rules'
 
-export type FormItemProps = FieldProps & VariantProps
-
-// export type FormItemRenderer = FunctionalComponent<FormItemProps, {}, FormItemSlots, {}>
-
-// // @ts-ignore
-// export const FormItem: FormItemRenderer
-//   = (props: FormItemProps, ctx: FormItemContext) => {
-//   const { slots } = ctx
-//   return h(
-//     AntFormItem,
-//     {
-//       class: props.class,
-//       label: props.label,
-//       name: props.name,
-//       rules: props.rules
-//     },
-//     {
-//       label: slots.label,
-//       default: slots.default,
-//     }
-//   )
-// }
+export type FormItemProps = FieldProps & VariantProps & DesignProps
 
 /**
  * 接管对于 Ant Design Vue Form Item 的输出
@@ -56,13 +35,15 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
         props.variant ? `variant-${props.variant}` : '',
       ],
       style: styles,
-      label: label !== null ? void 0 : props.label,
+      label: label !== null
+        ? void 0
+        : props.label,
       name: props.name,
       rules
     },
     {
-      label,
-      default: () => h(defaultSlot, { style: { flex: 1 } }),
+      label: label,
+      default: defaultSlot,
       extra: slots.append
         ? () => h('div', {
             class: 'form-item-append'
