@@ -12,7 +12,7 @@ export const transformRules = (rules: FullValidationRule[]) => {
       result.push({
         required: true,
         message: r.message,
-        trigger: r.trigger ?? ['blur']
+        trigger: r.trigger
       })
     } else {
       result.push({
@@ -27,7 +27,7 @@ export const transformRules = (rules: FullValidationRule[]) => {
           return Promise.resolve()
         },
         message: r.message,
-        trigger: r.trigger ?? 'blur',
+        trigger: r.trigger ?? 'change',
       })
     }
   })
