@@ -9,24 +9,31 @@
     }
     &.color-primary.variant-solid:hover, &.color-primary:not([class*="variant-"]):hover {
       background-color: var(--ns-primary--10);
+      box-shadow: none;
     }
     &.color-secondary.variant-solid:hover, &.color-secondary:not([class*="variant-"]):hover {
       background-color: var(--ns-secondary--10);
+      box-shadow: none;
     }
     &.color-accent.variant-solid:hover, &.color-accent:not([class*="variant-"]):hover {
       background-color: var(--ns-accent--10);
+      box-shadow: none;
     }
     &.color-neutral.variant-solid:hover, &.color-neutral:not([class*="variant-"]):hover {
       background-color: var(--ns-neutral--10);
+      box-shadow: none;
     }
     &.color-positive.variant-solid:hover, &.color-positive:not([class*="variant-"]):hover {
       background-color: var(--ns-positive--10);
+      box-shadow: none;
     }
     &.color-negtive.variant-solid:hover, &.color-negtive:not([class*="variant-"]):hover {
       background-color: var(--ns-negtive--20);
+      box-shadow: none;
     }
     &.color-warning.variant-solid:hover, &.color-warning:not([class*="variant-"]):hover {
       background-color: var(--ns-warning--10);
+      box-shadow: none;
     }
   }
   &:not(.nut-button--round) {

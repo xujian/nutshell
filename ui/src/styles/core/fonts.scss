@@ -32,7 +32,7 @@
   min-width: 14px;
   height: 14px;
   line-height: 12px;
-  font-size: 10px;
+  font-size: 9px;
   border: 1px solid var(--ns-text);
   text-decoration: none;
   font-style: normal;
@@ -49,4 +49,13 @@
 
 .rounded-block {
   border-radius: 4px;
+}
+
+.icon-hint {
+  background: var(--ns-warning);
+  border-color: var(--ns-warning);
+  color: #fff;
+  &:hover {
+    background-color: var(--ns-warning-10);
+  }
 }
