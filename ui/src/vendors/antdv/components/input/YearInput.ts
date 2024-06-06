@@ -38,7 +38,7 @@ export const YearInput = defineComponent({
         'onUpdate:value': (value: string | Dayjs) => {
           const val = value === null
             ? ''
-            : (typeof value === 'string' ? dayjs(value) : value).format('YYYY-MM')
+            : (typeof value === 'string' ? dayjs(value) : value).format('YYYY')
           props['onUpdate:modelValue']?.(val)
         },
         ...props.disabledDate
