@@ -15,8 +15,6 @@ export const Select = defineComponent({
       clearable, searchable
     } = props
 
-    console.log('===props.popupDetatched', props.popupDetatched)
-
     return () => renderFormItem({
         ...props,
         class: [

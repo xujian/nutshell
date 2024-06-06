@@ -1,7 +1,8 @@
 <template>
   <ns-card fill="#fff">
     <ns-form
-      name="client" variant="outlined" autocomplete="off"
+      :variant="variant"
+      name="client" autocomplete="off"
       v-model="formData">
       <h3 class="mb-md">基础信息</h3>
       <ns-display label="金额">
@@ -60,11 +61,16 @@
         </template>
       </ns-number-input>
     </ns-form>
+    <p>&nbsp;</p>
+    <ns-button-group
+      color="primary"
+      v-model="variant"
+      :options="variantOptions"/>
   </ns-card>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import dayjs from "dayjs";
 
 const formData = reactive({
@@ -78,6 +84,16 @@ const formData = reactive({
   amount: null,
   text: '这是一个只读的文案'
 })
+
+const variant = ref('')
+
+const variantOptions = [
+  { label: '(空)', value: '' },
+  { label: 'outline', value: 'outline' },
+  { label: 'plain', value: 'plain' },
+  { label: 'soft', value: 'soft' },
+  { label: 'solid', value: 'solid' },
+]
 
 const chipsOptions = [
   { label: '有车', value: 'YC' },

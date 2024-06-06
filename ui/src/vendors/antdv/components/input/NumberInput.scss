@@ -4,9 +4,12 @@
   }
   .ant-input-number {
     width: 100%;
-    background-color: var(--ns-fill);
-    border-color: var(--ns-stroke);
+    border-width: 1px;
+    border-style: solid;
+    background-color: var(--fill);
+    border-color: var(--stroke);
     .ant-input-number-input {
+      border: none;
       color: var(--ns-text);
     }
   }

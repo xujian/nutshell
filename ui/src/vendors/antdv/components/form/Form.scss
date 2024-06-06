@@ -1,5 +1,16 @@
 .ns-form-item {
   width: 420px;
+  border-width: 1px;
+  border-radius: var(--ns-border-radius);
+  border-style: solid;
+  border-color: transparent;
+  &:focus {
+    box-shadow: 0 0 2px 1px color-mix(in srgb, var(--ns-accent) 30%, transparent);
+    outline: none;
+  }
+  &:not(:last-child) {
+    margin-inline-end: var(--ns-spacing);
+  }
   border-radius: var(--ns-border-radius);
   display: inline-block;
   .ant-form-item-label {
@@ -47,7 +58,7 @@
   .ant-form-item-control-input {
     border-width: 0;
     border-radius: var(--ns-border-radius);
-    background-color: var(--ns-fill);
+    background-color: var(--fill);
     &:focus {
       outline: none;
       box-shadow: none;
@@ -73,10 +84,6 @@
 
 .ns-form {
   color: var(--ns-text);
-  &.variant-solid .ns-form-item,
-  .ns-form-item.variant-solid {
-    background-color: var(--ns-fill);
-  }
 }
 
 .ns-display {

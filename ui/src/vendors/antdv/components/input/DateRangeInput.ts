@@ -59,7 +59,7 @@ export const DateRangeInput = defineComponent({
               }) as [string, string]
             : [undefined, undefined]
           props['onUpdate:modelValue']?.(val)
-          emit('change', val)
+          // emit('change', val)
         },
         disabled: props.disabled ?? false,
         ...props.inside

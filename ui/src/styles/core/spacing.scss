@@ -2,6 +2,7 @@
 @use '../variables/spacing' as *;
 
 :root {
+  --ns-spacing: var(--ns-spacing-md);
   @each $name, $value in $spacing {
     #{'--ns-spacing-'}#{$name}: #{$value};
   }

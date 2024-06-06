@@ -1,31 +1,21 @@
 .ns-form {
   &.ant-form {
-    &.variant-outlined,
-    .variant-outlined {
-      .ant-input,
-      .ant-input-number-input,
-      .ant-picker,
-      .ant-select {
-        border-color: var(--ns-stroke);
-        border-radius: var(--ns-border-radius);
-        border-style: solid;
-        &:hover {
-          border-color: var(--ns-accent);
-        }
+    --stroke: transparent;
+    --fill: var(--ns-fill);
+    &.variant-outline, .variant-outline {
+      --stroke: var(--ns-stroke);
+    }
+    .variant-outline {
+      &:hover {
+        --stroke: var(--ns-accent);
       }
     }
-    &.variant-plain {
-      .ant-form-item-label {
-        >label {
-          background-color: transparent;
-        }
-      }
-      .ant-form-item-control-input {
-        background-color: transparent;
-      }
-      .ant-input {
-        background-color: var(--ns-surface);
-      }
+    &.variant-plain, .variant-plain {
+      --fill: transparent;
+    }
+    &.variant-solid .ns-form-item,
+    .ns-form-item.variant-solid {
+      background-color: var(--ns-fill);
     }
   }
 }

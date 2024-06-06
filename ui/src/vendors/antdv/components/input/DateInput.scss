@@ -2,7 +2,8 @@
   &.ant-form-item {
     .ant-picker {
       width: 100%;
-      background-color: var(--ns-fill);
+      border-color: var(--stroke);
+      background-color: var(--fill);
       input {
         color: var(--ns-text);
         &::placeholder {

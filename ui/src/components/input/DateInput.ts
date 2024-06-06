@@ -10,6 +10,7 @@ export const dateInputProps = {
     type: Function as PropType<(currentDate: Dayjs) => boolean>
   },
   format: {
+    type: String,
     default: 'YYYY-MM-DD'
   },
   hasNow: {
