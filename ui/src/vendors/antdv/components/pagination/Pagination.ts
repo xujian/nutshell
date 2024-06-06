@@ -17,8 +17,8 @@ export const Pagination = defineComponent({
             current: +(props.current ?? 1),
             pageSize: props.pageSize,
             showSizeChanger: props.pageSizeChangable,
-            onChange: (page: number) => {
-              emit('change', page)
+            onChange: (page: number, pageSize: number) => {
+              emit('change', page, pageSize)
             },
             // showSizeChanger: props.showSizeChanger,
             showQuickJumper: props.jumpable,
