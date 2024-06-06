@@ -64,8 +64,7 @@ export const Upload = defineComponent({
             ? h(NsFile, {
                 class: 'thumb',
                 hasName: false,
-                deletable: true,
-                ...fileList.value[0]
+                ...fileList.value[0],
               })
             : null,
           h('div', { class: [ 'label',]}, label),
@@ -76,14 +75,25 @@ export const Upload = defineComponent({
 
     const defaultSlot = slots.default || button,
       itemRender = ({file, actions}: {file: any, actions: any}) => {
-        console.log('===itemRender', file, actions)
+        // console.log('===itemRender', file, actions)
         const id = file.uid,
           item = props.modelValue?.find((x: any) => x.id === id)
         return h(NsFile, {
           ...item,
+          deletable: true,
           onPreview (id?: string) {
             // viewer.value.view()
           },
+          onDelete (id: string) {
+            $n.confirm('确定要删除吗?', () => {
+              const value = [...(props.modelValue || [])],
+                index = value.findIndex(x => x.id === id)
+              if (index !== -1) {
+                value.splice(index, 1)
+                props['onUpdate:modelValue']?.(value)
+              }
+            })
+          }
         })
       }
 
