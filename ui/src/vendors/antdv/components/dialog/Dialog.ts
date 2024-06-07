@@ -99,7 +99,7 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       onCancel,
     }, {
       ...slots,
-      closeIcon: h('i', { class: 'ns-dailog-x'}, '×')
+      closeIcon: h('i', { class: 'ns-dailog-x'}, '')
     })
   },
   {
