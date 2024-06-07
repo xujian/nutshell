@@ -86,6 +86,13 @@
         }
       }
     }
+    .ant-form-item-control-input {
+      margin: -1px;
+    }
+    .ns-form-item {
+      width: 100%;
+      max-width: 100%;;
+    }
     &.border--default,
     &.border--none,
     &.border--inner,
