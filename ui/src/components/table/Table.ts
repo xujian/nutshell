@@ -10,10 +10,9 @@ import {
 } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { TableColumnFixed, TableColumnProps } from './TableColumn'
-import { PaginationProps } from '../pagination'
 import { buildDesignVariables, useDesignProps, buildDesignClasses, usePaginationProps } from '../../props'
 import { Color } from '../../composables/theme'
-import { PagingConfig, Paging } from 'src/composables'
+import { Paging } from 'src/composables'
 
 /**
  * 填充表格的数据
@@ -226,11 +225,11 @@ export const tableProps = {
 
 
 export type TableEmits = {
-  pageChange: (value: number) => void
+  pageChange: (value: number, pageSize: number) => void
 }
 
 export const tableEmits: TableEmits = {
-  pageChange: (value: number) => {
+  pageChange: (value: number, pageSize: number) => {
     return true
   },
 }

@@ -10,8 +10,7 @@ export const Pagination = defineComponent({
     return () =>
       props.autoHide && props.total === 0
         ? null
-        : h(
-          AntdvPagination,
+        : h(AntdvPagination,
           {
             total: props.total,
             current: +(props.current ?? 1),
@@ -25,8 +24,7 @@ export const Pagination = defineComponent({
             disabled: props.disabled,
             showTotal: (total: number) => `共${total}条`,
             pageSizeOptions: props.pageSizeOptions
-          },
-          () => ''
+          }
         )
   }
 })

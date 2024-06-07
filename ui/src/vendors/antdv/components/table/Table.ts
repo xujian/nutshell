@@ -652,8 +652,8 @@ export const Table = defineComponent({
           'table-pagination'
         ],
         ...props.paging,
-        onChange: (value: number) => {
-          ctx.emit('pageChange', value)
+        onChange: (value: number, pageSize: number) => {
+          ctx.emit('pageChange', value, pageSize)
         }
       })
 

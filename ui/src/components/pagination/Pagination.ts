@@ -7,11 +7,11 @@ export const paginationProps = {
 }
 
 export type PaginationEmits = {
-  change: (value: number) => void
+  change: (value: number, pageSize: number) => void
 }
 
 export const paginationEmits: PaginationEmits = {
-  change: (value: number) => {
+  change: (value: number, pageSize: number) => {
     return true
   },
 }
