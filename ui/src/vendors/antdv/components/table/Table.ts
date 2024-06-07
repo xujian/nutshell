@@ -198,7 +198,7 @@ export const Table = defineComponent({
           modelValue,
           modelModifiers,
           options: editable.options || [],
-          popupDetached: false,
+          detached: false,
           onEnter,
           onChange: (value: any) => {
             onChange(value)

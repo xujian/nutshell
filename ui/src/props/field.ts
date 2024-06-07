@@ -153,8 +153,9 @@ const fieldProps = {
   /**
    * 组件内的浮层放在 document.body 内
    */
-  popupDetatched: {
+  detatched: {
     type: Boolean,
+    default: true,
   }
 }
 
