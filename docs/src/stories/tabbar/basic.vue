@@ -7,11 +7,11 @@
 const items = [
   {
     label: '首页',
-    icon: 'house'
+    icon: 'home'
   },
   {
     label: '账户',
-    icon: 'gear'
+    icon: 'account'
   },
 ]
 </script>
