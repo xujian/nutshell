@@ -26,6 +26,13 @@ export const CascadingSelect = defineComponent({
           'onUpdate:value': (value: ValueType) => {
             props['onUpdate:modelValue']?.(value as string[])
           },
+          /**
+           * 选项浮层插入到本地
+           * 某些场景(表格单元格内/对话框内)不允许将浮层插到 document.body
+           */
+          ...props.detatched === false
+            ? { getPopupContainer: (me: any) => me.parentNode }
+            : {},
           popupClassName: 'ns-select-dropdown',
           disabled: props.disabled ?? false
         },
