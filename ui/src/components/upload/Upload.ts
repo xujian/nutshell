@@ -61,10 +61,16 @@ export const uploadProps = {
 
 export type UploadEmits = {
   complete: (file: Media) => void
+  delete: (id: string) => void
 }
 
 export const uploadEmits: UploadEmits = {
-  complete: (file: Media) => {},
+  complete: (file: Media) => {
+    return true
+  },
+  delete: (id: string) => {
+    return true
+  }
 }
 
 export type UploadSlots = {

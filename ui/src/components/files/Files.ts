@@ -1,9 +1,8 @@
-import { PropType, defineComponent, h, onMounted, ref } from 'vue'
-import Viewer from 'viewerjs'
+import { PropType, computed, defineComponent, h, onMounted, ref } from 'vue'
 import { MakePropsType } from '../../utils'
 import { NsFile } from './File'
-import { Media } from '../../types'
-import 'viewerjs/dist/viewer.min.css'
+import { getMediaType, Media } from '../../types'
+import { usePreview } from '../../composables'
 
 export const filesProps = {
   items: {
@@ -42,56 +41,38 @@ export const NsFiles = defineComponent({
   setup (props, ctx) {
 
     const me = ref<HTMLElement>()
-    let viewer: Viewer | null = null
+    const { preview } = usePreview(me)
 
     const getRealUrlFromId = (id?: string) => {
       const item = props.items.find((f: any) => f.id === id)
       return item!.url
     }
 
+    const items = computed<Media[]>(() =>
+      props.items.map(item => ({
+        ...item,
+        type: item.type
+          || getMediaType(item.name!)
+      }))
+    )
+
     const item = (item: Media, index: number) => h(NsFile, {
       class: [
         'files-item',
-        `files-items-type-${item.type}`,
+        `type-${item.type}`,
         'm-xs'
       ],
       key: index,
       deletable: props.deletable,
       downloadable: props.downloadable,
-      onDelete (id?: string) {
+      onDelete (id: string) {
         console.log('===NsFile onDelete id', id)
       },
-      onPreview (id?: string) {
-        const item = props.items.find(x => x.id === id)
-        if (!item) return
-        if (item.type === 'file') {
-          const index = props.items
-            .filter(x => x.type === 'image')
-            .findIndex(x => x.id === id)
-          viewer && viewer.view(index)
-        } else {
-          const url = getRealUrlFromId(id)
-          window.open(url)
-        }
+      onPreview (id: string) {
+        preview(id)
       },
       ...item,
     })
-
-    const initViewer = () => {
-      viewer = new Viewer(me.value!, {
-        container: document.body,
-        navbar: false,
-        toolbar: false,
-        zoomable: false,
-        transition: false,
-        url: (img: HTMLElement) => {
-          const id = img.getAttribute('data-id') as string
-          return getRealUrlFromId(id)
-        }
-      })
-    }
-
-    onMounted(initViewer)
 
     return () => h('div', {
       ref: me,
@@ -101,8 +82,6 @@ export const NsFiles = defineComponent({
         'justify-start'
       ]
     },
-    {
-      default: () => props.items.map(item)
-    })
+    items.value.map(item))
   }
 })

@@ -1,11 +1,10 @@
-import { computed, defineComponent, getCurrentInstance, h, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import Viewer from 'viewerjs'
+import { computed, ComputedRef, defineComponent, getCurrentInstance, h, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { Upload as AntdvUpload, UploadChangeParam, UploadFile } from 'ant-design-vue'
 import { NsButton, NsFile, uploadEmits, uploadProps } from '../../../../components'
-import 'viewerjs/dist/viewer.min.css'
 import { useNutshell } from '../../../../framework'
 import { compressImage } from '../../../../utils'
-import { Media } from '../../../../types'
+import { getMediaType, Media } from '../../../../types'
+import { usePreview } from '../../../../composables'
 
 export const Upload = defineComponent({
   name: 'AntdvUploadVendor',
@@ -17,12 +16,13 @@ export const Upload = defineComponent({
 
     const vm = getCurrentInstance() as any,
       me = ref(),
-      viewer = ref()
+      { preview, update } = usePreview(me)
 
     const fileList = computed(() => {
       const files = props.modelValue || []
       return files.map((v: any) => ({
           uid: v.id,
+          type: v.type,
           name: v.name,
           status: v.status,
           url: v.url,
@@ -73,6 +73,11 @@ export const Upload = defineComponent({
             : null
         ])
 
+      const getRealUrlFromId = (id?: string) => {
+        const item = props.modelValue?.find((f: any) => f.id === id)
+        return item!.url
+      }
+
     const defaultSlot = slots.default || button,
       itemRender = ({file, actions}: {file: any, actions: any}) => {
         // console.log('===itemRender', file, actions)
@@ -81,8 +86,8 @@ export const Upload = defineComponent({
         return h(NsFile, {
           ...item,
           deletable: true,
-          onPreview (id?: string) {
-            // viewer.value.view()
+          onPreview (id: string) {
+            preview(id)
           },
           onDelete (id: string) {
             $n.confirm('确定要删除吗?', () => {
@@ -103,29 +108,6 @@ export const Upload = defineComponent({
         ? 'text'
         : 'picture-card'
       : 'text'
-
-    const initViewer = () => {
-      viewer.value = new Viewer(me.value!, {
-        container: document.body,
-        navbar: false,
-        toolbar: false,
-        zoomable: false,
-        url (image: HTMLImageElement) {
-          // 查原图的 url
-          // 参数 image 是缩略图
-          const id = image.getAttribute('data-id')
-          if (!id) return image.src
-          const item = fileList.value.find((f: any) => f.uid === id)
-          if (!item) return image.src
-          return item.url
-        }
-      })
-    }
-
-    onMounted(initViewer)
-    onBeforeUnmount(() => {
-      viewer.value.destroy()
-    })
 
     const trunk = () => h(AntdvUpload, {
         showUploadList: props.hasFiles || false,
@@ -165,12 +147,16 @@ export const Upload = defineComponent({
               props.handler?.({
                 blob: file
               }).then((result: Media) => {
-                console.log('===xxxxUpload.ts upload complete', result)
+                const uploaded = {
+                  ...result,
+                  type: getMediaType(result.name!)
+                }
                 props['onUpdate:modelValue']?.([
                   ...props.modelValue || [],
-                  result
+                  uploaded
                 ])
-                emit('complete', result)
+                emit('complete', uploaded)
+                nextTick(update)
               })
             }
           )

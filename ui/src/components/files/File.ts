@@ -1,6 +1,6 @@
 import { PropType, defineComponent, h } from 'vue'
 import { MakePropsType } from '../../utils'
-import { MediaType } from '../../types'
+import { getMediaType, MediaType, resolveFileName } from '../../types'
 
 export const fileProps = {
   id: {
@@ -37,19 +37,19 @@ export const fileProps = {
 }
 
 export type FileEmits = {
-  preview: (id?: string) => void
-  delete: (id?: string) => void
-  download: (id?: string) => void
+  preview: (id: string) => void
+  delete: (id: string) => void
+  download: (id: string) => void
 }
 
 const fileEmits: FileEmits = {
-  preview: (id?: string) => {
+  preview: (id: string) => {
     return true
   },
-  delete: (id?: string) => {
+  delete: (id: string) => {
     return true
   },
-  download: (id?: string) => {
+  download: (id: string) => {
     return true
   },
 }
@@ -58,35 +58,6 @@ export type FileSlots = {
 }
 
 export type FileProps = MakePropsType<typeof fileProps, FileEmits>
-
-export type FileName = {
-  base: string,
-  ext: string,
-}
-
-function resolveFileName (name: string): FileName {
-  const splits = name.split('.'),
-    ext = splits.pop() || '',
-    base = splits.join('.')
-    return {
-      base,
-      ext
-    }
-}
-
-export const extTypeMapping: Record<string, MediaType> = {
-  jpg: 'image',
-  jpeg: 'image',
-  pdf: 'pdf',
-  png: 'image',
-  mp4: 'video',
-  mkv: 'video',
-}
-
-export function getMediaType (name: string): MediaType {
-  const { base, ext } = resolveFileName(name)
-  return extTypeMapping[ext] || 'file'
-}
 
 /**
  * 文件 <ns-file>
@@ -107,12 +78,12 @@ export const NsFile = defineComponent({
           ev.stopPropagation()
         }
       }, [
-        h('i', { class: ['icon', 'icon-preview'], onClick: () => emit('preview', props.id)}),
+        h('i', { class: ['icon', 'icon-preview'], onClick: () => emit('preview', props.id!)}),
         props.deletable === true
-          ? h('i', { class: ['icon', 'icon-delete'], onClick: () => emit('delete', props.id)})
+          ? h('i', { class: ['icon', 'icon-delete'], onClick: () => emit('delete', props.id!)})
           : null,
         props.downloadable === true
-          ? h('i', { class: ['icon', 'icon-download'], onClick: () => emit('download', props.id)})
+          ? h('i', { class: ['icon', 'icon-download'], onClick: () => emit('download', props.id!)})
           : null
       ]),
       icon = () => {
@@ -120,8 +91,15 @@ export const NsFile = defineComponent({
         return h('div', {
             class: [
               'icon-item',
+              'preview-item',
               `icon-type-${type}`
-            ]
+            ],
+            'data-id': props.id,
+            'data-url': props.url,
+            'data-type': props.type,
+            onClick: () => {
+              emit('preview', props.id!)
+            }
           }, toolbar())
         },
       thumb = () => h('div', {
@@ -129,13 +107,14 @@ export const NsFile = defineComponent({
           'thumb-item',
         ],
         onClick: () => {
-          // console.log('===props.id', props.id)
-          emit('preview', props.id)
+          emit('preview', props.id!)
         }
       }, [
         h('img', {
-          class: 'image',
+          class: 'image preview-item',
           'data-id': props.id,
+          'data-url': props.url,
+          'data-type': props.type,
           src: props.thumb ?? props.url
         }),
         toolbar()

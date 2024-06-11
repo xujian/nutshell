@@ -13,3 +13,32 @@ export type Media = {
   thumb?: string,
   blob?: File | Blob
 }
+
+export type FileName = {
+  base: string,
+  ext: string,
+}
+
+export function resolveFileName (name: string): FileName {
+  const splits = name.split('.'),
+    ext = splits.pop() || '',
+    base = splits.join('.')
+    return {
+      base,
+      ext
+    }
+}
+
+export const extTypeMapping: Record<string, MediaType> = {
+  jpg: 'image',
+  jpeg: 'image',
+  pdf: 'pdf',
+  png: 'image',
+  mp4: 'video',
+  mkv: 'video',
+}
+
+export function getMediaType (name: string): MediaType {
+  const { base, ext } = resolveFileName(name)
+  return extTypeMapping[ext] || 'file'
+}

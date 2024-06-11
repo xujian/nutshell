@@ -21,4 +21,8 @@ export {
   useTheme,
 } from './theme'
 
+export {
+  usePreview
+} from './preview'
+
 export * from './http'
