@@ -147,12 +147,14 @@ export type Paging = {
   /**
    * 当前页
    */
-  current: number,
+  current?: number,
   /**
    * 数据总数
    */
-  total: number,
-  pageSize: number,
+  total?: number,
+  pageSize?: number,
+  jumpable?: boolean,
+  pageSizeChangable?: boolean
 }
 
 /**
