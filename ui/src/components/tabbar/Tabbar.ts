@@ -69,6 +69,9 @@ export const NsTabbar = defineComponent({
       })
     )
     return () => h('nav', {
+      class: [
+        'ns-tabbar'
+      ]
     }, items())
   }
 })
