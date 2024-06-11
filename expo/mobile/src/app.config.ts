@@ -2,8 +2,6 @@ export default defineAppConfig({
   pages: [
     'pages/home/index',
     'pages/account/index',
-    'pages/recharge/index',
-    'pages/recharge/result',
   ],
   tabBar: {
     custom: true,

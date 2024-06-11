@@ -1,5 +1,5 @@
 export default definePageConfig({
   navigationStyle: 'custom',
   navigationBarTextStyle: 'white',
-  navigationBarTitleText: '充值'
+  navigationBarTitleText: '我的账户'
 })

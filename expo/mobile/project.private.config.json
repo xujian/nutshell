@@ -10,7 +10,7 @@
     "miniprogram": {
       "list": [
         {
-          "name": "账户页",
+          "name": "pages/account/index",
           "pathName": "pages/account/index",
           "query": "",
           "launchMode": "default",
