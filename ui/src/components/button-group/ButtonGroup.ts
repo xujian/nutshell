@@ -37,8 +37,12 @@ export type ButtonGroupEmits = {
 }
 
 const buttonGroupEmits: ButtonGroupEmits = {
-  click: (value: string) => void 0,
-  change: (value: string) => void 0
+  click: (value: string) => {
+    return true
+  },
+  change: (value: string) => {
+    return true
+  }
 }
 
 export type ButtonGroupSlots = {
