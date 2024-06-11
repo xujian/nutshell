@@ -344,7 +344,6 @@ export const Table = defineComponent({
                       class: [
                         'table-column',
                         `table-column-${column.name}`,
-                        'fade-it'
                       ]
                     },
                     [

@@ -21,10 +21,8 @@ $alphas: (
     #{'--ns-white---'}#{$name}: color.adjust(#ffffff, $alpha: $value);
     #{'--ns-black---'}#{$name}: color.adjust(#000000, $alpha: $value);
   }
-}
-
-.color-white {
-  background-color: #ffffff;
+  --fill: var(--ns-fill);
+  --stroke: var(--ns-stroke);
 }
 
 @each $name, $value in map-get(colors.$base, 'brand') {
