@@ -4,6 +4,11 @@ import { useDesignProps } from '../../props'
 import { UniDataItem } from '../../shared'
 
 export type MenuItem = {
+  icon?: string,
+  /**
+   * 直接链接
+   */
+  link?: string,
   children?: MenuItem[]
 } & UniDataItem
 
