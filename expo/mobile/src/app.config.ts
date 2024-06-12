@@ -2,6 +2,7 @@ export default defineAppConfig({
   pages: [
     'pages/home/index',
     'pages/account/index',
+    'pages/account/approvals',
   ],
   tabBar: {
     custom: true,

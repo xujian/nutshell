@@ -10,6 +10,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/account/approvals",
+          "pathName": "pages/account/approvals",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/account/index",
           "pathName": "pages/account/index",
           "query": "",
