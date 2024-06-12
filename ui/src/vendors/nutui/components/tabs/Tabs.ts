@@ -1,8 +1,7 @@
 import { h, SetupContext } from 'vue'
-import { Tabs as AntdvTabs, TabPane as AntdvTabPane } from 'ant-design-vue'
 import { TabsItem, TabsProps } from '../../../../components'
 
-export const Tabs = (props: TabsProps, { emit, slots }: SetupContext) => {
+export const Tabs = (props: TabsProps, { emit, slots }: Omit<SetupContext, 'expose'>) => {
   // 确定 children
   // slots 优先级高于 items
   // 如果定义了 slots, items 失效
@@ -17,28 +16,25 @@ export const Tabs = (props: TabsProps, { emit, slots }: SetupContext) => {
     }
   }) || props.items || []
 
-  const defaultSlot = items?.map(item => h(AntdvTabPane, {
-    key: item.value || item.label,
-    tab: item.label
+  const defaultSlot = items?.map(item => h(NutTabPane, {
+    paneKey: item.value || item.label,
+    title: item.label
   }, item.content))
 
-  return h(AntdvTabs, {
+  return h(NutTabs, {
     class: [
+      'ns-tabs',
       ...props.variant ? [`variant-${props.variant}`] : [],
       `tabs-align-${props.align || 'start'}`
     ],
-    type: props.variant === 'card' ? 'card' : 'line',
-    activeKey: props.modelValue,
-    'onUpdate:activeKey': (value) => {
-      emit('update:modelValue', value as string)
-    },
-    // onChange: (value) => {
-    //   props.onChange?.(value)
-    // }
+    align: 'left',
+    modelValue: props.modelValue,
+    tabChange: (item: any) => {
+      emit('update:modalValue', item.paneKey)
+    }
   }, {
     default: () => defaultSlot,
     rightExtra: slots.after,
     leftExtra: slots.before
-  }
-  )
+  })
 }

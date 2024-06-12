@@ -1,0 +1,28 @@
+.ns-tabs {
+  user-select: none;
+  &.horizontal .nut-sticky__box>.nut-tabs__titles,
+  &.horizontal>.nut-tabs__titles {
+    height: 40px;
+    .nut-tabs__titles-item {
+      min-width: 40px;
+      width: fit-content;
+      padding: 0 .5em;
+    }
+  }
+  .nut-tabs__titles {
+    .nut-tabs__titles-item {
+      width: fit-content;
+      &.active {
+        font-size: 16px;
+        color: var(--ns-secondary);
+        .nut-tabs__titles-item__line {
+          bottom: 0;
+          background: var(--ns-secondary);
+        }
+      }
+    }
+  }
+  .nut-tab-pane {
+    padding: 0;
+  }
+}

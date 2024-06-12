@@ -1,12 +1,11 @@
 import { PropType, ObjectEmitsOptions, SlotsType, useSlots, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForInput } from '../../props'
+import { UniDataItem } from 'src/shared'
 
 export type TabsItem = {
-  tab: string,
-  key?: string,
   content?: string | VNode,
-}
+} & UniDataItem
 
 export type TabsVariant = 'line' | 'card' | 'plain'
 export type TabsAlign = 'start' | 'center' | 'end'
