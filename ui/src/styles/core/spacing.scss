@@ -1,7 +1,7 @@
 @use '../tools/functions' as *;
 @use '../variables/spacing' as *;
 
-:root {
+:root, page {
   --ns-spacing: var(--ns-spacing-md);
   @each $name, $value in $spacing {
     #{'--ns-spacing-'}#{$name}: #{$value};

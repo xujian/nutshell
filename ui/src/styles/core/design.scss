@@ -1,6 +1,6 @@
 @use '../variables/design';
 
-:root {
+:root, page {
   --ns-border-radius: 8px;
 }
 
@@ -10,7 +10,7 @@
   }
 }
 
-:root {
+:root, page {
   @each $name, $value in design.$rounded {
     #{'--ns-border-radius-'}#{$name}: #{$value};
   }

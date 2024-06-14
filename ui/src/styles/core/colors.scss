@@ -14,7 +14,7 @@ $alphas: (
   90: -0.9,
 );
 
-:root {
+:root, page {
   @include build-theme(colors.$base);
 
   @each $name, $value in $alphas {

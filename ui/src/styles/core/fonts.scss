@@ -1,6 +1,6 @@
 @use '../variables/fonts' as *;
 
-:root {
+:root, page {
   @each $name, $value in $fonts {
     #{'--ns-font-'}#{$name}: #{$value}
   }
