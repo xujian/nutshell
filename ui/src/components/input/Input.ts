@@ -100,6 +100,9 @@ export type InputSlots = {
   append: never
 }
 
+export const inputSlots: SlotsType<InputSlots> = {
+}
+
 export type InputProps = MakePropsType<typeof inputProps, InputEmits>
 
 /**
@@ -109,6 +112,7 @@ export const NsInput = define({
   name: 'NsInput',
   props: inputProps,
   emits: inputEmits,
+  slots: inputSlots,
   setup(props, ctx) {
     const finalRules = formatRules(props.rules as ValidationRule[], props)
     return {

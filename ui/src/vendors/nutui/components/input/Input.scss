@@ -1,8 +1,22 @@
 .ns-input {
-  &.nut-input {
-    display: inline-block;
-    width: auto;
+  .nut-input {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
     padding: 6px 6px;
-    border-color: var(--ns-stroke);
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: var(--ns-border-radius);
+  }
+  &.variant-outline {
+    .nut-input {
+      border-color: var(--ns-stroke);
+    }
+  }
+  &.variant-solid {
+    .nut-input {
+      background-color: var(--ns-fill);
+    }
   }
 }

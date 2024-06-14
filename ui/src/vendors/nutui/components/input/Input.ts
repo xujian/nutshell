@@ -1,18 +1,38 @@
-import { h } from 'vue'
-import { InputProps } from '../../../../components'
+import { defineComponent, h } from 'vue'
+import { inputEmits, inputProps, inputSlots } from '../../../../components'
+import { marginProps } from '../../../../utils'
 
-export const Input = (props: InputProps) => {
-  const classes = [
-    'ns-input',
-  ].join(' ')
-  console.log('input.........h NutInput', props.modelValue)
-  return h(NutInput, {
-    class: classes,
-    // type: props.type,
-    border: false,
-    value: props.modelValue,
-    'onUpdate:value': (value: number | string) => {
-      props['onUpdate:modelValue']?.(value)
-    }
-  })
-}
+export const Input = defineComponent({
+  name: 'NutuiInput',
+  props: {
+    ...inputProps,
+    ...marginProps
+  },
+  emits: inputEmits,
+  slots: inputSlots,
+  setup (props, {slots,}) {
+    console.log('===INPUT.TS', slots.prepend)
+    return () => h('div', {
+      class: [
+          'ns-input',
+          ...props.variant ? [`variant-${props.variant}`] : []
+        ],
+      },
+      h(NutInput, {
+          border: false,
+          placeholder: props.placeholder,
+          modelValue: props.modelValue,
+          'onUpdate:modelValue': (value: number | string) => {
+            props['onUpdate:modelValue']?.(value)
+          }
+        },
+        {
+          ...slots.prepend ? {
+            // @ts-ignore
+            left: () => slots.prepend()
+          } : {}
+        }
+      )
+    )
+  }
+})
