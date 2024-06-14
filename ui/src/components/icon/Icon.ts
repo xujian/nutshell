@@ -17,7 +17,9 @@ export type IconFormat =
   /**
    * 配色 SVG (用于小程序)
    */
-  'svg'
+  'svg' |
+
+  'image'
 
 export const useIconProps = buildProps({
   name: {
@@ -90,6 +92,14 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
       ],
       src: `http://localhost:2024/icons/default/${props.name}.svg`
     }),
+  image: (props: IconProps) => h('img', {
+    class: [
+      'ns-icon',
+      props.size && `font-size-${props.size}`,
+      props.clickable && 'clickable'
+    ],
+    src: props.name
+  }),
 }
 
 /**
@@ -101,9 +111,13 @@ export const NsIcon = defineComponent({
   emits,
   setup (props, ctx) {
     const $n = useNutshell()
-    const format = props.format
+    let format = props.format
       || $n?.options.icon
       || 'sprite'
+    if (props.name?.startsWith('http')) {
+      format = 'image'
+    }
+    console.log('===ada', props.name, format)
     return () => formats[format](props)
   }
 })
