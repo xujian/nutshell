@@ -11,10 +11,12 @@ import { VendorComponent } from '../../../shared'
 const components: Record<string, VendorComponent> = {
   // @ts-ignore
   Button,
+  // @ts-ignore
   Input,
   DateInput,
   // @ts-ignore
   Chip,
+  // @ts-ignore
   Icon,
   Select,
   // @ts-ignore
