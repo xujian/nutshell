@@ -52,6 +52,10 @@ function createDialog (options: DialogOptions, app: App) {
 
   const onClose = () => {
     // 内嵌组件 可阻止弹窗取消
+    if (!contentRef.value.couldClose) {
+      visible.value = false
+      return true
+    }
     Promise.resolve(contentRef.value.couldClose?.()).then((couldClose: boolean) => {
       visible.value = !(couldClose === true)
       options.onCancel?.()
