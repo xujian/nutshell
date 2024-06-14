@@ -1,5 +1,4 @@
 import { h, SetupContext } from 'vue'
-import Taro from '@tarojs/taro'
 import { MenuProps } from '../../../../components'
 import { UniDataItem } from '../../../../shared'
 
@@ -23,7 +22,7 @@ export const Menu = (props: MenuProps, ctx: Omit<SetupContext, 'expose'>) => {
         if (item.click) {
           item.click()
         } else if (item.link) {
-          Taro.navigateTo({
+          wx.navigateTo({
             url: item.link
           })
         }
