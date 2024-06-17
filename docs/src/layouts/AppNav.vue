@@ -205,6 +205,10 @@ const menuData = computed(() => [
             key: '/components/table'
           },
           {
+            label: '平铺 repeator',
+            key: '/components/repeator'
+          },
+          {
             label: '空状态 empty',
             key: '/components/empty'
           },

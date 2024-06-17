@@ -33,6 +33,7 @@ const RadioPage = () => import('../pages/components/RadioPage.vue')
 const TimelinePage = () => import('../pages/components/TimelinePage.vue')
 const UploadPage = () => import('../pages/components/UploadPage.vue')
 const ListPage = () => import('../pages/components/ListPage.vue')
+const RepeatorPage = () => import('../pages/components/RepeatorPage.vue')
 const MenuPage = () => import('../pages/components/MenuPage.vue')
 const DividerPage = () => import('../pages/components/DividerPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
@@ -177,6 +178,11 @@ const router = createRouter({
           path: '/components/list',
           name: 'components-list',
           component: ListPage
+        },
+        {
+          path: '/components/repeator',
+          name: 'components-repeator',
+          component: RepeatorPage
         },
         {
           path: '/components/pagination',
