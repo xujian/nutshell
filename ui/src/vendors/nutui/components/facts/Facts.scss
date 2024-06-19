@@ -1,0 +1,11 @@
+.ns-facts {
+  .item {
+    .label {
+      color: var(--ns-neutral);
+    }
+    .value {
+      color: var(--ns-text);
+      font-weight: bold;
+    }
+  }
+}

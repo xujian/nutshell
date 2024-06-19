@@ -6,6 +6,7 @@ import { Select } from './select'
 import { Divider } from './divider'
 import { Menu } from './menu'
 import { Tabs } from './tabs'
+import { Facts } from './facts'
 import { VendorComponent } from '../../../shared'
 
 const components: Record<string, VendorComponent> = {
@@ -23,6 +24,7 @@ const components: Record<string, VendorComponent> = {
   Divider,
   Menu,
   Tabs,
+  Facts,
 }
 
 export default components
