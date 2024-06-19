@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "Nutshell Expo Mobile",
   "description": "Nutui expo using Nutshell library",
-  "appid": "wx82330581af3328ab",
+  "appid": "wxda54e5109e09a60b",
   "setting": {
     "urlCheck": true,
     "es6": true,

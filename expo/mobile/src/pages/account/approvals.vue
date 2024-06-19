@@ -15,15 +15,26 @@
       </template>
     </page-header>
     <ns-tabs v-model="tab" :items="tabs" />
+    <scroll-view
+      class="approvals-scroll"
+      :scroll-y="true"
+      :lower-threshold="50">
+      <approval-list :items="facts" />
+    </scroll-view>
   </div>
 </template>
 
 <script lang="ts" setup>
 import Taro from '@tarojs/taro'
 import { PageHeader } from '@uxda/appkit-next'
-import { ref } from 'vue'
+import { WithPaging } from '@uxda/nutshell'
+import { onMounted, ref } from 'vue'
+import { endpoints, useHttp } from '../../api'
+import ApprovalList from '../../components/ApprovalList.vue'
 
+const $http = useHttp()
 const tab = ref('tab1')
+const facts = ref<any[]>([])
 
 const tabs = [
   {
@@ -48,7 +59,41 @@ const tabs = [
   }
 ]
 
+// const facts = [
+//   {
+//     label: '申请人',
+//     value: '都庆寿'
+//   },
+//   {
+//     label: '企业名称',
+//     value: '青岛尚风尚水名都酒店管理有限公司'
+//   },
+//   {
+//     label: '授权状态',
+//     value: '1'
+//   },
+//   {
+//     label: '创建用户',
+//     value: '赵悦'
+//   }
+// ]
+
 function onPageHeaderClose () {
   Taro.navigateBack()
 }
+
+onMounted(() => {
+  $http.get<WithPaging<any>>(endpoints.获取审批列表, {
+    page: 1
+  }).then((result) => {
+    console.log('===XXXXX', result)
+    facts.value = result.data
+  })
+})
 </script>
+
+<style lang="scss">
+.approvals-scroll {
+  height: calc(100vh - 130px);
+}
+</style>
