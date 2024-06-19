@@ -6,6 +6,7 @@
   border-width: var(--ns-border, 1px);
   border-style: var(--borderStyle, solid);
   border-color: var(--border-color, transparent);
+  padding: var(--padding, var(--ns-spacing));
   .content {
     width: 100%;
     white-space: nowrap;
@@ -35,7 +36,7 @@
     flex-grow: 0;
     flex-direction: row;
     align-items: var(--mainAlign, var(--flex-align, center));
-    justify-content: var(--mainJustify, var(--flex-justify));
+    justify-content: var(--mainJustify, var(--flex-justify, center));
     height: var(--mainHeight);
     padding: 0 var(--horizontalPadding, 0);
   }

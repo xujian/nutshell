@@ -6,6 +6,7 @@
 .flex >.flex-item {
   margin: calc(1/2 * var(--flex-gutter));
   flex-shrink: 0;
+  flex-grow: 1;
 }
 
 .flex >.flex-item .flex-grow {
