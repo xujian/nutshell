@@ -1,2 +1,3 @@
-export * from './Col'
+export * from './Column'
+export * from './Item'
 export * from './Row'

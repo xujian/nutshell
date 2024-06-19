@@ -16,7 +16,7 @@ import { reactive } from 'vue'
  * 5. chip/chips
  * 6. 条件样式
  * 7. 就是要格式化
- * 
+ *
  * 方案:
  * 1. 需要定义一组 <ns-table-cell />?
  * 2. 定义一组数据格式化函数?
@@ -48,7 +48,7 @@ setTimeout(() => {
   buttonLabel.value = 'Press Me'
 }, 5e3)
 /**
- * 
+ *
  */
 const onClick = (...args: any[]) => {
   dialogVisible.value = true
@@ -239,7 +239,7 @@ fetchTableData()
     <a-form ref="form" name="welcome" autocomplete="off"
       :model="formData">
       <ns-row gutter="0">
-        <ns-col span="24">
+        <ns-flex-item span="24">
           <ns-button
             size="sm"
             width="100"
@@ -252,25 +252,25 @@ fetchTableData()
             label="Open Dialog" @click="onOpenDialogButtonClick" />
           <ns-chip label="线索"></ns-chip>
           <ns-icon source="/icons/call.svg" />
-        </ns-col>
-        <ns-col span="24">
+        </ns-flex-item>
+        <ns-cflex-iteml span="24">
           <ns-input name="client" type="text" label="客户名称"
             placeholder="客户名称"
             v-model="formData.client"
             :rules="['required']" />
-        </ns-col>
-        <ns-col span="24">
+        </ns-flex-item>
+        <ns-flex-item span="24">
           <ns-date-input name="registerDate" label="选择日期"
             v-model="registerDate"
             :rules="['required']" />
-        </ns-col>
-        <ns-col span="24">
+        </ns-flex-item>
+        <ns-flex-item span="24">
           <ns-select name="registerLocation"
             :options="cities" label="注册地区" searchable
             v-model="formData.selectedCity"
             :rules="['required']"
           ></ns-select>
-        </ns-col>
+        </ns-flex-item>
       </ns-row>
     </a-form>
     <ns-table :rows="tableData" :columns="columns">

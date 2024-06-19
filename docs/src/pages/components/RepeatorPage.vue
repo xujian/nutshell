@@ -5,6 +5,7 @@
   <ns-repeator class="demo-repeator"
     :items="items"
     :gutter="10"
+    align="stretch"
     wrap
     v-slot="item">
     <ns-card class="repeator-card" fill="primary">

@@ -5,8 +5,8 @@
     <component :is="StoryComponent" v-if="isLoaded" />
     <template #footer>
       <div class="full-width flex-row">
-        <div class="flex-col flex-grow"></div>
-        <div class="flex-col align-end">
+        <div class="flex-item flex-grow"></div>
+        <div class="flex-item align-end">
           <ns-button label="CODE" round color="primary"
             variant="soft" size="xs" @click="openCode" />
         </div>

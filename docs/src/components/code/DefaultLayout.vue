@@ -1,9 +1,9 @@
 <template>
   <div class="code-editor-layout flex flex-row">
-    <div class="preview flex-col">
+    <div class="preview flex-column">
       <slot name="preview"></slot>
     </div>
-    <div class="editor flex-col">
+    <div class="editor flex-column">
       <slot name="editor"></slot>
     </div>
   </div>

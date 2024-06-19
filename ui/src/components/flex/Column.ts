@@ -34,19 +34,19 @@ const props = {
   }
 }
 
-export type ColProps = MakePropsType<typeof props>
+export type ColumnProps = MakePropsType<typeof props>
 
 /**
- * 列组件 <ns-col>
+ * Flex column <ns-column>
  */
-export const NsCol = defineComponent({
-  name: 'NsCol',
+export const NsColumn = defineComponent({
+  name: 'NsColumn',
   props,
   setup (props, { slots }) {
     return () => h('div', {
       class: [
         'flex',
-        'flex-col',
+        'flex-column',
         ...props.grow ? ['flex-grow'] : [],
         `justify-${props.justify}`,
         `align-${props.align}`,

@@ -1,10 +1,10 @@
 <template>
   <h1 class="my-lg">标准色表</h1>
   <ns-row v-for="c in brands" :key="c.name" justify="start" align="start" :gutter="16">
-    <ns-col class="m-sm">
+    <ns-flex-item class="m-sm">
       <color-card :color="c"></color-card>
-    </ns-col>
-    <ns-col class="shades py-md">
+    </ns-flex-item>
+    <ns-flex-item class="shades py-md">
       <ns-row class="alphas-row r-sm mb-xs">
         <div class="color"
           v-for="n of shades" :key="n"
@@ -23,7 +23,7 @@
           v-tooltip="`${c.name}---${n}`"
           :style="{backgroundColor: `var(--ns-${c.name}---${n})`}"></div>
       </ns-row>
-    </ns-col>
+    </ns-flex-item>
   </ns-row>
 </template>
 <script lang="ts" setup>

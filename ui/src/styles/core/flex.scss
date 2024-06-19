@@ -3,9 +3,18 @@
   display: flex;
 }
 
+.flex >.flex-item {
+  margin: calc(1/2 * var(--flex-gutter));
+  flex-shrink: 0;
+}
+
+.flex >.flex-item .flex-grow {
+  flex-grow: 1;
+}
+
 /* direction */
-.flex-col,
-.col {
+.flex-column,
+.column {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
@@ -16,10 +25,10 @@
   flex-direction: row;
   gap: var(--gap);
 }
-.flex-col-r {
+.flex-column-reverse {
   flex-direction: column-reverse;
 }
-.flex-row-r {
+.flex-row-reverse {
   flex-direction: row-reverse;
 }
 
@@ -99,17 +108,4 @@
 }
 .gap-none {
   gap: 0
-}
-
-.flex-with-vars {
-  flex-direction: var(--flex-direction);
-  margin: calc(-1/2 * var(--flex-gutter));
-  flex-wrap: var(--flex-wrap);
-  align-items: var(--flex-align, center);
-  justify-content: var(--flex-justify);
-  .flex-item {
-    margin: calc(1/2 * var(--flex-gutter));
-    flex-shrink: 0;
-    flex-grow: 1;
-  }
 }

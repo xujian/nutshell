@@ -12,7 +12,7 @@ const toggleNav = () => {
 </script>
 <template>
   <div class="app-layout grid master-layout">
-    <nav class="app-nav flex flex-col align-center">
+    <nav class="app-nav flex flex-column align-center">
       <app-nav></app-nav>
     </nav>
     <header class="app-header flex flex row align-center align-around">

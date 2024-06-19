@@ -1,5 +1,5 @@
 <template>
-  <div class="home-hero r-md flex flex-col align-center justify-center mb-lg">
+  <div class="home-hero r-md flex flex-column align-center justify-center mb-lg">
     <h1>Nutshell</h1>
     <p class="subline">前端标准组件库</p>
   </div>

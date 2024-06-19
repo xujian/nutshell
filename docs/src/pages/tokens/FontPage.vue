@@ -16,19 +16,19 @@
   </ns-row>
   <h2 class="my-md">Colors</h2>
   <ns-row class="colors" v-for="color in colors" align="start" :key="color" >
-    <ns-col class="label" span="12">
+    <ns-flex-item class="label" span="12">
       <h4>{{ color }}</h4>
-    </ns-col>
-    <ns-col span="12">
+    </ns-flex-item>
+    <ns-flex-item span="12">
       <h1 :class="`text-${color}`" >待办任务</h1>
-    </ns-col>
+    </ns-flex-item>
   </ns-row>
   <h2 class="my-md">Variants</h2>
   <ns-row class="variants" v-for="(variant) in variants" align="start" :key="variant">
     <h4 class="variant-label">{{ variant }}</h4>
     <div v-for="(color) in colors" class="my-xs"
       :key="color"
-      :color="color" 
+      :color="color"
       :variant="variant" label="创建订单"></div>
   </ns-row>
 </template>

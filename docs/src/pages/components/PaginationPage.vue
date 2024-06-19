@@ -86,7 +86,7 @@ const onPaginationChange = (page: number, pageSize: number) => {
   <a-config-provider :locale="zhCN">
     <h1 class="my-lg">分页&lt;ns-pagination&gt;</h1>
     <h2 class="my-md">Pagination</h2>
-    <div class="flex flex-col mt-12px">
+    <div class="flex flex-column mt-12px">
       <ns-table
         :loading="loading"
         :max-height="600"
