@@ -45,7 +45,7 @@ import { NsSwitch } from './switch'
 import { NsSelect, NsCascadingSelect, NsMultipleSelect } from './select'
 import { NsCheckbox } from './checkbox'
 import { NsRating, NsRatingInput } from './rating'
-import { NsRow, NsCol } from './flex'
+import { NsRow, NsColumn, NsFlexItem } from './flex'
 import { NsChip, NsChips } from './chip'
 import { NsIcon } from './icon'
 import { NsDialog } from './dialog'
@@ -96,7 +96,8 @@ const components = {
   NsRating,
   NsRatingInput,
   NsRow,
-  NsCol,
+  NsColumn,
+  NsFlexItem,
   NsChip,
   NsChips,
   NsIcon,

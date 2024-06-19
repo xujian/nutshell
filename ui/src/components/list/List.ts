@@ -84,7 +84,7 @@ export const NsList = defineComponent({
       })
 
     return () => h('div', {
-      class: ['ns-list', 'r-md', 'flex', 'flex-col'],
+      class: ['ns-list', 'r-md', 'flex', 'flex-column'],
     }, [
       header,
       body,

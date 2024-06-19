@@ -27,7 +27,7 @@ export const RadioGroup = defineComponent({
             AntdvRadioGroup,
             {
               class: [
-                ...(props.direction === 'vertical' ? ['flex', 'flex-col'] : ['flex', 'flex-row'])
+                ...(props.direction === 'vertical' ? ['flex', 'flex-column'] : ['flex', 'flex-row'])
               ],
               name: (props.name || 'radio') as string,
               value: props.modelValue,

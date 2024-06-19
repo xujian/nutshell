@@ -30,7 +30,7 @@ export const NsCardTitle = defineComponent({
   setup (props, { slots }) {
     const classes = [
       'flex',
-      'flex-col',
+      'flex-column',
     ].join(' ')
 
 

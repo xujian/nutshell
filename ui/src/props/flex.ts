@@ -29,24 +29,31 @@ const flexProps = {
     default: () => false
   },
   align: {
-    type: String as PropType<Align>
+    type: String as PropType<Align>,
+    default: 'center'
   },
   justify: {
-    type: String as PropType<Justify>
+    type: String as PropType<Justify>,
+    default: 'stretch'
   }
 }
 
 export type FlexProps = ExtractPropTypes<typeof flexProps>
+
+export const buildFlexClasses = (props: FlexProps) => {
+  return [
+    'flex',
+    `${props.direction}`,
+    `align-${props.align}`,
+    `justify-${props.justify}`,
+  ]
+}
 
 export const buildFlexStyles = (props: FlexProps) => {
   return {
     ...props.gutter && {
       '--flex-gutter': `${props.gutter}px`,
     },
-    '--flex-direction': `${props.direction}px`,
-    '--flex-wrap': props.wrap ? 'wrap' : 'no-wrap',
-    ...props.align ? {'--flex-align': props.align} : {},
-    ...props.justify ? {'--flex-justify': props.justify} : {},
   }
 }
 

@@ -21,6 +21,7 @@ export type CardSlots = {
   default: () => any,
   corner?: () => any,
   header?: () => any,
+  title?: () => any,
   footer?: () => any,
   bottom?: () => any,
 }
@@ -41,7 +42,7 @@ export const NsCard = defineComponent({
     const classes = [
       'ns-card',
       'flex',
-      'flex-col',
+      'flex-column',
       'align-stretch',
       props.fill ? `fill-${props.fill}` : '',
       props.variant ? `variant-${props.variant}` : '',
@@ -72,13 +73,18 @@ export const NsCard = defineComponent({
       slots.corner?.()
     ])
 
-    const header = h('div', {
-      class: 'card-header flex flex-row align-center',
-    }, [
-      label,
-      titleAfter,
-      corner,
-    ])
+    const header = () => props.title || slots.header
+      ? h('div', {
+          class: 'card-header flex flex-row align-center',
+        }, slots.header
+          ? slots.header?.()
+          : [
+              label,
+              titleAfter,
+              corner,
+            ]
+        )
+      : null
 
     const body = () => h('div', {
       class: 'card-body'
@@ -100,16 +106,10 @@ export const NsCard = defineComponent({
       class: classes,
       style,
     }, [
-      props.title
-        ? header
-        : '',
+      header(),
       body(),
-      slots.footer
-        ? footer()
-        : null,
-        slots.bottom
-          ? bottom()
-          : null,
+      footer(),
+      bottom()
     ])
   }
 })

@@ -206,7 +206,6 @@ export const NsNumber = defineComponent({
       content = () => h('div', {
         class: [
           'content',
-          'flex-with-vars',
         ]
       }, [
         slots.header
