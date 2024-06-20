@@ -1,6 +1,9 @@
 .ns-button {
   padding: 0 16px;
   &.nut-button {
+    &:not(.full-width) {
+      width: auto;
+    }
     .nut-button__text {
       margin-left: 0; // fix nut-button style
     }
@@ -49,7 +52,6 @@
     height: var(--ns-size-md);
   }
   &.nut-button--large {
-    width: auto;
     height: var(--ns-size-lg);
     padding: 0 24px;
     &.size-xl {
