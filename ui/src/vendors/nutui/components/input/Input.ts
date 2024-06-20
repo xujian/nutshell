@@ -11,12 +11,13 @@ export const Input = defineComponent({
   emits: inputEmits,
   slots: inputSlots,
   setup (props, {slots,}) {
-    console.log('===INPUT.TS', slots.prepend)
-    return () => h('div', {
-      class: [
-          'ns-input',
-          ...props.variant ? [`variant-${props.variant}`] : []
-        ],
+    return () => h(NutFormItem, {
+        class: [
+            'ns-input',
+            'ns-form-item',
+            ...props.variant ? [`variant-${props.variant}`] : []
+          ],
+        label: props.label
       },
       h(NutInput, {
           border: false,
