@@ -1,0 +1,16 @@
+.ns-form {
+  &.nut-form {
+    .nut-cell-group__wrap {
+      box-shadow: none;
+      background: transparent;
+      margin: 0;
+    }
+    .nut-cell {
+      padding: calc(var(--ns-spacing) / 2) 0;
+    }
+  }
+}
+
+.ns-form-item {
+  background: transparent;
+}
