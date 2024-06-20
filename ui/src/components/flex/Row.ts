@@ -10,11 +10,11 @@ type AlignValue = typeof ALIGN[number]
 export const rowProps = {
   justify: {
     type: String as PropType<JustifyValue>,
-    default: 'start'
+    default: 'center'
   },
   align: {
     type: String as PropType<AlignValue>,
-    default: 'start'
+    default: 'center'
   },
   gap: {
     type: String as PropType<Size>,
