@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import './app.scss'
 import { createPinia } from 'pinia'
 import { Nutshell } from '@uxda/nutshell/taro'
 import '@uxda/nutshell/nutui.css'
@@ -8,6 +7,7 @@ import AppKit from '@uxda/appkit-next'
 import '@uxda/appkit-next/appkit.css'
 import '@uxda/icons/sprite.css'
 import Taro from '@tarojs/taro'
+import './app.scss'
 
 const App = createApp({
   onShow() {},
