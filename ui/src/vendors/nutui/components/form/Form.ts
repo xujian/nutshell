@@ -1,10 +1,24 @@
-import { h, SetupContext } from 'vue'
-import { Form as NutuiForm } from '@nutui/nutui-taro'
-import { FormProps } from '../../../../components'
+import { defineComponent, getCurrentInstance, h, inject, onMounted, provide, ref, Ref, SetupContext } from 'vue'
+import { formProps, type FormProps, formEmits, } from '../../../../components'
+import { marginProps } from '../../../../utils'
+import { NutuiFormSymbol } from '../../utils'
 
-export const Form = (props: FormProps, ctx: Omit<SetupContext, 'expose'>) => {
+export const Form = defineComponent({
+  name: 'NutuiInput',
+  props: {
+    ...formProps,
+    ...marginProps
+  },
+  emits: formEmits,
+  setup (props, { slots }) {
 
-  return h(NutuiForm, {
-    class: 'ns-form',
-  }, ctx.slots)
-}
+    const form = ref()
+    provide(NutuiFormSymbol, form)
+
+    return () =>  h(NutForm, {
+      ref: form,
+      class: 'ns-form',
+      modelValue: props.modelValue,
+    }, slots)
+  }
+})

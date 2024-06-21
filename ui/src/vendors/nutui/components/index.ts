@@ -27,6 +27,7 @@ const components: Record<string, VendorComponent> = {
   Menu,
   Tabs,
   Facts,
+  // @ts-ignore
   Form,
   Checkbox,
 }

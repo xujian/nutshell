@@ -19,7 +19,7 @@ export const formProps = {
 export type FormEmits = {
 }
 
-const emits: FormEmits = {
+export const formEmits: FormEmits = {
 }
 
 export type FormSlots = {
@@ -34,7 +34,7 @@ export type FormProps = MakePropsType<typeof formProps, FormEmits>
 export const NsForm = define({
   name: 'NsForm',
   props: formProps,
-  emits,
+  emits: formEmits,
   setup (props, ctx) {
     const vendorRef = ref()
 

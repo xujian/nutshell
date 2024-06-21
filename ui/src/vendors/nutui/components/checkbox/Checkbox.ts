@@ -1,10 +1,9 @@
 import { h, SetupContext } from 'vue'
-import { Checkbox as NutuiCheckbox } from '@nutui/nutui-taro'
-import { CheckboxProps } from '../../../../components'
+import { type CheckboxProps } from '../../../../components'
 
 export const Checkbox = (props: CheckboxProps, { slots }: Omit<SetupContext, 'expose'>) => {
 
-  return h(NutuiCheckbox, {
+  return h(NutCheckbox, {
     class: 'ns-checkbox',
     label: props.label,
     modelValue: props.modelValue,

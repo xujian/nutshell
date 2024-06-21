@@ -1,10 +1,7 @@
 .ns-form {
-  .ant-form-item {
-    color: var(--ns-text);
-  }
-  .form-field-label {
-    display: inline-block;
-    width: 100px;
+  .form-title {
+    font-weight: bold;
+    line-height: 44px;
   }
   >.ns-button {
     margin-bottom: 16px;
