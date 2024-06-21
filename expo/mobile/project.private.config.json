@@ -10,6 +10,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/risk/apply",
+          "pathName": "pages/risk/apply",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/account/login",
           "pathName": "pages/account/login",
           "query": "",
