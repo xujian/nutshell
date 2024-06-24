@@ -11,7 +11,7 @@ const iconMapping: Record<ToastType, NutuiToastType> = {
 
 function toast (message: string, options: ToastOptions = {}) {
   const { duration = DEAULT_TOAST_DURATION, type = 'info'} = options
-  Taro['showToast']?.({
+  wx['showToast']?.({
     title: message,
     duration: duration * 1000,
     icon: iconMapping[type as ToastType]
