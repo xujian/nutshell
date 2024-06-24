@@ -20,6 +20,7 @@ export * from './menu'
 // table uses other basic components
 export * from './stepper'
 export * from './drawer'
+export * from './sheet'
 export * from './radio'
 export * from './table'
 export * from './empty'
@@ -58,6 +59,7 @@ import { NsList } from './list'
 import { NsMenu } from './menu'
 import { NsStepper } from './stepper'
 import { NsDrawer } from './drawer'
+import { NsSheet } from './sheet'
 import { NsRadio, NsRadioGroup } from './radio'
 import { NsEmpty } from './empty'
 import { NsEditable } from './editable'
@@ -115,6 +117,7 @@ const components = {
   NsMenu,
   NsStepper,
   NsDrawer,
+  NsSheet,
   NsRadio,
   NsRadioGroup,
   NsPagination,

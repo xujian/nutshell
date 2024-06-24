@@ -1,7 +1,5 @@
 import { ComponentInstance, FunctionalComponent, InjectionKey, Ref, Slots, defineComponent, h, inject, onMounted, ref } from 'vue'
 import { DesignProps, FieldProps, FullValidationRule, VariantProps, buildDesignVariables, buildFieldHint } from '../../../props'
-import { FormItemRule } from '@nutui/nutui-taro/dist/types/__VUE/form/types'
-import { FormInstance, Form as NutuiForm } from '@nutui/nutui-taro'
 import { useNutshell } from '../../../framework'
 import { useBus } from '../../../composables'
 
@@ -99,11 +97,12 @@ export const useForm = () => {
     console.log('===validate result', result)
     if (!result.valid) {
       result.errors.forEach((e: any) => {
+        // $bus.emit('sheet', () => h('div', {}, 'UUU'))
         $bus.emit('notice', {
           type: 'error',
           content: e.message
         })
-        $n.toast(e.message, {})
+        // $n.toast(e.message, {})
       })
     }
   }

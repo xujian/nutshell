@@ -13,4 +13,30 @@
     font-size: 12px;
     transition: all .5s;
   }
+  .app-drawer {
+    .nut-overlay {
+      width: 100vw;
+      height: 100vh;
+    }
+    .nut-popup {
+      width: var(--width, 80vw);
+      height: 100vh;
+      transform: translate3d(100vw, 0, 0);
+      transition: all .5s;
+      &.open {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+  .app-sheet {
+    .nut-popup {
+      height: var(--height, 80vw);
+      width: 100vw;
+      transform: translate3d(0, 100vw, 0);
+      transition: all .5s;
+      &.open {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
 }

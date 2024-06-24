@@ -1,4 +1,4 @@
-import { App, InjectionKey, inject } from 'vue'
+import { App, Component, InjectionKey, inject } from 'vue'
 import { createTheme } from './composables/theme'
 import { VendorSymbol } from './shared/symbols'
 import { createVendor, prepareVendor } from './shared'
@@ -22,8 +22,10 @@ export interface NutshellOptions {
 export type DollarNutshell = {
   dialog: (options: DialogOptions) => void,
   confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => void,
-  toast: (message: string, options: ToastOptions) => void,
-  loading: (options: LoadingOptions) => void,
+  toast: (message: string, options?: ToastOptions) => void,
+  notice: (message: string, options?: ToastOptions) => void,
+  sheet: (component?: Component, props?: any) => void,
+  loading: (options?: LoadingOptions) => void,
   options: NutshellOptions
 }
 
@@ -54,8 +56,10 @@ export function Nutshell ({
     const $n: DollarNutshell = {
       dialog: (options: DialogOptions) => {},
       confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => {},
-      toast: (message: string, options: ToastOptions) => {},
-      loading: (options: LoadingOptions) => {},
+      toast: (message: string, options?: ToastOptions) => {},
+      notice: (message: string, options?: ToastOptions) => {},
+      sheet: (component?: Component, props?: any) => {},
+      loading: (options?: LoadingOptions) => {},
       options: {
         theme,
         vendor,

@@ -25,7 +25,7 @@ export type ToastOptions = {
 export default {
   install (app: App, $n: DollarNutshell) {
     const vendor = app._context.provides[VendorSymbol as symbol]
-    $n.toast = (message: string, options: ToastOptions) => {
+    $n.toast = (message: string, options?: ToastOptions) => {
       Promise.resolve(vendor).then(p => {
         p.toast(message, options)
       })

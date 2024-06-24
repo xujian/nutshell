@@ -13,7 +13,7 @@ export type LoadingOptions = {
  */
 export default {
   install (app: App, $n: DollarNutshell) {
-    $n.loading = (options: LoadingOptions) => {
+    $n.loading = (options?: LoadingOptions) => {
       const vendor = app._context.provides[VendorSymbol as symbol]
       Promise.resolve(vendor).then(p => {
         p.loading(options)

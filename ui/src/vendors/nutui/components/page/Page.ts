@@ -1,5 +1,5 @@
 import { defineComponent, h, onMounted, onUnmounted, ref, SetupContext } from 'vue'
-import { pageProps, pageEmits, type PageProps } from '../../../../components'
+import { pageProps, pageEmits, NsDrawer, NsSheet, type PageProps } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
 
 export type NoticeType = 'info' | 'warning' | 'error'
@@ -15,36 +15,81 @@ export const Page = defineComponent({
   emit: pageEmits,
   setup: (props, {slots, emit}) => {
 
+    // 内置 notice-bar, app-drawer, app-sheet
+
     const $bus = useBus()
-    const notice = ref<Notice>()
     const safeArea = useSafeArea()
-    const duration = 5000;
+    const noticeDuration = 5000
+    const noticeData = ref<Notice>()
+    const drawerData = ref()
+    const drawerOpen = ref(false)
+    const sheetData = ref()
+    const sheetOpen = ref(false)
 
     const renderNotice = () => {
-      return notice.value
+      return noticeData.value
         ? h('div', {
             class: [
               'page-notice',
-              `${notice.value?.type || ''}`
+              `${noticeData.value?.type || ''}`
             ],
-          }, notice.value.content)
+          }, noticeData.value.content)
         : null
     }
 
     const showNotice = (payload: Notice) => {
-      console.log('===showNotice', payload)
-      notice.value = payload
+      noticeData.value = payload
       setTimeout(() => {
-        notice.value = void 0
-      }, duration)
+        noticeData.value = void 0
+      }, noticeDuration)
+    }
+
+    const renderDrawer = () => {
+      return h(NsDrawer, {
+          class: [
+            'app-drawer',
+          ],
+          modelValue: drawerOpen.value,
+          'onUpdate:modelValue': (value: boolean) => {
+            drawerOpen.value = value
+          }
+        }, {
+          default: () => h(drawerData.value)
+        })
+    }
+
+    const openDrawer = () => {
+      drawerOpen.value = true
+    }
+
+    const renderSheet = () => {
+      return h(NsSheet, {
+          class: [
+            'app-sheet',
+          ],
+          modelValue: sheetOpen.value,
+          'onUpdate:modelValue': (value: boolean) => {
+            sheetOpen.value = value
+          }
+        }, {
+          default: () => h(sheetData.value?.component || null, sheetData.value?.props)
+        })
+    }
+
+    const openSheet = () => {
+      sheetOpen.value = true
     }
 
     onMounted(() => {
       $bus.on('notice', showNotice)
+      $bus.on('drawer', openDrawer)
+      $bus.on('sheet', openSheet)
     })
 
     onUnmounted(() => {
       $bus.off('notice', showNotice)
+      $bus.off('drawer', openDrawer)
+      $bus.off('sheet', openSheet)
     })
 
     return () => h('div', {
@@ -56,7 +101,9 @@ export const Page = defineComponent({
         }
       }, [
         renderNotice(),
-        slots.default?.()
+        renderDrawer(),
+        slots.default?.(),
+        renderSheet(),
       ])
   }
 })
