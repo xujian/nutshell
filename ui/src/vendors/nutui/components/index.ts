@@ -9,6 +9,7 @@ import { Tabs } from './tabs'
 import { Facts } from './facts'
 import { Form } from './form'
 import { Checkbox } from './checkbox'
+import { Page } from './page'
 import { VendorComponent } from '../../../shared'
 
 const components: Record<string, VendorComponent> = {
@@ -30,6 +31,8 @@ const components: Record<string, VendorComponent> = {
   // @ts-ignore
   Form,
   Checkbox,
+  // @ts-ignore
+  Page,
 }
 
 export default components

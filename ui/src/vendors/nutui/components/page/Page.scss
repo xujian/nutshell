@@ -1,0 +1,16 @@
+.page {
+  .page-notice {
+    position: absolute;
+    top: calc(var(--status) + var(--nav));
+    left: 0;
+    padding: .5em;
+    line-height: 1.2em;
+    z-index: 10;
+    color: #fff;
+    width: 100vw;
+    text-align: center;
+    background-color: var(--ns-warning);
+    font-size: 12px;
+    transition: all .5s;
+  }
+}

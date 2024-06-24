@@ -33,6 +33,7 @@ export * from './upload'
 export * from './number'
 export * from './divider'
 export * from './button-group'
+export * from './page'
 
 import { NsApp } from './app'
 import { NsButton } from './button'

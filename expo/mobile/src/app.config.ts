@@ -4,6 +4,8 @@ export default defineAppConfig({
     'pages/account/index',
     'pages/account/approvals',
     'pages/account/login',
+    // AI 审批申请页
+    'pages/risk/apply',
   ],
   tabBar: {
     custom: true,

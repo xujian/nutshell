@@ -1,5 +1,5 @@
 <template>
-  <div class="page apply-page">
+  <ns-page class="apply-page">
     <page-header title="AI审批"
       color-mode="dark"
       texture="http://localhost:2024/images/mummy.svg"
@@ -10,28 +10,36 @@
     </page-header>
     <ns-form class="apply-form" name="apply">
       <h3 class="form-title">申请人</h3>
-      <ns-input label="客户姓名"
+      <ns-input name="name"
+        label="客户姓名"
         v-model="formData.name"
         :rules="['required']" />
-      <ns-id-input label="身份证号" placeholder="请输入身份证号"
+      <ns-id-input name="id"
+        label="身份证号"
+        placeholder="请输入身份证号"
         v-model="formData.id" />
-      <ns-input label="企业名称" placeholder="请输入企业名称"
-        v-model="formData.firmName" />
-      <ns-mobile-input label="手机号码" placeholder="请输入手机号码"
+      <ns-input name="firm"
+        label="企业名称"
+        placeholder="请输入企业名称"
+        v-model="formData.firm" />
+      <ns-mobile-input
+        name="mobile"
+        label="手机号码"
+        placeholder="请输入手机号码"
         v-model="formData.mobile" />
     </ns-form>
-  </div>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { NsForm, NsInput, NsIdInput, NsMobileInput } from '@uxda/nutshell'
+import { NsPage, NsForm, NsInput, NsIdInput, NsMobileInput } from '@uxda/nutshell'
 import { PageHeader } from '@uxda/appkit-next'
 import { reactive } from 'vue'
 
 const formData = reactive({
   name: '',
   id: '',
-  firmName: '',
+  firm: '',
   mobile: '',
 })
 </script>
