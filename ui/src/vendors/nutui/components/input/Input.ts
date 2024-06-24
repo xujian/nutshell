@@ -1,7 +1,7 @@
-import { defineComponent, h, inject, onMounted } from 'vue'
+import { defineComponent, h } from 'vue'
 import { inputEmits, inputProps, inputSlots } from '../../../../components'
 import { marginProps } from '../../../../utils'
-import { renderFormItem, NutuiFormSymbol } from '../../utils'
+import { renderFormItem, useForm } from '../../utils'
 
 export const Input = defineComponent({
   name: 'NutuiInput',
@@ -13,7 +13,7 @@ export const Input = defineComponent({
   slots: inputSlots,
   setup (props, { slots }) {
 
-    const form = inject(NutuiFormSymbol)
+    const form = useForm()
 
     return () => renderFormItem(props, slots,
       () => h(NutInput, {
@@ -27,11 +27,7 @@ export const Input = defineComponent({
             props['onUpdate:modelValue']?.(value)
           },
           onBlur () {
-            console.log('===PPonBLur', form)
-            if (form) {
-              console.log('===PPonBLur', form.value)
-              form.value?.validate(props.name as string)
-            }
+            form.validate(props)
             return false
           }
         },

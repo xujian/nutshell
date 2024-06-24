@@ -1,7 +1,9 @@
-import { ComponentInstance, FunctionalComponent, InjectionKey, Ref, Slots, defineComponent, h, onMounted, ref } from 'vue'
+import { ComponentInstance, FunctionalComponent, InjectionKey, Ref, Slots, defineComponent, h, inject, onMounted, ref } from 'vue'
 import { DesignProps, FieldProps, FullValidationRule, VariantProps, buildDesignVariables, buildFieldHint } from '../../../props'
 import { FormItemRule } from '@nutui/nutui-taro/dist/types/__VUE/form/types'
 import { FormInstance, Form as NutuiForm } from '@nutui/nutui-taro'
+import { useNutshell } from '../../../framework'
+import { useBus } from '../../../composables'
 
 export const NutuiFormSymbol: InjectionKey<Ref<FormInstance | undefined>> = Symbol('nutui-form')
 
@@ -16,7 +18,6 @@ export const transformRules = (rules: FullValidationRule[]) => {
       result.push({
         required: true,
         message: r.message,
-        trigger: r.trigger
       })
     } else {
       result.push({
@@ -55,8 +56,8 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
   }
 
   const rules = transformRules(props.rules as FullValidationRule[])
+  console.log('===rules', rules)
   const formItemRef = ref(null)
-
 
   return h(
     NutFormItem,
@@ -70,6 +71,8 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
       label: props.label || '',
       // form 字段
       prop: props.name as string,
+      showErrorLine: false,
+      showErrorMessage: false,
       rules,
     },
     {
@@ -82,4 +85,29 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
         : null
     }
   )
+}
+
+/**
+ * 便于 NsInput 校验用户输入
+ */
+export const useForm = () => {
+  const form = inject(NutuiFormSymbol)
+  const $n = useNutshell()
+  const $bus = useBus()
+  const validate = async (props: any) => {
+    const result = await form?.value?.validate(props.name) as any
+    console.log('===validate result', result)
+    if (!result.valid) {
+      result.errors.forEach((e: any) => {
+        $bus.emit('notice', {
+          type: 'error',
+          content: e.message
+        })
+        $n.toast(e.message, {})
+      })
+    }
+  }
+  return {
+    validate
+  }
 }
