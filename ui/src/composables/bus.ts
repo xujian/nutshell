@@ -12,13 +12,13 @@ import { InjectionKey, inject } from 'vue'
 
 /**
  * Event names:
- * 
+ *
  */
 
 /**
  * Bus Event Listener
  */
-export type BusListener<T = any> = (event: string, payload?: T) => void
+export type BusListener<T = any> = (payload?: T) => void
 
 const book: Map<string, BusListener[]> = new Map<string, BusListener[]>
 
