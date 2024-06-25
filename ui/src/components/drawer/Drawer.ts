@@ -12,7 +12,7 @@ export const drawerProps = {
     type: String as PropType<DrawerAnchor>,
     default: 'right'
   },
-  hasBackgrop: {
+  hasBackdrop: {
     type: Boolean,
     default: true,
   },

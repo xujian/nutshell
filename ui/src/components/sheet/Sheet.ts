@@ -12,7 +12,7 @@ export const sheetProps = {
     type: String as PropType<SheetAnchor>,
     default: 'right'
   },
-  hasBackgrop: {
+  hasBackdrop: {
     type: Boolean,
     default: true,
   },
@@ -25,6 +25,9 @@ export const sheetProps = {
   destroyOnClose: {
     type: Boolean,
     default: false,
+  },
+  closeable: {
+    type: Boolean,
   },
   ...useModelValuePropsForBoolean(),
   ...useSizeProps(),
