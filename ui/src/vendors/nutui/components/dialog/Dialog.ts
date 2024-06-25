@@ -31,16 +31,17 @@ export const Dialog = (props: DialogProps, { slots }: Omit<SetupContext, 'expose
     position: 'center',
     visible: open.value,
     title: props.title,
-    closable: true,
     height: '60vh',
     width: '80vw',
     closeable: props.closable === false ? false : true,
     destroyOnClose: props.destroyOnClose,
-    overlay: props.mask === false ? false : true,
+    overlay: props.hasBackdrop === false ? false : true,
     closeOnClickOverlay: true,
     round: true,
     'onUpdate:visible': (value: boolean) => {
       props['onUpdate:modelValue']?.(value)
     },
-  }, scrollView(slots.default))
+  }, {
+    default: () => scrollView(slots.default)
+  })
 }

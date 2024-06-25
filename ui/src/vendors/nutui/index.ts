@@ -4,9 +4,8 @@ import { CoreVendor } from '../../shared'
 import components from './components'
 import { ConfirmOptions, DialogOptions } from '../../services/dialog'
 import { BusSymbol } from '../../composables'
-import { message } from 'ant-design-vue'
-import { ToastOptions } from 'src/services/toast'
-import { LoadingOptions } from 'src/services/loading'
+import { ToastOptions } from '../../services/toast'
+import { LoadingOptions } from '../../services/loading'
 
 const makeDummy = (name: string) => {
   return () => dummy(name.toUpperCase())

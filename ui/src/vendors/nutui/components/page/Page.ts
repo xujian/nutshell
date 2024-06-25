@@ -21,10 +21,13 @@ export const Page = defineComponent({
     const safeArea = useSafeArea()
     const noticeDuration = 5000
     const noticeData = ref<Notice>()
-    const drawerData = ref()
+    const drawerData = ref(<{component?: Component, props?: any}>({
+      component: void 0,
+      props: {}
+    }))
     const drawerOpen = ref(false)
-    const sheetData = ref<{component: Component | null, props: any}>({
-      component: null,
+    const sheetData = ref<{component?: Component, props?: any}>({
+      component: void 0,
       props: {}
     })
     const sheetOpen = ref(false)
@@ -59,7 +62,9 @@ export const Page = defineComponent({
             drawerOpen.value = value
           }
         }, {
-          default: () => h(drawerData.value)
+          default: () => drawerData.value?.component
+            ? h(drawerData.value?.component, drawerData.value?.props)
+            : null
         })
     }
 
@@ -77,8 +82,9 @@ export const Page = defineComponent({
             sheetOpen.value = value
           }
         }, {
-          // @ts-ignore
-          default: () => h(sheetData.value?.component || null, sheetData.value?.props)
+          default: () => sheetData.value?.component
+            ? h(sheetData.value?.component, sheetData.value?.props)
+            : null
         })
     }
 
@@ -98,7 +104,9 @@ export const Page = defineComponent({
             dialogOpen.value = value
           }
         }, {
-          default: () => h(dialogData.value?.component || null, dialogData.value?.props)
+          default: () => dialogData.value?.component
+            ? h(dialogData.value?.component, dialogData.value?.props)
+            : null
         })
     }
 

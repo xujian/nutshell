@@ -74,13 +74,13 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
       rules,
     },
     {
-      label: props.label,
+      label: () => props.label,
       default: () => h(defaultSlot, props),
       extra: slots.append
         ? () => h('div', {
             class: 'form-item-append'
           }, slots.append?.())
-        : null
+        : void 0
     }
   )
 }
@@ -97,11 +97,11 @@ export const useForm = () => {
     console.log('===validate result', result)
     if (!result.valid) {
       result.errors.forEach((e: any) => {
-        // $bus.emit('sheet', () => h('div', {}, 'UUU'))
-        $bus.emit('notice', {
-          type: 'error',
-          content: e.message
-        })
+        $bus.emit('dialog', () => h('div', {}, 'UUU'))
+        // $bus.emit('notice', {
+        //   type: 'error',
+        //   content: e.message
+        // })
         // $n.toast(e.message, {})
       })
     }

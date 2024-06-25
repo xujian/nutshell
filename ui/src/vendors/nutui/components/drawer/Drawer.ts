@@ -40,5 +40,7 @@ export const Drawer = (props: DrawerProps, { slots }: Omit<SetupContext, 'expose
     'onUpdate:visible': (value: boolean) => {
       props['onUpdate:modelValue']?.(value)
     },
-  }, scrollView(slots.default))
+  }, {
+    default: () => scrollView(slots.default)
+  })
 }

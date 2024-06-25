@@ -1,6 +1,6 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useModelValuePropsForBoolean, useSizeProps } from '../../props'
+import { useModelValuePropsForBoolean, usePopupProps, useSizeProps } from '../../props'
 
 export type SheetAnchor = 'top' | 'right' | 'bottom' | 'left'
 
@@ -12,23 +12,13 @@ export const sheetProps = {
     type: String as PropType<SheetAnchor>,
     default: 'right'
   },
-  hasBackdrop: {
-    type: Boolean,
-    default: true,
-  },
   height: {
     type: Number,
   },
   className: {
     type: String,
   },
-  destroyOnClose: {
-    type: Boolean,
-    default: false,
-  },
-  closeable: {
-    type: Boolean,
-  },
+  ...usePopupProps(),
   ...useModelValuePropsForBoolean(),
   ...useSizeProps(),
 }

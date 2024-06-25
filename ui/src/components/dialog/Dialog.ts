@@ -1,6 +1,6 @@
 import { ObjectEmitsOptions, PropType, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDesignProps, useDimensionProps, useModelValuePropsForBoolean } from '../../props'
+import { useDesignProps, useDimensionProps, useModelValuePropsForBoolean, usePopupProps } from '../../props'
 import { Color } from '../../composables/theme'
 import { buildDesignStyles } from '../../props/design'
 
@@ -10,10 +10,6 @@ export const dialogProps = {
   },
   okText: {
     type: String,
-  },
-  closable: {
-    type: Boolean,
-    default: true
   },
   okColor: {
     type: String as PropType<Color>,
@@ -35,14 +31,7 @@ export const dialogProps = {
   left: {
     type: Number,
   },
-  mask: {
-    type: Boolean,
-    default: true,
-  },
-  destroyOnClose: {
-    type: Boolean,
-    default: false,
-  },
+  ...usePopupProps(),
   ...useDesignProps(),
   ...useModelValuePropsForBoolean(),
   ...useDimensionProps(),
