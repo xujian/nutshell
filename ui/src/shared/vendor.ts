@@ -1,4 +1,4 @@
-import { inject, App, VNode } from 'vue'
+import { inject, App, VNode, Component } from 'vue'
 import { getVendor } from '../vendors'
 import { ConfirmOptions, DialogInstance, DialogOptions } from '../services/dialog'
 import type { ToastOptions } from '../services/toast'
@@ -49,7 +49,7 @@ import { DefineComponent } from 'vue'
  */
 
 /**
- * 
+ *
  */
 export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
 
@@ -62,13 +62,16 @@ export type VendorComponent = VendorRenderFunction | DefineComponent
 
 /**
  * Nutshell Core Vendor
- * 
+ *
  */
 export interface CoreVendor {
   app: App | null,
   prepare: (app: App) => void,
   render: VendorRenderFunction,
-  dialog (options: DialogOptions): DialogInstance,
+  dialog (options: DialogOptions): DialogInstance | undefined,
+  notice: (message: string, options?: ToastOptions) => void,
+  sheet: (component?: Component, props?: any) => void,
+  drawer: (component?: Component, props?: any) => void,
   confirm (message: string, onOk: () => void, options: ConfirmOptions): void,
   toast (message: string, options: ToastOptions): void,
   loading (options: LoadingOptions): void,

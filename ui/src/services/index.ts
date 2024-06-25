@@ -3,6 +3,7 @@ import dialog from './dialog'
 import type { DialogChildComponent, DialogChildComponentMethods } from './dialog'
 import toast from './toast'
 import loading from './loading'
+import sheet from './sheet'
 import { DollarNutshell } from '../framework'
 
 export type Service = {
@@ -16,7 +17,8 @@ export {
 const services: Service[] = [
   dialog,
   toast,
-  loading
+  loading,
+  sheet
 ]
 
 export default services

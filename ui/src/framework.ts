@@ -25,6 +25,7 @@ export type DollarNutshell = {
   toast: (message: string, options?: ToastOptions) => void,
   notice: (message: string, options?: ToastOptions) => void,
   sheet: (component?: Component, props?: any) => void,
+  drawer: (component?: Component, props?: any) => void,
   loading: (options?: LoadingOptions) => void,
   options: NutshellOptions
 }
@@ -59,6 +60,7 @@ export function Nutshell ({
       toast: (message: string, options?: ToastOptions) => {},
       notice: (message: string, options?: ToastOptions) => {},
       sheet: (component?: Component, props?: any) => {},
+      drawer: (component?: Component, props?: any) => {},
       loading: (options?: LoadingOptions) => {},
       options: {
         theme,

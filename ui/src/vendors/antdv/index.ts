@@ -31,7 +31,10 @@ const antdvVendor: CoreVendor = {
   dialog,
   confirm,
   toast,
-  loading
+  loading,
+  drawer: () => {},
+  sheet: () => {},
+  notice: (message: string) => {},
 }
 
 export default antdvVendor
