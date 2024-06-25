@@ -10,6 +10,7 @@ import { Facts } from './facts'
 import { Form } from './form'
 import { Checkbox } from './checkbox'
 import { Page } from './page'
+import { Dialog } from './dialog'
 import { Drawer } from './drawer'
 import { Sheet } from './sheet'
 import { VendorComponent } from '../../../shared'
@@ -35,6 +36,7 @@ const components: Record<string, VendorComponent> = {
   Checkbox,
   // @ts-ignore
   Page,
+  Dialog,
   Drawer,
   Sheet,
 }

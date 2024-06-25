@@ -1,8 +1,7 @@
 import { computed, h, ref, SetupContext } from 'vue'
-// import { Popup as NutPopup } from '@nutui/nutui-taro'
-import { DrawerProps } from '../../../../components'
+import { DialogProps } from '../../../../components'
 
-export const Drawer = (props: DrawerProps, { slots }: Omit<SetupContext, 'expose'>) => {
+export const Dialog = (props: DialogProps, { slots }: Omit<SetupContext, 'expose'>) => {
 
   const open = computed({
     get: () => props.modelValue,
@@ -26,15 +25,18 @@ export const Drawer = (props: DrawerProps, { slots }: Omit<SetupContext, 'expose
       ...props.modelValue ? ['open'] : []
     ].join(' '),
     style: {
-      ...props.width ? {'--width': props.width} : {}
+      ...props.width ? {'--width': props.width} : {},
+      ...props.height ? {'--height': props.height} : {}
     },
-    position: 'right',
+    position: 'center',
     visible: open.value,
     title: props.title,
     closable: true,
-    width: props.width,
+    height: '60vh',
+    width: '80vw',
+    closeable: props.closable === false ? false : true,
     destroyOnClose: props.destroyOnClose,
-    overlay: props.hasBackdrop === false ? false : true,
+    overlay: props.mask === false ? false : true,
     closeOnClickOverlay: true,
     round: true,
     'onUpdate:visible': (value: boolean) => {

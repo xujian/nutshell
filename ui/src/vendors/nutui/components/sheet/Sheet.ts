@@ -22,7 +22,6 @@ export const Sheet = (props: SheetProps, { slots }: Omit<SetupContext, 'expose'>
 
   return h(NutPopup, {
     popClass: [
-      'ns-sheet',
       ...props.modelValue ? ['open'] : []
     ].join(' '),
     style: {
@@ -33,9 +32,10 @@ export const Sheet = (props: SheetProps, { slots }: Omit<SetupContext, 'expose'>
     title: props.title,
     closable: true,
     height: props.height || '50vh',
+    closeable: props.closable === false ? false : true,
     destroyOnClose: props.destroyOnClose,
-    overlay: props.hasBackgrop === false ? false : true,
-    closeOnClickOverlay: false,
+    overlay: props.hasBackdrop === false ? false : true,
+    closeOnClickOverlay: true,
     round: true,
     'onUpdate:visible': (value: boolean) => {
       props['onUpdate:modelValue']?.(value)

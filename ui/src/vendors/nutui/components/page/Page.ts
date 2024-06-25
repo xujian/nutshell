@@ -1,5 +1,5 @@
-import { defineComponent, h, onMounted, onUnmounted, ref, SetupContext } from 'vue'
-import { pageProps, pageEmits, NsDrawer, NsSheet, type PageProps } from '../../../../components'
+import { Component, defineComponent, h, onMounted, onUnmounted, ref, SetupContext } from 'vue'
+import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, type PageProps } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
 
 export type NoticeType = 'info' | 'warning' | 'error'
@@ -23,8 +23,13 @@ export const Page = defineComponent({
     const noticeData = ref<Notice>()
     const drawerData = ref()
     const drawerOpen = ref(false)
-    const sheetData = ref()
+    const sheetData = ref<{component: Component | null, props: any}>({
+      component: null,
+      props: {}
+    })
     const sheetOpen = ref(false)
+    const dialogData = ref()
+    const dialogOpen = ref(false)
 
     const renderNotice = () => {
       return noticeData.value
@@ -72,24 +77,47 @@ export const Page = defineComponent({
             sheetOpen.value = value
           }
         }, {
+          // @ts-ignore
           default: () => h(sheetData.value?.component || null, sheetData.value?.props)
         })
     }
 
-    const openSheet = () => {
+    const openSheet = ({component, props}: {component: Component, props: any}) => {
+      sheetData.value.component = component
+      sheetData.value.props = props
       sheetOpen.value = true
+    }
+
+    const renderDialog = () => {
+      return h(NsDialog, {
+          class: [
+            'app-dialog',
+          ],
+          modelValue: dialogOpen.value,
+          'onUpdate:modelValue': (value: boolean) => {
+            dialogOpen.value = value
+          }
+        }, {
+          default: () => h(dialogData.value?.component || null, dialogData.value?.props)
+        })
+    }
+
+    const openDialog = () => {
+      dialogOpen.value = true
     }
 
     onMounted(() => {
       $bus.on('notice', showNotice)
       $bus.on('drawer', openDrawer)
       $bus.on('sheet', openSheet)
+      $bus.on('dialog', openDialog)
     })
 
     onUnmounted(() => {
       $bus.off('notice', showNotice)
       $bus.off('drawer', openDrawer)
       $bus.off('sheet', openSheet)
+      $bus.off('dialog', openDialog)
     })
 
     return () => h('div', {
@@ -104,6 +132,7 @@ export const Page = defineComponent({
         renderDrawer(),
         slots.default?.(),
         renderSheet(),
+        renderDialog(),
       ])
   }
 })
