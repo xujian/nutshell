@@ -5,7 +5,7 @@ const popupProps = {
   /**
    * 浮层遮盖层
    */
-  hasBackdrop: {
+  mask: {
     type: Boolean,
     default: true,
   },

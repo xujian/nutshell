@@ -15,7 +15,7 @@ export const Drawer = (props: DrawerProps, ctx: SetupContext) => {
     width: props.width,
     destroyOnClose: props.destroyOnClose,
     placement: props.anchor as AntdvDrawerProps['placement'],
-    mask: props.hasBackdrop === false ? false : true,
+    mask: props.mask === false ? false : true,
     maskClosable: true,
     'onUpdate:open': (value: boolean) => {
       props['onUpdate:modelValue']?.(value)

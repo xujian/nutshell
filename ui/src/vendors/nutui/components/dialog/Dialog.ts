@@ -35,7 +35,7 @@ export const Dialog = (props: DialogProps, { slots }: Omit<SetupContext, 'expose
     width: '80vw',
     closeable: props.closable === false ? false : true,
     destroyOnClose: props.destroyOnClose,
-    overlay: props.hasBackdrop === false ? false : true,
+    overlay: props.mask === false ? false : true,
     closeOnClickOverlay: true,
     round: true,
     'onUpdate:visible': (value: boolean) => {

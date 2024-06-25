@@ -2,6 +2,8 @@ import { ComponentInstance, FunctionalComponent, InjectionKey, Ref, Slots, defin
 import { DesignProps, FieldProps, FullValidationRule, VariantProps, buildDesignVariables, buildFieldHint } from '../../../props'
 import { useNutshell } from '../../../framework'
 import { useBus } from '../../../composables'
+import { FormInstance } from '@nutui/nutui-taro'
+import { FormItemRule } from '@nutui/nutui-taro/dist/types/__VUE/form/types'
 
 export const NutuiFormSymbol: InjectionKey<Ref<FormInstance | undefined>> = Symbol('nutui-form')
 

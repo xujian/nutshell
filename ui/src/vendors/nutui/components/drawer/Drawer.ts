@@ -34,7 +34,7 @@ export const Drawer = (props: DrawerProps, { slots }: Omit<SetupContext, 'expose
     closable: true,
     width: props.width,
     destroyOnClose: props.destroyOnClose,
-    overlay: props.hasBackdrop === false ? false : true,
+    overlay: props.mask === false ? false : true,
     closeOnClickOverlay: true,
     round: true,
     'onUpdate:visible': (value: boolean) => {
