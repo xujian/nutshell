@@ -1,5 +1,5 @@
 import { Button } from './button'
-import { Input, DateInput } from './input'
+import { Input, DateInput, DateRangeInput } from './input'
 import { Chip } from './chip'
 import { Icon } from './icon'
 import { Select } from './select'
@@ -22,6 +22,8 @@ const components: Record<string, VendorComponent> = {
   Input,
   // @ts-ignore
   DateInput,
+  // @ts-ignore
+  DateRangeInput,
   // @ts-ignore
   Chip,
   // @ts-ignore
