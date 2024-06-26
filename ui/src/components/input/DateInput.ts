@@ -1,7 +1,6 @@
 import { ObjectEmitsOptions, PropType } from 'vue'
 import { Dayjs } from 'dayjs'
 import { MakePropsType, define } from '../../utils'
-import { usePlatform } from '../../composables'
 import { FullValidationRule, ValidationRule, formatRules, useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 
 export const dateInputProps = {
@@ -28,6 +27,13 @@ export const dateInputProps = {
     default: false,
   },
   /**
+   * 使用日历面板
+   */
+  hasCalendar: {
+    type: Boolean,
+    default: false,
+  },
+  /**
    * 时间栏分钟步数
    */
   minuteStep: {
@@ -50,7 +56,7 @@ export type DateInputEmits = {
   change: (value: string | number) => void
 }
 
-const emits: DateInputEmits = {
+export const dateInputEmits: DateInputEmits = {
   change: (value: string | number) => {}
 }
 
@@ -63,7 +69,7 @@ export type DateInputProps = MakePropsType<typeof dateInputProps, DateInputEmits
 export const NsDateInput = define({
     name: 'NsDateInput',
     props: dateInputProps,
-    emits,
+    emits: dateInputEmits,
     setup (props, ctx) {
       const finalRules = formatRules(props.rules as ValidationRule[], props)
       return {

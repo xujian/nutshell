@@ -21,7 +21,7 @@ export const Input = defineComponent({
           name: props.name,
           placeholder: props.placeholder,
           modelValue: props.modelValue,
-          inputAlign: 'right',
+          inputAlign: props.variant === 'solid' ? 'left' : 'right',
           placeholderClass: 'input-placeholder',
           'onUpdate:modelValue': (value: number | string) => {
             props['onUpdate:modelValue']?.(value)
