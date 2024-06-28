@@ -74,6 +74,7 @@ import { NsTimeline } from './timeline'
 import { NsDivider } from './divider'
 import { NsNumber } from './number'
 import { NsButtonGroup } from './button-group'
+import { NsPage, NsPageHeader, NsPageBottom } from './page'
 
 const components = {
   NsApp,
@@ -135,7 +136,10 @@ const components = {
   NsPopoverConfirm,
   NsTimeline,
   NsDivider,
-  NsButtonGroup
+  NsButtonGroup,
+  NsPage,
+  NsPageHeader,
+  NsPageBottom,
 }
 
 const properties = Object.fromEntries(

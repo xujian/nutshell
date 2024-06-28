@@ -43,7 +43,15 @@ const nutuiVendor: CoreVendor = {
     this.notice = (message: string) => {
       $bus.emit('notice', { message })
     }
-    this.confirm = (message: string, onOk: () => void, options?: ConfirmOptions) => {}
+    this.confirm = (message: string, onOk: () => void, options?: ConfirmOptions) => {
+      $bus.emit('confirm', {
+        message,
+        options: {
+          ...options,
+          onOk
+        }
+      })
+    }
   },
   render (props, ctx) {
     const { parent } = getCurrentInstance()!

@@ -1,13 +1,13 @@
 <template>
   <ns-page class="apply-page">
-    <page-header title="AI审批"
+    <ns-page-header title="AI审批"
       color-mode="dark"
       texture="http://localhost:2024/images/mummy.svg"
       :minimal="false"
       fill="#0d0c98">
       <h1>智能风控引擎</h1>
       <p class="caption">值得信赖的审批助手</p>
-    </page-header>
+    </ns-page-header>
     <ns-form class="apply-form" name="apply">
       <h3 class="form-title">申请人</h3>
       <ns-input name="name"
@@ -39,7 +39,7 @@
         placeholder="请选择所在地"
         v-model="formData.location"
         :options="locations" />
-      <ns-date-input
+      <ns-date-range-input
         label="起止日期"
         name="dateRange"
         placeholder="请输入起止日期"
@@ -49,12 +49,21 @@
     <div class="filter" @click="openDateFilter">
       <div class="text number">{{ dateRangeDisplay }}</div>
     </div>
+    <ns-page-bottom>
+      <ns-button label="提交申请"
+        round
+        size="lg"
+        color="secondary"
+        class="full-width" />
+    </ns-page-bottom>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { NsPage, NsForm, NsInput, NsIdInput, NsMobileInput, useBus } from '@uxda/nutshell'
-import { PageHeader } from '@uxda/appkit-next'
+import { NsPage, NsPageHeader, NsPageBottom,
+  NsForm, NsInput, NsButton,
+  NsIdInput, NsMobileInput,
+  NsDateInput, NsDateRangeInput, useBus } from '@uxda/nutshell'
 import { computed, reactive } from 'vue'
 import DateFilter from '../../components/DateFilter.vue'
 
@@ -104,7 +113,6 @@ const formData = reactive({
 
 <style lang="scss">
 .apply-page {
-  height: 100vh;
   .page-header {
     margin-bottom: -16px;
     .content {

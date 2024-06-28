@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
 import { define, MakePropsType } from '../../utils'
 
 export const pageProps = {

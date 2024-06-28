@@ -1,6 +1,6 @@
 <template>
   <div class="page page-approvals">
-    <page-header
+    <ns-page-header
       @close="onPageHeaderClose">
       <template #title>
         <ns-input class="search-input full-width"
@@ -13,7 +13,7 @@
           </template>
         </ns-input>
       </template>
-    </page-header>
+    </ns-page-header>
     <ns-tabs v-model="tab" :items="tabs" />
     <scroll-view
       class="approvals-scroll"
@@ -26,8 +26,7 @@
 
 <script lang="ts" setup>
 import Taro from '@tarojs/taro'
-import { PageHeader } from '@uxda/appkit-next'
-import { WithPaging } from '@uxda/nutshell'
+import { NsPageHeader, WithPaging } from '@uxda/nutshell'
 import { onMounted, ref } from 'vue'
 import { endpoints, useHttp } from '../../api'
 import ApprovalList from '../../components/ApprovalList.vue'

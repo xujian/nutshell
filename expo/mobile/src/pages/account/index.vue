@@ -1,6 +1,6 @@
 <template>
   <div class="page account-page">
-    <page-header
+    <ns-page-header
       color-mode="dark"
       class="account-header"
       title="大道云 Pro"
@@ -15,7 +15,7 @@
           <p class="caption">186****8200</p>
         </div>
       </div>
-    </page-header>
+    </ns-page-header>
     <div class="page-content">
       <ns-menu :items="menu1Items" />
       <ns-menu :items="menu2Items" />
@@ -25,7 +25,8 @@
 
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import { PageHeader, useTabbar } from '@uxda/appkit-next'
+import { NsPageHeader } from '@uxda/nutshell'
+import { useTabbar } from '@uxda/appkit-next'
 
 const menu1Items = [
   {

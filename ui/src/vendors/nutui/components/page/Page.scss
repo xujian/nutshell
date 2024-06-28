@@ -46,4 +46,11 @@
       transition: all .5s;
     }
   }
+  .page-bottom {
+    position: absolute;
+    bottom: var(--bottom);
+    box-sizing: border-box;
+    padding: 0 var(--ns-spacing);
+    width: 100vw;
+  }
 }
