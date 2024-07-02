@@ -90,17 +90,21 @@ export const NsCard = defineComponent({
       class: 'card-body'
     }, slots.default?.())
 
-    const footer = () => h('div', {
-      class: [
-        'card-footer',
-      ]
-    }, slots.footer?.())
+    const footer = () => slots.footer
+      ? h('div', {
+          class: [
+            'card-footer',
+          ]
+        }, slots.footer())
+      : null
 
-    const bottom = () => h('div', {
-      class: [
-        'card-bottom',
-      ]
-    }, slots.bottom?.())
+    const bottom = () => slots.bottom
+      ? h('div', {
+          class: [
+            'card-bottom',
+          ]
+        }, slots.bottom())
+      : null
 
     return () => h('div', {
       class: classes,
