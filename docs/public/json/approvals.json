@@ -1,10 +1,10 @@
 {
-  "code": "200",
+  "code": 200,
   "result": {
     "pageNum": 1,
     "total": 120,
     "pageSize": 10,
-    "data": [
+    "list": [
       {
         "id": "1789133268554223616",
         "applyNo": "DDYKSP24051166169",

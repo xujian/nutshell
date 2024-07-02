@@ -1,0 +1,142 @@
+{
+  "code": 200,
+  "result": {
+    "pageNum": 1,
+    "total": 120,
+    "pageSize": 10,
+    "list": [
+      {
+        "id": "1732961307843493888",
+        "name": "没钱贷",
+        "orgType": "bank",
+        "orgName": "天地会",
+        "mortgageType": "xyd",
+        "tags": ["放款快", "利率低", "支持提放保", "缺钱"],
+        "interestRateLowerLimit": 2,
+        "dayInterestRateLowerLimit": 0.6,
+        "MonthInterestRateLowerLimit": 16.7,
+        "fastestLoanTime": 3
+      },
+      {
+        "id": "1720270067045892096",
+        "name": "天字一号",
+        "orgType": "xintuo",
+        "orgName": "天地会",
+        "mortgageType": "fcdy",
+        "tags": ["放款快", "利率低", "支持提放保", "缺钱"],
+        "interestRateLowerLimit": 2,
+        "dayInterestRateLowerLimit": 0.6,
+        "MonthInterestRateLowerLimit": 16.7,
+        "对象": "有钱人",
+        "loanableAmountUpperLimit": 200,
+        "fastestLoanTime": 3
+      },
+      {
+        "id": "1719607274797924352",
+        "name": "没钱贷",
+        "orgType": "bank",
+        "orgName": "天地会",
+        "mortgageType": "fcdy",
+        "tags": ["放款快", "利率低", "支持提放保", "缺钱"],
+        "interestRateLowerLimit": 2,
+        "dayInterestRateLowerLimit": 0.6,
+        "MonthInterestRateLowerLimit": 16.7,
+        "fastestLoanTime": 3
+      },
+      {
+        "id": "1719248271244918784",
+        "name": "灌灌",
+        "orgType": "bank",
+        "orgName": "反反复复",
+        "tags": ["放款快", "利率低", "支持提放保", "1221"],
+        "interestRateLowerLimit": 2,
+        "dayInterestRateLowerLimit": 0.6,
+        "MonthInterestRateLowerLimit": 16.7,
+        "mortgageType": "抵押贷",
+        "fastestLoanTime": 3
+      },
+      {
+        "id": "1674228073253437440",
+        "name": "灌灌",
+        "orgType": "bank",
+        "orgName": "反反复复",
+        "mortgageType": "fcdy",
+        "tags": ["放款快", "利率低", "支持提放保"],
+        "interestRateLowerLimit": 2,
+        "dayInterestRateLowerLimit": 0.6,
+        "MonthInterestRateLowerLimit": 16.7,
+        "fastestLoanTime": 3
+      },
+      {
+        "id": "1750438821016764416",
+        "name": "林桂公司",
+        "orgType": "bank",
+        "orgName": "广发银行",
+        "mortgageType": "fcdy",
+        "tags": ["放款快", "利率低", "支持提放保", "安全"],
+        "dayInterestRateLowerLimit": 0.3,
+        "interestRateLowerLimit": 1,
+        "MonthInterestRateLowerLimit": 8.3,
+        "产品特点": "放款速度快",
+        "loanableAmountUpperLimit": 3,
+        "fastestLoanTime": 6
+      },
+      {
+        "id": "1750438609145692160",
+        "name": "江帅公司",
+        "orgType": "bank",
+        "orgName": "广发银行",
+        "mortgageType": "fcdy",
+        "tags": ["放款快", "利率低", "支持提放保", "安全"],
+        "dayInterestRateLowerLimit": 0.3,
+        "interestRateLowerLimit": 1,
+        "MonthInterestRateLowerLimit": 8.3,
+        "产品特点": "放款速度快",
+        "loanableAmountUpperLimit": 3,
+        "fastestLoanTime": 6
+      },
+      {
+        "id": "1750427909241307136",
+        "name": "孔峰公司",
+        "orgType": "bank",
+        "orgName": "广发银行",
+        "mortgageType": "fcdy",
+        "tags": ["放款快", "利率低", "支持提放保", "安全"],
+        "dayInterestRateLowerLimit": 0.3,
+        "interestRateLowerLimit": 1,
+        "MonthInterestRateLowerLimit": 8.3,
+        "产品特点": "放款速度快",
+        "loanableAmountUpperLimit": 3,
+        "fastestLoanTime": 6
+      },
+      {
+        "id": "1750427523830906880",
+        "name": "曾岩公司",
+        "orgType": "bank",
+        "orgName": "广发银行",
+        "mortgageType": "fcdy",
+        "tags": ["放款快", "利率低", "支持提放保", "安全"],
+        "dayInterestRateLowerLimit": 0.3,
+        "interestRateLowerLimit": 1,
+        "MonthInterestRateLowerLimit": 8.3,
+        "产品特点": "放款速度快",
+        "loanableAmountUpperLimit": 3,
+        "fastestLoanTime": 6
+      },
+      {
+        "id": "1750383313807343616",
+        "name": "徐洁公司",
+        "orgType": "bank",
+        "orgName": "广发银行",
+        "mortgageType": "fcdy",
+        "tags": ["放款快", "利率低", "支持提放保", "安全"],
+        "dayInterestRateLowerLimit": 0.3,
+        "interestRateLowerLimit": 1,
+        "MonthInterestRateLowerLimit": 8.3,
+        "产品特点": "放款速度快",
+        "loanableAmountUpperLimit": 3,
+        "fastestLoanTime": 6
+      }
+    ]
+  }
+}
