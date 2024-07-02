@@ -21,6 +21,7 @@ export const pageHeaderProps = {
   },
   colorMode: {
     type: String as PropType<PageHeaderColorMode>,
+    default: 'light'
   },
   /**
    * 底图
@@ -64,12 +65,14 @@ export const NsPageHeader = defineComponent({
       ...props.fill ? { '--fill': props.fill } : {},
     }
 
+    const heading = () => slots.title
+      ? slots.title()
+      : h('div', { class: 'title-heading'}, props.title)
+
     const title = () => h('div', {
         class: ['title']
       }, [
-        slots.title
-          ? slots.title()
-          : h('div', { class: 'title-heading'}, props.title),
+        heading(),
         h('div', {
           class: 'back-button',
           onClick: () => {
@@ -83,6 +86,7 @@ export const NsPageHeader = defineComponent({
     return () => h('div', {
       class: [
         'ns-page-header',
+        'page-header',
         `color-mode-${props.colorMode}`,
         ...props.minimal ? ['minimal'] : []
       ],
