@@ -3,9 +3,13 @@ import { MakePropsType, define } from '../../utils'
 import { UniDataItem } from '../../shared'
 import { PropType } from 'vue'
 import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
+import { Color } from '../../composables'
 
 export const chipsProps = {
   ...useModelValuePropsForStringArray(),
+  color: {
+    type: String as PropType<Color>,
+  },
   options: {
     type: Array as PropType<UniDataItem[]>,
     default: [],

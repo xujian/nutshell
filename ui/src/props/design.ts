@@ -14,6 +14,12 @@ const designProps = {
   fill: {
     type: String as PropType<Color>,
   },
+  /**
+   * 底色
+   */
+  surface: {
+    type: String as PropType<Color>,
+  },
   foreground: {
     type: String as PropType<Color>,
   },
@@ -80,6 +86,9 @@ const buildDesignVariables = (props: DesignProps) => {
     ...props.fill
       ? {'--fill': makeColor(props.fill) }
       : {},
+      ...props.surface
+        ? {'--surface': makeColor(props.surface) }
+        : {},
     ...props.borderColor
       ? { '--stroke': props.borderColor }
       : {},

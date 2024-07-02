@@ -17,7 +17,7 @@ const flexProps = {
   /**
    * 间隙
    */
-  gutter: {
+  gap: {
     type: Number,
     default: () => 0
   },
@@ -51,8 +51,8 @@ export const buildFlexClasses = (props: FlexProps) => {
 
 export const buildFlexStyles = (props: FlexProps) => {
   return {
-    ...props.gutter && {
-      '--flex-gutter': `${props.gutter}px`,
+    ...props.gap && {
+      '--gap': `${props.gap}px`,
     },
   }
 }
