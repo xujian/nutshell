@@ -3,7 +3,10 @@
     <h1 class="my-lg">卡片 &lt;ns-card&gt;</h1>
     <h2 class="my-md">Color</h2>
     <ns-column class="colors">
-      <ns-card v-for="color in colors" :fill="color" :key="color"></ns-card>
+      <ns-card v-for="color in colors"
+        title="卡片"
+        :fill="color"
+        :key="color"></ns-card>
     </ns-column>
     <h2 class="my-md">Variants</h2>
     <ns-row class="variants" v-for="(variant) in variants" align="center" :key="variant">
