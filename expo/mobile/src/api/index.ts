@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
-import { HttpRequestConfig, ResponseRaw, createHttp } from '@uxda/nutshell'
-import { translates, transforms } from './endpoints/approvals'
+import { HttpRequestConfig, Paging, PagingParams, ResponseRaw, createHttp } from '@uxda/nutshell'
+import { translates, transforms } from './endpoints'
 // import { useAppKitOptions } from '../../Appkit'
 import clientConfig from './config'
 
@@ -22,7 +22,7 @@ const vendor = {
           resolve({
             status: data.code,
             message: data.msg,
-            data: data.result as T,
+            data: data.result.list as T,
           })
         })
         .catch((e: any) => {

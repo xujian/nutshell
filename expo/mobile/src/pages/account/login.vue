@@ -3,7 +3,7 @@
     <ns-row class="image flex-grow">
       <img src="https://cdn.ddjf.com/static/images/customer-center/mini-login-img.png" />
     </ns-row>
-    <Transition name="fade">
+    <Transition name="fade" mode="out-in">
       <ns-button
         size="lg"
         color="positive"

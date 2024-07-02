@@ -3,15 +3,17 @@
     <ns-page-header
       @close="onPageHeaderClose">
       <template #title>
-        <ns-input class="search-input full-width"
-          placeholder="搜索审批记录"
-          round
-          name="search"
-          variant="solid">
-          <template #prepend>
-            <ns-icon name="https://cdn.ddjf.com/static/images/wx-yunservice/search-icon.png" />
-          </template>
-        </ns-input>
+        <ns-form>
+          <ns-input class="search-input full-width"
+            placeholder="搜索审批记录"
+            round
+            name="search"
+            variant="solid">
+            <template #prepend>
+              <ns-icon name="https://cdn.ddjf.com/static/images/wx-yunservice/search-icon.png" />
+            </template>
+          </ns-input>
+        </ns-form>
       </template>
     </ns-page-header>
     <ns-tabs v-model="tab" :items="tabs" />
@@ -92,6 +94,11 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+.page-approvals {
+  .ns-page-header {
+    margin-bottom: -16px;
+  }
+}
 .approvals-scroll {
   height: calc(100vh - 130px);
 }
