@@ -46,9 +46,6 @@
         :has-calendar="true"
         v-model="formData.dateRange" />
     </ns-form>
-    <div class="filter" @click="openDateFilter">
-      <div class="text number">{{ dateRangeDisplay }}</div>
-    </div>
     <ns-page-bottom>
       <ns-button label="提交申请"
         round
@@ -65,7 +62,6 @@ import { NsPage, NsPageHeader, NsPageBottom,
   NsIdInput, NsMobileInput,
   NsDateInput, NsDateRangeInput, useBus } from '@uxda/nutshell'
 import { computed, reactive } from 'vue'
-import DateFilter from '../../components/DateFilter.vue'
 
 const $bus = useBus()
 
@@ -89,16 +85,6 @@ const dateRangeDisplay = computed(() => {
   let endTime = filtering.dateTo?.replace(/-/g, ".").substring(2);
   return startTime + " - " + endTime;
 })
-
-function openDateFilter () {
-  $bus.emit('sheet', {
-    component: DateFilter,
-    props: {
-      from: filtering.dateFrom,
-      to: filtering.dateTo,
-    }
-  })
-}
 
 const formData = reactive({
   name: '',
