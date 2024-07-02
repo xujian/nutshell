@@ -35,6 +35,7 @@ export * from './number'
 export * from './divider'
 export * from './button-group'
 export * from './page'
+export * from './search'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -75,6 +76,7 @@ import { NsDivider } from './divider'
 import { NsNumber } from './number'
 import { NsButtonGroup } from './button-group'
 import { NsPage, NsPageHeader, NsPageBottom } from './page'
+import { NsSearch } from './search'
 
 const components = {
   NsApp,
@@ -140,6 +142,7 @@ const components = {
   NsPage,
   NsPageHeader,
   NsPageBottom,
+  NsSearch,
 }
 
 const properties = Object.fromEntries(
