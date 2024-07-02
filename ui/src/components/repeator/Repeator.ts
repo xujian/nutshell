@@ -1,5 +1,5 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent } from 'vue'
-import { define, MakePropsType } from '../../utils'
+import { PropType, defineComponent } from 'vue'
+import { MakePropsType } from '../../utils'
 import { h } from 'vue'
 import { buildFlexClasses, buildFlexStyles, useFlexProps } from '../../props'
 
@@ -50,14 +50,15 @@ export const NsRepeator = defineComponent({
         slots.default?.(item)
       ]))
 
+    const style = buildFlexStyles(props)
+    console.log('===style', style)
+
     return () => h('div', {
       class: [
         'ns-repeator',
         ...buildFlexClasses(props)
       ],
-      style: {
-        ...buildFlexStyles(props)
-      }
+      style
     }, {
       default: item
     })
