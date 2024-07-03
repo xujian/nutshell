@@ -13,6 +13,7 @@ import { Page } from './page'
 import { Dialog } from './dialog'
 import { Drawer } from './drawer'
 import { Sheet } from './sheet'
+import { RadioGroup } from './radio'
 import { VendorComponent } from '../../../shared'
 
 const components: Record<string, VendorComponent> = {
@@ -45,6 +46,8 @@ const components: Record<string, VendorComponent> = {
   Dialog,
   Drawer,
   Sheet,
+  // @ts-ignore
+  RadioGroup,
 }
 
 export default components
