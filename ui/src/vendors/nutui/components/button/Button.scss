@@ -63,9 +63,19 @@
     opacity: 0.5;
   }
   .icon {
-    width: 16px;
-    height: 16px;
-    margin-right: 4px;
+    height: calc(100% - 8px);
+    width: auto;
+    aspect-ratio: 1;
+    left: 4px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--icon-fill, transparent);
+  }
+  &.icon-position-end {
+    .icon {
+      left: auto;
+      right: 4px;
+    }
   }
   &:active:before {
     opacity: 0;

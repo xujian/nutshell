@@ -4,6 +4,8 @@ import { define, MakePropsType } from '../../utils'
 import { useDimensionProps, useLoadingProps } from '../../props'
 import { Color } from '../../composables/theme'
 
+export type IconPosition = 'start' | 'end'
+
 export const useButtonProps = () => ({
   /**
    * 显示的文字
@@ -25,6 +27,12 @@ export const useButtonProps = () => ({
   },
   icon: {
     type: String
+  },
+  iconPosition: {
+    type: String as PropType<IconPosition>,
+  },
+  iconFill: {
+    type: String as PropType<Color>,
   },
   ...useSizeProps(),
   /**

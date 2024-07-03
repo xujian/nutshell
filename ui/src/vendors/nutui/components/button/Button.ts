@@ -23,9 +23,10 @@ export const Button = (props: ButtonProps, { slots }: SetupContext) => {
   const { color } = props
   const colorIsBrand = BRANDS.includes(color as BrandColor)
   const classes = [
-    props.size ? `size-${props.size}` : '',
+    ...props.size ? [`size-${props.size}`] : [],
     ...(props.classes ?? []),
-    colorIsBrand ? `color-${color}` : ''
+    ...colorIsBrand ? [`color-${color}`] : [],
+    ...props.iconPosition ? [`icon-position-${props.iconPosition}`] : [],
   ]
   const { label, width, disabled, maxWidth, height, maxHeight, minWidth, minHeight, ...p } = props
 
@@ -43,6 +44,9 @@ export const Button = (props: ButtonProps, { slots }: SetupContext) => {
     : slots.icon
 
   const shape = props.round === true ? void 0 : ('suqare' as ButtonShape)
+  const style = {
+    ...props.iconFill ? {'--icon-fill': props.iconFill} : {}
+  }
 
   return h(
     NutButton,
@@ -53,7 +57,8 @@ export const Button = (props: ButtonProps, { slots }: SetupContext) => {
       ...(!colorIsBrand && { color: color as string }),
       size: getSize(props.size),
       loading: props.loading,
-      onClick: props.onClick
+      onClick: props.onClick,
+      style,
     },
     {
       default: () => [
