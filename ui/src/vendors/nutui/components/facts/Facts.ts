@@ -1,23 +1,39 @@
 import { h, SetupContext } from 'vue'
-import { FactsProps } from '../../../../components'
+import { FactsItemProps, FactsProps } from '../../../../components'
 import { UniDataItem } from 'src/shared'
+
+
+
+export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose'>) => {
+
+  const content = ctx.slots.default ||
+    (() => props.value)
+
+  return h('div', {
+    class: ['item', 'row', 'align-center', 'justify-between', 'font-sm']
+  }, [
+    h('div', {
+        class: ['label']
+      }, props.label),
+    h('div', {
+        class: ['value']
+      }, {
+        default: content
+      })
+    ]
+  )
+}
 
 export const Facts = (props: FactsProps, ctx: Omit<SetupContext, 'expose'>) => {
 
-  const item = (d: UniDataItem) => h('div', {
-      class: ['item', 'row', 'align-center', 'justify-between', 'font-sm']
-    }, [
-      h('div', {
-          class: ['label']
-        }, d.label),
-      h('div', {
-          class: ['value']
-        }, d.value)
-      ]
-  )
+  console.log('===Facts', props.items, ctx.slots.default)
+  const slots = ctx.slots.default
+    || (() => props.items?.map((item) => h(FactsItem, item.props)))
 
   return h('div', {
     class: 'ns-facts',
-  }, props.items?.map(item))
+  }, {
+      default: slots
+    }
+  )
 }
-

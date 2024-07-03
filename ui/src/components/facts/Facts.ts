@@ -43,6 +43,9 @@ export const factsItemProps = {
     type: Number,
     default: 1,
   },
+  value: {
+    type: String,
+  }
 }
 
 export type FactsItemSlots = {

@@ -6,7 +6,7 @@ import { Select } from './select'
 import { Divider } from './divider'
 import { Menu } from './menu'
 import { Tabs } from './tabs'
-import { Facts } from './facts'
+import { Facts, FactsItem } from './facts'
 import { Form } from './form'
 import { Checkbox } from './checkbox'
 import { Page } from './page'
@@ -36,6 +36,7 @@ const components: Record<string, VendorComponent> = {
   Menu,
   Tabs,
   Facts,
+  FactsItem,
   // @ts-ignore
   Form,
   Checkbox,
