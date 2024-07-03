@@ -29,11 +29,13 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { WithPaging } from '@uxda/nutshell'
+import { useNutshell, WithPaging } from '@uxda/nutshell'
 import { endpoints, useHttp } from '../../api'
 import { Product } from '../../models'
+import Taro from '@tarojs/taro'
 
-const $http = useHttp()
+const $http = useHttp(),
+  $n = useNutshell()
 
 const tabs = [
   {
@@ -53,7 +55,9 @@ const tabs = [
 const products = ref<Product[]>([])
 
 const onItemClick = (item: Product) => {
-  console.log('===item', item)
+  Taro.navigateTo({
+    url: '/pages/products/details'
+  })
 }
 
 onMounted(() => {

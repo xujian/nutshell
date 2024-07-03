@@ -22,7 +22,7 @@ const vendor = {
           resolve({
             status: data.code,
             message: data.msg,
-            data: data.result.list as T,
+            data: data.result.list || data.result as T,
           })
         })
         .catch((e: any) => {

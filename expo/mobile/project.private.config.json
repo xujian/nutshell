@@ -10,6 +10,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "产品详情",
+          "pathName": "pages/products/details",
+          "query": "id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/products/list",
           "pathName": "pages/products/list",
           "query": "",

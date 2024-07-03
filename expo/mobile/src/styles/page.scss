@@ -9,13 +9,16 @@ page {
   --ns-size-lg: 46px;
   --ns-font-size-md: 14px;
   --ns-font-size-xs: 12px;
+  --ns-spacing: 10px;
+  --ns-border-radius: 16px;
+  --ns-paper: #fff;
   font-size: 14px;
   color: #333;
   --ns-text: #333;
 }
 
 .page-content {
-  padding: 12px;
+  padding: var(--ns-spacing);
 }
 
 .v-enter-active,
@@ -56,4 +59,8 @@ page {
 .slide-fade-leave-to {
   transform: translateX(100vw);
   opacity: 0;
+}
+
+.overlap {
+  margin-top: -20px;
 }

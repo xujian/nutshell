@@ -7,6 +7,7 @@ export default defineAppConfig({
     // AI 审批申请页
     'pages/risk/apply',
     'pages/products/list',
+    'pages/products/details',
   ],
   tabBar: {
     custom: true,
