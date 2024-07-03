@@ -1,3 +1,5 @@
+import { DesignProps } from '../props'
+
 export type ThemeOptions = false | {
 
 }
@@ -89,5 +91,16 @@ export function buildGradientStyle (gradient?: GradientString):
       endColor = makeColor(end)
     return {
       background: `linear-gradient(${angle}deg, ${startColor} 0%, ${endColor} 100%)`
+    }
+}
+
+/**
+ * 生成 backdrop-filer: blur 样式
+ */
+export function buildBlurStyle (props: DesignProps):
+  { 'backdrop-filter'?: string } {
+    if (!props.blur) return {}
+    return {
+      'backdrop-filter': `blur(${props.blur}px)`
     }
 }

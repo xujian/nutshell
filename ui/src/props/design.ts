@@ -1,5 +1,5 @@
 import { PropType } from 'vue'
-import { Color, GradientString, buildFillStyle, buildGradientStyle, makeColor } from '../composables/theme'
+import { Color, GradientString, buildBlurStyle, buildFillStyle, buildGradientStyle, makeColor } from '../composables/theme'
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
 
@@ -53,6 +53,15 @@ const designProps = {
  borders: {
    type: String as PropType<Borders>,
  },
+ /**
+  * 毛玻璃效果
+  */
+ blur: {
+  type: Number,
+ },
+ brightness: {
+  type: Number,
+ }
 }
 
 export type DesignProps = MakePropsType<typeof designProps>
@@ -77,6 +86,7 @@ const buildDesignStyles = (props: DesignProps) => {
         }
       : {},
     ...buildGradientStyle(props.gradient),
+    ...buildBlurStyle(props),
   }
   return style
 }
@@ -97,6 +107,12 @@ const buildDesignVariables = (props: DesignProps) => {
       : {},
     ...props.foreground
       ? { '--foreground': props.foreground }
+      : {},
+    ...props.blur
+      ? { '--blur': `${props.blur}px` }
+      : {},
+    ...props.brightness
+      ? { '--brightness': props.brightness }
       : {},
   }
 }

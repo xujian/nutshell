@@ -54,6 +54,12 @@ export const buildFlexStyles = (props: FlexProps) => {
     ...props.gap && {
       '--gap': `${props.gap}px`,
     },
+    ...props.justify && {
+      '--justify': `${props.justify}`,
+    },
+    ...props.align && {
+      '--align': `${props.align}`,
+    },
   }
 }
 

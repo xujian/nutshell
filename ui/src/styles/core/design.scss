@@ -21,3 +21,7 @@
     border-radius: #{$value};
   }
 }
+
+.with-design {
+  backdrop-filter: brightness(var(--brightness, 1)) blur(var(--blur));
+}
