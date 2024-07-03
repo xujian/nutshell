@@ -1,6 +1,6 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
 import { buildFillStyle, buildGradientStyle } from '../../composables/theme'
-import { useDesignProps, useVariantProps } from '../../props'
+import { buildDesignStyles, buildDesignVariables, useDesignProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
 
 export const cardProps = {
@@ -44,16 +44,18 @@ export const NsCard = defineComponent({
       'flex',
       'flex-column',
       'align-stretch',
+      'with-design',
       props.fill ? `fill-${props.fill}` : '',
       props.variant ? `variant-${props.variant}` : '',
     ].join(' ')
 
     const style = {
-      ...buildFillStyle(props.fill),
-      ...buildGradientStyle(props.gradient)
+      ...buildDesignStyles(props),
+      ...buildDesignVariables(props),
     }
+    console.log('===style', style)
 
-    const label = props.title
+    const label = () => props.title
       ? h('div', {
           class: 'title'
         },
@@ -61,13 +63,13 @@ export const NsCard = defineComponent({
             class: 'title-label'
           }, props.title)
         )
-      : ''
+      : null
 
-    const titleAfter = h('div', {
+    const titleAfter = () => h('div', {
       class: 'title-after spacer'
     }, () => slots.header?.())
 
-    const corner = h('div', {
+    const corner = () => h('div', {
       class: 'title-corner'
     }, [
       slots.corner?.()
@@ -79,9 +81,9 @@ export const NsCard = defineComponent({
         }, slots.header
           ? slots.header?.()
           : [
-              label,
-              titleAfter,
-              corner,
+              label(),
+              titleAfter(),
+              corner(),
             ]
         )
       : null

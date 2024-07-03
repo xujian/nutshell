@@ -1,22 +1,25 @@
 .ns-card {
   border-radius: var(--ns-border-radius);
-  background-color: var(--ns-surface);
+  background-color: var(--fill, var(--ns-surface));
   overflow: hidden;
   .card-header, .card-title {
-    padding: var(--ns-spacing-md);
+    padding: var(--ns-spacing);
     .title {
       flex-grow: 1;
       display: flex;
       align-items: center;
     }
   }
+  .card-header {
+    margin-bottom: calc(var(--ns-spacing) * -1/2)
+  }
   .card-body {
-    padding: var(--ns-spacing-md);
+    padding: var(--ns-spacing);
   }
   .card-footer {
     display: flex;
     flex-direction: row;
-    padding: var(--ns-spacing-md);
+    padding: var(--ns-spacing);
   }
   h3.title-label {
     font-size: var(--ns-font-size-md);
@@ -52,7 +55,7 @@
   // 无内边距
   &.no-padding {
     .card-body {
-      margin: 0 calc(var(--ns-spacing-lg) * -1);
+      margin: 0 calc(var(--ns-spacing) * -1);
     }
   }
 }
