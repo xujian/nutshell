@@ -15,6 +15,7 @@ export {
 export type {
   HexColor,
   Color,
+  isBrand
 } from './theme'
 
 export {

@@ -63,6 +63,10 @@ export function useTheme () {
   return { theme, setTheme }
 }
 
+export function isBrand (color: Color) {
+  return BRANDS.includes(color as BrandColor)
+}
+
 export function makeColor (color: Color): string {
   return BRANDS.includes(color as typeof BRANDS[number]) ||
     ESSENTIALS.includes(color as typeof ESSENTIALS[number])
@@ -84,13 +88,13 @@ export function buildFillStyle (fill?: Color): { backgroundColor?: string} {
  * 生成 gradient 样式
  */
 export function buildGradientStyle (gradient?: GradientString):
-  { backgroundColor?: string, background?: string } {
+  { '--gradient'?: string } {
     if (!gradient) return {}
     const [start, end, angle = 0] = gradient.split(/[\,\/]/) as [Color, Color, number]
     const startColor = makeColor(start),
       endColor = makeColor(end)
     return {
-      background: `linear-gradient(${angle}deg, ${startColor} 0%, ${endColor} 100%)`
+      '--gradient': `linear-gradient(${angle}deg, ${startColor} 0%, ${endColor} 100%)`
     }
 }
 

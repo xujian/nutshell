@@ -1,5 +1,5 @@
 import { PropType } from 'vue'
-import { Color, GradientString, buildBlurStyle, buildFillStyle, buildGradientStyle, makeColor } from '../composables/theme'
+import { Color, GradientString, buildBlurStyle, buildFillStyle, buildGradientStyle, isBrand, makeColor } from '../composables/theme'
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
 
@@ -67,7 +67,8 @@ const designProps = {
 export type DesignProps = MakePropsType<typeof designProps>
 
 const buildDesignClasses = (props: DesignProps) => [
-  ...props.fill ? [
+  'with-design',
+  ...props.fill && isBrand(props.fill) ? [
     `fill-${props.fill}`
    ] : [],
    ...props.borders ? [
@@ -80,19 +81,6 @@ const buildDesignClasses = (props: DesignProps) => [
 
 const buildDesignStyles = (props: DesignProps) => {
   const style = {
-    ...props.fill
-      ? {
-          ...buildFillStyle(props.fill)
-        }
-      : {},
-    ...buildGradientStyle(props.gradient),
-    ...buildBlurStyle(props),
-  }
-  return style
-}
-
-const buildDesignVariables = (props: DesignProps) => {
-  return {
     ...props.fill
       ? {'--fill': makeColor(props.fill) }
       : {},
@@ -114,6 +102,14 @@ const buildDesignVariables = (props: DesignProps) => {
     ...props.brightness
       ? { '--brightness': props.brightness }
       : {},
+    ...buildGradientStyle(props.gradient),
+    ...buildBlurStyle(props),
+  }
+  return style
+}
+
+const buildDesignVariables = (props: DesignProps) => {
+  return {
   }
 }
 

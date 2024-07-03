@@ -23,5 +23,10 @@
 }
 
 .with-design {
+  background: var(--gradient), var(--fill);
   backdrop-filter: brightness(var(--brightness, 1)) blur(var(--blur));
+}
+
+.blur {
+  backdrop-filter: brightness(1.5) (20px);
 }

@@ -4,8 +4,8 @@ page {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f1f3f5;
   --ns-fill: #f1f2f6;
-  --ns-secondary: #09afaf;
-  --ns-positive: #09afaf;
+  --ns-secondary: #CDDC39;
+  --ns-positive: #1bb165;
   --ns-size-lg: 46px;
   --ns-font-size-md: 14px;
   --ns-font-size-xs: 12px;
@@ -63,4 +63,15 @@ page {
 
 .overlap {
   margin-top: -20px;
+}
+
+.ul-circle {
+  padding-left: 20px;
+}
+
+.ul-circle .h5-li {
+  display: list-item;
+  list-style: circle;
+  list-style-position: outside;
+  color: var(--ns-neutral);
 }
