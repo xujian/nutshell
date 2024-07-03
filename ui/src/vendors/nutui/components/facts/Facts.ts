@@ -1,6 +1,5 @@
 import { h, SetupContext } from 'vue'
 import { FactsItemProps, FactsProps } from '../../../../components'
-import { UniDataItem } from 'src/shared'
 
 
 
