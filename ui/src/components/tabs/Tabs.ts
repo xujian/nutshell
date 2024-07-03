@@ -1,7 +1,7 @@
-import { PropType, ObjectEmitsOptions, SlotsType, useSlots, VNode } from 'vue'
+import { PropType, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForInput } from '../../props'
-import { UniDataItem } from 'src/shared'
+import { UniDataItem } from '../../shared'
 
 export type TabsItem = {
   content?: string | VNode,

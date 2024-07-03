@@ -1,4 +1,4 @@
-import { MakePropsType } from 'src/utils'
+import { MakePropsType } from '../utils'
 import { buildProps } from '../utils/private/props'
 import { PropType } from 'vue'
 

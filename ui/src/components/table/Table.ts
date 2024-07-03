@@ -12,7 +12,7 @@ import { define, MakePropsType } from '../../utils'
 import { TableColumnFixed, TableColumnProps } from './TableColumn'
 import { buildDesignVariables, useDesignProps, buildDesignClasses, usePaginationProps } from '../../props'
 import { Color } from '../../composables/theme'
-import { Paging } from 'src/composables'
+import { Paging } from '../../composables'
 
 /**
  * 填充表格的数据

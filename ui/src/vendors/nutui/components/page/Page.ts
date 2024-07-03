@@ -1,7 +1,7 @@
 import { Component, defineComponent, h, onMounted, onUnmounted, ref, SetupContext } from 'vue'
 import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, type PageProps } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
-import { DialogOptions } from 'src/services/dialog'
+import { DialogOptions } from '../../../../services/dialog'
 
 export type NoticeType = 'info' | 'warning' | 'error'
 
