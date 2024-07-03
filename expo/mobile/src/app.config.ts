@@ -8,6 +8,7 @@ export default defineAppConfig({
     'pages/risk/apply',
     'pages/products/list',
     'pages/products/details',
+    'pages/products/order',
   ],
   tabBar: {
     custom: true,

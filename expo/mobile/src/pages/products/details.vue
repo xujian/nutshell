@@ -6,7 +6,8 @@
         :title="`${product?.机构名称} - ${product?.名称}`"
         fill="#ffffff33"
         :blur="20"
-        :brightness="2">
+        :brightness="2"
+        body-fill="#CDDC39">
         <ns-number
           :value="product.最快放款时长"
           suffix="天"
@@ -33,18 +34,35 @@
         </ns-facts>
         <p>&nbsp;</p>
         <h4>申请条件</h4>
-        <ul>
+        <ul class="ul-circle">
           <li>年龄 60 岁以下</li>
           <li>名下无其他贷款</li>
         </ul>
+        <p>&nbsp;</p>
+        <h4>所需材料</h4>
+        <ul class="ul-circle">
+          <li>身份证</li>
+          <li>房产证</li>
+          <li>户口本</li>
+        </ul>
       </ns-card>
     </div>
-    <ns-page-bottom>
-      <ns-button label="提交申请"
-        round
-        size="lg"
-        color="primary"
-        class="full-width" />
+    <ns-page-bottom fill="#ffffff11"
+      :blur="10" :brightness="2">
+      <div class="row">
+        <ns-button
+          round
+          color="secondary"
+          icon="http://127.0.0.1:2024/images/share.svg" />
+        <ns-button label="快速进件"
+          class="flex-grow"
+          round
+          color="primary"
+          icon="http://127.0.0.1:2024/images/arrow-right.svg"
+          icon-position="end"
+          icon-fill="#00000088"
+          @click="onOrderClick" />
+      </div>
     </ns-page-bottom>
   </ns-page>
 
@@ -54,6 +72,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { endpoints, useHttp } from '../../api'
 import { Product } from '../../models'
+import Taro from '@tarojs/taro'
 
 const $http = useHttp()
 
@@ -68,6 +87,12 @@ const coverStyle = computed(() => ({
     backgroundImage: `url(${product.value.bannerUrl})`
   } : {}
 }))
+
+const onOrderClick = () => {
+  Taro.navigateTo({
+    url: '/pages/products/order'
+  })
+}
 
 onMounted(() => {
   $http.get<Product>(endpoints.获取产品详情, {
