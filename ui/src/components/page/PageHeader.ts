@@ -1,14 +1,30 @@
 import { defineComponent, h, PropType } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useSafeArea } from '../../composables'
+import { buildDesignClasses, buildDesignStyles, buildDesignVariables, useDesignProps } from '../../props'
+
+export const pageBottomProps = {
+  ...useDesignProps()
+}
+
+export type PageBottomProps = MakePropsType<typeof pageBottomProps>
 
 export const NsPageBottom = defineComponent({
   name: 'NsPageBottom',
+  props: pageBottomProps,
   setup (props, { slots }) {
+
+    const style = {
+      ...buildDesignVariables(props),
+      ...buildDesignStyles(props),
+    }
+
     return () => h('div', {
       class: [
-        'page-bottom'
-      ]
+        'page-bottom',
+        ...buildDesignClasses(props),
+      ],
+      style,
     }, slots)
   }
 })
