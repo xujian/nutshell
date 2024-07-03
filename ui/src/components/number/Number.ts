@@ -120,8 +120,6 @@ export const NsNumber = defineComponent({
   props: numberProps,
   emits: numberEmits,
   setup (props, { slots }) {
-    console.log('===nsnumber setup', props.value)
-
     const root = ref<HTMLDivElement>(),
       digitsRef = ref<HTMLDivElement>()
 
