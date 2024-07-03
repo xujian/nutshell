@@ -9,6 +9,8 @@ import { ConfirmOptions, DialogOptions } from './services/dialog'
 import { ToastOptions } from './services/toast'
 import { LoadingOptions } from './services/loading'
 import { IconFormat } from './components'
+import { DrawerOptions } from './services/drawer'
+import { SheetOptions } from './services/sheet'
 
 /**
  * Nulshell framework options holding by app
@@ -24,8 +26,8 @@ export type DollarNutshell = {
   confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => void,
   toast: (message: string, options?: ToastOptions) => void,
   notice: (message: string, options?: ToastOptions) => void,
-  sheet: (component?: Component, props?: any) => void,
-  drawer: (component?: Component, props?: any) => void,
+  sheet: (options: SheetOptions) => void,
+  drawer: (options: DrawerOptions) => void,
   loading: (options?: LoadingOptions) => void,
   options: NutshellOptions
 }
@@ -59,8 +61,8 @@ export function Nutshell ({
       confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => {},
       toast: (message: string, options?: ToastOptions) => {},
       notice: (message: string, options?: ToastOptions) => {},
-      sheet: (component?: Component, props?: any) => {},
-      drawer: (component?: Component, props?: any) => {},
+      sheet: (options: SheetOptions) => {},
+      drawer: (options: DrawerOptions) => {},
       loading: (options?: LoadingOptions) => {},
       options: {
         theme,
@@ -73,13 +75,13 @@ export function Nutshell ({
     app.provide(NutshellSymbol, $n)
     app.provide(PlatformSymbol, platform)
     app.provide(BusSymbol, bus)
-    prepareVendor(app, theVendor)
     for (const service of services) {
       service.install(app, $n)
     }
     for (const directive of directives) {
       directive.install(app, $n)
     }
+    prepareVendor(app, theVendor)
     // for (const key in components) {
     //   // app.component(key, components[key])
     // }

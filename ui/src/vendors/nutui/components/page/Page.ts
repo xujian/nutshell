@@ -1,6 +1,7 @@
 import { Component, defineComponent, h, onMounted, onUnmounted, ref, SetupContext } from 'vue'
 import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, type PageProps } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
+import { DialogOptions } from 'src/services/dialog'
 
 export type NoticeType = 'info' | 'warning' | 'error'
 
@@ -31,7 +32,10 @@ export const Page = defineComponent({
       props: {}
     })
     const sheetOpen = ref(false)
-    const dialogData = ref()
+    const dialogData = ref<DialogOptions>({
+      component: void 0,
+      props: {}
+    })
     const dialogOpen = ref(false)
 
     const renderNotice = () => {
@@ -89,6 +93,7 @@ export const Page = defineComponent({
     }
 
     const openSheet = ({component, props}: {component: Component, props: any}) => {
+      console.log('===openSheet', component)
       sheetData.value.component = component
       sheetData.value.props = props
       sheetOpen.value = true
@@ -110,7 +115,10 @@ export const Page = defineComponent({
         })
     }
 
-    const openDialog = () => {
+    const openDialog = ({component, props}: DialogOptions) => {
+      console.log('===options', component)
+      dialogData.value.component = component
+      dialogData.value.props = props
       dialogOpen.value = true
     }
 

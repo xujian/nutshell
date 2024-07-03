@@ -6,6 +6,8 @@ import type { LoadingOptions } from '../services/loading'
 import { SetupContext } from 'vue'
 import { VendorSymbol } from './symbols'
 import { DefineComponent } from 'vue'
+import { DrawerOptions } from '../services/drawer'
+import { SheetOptions } from '../services/sheet'
 
 /**
  * Vendor 体系的设计
@@ -70,8 +72,8 @@ export interface CoreVendor {
   render: VendorRenderFunction,
   dialog (options: DialogOptions): DialogInstance | undefined,
   notice: (message: string, options?: ToastOptions) => void,
-  sheet: (component?: Component, props?: any) => void,
-  drawer: (component?: Component, props?: any) => void,
+  sheet: (options: SheetOptions) => void,
+  drawer: (options: DrawerOptions) => void,
   confirm (message: string, onOk: () => void, options: ConfirmOptions): void,
   toast (message: string, options: ToastOptions): void,
   loading (options: LoadingOptions): void,

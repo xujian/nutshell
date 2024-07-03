@@ -6,6 +6,9 @@ import { ConfirmOptions, DialogOptions } from '../../services/dialog'
 import { BusSymbol } from '../../composables'
 import { ToastOptions } from '../../services/toast'
 import { LoadingOptions } from '../../services/loading'
+import { DrawerOptions } from '../../services/drawer'
+import { SheetOptions } from '../../services/sheet'
+import { NutshellSymbol } from '../../framework'
 
 const makeDummy = (name: string) => {
   return () => dummy(name.toUpperCase())
@@ -23,7 +26,8 @@ const nutuiVendor: CoreVendor = {
   prepare (app: App) {
     this.app = app
     // app.use(ConfigProvider)
-    const $bus = app.runWithContext(() => inject(BusSymbol))!
+    const $bus = app.runWithContext(() => inject(BusSymbol))!,
+      $n =  app.runWithContext(() => inject(NutshellSymbol))!
     this.dialog = (options: DialogOptions) => {
       $bus.emit('dialog', options)
       return void 0
@@ -34,11 +38,11 @@ const nutuiVendor: CoreVendor = {
     this.loading = (options: LoadingOptions) => {
       $bus.emit('loading', options)
     }
-    this.drawer = (component?: Component, props?: any) => {
-      $bus.emit('drawer', { component, props })
+    $n.drawer = (options: DrawerOptions) => {
+      $bus.emit('drawer', options)
     }
-    this.sheet = (component?: Component, props?: any) => {
-      $bus.emit('sheet', { component, props })
+    this.sheet = (options: DrawerOptions) => {
+      $bus.emit('sheet', options)
     }
     this.notice = (message: string) => {
       $bus.emit('notice', { message })
@@ -52,6 +56,7 @@ const nutuiVendor: CoreVendor = {
         }
       })
     }
+    console.log('===prepare', this.drawer)
   },
   render (props, ctx) {
     const { parent } = getCurrentInstance()!
@@ -63,8 +68,8 @@ const nutuiVendor: CoreVendor = {
   dialog: (options: DialogOptions) => {return undefined},
   toast: (message: string, options: ToastOptions) => {},
   loading: (options: LoadingOptions) => {},
-  drawer: (component?: Component, props?: any) => {},
-  sheet: (component?: Component, props?: any) => {},
+  drawer: (options: DrawerOptions) => {},
+  sheet: (options: SheetOptions) => {},
   notice: (message: string) => {},
   confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => {}
 }

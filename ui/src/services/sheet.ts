@@ -2,7 +2,21 @@ import { App, Component } from 'vue'
 import { VendorSymbol } from '../shared/symbols'
 import { DollarNutshell } from '../framework'
 
-
+export type SheetOptions = {
+  title?: string,
+  /**
+   * 嵌入子组件
+   */
+  component?: Component,
+  /**
+   * 透传给子组件的属性
+   */
+  props?: any,
+  closable?: boolean,
+  height?: number,
+  mask?: boolean,
+  destroyOnClose?: boolean,
+}
 /**
  * Sheet Service
  * Dynamically create a toast
