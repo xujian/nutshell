@@ -1,11 +1,14 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
-import { buildFillStyle, buildGradientStyle } from '../../composables/theme'
+import { buildFillStyle, buildGradientStyle, Color } from '../../composables/theme'
 import { buildDesignStyles, buildDesignVariables, useDesignProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
 
 export const cardProps = {
   title: {
     type: String
+  },
+  bodyFill: {
+    type: String as PropType<Color>,
   },
   ...useDesignProps(),
   ...useVariantProps(),
@@ -39,6 +42,7 @@ export const NsCard = defineComponent({
   props: cardProps,
   slots: cardSlots,
   setup (props, { slots }) {
+
     const classes = [
       'ns-card',
       'flex',
@@ -53,7 +57,6 @@ export const NsCard = defineComponent({
       ...buildDesignStyles(props),
       ...buildDesignVariables(props),
     }
-    console.log('===style', style)
 
     const label = () => props.title
       ? h('div', {
@@ -89,7 +92,10 @@ export const NsCard = defineComponent({
       : null
 
     const body = () => h('div', {
-      class: 'card-body'
+      class: 'card-body',
+      style: {
+        ...props.bodyFill ? { '--body-fill': props.bodyFill } : {}
+      }
     }, slots.default?.())
 
     const footer = () => slots.footer
