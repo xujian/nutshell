@@ -5,10 +5,17 @@
     "compileHotReLoad": true,
     "urlCheck": false
   },
-  "libVersion": "3.4.9",
+  "libVersion": "3.4.8",
   "condition": {
     "miniprogram": {
       "list": [
+        {
+          "name": "进件",
+          "pathName": "pages/products/order",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
         {
           "name": "产品详情",
           "pathName": "pages/products/details",
