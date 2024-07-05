@@ -1,3 +1,54 @@
+@function build-svg($d, $fill-color) {
+  @return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="' + $fill-color + '" d="' + $d + '"/></svg>';
+}
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@function url-encode($string) {
+  $map: (
+    "%": "%25",
+    "<": "%3C",
+    ">": "%3E",
+    " ": "%20",
+    "!": "%21",
+    "*": "%2A",
+    "'": "%27",
+    '"': "%22",
+    "(": "%28",
+    ")": "%29",
+    ";": "%3B",
+    ":": "%3A",
+    "@": "%40",
+    "&": "%26",
+    "=": "%3D",
+    "+": "%2B",
+    "$": "%24",
+    ",": "%2C",
+    "/": "%2F",
+    "?": "%3F",
+    "#": "%23",
+    "[": "%5B",
+    "]": "%5D"
+  );
+  $new: $string;
+  @each $search, $replace in $map {
+    $new: str-replace($new, $search, $replace);
+  }
+  @return $new;
+}
+
+@function inline-svg($d) {
+  $svg-content: build-svg($d, #666600);
+  @return url('data:image/svg+xml;utf8,#{url-encode($svg-content)}');
+}
+
+
 .ns-icon {
   width: 16px;
   height: 16px;
@@ -7,5 +58,16 @@
 }
 
 .ns-icon-search {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idi1pY29uX19zdmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0IiByb2xlPSJpbWciIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNOS41LDNBNi41LDYuNSAwIDAsMSAxNiw5LjVDMTYsMTEuMTEgMTUuNDEsMTIuNTkgMTQuNDQsMTMuNzNMMTQuNzEsMTRIMTUuNUwyMC41LDE5TDE5LDIwLjVMMTQsMTUuNVYxNC43MUwxMy43MywxNC40NEMxMi41OSwxNS40MSAxMS4xMSwxNiA5LjUsMTZBNi41LDYuNSAwIDAsMSAzLDkuNUE2LjUsNi41IDAgMCwxIDkuNSwzTTkuNSw1QzcsNSA1LDcgNSw5LjVDNSwxMiA3LDE0IDkuNSwxNEMxMiwxNCAxNCwxMiAxNCw5LjVDMTQsNyAxMiw1IDkuNSw1WiI+PC9wYXRoPjwvc3ZnPg==")
+  background-image: url("data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idi1pY29uX19zdmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0IiByb2xlPSJpbWciIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNOS41LDNBNi41LDYuNSAwIDAsMSAxNiw5LjVDMTYsMTEuMTEgMTUuNDEsMTIuNTkgMTQuNDQsMTMuNzNMMTQuNzEsMTRIMTUuNUwyMC41LDE5TDE5LDIwLjVMMTQsMTUuNVYxNC43MUwxMy43MywxNC40NEMxMi41OSwxNS40MSAxMS4xMSwxNiA5LjUsMTZBNi41LDYuNSAwIDAsMSAzLDkuNUE2LjUsNi41IDAgMCwxIDkuNSwzTTkuNSw1QzcsNSA1LDcgNSw5LjVDNSwxMiA3LDE0IDkuNSwxNEMxMiwxNCAxNCwxMiAxNCw5LjVDMTQsNyAxMiw1IDkuNSw1WiI+PC9wYXRoPjwvc3ZnPg==");
+}
+
+$up-down-arrow-head: 'M8 2.97351L9.76872 4.97759C10.0491 5.29531 10.5021 5.29531 10.7825 4.97759C11.0629 4.65987 11.0629 4.14663 10.7825 3.82891L8.5033 1.23828C8.43678 1.16275 8.35778 1.10282 8.2708 1.06193C8.18382 1.02105 8.09057 1 7.9964 1C7.90224 1 7.80899 1.02105 7.72201 1.06193C7.63503 1.10282 7.55603 1.16275 7.48951 1.23828L5.21031 3.82891C4.9299 4.14663 4.9299 4.65987 5.21031 4.97759C5.49071 5.29531 5.94368 5.29531 6.22409 4.97759L8 2.97351ZM8 13.0265L6.23128 11.0224C6.16476 10.9469 6.08576 10.8869 5.99878 10.8461C5.9118 10.8052 5.81855 10.7841 5.72439 10.7841C5.63022 10.7841 5.53697 10.8052 5.44999 10.8461C5.36301 10.8869 5.28401 10.9469 5.2175 11.0224C4.93709 11.3401 4.93709 11.8534 5.2175 12.1711L7.4967 14.7617C7.77711 15.0794 8.23008 15.0794 8.51049 14.7617L10.7897 12.1792C11.0701 11.8615 11.0701 11.3483 10.7897 11.0305C10.7232 10.955 10.6442 10.8951 10.5572 10.8542C10.4702 10.8133 10.377 10.7923 10.2828 10.7923C10.1886 10.7923 10.0954 10.8133 10.0084 10.8542C9.92143 10.8951 9.84243 10.955 9.77591 11.0305L8 13.0265Z';
+$arrow-right: 'M2 8.66667L11.724 8.66667L8.19533 12.1953L9.138 13.138L14.276 8L9.138 2.862L8.19533 3.80467L11.724 7.33333L2 7.33334L2 8.66667Z';
+
+.ns-icon-up-down-arrow-head {
+  background-image: inline-svg($up-down-arrow-head);
+}
+
+.ns-icon-arrow-right {
+  background-image: inline-svg($arrow-right);
 }
