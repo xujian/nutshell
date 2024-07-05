@@ -1,0 +1,12 @@
+.ns-cascading-select {
+  .picker {
+    height: 22px;
+    .value-display {
+      width: 100%;
+      height: 100%;
+    }
+    &.multiple {
+      flex-grow: 1;
+    }
+  }
+}

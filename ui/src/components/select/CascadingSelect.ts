@@ -19,6 +19,13 @@ export const cascadingSelectProps = {
   options: {
     type: Array as PropType<CascadingSelectOption[]>,
   },
+  /**
+   * 列数
+   */
+  columns: {
+    type: Number,
+    default: 2,
+  },
   modelValue: {
     type: Array as PropType<string[]>,
     default: '',
