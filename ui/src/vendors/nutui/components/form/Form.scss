@@ -6,10 +6,32 @@
       margin: 0;
     }
     .nut-cell {
-      padding: calc(var(--ns-spacing) / 2) 0;
+      padding-block: calc(var(--ns-spacing) * 1/2);
+      padding-inline: 0;
       align-items: center;
+      border-bottom: solid 1px var(--ns-stroke);
+      &:last-child {
+        border-bottom: none;
+      }
     }
   }
+
+  .nut-form-item__label.required:before {
+    content: '';
+    margin-right: 0;
+  }
+  .nut-form-item__label.required:after {
+    content: "✱";
+    color: var(--nut-form-item-required-color, var(--nut-required-color, #fa2c19));
+    margin-left: var(--nut-form-item-required-margin-right, 8rpx);
+  }
+
+  .breakout {
+    .ns-form-item {
+      padding-inline: var(--ns-spacing);
+    }
+  }
+
 }
 
 .ns-form-item {

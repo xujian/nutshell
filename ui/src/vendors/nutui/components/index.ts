@@ -1,8 +1,8 @@
 import { Button } from './button'
-import { Input, DateInput, DateRangeInput } from './input'
+import { Input, NumberInput, DateInput, DateRangeInput } from './input'
 import { Chip, Chips } from './chip'
 import { Icon } from './icon'
-import { Select } from './select'
+import { Select, CascadingSelect } from './select'
 import { Divider } from './divider'
 import { Menu } from './menu'
 import { Tabs } from './tabs'
@@ -14,6 +14,7 @@ import { Dialog } from './dialog'
 import { Drawer } from './drawer'
 import { Sheet } from './sheet'
 import { RadioGroup } from './radio'
+import { Switch } from './switch'
 import { VendorComponent } from '../../../shared'
 
 const components: Record<string, VendorComponent> = {
@@ -21,6 +22,8 @@ const components: Record<string, VendorComponent> = {
   Button,
   // @ts-ignore
   Input,
+  // @ts-ignore
+  NumberInput,
   // @ts-ignore
   DateInput,
   // @ts-ignore
@@ -32,6 +35,8 @@ const components: Record<string, VendorComponent> = {
   // @ts-ignore
   Icon,
   Select,
+  // @ts-ignore
+  CascadingSelect,
   // @ts-ignore
   Divider,
   Menu,
@@ -48,6 +53,8 @@ const components: Record<string, VendorComponent> = {
   Sheet,
   // @ts-ignore
   RadioGroup,
+  // @ts-ignore
+  Switch,
 }
 
 export default components
