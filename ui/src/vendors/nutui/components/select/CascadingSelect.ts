@@ -1,5 +1,5 @@
 import { CascadingSelectOption, cascadingSelectProps } from '../../../../components/select'
-import { computed, defineComponent, h, ref, watch } from 'vue'
+import { defineComponent, h, ref, watch } from 'vue'
 import { renderFormItem } from '../../utils'
 
 export type RangeItem = {
@@ -10,13 +10,19 @@ export type RangeItem = {
 export const CascadingSelect = defineComponent({
   name: 'NutuiCascadingSelect',
   props: cascadingSelectProps,
-  setup(props, ctx) {
-
+  setup (props, ctx) {
     const range = ref<RangeItem[][]>([])
-    const pickerValue = ref<number[]>(Array(props.columns).fill(0))
+    const picked = ref<number[]>(Array(props.columns).fill(0)),
+      // 临时选中状态
+      picking = ref<number[]>(Array(props.columns).fill(0))
+    const display = ref('')
 
     const onChange = ({detail}: any) => {
-      const idValue: string[] = detail.value.map((x: number, index: number) => range.value[index][x].id)
+      picked.value = picking.value
+      updateDisplay()
+      const idValue: string[] = detail.value.map(
+        (x: number, index: number) => range.value[index][x].id
+      )
       props['onUpdate:modelValue']?.(idValue)
     }
 
@@ -24,37 +30,39 @@ export const CascadingSelect = defineComponent({
      * 单列滑动时的处理
      * 需要更换右侧列的数据
      */
-    const onColumnChange = ({ detail: { column, value} }: any) => {
-      pickerValue.value[column] = value
-      // 滑动列右侧的列都要归零
-      Array(props.columns - column - 1).forEach((_, index) => {
-          pickerValue.value[column + index + 1] = 0
-        })
-      console.log('===pickerValue', pickerValue.value)
-      // 滑动的是最右侧列 什么也不干
+    const onColumnchange = ({ detail: { column, value} }: any) => {
+      const pickingValue = [...picking.value]
+      pickingValue[column] = value
+      pickingValue.splice( // 右侧所有列都归零
+        column + 1,
+        props.columns - column - 1,
+        ...Array(props.columns - column - 1).fill(0))
+      picking.value = pickingValue
       if (column === props.columns - 1) return
       // 从原始 options (树型结构) 取出当前子节点
       // 找到当前列选中值在树型结构对应的节点
-      let node: CascadingSelectOption | undefined = props.options?.[pickerValue.value[0]]
-      Array(column).forEach((_, index) => { // 按照路径寻址
-        node = node?.children?.[pickerValue.value[index + 1]]
+      let node: CascadingSelectOption | undefined = props.options?.[pickingValue[0]]
+      Array(column).fill(0).forEach((_, index) => { // 按照路径寻址
+        node = node?.children?.[pickingValue[index + 1]]
       })
-      // a, b, c 三列
-      // 计算下一列的新数据
-      const current = range.value[column][value]!
-      let result = [...range.value]
+      const result = [...range.value]
       // 右侧的列更换新数据 (有几个换几个)
-      Array(props.columns - column - 1).fill('').forEach((_, index) => {
-        // 下一列全换
-        result.splice(column + index + 1, 1, map(node?.children || []))
-        node = node?.children?.[index === 0 ? value : 0]
+      Array(props.columns - column - 1).fill(0).forEach((_, index) => {
+        result[column + index + 1] = map(node?.children || [])
+        node = node?.children?.[0]
       })
       range.value = result
+    }
+
+    const onCancel = () => {
+      picking.value = picked.value
+      initOptions()
     }
 
     // 格式(字段)转换
     const map = (children: CascadingSelectOption[]) =>
       children.map(d => ({ id: `${d.value}`, name: `${d.label}` }))
+
     /**
      * 获得全体选项后计算出初始值
      */
@@ -64,6 +72,7 @@ export const CascadingSelect = defineComponent({
       // 列数基于树型结构的最大深度
       if (!data) return []
       let children: CascadingSelectOption[] = data
+      let pickedValue = picked.value
       const result: RangeItem[][] = [];
       [1, 2, 3, 4, 5, 6].forEach(t => {
         if (props.columns >= t) {
@@ -72,31 +81,43 @@ export const CascadingSelect = defineComponent({
           if (index === -1) {
             index = 0
           }
-          pickerValue.value[t - 1] = index
+          pickedValue[t - 1] = index
           children = children[index].children || []
         }
       })
+      picking.value = picked.value = pickedValue
       range.value = result
+      updateDisplay()
     }
 
     watch(() => props.options, initOptions)
 
-    const display = computed(() =>
-      range.value.map((column, index) =>
-        column[pickerValue.value[index]].name).join('/')
-    )
+    const updateDisplay = () => {
+      let names = range.value.map(
+          (column, index) => column[picked.value[index]].name
+        ),
+        length = names.reduce((l, item) => l + item.length, 0)
+        // 超长处理
+        if (length > 13) {
+          names = names.map(n => n.length > 5
+              ? n.slice(0, 2) + '...'
+              : n
+          )
+        }
+      display.value = names.join('/')
+    }
 
     return () => renderFormItem(props, ctx.slots,
       () =>
         h('picker', {
           class: ['multiple', 'picker'],
           mode: 'multiSelector',
-          value: pickerValue.value,
+          value: picking.value,
           range: range.value,
           rangeKey: 'name',
-          onChange: onChange,
-          bindcolumnchange: onColumnChange,
-          onColumnchange: onColumnChange
+          onChange,
+          onColumnchange,
+          onCancel
         },
         [
           h('div', {
