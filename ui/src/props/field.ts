@@ -4,7 +4,6 @@ import { isIdentityCard, isMobilePhone } from 'validator'
 import { Color } from '../composables/theme'
 import { MakePropsType } from '../utils'
 import { useTippy } from 'vue-tippy'
-import { TooltipProps } from './tooltip'
 
 const quickValidationMethods: string[] = [
   'required',

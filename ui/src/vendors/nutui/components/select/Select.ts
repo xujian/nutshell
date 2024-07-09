@@ -1,6 +1,7 @@
 import { computed, h, ref, SetupContext } from 'vue'
 import { SelectProps } from '../../../../components'
 import { UniDataItem } from '../../../../shared'
+import { renderFormItem } from '../../utils'
 
 export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose'>) => {
 

@@ -21,6 +21,7 @@ const columnCustomRenders: Record<string, CustomColumnRender> = {
   icon,
   datetime,
   currency,
+  // @ts-ignore
   crypto,
   custom
 }

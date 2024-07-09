@@ -4,7 +4,7 @@ import { marginProps } from '../../../../utils'
 import { renderFormItem, useForm } from '../../utils'
 
 export const NumberInput = defineComponent({
-  name: 'NutuiInput',
+  name: 'NutuiNumberInput',
   props: {
     ...numberInputProps,
     ...marginProps

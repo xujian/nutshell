@@ -1,11 +1,12 @@
-import { computed, defineComponent, h, ref, type DefineComponent } from 'vue'
+import { computed, defineComponent, h, ref } from 'vue'
 import { marginProps } from '../../../../utils'
 import { dateRangeInputProps, dateRangeInputEmits } from '../../../../components'
 import { DateAsStringOrNumber, DateRange } from '../../../../types'
+import { renderFormItem } from '../../utils'
 
 // 这是一个复合组件
 export const DateRangeInput = defineComponent({
-  name: 'DateRangeInput',
+  name: 'NutuiDateRangeInput',
   props: {
     ...dateRangeInputProps,
     ...marginProps

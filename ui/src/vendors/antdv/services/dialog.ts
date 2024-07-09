@@ -3,7 +3,7 @@ import { createApp } from 'vue'
 import { App } from 'vue'
 import { DialogOptions } from '../../../services/dialog'
 import { NsDialog } from '../../../components'
-import { CoreVendor } from '../../../shared/vendor'
+import { CoreVendor } from '../../../shared/models/CoreVendor'
 import type { AsyncComponentLoader } from 'vue'
 
 

@@ -1,11 +1,12 @@
 import { defineComponent, h, ref, type DefineComponent } from 'vue'
 import { marginProps } from '../../../../utils'
 import { dateInputProps, dateInputEmits } from '../../../../components'
+import { renderFormItem } from '../../utils'
 import dayjs from 'dayjs'
 
 // 这是一个复合组件
 export const DateInput = defineComponent({
-  name: 'DateInput',
+  name: 'NutuiDateInput',
   props: {
     ...dateInputProps,
     ...marginProps

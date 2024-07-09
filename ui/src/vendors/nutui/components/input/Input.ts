@@ -32,10 +32,8 @@ export const Input = defineComponent({
           }
         },
         {
-          ...slots.prepend ? {
-            // @ts-ignore
-            left: () => slots.prepend()
-          } : {}
+          ...slots.prepend ? { left: slots.prepend} : {},
+          ...slots.append ? { right: slots.append } : {}
         }
       )
     )

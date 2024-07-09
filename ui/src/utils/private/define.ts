@@ -8,7 +8,7 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   ComputedRef} from 'vue'
 import { LooseRequired } from '@vue/shared'
 import { MakePropsType } from './helpers'
-import { useVendor } from '../../shared'
+import { useVendor } from '../../shared/vendor'
 import { kebabCase } from '../text'
 
 const buildClasses = (props: any): string[] => {

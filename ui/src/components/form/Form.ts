@@ -1,7 +1,8 @@
 import { PropType, ObjectEmitsOptions, SlotsType, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useVariantProps } from '../../props'
-import { NamePath } from 'ant-design-vue/es/form/interface'
+
+export type NamePath = string | number | (string | number)[]
 
 export const formProps = {
   name: {
@@ -39,7 +40,7 @@ export const NsForm = define({
     const vendorRef = ref()
 
     // 触发表单验证
-    function validate (nameList?: NamePath[]): Promise<boolean> {
+    function validate (nameList?: NamePath): Promise<boolean> {
       return new Promise<boolean>((resolve, reject) => {
         vendorRef.value.validate(nameList).then((result: any) => {
           resolve(true)

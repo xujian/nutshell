@@ -1,5 +1,5 @@
-import { ComponentInstance, FunctionalComponent, InjectionKey, Ref, Slots, defineComponent, h, inject, onMounted, ref } from 'vue'
-import { DesignProps, FieldProps, FullValidationRule, VariantProps, buildDesignVariables, buildFieldHint } from '../../../props'
+import { FunctionalComponent, InjectionKey, Ref, Slots, h, inject, ref } from 'vue'
+import { DesignProps, FieldProps, FullValidationRule, VariantProps, buildDesignVariables } from '../../../props'
 import { useNutshell } from '../../../framework'
 import { useBus } from '../../../composables'
 import { FormInstance } from '@nutui/nutui-taro'
@@ -56,7 +56,6 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
   }
 
   const rules = transformRules(props.rules as FullValidationRule[])
-  console.log('===rules', rules)
   const formItemRef = ref(null)
 
   return h(

@@ -1,5 +1,5 @@
-import { getCurrentInstance, h, App, inject, Component } from 'vue'
-import { CoreVendor } from '../../shared'
+import { getCurrentInstance, h, App, inject, Component, SetupContext } from 'vue'
+import { CoreVendor } from '../../shared/models/CoreVendor'
 // import { dialog, toast, loading, notice, drawer, sheet } from './services'
 import components from './components'
 import { ConfirmOptions, DialogOptions } from '../../services/dialog'
@@ -58,7 +58,7 @@ const nutuiVendor: CoreVendor = {
     }
     console.log('===prepare', this.drawer)
   },
-  render (props, ctx) {
+  render (props: any, ctx: Omit<SetupContext, 'expose'>) {
     const { parent } = getCurrentInstance()!
     const name = parent?.type?.name?.slice(2)! //.toLowerCase() // NsButton -> Button
     const component = components[name] || makeDummy(name)

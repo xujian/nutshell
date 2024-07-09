@@ -1,6 +1,6 @@
 import nutui from './nutui'
 // import antdv from './antdv'
-import { CoreVendor } from '../shared'
+import { CoreVendor } from '../shared/models/CoreVendor'
 
 // const nutuiVendor: Promise<{default: CoreVendor}> = import(
 //   /* name: 'vendor.nutui' */
@@ -31,7 +31,7 @@ export const getVendor: (name: string) => CoreVendor | Promise<CoreVendor>
         (v as AsyncVendor)().then(r => {
           resolve({
             ...r.default,
-            fallback: vendors['nutui'] as CoreVendor  
+            fallback: vendors['nutui'] as CoreVendor
           })
         })
       })

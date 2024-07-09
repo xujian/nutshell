@@ -8,6 +8,7 @@ import { VendorSymbol } from './symbols'
 import { DefineComponent } from 'vue'
 import { DrawerOptions } from '../services/drawer'
 import { SheetOptions } from '../services/sheet'
+import { CoreVendor } from './models/CoreVendor'
 
 /**
  * Vendor 体系的设计
@@ -61,27 +62,6 @@ export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
 export type VendorRenderFunction = (props: any, ctx: Omit<SetupContext, 'expose'>) => VNode
 
 export type VendorComponent = VendorRenderFunction | DefineComponent
-
-/**
- * Nutshell Core Vendor
- *
- */
-export interface CoreVendor {
-  app: App | null,
-  prepare: (app: App) => void,
-  render: VendorRenderFunction,
-  dialog (options: DialogOptions): DialogInstance | undefined,
-  notice: (message: string, options?: ToastOptions) => void,
-  sheet: (options: SheetOptions) => void,
-  drawer: (options: DrawerOptions) => void,
-  confirm (message: string, onOk: () => void, options: ConfirmOptions): void,
-  toast (message: string, options: ToastOptions): void,
-  loading (options: LoadingOptions): void,
-  /**
-   * 降级到 Prime Vendor
-   */
-  fallback?: CoreVendor
-}
 
 export const createVendor= (name: string): CoreVendor | Promise<CoreVendor> => {
   const vendor = getVendor(name)
