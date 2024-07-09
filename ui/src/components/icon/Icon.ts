@@ -1,5 +1,5 @@
-import { ObjectEmitsOptions, PropType, defineComponent, h, VNode } from 'vue'
-import { define, MakePropsType } from '../../utils'
+import { PropType, defineComponent, h, VNode } from 'vue'
+import { MakePropsType } from '../../utils'
 import { Color } from '../../composables'
 import { useSizeProps } from '../../props/size'
 import { buildProps } from '../../utils/private/props'
@@ -78,6 +78,7 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
   sprite: (props: IconProps) => h('svg', {
       class: [
         'ns-icon',
+        `ns-icon-${props.name}`,
         `font-size-${props.size}`,
         props.clickable && 'clickable'
       ]
@@ -117,7 +118,6 @@ export const NsIcon = defineComponent({
     if (props.name?.startsWith('http')) {
       format = 'image'
     }
-    console.log('===ada', props.name, format)
     return () => formats[format](props)
   }
 })

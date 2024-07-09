@@ -38,6 +38,9 @@
       background-color: var(--ns-warning--10);
       box-shadow: none;
     }
+    &.variant-plain {
+      border-color: transparent;
+    }
   }
   &:not(.nut-button--round) {
     border-radius: var(--ns-border-radius-xs);

@@ -2,12 +2,15 @@
   <h1 class="my-lg">图标 &lt;ns-icon&gt;</h1>
   <h3>基本特性</h3>
   <p>&nbsp;</p>
-  <ns-row class="icons-list" gap="sm">
+  <ns-row class="icons-list justify-start" gap="sm">
     <div class="icon-container border-sm r-sm round"
       v-for="(name) in icons"
       :key="name"
       @click="() => onIconClick(name)">
       <ns-icon :name="name" />
+    </div>
+    <div class="icon-container border-sm r-sm round">
+      <ns-icon name="http://127.0.0.1:2024/images/camera.svg"></ns-icon>
     </div>
   </ns-row>
 </template>

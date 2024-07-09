@@ -13,5 +13,12 @@ export const Icon = (props: IconProps) => {
         ],
         src: name,
       })
-    : null
+    : h('i', {
+        class: [
+          'ns-icon',
+          'icon-20',
+          `size-${size}`,
+          `ns-icon-${name}`
+        ]
+      })
 }

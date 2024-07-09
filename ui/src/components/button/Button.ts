@@ -3,6 +3,7 @@ import { useSizeProps, useVariantProps } from '../../props'
 import { define, MakePropsType } from '../../utils'
 import { useDimensionProps, useLoadingProps } from '../../props'
 import { Color } from '../../composables/theme'
+import { IconFormat } from '../icon'
 
 export type IconPosition = 'start' | 'end'
 
@@ -33,6 +34,9 @@ export const useButtonProps = () => ({
   },
   iconFill: {
     type: String as PropType<Color>,
+  },
+  iconFormat: {
+    type: String as PropType<IconFormat>,
   },
   ...useSizeProps(),
   /**

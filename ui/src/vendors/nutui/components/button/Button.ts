@@ -1,5 +1,5 @@
 import { SetupContext, h } from 'vue'
-import type { ButtonEmits, ButtonProps } from '../../../../components'
+import { NsIcon, type ButtonEmits, type ButtonProps } from '../../../../components'
 import { Size } from '../../../../props/size'
 import type { ButtonSize, ButtonShape } from '@nutui/nutui-taro'
 import { BRANDS, BrandColor } from '../../../../composables/theme'
@@ -35,12 +35,14 @@ export const Button = (props: ButtonProps, { slots }: SetupContext) => {
 
   const icon = props.icon
     ? isStaticImage(props.icon)
-      ? () =>
-          h('img', {
-            src: props.icon,
-            class: 'icon'
-          })
-      : () => null
+      ? () => h('img', {
+          src: props.icon,
+          class: 'icon'
+        })
+      : () => h(NsIcon, {
+          name: props.icon,
+          format: props.iconFormat,
+        })
     : slots.icon
 
   const shape = props.round === true ? void 0 : ('suqare' as ButtonShape)

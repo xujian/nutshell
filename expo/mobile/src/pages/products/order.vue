@@ -36,7 +36,7 @@
             name="证件号码"
             v-model="formData.证件号码"
             :rules="['required']" />
-          <ns-date-input
+          <ns-input
             label="姓名"
             name="姓名"
             v-model="formData.姓名" />
@@ -107,7 +107,11 @@
           <ns-input
             label="姓名"
             name="姓名"
-            v-model="formData.共同申请人姓名" />
+            v-model="formData.共同申请人姓名">
+            <template #append>
+              <ns-button variant="plain" icon="http://127.0.0.1:2024/images/camera.svg" />
+            </template>
+          </ns-input>
         </div>
       </ns-card>
     </ns-form>
