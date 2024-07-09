@@ -3,7 +3,7 @@ import { radioGroupProps } from '../../../../components'
 import { renderFormItem } from '../../utils'
 
 export const RadioGroup = defineComponent({
-  name: 'AntdvRadioGroup',
+  name: 'NutuiRadioGroup',
   props: radioGroupProps,
   setup (props, ctx) {
 

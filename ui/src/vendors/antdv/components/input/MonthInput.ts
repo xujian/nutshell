@@ -1,6 +1,5 @@
 import {h, ref, defineComponent, Ref, computed, toRaw} from 'vue'
 import { DatePicker } from 'ant-design-vue'
-import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
 import { dateInputProps } from '../../../../components'
 import { transformRules } from './rules'
 import dayjs from 'dayjs'
@@ -33,7 +32,6 @@ export const MonthInput = defineComponent({
         onClose: close,
         picker: 'month',
         placeholder: props.placeholder,
-        locale,
         value: value.value ? dayjs(value.value) : void 0,
         'onUpdate:value': (value: string | Dayjs) => {
           const val = value === null

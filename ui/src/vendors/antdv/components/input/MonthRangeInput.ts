@@ -1,7 +1,5 @@
 import {h, ref, defineComponent, computed, ComputedRef } from 'vue'
 import { RangePicker } from 'ant-design-vue'
-import 'dayjs/locale/zh-cn'
-import locale from 'ant-design-vue/es/date-picker/locale/zh_CN'
 import { MonthRangeInputProps, monthRangeInputEmits, monthRangeInputProps } from '../../../../components'
 import { transformRules } from './rules'
 import dayjs from 'dayjs'
@@ -49,7 +47,6 @@ export const MonthRangeInput = defineComponent({
         picker: 'month',
         visible: visible.value,
         onClose: close,
-        locale,
         // @ts-ignore
         value: value.value,
         'onUpdate:value': (value: DateValue[]) => {

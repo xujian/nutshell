@@ -1,6 +1,5 @@
 import {h, ref, defineComponent, Ref, computed, toRaw} from 'vue'
 import { DatePicker } from 'ant-design-vue'
-import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
 import { dateInputProps } from '../../../../components'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
@@ -39,7 +38,6 @@ export const DateInput = defineComponent({
             : false,
           showNow: props.hasNow,
           format: props.format,
-          locale,
           ...value.value
             ? { value: dayjs(value.value) }
             : {},
