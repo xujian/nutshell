@@ -25,7 +25,6 @@
 
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import { NsPageHeader } from '@uxda/nutshell'
 import { useTabbar } from '@uxda/appkit-next'
 
 const menu1Items = [

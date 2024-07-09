@@ -28,7 +28,7 @@
 
 <script lang="ts" setup>
 import Taro from '@tarojs/taro'
-import { NsPageHeader, WithPaging } from '@uxda/nutshell'
+import { WithPaging } from '@uxda/nutshell'
 import { onMounted, ref } from 'vue'
 import { endpoints, useHttp } from '../../api'
 import ApprovalList from '../../components/ApprovalList.vue'

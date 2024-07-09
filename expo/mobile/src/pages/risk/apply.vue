@@ -57,13 +57,7 @@
 </template>
 
 <script lang="ts" setup>
-import { NsPage, NsPageHeader, NsPageBottom,
-  NsForm, NsInput, NsButton,
-  NsIdInput, NsMobileInput,
-  NsDateInput, NsDateRangeInput, useBus } from '@uxda/nutshell'
 import { computed, reactive } from 'vue'
-
-const $bus = useBus()
 
 const filtering = reactive({
   dateFrom: '2024-06-01',
