@@ -11,6 +11,7 @@ import { useModelValuePropsForInput,
   convertDimension,
   useSizeProps,
   buildDesignVariables,
+  buildDesignClasses,
 } from '../../props'
 import { Dimension } from '../../types'
 import { amountChinese } from '../../composables/amount'
@@ -255,7 +256,10 @@ export const NsNumber = defineComponent({
       h(
         'div',
         {
-          class: ['ns-number', `size-${props.size}`, 'column'],
+          class: [
+            'ns-number', `size-${props.size}`, 'column',
+            ...buildDesignClasses(props),
+          ],
           style: styles,
           ref: root
         },
