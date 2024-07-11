@@ -1,5 +1,8 @@
 .ns-tabs {
   user-select: none;
+  &.nut-tabs .nut-tabs__titles {
+    background: transparent;
+  }
   &.horizontal .nut-sticky__box>.nut-tabs__titles,
   &.horizontal>.nut-tabs__titles {
     height: 40px;
@@ -24,5 +27,20 @@
   }
   .nut-tab-pane {
     padding: 0;
+  }
+  &.variant-soft {
+    border-radius: var(--border-radius, var(--ns-border-radius));
+    .nut-tabs__titles-item {
+      border-radius: var(--border-radius, var(--ns-border-radius));
+      &.active {
+        background-color: #ffffff66;
+        font-size: unset;
+        color: unset;
+        font-weight: normal;
+        .nut-tabs__titles-item__line {
+          background: transparent;
+        }
+      }
+    }
   }
 }

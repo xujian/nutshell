@@ -15,6 +15,7 @@ import { Drawer } from './drawer'
 import { Sheet } from './sheet'
 import { RadioGroup } from './radio'
 import { Switch } from './switch'
+import { Rating, RatingInput } from './rating'
 import { VendorComponent } from '../../../shared'
 
 const components: Record<string, VendorComponent> = {
@@ -55,6 +56,8 @@ const components: Record<string, VendorComponent> = {
   RadioGroup,
   // @ts-ignore
   Switch,
+  Rating,
+  RatingInput,
 }
 
 export default components

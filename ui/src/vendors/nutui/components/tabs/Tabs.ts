@@ -1,5 +1,6 @@
 import { h, SetupContext } from 'vue'
 import { TabsItem, TabsProps } from '../../../../components'
+import { buildDesignClasses, buildDesignStyles } from '../../../../props'
 
 export const Tabs = (props: TabsProps, { emit, slots }: Omit<SetupContext, 'expose'>) => {
   // 确定 children
@@ -16,7 +17,7 @@ export const Tabs = (props: TabsProps, { emit, slots }: Omit<SetupContext, 'expo
     }
   }) || props.items || []
 
-  const defaultSlot = items?.map(item => h(NutTabPane, {
+  const defaultSlot = () => items?.map(item => h(NutTabPane, {
     paneKey: item.value || item.label,
     title: item.label
   }, item.content))
@@ -25,15 +26,18 @@ export const Tabs = (props: TabsProps, { emit, slots }: Omit<SetupContext, 'expo
     class: [
       'ns-tabs',
       ...props.variant ? [`variant-${props.variant}`] : [],
-      `tabs-align-${props.align || 'start'}`
+      `tabs-align-${props.align || 'start'}`,
+      ...buildDesignClasses(props),
     ],
+    style: buildDesignStyles(props),
+    swipeable: true,
     align: 'left',
     modelValue: props.modelValue,
     tabChange: (item: any) => {
       emit('update:modalValue', item.paneKey)
     }
   }, {
-    default: () => defaultSlot,
+    default: defaultSlot,
     rightExtra: slots.after,
     leftExtra: slots.before
   })
