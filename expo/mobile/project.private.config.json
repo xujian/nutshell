@@ -10,6 +10,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "客户列表",
+          "pathName": "pages/clients/list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "进件",
           "pathName": "pages/products/order",
           "query": "",

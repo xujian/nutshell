@@ -10,17 +10,26 @@ import {
   transforms as productsTransforms,
  } from './products'
 
+ import {
+  endpoints as clientsEnpoints,
+  translates as clientsTranslates,
+  transforms as clientsTransforms,
+ } from './clients'
+
 const endpoints = {
    ...approvalsEnpoints,
    ...productsEnpoints,
+   ...clientsEnpoints,
  },
  translates = {
    ...approvalsTranslates,
    ...productsTranslates,
+   ...clientsTranslates,
  },
  transforms = {
    ...approvalsTransforms,
    ...productsTransforms,
+   ...clientsTransforms,
  }
 
 export {

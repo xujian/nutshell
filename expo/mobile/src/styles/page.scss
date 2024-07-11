@@ -2,7 +2,7 @@ page {
   font-family: -apple-system, "Roboto", Helvetica, Segoe UI, Arial, Roboto, "PingFang SC", "miui", "Hiragino Sans GB", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f1f3f5;
+  background-color: var(--ns-page);
   --ns-fill: #f1f2f6;
   --ns-secondary: #CDDC39;
   --ns-positive: #1bb165;

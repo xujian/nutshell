@@ -27,6 +27,18 @@ const items = [
     url: '/pages/home/index',
   },
   {
+    label: '客户',
+    value: 'clients',
+    icon: 'clients',
+    url: '/pages/clients/list',
+  },
+  {
+    label: '产品',
+    value: 'products',
+    icon: 'products',
+    url: '/pages/products/list',
+  },
+  {
     label: '账户',
     value: 'account',
     icon: 'account',

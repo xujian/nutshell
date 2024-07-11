@@ -9,6 +9,7 @@ export default defineAppConfig({
     'pages/products/list',
     'pages/products/details',
     'pages/products/order',
+    'pages/clients/list',
   ],
   tabBar: {
     custom: true,
@@ -19,6 +20,14 @@ export default defineAppConfig({
       {
         pagePath: 'pages/home/index',
         text: '首页',
+      },
+      {
+        pagePath: 'pages/clients/list',
+        text: '客户'
+      },
+      {
+        pagePath: 'pages/products/list',
+        text: '产品'
       },
       {
         pagePath: 'pages/account/index',
