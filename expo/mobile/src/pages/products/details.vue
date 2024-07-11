@@ -53,12 +53,12 @@
         <ns-button
           round
           color="secondary"
-          icon="http://127.0.0.1:2024/images/share.svg" />
+          icon="http://simple.shensi.tech/icons/share.svg" />
         <ns-button label="快速进件"
           class="flex-grow"
           round
           color="primary"
-          icon="http://127.0.0.1:2024/images/arrow-right.svg"
+          icon="http://simple.shensi.tech/icons/arrow-right.svg"
           icon-position="end"
           icon-fill="#00000088"
           @click="onOrderClick" />

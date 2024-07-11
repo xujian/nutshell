@@ -2,7 +2,7 @@
   <ns-page class="apply-page">
     <ns-page-header title="AI审批"
       color-mode="dark"
-      texture="http://localhost:2024/images/mummy.svg"
+      texture="http://simple.shensi.tech/images/mummy.svg"
       :minimal="false"
       fill="#0d0c98">
       <h1>智能风控引擎</h1>

@@ -104,7 +104,7 @@ onMounted(() => {
 
 <style lang="scss">
 .clients-page {
-  background-image: url(http://127.0.0.1:2024/images/background.jpeg);
+  background-image: url(http://simple.shensi.tech/images/background.jpeg);
   color: #fff;
   .clients-page-scroll-view {
     height: calc(100vh - var(--status) - var(--nav));

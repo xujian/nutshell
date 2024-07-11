@@ -109,7 +109,7 @@
             name="姓名"
             v-model="formData.共同申请人姓名">
             <template #append>
-              <ns-button variant="plain" icon="http://127.0.0.1:2024/images/camera.svg" />
+              <ns-button variant="plain" icon="http://simple.shensi.tech/icons/camera.svg" />
             </template>
           </ns-input>
         </div>
@@ -127,7 +127,7 @@
         class="flex-grow"
         round
         color="primary"
-        icon="http://127.0.0.1:2024/images/arrow-right.svg"
+        icon="http://simple.shensi.tech/icons/arrow-right.svg"
         icon-position="end"
         icon-fill="#00000088"
         @click="onNextClick" />
@@ -198,7 +198,7 @@ const onNextClick = () => {
 
 onMounted(() => {
   Taro.request({
-    url: 'http://127.0.0.1:2024/json/locations.json'
+    url: 'http://simple.shensi.tech/json/locations.json'
   }).then(({ data }) => {
     regionOptions.value = data
   })
