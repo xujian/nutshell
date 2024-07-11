@@ -6,11 +6,8 @@ export const ratingProps = {
   label: {
     type: String
   },
-  modelValue: {
+  value: {
     type: Number,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: number | string) => void>
   },
   color: {
     type: String as PropType<Color>,
