@@ -1,8 +1,19 @@
 .ns-button-group {
-  display: inline-block;
   border-radius: var(--ns-border-radius);
   width: fit-content;
+  overflow: hidden;
   &.round {
     border-radius: 25px;
+  }
+  .buttons {
+    width: fit-content;
+  }
+  .ns-button {
+    margin: 0;
+    border-radius: transparent;
+    transition: all .5s;
+    &.active {
+      backdrop-filter: brightness(1.2);
+    }
   }
 }

@@ -1,15 +1,12 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDimensionProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, useDesignProps, useDimensionProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { UniDataItem } from '../../shared'
 import { BRANDS, Color, type BrandColor } from '../../composables/theme'
 import { NsButton } from '../button/Button'
 
 export const buttonGroupProps = {
   ...useModelValuePropsForStringArray(),
-  ...useVariantProps(),
-  ...useDimensionProps(),
-  ...useSizeProps(),
   /**
    * 按钮底色
    */
@@ -20,15 +17,16 @@ export const buttonGroupProps = {
     type: Array as PropType<UniDataItem[]>,
     default: []
   },
-  round: {
-    type: Boolean,
-    default: false,
-  },
   ...useModelValuePropsForString(),
   selectable: {
     type: Boolean,
     default: true,
-  }
+  },
+  ...useVariantProps(),
+  ...useDesignProps(),
+  ...useFlexProps(),
+  ...useDimensionProps(),
+  ...useSizeProps(),
 }
 
 export type ButtonGroupEmits = {
@@ -61,7 +59,7 @@ export const NsButtonGroup = defineComponent({
   setup (props, { emit }) {
     const colorIsBrand = BRANDS.includes(props.color as BrandColor)
 
-    const item = (item: UniDataItem) => h(NsButton, {
+    const button = (item: UniDataItem) => h(NsButton, {
       class: [
         ...props.size ? [`size-${props.size}`] : [],
         ...colorIsBrand ? [`color-${props.color}`] : [],
@@ -82,12 +80,24 @@ export const NsButtonGroup = defineComponent({
       label: item.label || ''
     })
 
-    const items = () => props.options.map(i => item(i))
+    const items = () => h('div', {
+      class: ['row', 'buttons']
+    }, props.options.map(i => button(i)))
+
+    const content = () => h('scroll-view', {
+        'scroll-x': true,
+        class: ['button-group-scroll-view'],
+      }, items())
 
     return () => h('div', {
       class: [
         'ns-button-group',
-      ]
-    }, { default: items })
+        'row',
+        ...buildDesignClasses(props),
+      ],
+      style: {
+        ...buildDesignStyles(props),
+      },
+    }, content())
   }
 })
