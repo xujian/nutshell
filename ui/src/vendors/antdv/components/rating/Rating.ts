@@ -13,7 +13,7 @@ export const Rating = (props: RatingProps, { emit }: SetupContext) => {
   }
 
   return h(AntdvRating, {
-    value: props.modelValue,
+    value: props.value,
     onChange: props.onChange,
     style,
   })
