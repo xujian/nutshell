@@ -1,6 +1,6 @@
 import { PropType, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useModelValuePropsForInput } from '../../props'
+import { buildDesignClasses, buildDesignStyles, useDesignProps, useModelValuePropsForInput } from '../../props'
 import { UniDataItem } from '../../shared'
 
 export type TabsItem = {
@@ -23,7 +23,8 @@ export const tabsProps = {
   align: {
     type: String as PropType<TabsAlign>
   },
-  ...useModelValuePropsForInput()
+  ...useModelValuePropsForInput(),
+  ...useDesignProps(),
 }
 
 export type TabsEmits = {
@@ -50,7 +51,8 @@ export const NsTabs = define({
   emits,
   setup (props, { slots }) {
 
-    return {}
+    return {
+    }
   }
 })
 // + import => ./index.ts, ../components.ts
