@@ -1,7 +1,7 @@
 import { defineComponent, h, PropType } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useSafeArea } from '../../composables'
-import { buildDesignClasses, buildDesignStyles, buildDesignVariables, useDesignProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, buildDesignVariables, type TextAlign, useDesignProps } from '../../props'
 
 export const pageBottomProps = {
   ...useDesignProps()
@@ -35,9 +35,16 @@ export const pageHeaderProps = {
   title: {
     type: String,
   },
+  titleAlign: {
+    type: String as PropType<TextAlign>,
+  },
   colorMode: {
     type: String as PropType<PageHeaderColorMode>,
     default: 'light'
+  },
+  hasBackButton: {
+    type: Boolean,
+    default: false,
   },
   /**
    * 底图
@@ -79,6 +86,7 @@ export const NsPageHeader = defineComponent({
       '--height': `${safeArea.nav}px`,
       ...props.texture ? { '--texture': `url(${props.texture})` } : {},
       ...props.fill ? { '--fill': props.fill } : {},
+      ...props.titleAlign ? { '--titleAlign': props.titleAlign } : {},
     }
 
     const heading = () => slots.title
@@ -89,12 +97,14 @@ export const NsPageHeader = defineComponent({
         class: ['title']
       }, [
         heading(),
-        h('div', {
-          class: 'back-button',
-          onClick: () => {
-            emit('close')
-          }
-        })
+        props.hasBackButton
+          ? h('div', {
+              class: 'back-button',
+              onClick: () => {
+                emit('close')
+              }
+            })
+          : null
       ])
 
     const content = () => h('div', { class: ['content'] }, { default: slots.default })
