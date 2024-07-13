@@ -75,7 +75,7 @@ import { NsTimeline } from './timeline'
 import { NsDivider } from './divider'
 import { NsNumber } from './number'
 import { NsButtonGroup } from './button-group'
-import { NsPage, NsPageHeader, NsPageBottom } from './page'
+import { NsPage, NsPageHeader, NsPageContent, NsPageBottom } from './page'
 import { NsSearch } from './search'
 
 const components = {
@@ -141,6 +141,7 @@ const components = {
   NsButtonGroup,
   NsPage,
   NsPageHeader,
+  NsPageContent,
   NsPageBottom,
   NsSearch,
 }

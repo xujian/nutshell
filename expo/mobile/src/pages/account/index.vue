@@ -16,10 +16,10 @@
         </div>
       </div>
     </ns-page-header>
-    <div class="page-content">
+    <ns-page-content>
       <ns-menu :items="menu1Items" />
       <ns-menu :items="menu2Items" />
-    </div>
+    </ns-page-content>
   </div>
 </template>
 

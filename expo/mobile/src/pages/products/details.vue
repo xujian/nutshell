@@ -1,7 +1,7 @@
 <template>
   <ns-page class="product-details-page has-page-bottom">
     <div class="cover" :style="coverStyle"></div>
-    <div class="page-content overlap">
+    <ns-page-content class="overlap">
       <ns-card
         :title="`${product?.机构名称} - ${product?.名称}`"
         fill="#ffffff33"
@@ -46,7 +46,7 @@
           <li>户口本</li>
         </ul>
       </ns-card>
-    </div>
+    </ns-page-content>
     <ns-page-bottom fill="#ffffff11"
       :blur="10" :brightness="2">
       <div class="row">

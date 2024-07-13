@@ -18,7 +18,9 @@ export const Page = defineComponent({
 
     // 内置 notice-bar, app-drawer, app-sheet
 
+    const page = ref<HTMLElement>()
     const $bus = useBus()
+    const scroll = ref(0)
     const safeArea = useSafeArea()
     const noticeDuration = 5000
     const noticeData = ref<Notice>()
@@ -122,11 +124,16 @@ export const Page = defineComponent({
       dialogOpen.value = true
     }
 
+    const onScroll = (e: any) => {
+      scroll.value = e.y
+    }
+
     onMounted(() => {
       $bus.on('notice', showNotice)
       $bus.on('drawer', openDrawer)
       $bus.on('sheet', openSheet)
       $bus.on('dialog', openDialog)
+      $bus.on('scroll', onScroll)
     })
 
     onUnmounted(() => {
@@ -134,14 +141,20 @@ export const Page = defineComponent({
       $bus.off('drawer', openDrawer)
       $bus.off('sheet', openSheet)
       $bus.off('dialog', openDialog)
+      $bus.off('scroll', onScroll)
     })
 
     return () => h('div', {
-        class: 'page',
+        ref: page,
+        class: [
+          'page',
+          ...scroll.value > 0 ? ['scrolled'] : []
+        ],
         style: {
           '--status': `${safeArea.status}px`,
           '--nav': `${safeArea.nav}px`,
           '--bottom': `${safeArea.bottom}px`,
+          '--scroll': `${scroll.value}px`,
         }
       }, [
         renderNotice(),

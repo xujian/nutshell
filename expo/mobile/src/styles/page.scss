@@ -12,13 +12,28 @@ page {
   --ns-spacing: 10px;
   --ns-border-radius: 16px;
   --ns-paper: #fff;
+  --ns-text: #333;
   font-size: 14px;
   color: #333;
-  --ns-text: #333;
+}
+
+page .h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+page .h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 1em 0;
+}
+
+.page-content-scroll-view {
+  height: calc(100vh - var(--status) - var(--nav));
 }
 
 .page-content {
   padding: var(--ns-spacing);
+  box-sizing: border-box;
 }
 
 .v-enter-active,

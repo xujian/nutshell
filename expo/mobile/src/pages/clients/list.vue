@@ -7,38 +7,36 @@
       :has-back-button="false"
       :minimal="false">
     </ns-page-header>
-    <scroll-view class="clients-page-scroll-view" scroll-y="true">
-      <div class="page-content">
-        <scroll-view scroll-x="true">
-          <ns-repeator class="numbers"
-            :items="numbers"
-            v-slot="item"
-            :gap="10">
-            <ns-number
-              :value="item.value"
-              :footer="item.title"
-              justify="center"
-              foreground="#fff"
-              gradient="#e94057,#f27121/45" />
-          </ns-repeator>
-        </scroll-view>
-        <!--ns-tabs v-model="tab"
-          class="my-md"
-          variant="soft"
-          fill="#ffffff44"
-          :blur="10"
-          :items="tabs"
-          round /-->
-        <ns-button-group v-model="tab"
-          class="categories my-md"
-          round
-          fill="#ffffff44"
-          color="#ffffff00"
-          :blur="10"
-          :options="tabs" />
-        <client-list :items="clients" />
-      </div>
-    </scroll-view>
+    <ns-page-content>
+      <scroll-view scroll-x="true">
+        <ns-repeator class="numbers"
+          :items="numbers"
+          v-slot="item"
+          :gap="10">
+          <ns-number
+            :value="item.value"
+            :footer="item.title"
+            justify="center"
+            foreground="#fff"
+            gradient="#e94057,#f27121/45" />
+        </ns-repeator>
+      </scroll-view>
+      <!--ns-tabs v-model="tab"
+        class="my-md"
+        variant="soft"
+        fill="#ffffff44"
+        :blur="10"
+        :items="tabs"
+        round /-->
+      <ns-button-group v-model="tab"
+        class="categories my-md"
+        round
+        fill="#ffffff44"
+        color="#ffffff00"
+        :blur="10"
+        :options="tabs" />
+      <client-list :items="clients" @click="onClientClick" />
+    </ns-page-content>
   </ns-page>
 </template>
 
@@ -48,6 +46,7 @@ import { type WithPaging } from '@uxda/nutshell'
 import { endpoints, useHttp } from '../../api'
 import { type Client } from '../../models'
 import ClientList from '../../components/ClientList.vue'
+import Taro from '@tarojs/taro'
 
 const tab = ref('tab1')
 const clients = ref<Client[]>([])
@@ -92,6 +91,16 @@ const tabs = [
 
 const $http = useHttp()
 
+const onClientClick = (client: Client) => {
+  Taro.navigateTo({
+    url: `/pages/clients/detail?id=${client.id}`
+  })
+}
+
+const onScroll = (e: Event) => {
+  console.log('===Scroll: e', e)
+}
+
 onMounted(() => {
   $http.get<WithPaging<Client[]>>(endpoints.获取客户列表, {
     page: 1,
@@ -106,9 +115,6 @@ onMounted(() => {
 .clients-page {
   background-image: url(http://simple.shensi.tech/images/background.jpeg);
   color: #fff;
-  .clients-page-scroll-view {
-    height: calc(100vh - var(--status) - var(--nav));
-  }
   .numbers {
     .ns-repeator-item {
       width: calc(30% - 10px);
