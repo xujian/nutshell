@@ -1,0 +1,47 @@
+.ns-stepper {
+  &.nut-steps {
+    color: var(--ns-text);
+    padding-top: calc(var(--ns-spacing) / 2);
+    .nut-step {
+      &.nut-step-finish {
+        .nut-step-line {
+          background-color: var(--text);
+        }
+        .nut-step-title {
+          color: var(--text, var(--ns-text));
+        }
+        .nut-step-icon {
+          &.is-icon {
+            background-color: var(--ns-positive);
+          }
+        }
+      }
+      &.nut-step-process {
+        .nut-step-title {
+          color: var(--text, var(--ns-text));
+        }
+        .nut-step-icon {
+          width: 32px;
+          height: 32px;
+          margin-block: -6px;
+          &.is-icon {
+            background-color: var(--ns-positive);
+          }
+        }
+      }
+    }
+    .nut-step-head {
+      padding-top: cacl(var(--ns-spacing) / 2);
+    }
+    .nut-step-title {
+      margin-bottom: 0;
+    }
+    .nut-step-icon {
+      width: 20px;
+      height: 20px;
+      &.is-icon {
+        border-color: transparent;
+      }
+    }
+  }
+}

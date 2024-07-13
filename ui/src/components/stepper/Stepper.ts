@@ -12,24 +12,12 @@ export type StepperDirection = 'horizontal' | 'vertical'
 export type StepperStatus = 'wait' | 'process' | 'finish' | 'error' | undefined
 
 export type StepItem = {
-  description: {
-    type: String
-  }
-  disabled: {
-    type: Boolean
-  }
-  icon: {
-    type: String
-  }
-  status: {
-    type: StepperStatus
-  }
-  subTitle: {
-    type: String
-  }
-  title: {
-    type: String
-  }
+  description: string,
+  disabled: boolean,
+  icon: string,
+  status: StepperStatus,
+  subTitle: string,
+  title: string,
 }
 
 export const stepperProps = {
