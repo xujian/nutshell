@@ -7,7 +7,7 @@
     align="stretch"
     :gap="10">
     <ns-card class="client-card" fill="#ffffff33" :blur="10">
-      <ns-row justify="stretch" align="start" jusstify="between">
+      <ns-row justify="stretch" align="start" jusstify="between" @click="() => onRowClick(item)">
         <div class="stage">结单</div>
         <ns-column align="start" :gap="0">
           <h3 class="name">{{ item.姓名 }}</h3>
@@ -35,6 +35,14 @@ defineProps({
   items: Array as PropType<Client[]>,
   default: []
 })
+
+const emit = defineEmits<{
+  (event: 'pick', client: Client): void
+}>()
+
+const onRowClick = (client: Client) => {
+  emit('pick', client)
+}
 
 </script>
 

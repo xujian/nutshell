@@ -13,7 +13,7 @@ export const Rating = (props: RatingProps, { emit }: Omit<SetupContext, 'expose'
 
   return h(NutRate, {
     modelValue: props.value,
-    size: 16,
+    size: 12,
     spacing: 5,
     'onUpdate:modelValue': (value: number) => {
       emit('change', value)
