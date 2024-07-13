@@ -1,5 +1,5 @@
 export default definePageConfig({
   navigationBarTextStyle: 'white',
   navigationStyle: 'custom',
-  navigationBarTitleText: '客户'
+  navigationBarTitleText: '客户详情'
 })

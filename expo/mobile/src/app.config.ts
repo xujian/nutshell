@@ -10,6 +10,7 @@ export default defineAppConfig({
     'pages/products/details',
     'pages/products/order',
     'pages/clients/list',
+    'pages/clients/detail',
   ],
   tabBar: {
     custom: true,
