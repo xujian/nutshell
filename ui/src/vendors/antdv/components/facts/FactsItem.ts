@@ -6,7 +6,8 @@ export const FactsItem = (props: FactsItemProps, { slots }: SetupContext) => {
 
   return h(DescriptionsItem, {
     class: [
-      'ns-facts-item'
+      'ns-facts-item',
+      ...props.direction ? [`direction-${props.direction}`] : []
     ],
     label: props.label,
     span: props.span,

@@ -1,10 +1,12 @@
 import { ExtractPropTypes, PropType } from 'vue'
 import { Color, GradientString } from '../composables/theme'
 import { buildProps } from '../utils/private/props'
+import { MakePropsType } from '../utils'
 
 export type FlexDirection = 'row' | 'column'
 export type Align = 'start' | 'end' | 'between' | 'space'
 export type Justify = 'start' | 'end' | 'between' | 'space'
+export type TextAlign = 'start' | 'end' | 'center'
 
 const flexProps = {
   /**
@@ -38,7 +40,7 @@ const flexProps = {
   }
 }
 
-export type FlexProps = ExtractPropTypes<typeof flexProps>
+export type FlexProps = MakePropsType<typeof flexProps>
 
 export const buildFlexClasses = (props: FlexProps) => {
   return [

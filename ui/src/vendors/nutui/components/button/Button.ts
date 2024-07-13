@@ -3,7 +3,6 @@ import { NsIcon, type ButtonEmits, type ButtonProps } from '../../../../componen
 import { Size } from '../../../../props/size'
 import type { ButtonSize, ButtonShape } from '@nutui/nutui-taro'
 import { BRANDS, BrandColor } from '../../../../composables/theme'
-import { MarginProps } from '../../../../utils'
 
 const sizeMapping: Record<Size, ButtonSize> = {
   auto: 'normal',
@@ -47,7 +46,7 @@ export const Button = (props: ButtonProps, { slots }: SetupContext) => {
 
   const shape = props.round === true ? void 0 : ('suqare' as ButtonShape)
   const style = {
-    ...props.iconFill ? {'--icon-fill': props.iconFill} : {}
+    ...props.iconFill ? {'--icon-fill': props.iconFill} : {},
   }
 
   return h(

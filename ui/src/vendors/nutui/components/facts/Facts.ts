@@ -9,7 +9,13 @@ export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose
     (() => props.value)
 
   return h('div', {
-    class: ['item', 'row', 'align-center', 'justify-between', 'font-sm']
+    class: [
+      'item',
+      ...props.direction ==='column'
+        ? ['column', 'align-stretch', 'justify-start']
+        : ['row', 'align-center', 'justify-between'],
+      'font-sm'
+    ]
   }, [
     h('div', {
         class: ['label']
@@ -25,7 +31,6 @@ export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose
 
 export const Facts = (props: FactsProps, ctx: Omit<SetupContext, 'expose'>) => {
 
-  console.log('===Facts', props.items, ctx.slots.default)
   const slots = ctx.slots.default
     || (() => props.items?.map((item) => h(FactsItem, item.props)))
 

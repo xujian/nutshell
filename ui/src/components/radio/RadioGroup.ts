@@ -1,6 +1,6 @@
 import { PropType, useSlots } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useFieldProps, useModelValuePropsForInput, useLayoutProps, useVariantProps } from '../../props'
+import { useFieldProps, useModelValuePropsForInput, useVariantProps, useFlexProps } from '../../props'
 import { UniDataItem } from '../../shared'
 import { ValidationRule, buildStyles, formatRules } from '../../props/field'
 
@@ -11,7 +11,7 @@ export const radioGroupProps = {
     default: []
   },
   ...useFieldProps(),
-  ...useLayoutProps(),
+  ...useFlexProps(),
   ...useVariantProps(),
 }
 

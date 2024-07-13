@@ -6,6 +6,7 @@ import { Prettify, LooseRequired } from '@vue/shared'
  */
 export type MarginProps = {
   classes?: string[],
+  style?: Record<string, string>,
   vendorRef?: Ref,
 }
 

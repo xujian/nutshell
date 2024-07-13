@@ -1,9 +1,10 @@
-import { useDataProps, useFieldProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { buildFlexClasses, buildFlexStyles, useDataProps, useFieldProps, useFlexProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 import { UniDataItem } from '../../shared'
 import { PropType } from 'vue'
 import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 import { Color } from '../../composables'
+import { FlexProps } from 'ant-design-vue'
 
 export const chipsProps = {
   ...useModelValuePropsForStringArray(),
@@ -21,6 +22,7 @@ export const chipsProps = {
   ...useVariantProps(),
   ...useSizeProps(),
   ...useFieldProps(),
+  ...useFlexProps(),
 }
 
 export type ChipsProps = MakePropsType<typeof chipsProps>
@@ -36,6 +38,12 @@ export const NsChips = define({
       // 对参数做前期的处理
       return {
         props: {
+          classes: [
+            ...buildFlexClasses(props)
+          ],
+          style: {
+            ...buildFlexStyles(props),
+          },
           rules: finalRules as FullValidationRule[]
         }
       }

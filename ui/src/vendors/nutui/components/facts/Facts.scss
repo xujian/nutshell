@@ -1,11 +1,16 @@
 .ns-facts {
   .item {
+    padding: 6px 0;
     .label {
-      color: var(--ns-neutral);
+      white-space: nowrap;
     }
     .value {
       color: var(--ns-text);
       font-weight: bold;
+      padding-inline-start: 1em;
+    }
+    &.direction-vertical {
+      padding-inline-start: 0;
     }
   }
 }
