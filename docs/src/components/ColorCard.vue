@@ -1,6 +1,6 @@
 <template>
   <div class="color-card r-md p-sm">
-    <div class="paint r-sm" :class="[`color-${props.color?.name}`]"></div>
+    <div class="paint r-sm" :class="[`fill-${props.color?.name}`]"></div>
     <div class="info p-sm">
       <h3>{{props.color?.label}}</h3>
       <p class="text-caption">{{props.color?.name}}</p>
@@ -27,6 +27,7 @@ const props = defineProps({
   }
   .info {
     height: 60px;
+    width: fit-content;
   }
 }
 </style>

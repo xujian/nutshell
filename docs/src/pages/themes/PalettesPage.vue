@@ -1,30 +1,35 @@
 <template>
-  <h1 class="my-lg">标准色表</h1>
-  <ns-row v-for="c in brands" :key="c.name" justify="start" align="start" :gutter="16">
-    <ns-flex-item class="m-sm">
-      <color-card :color="c"></color-card>
-    </ns-flex-item>
-    <ns-flex-item class="shades py-md">
-      <ns-row class="alphas-row r-sm mb-xs">
-        <div class="color"
-          v-for="n of shades" :key="n"
-          v-tooltip="`${c.name}-${n}`"
-          :style="{backgroundColor: `var(--ns-${c.name}-${n})`}"></div>
-      </ns-row>
-      <ns-row class="tints-row r-sm mb-xs">
-        <div class="color"
-          v-for="n of shades" :key="n"
-          v-tooltip="`${c.name}--${n}`"
-          :style="{backgroundColor: `var(--ns-${c.name}--${n})`}"></div>
-      </ns-row>
-      <ns-row class="shades-row r-sm mb-xs">
-        <div class="color"
-          v-for="n of shades" :key="n"
-          v-tooltip="`${c.name}---${n}`"
-          :style="{backgroundColor: `var(--ns-${c.name}---${n})`}"></div>
-      </ns-row>
-    </ns-flex-item>
-  </ns-row>
+  <div class="page pallettes-page">
+    <h1 class="my-lg">标准色表</h1>
+    <ns-row class="color-row" v-for="c in brands" :key="c.name"
+      justify="start"
+      align="start"
+      :gutter="16">
+      <ns-flex-item class="m-sm">
+        <color-card :color="c"></color-card>
+      </ns-flex-item>
+      <ns-flex-item class="shades py-sm">
+        <ns-row class="alphas-row r-sm mb-xs">
+          <div class="color"
+            v-for="n of shades" :key="n"
+            v-tooltip="`${c.name}-${n}`"
+            :style="{backgroundColor: `var(--ns-${c.name}-${n})`}"></div>
+        </ns-row>
+        <ns-row class="tints-row r-sm mb-xs">
+          <div class="color"
+            v-for="n of shades" :key="n"
+            v-tooltip="`${c.name}--${n}`"
+            :style="{backgroundColor: `var(--ns-${c.name}--${n})`}"></div>
+        </ns-row>
+        <ns-row class="shades-row r-sm mb-xs">
+          <div class="color"
+            v-for="n of shades" :key="n"
+            v-tooltip="`${c.name}---${n}`"
+            :style="{backgroundColor: `var(--ns-${c.name}---${n})`}"></div>
+        </ns-row>
+      </ns-flex-item>
+    </ns-row>
+  </div>
 </template>
 <script lang="ts" setup>
 import ColorCard from '@/components/ColorCard.vue'
@@ -67,16 +72,22 @@ const brands = [
 </script>
 
 <style lang="scss">
-.shades {
-  .tints-row, .shades-row, .alphas-row {
-    border-style: solid;
-    border-width: 1px;
-    border-color: var(--ns-primary---50);
-    .color {
-      width: 32px;
-      height: 32px;
+.pallettes-page {
+  height: fit-content;
+  .color-row {
+    width: fit-content;
+  }
+  .shades {
+    .tints-row, .shades-row, .alphas-row {
+      border-style: solid;
+      border-width: 1px;
+      border-color: var(--ns-primary---50);
+      .color {
+        width: 32px;
+        height: 32px;
+      }
+      overflow: hidden;
     }
-    overflow: hidden;
   }
 }
 </style>
