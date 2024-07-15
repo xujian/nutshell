@@ -83,7 +83,7 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
         props.clickable && 'clickable'
       ]
     }, h('use', {
-      href: `http://localhost:2024/sprite.svg#${props.name}`
+      href: `http://simple.shensi.tech/icons/sprite.svg#${props.name}`
     })),
   svg:  (props: IconProps) => h('img', {
       class: [
@@ -91,7 +91,7 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
         props.size && `font-size-${props.size}`,
         props.clickable && 'clickable'
       ],
-      src: `http://localhost:2024/icons/default/${props.name}.svg`
+      src: `http://simple.shensi.tech/icons/default/${props.name}.svg`
     }),
   image: (props: IconProps) => h('img', {
     class: [
