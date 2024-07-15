@@ -5,6 +5,7 @@
   <h1>Nutshell</h1>
   <div class="spacer"></div>
   <ns-dropdown class="theme-dropdown" label="配色主题"
+    fill="primary"
     @change="onDropdownChange"
     :items="[
       { label: 'Klein', value: 'klein' },

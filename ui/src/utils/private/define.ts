@@ -5,20 +5,26 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   defineComponent,
   EmitsOptions, FunctionalComponent,
   getCurrentInstance,
-  ComputedRef} from 'vue'
+  ComputedRef,
+  unref,
+  isRef} from 'vue'
 import { LooseRequired } from '@vue/shared'
-import { MakePropsType } from './helpers'
+import { MakePropsType, MarginProps, marginProps, StyleObject } from './helpers'
 import { useVendor } from '../../shared/vendor'
 import { kebabCase } from '../text'
 
 const buildClasses = (props: any): string[] => {
-  const { variant, color } = props
+  if (!props) return []
+  const { variant } = props
   const result: string[] = []
   if (variant) {
     result.push(`variant-${variant}`)
   }
-  if (color) {
-    result.push(`color-${color}`)
+  if (!props.classes) return result
+  if (isRef(props.classes)) {
+    result.push(...unref(props.classes || []))
+  } else {
+    result.push(...props.classes)
   }
   return result
 }
@@ -45,13 +51,13 @@ export function define<
     emits?: Emits,
     slots?: Slots,
     setup: (
-      props: Props,
+      props: Props & MarginProps,
       ctx: Omit<SetupContext, 'expose'>
     ) => {
-      props?: Partial<Props>,
+      props?: Partial<Props> & MarginProps,
       methods?: Record<string, any>,
-      style?: ComputedRef<Record<string, string | number>>,
-      classes?: ComputedRef<string[]>,
+      style?: ComputedRef<StyleObject> | StyleObject,
+      classes?: ComputedRef<string[]> | string[],
       vendorRef?: Ref
     }
   },
@@ -65,17 +71,17 @@ export function define<
    */
   const setup = function (
       this: void,
-      props: LooseRequired<Props>,
+      props: LooseRequired<Props> & MarginProps,
       ctx: Omit<SetupContext, 'expose'>
     ) {
     // the real setup
-    const { setup: setupOriginal } = options
+    // const { setup: setupOriginal } = options
     const v = useVendor()
-    const { props: extraProps, methods, vendorRef, style, classes } = setupOriginal(props, ctx)
+    const { props: extraProps, methods, vendorRef, style} = options.setup(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
     const render: Ref<FunctionalComponent<Props, EmitsOptions, any>>
-      = ref((props: Props, ctx: Omit<SetupContext, 'expose'>) => h('div'))
+      = ref((props: Props & MarginProps, ctx: Omit<SetupContext, 'expose'>) => h('div'))
 
     if (v instanceof Promise) {
       v.then((vendor) => {
@@ -86,14 +92,17 @@ export function define<
     }
 
     const vm = getCurrentInstance() as any
-    const className = kebabCase(options.name)
+    const className = kebabCase(options.name),
+      classes = buildClasses(extraProps)
     vm.render = () => h(render.value, {
-    // return () => h(render.value, {
-      class: className,
       ...props,
       ...extraProps,
+      class: [
+        className,
+        ...classes,
+      ],
+      classes: props.classes,
       style: style?.value,
-      classes: buildClasses(props),
       vendorRef,
     }, ctx.slots)
 

@@ -2,7 +2,8 @@ import { SetupContext, h } from 'vue'
 import { NsIcon, type ButtonEmits, type ButtonProps } from '../../../../components'
 import { Size } from '../../../../props/size'
 import type { ButtonSize, ButtonShape } from '@nutui/nutui-taro'
-import { BRANDS, BrandColor } from '../../../../composables/theme'
+import { BRANDS, BrandColor, isBrand } from '../../../../composables/theme'
+import { MarginProps } from '../../../../utils'
 
 const sizeMapping: Record<Size, ButtonSize> = {
   auto: 'normal',
@@ -18,13 +19,10 @@ const getSize = (size?: Size): ButtonSize => {
   return sizeMapping[size]
 }
 
-export const Button = (props: ButtonProps, { slots }: SetupContext) => {
-  const { color } = props
-  const colorIsBrand = BRANDS.includes(color as BrandColor)
+export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext) => {
   const classes = [
     ...props.size ? [`size-${props.size}`] : [],
     ...(props.classes ?? []),
-    ...colorIsBrand ? [`color-${color}`] : [],
     ...props.iconPosition ? [`icon-position-${props.iconPosition}`] : [],
   ]
   const { label, width, disabled, maxWidth, height, maxHeight, minWidth, minHeight, ...p } = props
@@ -46,6 +44,7 @@ export const Button = (props: ButtonProps, { slots }: SetupContext) => {
 
   const shape = props.round === true ? void 0 : ('suqare' as ButtonShape)
   const style = {
+    ...props.style,
     ...props.iconFill ? {'--icon-fill': props.iconFill} : {},
   }
 
@@ -55,7 +54,6 @@ export const Button = (props: ButtonProps, { slots }: SetupContext) => {
       class: classes,
       disabled,
       shape,
-      ...(!colorIsBrand && { color: color as string }),
       size: getSize(props.size),
       loading: props.loading,
       onClick: props.onClick,

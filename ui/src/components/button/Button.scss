@@ -12,12 +12,12 @@
   &:active {
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
   }
-  &:not([class*="color-"]) {
-    &:hover {
-      border-color: var(--ns-primary);
-      color: var(--ns-primary);
-    }
-  }
+  // &:not([class*="color-"]) {
+  //   &:hover {
+  //     border-color: var(--ns-primary);
+  //     color: var(--ns-primary);
+  //   }
+  // }
   + .ns-button {
     margin-left: 0.5em;
   }

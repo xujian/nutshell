@@ -1,15 +1,15 @@
 <template>
   <h1 class="my-lg">下拉菜单 &lt;ns-dropdown&gt;</h1>
   <h2 class="my-md">Size</h2>
-  <ns-row class="sizes">
+  <ns-row class="sizes" justify="start">
     <ns-dropdown
       v-for="size in sizes" :key="size"
       :items="menuItems"
       label="排序" :size="size"></ns-dropdown>
   </ns-row>
   <h2 class="my-md">Color</h2>
-  <ns-row class="colors">
-    <ns-dropdown v-for="color in colors" :color="color"
+  <ns-row class="colors" justify="start">
+    <ns-dropdown v-for="color in colors" :fill="color"
       :items="menuItems"
       label="排序" :key="color"></ns-dropdown>
   </ns-row>

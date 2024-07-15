@@ -63,8 +63,10 @@ export function useTheme () {
   return { theme, setTheme }
 }
 
-export function isBrand (color: Color) {
-  return BRANDS.includes(color as BrandColor)
+export function isBrand (color?: Color) {
+  if (!color) return false
+  const result = BRANDS.includes(color as BrandColor)
+  return result
 }
 
 export function makeColor (color: Color): string {

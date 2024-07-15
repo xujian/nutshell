@@ -1,5 +1,5 @@
 import { PropType, ObjectEmitsOptions } from 'vue'
-import { useSizeProps, useDimensionProps } from '../../props'
+import { useSizeProps, useDimensionProps, useDesignProps, buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles } from '../../props'
 import { MakePropsType, define } from '../../utils'
 import { Color } from '../../composables/theme'
 import { UniDataItem } from '../../shared'
@@ -10,12 +10,6 @@ export const dropdownProps = {
    */
   label: {
     type: String,
-  },
-  /**
-   * 按钮底色
-   */
-  color: {
-    type: String as PropType<Color>,
   },
   items: {
     type: Array as PropType<UniDataItem[]>,
@@ -29,6 +23,7 @@ export const dropdownProps = {
     default: false,
   },
   ...useDimensionProps(),
+  ...useDesignProps(),
 }
 
 export type DropdownEmits = {
@@ -48,8 +43,16 @@ export const NsDropdown = define({
     name: 'NsDropdown',
     props: dropdownProps,
     emits,
-    setup (props, ctx) {
+    setup (props) {
       return {
+        props: {
+          classes: [
+            ...buildDesignClasses(props),
+          ],
+          style: {
+            ...buildDesignStyles(props),
+          }
+        }
       }
     }
   }

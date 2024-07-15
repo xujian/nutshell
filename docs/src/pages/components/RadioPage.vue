@@ -23,7 +23,7 @@
     :items="radioItems"
     label="自定义参数"
     name="param"
-    direction="vertical"
+    direction="column"
     @change="onRadioGroupChange" />
   <p>&nbsp;</p>
 </template>

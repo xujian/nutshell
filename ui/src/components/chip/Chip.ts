@@ -1,7 +1,7 @@
 import { PropType, ObjectEmitsOptions } from 'vue'
 import { buildProps } from '../../utils/private/props'
 import { Color } from '../../composables'
-import { useSizeProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, useDesignProps, useSizeProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 
 export const useChipProps = buildProps({
@@ -24,7 +24,8 @@ export const useChipProps = buildProps({
     type: String as PropType<Color>,
   },
   ...useSizeProps(),
-  ...useVariantProps()
+  ...useVariantProps(),
+  ...useDesignProps()
 })
 
 export const chipProps = {
@@ -50,8 +51,15 @@ export const NsChip = define({
     props: chipProps,
     emits: chipEmits,
     setup (props, ctx) {
-      // 对参数做前期的处理
       return {
+        props: {
+          classes: [
+            ...buildDesignClasses(props),
+          ],
+          style: {
+            ...buildDesignStyles(props)
+          }
+        }
       }
     }
   }

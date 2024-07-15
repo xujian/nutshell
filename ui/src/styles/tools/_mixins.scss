@@ -73,10 +73,6 @@ $alphas: (
   @each $name, $value in map-get($theme, 'brand') {
     .fill-#{$name} {
       background-color: var(--ns-#{$name});
-    }
-    .color-#{$name} {
-      background-color: var(--ns-#{$name});
-      border-color: var(--ns-#{$name});
       @if lightness($value) > 80 {
         color: var(--ns-text);
         #{'--ns-'}#{$name}#{'--text'}: var(--ns-text);

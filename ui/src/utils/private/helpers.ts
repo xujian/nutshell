@@ -1,12 +1,13 @@
 import { AllowedComponentProps, ComponentObjectPropsOptions, ComponentPropsOptions, EmitsOptions, ExtractPropTypes, ExtractPublicPropTypes, ObjectEmitsOptions, PropType, Ref } from 'vue'
 import { Prettify, LooseRequired } from '@vue/shared'
 
+export type StyleObject = Record<string, string | number>
 /**
  * 传给 vendor 的属性里加了一些字段
  */
 export type MarginProps = {
   classes?: string[],
-  style?: Record<string, string>,
+  style?: StyleObject,
   vendorRef?: Ref,
 }
 

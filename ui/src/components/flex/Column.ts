@@ -48,8 +48,8 @@ export const NsColumn = defineComponent({
         'flex',
         'flex-column',
         ...props.grow ? ['flex-grow'] : [],
-        `justify-${props.justify}`,
-        `align-${props.align}`,
+        ...props.justify ? [`justify-${props.justify}`] : [],
+        ...props.align ? [`align-${props.align}`] : [],
       ],
       style: {
         '--gap': typeof props.gap === 'number'

@@ -45,13 +45,14 @@ export type FlexProps = MakePropsType<typeof flexProps>
 export const buildFlexClasses = (props: FlexProps) => {
   return [
     'flex',
-    `${props.direction}`,
-    `align-${props.align}`,
-    `justify-${props.justify}`,
+    ...props.direction ? [`${props.direction}`] : [],
+    ...props.align ? [`align-${props.align}`] : [],
+    ...props.justify ? [`justify-${props.justify}`] : [],
   ]
 }
 
-export const buildFlexStyles = (props: FlexProps) => {
+export const buildFlexStyles: (props: FlexProps) => Record<string, string>
+  = (props: FlexProps) => {
   return {
     ...props.gap && {
       '--gap': `${props.gap}px`,

@@ -29,7 +29,7 @@ export const Stepper = (props: StepsProps & MarginProps, ctx: Omit<SetupContext,
       ],
       status: props.status ? props.status : ('process' as StepperStatus),
       size: props.size !== 'xs' ? 'default' : 'small',
-      direction: props.direction === 'horizontal' ? 'horizontal' : 'vertical',
+      direction: props.direction === 'row' ? 'horizontal' : 'vertical',
       labelPlacement: props.labelPlacement === 'horizontal' ? 'horizontal' : 'vertical',
       current: props.modelValue as number,
       'onUpdate:current': (value: number) => {

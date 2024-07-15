@@ -7,9 +7,9 @@
     .nut-button__text {
       margin-left: 0; // fix nut-button style
     }
-    &:not(.variant-plain):hover {
-      box-shadow: 0 1px 2px var(--ns-primary--80);
-    }
+    // &:not(.variant-plain):hover {
+    //   box-shadow: 0 1px 2px var(--ns-primary--80);
+    // }
     &.color-primary.variant-solid:hover, &.color-primary:not([class*="variant-"]):hover {
       background-color: var(--ns-primary--10);
       box-shadow: none;

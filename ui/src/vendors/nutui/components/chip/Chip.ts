@@ -4,10 +4,6 @@ import { MarginProps } from '../../../../utils'
 
 export const Chip = (props: ChipProps & MarginProps, { slots }: Omit<SetupContext, 'expose'>) => {
   return h(NutTag, {
-    class: [
-      ...props.classes || []
-    ],
-    color: props.color,
     round: true,
   }, () => [
     slots.default?.(),

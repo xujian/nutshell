@@ -3,11 +3,11 @@ import {
   useSlots,
 } from 'vue'
 import { MakePropsType, define } from '../../utils'
-import { useModelValuePropsForInput, useSizeProps } from '../../props'
+import { useFlexProps, useModelValuePropsForInput, useSizeProps } from '../../props'
 
 export type StepperVariant = 'arrow' | 'stone'
 
-export type StepperDirection = 'horizontal' | 'vertical'
+export type LabelPlacement = 'horizontal' | 'vertical'
 
 export type StepperStatus = 'wait' | 'process' | 'finish' | 'error' | undefined
 
@@ -25,12 +25,8 @@ export const stepperProps = {
     type: String as PropType<StepperStatus>,
     default: 'process'
   },
-  direction: {
-    type: String as PropType<StepperDirection>,
-    default: 'horizontal'
-  },
   labelPlacement: {
-    type: String as PropType<StepperDirection>,
+    type: String as PropType<LabelPlacement>,
     default: 'horizontal'
   },
   items: {
@@ -46,6 +42,7 @@ export const stepperProps = {
     default: true
   },
   ...useSizeProps(),
+  ...useFlexProps(),
   ...useModelValuePropsForInput()
 }
 

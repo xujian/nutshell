@@ -10,7 +10,7 @@
       <ns-icon :name="name" />
     </div>
     <div class="icon-container border-sm r-sm round">
-      <ns-icon name="http://127.0.0.1:2024/images/camera.svg"></ns-icon>
+      <ns-icon name="http://simple.shensi.tech/icons/camera.svg"></ns-icon>
     </div>
   </ns-row>
 </template>

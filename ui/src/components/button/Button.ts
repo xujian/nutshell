@@ -1,5 +1,5 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
-import { useSizeProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, useDesignProps, useSizeProps, useVariantProps } from '../../props'
 import { define, MakePropsType } from '../../utils'
 import { useDimensionProps, useLoadingProps } from '../../props'
 import { Color } from '../../composables/theme'
@@ -14,17 +14,8 @@ export const useButtonProps = () => ({
   label: {
     type: String
   },
-  /**
-   * 按钮底色
-   */
   color: {
     type: String as PropType<Color>,
-  },
-  /**
-   * 圆角按钮
-   */
-  round: {
-    type: Boolean
   },
   icon: {
     type: String
@@ -39,6 +30,7 @@ export const useButtonProps = () => ({
     type: String as PropType<IconFormat>,
   },
   ...useSizeProps(),
+  ...useDesignProps(),
   /**
    * 禁用
    */
@@ -56,11 +48,11 @@ const buttonProps = {
 }
 
 export type ButtonEmits = {
-  click: (...args: any[]) => any
+  click: (...args: any[]) => void
 }
 
 const emits: ButtonEmits = {
-  click: (...args: any[]) => void 0
+  click: (...args: any[]) => {}
 }
 
 export type ButtonSlots = {
@@ -76,9 +68,14 @@ export const NsButton = define({
   name: 'NsButton',
   props: buttonProps,
   emits,
-  setup(props, ctx) {
+  setup (props) {
     // 对参数做前期的处理
-    return {}
+    return {
+      props: {
+        classes: buildDesignClasses(props),
+        style: buildDesignStyles(props),
+      }
+    }
   }
 })
 

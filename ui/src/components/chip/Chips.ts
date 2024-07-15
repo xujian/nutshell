@@ -1,10 +1,9 @@
-import { buildFlexClasses, buildFlexStyles, useDataProps, useFieldProps, useFlexProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDataProps, useDesignProps, useFieldProps, useFlexProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 import { UniDataItem } from '../../shared'
 import { PropType } from 'vue'
 import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 import { Color } from '../../composables'
-import { FlexProps } from 'ant-design-vue'
 
 export const chipsProps = {
   ...useModelValuePropsForStringArray(),
@@ -23,6 +22,7 @@ export const chipsProps = {
   ...useSizeProps(),
   ...useFieldProps(),
   ...useFlexProps(),
+  ...useDesignProps(),
 }
 
 export type ChipsProps = MakePropsType<typeof chipsProps>
@@ -39,10 +39,12 @@ export const NsChips = define({
       return {
         props: {
           classes: [
-            ...buildFlexClasses(props)
+            ...buildFlexClasses(props),
+            ...buildDesignClasses(props)
           ],
           style: {
             ...buildFlexStyles(props),
+            ...buildDesignStyles(props),
           },
           rules: finalRules as FullValidationRule[]
         }
