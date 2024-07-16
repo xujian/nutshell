@@ -84,11 +84,11 @@ const buildDesignClasses = (props: DesignProps) => {
         || props.brightness
       ) ? ['backdrop-filter']
         : []
-  console.log('===filterClasses', props.blur, props.brightness, filterClasses)
   const result = [
     ...(fill && isBrand(fill) ? [`fill-${fill}`] : []),
     ...(props.borders ? [`borders-${props.borders}`] : []),
     ...(props.round ? ['round'] : []),
+    ...(props.gradient ? ['gradient'] : []),
     ...filterClasses
   ]
   return result

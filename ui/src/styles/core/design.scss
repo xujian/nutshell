@@ -27,6 +27,10 @@
   backdrop-filter: brightness(var(--brightness, 1)) blur(var(--blur));
 }
 
+.gradient {
+  background: var(--gradient, linear-gradient(45deg, #00000000 0%, #00000000 100%)), var(--fill);
+}
+
 .blur {
   backdrop-filter: brightness(1.5) blur(20px);
 }
