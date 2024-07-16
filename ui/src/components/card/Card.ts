@@ -1,6 +1,6 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
 import { buildFillStyle, buildGradientStyle, Color } from '../../composables/theme'
-import { buildDesignStyles, buildDesignVariables, useDesignProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, buildDesignVariables, useDesignProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
 
 export const cardProps = {
@@ -48,14 +48,12 @@ export const NsCard = defineComponent({
       'flex',
       'flex-column',
       'align-stretch',
-      'with-design',
-      props.fill ? `fill-${props.fill}` : '',
       props.variant ? `variant-${props.variant}` : '',
+      ...buildDesignClasses(props),
     ].join(' ')
 
     const style = {
       ...buildDesignStyles(props),
-      ...buildDesignVariables(props),
     }
 
     const label = () => props.title

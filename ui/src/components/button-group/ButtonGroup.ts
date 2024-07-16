@@ -1,8 +1,8 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { buildDesignClasses, buildDesignStyles, useDesignProps, useDimensionProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDesignProps, useDimensionProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { UniDataItem } from '../../shared'
-import { BRANDS, Color, type BrandColor } from '../../composables/theme'
+import { BRANDS, Color, isBrand, type BrandColor } from '../../composables/theme'
 import { NsButton } from '../button/Button'
 
 export const buttonGroupProps = {
@@ -57,13 +57,12 @@ export const NsButtonGroup = defineComponent({
   props: buttonGroupProps,
   emits: buttonGroupEmits,
   setup (props, { emit }) {
-    const colorIsBrand = BRANDS.includes(props.color as BrandColor)
 
     const button = (item: UniDataItem) => h(NsButton, {
       class: [
         ...props.size ? [`size-${props.size}`] : [],
-        ...colorIsBrand ? [`color-${props.color}`] : [],
-        ...props.variant ? [`variant-${props.variant}`] : [],
+        // ...isBrand(props.color) ? [`fill-${props.color}`] : [],
+        // ...props.variant ? [`variant-${props.variant}`] : ['variant-plain'],
         ...item.value === props.modelValue ? ['active'] : [],
       ],
       onClick () {
@@ -77,7 +76,7 @@ export const NsButtonGroup = defineComponent({
       color: props.color,
       variant: props.variant,
       round: props.round,
-      label: item.label || ''
+      label: item.label || '',
     })
 
     const items = () => h('div', {
@@ -94,9 +93,11 @@ export const NsButtonGroup = defineComponent({
         'ns-button-group',
         'row',
         ...buildDesignClasses(props),
+        ...buildFlexClasses(props),
       ],
       style: {
         ...buildDesignStyles(props),
+        ...buildFlexStyles(props),
       },
     }, content())
   }

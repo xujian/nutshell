@@ -99,14 +99,3 @@ export function buildGradientStyle (gradient?: GradientString):
       '--gradient': `linear-gradient(${angle}deg, ${startColor} 0%, ${endColor} 100%)`
     }
 }
-
-/**
- * 生成 backdrop-filer: blur 样式
- */
-export function buildBlurStyle (props: DesignProps):
-  { 'backdrop-filter'?: string } {
-    if (!props.blur) return {}
-    return {
-      'backdrop-filter': `blur(${props.blur}px)`
-    }
-}

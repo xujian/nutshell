@@ -5,16 +5,18 @@
       <ns-card
         :title="`${product?.机构名称} - ${product?.名称}`"
         fill="#ffffff33"
-        :blur="20"
-        :brightness="2"
+        :blur="10"
+        :brightness="1.2"
         body-fill="#CDDC39">
         <ns-number
           :value="product.最快放款时长"
           suffix="天"
           footer="最快放款时长"
-          align="start"
-          :style="{'--padding': 0}" />
-        <ns-chips :options="product?.tags?.map(t => ({value: t, label: t})) || []" color="primary" />
+          align="start" />
+        <ns-chips :options="product?.tags?.map(t => ({value: t, label: t})) || []"
+          :blur="0"
+          :brightness="1"
+          color="primary" />
       </ns-card>
       <ns-card title="业务流程" fill="#ffffff">
         <ul class="procedures row justify-between">
@@ -47,8 +49,8 @@
         </ul>
       </ns-card>
     </ns-page-content>
-    <ns-page-bottom fill="#ffffff11"
-      :blur="10" :brightness="2">
+    <ns-page-bottom fill="#ffffff33"
+      :blur="10" :brightness="1.2">
       <div class="row">
         <ns-button
           round

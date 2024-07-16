@@ -54,7 +54,7 @@ export const buildFlexClasses = (props: FlexProps) => {
 export const buildFlexStyles: (props: FlexProps) => Record<string, string>
   = (props: FlexProps) => {
   return {
-    ...props.gap && {
+    ...props.gap !== void 0 && {
       '--gap': `${props.gap}px`,
     },
     ...props.justify && {

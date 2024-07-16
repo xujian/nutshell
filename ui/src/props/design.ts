@@ -2,7 +2,6 @@ import { PropType } from 'vue'
 import {
   Color,
   GradientString,
-  buildBlurStyle,
   buildFillStyle,
   buildGradientStyle,
   isBrand,
@@ -74,30 +73,38 @@ const designProps = {
 
 export type DesignProps = MakePropsType<typeof designProps>
 
+const hasDesignProps = (props: DesignProps) => {
+  return Object.keys(designProps)
+}
+
 const buildDesignClasses = (props: DesignProps) => {
-  const fill = props.fill || (Reflect.get(props, 'color') as Color)
+  const fill = props.fill || (Reflect.get(props, 'color') as Color),
+    filterClasses = (
+        props.blur
+        || props.brightness
+      ) ? ['backdrop-filter']
+        : []
+  console.log('===filterClasses', props.blur, props.brightness, filterClasses)
   const result = [
-    'with-design',
     ...(fill && isBrand(fill) ? [`fill-${fill}`] : []),
     ...(props.borders ? [`borders-${props.borders}`] : []),
-    ...(props.round ? ['round'] : [])
+    ...(props.round ? ['round'] : []),
+    ...filterClasses
   ]
-  console.log('===buildDesignClasses, result', props, fill, result)
   return result
 }
 
 const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignProps) => {
   const fill = props.fill || (Reflect.get(props, 'color') as Color)
   const style = {
-    ...(props.fill ? { '--fill': makeColor(fill) } : {}),
+    ...(fill ? { backgroundColor: makeColor(fill) } : {}),
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
-    ...(props.borderColor ? { '--stroke': props.borderColor } : {}),
-    ...(props.borderWidth ? { '--border-width': props.borderWidth } : {}),
-    ...(props.foreground ? { '--foreground': props.foreground } : {}),
-    ...(props.blur ? { '--blur': `${props.blur}px` } : {}),
-    ...(props.brightness ? { '--brightness': props.brightness } : {}),
+    ...(props.borderColor ? { broderColor: props.borderColor } : {}),
+    ...(props.borderWidth ? { borderWidth: props.borderWidth } : {}),
+    ...(props.foreground ? { color: props.foreground } : {}),
+    ...props.blur ? {'--blur': `${props.blur}px`} : {},
+    ...props.brightness != 1 ? {'--brightness': props.brightness} : {},
     ...buildGradientStyle(props.gradient),
-    ...buildBlurStyle(props)
   } as StyleObject
   return style
 }
