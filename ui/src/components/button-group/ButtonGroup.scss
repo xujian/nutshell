@@ -1,10 +1,6 @@
 .ns-button-group {
-  border-radius: var(--border-radius, var(--ns-border-radius));
   width: fit-content;
   overflow: hidden;
-  &.round {
-    border-radius: 25px;
-  }
   .buttons {
     width: fit-content;
   }

@@ -36,5 +36,9 @@
 }
 
 .backdrop-filter {
-  backdrop-filter: brightness(var(--brightness)) blur(var(--blur));
+  backdrop-filter: brightness(var(--brightness, 1)) blur(var(--blur, 0px));
+}
+
+.round {
+  border-radius: var(--border-radius, var(--ns-border-radius));
 }

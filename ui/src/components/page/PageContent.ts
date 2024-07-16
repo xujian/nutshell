@@ -6,6 +6,20 @@ import { buildDesignClasses, buildDesignStyles, buildDesignVariables, type TextA
 export type PageContentColorMode = 'light' | 'dark'
 
 export const pageContentProps = {
+  /**
+   * Page content 允许滚动
+   */
+  scrollable: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * 底部预留空间
+   */
+  bottom: {
+    type: Number,
+    default: 80
+  }
 }
 
 export type PageContentmits = {
@@ -34,17 +48,25 @@ export const NsPageContent = defineComponent({
       })
     }
 
-    return () => h('scroll-view', {
+    const renderScrollview = (content: any) => h('scroll-view', {
         class: ['page-content-scroll-view'],
         style: cssVars,
         'scroll-y': true,
         onScroll,
-      }, h('div', {
-          class: [
-            'ns-page-content',
-            'page-content',
-          ]
-        }, slots)
-      )
-    }
+      }, content)
+
+    const content = () => h('div', {
+        class: [
+          'ns-page-content',
+          'page-content',
+        ],
+        style: {
+          paddingBottom: `${props.bottom}px`
+        }
+      }, slots)
+
+    return () => props.scrollable
+      ? renderScrollview(content())
+      : content()
+  }
 })

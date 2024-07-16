@@ -2,7 +2,6 @@ page {
   font-family: -apple-system, "Roboto", Helvetica, Segoe UI, Arial, Roboto, "PingFang SC", "miui", "Hiragino Sans GB", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--ns-page);
   --ns-fill: #f1f2f6;
   --ns-secondary: #CDDC39;
   --ns-positive: #1bb165;
@@ -12,9 +11,11 @@ page {
   --ns-spacing: 10px;
   --ns-border-radius: 16px;
   --ns-paper: #fff;
+  --ns-background: #f0f0f0;
   --ns-text: #333;
   font-size: 14px;
   color: #333;
+  background-color: var(--ns-background);
 }
 
 page .h1 {

@@ -5,10 +5,45 @@
     "compileHotReLoad": true,
     "urlCheck": false
   },
-  "libVersion": "3.4.8",
+  "libVersion": "3.4.10",
   "condition": {
     "miniprogram": {
       "list": [
+        {
+          "name": "我的",
+          "pathName": "pages/account/index",
+          "query": "id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "AI审批",
+          "pathName": "pages/account/approvals",
+          "query": "id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/account/login",
+          "query": "id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "进件",
+          "pathName": "pages/risk/apply",
+          "query": "id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "产品列表",
+          "pathName": "pages/products/list",
+          "query": "id=2",
+          "launchMode": "default",
+          "scene": null
+        },
         {
           "name": "客户详情",
           "pathName": "pages/clients/detail",
@@ -34,41 +69,6 @@
           "name": "产品详情",
           "pathName": "pages/products/details",
           "query": "id=2",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/products/list",
-          "pathName": "pages/products/list",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/risk/apply",
-          "pathName": "pages/risk/apply",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/account/login",
-          "pathName": "pages/account/login",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/account/approvals",
-          "pathName": "pages/account/approvals",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/account/index",
-          "pathName": "pages/account/index",
-          "query": "",
           "launchMode": "default",
           "scene": null
         }

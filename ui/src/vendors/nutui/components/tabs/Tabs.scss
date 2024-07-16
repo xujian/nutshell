@@ -1,6 +1,5 @@
 .ns-tabs {
   user-select: none;
-  border-radius: var(--border-radius, var(--ns-border-radius));
   &.nut-tabs .nut-tabs__titles {
     background: transparent;
   }
@@ -8,7 +7,6 @@
   &.horizontal>.nut-tabs__titles {
     height: 40px;
     .nut-tabs__titles-item {
-      border-radius: var(--border-radius, var(--ns-border-radius));
       &.active {
         background-color: #ffffff66;
         font-size: unset;
@@ -34,6 +32,13 @@
   }
   .nut-tab-pane {
     padding: 0;
+  }
+  &.round {
+    .nut-tabs__titles {
+      .nut-tabs__titles-item {
+        border-radius: var(--border-radius, var(--ns-border-radius));
+      }
+    }
   }
   &.variant-soft {
     .nut-tabs__titles-item {

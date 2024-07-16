@@ -14,7 +14,7 @@ import { CoreVendor } from './models/CoreVendor'
  * Vendor 体系的设计
  * 本组件库的组件不直接产生最终UI
  * 而是使用第三方组件
- * 基本的地方是组件选用的是 @nutui/nutui-taro
+ * 基本的第三方组件选用的是 @nutui/nutui-taro
  * 选用是基于以下原因：
  *   1. 需要适配到小程序、H5、以及其他移动端
  *   2. 希望同一套组件可以延伸到桌面端
@@ -48,7 +48,7 @@ import { CoreVendor } from './models/CoreVendor'
  * 4. 假如项目设置了 vendor = 'antdv'
  * 5. 则优先试用 Antdv Vendor
  * 6. 某组件在 Antdv 未实现时
- * 2. 依据策略实用 Prime Vendor(Nutui Vendor)
+ * 2. 依据策略使用 Prime Vendor(Nutui Vendor)
  */
 
 /**
