@@ -148,7 +148,8 @@ export const Page = defineComponent({
         ref: page,
         class: [
           'page',
-          ...scroll.value > 0 ? ['scrolled'] : []
+          ...scroll.value > 0 ? ['scrolled'] : [],
+          ...props.scrollable ? ['scrollable'] : [],
         ],
         style: {
           '--status': `${safeArea.status}px`,

@@ -3,7 +3,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  overflow-y: scroll;
   .page-notice {
     position: absolute;
     top: calc(var(--status) + var(--nav));
@@ -64,6 +63,9 @@
   }
   &.has-page-bottom {
     padding-bottom: 100px;
+  }
+  &.scrollable {
+    overflow-y: scroll;
   }
   .page-title {
     font-size: 24px;

@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="clients-page">
+  <ns-page class="clients-page" :scrollable="false">
     <ns-page-header title="客户列表"
       title-align="start"
       colorMode="dark"
@@ -7,7 +7,7 @@
       :has-back-button="false"
       :minimal="false">
     </ns-page-header>
-    <ns-page-content>
+    <ns-page-content :scrollable="true">
       <scroll-view scroll-x="true">
         <ns-repeator class="numbers"
           :items="numbers"

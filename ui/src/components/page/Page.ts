@@ -4,6 +4,10 @@ import { define, MakePropsType } from '../../utils'
 export const pageProps = {
   title: {
     type: String
+  },
+  scrollable: {
+    type: Boolean,
+    default: true,
   }
 }
 
