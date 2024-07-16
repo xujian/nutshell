@@ -47,6 +47,7 @@ import { endpoints, useHttp } from '../../api'
 import { type Client } from '../../models'
 import ClientList from '../../components/ClientList.vue'
 import Taro from '@tarojs/taro'
+import { useTabbar } from '@uxda/appkit-next'
 
 const tab = ref('tab1')
 const clients = ref<Client[]>([])
@@ -102,6 +103,8 @@ const onScroll = (e: Event) => {
 }
 
 onMounted(() => {
+  const { setTab } = useTabbar()
+  setTab('clients')
   $http.get<WithPaging<Client[]>>(endpoints.获取客户列表, {
     page: 1,
   }).then(result => {

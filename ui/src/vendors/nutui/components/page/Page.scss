@@ -3,6 +3,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  overflow-y: scroll;
   .page-notice {
     position: absolute;
     top: calc(var(--status) + var(--nav));

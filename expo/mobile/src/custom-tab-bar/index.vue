@@ -62,6 +62,7 @@ onTabChange((value: string) => {
 @import url('./index.scss');
 
 .basic-tabbar {
+  box-shadow: 0 0 4px 2px #00000024;
   .ns-icon {
     width: 24px;
     height: 24px;

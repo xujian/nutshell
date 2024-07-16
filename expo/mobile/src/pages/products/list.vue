@@ -1,12 +1,13 @@
 <template>
   <ns-page class="products-page">
     <ns-search placeholder="产品名称" />
-    <ns-tabs :items="tabs"></ns-tabs>
+    <ns-tabs :items="tabs" fill="#ffffff33" :blur="10"></ns-tabs>
     <ns-repeator :items="products"
       align="stretch"
       direction="column"
       v-slot="item"
-      :gap="10">
+      :gap="10"
+      class="my-md">
       <ns-card fill="#fff" @click="() => onItemClick(item)">
         <h3 class="b">{{item.机构名称}} - {{item.名称}}</h3>
         <ns-chips :options="item.tags.map(t => ({ value: t, label: t }))" color="primary" />
@@ -33,6 +34,7 @@ import { useNutshell, WithPaging } from '@uxda/nutshell'
 import { endpoints, useHttp } from '../../api'
 import { Product } from '../../models'
 import Taro from '@tarojs/taro'
+import { useTabbar } from '@uxda/appkit-next'
 
 const $http = useHttp(),
   $n = useNutshell()
@@ -61,6 +63,8 @@ const onItemClick = (item: Product) => {
 }
 
 onMounted(() => {
+  const { setTab } = useTabbar()
+  setTab('products')
   $http.get<WithPaging<Product[]>>(endpoints.获取产品列表, {
     page: 1
   }).then((result) => {

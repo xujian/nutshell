@@ -52,8 +52,11 @@ export const NsTabbar = defineComponent({
         return h('li', {
           class: [
             'tabbar-item',
-            props.modelValue == item.label ||
-              props.modelValue == item.value && 'selected'
+            ...(
+              props.modelValue == item.label ||
+              props.modelValue == item.value
+              ) ? ['selected']
+                : []
           ],
           onClick () {
             const value = item.value || item.label || ''
