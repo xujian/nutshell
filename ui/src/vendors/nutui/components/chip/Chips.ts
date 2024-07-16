@@ -4,14 +4,13 @@ import { NsChip } from '../../../../components'
 import { MarginProps } from '../../../../utils'
 
 export const Chips = (props: ChipsProps & MarginProps, ctx: Omit<SetupContext, 'expose'>) => {
-
   return h('div', {
+    class: [],
     style: {
-      ...props.style
     }
   }, {
     default: () => props.options?.map(item => h(NsChip, {
-      color: props.color,
+      color: props.color || 'primary',
       label: item.label
     }))
   })

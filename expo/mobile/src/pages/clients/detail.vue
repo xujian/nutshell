@@ -28,14 +28,14 @@
         <ns-facts-item label="业务意向">
           抵押类
         </ns-facts-item>
-        <ns-facts-item label="客户标签" direction="vertical">
+        <ns-facts-item label="客户标签" direction="column">
           <ns-chips :options="tags" justify="end" />
         </ns-facts-item>
         <ns-facts-item label="客户来源">
           直营
         </ns-facts-item>
         <ns-facts-item label="意向产品" direction="vertical">
-          <ns-chips :options="intrests" justify="end" />
+          <ns-chips :options="intrests" color="primary" justify="end" />
         </ns-facts-item>
       </ns-facts>
       <h2 class="h2">提醒记录</h2>
@@ -89,7 +89,7 @@ const steps = [
     { label: '海外资产', value: '3' },
     { label: '互联网', value: '4' },
     { label: '金融', value: '5' },
-    { label: '高管', value: '5' },
+    { label: '高管', value: '6' },
   ],
   intrests = [
     { label: '支付宝', value: '1' },

@@ -43,7 +43,7 @@
     }
   }
   &:not(.nut-button--round) {
-    border-radius: var(--ns-border-radius-xs);
+    border-radius: var(--ns-border-radius, var(--ns-border-radius-xs));
   }
   &.nut-button--mini {
     height: var(--ns-size-xs);

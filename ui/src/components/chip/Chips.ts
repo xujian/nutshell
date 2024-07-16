@@ -40,7 +40,7 @@ export const NsChips = define({
         props: {
           classes: [
             ...buildFlexClasses(props),
-            ...buildDesignClasses(props)
+            // ...buildDesignClasses(props)
           ],
           style: {
             ...buildFlexStyles(props),

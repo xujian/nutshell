@@ -3,43 +3,55 @@ import { ref } from 'vue'
 
 const value = ref()
 
-const options = [
+const tabs = [
   {
-    value: 'ios',
-    label: 'iOS'
+    value: 'tab1',
+    label: '未拨打'
   },
   {
-    value: 'android',
-    label: 'Android'
+    value: 'tab2',
+    label: '需跟进'
   },
   {
-    value: 'windows',
-    label: 'Windows'
+    value: 'tab3',
+    label: '即将掉落公海'
   },
   {
-    value: 'ubuntu',
-    label: 'Ubuntu'
+    value: 'tab4',
+    label: '异常'
   },
+  {
+    value: 'tab5',
+    label: '需反馈'
+  },
+  {
+    value: 'tab6',
+    label: '今日上门'
+  },
+  {
+    value: 'tab7',
+    label: '新客户'
+  }
 ]
 </script>
 
 <template>
-  <ns-col :gap="10">
-    <ns-button-group v-model="value" :options="options" />
+  <ns-column :gap="10" align="start">
+    <ns-button-group v-model="value" :options="tabs" />
     <ns-button-group
       v-model="value"
       color="primary"
-      :options="options" />
+      :options="tabs" />
     <ns-button-group
       v-model="value"
       round
       color="primary"
-      :options="options" />
+      :options="tabs" />
     <ns-button-group
       v-model="value"
       round
       variant="outlined"
       color="primary"
-      :options="options" />
-  </ns-col>
+      :options="tabs" />
+  </ns-column>
 </template>

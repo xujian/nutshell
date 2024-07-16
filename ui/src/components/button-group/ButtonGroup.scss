@@ -1,5 +1,5 @@
 .ns-button-group {
-  border-radius: var(--ns-border-radius);
+  border-radius: var(--border-radius, var(--ns-border-radius));
   width: fit-content;
   overflow: hidden;
   &.round {
@@ -10,8 +10,8 @@
   }
   .ns-button {
     margin: 0;
-    border-radius: transparent;
-    transition: all .5s;
+    background-color: transparent;
+    border-color: transparent;
     &.active {
       backdrop-filter: brightness(1.2);
     }

@@ -15,7 +15,12 @@
       :key="color"
       :color="color"
       :variant="variant" label="线索"></ns-chip>
-    </ns-row>
+  </ns-row>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h2>Chips</h2>
+  <p>&nbsp;</p>
+  <story file="chip/basic.vue" />
 </template>
 
 <script lang="ts" setup>
