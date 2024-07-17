@@ -16,20 +16,29 @@ import {
   transforms as clientsTransforms,
  } from './clients'
 
+ import {
+  endpoints as homeEnpoints,
+  translates as homeTranslates,
+  transforms as homeTransforms,
+ } from './home'
+
 const endpoints = {
    ...approvalsEnpoints,
    ...productsEnpoints,
    ...clientsEnpoints,
+   ...homeEnpoints,
  },
  translates = {
    ...approvalsTranslates,
    ...productsTranslates,
    ...clientsTranslates,
+   ...homeTranslates,
  },
  transforms = {
    ...approvalsTransforms,
    ...productsTransforms,
    ...clientsTransforms,
+   ...homeTransforms,
  }
 
 export {
