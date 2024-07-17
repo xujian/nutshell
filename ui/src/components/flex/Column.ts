@@ -10,7 +10,7 @@ type AlignValue = typeof ALIGN[number]
 
 const props = {
   gap: {
-    type: [Number, String],
+    type: Number,
     default: 10,
   },
   justify: {

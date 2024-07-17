@@ -17,8 +17,12 @@ export const rowProps = {
     default: 'center'
   },
   gap: {
-    type: String as PropType<Size>,
-    default: 'none',
+    type: Number,
+    default: 0,
+  },
+  grow: {
+    type: Number,
+    default: 1
   }
 }
 
@@ -35,13 +39,14 @@ export const NsRow = defineComponent({
     return () => h('div', {
       class: [
         'flex',
-        'flex-row',
+        'row',
         `justify-${props.justify}`,
         `align-${props.align}`,
-        ...props.gap ? [`gap-${props.gap}`] : []
+        ...(props.gap && typeof props.gap === 'string') ? [`gap-${props.gap}`] : [],
+        ...props.grow ? ['grow'] : []
       ],
       style: {
-        '--gap': props.gap
+        ...props.gap ? {'--gap': `${props.gap}px`} : {}
       }
     }, slots)
   }
