@@ -31,6 +31,23 @@
   background: var(--gradient, linear-gradient(45deg, #00000000 0%, #00000000 100%)), var(--fill);
 }
 
+.texture {
+  background: var(--texture), var(--fill);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right center;
+}
+
+.texture-gradient {
+  background:
+    var(--texture),
+    var(--gradient, linear-gradient(45deg, #00000000 0%, #00000000 100%)),
+    var(--fill);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right center;
+}
+
 .blur {
   backdrop-filter: brightness(1.5) blur(20px);
 }

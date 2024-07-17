@@ -51,7 +51,6 @@ export const NsRepeator = defineComponent({
       ]))
 
     const style = buildFlexStyles(props)
-    console.log('===style', style)
 
     return () => h('div', {
       class: [

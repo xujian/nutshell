@@ -36,6 +36,9 @@ const designProps = {
   gradient: {
     type: String as PropType<GradientString>
   },
+  texture: {
+    type: String,
+  },
   /**
    * 圆角 使用系统 --ns-border-radius
    */
@@ -89,6 +92,8 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.borders ? [`borders-${props.borders}`] : []),
     ...(props.round ? ['round'] : []),
     ...(props.gradient ? ['gradient'] : []),
+    ...(props.texture ? ['texture'] : []),
+    ...(props.gradient && props.texture ? ['texture-gradient'] : []),
     ...filterClasses
   ]
   return result
@@ -101,11 +106,23 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
     ...(props.borderColor ? { broderColor: props.borderColor } : {}),
     ...(props.borderWidth ? { borderWidth: props.borderWidth } : {}),
-    ...(props.foreground ? { color: props.foreground } : {}),
+    ...(props.foreground ? { '--text': props.foreground } : {}),
     ...props.blur ? {'--blur': `${props.blur}px`} : {},
     ...props.brightness != 1 ? {'--brightness': props.brightness} : {},
     ...buildGradientStyle(props.gradient),
+    ...buildTextureStyles(props),
   } as StyleObject
+  return style
+}
+
+const buildTextureStyles: (props: DesignProps) => StyleObject = (props) => {
+  const style = {
+    ...props.texture
+      ? {
+          '--texture': `url(${props.texture})`,
+        }
+      : {}
+  }
   return style
 }
 

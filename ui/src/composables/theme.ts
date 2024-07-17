@@ -91,11 +91,21 @@ export function buildFillStyle (fill?: Color): { backgroundColor?: string} {
  */
 export function buildGradientStyle (gradient?: GradientString):
   { '--gradient'?: string } {
+    // 平均拉开渐变
     if (!gradient) return {}
-    const [start, end, angle = 0] = gradient.split(/[\,\/]/) as [Color, Color, number]
-    const startColor = makeColor(start),
-      endColor = makeColor(end)
+    const [colorString, angle = 0] = gradient.split('/') as [string, number],
+      [start, ...colors] = colorString.split(','),
+      seg = 100 / colors.length,
+      startColor = makeColor(start as Color)
+    const notes = colors.map((c, index) => ({
+        value: makeColor(c as Color),
+        percent: (
+          index === colors.length - 1
+            ? 100
+            : (seg * (index + 1)).toPrecision(5)
+          )
+      })).map(c => `${c.value} ${c.percent}%`).join(',')
     return {
-      '--gradient': `linear-gradient(${angle}deg, ${startColor} 0%, ${endColor} 100%)`
+      '--gradient': `linear-gradient(${angle}deg,${startColor} 0%,${notes})`
     }
 }
