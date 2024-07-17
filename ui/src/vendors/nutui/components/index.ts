@@ -17,6 +17,7 @@ import { RadioGroup } from './radio'
 import { Switch } from './switch'
 import { Stepper } from './stepper'
 import { Rating, RatingInput } from './rating'
+import { Timeline } from './timeline'
 import { VendorComponent } from '../../../shared'
 
 const components: Record<string, VendorComponent> = {
@@ -60,6 +61,7 @@ const components: Record<string, VendorComponent> = {
   Rating,
   RatingInput,
   Stepper,
+  Timeline,
 }
 
 export default components

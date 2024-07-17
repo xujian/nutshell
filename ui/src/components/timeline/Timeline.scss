@@ -14,10 +14,14 @@
     }
   }
 
-  .title {
+  .timeline-title {
     font-weight: bold;
     font-size: 14px;
-    color: var(--ns-primary);
+    color: var(--text, var(--ns-text));
+  }
+  .timeline-content {
+    font-size: 12px;
+    padding-bottom: .5em;
   }
   .time {
     color: var(--ns-neutral---30);

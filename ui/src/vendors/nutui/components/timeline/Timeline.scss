@@ -1,0 +1,10 @@
+.ns-timeline {
+  --nut-steps-process-title-color: var(--text, var(--ns-text));
+  &.nut-steps-vertical {
+    padding: 0 var(--ns-spacing);
+    box-sizing: border-box;
+  }
+  .nut-step-title {
+    margin: 0;
+  }
+}
