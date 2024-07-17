@@ -14,11 +14,11 @@ export const pageContentProps = {
     default: false,
   },
   /**
-   * 底部预留空间
+   * 底部为 tabbar 让出的空间
    */
   bottom: {
     type: Number,
-    default: 80
+    default: 100
   }
 }
 

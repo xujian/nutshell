@@ -27,6 +27,7 @@
         width: 100%;
         text-align: var(--titleAlign, center);
         padding-inline: var(--ns-spacing);
+        box-sizing: border-box;
       }
       .back-button {
         position: absolute;
