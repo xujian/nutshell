@@ -10,6 +10,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "日报",
+          "pathName": "pages/home/report",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "我的",
           "pathName": "pages/account/index",
           "query": "id=2",

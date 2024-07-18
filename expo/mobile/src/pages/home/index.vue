@@ -46,7 +46,8 @@
           <h4>流程处理</h4>
         </ns-card>
         <ns-card variant="outlined" class="entry my-md flex-grow"
-          texture="https://simple.shensi.tech/images/reports.svg">
+          texture="https://simple.shensi.tech/images/reports.svg"
+          @click="onReportClick">
           <h4>工作报告</h4>
         </ns-card>
       </ns-row>
@@ -72,6 +73,7 @@ import { onMounted, ref } from 'vue'
 import { useTabbar } from '@uxda/appkit-next'
   import { endpoints, useHttp } from '../../api'
 import { WithPaging } from '@uxda/nutshell'
+import Taro from '@tarojs/taro'
   const http = useHttp()
 
 const numbers = [
@@ -83,6 +85,10 @@ const numbers = [
 ]
 
 const messages = ref<any[]>([])
+
+const onReportClick = () => Taro.navigateTo({
+  url: '/pages/home/report'
+})
 
 onMounted(() => {
   const { setTab } = useTabbar()

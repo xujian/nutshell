@@ -1,0 +1,50 @@
+.ns-date-select {
+  .scroll-view-content {
+    width: fit-content;
+  }
+  .item {
+    width: 54px;
+    aspect-ratio: 3/4;
+    flex-shrink: 0;
+    &.weekend {
+      .card-body {
+        color: #999;
+        background-color: var(--ns-neutral--50);
+      }
+    }
+    &.active {
+      .card-body {
+        color: #fff;
+        background-color: var(--ns-primary);
+        border-color: var(--ns-primary--50);
+      }
+    }
+    .card-body {
+      padding: 6px 0;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .today {
+      font-size: 12px;
+      background-color: var(--ns-secondary);
+      line-height: 16px;
+      border-radius: 8px;
+      color: var(--ns-primary);
+    }
+    .date {
+      line-height: 2em;
+    }
+    .weekday {
+      width: 40px;
+      font-size: 12px;
+      background-color: #000;
+      border-radius: 8px;
+      line-height: 16px;
+      color: #fff;
+    }
+  }
+}

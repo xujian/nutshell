@@ -45,7 +45,7 @@ import { NsInput, NsDateInput, NsDateRangeInput, NsMonthRangeInput,
   NsIdInput, NsTextarea, NsNumberInput, NsNumberRangeInput,
   NsMonthInput, NsYearInput } from './input'
 import { NsSwitch } from './switch'
-import { NsSelect, NsCascadingSelect, NsMultipleSelect } from './select'
+import { NsSelect, NsCascadingSelect, NsMultipleSelect, NsDateSelect } from './select'
 import { NsCheckbox } from './checkbox'
 import { NsRating, NsRatingInput } from './rating'
 import { NsRow, NsColumn, NsFlexItem } from './flex'
@@ -97,6 +97,7 @@ const components = {
   NsDisplay,
   NsSelect,
   NsMultipleSelect,
+  NsDateSelect,
   NsCascadingSelect,
   NsCheckbox,
   NsRating,
