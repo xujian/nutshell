@@ -34,19 +34,32 @@
       </ns-row>
       <ns-row class="reminders" justify="stretch" :gap="10">
         <ns-card variant="outlined" class="entry my-md flex-grow"
-          texture="https://simple.shensi.tech/images/campain.svg">营销活动</ns-card>
+          texture="https://simple.shensi.tech/images/campain.svg">
+          <h4>营销活动</h4>
+        </ns-card>
         <ns-card variant="outlined" class="entry my-md flex-grow"
-          texture="https://simple.shensi.tech/images/tasks.svg">待办任务</ns-card>
+          texture="https://simple.shensi.tech/images/tasks.svg">
+          <h4>待办任务</h4>
+        </ns-card>
         <ns-card variant="outlined" class="entry my-md flex-grow"
-          texture="https://simple.shensi.tech/images/flows.svg">流程处理</ns-card>
+          texture="https://simple.shensi.tech/images/flows.svg">
+          <h4>流程处理</h4>
+        </ns-card>
         <ns-card variant="outlined" class="entry my-md flex-grow"
-          texture="https://simple.shensi.tech/images/reports.svg">工作报告</ns-card>
+          texture="https://simple.shensi.tech/images/reports.svg">
+          <h4>工作报告</h4>
+        </ns-card>
       </ns-row>
       <h2 class="h2">消息</h2>
-      <ns-card fill="#000000" foreground="#fff">
+      <ns-card class="messages" fill="#000000" foreground="#fff">
         <ns-timeline :items="messages">
+          <template #title="{item}">
+            <ns-row align="center" justify="between">
+              <h5 class="h5">{{ item.title }}</h5>
+              <div class="datetime">{{ item.time }}</div>
+            </ns-row>
+          </template>
           <template #content="{item}">
-            <p class="datetime">{{ item.time }}</p>
             <p class="line">{{ item.content }}</p>
           </template>
         </ns-timeline>
@@ -101,6 +114,27 @@ onMounted(() => {
   .reminders {
     .entry {
       aspect-ratio: 1;
+      background-size: 70%;
+      background-position: center center;
+      .card-body {
+        padding: 0;
+      }
+      h4 {
+        background-color: #000000;
+        height: 20px;
+        border-radius: 10px;
+        padding-inline: 10px;
+      }
+    }
+  }
+  .messages {
+    .h5 {
+      font-weight: bold;
+      line-height: 2em;
+    }
+    .datetime {
+      font-size: 11px;
+      color: #ffffff88;
     }
   }
 }

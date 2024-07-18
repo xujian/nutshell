@@ -2,6 +2,13 @@ import { h, SetupContext, VNode } from 'vue'
 import { TimelineItem, TimelineProps } from '../../../../components'
 
 function transformItemsToSlots (items: TimelineItem[], slots: SetupContext['slots']): VNode[] {
+
+  const title = (item: any) => slots.title
+    ? slots.title({item})
+    : h('div', {
+        class: 'timeline-title'
+      }, item.title)
+
   return items.map(item => {
     return h(NutStep, {
       class: [
@@ -10,11 +17,9 @@ function transformItemsToSlots (items: TimelineItem[], slots: SetupContext['slot
       ]
     }, {
         content: () => h('div', {
-          class: ['timeline-content']
-        }, slots.content?.({item})),
-        title: () => h('div', {
-            class: 'timeline-title'
-          }, item.title)
+            class: ['timeline-content']
+          }, slots.content?.({item})),
+        title: () => title(item)
       })
     })
 }
