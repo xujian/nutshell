@@ -23,13 +23,15 @@
           gradient="#FA8BFF,#2BD2FF,#2BFF88/90"
           texture="https://simple.shensi.tech/images/client-girl.svg"
           :repeat="false"
-          foreground="#fff">
-          <h3>客户建档</h3>
+          foreground="#fff"
+          border-color="#fff">
+          <h3 class="b">客户建档</h3>
           <p class="caption">新建意向客户</p>
         </ns-card>
         <ns-card class="entry flex-grow" fill="#000"
-          foreground="#fff">
-          <h3>产品进件</h3>
+          foreground="#fff"
+          border-color="#fff">
+          <h3 class="b">产品进件</h3>
           <p class="caption">创建产品订单</p>
         </ns-card>
       </ns-row>
@@ -119,14 +121,14 @@ onMounted(() => {
     background-color: var(--ns-primary);
     .caption {
       font-size: var(--ns-font-size-xs);
-      color: var(--ns-neutral--20);
+      color: var(--ns-neutral--60);
     }
   }
   .reminders {
     .entry {
       aspect-ratio: 1;
       background-size: 70%;
-      background-position: center center;
+      background-position: center 25px;
       .card-body {
         padding: 0;
       }
