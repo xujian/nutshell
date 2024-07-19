@@ -22,6 +22,7 @@
         <ns-card class="create-client entry flex-grow"
           gradient="#FA8BFF,#2BD2FF,#2BFF88/90"
           texture="https://simple.shensi.tech/images/client-girl.svg"
+          :repeat="false"
           foreground="#fff">
           <h3>客户建档</h3>
           <p class="caption">新建意向客户</p>
@@ -34,18 +35,22 @@
       </ns-row>
       <ns-row class="reminders" justify="stretch" :gap="10">
         <ns-card variant="outlined" class="entry my-md flex-grow"
+          :repeat="false"
           texture="https://simple.shensi.tech/images/campain.svg">
           <h4>营销活动</h4>
         </ns-card>
         <ns-card variant="outlined" class="entry my-md flex-grow"
+          :repeat="false"
           texture="https://simple.shensi.tech/images/tasks.svg">
           <h4>待办任务</h4>
         </ns-card>
         <ns-card variant="outlined" class="entry my-md flex-grow"
+          :repeat="false"
           texture="https://simple.shensi.tech/images/flows.svg">
           <h4>流程处理</h4>
         </ns-card>
         <ns-card variant="outlined" class="entry my-md flex-grow"
+          :repeat="false"
           texture="https://simple.shensi.tech/images/reports.svg"
           @click="onReportClick">
           <h4>工作报告</h4>

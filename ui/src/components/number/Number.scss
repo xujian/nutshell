@@ -2,10 +2,7 @@
   --text: var(--foreground);
   font-size: 12px;
   height: fit-content;
-  border-radius: var(--ns-border-radius);
-  border-width: var(--ns-border, 1px);
-  border-style: var(--borderStyle, solid);
-  border-color: var(--border-color, transparent);
+  border-radius: var(--border-radius, var(--ns-border-radius));
   padding: var(--padding, var(--ns-spacing));
   .content {
     width: 100%;

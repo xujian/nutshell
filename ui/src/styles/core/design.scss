@@ -23,8 +23,9 @@
 }
 
 .with-design {
-  background: var(--gradient, linear-gradient(45deg, #00000000 0%, #00000000 100%)), var(--fill);
-  backdrop-filter: brightness(var(--brightness, 1)) blur(var(--blur));
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .gradient {
@@ -33,7 +34,7 @@
 
 .texture {
   background: var(--texture), var(--fill);
-  background-repeat: no-repeat;
+  background-repeat: var(--repeat, no-repeat);
   background-size: contain;
   background-position: right center;
 }
@@ -43,7 +44,7 @@
     var(--texture),
     var(--gradient, linear-gradient(45deg, #00000000 0%, #00000000 100%)),
     var(--fill);
-  background-repeat: no-repeat;
+  background-repeat: var(--repeat, no-repeat);
   background-size: contain;
   background-position: right center;
 }

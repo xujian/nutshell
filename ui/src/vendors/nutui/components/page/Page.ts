@@ -129,6 +129,7 @@ export const Page = defineComponent({
     }
 
     onMounted(() => {
+      page.value?.setAttribute('data-theme', 'present')
       $bus.on('notice', showNotice)
       $bus.on('drawer', openDrawer)
       $bus.on('sheet', openSheet)
@@ -150,13 +151,15 @@ export const Page = defineComponent({
           'page',
           ...scroll.value > 0 ? ['scrolled'] : [],
           ...props.scrollable ? ['scrollable'] : [],
+          'theme-present'
         ],
         style: {
           '--status': `${safeArea.status}px`,
           '--nav': `${safeArea.nav}px`,
           '--bottom': `${safeArea.bottom}px`,
           '--scroll': `${scroll.value}px`,
-        }
+        },
+        'data-mike': 'ppp'
       }, [
         renderNotice(),
         renderDrawer(),

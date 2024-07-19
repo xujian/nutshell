@@ -39,6 +39,10 @@ const designProps = {
   texture: {
     type: String,
   },
+  repeat: {
+    type: Boolean,
+    default: true
+  },
   /**
    * 圆角 使用系统 --ns-border-radius
    */
@@ -81,6 +85,7 @@ const hasDesignProps = (props: DesignProps) => {
 }
 
 const buildDesignClasses = (props: DesignProps) => {
+  console.log('===buildDesignClasses', props.borderColor)
   const fill = props.fill || (Reflect.get(props, 'color') as Color),
     filterClasses = (
         props.blur
@@ -88,6 +93,7 @@ const buildDesignClasses = (props: DesignProps) => {
       ) ? ['backdrop-filter']
         : []
   const result = [
+    'with-design',
     ...(fill && isBrand(fill) ? [`fill-${fill}`] : []),
     ...(props.borders ? [`borders-${props.borders}`] : []),
     ...(props.round ? ['round'] : []),
@@ -104,9 +110,12 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
   const style = {
     ...(fill ? { backgroundColor: makeColor(fill) } : {}),
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
-    ...(props.borderColor ? { broderColor: props.borderColor } : {}),
-    ...(props.borderWidth ? { borderWidth: props.borderWidth } : {}),
-    ...(props.foreground ? { '--text': props.foreground } : {}),
+    ...(props.borderColor ? { borderColor: makeColor(props.borderColor) } : {}),
+    ...(props.borderWidth ? { borderWidth: `${props.borderWidth}px` } : {}),
+    ...(props.foreground ? {
+        '--text': makeColor(props.foreground),
+        '--foreground': makeColor(props.foreground)
+      } : {}),
     ...props.blur ? {'--blur': `${props.blur}px`} : {},
     ...props.brightness != 1 ? {'--brightness': props.brightness} : {},
     ...buildGradientStyle(props.gradient),
@@ -120,6 +129,7 @@ const buildTextureStyles: (props: DesignProps) => StyleObject = (props) => {
     ...props.texture
       ? {
           '--texture': `url(${props.texture})`,
+          '--repeat': props.repeat ? 'repeat' : 'no-repeat',
         }
       : {}
   }

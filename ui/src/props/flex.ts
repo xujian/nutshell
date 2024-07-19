@@ -48,6 +48,7 @@ export const buildFlexClasses = (props: FlexProps) => {
     ...props.direction ? [`${props.direction}`] : [],
     ...props.align ? [`align-${props.align}`] : [],
     ...props.justify ? [`justify-${props.justify}`] : [],
+    ...props.wrap ? ['wrap'] : [],
   ]
 }
 

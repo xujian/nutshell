@@ -4,18 +4,18 @@
 @use './themes/present' as *;
 @use './themes/valentine' as *;
 
-[data-theme=klein] {
+[data-theme=klein], .theme-klein {
   @include build-theme($klein)
 }
 
-[data-theme=gunmetal] {
+[data-theme=gunmetal], .theme-gunmetal {
   @include build-theme($gunmetal)
 }
 
-[data-theme=valentine] {
+[data-theme=valentine], .theme-valentine {
   @include build-theme($valentine)
 }
 
-[data-theme=present] {
+[data-theme=present], .theme-present {
   @include build-theme($present)
 }
