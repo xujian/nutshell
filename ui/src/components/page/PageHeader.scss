@@ -7,7 +7,7 @@
     background-repeat: no-repeat;
     background-position: center bottom;
     background-image: var(--texture);
-    background-color: transparent;
+    background-color: var(--fill, --ns-paper);
     margin-bottom: 0;
     transition: all .5s;
     .title {
@@ -55,8 +55,12 @@
   }
 }
 
-.page.scrolled {
-  .ns-page-header {
-    background-color: var(--ns-primary);
+.page {
+  &:not(.scrolled) {
+    .ns-page-header {
+      &.reveal {
+        background-color: transparent;
+      }
+    }
   }
 }

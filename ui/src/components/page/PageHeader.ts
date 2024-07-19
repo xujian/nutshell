@@ -60,6 +60,9 @@ export const pageHeaderProps = {
   },
   fill: {
     type: String,
+  },
+  reveal: {
+    type: Boolean,
   }
 }
 
@@ -114,7 +117,8 @@ export const NsPageHeader = defineComponent({
         'ns-page-header',
         'page-header',
         `color-mode-${props.colorMode}`,
-        ...props.minimal ? ['minimal'] : []
+        ...props.minimal ? ['minimal'] : [],
+        ...props.reveal ? ['reveal'] : [],
       ],
       style: cssVars,
     }, [

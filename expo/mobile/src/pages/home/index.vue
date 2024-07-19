@@ -1,7 +1,9 @@
 <template>
   <ns-page class="home-page">
-    <ns-page-header></ns-page-header>
-    <ns-page-content>
+    <ns-page-header reveal
+      title="大道云 PRO"
+      fill="neutral"></ns-page-header>
+    <ns-page-content :scrollable="true">
       <h2 class="h2">销售助手</h2>
       <scroll-view scroll-x="true">
         <ns-repeator class="numbers"
