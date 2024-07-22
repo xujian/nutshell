@@ -50,6 +50,15 @@ const OnlyTaroResolver = (name) => {
   }
 }
 
+const TaroHookResolver = (name) => {
+  if (['usePageScroll'].includes(name)) {
+    return {
+      name: name,
+      from: '@tarojs/taro',
+    }
+  }
+}
+
 // 返回一个假的Taro
 // 避免 Desktio/H5 引入整个Taro包
 // 见 vendors/nutui/service/toast.ts
@@ -144,7 +153,8 @@ export default [
         },
         resolvers: [
           NutTaroResolver,
-          OnlyTaroResolver
+          OnlyTaroResolver,
+          TaroHookResolver,
         ]
       }),
       vueJsx(),

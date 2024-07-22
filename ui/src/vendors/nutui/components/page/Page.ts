@@ -2,7 +2,6 @@ import { Component, defineComponent, h, onMounted, onUnmounted, ref, SetupContex
 import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, type PageProps } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
 import { DialogOptions } from '../../../../services/dialog'
-import { usePageScroll } from '@tarojs/taro'
 
 export type NoticeType = 'info' | 'warning' | 'error'
 
@@ -128,6 +127,7 @@ export const Page = defineComponent({
       scroll.value = e.y
     }
 
+    // @ts-ignore
     usePageScroll(payload => {
       $bus.emit('scroll', {
         y: payload.scrollTop,
