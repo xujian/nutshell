@@ -25,7 +25,7 @@ const endpointsList: HttpEndpoints = {
   获取审批列表: {
     path: '/json/approvals.json',
     translate: (data: any) => data,
-    transform: (result: any) => result.data.map((d: any) => transformRow(d))
+    transform: (result: any) => result.map((d: any) => transformRow(d))
   },
 } as const
 

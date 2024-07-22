@@ -1,13 +1,15 @@
 <template>
-  <ns-page class="clients-page" :scrollable="false">
+  <ns-page class="clients-page">
     <ns-page-header title="客户列表"
       title-align="start"
       colorMode="dark"
-      fill="transparent"
+      fill="#00000088"
+      :blur="10"
       :has-back-button="false"
-      :minimal="false">
+      :minimal="false"
+      sticky reveal>
     </ns-page-header>
-    <ns-page-content :scrollable="true">
+    <ns-page-content>
       <scroll-view scroll-x="true">
         <ns-repeator class="numbers"
           :items="numbers"
@@ -98,10 +100,6 @@ const onClientClick = (client: Client) => {
   })
 }
 
-const onScroll = (e: Event) => {
-  console.log('===Scroll: e', e)
-}
-
 onMounted(() => {
   const { setTab } = useTabbar()
   setTab('clients')
@@ -125,7 +123,7 @@ onMounted(() => {
   }
   .categories {
     position: sticky;
-    top: var(--ns-spacing);
+    top: calc(var(--status) + var(--nav) + 10px);
     z-index: 10;
   }
 }

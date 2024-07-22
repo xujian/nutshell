@@ -3,6 +3,20 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
+  &.scrollable {
+    height: fit-content;
+  }
+  .page-content-scroll-view {
+    top: calc(var(--status) + var(--nav));
+    height: calc(100vh - var(--status) - var(--nav));
+  }
+
+  .page-content {
+    padding: var(--ns-spacing);
+    top: calc(var(--status) + var(--nav));
+    box-sizing: border-box;
+  }
   .page-notice {
     position: absolute;
     top: calc(var(--status) + var(--nav));
@@ -63,9 +77,6 @@
   }
   &.has-page-bottom {
     padding-bottom: 100px;
-  }
-  &.scrollable {
-    overflow-y: scroll;
   }
   .page-title {
     font-size: 24px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="page page-approvals">
+  <ns-page class="page-approvals">
     <ns-page-header
       @close="onPageHeaderClose">
       <template #title>
@@ -16,14 +16,11 @@
         </ns-form>
       </template>
     </ns-page-header>
-    <ns-tabs v-model="tab" :items="tabs" />
-    <scroll-view
-      class="approvals-scroll"
-      :scroll-y="true"
-      :lower-threshold="50">
+    <ns-page-content>
+      <ns-tabs v-model="tab" :items="tabs" class="my-md" />
       <approval-list :items="facts" />
-    </scroll-view>
-  </div>
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>
@@ -60,25 +57,6 @@ const tabs = [
   }
 ]
 
-// const facts = [
-//   {
-//     label: '申请人',
-//     value: '都庆寿'
-//   },
-//   {
-//     label: '企业名称',
-//     value: '青岛尚风尚水名都酒店管理有限公司'
-//   },
-//   {
-//     label: '授权状态',
-//     value: '1'
-//   },
-//   {
-//     label: '创建用户',
-//     value: '赵悦'
-//   }
-// ]
-
 function onPageHeaderClose () {
   Taro.navigateBack()
 }
@@ -87,7 +65,6 @@ onMounted(() => {
   $http.get<WithPaging<any>>(endpoints.获取审批列表, {
     page: 1
   }).then((result) => {
-    console.log('===XXXXX', result)
     facts.value = result.data
   })
 })
@@ -95,9 +72,6 @@ onMounted(() => {
 
 <style lang="scss">
 .page-approvals {
-  .ns-page-header {
-    margin-bottom: -16px;
-  }
 }
 .approvals-scroll {
   height: calc(100vh - 130px);

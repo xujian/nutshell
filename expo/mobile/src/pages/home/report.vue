@@ -1,6 +1,7 @@
 <template>
   <ns-page class="report-page">
-    <ns-page-header title="运营日报"></ns-page-header>
+    <ns-page-header title="运营日报" reveal
+      fill="#ffffff99" :blur="20"></ns-page-header>
     <ns-page-content>
       <ns-date-select v-model="date" />
       <ns-button-group class="my-sm"

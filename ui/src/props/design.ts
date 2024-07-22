@@ -85,7 +85,6 @@ const hasDesignProps = (props: DesignProps) => {
 }
 
 const buildDesignClasses = (props: DesignProps) => {
-  console.log('===buildDesignClasses', props.borderColor)
   const fill = props.fill || (Reflect.get(props, 'color') as Color),
     filterClasses = (
         props.blur
@@ -108,7 +107,7 @@ const buildDesignClasses = (props: DesignProps) => {
 const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignProps) => {
   const fill = props.fill || (Reflect.get(props, 'color') as Color)
   const style = {
-    ...(fill ? { backgroundColor: makeColor(fill) } : {}),
+    ...(fill ? { '--fill': makeColor(fill) } : {}),
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
     ...(props.borderColor ? { borderColor: makeColor(props.borderColor) } : {}),
     ...(props.borderWidth ? { borderWidth: `${props.borderWidth}px` } : {}),

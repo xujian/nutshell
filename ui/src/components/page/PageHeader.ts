@@ -38,6 +38,10 @@ export const pageHeaderProps = {
   titleAlign: {
     type: String as PropType<TextAlign>,
   },
+  sticky: {
+    type: Boolean,
+    default: true,
+  },
   colorMode: {
     type: String as PropType<PageHeaderColorMode>,
     default: 'light'
@@ -47,23 +51,15 @@ export const pageHeaderProps = {
     default: false,
   },
   /**
-   * 底图
-   */
-  texture: {
-    type: String,
-  },
-  /**
    * 简化版
    */
   minimal: {
     type: Boolean,
   },
-  fill: {
-    type: String,
-  },
   reveal: {
     type: Boolean,
-  }
+  },
+  ...useDesignProps(),
 }
 
 export type PageHeadermits = {
@@ -87,8 +83,6 @@ export const NsPageHeader = defineComponent({
     const cssVars = {
       '--top': `${safeArea.status}px`,
       '--height': `${safeArea.nav}px`,
-      ...props.texture ? { '--texture': `url(${props.texture})` } : {},
-      ...props.fill ? { '--fill': props.fill } : {},
       ...props.titleAlign ? { '--titleAlign': props.titleAlign } : {},
     }
 
@@ -118,9 +112,15 @@ export const NsPageHeader = defineComponent({
         'page-header',
         `color-mode-${props.colorMode}`,
         ...props.minimal ? ['minimal'] : [],
+        ...props.hasBackButton ? ['has-back-button'] : [],
         ...props.reveal ? ['reveal'] : [],
+        ...props.sticky ? ['sticky'] : [],
+        ...buildDesignClasses(props),
       ],
-      style: cssVars,
+      style: {
+        ...cssVars,
+        ...buildDesignStyles(props),
+      }
     }, [
       title(),
       content(),

@@ -28,15 +28,6 @@ page .h2 {
   margin: 1em 0;
 }
 
-.page-content-scroll-view {
-  height: calc(100vh - var(--status) - var(--nav));
-}
-
-.page-content {
-  padding: var(--ns-spacing);
-  box-sizing: border-box;
-}
-
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;

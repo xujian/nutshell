@@ -1,9 +1,10 @@
 <template>
   <ns-repeator :items="data" v-slot="item"
+    class="approval-list"
     direction="column"
     justify="stretch"
     align="stretch"
-    :gutter="10">
+    :gap="10">
     <ns-card fill="#fff">
       <template #header>
         {{ item.审批状态 }}

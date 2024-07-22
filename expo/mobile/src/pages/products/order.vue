@@ -7,7 +7,6 @@
       :blur="20"
       :brightness="2">
     </ns-card>
-    <p>&nbsp;</p>
     <ns-form class="">
       <ns-card title="企业信息" body-fill="#fff">
         <div class="breakout">

@@ -2,6 +2,7 @@ import { Component, defineComponent, h, onMounted, onUnmounted, ref, SetupContex
 import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, type PageProps } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
 import { DialogOptions } from '../../../../services/dialog'
+import { usePageScroll } from '@tarojs/taro'
 
 export type NoticeType = 'info' | 'warning' | 'error'
 
@@ -17,7 +18,6 @@ export const Page = defineComponent({
   setup: (props, {slots, emit}) => {
 
     // 内置 notice-bar, app-drawer, app-sheet
-
     const page = ref<HTMLElement>()
     const $bus = useBus()
     const scroll = ref(0)
@@ -128,6 +128,12 @@ export const Page = defineComponent({
       scroll.value = e.y
     }
 
+    usePageScroll(payload => {
+      $bus.emit('scroll', {
+        y: payload.scrollTop,
+      })
+    })
+
     onMounted(() => {
       page.value?.setAttribute('data-theme', 'present')
       $bus.on('notice', showNotice)
@@ -161,9 +167,9 @@ export const Page = defineComponent({
         },
         'data-mike': 'ppp'
       }, [
+        slots.default?.(),
         renderNotice(),
         renderDrawer(),
-        slots.default?.(),
         renderSheet(),
         renderDialog(),
       ])

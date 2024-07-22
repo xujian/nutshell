@@ -5,6 +5,9 @@ export const pageProps = {
   title: {
     type: String
   },
+  /**
+   * 某些场景下可禁止<ns-page>滚动 (<na-page-content>负责滚动)
+   */
   scrollable: {
     type: Boolean,
     default: true,
