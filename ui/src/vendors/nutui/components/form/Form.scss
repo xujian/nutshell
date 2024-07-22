@@ -1,5 +1,6 @@
 .ns-form {
   &.nut-form {
+    width: 100%;
     .nut-cell-group__wrap {
       box-shadow: none;
       background: transparent;
@@ -35,5 +36,10 @@
 }
 
 .ns-form-item {
+  &.no-label {
+    .nut-form-item__label {
+      display: none !important;
+    }
+  }
   background: transparent;
 }

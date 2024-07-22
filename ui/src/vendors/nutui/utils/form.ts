@@ -58,13 +58,17 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
   const rules = transformRules(props.rules as FullValidationRule[])
   const formItemRef = ref(null)
 
+  console.log('===render form', props.label)
+
   return h(
     NutFormItem,
     {
       ref: formItemRef,
       class: [
         'ns-form-item',
-        props.variant ? `variant-${props.variant}` : '',
+        ...props.variant ? [`variant-${props.variant}`] : [],
+        ...props.label ? [] : ['no-label']
+
       ],
       style: styles,
       label: props.label || '',

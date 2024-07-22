@@ -11,6 +11,11 @@
   &:not(:last-child) {
     margin-inline-end: var(--ns-spacing);
   }
+  &.no-label {
+    .nut-form-item__label {
+      display: none;
+    }
+  }
   border-radius: var(--ns-border-radius);
   display: inline-block;
   .ant-form-item-label {
