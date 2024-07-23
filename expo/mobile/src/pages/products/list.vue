@@ -34,7 +34,7 @@ import { useNutshell, WithPaging } from '@uxda/nutshell'
 import { endpoints, useHttp } from '../../api'
 import { Product } from '../../models'
 import Taro from '@tarojs/taro'
-import { useTabbar } from '@uxda/appkit-next'
+import { useTabbar } from '@uxda/appkit'
 
 const $http = useHttp(),
   $n = useNutshell()

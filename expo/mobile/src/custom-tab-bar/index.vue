@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import Taro from '@tarojs/taro'
-import { useSafeArea, useTabbar } from '@uxda/appkit-next'
+import { useSafeArea, useTabbar } from '@uxda/appkit'
 
 const { bottom } = useSafeArea()
 const selected = ref<string>('home')

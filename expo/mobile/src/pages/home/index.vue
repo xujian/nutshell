@@ -81,7 +81,7 @@
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { useTabbar } from '@uxda/appkit-next'
+import { useTabbar } from '@uxda/appkit'
   import { endpoints, useHttp } from '../../api'
 import { WithPaging } from '@uxda/nutshell'
 import Taro from '@tarojs/taro'

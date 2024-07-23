@@ -50,7 +50,7 @@ import { endpoints, useHttp } from '../../api'
 import { type Client } from '../../models'
 import ClientList from '../../components/ClientList.vue'
 import Taro from '@tarojs/taro'
-import { useTabbar } from '@uxda/appkit-next'
+import { useTabbar } from '@uxda/appkit'
 
 const tab = ref('tab1')
 const clients = ref<Client[]>([])

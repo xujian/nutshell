@@ -35,6 +35,7 @@
     "@tarojs/shared": "^3.6.8",
     "@tarojs/taro": "^3.6.8",
     "@uxda/nutshell": "^1.0.0",
+    "@uxda/appkit": "^4.0.0",
     "vue": "^3.2.40"
   },
   "devDependencies": {

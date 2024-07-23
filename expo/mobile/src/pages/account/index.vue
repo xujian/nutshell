@@ -25,7 +25,7 @@
 
 <script lang="ts" setup>
 import { onMounted } from 'vue'
-import { useTabbar } from '@uxda/appkit-next'
+import { useTabbar } from '@uxda/appkit'
 
 const menu1Items = [
   {
