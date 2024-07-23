@@ -50,8 +50,19 @@ const OnlyTaroResolver = (name) => {
   }
 }
 
+const taroEvents = [
+  'usePageScroll',
+  'useDidHide',
+  'useReady',
+  'useUnload',
+  'useLoad',
+  'usePullDownRefresh',
+  'useReachBottom',
+  'useResize'
+]
+
 const TaroHookResolver = (name) => {
-  if (['usePageScroll'].includes(name)) {
+  if (taroEvents.includes(name)) {
     return {
       name: name,
       from: '@tarojs/taro',

@@ -1,5 +1,5 @@
 <template>
-  <div class="page account-page">
+  <ns-page class="account-page">
     <ns-page-header
       color-mode="dark"
       class="account-header"
@@ -20,7 +20,7 @@
       <ns-menu :items="menu1Items" />
       <ns-menu :items="menu2Items" />
     </ns-page-content>
-  </div>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>

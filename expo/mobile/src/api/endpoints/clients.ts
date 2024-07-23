@@ -24,7 +24,6 @@ const endpointsList: HttpEndpoints = {
     path: '/json/clients.json',
     translate: (data: any) => data,
     transform: (result: any) => {
-      console.log('===result===', result)
       return result.map((d: any) => transformRow(d))
     }
   },

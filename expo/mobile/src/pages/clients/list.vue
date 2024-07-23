@@ -106,7 +106,6 @@ onMounted(() => {
   $http.get<WithPaging<Client[]>>(endpoints.获取客户列表, {
     page: 1,
   }).then(result => {
-    console.log('===result.data', result.data)
     clients.value = result.data
   })
 })

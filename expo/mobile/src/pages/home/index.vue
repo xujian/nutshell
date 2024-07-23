@@ -1,8 +1,10 @@
 <template>
   <ns-page class="home-page">
-    <ns-page-header reveal
+    <ns-page-header reveal sticky
       title="大道云 PRO"
-      fill="neutral"></ns-page-header>
+      :blur="20"
+      :brightness="1.5"
+      fill="#aaaaaa88"></ns-page-header>
     <ns-page-content>
       <h2 class="h2">销售助手</h2>
       <scroll-view scroll-x="true">
@@ -114,6 +116,7 @@ onMounted(() => {
 .home-page {
   background-color: var(--ns-neutral);
   color: #fff;
+  padding-bottom: 100vh;
   .numbers {
     .ns-repeator-item {
       width: calc(30% - 10px);

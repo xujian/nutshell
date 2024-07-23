@@ -1,11 +1,9 @@
 <template>
   <ns-page class="client-detail-page">
     <ns-page-header title="客户详情"
-      title-align="start"
       colorMode="dark"
       fill="transparent"
-      :has-back-button="false"
-      :minimal="false">
+      has-back-button>
     </ns-page-header>
     <ns-page-content>
       <div class="basic">

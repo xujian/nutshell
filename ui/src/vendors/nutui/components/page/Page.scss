@@ -6,6 +6,7 @@
   background-attachment: fixed;
   &.scrollable {
     height: fit-content;
+    min-height: 100vh;
   }
   .page-content-scroll-view {
     top: calc(var(--status) + var(--nav));
