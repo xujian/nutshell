@@ -11,71 +11,71 @@
     "miniprogram": {
       "list": [
         {
-          "name": "日报",
+          "name": "1.1 日报",
           "pathName": "pages/home/report",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "我的",
-          "pathName": "pages/account/index",
-          "query": "id=2",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "AI审批",
-          "pathName": "pages/account/approvals",
-          "query": "id=2",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "登录",
-          "pathName": "pages/account/login",
-          "query": "id=2",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "进件",
-          "pathName": "pages/risk/apply",
-          "query": "id=2",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "产品列表",
+          "name": "2 产品列表",
           "pathName": "pages/products/list",
           "query": "id=2",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "客户详情",
-          "pathName": "pages/clients/detail",
-          "query": "id=1",
+          "name": "2.1 产品详情",
+          "pathName": "pages/products/details",
+          "query": "id=2",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "客户列表",
-          "pathName": "pages/clients/list",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "进件",
+          "name": "2.1.1 进件",
           "pathName": "pages/products/order",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "产品详情",
-          "pathName": "pages/products/details",
+          "name": "3 客户列表",
+          "pathName": "pages/clients/list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "3.1 客户详情",
+          "pathName": "pages/clients/detail",
+          "query": "id=1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "4 我的",
+          "pathName": "pages/account/index",
+          "query": "id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "4.2 AI审批",
+          "pathName": "pages/account/approvals",
+          "query": "id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "2.1.1 进件",
+          "pathName": "pages/risk/apply",
+          "query": "id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "0.0 登录",
+          "pathName": "pages/account/login",
           "query": "id=2",
           "launchMode": "default",
           "scene": null

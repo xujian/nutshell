@@ -30,6 +30,9 @@ const designProps = {
   foreground: {
     type: String as PropType<Color>
   },
+  accent: {
+    type: String as PropType<Color>,
+  },
   /**
    * 渐变
    */
@@ -78,6 +81,9 @@ const designProps = {
   }
 }
 
+/**
+ * 配色以及视觉风格属性
+ */
 export type DesignProps = MakePropsType<typeof designProps>
 
 const hasDesignProps = (props: DesignProps) => {
@@ -109,6 +115,7 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
   const style = {
     ...(fill ? { '--fill': makeColor(fill) } : {}),
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
+    ...(props.accent ? { '--accent': makeColor(props.accent) } : {}),
     ...(props.borderColor ? { borderColor: makeColor(props.borderColor) } : {}),
     ...(props.borderWidth ? { borderWidth: `${props.borderWidth}px` } : {}),
     ...(props.foreground ? {

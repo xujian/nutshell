@@ -52,6 +52,7 @@ const OnlyTaroResolver = (name) => {
 
 const taroEvents = [
   'usePageScroll',
+  'useDidShow',
   'useDidHide',
   'useReady',
   'useUnload',

@@ -34,8 +34,9 @@
         class="categories my-md"
         round
         fill="#ffffff44"
-        color="#ffffff00"
         :blur="10"
+        :gap="4"
+        accent="#000"
         :options="tabs" />
       <client-list :items="clients" @click="onClientClick" />
     </ns-page-content>
@@ -114,6 +115,7 @@ onMounted(() => {
 <style lang="scss">
 .clients-page {
   background-image: url(http://simple.shensi.tech/images/background.jpeg);
+  --foreground: #fff;
   color: #fff;
   .numbers {
     .ns-repeator-item {
