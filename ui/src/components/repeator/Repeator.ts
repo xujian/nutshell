@@ -11,6 +11,12 @@ export const repeatorProps = {
     type: Array,
     default: () => []
   },
+  /**
+   * 主轴排列数
+   */
+  divides: {
+    type: Number,
+  },
   ...useFlexProps()
 }
 
@@ -50,12 +56,18 @@ export const NsRepeator = defineComponent({
         slots.default?.(item)
       ]))
 
-    const style = buildFlexStyles(props)
+    const style = {
+      ...buildFlexStyles(props),
+      ...props.divides && {
+        '--divides': props.divides,
+      },
+    }
 
     return () => h('div', {
       class: [
         'ns-repeator',
-        ...buildFlexClasses(props)
+        ...props.divides ? ['has-divides'] : [],
+        ...buildFlexClasses(props),
       ],
       style
     }, {

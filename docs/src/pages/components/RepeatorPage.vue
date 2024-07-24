@@ -3,6 +3,11 @@
   <h3>基本特性</h3>
   <p>&nbsp;</p>
   <story file="repeator/basic" />
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h3>使用 devides 控制网格</h3>
+  <p>&nbsp;</p>
+  <story file="repeator/basic-devides" />
 </template>
 
 <script lang="ts" setup>

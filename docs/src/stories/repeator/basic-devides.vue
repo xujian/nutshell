@@ -1,6 +1,7 @@
 <template>
   <ns-repeator class="demo-repeator"
     :items="items"
+    :divides="4"
     :gap="10"
     align="stretch"
     wrap

@@ -4,7 +4,6 @@
 }
 
 .flex >.flex-item {
-  margin: calc(1/2 * var(--flex-gutter));
   flex-shrink: 0;
   flex-grow: 1;
 }

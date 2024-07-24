@@ -4,7 +4,7 @@
     <ns-row class="color-row" v-for="c in brands" :key="c.name"
       justify="start"
       align="start"
-      :gutter="16">
+      :gap="16">
       <ns-flex-item class="m-sm">
         <color-card :color="c"></color-card>
       </ns-flex-item>

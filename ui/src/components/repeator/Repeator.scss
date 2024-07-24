@@ -1,0 +1,9 @@
+.ns-repeator {
+  &.row {
+    &.has-divides {
+      .ns-repeator-item {
+        width: calc(100% / var(--divides) - var(--gap, 0));
+      }
+    }
+  }
+}
