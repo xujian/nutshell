@@ -5,12 +5,15 @@
       overflow: hidden;
     }
     .ant-descriptions-item-label {
+      background-color: var(--ns-surface);
       padding: .5em;
       color: var(--ns-text);
     }
     .ant-descriptions-item-content {
+      padding: .5em;
       background-color: var(--ns-fill);
       color: var(--ns-text);
+      font-size: var(--ns-font-xs);
     }
   }
 }

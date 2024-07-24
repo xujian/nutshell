@@ -15,10 +15,12 @@ export type IconFormat =
    */
   'sprite' |
   /**
-   * 配色 SVG (用于小程序)
+   * 独立 SVG (用于小程序)
    */
   'svg' |
-
+  /**
+   * 直接用普通图片
+   */
   'image'
 
 export const useIconProps = buildProps({
@@ -83,7 +85,7 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
         props.clickable && 'clickable'
       ]
     }, h('use', {
-      href: `http://simple.shensi.tech/icons/sprite.svg#${props.name}`
+      href: `/sprite.svg#${props.name}`
     })),
   svg:  (props: IconProps) => h('img', {
       class: [
@@ -91,7 +93,7 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
         props.size && `font-size-${props.size}`,
         props.clickable && 'clickable'
       ],
-      src: `http://simple.shensi.tech/icons/default/${props.name}.svg`
+      src: `/icons/default/${props.name}.svg`
     }),
   image: (props: IconProps) => h('img', {
     class: [

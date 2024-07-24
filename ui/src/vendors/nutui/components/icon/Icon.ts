@@ -4,7 +4,9 @@ import type { IconProps } from '../../../../components'
 
 export const Icon = (props: IconProps) => {
   const { name, label, color, size } = props
-  const isImage = name?.startsWith('http://')
+  const isImage = name?.startsWith('http:')
+    || name?.startsWith('https:')
+    || name?.startsWith('/')
   return isImage
     ? h(NutImage, {
         class: [

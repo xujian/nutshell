@@ -2,7 +2,7 @@
 
 @each $name, $value in $sizing {
   #{'.font-size-'}#{$name} {
-    font-size: var(--ns-font-size-#{$name})
+    font-size: var(--ns-font-#{$name})
   }
 }
 :root, page {

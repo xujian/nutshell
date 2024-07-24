@@ -63,3 +63,8 @@
 .b, .bold {
   font-weight: bold;
 }
+
+.caption {
+  color: var(--ns-caption, #999);
+  font-size: var(--ns-font-xs);
+}

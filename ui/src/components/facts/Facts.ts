@@ -1,14 +1,17 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { UniDataItem } from '../../shared'
-import { useFlexProps } from '../../props'
+import { buildFlexClasses, buildFlexStyles, useFlexProps } from '../../props'
 
 export type FactsItem = {
   span?: number,
 } & UniDataItem
 
 export const factsProps = {
-  items: Array as PropType<FactsItem[]>
+  items: {
+    type: Array as PropType<FactsItem[]>,
+  },
+  ...useFlexProps(),
 }
 
 export type FactsEmits = {
@@ -68,6 +71,14 @@ export const NsFactsItem = define({
   emits: factsItemEmits,
   setup (props, ctx) {
     return {
+      props: {
+        classes: [
+          ...buildFlexClasses(props),
+        ],
+        styles: {
+          ...buildFlexStyles(props)
+        }
+      }
     }
   }
 })

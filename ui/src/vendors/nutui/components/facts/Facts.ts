@@ -1,5 +1,6 @@
 import { h, SetupContext } from 'vue'
 import { FactsItemProps, FactsProps } from '../../../../components'
+import { MarginProps } from '../../../../utils'
 
 
 
@@ -29,13 +30,19 @@ export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose
   )
 }
 
-export const Facts = (props: FactsProps, ctx: Omit<SetupContext, 'expose'>) => {
+export const Facts = (props: FactsProps & MarginProps, ctx: Omit<SetupContext, 'expose'>) => {
 
   const slots = ctx.slots.default
     || (() => props.items?.map((item) => h(FactsItem, item.props)))
 
   return h('div', {
-    class: 'ns-facts',
+    class: [
+      'ns-facts',
+      ...props.classes || [],
+    ],
+    styles: {
+      ...props.style
+    }
   }, {
       default: slots
     }
