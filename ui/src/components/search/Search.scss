@@ -1,13 +1,13 @@
 .ns-search {
-  background-color: var(--surface, #fff);
   padding: 4px 0px;
   .content {
     border-radius: var(--ns-border-radius);
+    border-color: var(--stroke, transparent);
     padding: 4px 10px;
     gap: var(--ns-spacing-sm);
     border-style: solid;
     border-width: 1px;
-    background-color: var(--fill, var(--ns-fill));
+    background-color: var(--ns-fill);
     margin: 4px 10px;
   }
   .icon {

@@ -1,6 +1,6 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
 import { MakePropsType } from '../../utils'
-import { useDesignProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, useDesignProps, useVariantProps } from '../../props'
 
 export const searchProps = {
   label: {
@@ -46,18 +46,14 @@ export const NsSearch = defineComponent({
       placeholder: props.placeholder,
     })
 
-    const cssVars = {
-      ...props.fill ? { '--fill': props.fill } : {},
-    }
-
     return () => h('div', {
         class: [
           'ns-search',
           ...props.variant ? [`variant-${props.variant}`] : [],
-          ...props.round ? ['round'] : [],
+          ...buildDesignClasses(props),
         ],
-        styles: {
-          ...cssVars,
+        style: {
+          ...buildDesignStyles(props),
         }
       }, h('div', {class: ['content', 'row', 'align-center']}, [
           icon(),

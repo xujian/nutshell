@@ -1,6 +1,6 @@
 <template>
   <ns-page class="products-page">
-    <ns-search placeholder="产品名称" />
+    <ns-search placeholder="产品名称" fill="#fff" />
     <ns-tabs :items="tabs" fill="#ffffff33" :blur="10"></ns-tabs>
     <ns-repeator :items="products"
       align="stretch"
