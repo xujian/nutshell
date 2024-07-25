@@ -55,13 +55,6 @@ $alphas: (
     }
   }
 
-  @each $name, $value in map-get($theme, 'abstract') {
-    #{'--ns-'}#{$name}: #{$value};
-    .fill-#{$name} {
-      background-color: var(--ns-#{$name});
-    }
-  }
-
   @each $name, $value in map-get($theme, 'layout') {
     #{'--ns-'}#{$name}: #{$value};
   }
@@ -70,8 +63,21 @@ $alphas: (
     #{'--ns-'}#{$name}: #{$value};
   }
 
+  @each $name, $value in map-get($theme, 'abstract') {
+    #{'--ns-'}#{$name}: #{$value};
+  }
+
+  @each $name, $value in map-get($theme, 'abstract') {
+    .fill-#{$name} {
+      background-color: var(--ns-#{$name});
+    }
+  }
+
   @each $name, $value in map-get($theme, 'brand') {
     .fill-#{$name} {
+      --nut-button-default-color: var(--ns-#{$name}--text);
+      --nut-button-default-bg-color: var(--ns-#{$name});
+      --nut-button-default-border-color: var(--ns-#{$name});
       background-color: var(--ns-#{$name});
       @if lightness($value) > 80 {
         color: var(--ns-text);
@@ -121,9 +127,6 @@ $alphas: (
           // background-color: #00000022;
         }
       }
-      --nut-button-default-color: var(--ns-#{$name}--text);
-      --nut-button-default-bg-color: var(--ns-#{$name});
-      --nut-button-default-border-color: var(--ns-#{$name});
     }
   }
 }

@@ -15,12 +15,12 @@ $alphas: (
 );
 
 :root, page {
-  @include build-theme(colors.$base);
 
   @each $name, $value in $alphas {
     #{'--ns-white---'}#{$name}: color.adjust(#ffffff, $alpha: $value);
     #{'--ns-black---'}#{$name}: color.adjust(#000000, $alpha: $value);
   }
+  @include build-theme(colors.$base);
 }
 
 @each $name, $value in map-get(colors.$base, 'brand') {

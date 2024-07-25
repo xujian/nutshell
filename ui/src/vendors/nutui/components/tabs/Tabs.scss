@@ -7,14 +7,14 @@
   &.horizontal>.nut-tabs__titles {
     height: 40px;
     .nut-tabs__titles-item {
+      min-width: 40px;
+      width: fit-content;
+      padding: 0 .5em;
       &.active {
         background-color: #ffffff66;
         font-size: unset;
         color: unset;
       }
-      min-width: 40px;
-      width: fit-content;
-      padding: 0 .5em;
     }
   }
   .nut-tabs__titles {
