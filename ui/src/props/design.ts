@@ -55,14 +55,17 @@ const designProps = {
   borderRadius: {
     type: Number
   },
-  borderColor: {
+  /**
+   * 描边
+   */
+  stroke: {
     type: String as PropType<Color>
   },
-  borderWidth: {
+  strokeSize: {
     type: Number
   },
-  borderStyle: {
-    type: Number
+  dotted: {
+    type: Boolean
   },
   /**
    * 边框线模式
@@ -116,8 +119,9 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...(fill ? { '--fill': makeColor(fill) } : {}),
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
     ...(props.accent ? { '--accent': makeColor(props.accent) } : {}),
-    ...(props.borderColor ? { borderColor: makeColor(props.borderColor) } : {}),
-    ...(props.borderWidth ? { borderWidth: `${props.borderWidth}px` } : {}),
+    ...(props.stroke ? { borderColor: makeColor(props.stroke) } : {}),
+    ...(props.dotted ? { borderStyle: 'dotted' } : {}),
+    ...(props.strokeSize ? { borderWidth: `${props.strokeSize}px` } : {}),
     ...(props.foreground ? {
         '--text': makeColor(props.foreground),
         '--foreground': makeColor(props.foreground)

@@ -2,9 +2,7 @@ import { define, MakePropsType } from '../../utils'
 import { buildStyles } from '../../props/field'
 import { inputEmits, InputEmits } from './Input'
 import { PropType } from 'vue'
-import { useVariantProps } from '../../props'
-
-export type InputGroupSizeType = 'xl' | 'md' | 'xs'
+import { useSizeProps, useVariantProps } from '../../props'
 
 export const inputGroupProps = {
   ...useVariantProps(),
@@ -15,13 +13,7 @@ export const inputGroupProps = {
     type: Boolean,
     default: true,
   },
-  /**
-  * 是否用紧凑模式
-  */
-  size: {
-   type: String as PropType<InputGroupSizeType>,
-   default: 'md',
- },
+  ...useSizeProps(),
 }
 
 export type InputGroupSlots = {

@@ -5,7 +5,7 @@
     border-color: transparent;
     .ant-select-selector {
       color: var(--ns-text);
-      border-color: var(--stroke);
+      border-color: var(--stroke, transparent);
       background-color: var(--fill);
       min-height: 32px;
     }

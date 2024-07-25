@@ -32,8 +32,7 @@ export const NsTabbar = defineComponent({
   emits: tabbarEmits,
   setup (props, ctx) {
     const icon = (name: string) => h(NsIcon, {
-        name,
-        format: 'svg',
+        name: `https://simple.shensi.tech/icons/default/${name}.svg`,
         size: 'sm'
       }),
       label = (text: string) => h('label', {

@@ -5,7 +5,7 @@
   }
   .ant-input-affix-wrapper {
     background-color: unset;
-    border-color: var(--stroke);
+    border-color: var(--stroke, transparent);
     .ant-input::placeholder {
       color: var(--ns-neutral);
     }

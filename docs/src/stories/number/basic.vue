@@ -6,7 +6,7 @@
       width="48%"
       hight="400"
       justify="center"
-      border-color="secondary"
+      stroke="secondary"
       :animated="true"
       :value="value1" />
     <ns-number

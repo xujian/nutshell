@@ -8,7 +8,6 @@
   .ns-button {
     margin: 0;
     background-color: var(--fill);
-    border-color: var(--border-color, transparent);
     &.active {
       font-weight: bold;
       background-color: var(--accent, var(--ns-accent));

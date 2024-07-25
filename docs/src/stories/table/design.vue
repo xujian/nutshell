@@ -8,7 +8,7 @@
     header-color="#00000055"
     :header-height="48"
     :border-radius="0"
-    border-color="#00000033"
+    stroke="#00000033"
     round>
     <ns-table-column field="科目名称" label="科目名称" width="720" align="left" />
     <ns-table-column field="科目类型" label="科目类型" width="120" hidden />
@@ -23,7 +23,6 @@
     <ns-button-group color="secondary"
       size="xs"
       v-model="bordersRef"
-      variant="outlined"
       round
       :options="bordersValues" />
   </ns-row>
@@ -32,7 +31,6 @@
     <ns-button-group color="primary"
       size="xs"
       v-model="colorRef"
-      variant="outlined"
       round
       :options="colorsValues" />
     </ns-row>

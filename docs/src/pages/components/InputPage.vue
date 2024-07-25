@@ -1,7 +1,7 @@
 <template>
   <h1 class="my-lg">文本输入框</h1>
 <h2 class="my-md">Color</h2>
-  <ns-card>
+  <ns-card fill="#fff">
     <ns-input v-for="color in colors"
       name="`client-color-${color}`"
       :color="color"
@@ -9,7 +9,7 @@
       :key="color"></ns-input>
   </ns-card>
   <h2 class="my-md">Variants</h2>
-  <ns-card>
+  <ns-card fill="#fff">
     <ns-row class="variants" v-for="(variant) in variants" align="center" :key="variant">
       <h4 class="variant-label">{{ variant }}</h4>
       <ns-input
@@ -20,7 +20,7 @@
     </ns-row>
   </ns-card>
   <p>&nbsp;</p>
-  <ns-card title="特殊输入框">
+  <ns-card fill="#fff" title="特殊输入框">
     <ns-search-input name="q" placeholder="搜索" />
   </ns-card>
   <p>&nbsp;</p>

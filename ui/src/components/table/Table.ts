@@ -10,7 +10,7 @@ import {
 } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { TableColumnFixed, TableColumnProps } from './TableColumn'
-import { buildDesignVariables, useDesignProps, buildDesignClasses, usePaginationProps } from '../../props'
+import { buildDesignVariables, useDesignProps, buildDesignClasses, usePaginationProps, buildDesignStyles } from '../../props'
 import { Color } from '../../composables/theme'
 import { Paging } from '../../composables'
 
@@ -312,7 +312,7 @@ export const NsTable = define({
     }
 
     const style = computed(() => ({
-      ...buildDesignVariables(props),
+      ...buildDesignStyles(props),
       ...props.headerColor ? { '--header-color': props.headerColor } : {},
       ...props.rowHeight ? { '--row-height': `${props.rowHeight}px` } : {},
       ...props.headerHeight ? { '--header-height': `${props.headerHeight}px` } : {},
