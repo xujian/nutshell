@@ -69,7 +69,7 @@ onTabChange((value: string) => {
   }
   font-size: 12px;
   .ni-icon {
-    --font-size-sm: 16px;
+    --font-sm: 16px;
   }
 }
 </style>

@@ -21,8 +21,9 @@
           :value="item.value"
           :footer="item.title"
           justify="center"
-          fill="#fff"
-          foreground="#333" />
+          fill="primary"
+          stroke="#fff"
+          foreground="#fff" />
       </ns-repeator>
       <h2 class="h2">通话数据</h2>
       <ns-repeator class="numbers"
@@ -35,7 +36,7 @@
           :footer="item.title"
           :suffix="item.suffix"
           justify="center"
-          border-color="#fff"
+          stroke="#fff"
           gradient="#08AEEA,#2AF598/180"
           texture="https://simple.shensi.tech/textures/wave.svg"
           repeat

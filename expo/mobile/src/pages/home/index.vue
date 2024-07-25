@@ -18,7 +18,8 @@
             :footer="item.title"
             justify="center"
             foreground="#fff"
-            gradient="#e94057,#f27121/45" />
+            stroke="#CDDC39"
+            gradient="#799f0c,#ffe000/45" />
         </ns-repeator>
       </scroll-view>
       <h2 class="h2">快捷入口</h2>
@@ -28,13 +29,13 @@
           texture="https://simple.shensi.tech/images/client-girl.svg"
           :repeat="false"
           foreground="#fff"
-          border-color="#fff">
+          stroke="#fff">
           <h3 class="b">客户建档</h3>
           <p class="caption">新建意向客户</p>
         </ns-card>
         <ns-card class="entry flex-grow" fill="#000"
           foreground="#fff"
-          border-color="#fff">
+          stroke="#fff">
           <h3 class="b">产品进件</h3>
           <p class="caption">创建产品订单</p>
         </ns-card>
@@ -125,7 +126,7 @@ onMounted(() => {
   .entry {
     background-color: var(--ns-primary);
     .caption {
-      font-size: var(--ns-font-size-xs);
+      font-size: var(--ns-font-xs);
       color: var(--ns-neutral--60);
     }
   }

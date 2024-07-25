@@ -1,4 +1,5 @@
 export default definePageConfig({
-  navigationBarBackgroundColor: '#ffffff',
+  navigationBarTextStyle: 'white',
+  navigationStyle: 'custom',
   navigationBarTitleText: '产品',
 })
