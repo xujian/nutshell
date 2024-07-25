@@ -112,6 +112,8 @@ export const NsPageHeader = defineComponent({
         'ns-page-header',
         'page-header',
         `color-mode-${props.colorMode}`,
+        // 默认不用圆角
+        ...props.round ? ['round'] : ['square'],
         ...props.minimal ? ['minimal'] : [],
         ...props.hasBackButton ? ['has-back-button'] : [],
         ...props.reveal ? ['reveal'] : [],

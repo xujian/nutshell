@@ -46,13 +46,16 @@ const designProps = {
     type: Boolean,
     default: true
   },
-  /**
-   * 圆角 使用系统 --ns-border-radius
-   */
   round: {
     type: Boolean
   },
-  borderRadius: {
+  /**
+   * 不使用圆角
+   */
+  square: {
+    type: Boolean
+  },
+  radius: {
     type: Number
   },
   /**
@@ -105,6 +108,7 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(fill && isBrand(fill) ? [`fill-${fill}`] : []),
     ...(props.borders ? [`borders-${props.borders}`] : []),
     ...(props.round ? ['round'] : []),
+    ...(props.square ? ['square'] : []),
     ...(props.gradient ? ['gradient'] : []),
     ...(props.texture ? ['texture'] : []),
     ...(props.gradient && props.texture ? ['texture-gradient'] : []),
@@ -121,6 +125,7 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...(props.accent ? { '--accent': makeColor(props.accent) } : {}),
     ...(props.stroke ? { borderColor: makeColor(props.stroke) } : {}),
     ...(props.dotted ? { borderStyle: 'dotted' } : {}),
+    ...(props.radius ? { '--radius': `${props.radius}px` } : {}),
     ...(props.strokeSize ? { borderWidth: `${props.strokeSize}px` } : {}),
     ...(props.foreground ? {
         '--text': makeColor(props.foreground),

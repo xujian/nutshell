@@ -49,11 +49,6 @@
         background-position: center center;
       }
     }
-    &.has-back-button {
-      .title {
-        margin: 0 100px 0 40px;
-      }
-    }
     .content {
       margin-top: cacl(var(--top) + var(--height));
       width: 100%;

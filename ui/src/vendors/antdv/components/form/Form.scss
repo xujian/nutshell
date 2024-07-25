@@ -92,6 +92,10 @@
 }
 
 .ns-display {
+  .ns-number {
+    padding: 0;
+    background-color: transparent;
+  }
   .ant-form-item-control-input {
     background-color: transparent;
   }
