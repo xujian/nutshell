@@ -1,6 +1,9 @@
 .ns-page-header {
   &.page-header {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
     padding-top: var(--top);
     min-height: var(--height);
     background-size: cover;
@@ -19,20 +22,20 @@
       display: flex;
       height: var(--height);
       align-items: center;
-      margin: 0 100px 0 10px;
+      width: 100%;
       .title-heading {
-        position: absolute;
-        left: 0;
-        top: 0;
         width: 100%;
+        padding: 0 var(--ns-spacing);
         height: var(--height);
         font-size: 16px;
         line-height: var(--height);
-        top: var(--top);
-        width: 100%;
         text-align: var(--titleAlign, center);
-        padding-inline: var(--ns-spacing);
         box-sizing: border-box;
+      }
+      .title-content {
+        width: 100%;
+        padding-right: 100px;
+        padding-left: var(--ns-spacing);
       }
       .back-button {
         position: absolute;
@@ -52,6 +55,9 @@
       }
     }
     .content {
+      margin-top: cacl(var(--top) + var(--height));
+      width: 100%;
+      box-sizing: border-box;
       &:not(:empty) {
         padding: 10px;
       }

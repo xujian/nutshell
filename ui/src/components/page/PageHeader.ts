@@ -87,7 +87,7 @@ export const NsPageHeader = defineComponent({
     }
 
     const heading = () => slots.title
-      ? slots.title()
+      ? h('div', { class: 'title-content'}, slots.title())
       : h('div', { class: 'title-heading'}, props.title)
 
     const title = () => h('div', {

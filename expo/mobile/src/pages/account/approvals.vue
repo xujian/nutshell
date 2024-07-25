@@ -1,6 +1,7 @@
 <template>
   <ns-page class="page-approvals">
     <ns-page-header
+      fill="#fff"
       @close="onPageHeaderClose">
       <template #title>
         <ns-form>

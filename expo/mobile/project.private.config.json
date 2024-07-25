@@ -11,6 +11,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "4.2 审批列表",
+          "pathName": "pages/account/approvals",
+          "query": "id=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "1.1 日报",
           "pathName": "pages/home/report",
           "query": "",
@@ -55,13 +62,6 @@
         {
           "name": "4 我的",
           "pathName": "pages/account/index",
-          "query": "id=2",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "4.2 AI审批",
-          "pathName": "pages/account/approvals",
           "query": "id=2",
           "launchMode": "default",
           "scene": null

@@ -29,11 +29,11 @@
 }
 
 .gradient {
-  background: var(--gradient, linear-gradient(45deg, #00000000 0%, #00000000 100%)), var(--fill);
+  background: var(--gradient, linear-gradient(45deg, #00000000 0%, #00000000 100%)), var(--fill, transparent);
 }
 
 .texture {
-  background: var(--texture), var(--fill);
+  background: var(--texture), var(--fill, transparent);
   background-repeat: var(--repeat, no-repeat);
   background-size: contain;
   background-position: right center;
@@ -43,7 +43,7 @@
   background:
     var(--texture),
     var(--gradient, linear-gradient(45deg, #00000000 0%, #00000000 100%)),
-    var(--fill);
+    var(--fill, transparent);
   background-repeat: var(--repeat, no-repeat);
   background-size: contain;
   background-position: right center;
