@@ -36,10 +36,10 @@
 }
 
 .ns-form-item {
+  background: transparent;
   &.no-label {
     .nut-form-item__label {
       display: none !important;
     }
   }
-  background: transparent;
 }

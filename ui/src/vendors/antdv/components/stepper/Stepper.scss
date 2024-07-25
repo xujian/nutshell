@@ -1,8 +1,8 @@
 .ns-stepper {
+  --space: 16px;
   &.ant-steps {
     color: var(--ns-text);
   }
-  --space: 16px;
   .ant-steps-item-process .ant-steps-item-icon {
     background-color: var(--ns-primary) !important;
   }
