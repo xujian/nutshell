@@ -1,16 +1,16 @@
 .ns-button-group {
-  width: fit-content;
+  width: 100%;
   overflow: hidden;
-  background-color: var(--surface, transparent);
   .buttons {
     width: fit-content;
   }
   .ns-button {
     margin: 0;
     background-color: var(--fill);
+    transition: backdrop-filter .5s;
     &.active {
       font-weight: bold;
-      background-color: var(--accent, var(--ns-accent));
+      backdrop-filter: brightness(1.2);
     }
   }
 }
