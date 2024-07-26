@@ -1,5 +1,6 @@
 .ns-code-view {
   border-radius: 10px;
+  margin: 0;
   &[class*="language-"] {
     margin: 0;
     padding: 0;
@@ -10,7 +11,6 @@
   .token.inserted {
     font-style: normal;
   }
-  margin: 0;
   code {
     border-radius: 0;
     display: block;
