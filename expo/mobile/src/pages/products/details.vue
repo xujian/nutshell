@@ -2,9 +2,10 @@
   <ns-page class="product-details-page has-page-bottom">
     <ns-page-header
       title="产品"
-      fill="#ffffff22"
+      fill="#ffffff33"
       :blur="5"
-      reveal></ns-page-header>
+      has-back-button
+      reveal />
     <div class="cover" :style="coverStyle"></div>
     <ns-page-content class="overlap">
       <ns-card

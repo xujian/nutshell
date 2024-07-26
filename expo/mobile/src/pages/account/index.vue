@@ -5,7 +5,7 @@
       class="account-header"
       title="大道云 Pro"
       :minimal="false"
-      texture="https://cdn.ddjf.com/static/images/wx-yunservice/auth-bg.png">
+      texture="https://simple.shensi.tech/motions/wave.svg">
       <div class="avatar row align-center justify-start">
         <div class="west col px-sm">
           <img src="https://ddjf-test-oss.ddjf.info/user-central/photo-1718094978288438524.jpeg" />

@@ -14,6 +14,7 @@
       <h2 class="h2">客户数据</h2>
       <ns-repeator class="numbers"
         :items="clientData"
+        :divides="3"
         wrap
         v-slot="item"
         :gap="10">
@@ -38,7 +39,7 @@
           justify="center"
           stroke="#fff"
           gradient="#08AEEA,#2AF598/180"
-          texture="https://simple.shensi.tech/textures/wave.svg"
+          pattern="https://simple.shensi.tech/patterns/wave.svg"
           repeat
           foreground="#fff" />
       </ns-repeator>
@@ -104,11 +105,5 @@ const clientData = [
 
 <style lang="scss">
 .report-page {
-  .numbers {
-    .flex-item {
-      width: calc(33.333% - 7px);
-      flex-grow: 0;
-    }
-  }
 }
 </style>

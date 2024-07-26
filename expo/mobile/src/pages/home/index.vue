@@ -11,6 +11,7 @@
         <ns-repeator class="numbers"
           :items="numbers"
           v-slot="item"
+          :divides="3.15"
           :gap="10">
           <ns-number
             :value="item.value >= 99 ? 99 : item.value"
@@ -119,15 +120,11 @@ onMounted(() => {
   color: #fff;
   padding-bottom: 100vh;
   .numbers {
-    .ns-repeator-item {
-      width: calc(30% - 10px);
-    }
   }
   .entry {
     background-color: var(--ns-primary);
     .caption {
       font-size: var(--ns-font-xs);
-      color: var(--ns-neutral--60);
     }
   }
   .reminders {
@@ -135,6 +132,7 @@ onMounted(() => {
       aspect-ratio: 1;
       background-size: 70%;
       background-position: center 25px;
+      background-repeat: no-repeat;
       .card-body {
         padding: 0;
       }

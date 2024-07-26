@@ -14,6 +14,7 @@
         <ns-repeator class="numbers"
           :items="numbers"
           v-slot="item"
+          :divides="3.2"
           :gap="10">
           <ns-number
             :value="item.value"
@@ -118,9 +119,6 @@ onMounted(() => {
   --foreground: #fff;
   color: #fff;
   .numbers {
-    .ns-repeator-item {
-      width: calc(30% - 10px);
-    }
   }
   .categories {
     position: sticky;
