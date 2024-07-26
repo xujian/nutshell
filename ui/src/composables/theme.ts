@@ -93,6 +93,7 @@ export function buildGradientStyle (gradient?: GradientString):
   { '--gradient'?: string } {
     // 平均拉开渐变
     if (!gradient) return {}
+    // if (/\d{3}/.test(gradient)) return {}
     const [colorString, angle = 0] = gradient.split('/') as [string, number],
       [start, ...colors] = colorString.split(','),
       seg = 100 / colors.length,

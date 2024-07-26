@@ -9,8 +9,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
-    background-image: var(--texture);
-    background-color: var(--fill, --ns-paper);
     margin-bottom: 0;
     transition: background-color .5s;
     &.sticky {

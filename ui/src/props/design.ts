@@ -122,6 +122,7 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.round ? ['round'] : []),
     ...(props.square ? ['square'] : []),
     ...(props.gradient ? ['gradient'] : []),
+    // ...(props.gradient && /\d{3}/.test(props.gradient) ? [`gradient-${props.gradient}`] : []),
     ...(props.texture ? ['texture'] : []),
     ...(props.pattern ? ['pattern'] : []),
     ...(props.gradient && props.texture ? ['texture-gradient'] : []),
