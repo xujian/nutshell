@@ -10,6 +10,7 @@ module.exports = {
     webpackChain: (chain, webpack) => {
       chain.merge({
         plugin: {
+          /*
           install: {
             plugin: require('terser-webpack-plugin'),
             args: [
@@ -23,6 +24,7 @@ module.exports = {
               }
             ]
           }
+          */
         }
       })
     }

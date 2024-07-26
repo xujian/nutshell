@@ -8,15 +8,17 @@ import path from 'path'
  */
 const nsRegex = /^Ns[A-Z][\w]+/
 const NutshellResolver = (name) => {
-  console.log('NutshellResolver....................mame=', name)
+  // console.log('NutshellResolver....................mame=', name)
   if (nsRegex.test(name)) {
-    console.log('NutshellResolver....................matched=', name)
+    // console.log('NutshellResolver....................matched=', name)
     return {
       name: name,
       from: '@uxda/nutshell/taro'
     }
   }
 }
+
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
 const config = {
   projectName: 'expo-mobile',
@@ -63,6 +65,10 @@ const config = {
           NutshellResolver
         ]
       }))
+      // chain
+      //   .plugin('speed-measure-webpack-plugin')
+      //   .use(SpeedMeasurePlugin)
+      //   .end()
       // chain.plugin('unplugin-auto-import').use(AutoImportPlugin({
       //   include: [
       //     /\.vue$/, /\.vue\?vue/, // .vue
