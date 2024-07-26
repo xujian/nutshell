@@ -39,8 +39,17 @@ const designProps = {
   gradient: {
     type: String as PropType<GradientString>
   },
+  /**
+   * 底图
+   */
   texture: {
     type: String,
+  },
+  /**
+   * 图案
+   */
+  pattern: {
+    type: String
   },
   repeat: {
     type: Boolean,
@@ -64,7 +73,10 @@ const designProps = {
   stroke: {
     type: String as PropType<Color>
   },
-  strokeSize: {
+  /**
+   * 线宽
+   */
+  thick: {
     type: Number
   },
   dotted: {
@@ -111,7 +123,9 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.square ? ['square'] : []),
     ...(props.gradient ? ['gradient'] : []),
     ...(props.texture ? ['texture'] : []),
+    ...(props.pattern ? ['pattern'] : []),
     ...(props.gradient && props.texture ? ['texture-gradient'] : []),
+    ...(props.gradient && props.pattern ? ['pattern-gradient'] : []),
     ...filterClasses
   ]
   return result
@@ -123,10 +137,10 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...(fill ? { '--fill': makeColor(fill) } : {}),
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
     ...(props.accent ? { '--accent': makeColor(props.accent) } : {}),
-    ...(props.stroke ? { borderColor: makeColor(props.stroke) } : {}),
+    ...(props.stroke ? { '--stroke': makeColor(props.stroke) } : {}),
     ...(props.dotted ? { borderStyle: 'dotted' } : {}),
     ...(props.radius ? { '--radius': `${props.radius}px` } : {}),
-    ...(props.strokeSize ? { borderWidth: `${props.strokeSize}px` } : {}),
+    ...(props.thick ? { '--thick': `${props.thick}px` } : {}),
     ...(props.foreground ? {
         '--text': makeColor(props.foreground),
         '--foreground': makeColor(props.foreground)
@@ -141,10 +155,16 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
 
 const buildTextureStyles: (props: DesignProps) => StyleObject = (props) => {
   const style = {
+    // /texture/ 指的是 填充形式的背景图
     ...props.texture
       ? {
           '--texture': `url(${props.texture})`,
-          '--repeat': props.repeat ? 'repeat' : 'no-repeat',
+        }
+      : {},
+    // /pattern/ 指的是 连续平铺的图案
+    ...props.pattern
+      ? {
+          '--pattern': `url(${props.pattern})`,
         }
       : {}
   }

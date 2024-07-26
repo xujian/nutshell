@@ -1,5 +1,47 @@
 @use '../variables/design';
 
+@property --fill {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --gradient {
+  syntax: "<image>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --texture {
+  syntax: "<image>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --brightness {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --blur {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --stroke {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --thick {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 1px;
+}
+
 :root, page {
   --ns-border-radius: 8px;
 }
@@ -24,33 +66,50 @@
 
 .with-design {
   background-color: var(--fill);
-  border-color: transparent;
+  border-color: var(--stroke, transparent);
   border-style: solid;
-  border-width: 1px;
+  border-width: var(--thick, 1px);
   &:not(.square) {
     border-radius: var(--radius, var(--ns-border-radius));
   }
 }
 
 .gradient {
-  background: var(--gradient, linear-gradient(45deg, #00000000 0%, #00000000 100%)), var(--fill, transparent);
+  background:
+    var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
+    var(--fill, transparent);
 }
 
 .texture {
-  background: var(--texture), var(--fill, transparent);
-  background-repeat: var(--repeat, no-repeat);
-  background-size: contain;
-  background-position: right center;
+  background:
+    var(--texture),
+    var(--fill, transparent);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.pattern {
+  background:
+    var(--pattern),
+    var(--fill, transparent);
+  background-repeat: repeat;
+  background-size: 100% auto;
+  background-position: left top;
 }
 
 .texture-gradient {
   background:
     var(--texture),
-    var(--gradient, linear-gradient(45deg, #00000000 0%, #00000000 100%)),
+    var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
     var(--fill, transparent);
-  background-repeat: var(--repeat, no-repeat);
-  background-size: contain;
-  background-position: right center;
+}
+
+.pattern-gradient {
+  background:
+    var(--pattern),
+    var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
+    var(--fill, transparent);
 }
 
 .blur {
