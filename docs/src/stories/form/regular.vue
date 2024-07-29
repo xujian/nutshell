@@ -41,7 +41,7 @@
       <ns-rating-input label="意向等级"
         name="intention"
         v-model="formData.intention" />
-      <ns-chips label="客户标签"
+      <ns-chips-input label="客户标签"
         name="tags"
         dropdown
         :options="chipsOptions"
