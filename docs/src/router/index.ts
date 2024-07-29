@@ -3,7 +3,8 @@ import MasterLayout from '../layouts/MasterLayout.vue'
 
 const HomePage = () => import('../pages/HomePage.vue')
 const AboutPage = () => import('../pages/AboutPage.vue')
-const PalettesPage = () => import('../pages/themes/PalettesPage.vue')
+const PalettesPage = () => import('../pages/design/PalettesPage.vue')
+const DesignPropsPage = () => import('../pages/design/DesignPropsPage.vue')
 const ButtonPage = () => import('../pages/components/ButtonPage.vue')
 const ButtonGroupPage = () => import('../pages/components/ButtonGroupPage.vue')
 const DropdownPage = () => import('../pages/components/DropdownPage.vue')
@@ -60,9 +61,14 @@ const router = createRouter({
           component: HomePage
         },
         {
-          path: '/palettes',
+          path: '/design/palettes',
           name: 'palettes',
           component: PalettesPage
+        },
+        {
+          path: 'design/props',
+          name: 'design-props',
+          component: DesignPropsPage
         },
         {
           path: '/components/button',

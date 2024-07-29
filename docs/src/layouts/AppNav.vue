@@ -40,6 +40,10 @@ const menuData = computed(() => [
         key: '/palettes'
       },
       {
+        label: '视觉风格',
+        key: '/design/props'
+      },
+      {
         label: '派生风格 variants',
         key: '/variants'
       }
