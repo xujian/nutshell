@@ -43,7 +43,7 @@ import { NsForm, NsDisplay } from './form'
 import { NsInput, NsDateInput, NsDateRangeInput, NsMonthRangeInput,
   NsMobileInput,
   NsIdInput, NsTextarea, NsNumberInput, NsNumberRangeInput,
-  NsMonthInput, NsYearInput } from './input'
+  NsMonthInput, NsYearInput, NsChipsInput } from './input'
 import { NsSwitch } from './switch'
 import { NsSelect, NsCascadingSelect, NsMultipleSelect, NsDateSelect } from './select'
 import { NsCheckbox } from './checkbox'
@@ -92,6 +92,7 @@ const components = {
   NsTextarea,
   NsNumberInput,
   NsNumberRangeInput,
+  NsChipsInput,
   NsSwitch,
   NsForm,
   NsDisplay,

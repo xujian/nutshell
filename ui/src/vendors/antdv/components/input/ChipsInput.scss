@@ -1,4 +1,12 @@
-.ns-chips {
+.ns-chips-input {
+  .ns-chips-dropdown-default {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .nut-tag {
+      margin: 3px 4px;
+    }
+  }
   .ant-form-item-control-input {
     background-color: transparent;
   }
