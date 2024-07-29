@@ -96,6 +96,18 @@ const designProps = {
   },
   brightness: {
     type: Number
+  },
+  /**
+   * 投影色
+   */
+  shadow: {
+    type: String as PropType<Color>,
+  },
+  /**
+   * 投影深度
+   */
+  depth: {
+    type: Number
   }
 }
 
@@ -127,6 +139,7 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.pattern ? ['pattern'] : []),
     ...(props.gradient && props.texture ? ['texture-gradient'] : []),
     ...(props.gradient && props.pattern ? ['pattern-gradient'] : []),
+    ...(props.shadow || props.depth ? ['shadow'] : []),
     ...filterClasses
   ]
   return result
@@ -148,6 +161,8 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
       } : {}),
     ...props.blur ? {'--blur': `${props.blur}px`} : {},
     ...props.brightness != 1 ? {'--brightness': props.brightness} : {},
+    ...props.shadow ? {'--shadow': makeColor(props.shadow)} : {},
+    ...props.depth ? {'--depth': `${props.depth}px`} : {},
     ...buildGradientStyle(props.gradient),
     ...buildTextureStyles(props),
   } as StyleObject

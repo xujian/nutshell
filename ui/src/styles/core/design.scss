@@ -120,6 +120,10 @@
   backdrop-filter: brightness(var(--brightness, 1)) blur(var(--blur, 0px));
 }
 
+.shadow {
+  box-shadow: 0 0 var(--depth, 5px) var(--depth, 5px) var(--shadow, #00000011);
+}
+
 .round {
   border-radius: 50vh;
 }
