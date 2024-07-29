@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, computed } from 'vue'
 import { buildFillStyle, buildGradientStyle, Color } from '../../composables/theme'
 import { buildDesignClasses, buildDesignStyles, buildDesignVariables, useDesignProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
@@ -43,18 +43,16 @@ export const NsCard = defineComponent({
   slots: cardSlots,
   setup (props, { slots }) {
 
-    const classes = [
+    const classes = computed(() => [
       'ns-card',
       'flex',
       'flex-column',
       'align-stretch',
       props.variant ? `variant-${props.variant}` : '',
       ...buildDesignClasses(props),
-    ].join(' ')
+    ])
 
-    const style = {
-      ...buildDesignStyles(props),
-    }
+    const style = computed(() => buildDesignStyles(props))
 
     const label = () => props.title
       ? h('div', {
@@ -113,8 +111,8 @@ export const NsCard = defineComponent({
       : null
 
     return () => h('div', {
-      class: classes,
-      style,
+      class: classes.value,
+      style: style.value,
     }, [
       header(),
       body(),

@@ -8,6 +8,7 @@
       flex-grow: 1;
       display: flex;
       align-items: center;
+      color: var(--foreground, var(--ns-text))
     }
   }
   .card-header {
@@ -24,7 +25,7 @@
     padding: var(--ns-spacing);
   }
   h3.title-label {
-    font-size: var(--ns-font-md);
+    font-size: var(--ns-font-sm);
     font-weight: bold;
     position: relative;
   }
@@ -62,17 +63,17 @@
   }
 }
 
-.ns-app {
-  h3.title-label {
-    &::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 8px;
-      background: #4d85ff;
-      opacity: .4;
-      bottom: 0;
-      left: 0;
-    }
-  }
-}
+// .ns-app {
+//   h3.title-label {
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       width: 100%;
+//       height: 8px;
+//       background: #4d85ff;
+//       opacity: .4;
+//       bottom: 0;
+//       left: 0;
+//     }
+//   }
+// }
