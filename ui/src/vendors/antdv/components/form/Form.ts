@@ -9,11 +9,12 @@ export const Form = (props: FormProps & MarginProps, { slots }: SetupContext) =>
     ref: props.vendorRef,
     class: [
       'ns-form',
-      ...props.classes || []
+      ...props.classes || [],
+      ...props.variant ? [`variant-${props.variant}`] : [],
     ],
     name: props.name,
     autocomplete: 'off',
     model: props.modelValue,
   }, slots)
 }
-// + import => ./index.ts, ../components.ts
+
