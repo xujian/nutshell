@@ -1,5 +1,6 @@
 .ns-button-group {
-  width: 100%;
+  max-width: 100%;
+  width: fit-content;
   overflow: hidden;
   .buttons {
     width: fit-content;

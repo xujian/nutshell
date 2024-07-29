@@ -63,7 +63,7 @@ export const NsButtonGroup = defineComponent({
         ...props.size ? [`size-${props.size}`] : [],
         // ...isBrand(props.color) ? [`fill-${props.color}`] : [],
         // ...props.variant ? [`variant-${props.variant}`] : ['variant-plain'],
-        ...item.value === props.modelValue ? ['active'] : [],
+        ...item.value == props.modelValue ? ['active'] : [],
       ],
       onClick () {
         if (props.selectable === false) {
