@@ -77,7 +77,7 @@ export function define<
     // the real setup
     // const { setup: setupOriginal } = options
     const v = useVendor()
-    const { props: extraProps, methods, vendorRef, style} = options.setup(props, ctx)
+    const { props: extraProps, methods, vendorRef} = options.setup(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
     const render: Ref<FunctionalComponent<Props, EmitsOptions, any>>
@@ -101,8 +101,8 @@ export function define<
         className,
         ...classes,
       ],
-      classes: props.classes,
-      style: style?.value,
+      classes: extraProps?.classes,
+      style: extraProps?.style,
       vendorRef,
     }, ctx.slots)
 
