@@ -5,6 +5,7 @@ const HomePage = () => import('../pages/HomePage.vue')
 const AboutPage = () => import('../pages/AboutPage.vue')
 const PalettesPage = () => import('../pages/design/PalettesPage.vue')
 const DesignPropsPage = () => import('../pages/design/DesignPropsPage.vue')
+const GradientsPage = () => import('../pages/design/GradientsPage.vue')
 const ButtonPage = () => import('../pages/components/ButtonPage.vue')
 const ButtonGroupPage = () => import('../pages/components/ButtonGroupPage.vue')
 const DropdownPage = () => import('../pages/components/DropdownPage.vue')
@@ -69,6 +70,11 @@ const router = createRouter({
           path: 'design/props',
           name: 'design-props',
           component: DesignPropsPage
+        },
+        {
+          path: 'design/gradients',
+          name: 'design-gradients',
+          component: GradientsPage
         },
         {
           path: '/components/button',

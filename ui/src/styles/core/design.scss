@@ -72,13 +72,14 @@
   &:not(.square) {
     border-radius: var(--radius, var(--ns-border-radius));
   }
+  &.gradient {
+    background:
+      var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
+      var(--fill, transparent);
+    background-clip: content-box;
+  }
 }
 
-.gradient {
-  background:
-    var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
-    var(--fill, transparent);
-}
 
 .texture {
   background:
@@ -112,6 +113,24 @@
     var(--fill, transparent);
 }
 
+.stroke-gradient {
+  position: relative;
+  border-width: 1px;
+  border-color: transparent;
+  border-style: solid;
+  box-sizing: border-box;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin: -1px;
+    border-radius: inherit;
+    border-image: linear-gradient(#f6b73c, #4d9f0c) 1;
+    border-width: 1px;
+  }
+}
+
 .blur {
   backdrop-filter: brightness(1.5) blur(20px);
 }
@@ -121,7 +140,10 @@
 }
 
 .shadow {
-  box-shadow: 0 0 var(--depth, 5px) var(--depth, 5px) var(--shadow, #00000011);
+  box-shadow:
+    0 0.5px 0 1px #ffffff33 inset,
+    0 1px 0 0 #ffffff66 inset,
+    0 0 var(--depth, 5px) var(--depth, 5px) var(--shadow, #00000011);
 }
 
 .round {

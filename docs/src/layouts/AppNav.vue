@@ -36,12 +36,16 @@ const menuData = computed(() => [
     key: 'theming',
     children: [
       {
-        label: '色表 palettes',
-        key: '/palettes'
-      },
-      {
         label: '视觉风格',
         key: '/design/props'
+      },
+      {
+        label: '内置渐层',
+        key: '/design/gradients'
+      },
+      {
+        label: '色表 palettes',
+        key: '/palettes'
       },
       {
         label: '派生风格 variants',

@@ -5,6 +5,7 @@ import {
   buildFillStyle,
   buildGradientStyle,
   isBrand,
+  isGradient,
   makeColor
 } from '../composables/theme'
 import { buildProps } from '../utils/private/props'
@@ -133,13 +134,18 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.borders ? [`borders-${props.borders}`] : []),
     ...(props.round ? ['round'] : []),
     ...(props.square ? ['square'] : []),
-    ...(props.gradient ? ['gradient'] : []),
+    ...(props.gradient
+        ? /^\d{3}$/.test(props.gradient)
+          ? [`gradient-${props.gradient}`]
+          : ['gradient']
+        : []),
     // ...(props.gradient && /\d{3}/.test(props.gradient) ? [`gradient-${props.gradient}`] : []),
     ...(props.texture ? ['texture'] : []),
     ...(props.pattern ? ['pattern'] : []),
     ...(props.gradient && props.texture ? ['texture-gradient'] : []),
     ...(props.gradient && props.pattern ? ['pattern-gradient'] : []),
     ...(props.shadow || props.depth ? ['shadow'] : []),
+    ...(props.stroke && isGradient(props.stroke) ? ['stroke-gradient'] : []),
     ...filterClasses
   ]
   return result

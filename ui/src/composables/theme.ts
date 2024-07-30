@@ -40,7 +40,7 @@ type BaseColors = {
 /**
  * 渐变
  */
-export type GradientString = `${Color},${Color}` | `${Color},${Color}/${number}`
+export type GradientString = `${Color},${Color}` | `${Color},${Color}/${number}` | `${number}${number}${number}`
 
 export type Theme = {
   name: string
@@ -69,6 +69,11 @@ export function isBrand (color?: Color) {
   return result
 }
 
+export function isGradient (color?: Color) {
+  if (!color) return false
+  return color.includes(',')
+}
+
 export function makeColor (color: Color): string {
   return BRANDS.includes(color as typeof BRANDS[number]) ||
     ESSENTIALS.includes(color as typeof ESSENTIALS[number])
@@ -93,7 +98,7 @@ export function buildGradientStyle (gradient?: GradientString):
   { '--gradient'?: string } {
     // 平均拉开渐变
     if (!gradient) return {}
-    // if (/\d{3}/.test(gradient)) return {}
+    if (/^\d{3}$/.test(gradient)) return {}
     const [colorString, angle = 0] = gradient.split('/') as [string, number],
       [start, ...colors] = colorString.split(','),
       seg = 100 / colors.length,
