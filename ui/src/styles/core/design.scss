@@ -39,7 +39,7 @@
 @property --thick {
   syntax: "<length>";
   inherits: false;
-  initial-value: 1px;
+  initial-value: 0px;
 }
 
 :root, page {
@@ -68,7 +68,7 @@
   background-color: var(--fill);
   border-color: var(--stroke, transparent);
   border-style: solid;
-  border-width: var(--thick, 1px);
+  border-width: var(--thick);
   &:not(.square) {
     border-radius: var(--radius, var(--ns-border-radius));
   }
@@ -76,7 +76,6 @@
     background:
       var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
       var(--fill, transparent);
-    background-clip: content-box;
   }
 }
 

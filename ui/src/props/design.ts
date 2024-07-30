@@ -166,7 +166,7 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
         '--foreground': makeColor(props.foreground)
       } : {}),
     ...props.blur ? {'--blur': `${props.blur}px`} : {},
-    ...props.brightness != 1 ? {'--brightness': props.brightness} : {},
+    ...props.brightness && props.brightness != 1 ? {'--brightness': props.brightness} : {},
     ...props.shadow ? {'--shadow': makeColor(props.shadow)} : {},
     ...props.depth ? {'--depth': `${props.depth}px`} : {},
     ...buildGradientStyle(props.gradient),
