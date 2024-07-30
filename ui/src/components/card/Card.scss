@@ -1,6 +1,7 @@
 .ns-card {
   border-radius: var(--ns-border-radius);
   background-color: var(--fill, var(--ns-surface));
+  background-clip: content-box;
   overflow: hidden;
   .card-header, .card-title {
     padding: var(--ns-spacing);
