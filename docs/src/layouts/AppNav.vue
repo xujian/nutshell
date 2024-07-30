@@ -44,6 +44,10 @@ const menuData = computed(() => [
         key: '/design/gradients'
       },
       {
+        label: '动画底图',
+        key: '/design/motions'
+      },
+      {
         label: '色表 palettes',
         key: '/palettes'
       },

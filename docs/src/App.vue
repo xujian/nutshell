@@ -11,6 +11,10 @@ useHead({
     {
       rel: 'stylesheet',
       href: 'https://simple.shensi.tech/system-assets/gradients/built-in.css'
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://simple.shensi.tech/system-assets/motions/motions.css'
     }
   ]
 })
