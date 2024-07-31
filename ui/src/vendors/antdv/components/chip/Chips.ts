@@ -15,15 +15,15 @@ export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
   }
 
   return h('div', {
-    class: [
-
-    ]
   }, {
     default: () => options.map((o) => {
       const on = props.modelValue && props.modelValue.includes(o.value as string)
       return h(NsChip, {
-        class: on ? ['active'] : [],
-        color: props.color || 'primary',
+        class: [
+          ...on ? ['active'] : [],
+          ...props.classes || []
+        ],
+        style: props.style,
         variant: props.variant,
         label: o.label,
         onClick: () => onItemClick(o)

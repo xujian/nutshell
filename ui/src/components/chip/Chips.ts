@@ -38,14 +38,6 @@ export const NsChips = define({
       // 对参数做前期的处理
       return {
         props: {
-          classes: [
-            ...buildFlexClasses(props),
-            // ...buildDesignClasses(props)
-          ],
-          style: {
-            ...buildFlexStyles(props),
-            ...buildDesignStyles(props),
-          },
           rules: finalRules as FullValidationRule[]
         }
       }

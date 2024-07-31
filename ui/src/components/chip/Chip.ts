@@ -53,12 +53,6 @@ export const NsChip = define({
     setup (props, ctx) {
       return {
         props: {
-          classes: [
-            ...buildDesignClasses(props),
-          ],
-          style: {
-            ...buildDesignStyles(props)
-          }
         }
       }
     }

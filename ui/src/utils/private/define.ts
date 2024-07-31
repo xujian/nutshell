@@ -7,11 +7,13 @@ import { ComponentObjectPropsOptions, ComponentOptionsMixin,
   getCurrentInstance,
   ComputedRef,
   unref,
-  isRef} from 'vue'
+  isRef,
+  computed} from 'vue'
 import { LooseRequired } from '@vue/shared'
 import { MakePropsType, MarginProps, marginProps, StyleObject } from './helpers'
 import { useVendor } from '../../shared/vendor'
 import { kebabCase } from '../text'
+import { buildDesignClasses, buildDesignStyles, hasDesignProps } from '../../props'
 
 const buildClasses = (props: any): string[] => {
   if (!props) return []
@@ -56,8 +58,8 @@ export function define<
     ) => {
       props?: Partial<Props> & MarginProps,
       methods?: Record<string, any>,
-      style?: ComputedRef<StyleObject> | StyleObject,
-      classes?: ComputedRef<string[]> | string[],
+      style?: StyleObject,
+      classes?: string[],
       vendorRef?: Ref
     }
   },
@@ -93,16 +95,21 @@ export function define<
 
     const vm = getCurrentInstance() as any
     const className = kebabCase(options.name),
-      classes = buildClasses(extraProps)
+      classes = hasDesignProps(props)
+        ? computed(() => buildDesignClasses(props))
+        : computed(() => []),
+      style = hasDesignProps(props)
+        ? computed(() => buildDesignStyles(props))
+        : computed(() => [])
     vm.render = () => h(render.value, {
       ...props,
       ...extraProps,
       class: [
         className,
-        ...classes,
+        ...classes.value,
       ],
       classes: extraProps?.classes,
-      style: extraProps?.style,
+      style: style.value,
       vendorRef,
     }, ctx.slots)
 

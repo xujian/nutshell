@@ -1,4 +1,4 @@
-import { AllowedComponentProps, ComponentObjectPropsOptions, ComponentPropsOptions, EmitsOptions, ExtractPropTypes, ExtractPublicPropTypes, ObjectEmitsOptions, PropType, Ref } from 'vue'
+import { AllowedComponentProps, ComponentObjectPropsOptions, ComponentPropsOptions, ComputedRef, EmitsOptions, ExtractPropTypes, ExtractPublicPropTypes, ObjectEmitsOptions, PropType, Ref } from 'vue'
 import { Prettify, LooseRequired } from '@vue/shared'
 
 export type StyleObject = Record<string, string | number>

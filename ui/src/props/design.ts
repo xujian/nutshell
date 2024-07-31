@@ -109,6 +109,13 @@ const designProps = {
    */
   depth: {
     type: Number
+  },
+  /**
+   * 用来识别属性里包含 Design Props
+   */
+  __design: {
+    type: Boolean,
+    default: true,
   }
 }
 
@@ -117,8 +124,8 @@ const designProps = {
  */
 export type DesignProps = MakePropsType<typeof designProps>
 
-const hasDesignProps = (props: DesignProps) => {
-  return Object.keys(designProps)
+export function hasDesignProps (props: DesignProps): props is DesignProps {
+  return props.__design === true
 }
 
 const buildDesignClasses = (props: DesignProps) => {
