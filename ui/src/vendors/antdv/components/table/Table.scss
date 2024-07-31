@@ -1,21 +1,23 @@
 @import 'vxe-table/lib/style.css';
 
 :root {
-  --vxe-table-border-color: var(--ns-stroke);
+  --vxe-table-border-color: var(--stroke, var(--ns-stroke));
 }
 
 .ns-table {
-  --vxe-table-border-color: var(--stroke, var(--ns-stroke));
   --vxe-table-column-padding-default: var(--table-cell-padding);
-  --vxe-table-border-radius: var(--border-radius, var(--ns-border-radius));
   --vxe-table-row-height-default: 40px;
   --vxe-primary-color: var(--ns-primary);
-
+  --vxe-table-body-background-color: var(--fill);
   width: 100%;
+  &.with-design {
+    background-color: transparent !important;
+  }
   .vxe-table {
-    border-color: var(--ns-table-border-color, var(--ns-stroke));
+    border-color: var(--stroke, var(--ns-stroke));
     border-style: solid;
     border-width: 0px;
+    border-radius: var(--border-radius, var(--ns-border-radius));
     overflow: hidden;
   }
   .vxe-table--body {
@@ -36,6 +38,14 @@
   }
   .vxe-table--render-default {
     color: var(--foreground, var(--ns-text));
+    .vxe-table--border-line {
+      border-radius: var(--border-radius, var(--ns-border-radius));
+    }
+    .vxe-cell.c--tooltip {
+      &:has(.table-column-chips) {
+        overflow: visible;
+      }
+    }
     .vxe-header--column {
       height: var(--header-height, var(--row-height, var(--vxe-table-row-height-default)));
     }
@@ -92,6 +102,16 @@
     .ns-form-item {
       width: 100%;
       max-width: 100%;;
+    }
+    .vxe-table--fixed-left-wrapper,
+    .vxe-table--fixed-right-wrapper {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      z-index: 5;
+      overflow: hidden;
+      background-color: var(--vxe-table-body-background-color);
+      transition: box-shadow .3s;
     }
     &.border--default,
     &.border--none,
@@ -182,8 +202,10 @@
   // 用 vxe-table 内置的边框线 class 和 自定义 class 层叠出最终样式
   &.borders-all {
     .vxe-table {
-      border-color: var(--ns-table-border-color, var(--ns-stroke));
-      border-width: var(--border-width, 1px);
+      .vxe-table--border-line {
+        border-color: var(--ns-table-border-color, var(--ns-stroke));
+        border-width: var(--border-width, 1px);
+      }
     }
   }
   &.borders-none {

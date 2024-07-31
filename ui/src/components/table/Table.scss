@@ -12,13 +12,6 @@
     display: block;
     height: 100%;
   }
-  .vxe-table--render-default {
-    .vxe-cell.c--tooltip {
-      &:has(.table-column-chips) {
-        overflow: visible;
-      }
-    }
-  }
 }
 
 .table-pagination {
