@@ -6,7 +6,7 @@
     :brightness
     :shadow
     :depth
-    stroke="#ffffff66"
+    stroke="#ffffff99,#ffffff33"
     foreground="#fff">
     <ns-number
       :value="4"
@@ -54,9 +54,9 @@ import { ref } from 'vue'
 
 const tags = ['放款快', '利率低', '支持提放保', '简易审核']
 
-const fills = ['#ffffff22', '#ffffff44', '#ffffff66', '#ffffff88']
+const fills = ['#ffffff22', '#ffffff44', '#ffffff66', '#ffffff88', '#00000022', '#00000044']
     .map(c => ({label: c, value: c})),
-  blurs = [5, 10, 15, 20]
+  blurs = [5, 10, 15, 20, 30, 40, 50, 75, 100]
     .map(c => ({label: c, value: c})),
   brightnesses = [1, 1.2, 1.5, 2]
     .map(c => ({label: c, value: c})),
