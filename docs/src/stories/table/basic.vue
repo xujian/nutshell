@@ -46,9 +46,9 @@ const balanceRows = ref<科目余额[]>([])
 function load () {
   $http.get<WithPaging<科目余额[]>>('/json/balances-paging.json', {
     page: page.value
-  }).then((response) => {
-    balanceRows.value = response.data
-    paging.value = response.paging
+  }).then(({result}) => {
+    balanceRows.value = result.data
+    paging.value = result.paging
   })
 }
 

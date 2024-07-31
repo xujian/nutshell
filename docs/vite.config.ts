@@ -42,7 +42,8 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/api': {
-        target: 'http://simple.shensi.tech',
+        target: 'http://localhost:2024',
+        // target: 'http://simple.shensi.tech',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
