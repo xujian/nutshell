@@ -9,6 +9,7 @@
     @change="onDropdownChange"
     :items="[
       { label: 'Klein', value: 'klein' },
+      { label: 'Mind', value: 'mind' },
       { label: 'Gunmetal', value: 'gunmetal' },
       { label: 'Valentine', value: 'valentine' },
       { label: 'Present', value: 'present' },

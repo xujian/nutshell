@@ -1,11 +1,16 @@
 @use './tools/mixins' as *;
 @use './themes/klein' as *;
+@use './themes/mind' as *;
 @use './themes/gunmetal' as *;
 @use './themes/present' as *;
 @use './themes/valentine' as *;
 
 [data-theme=klein], .theme-klein {
   @include build-theme($klein)
+}
+
+[data-theme=mind], .theme-mind {
+  @include build-theme($mind)
 }
 
 [data-theme=gunmetal], .theme-gunmetal {

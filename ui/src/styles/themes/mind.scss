@@ -1,0 +1,35 @@
+@forward '../variables';
+@use '../tools/functions' as *;
+
+$mind: () !default;
+$mind: map-deep-merge(
+  (
+    brand: (
+      primary: #135952,
+      primary-text: #fff,
+      secondary: #a23f5d,
+      neutral: #999999,
+      accent: #ffb347,
+      positive: #008e36,
+      negtive: #ff4ce1,
+      warning: #985400,
+    ),
+    abstract: (
+      background: #f1f2f3,
+      paper: #f3dace,
+      surface: #e1e2e3,
+      fill: #d1d2d3,
+      text: #102329,
+      stroke: #ffffff88,
+    ),
+    states: (
+      hover: #ffffff33,
+      active: #ffffff22,
+      focus: #ffffff11,
+    ),
+    layout: (
+      header: #333,
+      nav: #003293,
+      footer: #0055ff,
+    ),
+  ), $mind);
