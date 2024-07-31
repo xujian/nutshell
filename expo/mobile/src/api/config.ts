@@ -1,7 +1,8 @@
 import type { HttpClientConfig } from '@uxda/nutshell'
 
 const clientConfig: HttpClientConfig = {
-  baseUrl: 'https://simple.shensi.tech',
+  baseUrl: 'http://localhost:2024',
+  // baseUrl: 'https://simple.shensi.tech',
 
 }
 
