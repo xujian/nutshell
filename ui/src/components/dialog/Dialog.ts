@@ -2,7 +2,6 @@ import { ObjectEmitsOptions, PropType, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDesignProps, useDimensionProps, useModelValuePropsForBoolean, usePopupProps } from '../../props'
 import { Color } from '../../composables/theme'
-import { buildDesignStyles } from '../../props/design'
 
 export const dialogProps = {
   title: {

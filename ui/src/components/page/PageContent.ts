@@ -1,7 +1,6 @@
 import { defineComponent, h, PropType } from 'vue'
 import { MakePropsType } from '../../utils'
-import { useBus, useSafeArea } from '../../composables'
-import { buildDesignClasses, buildDesignStyles, buildDesignVariables, type TextAlign, useDesignProps } from '../../props'
+import { useBus } from '../../composables'
 
 export type PageContentColorMode = 'light' | 'dark'
 

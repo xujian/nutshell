@@ -1,7 +1,7 @@
-import { PropType, ObjectEmitsOptions } from 'vue'
+import { PropType } from 'vue'
 import { buildProps } from '../../utils/private/props'
 import { Color } from '../../composables'
-import { buildDesignClasses, buildDesignStyles, useDesignProps, useSizeProps, useVariantProps } from '../../props'
+import { useDesignProps, useSizeProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 
 export const useChipProps = buildProps({

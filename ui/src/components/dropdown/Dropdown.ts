@@ -46,12 +46,6 @@ export const NsDropdown = define({
     setup (props) {
       return {
         props: {
-          classes: [
-            ...buildDesignClasses(props),
-          ],
-          style: {
-            ...buildDesignStyles(props),
-          }
         }
       }
     }

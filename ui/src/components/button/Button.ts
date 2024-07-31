@@ -1,5 +1,5 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
-import { buildDesignClasses, buildDesignStyles, useDesignProps, useSizeProps, useVariantProps } from '../../props'
+import { useDesignProps, useSizeProps, useVariantProps } from '../../props'
 import { define, MakePropsType } from '../../utils'
 import { useDimensionProps, useLoadingProps } from '../../props'
 import { Color } from '../../composables/theme'
@@ -72,8 +72,6 @@ export const NsButton = define({
     // 对参数做前期的处理
     return {
       props: {
-        classes: buildDesignClasses(props),
-        style: buildDesignStyles(props),
       }
     }
   }

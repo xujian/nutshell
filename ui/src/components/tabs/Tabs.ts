@@ -1,6 +1,6 @@
 import { PropType, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { buildDesignClasses, buildDesignStyles, useDesignProps, useModelValuePropsForInput } from '../../props'
+import { useDesignProps, useModelValuePropsForInput } from '../../props'
 import { UniDataItem } from '../../shared'
 
 export type TabsItem = {

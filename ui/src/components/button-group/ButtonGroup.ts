@@ -1,8 +1,8 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, ref } from 'vue'
-import { define, MakePropsType } from '../../utils'
-import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDesignProps, useDimensionProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { PropType, defineComponent, h, } from 'vue'
+import {  MakePropsType } from '../../utils'
+import { buildFlexClasses, buildFlexStyles, useDesignProps, useDimensionProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { UniDataItem } from '../../shared'
-import { BRANDS, Color, isBrand, type BrandColor } from '../../composables/theme'
+import { Color } from '../../composables/theme'
 import { NsButton } from '../button/Button'
 
 export const buttonGroupProps = {
@@ -92,11 +92,9 @@ export const NsButtonGroup = defineComponent({
       class: [
         'ns-button-group',
         'row',
-        ...buildDesignClasses(props),
         ...buildFlexClasses(props),
       ],
       style: {
-        ...buildDesignStyles(props),
         ...buildFlexStyles(props),
       },
     }, content())

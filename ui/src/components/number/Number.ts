@@ -10,7 +10,6 @@ import { useModelValuePropsForInput,
   makeTooltip,
   convertDimension,
   useSizeProps,
-  buildDesignVariables,
   buildDesignClasses,
 } from '../../props'
 import { Dimension } from '../../types'
@@ -222,7 +221,6 @@ export const NsNumber = defineComponent({
       ...buildDimensionProps(props),
       ...buildFlexStyles(props),
       ...buildDesignStyles(props),
-      ...buildDesignVariables(props),
       ...props.mainHeight
         ? { '--mainHeight': convertDimension(props.minHeight) }
         : {},

@@ -318,8 +318,6 @@ export const NsTable = define({
       ...props.headerHeight ? { '--header-height': `${props.headerHeight}px` } : {},
     }))
 
-    const classes = computed(() => buildDesignClasses(props))
-
     return {
       // 只返回修改后的属性
       // 将会和原有 props 合并
@@ -328,7 +326,6 @@ export const NsTable = define({
         // 对 customColumns 的处理在 vendors/components/table
         columns,
         style: style.value,
-        classes: classes.value,
       },
       methods: {
         hideColumns,

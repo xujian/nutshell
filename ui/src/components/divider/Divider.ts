@@ -1,7 +1,6 @@
 import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { Color } from '../../composables/theme'
-import { buildDesignVariables } from '../../props'
 
 export type DividerOrientationType = 'left' | 'right' | 'center'
 
