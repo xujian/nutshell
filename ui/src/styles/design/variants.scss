@@ -4,7 +4,9 @@
 }
 
 .variant-outlined {
+  --thick: 1px;
   border-color: var(--border-color, var(--ns-stroke));
+  box-sizing: border-box;
 }
 
 .variant-soft {

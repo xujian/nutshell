@@ -1,5 +1,5 @@
 import { PropType, ObjectEmitsOptions } from 'vue'
-import { useSizeProps, useDimensionProps, useDesignProps, buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles } from '../../props'
+import { useSizeProps, useDimensionProps, useDesignProps, buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 import { Color } from '../../composables/theme'
 import { UniDataItem } from '../../shared'
@@ -22,6 +22,7 @@ export const dropdownProps = {
     type: Boolean,
     default: false,
   },
+  ...useVariantProps(),
   ...useDimensionProps(),
   ...useDesignProps(),
 }

@@ -8,8 +8,11 @@ export const Dropdown = defineComponent({
   props: dropdownProps,
   setup (props: DropdownProps & MarginProps, ctx) {
     const { slots, emit } = ctx
-    console.log('===DropdownProps', props.classes)
+
     return () => h(AntdvDropdownButton, {
+      class: [
+        ...props.variant ? [`variant-${props.variant}`] : []
+      ],
       width: props.width,
       height: props.height,
       arrow: true,
