@@ -1,3 +1,14 @@
+.variant-plain {
+  background-color: transparent;
+  border-color: transparent;
+}
+
 .variant-outlined {
   border-color: var(--border-color, var(--ns-stroke));
+}
+
+.variant-soft {
+}
+
+.variant-plain {
 }

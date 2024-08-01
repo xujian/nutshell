@@ -3,6 +3,7 @@
 @property --fill {
   syntax: "<color>";
   inherits: false;
+  initial-value: transparent;
 }
 
 @property --gradient {
@@ -32,6 +33,7 @@
 @property --stroke {
   syntax: "<color>";
   inherits: false;
+  initial-value: transparent;
 }
 
 @property --thick {
@@ -63,6 +65,8 @@
 }
 
 .with-design {
+  --fill: unset;
+  --stroke: unset;
   background-color: var(--fill);
   border-color: var(--stroke, transparent);
   border-style: solid;

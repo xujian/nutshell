@@ -40,11 +40,14 @@ const tabs = [
     <ns-button-group v-model="value" :options="tabs" />
     <ns-button-group
       v-model="value"
+      round
+      variant="solid"
       color="primary"
       :options="tabs" />
     <ns-button-group
       v-model="value"
       round
+      variant="soft"
       color="primary"
       :options="tabs" />
     <ns-button-group
