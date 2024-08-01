@@ -37,7 +37,19 @@ const menuData = computed(() => [
     children: [
       {
         label: '视觉风格',
-        key: '/design/props'
+        key: '/design'
+      },
+      {
+        label: '色表 palettes',
+        key: '/design/palettes'
+      },
+      {
+        label: '派生风格 variants',
+        key: '/variants'
+      },
+      {
+        label: '毛玻璃效果',
+        key: '/design/glassmorphism'
       },
       {
         label: '预制渐层',
@@ -48,13 +60,9 @@ const menuData = computed(() => [
         key: '/design/motions'
       },
       {
-        label: '色表 palettes',
-        key: '/palettes'
+        label: '预制图案填充',
+        key: '/design/patterns'
       },
-      {
-        label: '派生风格 variants',
-        key: '/variants'
-      }
     ]
   },
   {

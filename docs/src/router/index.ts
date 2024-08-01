@@ -5,7 +5,9 @@ const HomePage = () => import('../pages/HomePage.vue')
 const AboutPage = () => import('../pages/AboutPage.vue')
 const PalettesPage = () => import('../pages/design/PalettesPage.vue')
 const DesignPropsPage = () => import('../pages/design/DesignPropsPage.vue')
+const GlassmorphismPage = () => import('../pages/design/GlassmorphismPage.vue')
 const GradientsPage = () => import('../pages/design/GradientsPage.vue')
+const PatternsPage = () => import('../pages/design/PatternsPage.vue')
 const MotionsPage = () => import('../pages/design/MotionsPage.vue')
 const ButtonPage = () => import('../pages/components/ButtonPage.vue')
 const ButtonGroupPage = () => import('../pages/components/ButtonGroupPage.vue')
@@ -63,14 +65,19 @@ const router = createRouter({
           component: HomePage
         },
         {
+          path: 'design',
+          name: 'design',
+          component: DesignPropsPage
+        },
+        {
           path: '/design/palettes',
           name: 'palettes',
           component: PalettesPage
         },
         {
-          path: 'design/props',
-          name: 'design-props',
-          component: DesignPropsPage
+          path: 'design/glassmorphism',
+          name: 'design-glassmorphism',
+          component: GlassmorphismPage
         },
         {
           path: 'design/gradients',
@@ -81,6 +88,11 @@ const router = createRouter({
           path: 'design/motions',
           name: 'design-motions',
           component: MotionsPage
+        },
+        {
+          path: 'design/patterns',
+          name: 'design-patterns',
+          component: PatternsPage
         },
         {
           path: '/components/button',

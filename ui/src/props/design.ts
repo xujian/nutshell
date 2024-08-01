@@ -40,6 +40,9 @@ const designProps = {
   gradient: {
     type: String as PropType<GradientString>
   },
+  /**
+   * 动画填充
+   */
   motion: {
     type: String,
   },
@@ -149,18 +152,25 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.gradient
         ? isResource(props.gradient)
           ? [`gradient-${props.gradient}`]
-          : ['gradient']
+          : ['with-gradient']
         : []),
     ...props.motion
         ? [`motion-${props.motion}`]
         : [],
+    ...props.motion
+        ? [`motion-${props.motion}`]
+        : [],
     // ...(props.gradient && /\d{3}/.test(props.gradient) ? [`gradient-${props.gradient}`] : []),
-    ...(props.texture ? ['texture'] : []),
-    ...(props.pattern ? ['pattern'] : []),
-    ...(props.gradient && props.texture ? ['texture-gradient'] : []),
-    ...(props.gradient && props.pattern ? ['pattern-gradient'] : []),
-    ...(props.shadow || props.depth ? ['shadow'] : []),
-    ...(props.stroke && isGradient(props.stroke) ? ['stroke-gradient'] : []),
+    ...(props.texture ? ['with-texture'] : []),
+    ...(props.pattern
+        ? isResource(props.pattern)
+          ? [`pattern-${props.pattern}`]
+          : ['with-pattern']
+        : []),
+    ...(props.gradient && props.texture ? ['with-texture-gradient'] : []),
+    ...(props.gradient && props.pattern ? ['with-pattern-gradient'] : []),
+    ...(props.shadow || props.depth ? ['with-shadow'] : []),
+    ...(props.stroke && isGradient(props.stroke) ? ['with-stroke-gradient'] : []),
     ...filterClasses
   ]
   return result
@@ -199,7 +209,7 @@ const buildTextureStyles: (props: DesignProps) => StyleObject = (props) => {
         }
       : {},
     // /pattern/ 指的是 连续平铺的图案
-    ...props.pattern
+    ...props.pattern && !isResource(props.pattern)
       ? {
           '--pattern': `url(${props.pattern})`,
         }

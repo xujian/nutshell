@@ -15,6 +15,10 @@ useHead({
     {
       rel: 'stylesheet',
       href: 'https://simple.shensi.tech/system-assets/motions/motions.css'
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://simple.shensi.tech/system-assets/patterns/patterns.css'
     }
   ]
 })

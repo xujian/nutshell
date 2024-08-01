@@ -24,7 +24,6 @@
     <p>组件应用以上属性时, 将会为组件生产必要的 class/style, 通过样式的叠加形成视觉效果。</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <story file="design/play" />
   </div>
 </template>
 <script lang="ts" setup>
@@ -32,12 +31,5 @@
 
 <style lang="scss">
 .design-props-page {
-  .story-card {
-    > .card-body {
-      background-image: url(https://simple.shensi.tech/images/wallpaper.jpg);
-      background-size: cover;
-      padding: var(--ns-spacing);
-    }
-  }
 }
 </style>

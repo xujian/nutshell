@@ -36,6 +36,8 @@
       hight="100"
       align="start"
       mainAlign="center"
+      pattern="002"
+      foreground="#fff"
       :auto-trend="true"
       :minimum-fraction-digits="2"
       :value="value3" />

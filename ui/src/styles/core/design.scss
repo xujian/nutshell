@@ -74,7 +74,7 @@
   &:not(.square):not(.round) {
     border-radius: var(--radius, var(--ns-border-radius));
   }
-  &.gradient {
+  &.with-gradient {
     background:
       var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
       var(--fill, transparent);
@@ -82,7 +82,7 @@
 }
 
 
-.texture {
+.with-texture {
   background:
     var(--texture),
     var(--fill, transparent);
@@ -91,7 +91,7 @@
   background-position: center center;
 }
 
-.pattern {
+.with-pattern {
   background:
     var(--pattern),
     var(--fill, transparent);
@@ -100,21 +100,21 @@
   background-position: left top;
 }
 
-.texture-gradient {
+.with-texture-gradient {
   background:
     var(--texture),
     var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
     var(--fill, transparent);
 }
 
-.pattern-gradient {
+.with-pattern-gradient {
   background:
     var(--pattern),
     var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
     var(--fill, transparent);
 }
 
-.stroke-gradient {
+.with-stroke-gradient {
   position: relative;
   border-width: 1px;
   border-color: transparent;
@@ -140,7 +140,7 @@
   backdrop-filter: brightness(var(--brightness, 1)) blur(var(--blur, 0px));
 }
 
-.shadow {
+.with-shadow {
   box-shadow:
     0 0.5px 0 1px #ffffff33 inset,
     0 1px 0 0 #ffffff66 inset,
