@@ -40,11 +40,11 @@ const menuData = computed(() => [
         key: '/design/props'
       },
       {
-        label: '内置渐层',
+        label: '预制渐层',
         key: '/design/gradients'
       },
       {
-        label: '动画底图',
+        label: '预制动画填充',
         key: '/design/motions'
       },
       {

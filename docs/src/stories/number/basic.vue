@@ -1,5 +1,5 @@
 <template>
-  <div class="number-page row wrap">
+  <div class="numbers row wrap">
     <ns-number
       prefix="2012年净利润"
       suffix="亿元人民币"
@@ -7,6 +7,7 @@
       hight="400"
       justify="center"
       stroke="secondary"
+      motion="001"
       :animated="true"
       :value="value1" />
     <ns-number
@@ -71,7 +72,7 @@
 </script>
 
 <style lang="scss">
-.number-page {
+.numbers {
   gap: 10px;
 }
 </style>

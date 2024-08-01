@@ -4,7 +4,7 @@
     <p class="caption">预制缓动背景</p>
     <p>&nbsp;</p>
     <ns-column align="stretch" :gap="10" class="playground full-width">
-      <ns-card :class="['sample-card', `motion-${motion}`]">
+      <ns-card :class="['sample-card']" :motion>
       </ns-card>
       <ns-row :gap="10" justify="start" wrap class="select full-width">
         <ns-button
@@ -20,7 +20,6 @@
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import type { UniDataItem } from '@uxda/nutshell'
 
 const motions = [
     '001', '002', '003', '004', '005',

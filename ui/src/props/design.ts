@@ -40,6 +40,9 @@ const designProps = {
   gradient: {
     type: String as PropType<GradientString>
   },
+  motion: {
+    type: String,
+  },
   /**
    * 底图
    */
@@ -124,6 +127,8 @@ const designProps = {
  */
 export type DesignProps = MakePropsType<typeof designProps>
 
+const isResource = (value: string) => /^\d{3}$/.test(value);
+
 export function hasDesignProps (props: DesignProps): props is DesignProps {
   return props.__design === true
 }
@@ -142,10 +147,13 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.round ? ['round'] : []),
     ...(props.square ? ['square'] : []),
     ...(props.gradient
-        ? /^\d{3}$/.test(props.gradient)
+        ? isResource(props.gradient)
           ? [`gradient-${props.gradient}`]
           : ['gradient']
         : []),
+    ...props.motion
+        ? [`motion-${props.motion}`]
+        : [],
     // ...(props.gradient && /\d{3}/.test(props.gradient) ? [`gradient-${props.gradient}`] : []),
     ...(props.texture ? ['texture'] : []),
     ...(props.pattern ? ['pattern'] : []),
@@ -187,7 +195,7 @@ const buildTextureStyles: (props: DesignProps) => StyleObject = (props) => {
     // /texture/ 指的是 填充形式的背景图
     ...props.texture
       ? {
-          '--texture': `url(${props.texture})`,
+          '--texture': props.texture,
         }
       : {},
     // /pattern/ 指的是 连续平铺的图案
