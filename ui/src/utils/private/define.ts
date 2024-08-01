@@ -58,8 +58,8 @@ export function define<
     ) => {
       props?: Partial<Props> & MarginProps,
       methods?: Record<string, any>,
-      style?: StyleObject,
-      classes?: string[],
+      // style?: StyleObject,
+      // classes?: string[],
       vendorRef?: Ref
     }
   },
@@ -108,7 +108,6 @@ export function define<
         className,
         ...classes.value,
       ],
-      classes: extraProps?.classes,
       style: style.value,
       vendorRef,
     }, ctx.slots)

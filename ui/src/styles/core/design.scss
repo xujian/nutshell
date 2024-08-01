@@ -3,7 +3,6 @@
 @property --fill {
   syntax: "<color>";
   inherits: false;
-  initial-value: transparent;
 }
 
 @property --gradient {
@@ -68,7 +67,7 @@
   border-color: var(--stroke, transparent);
   border-style: solid;
   border-width: var(--thick);
-  &:not(.square) {
+  &:not(.square):not(.round) {
     border-radius: var(--radius, var(--ns-border-radius));
   }
   &.gradient {
@@ -146,4 +145,10 @@
 
 .round {
   border-radius: 50vh;
+}
+
+.with-design {
+  &.ignores-design {
+    background-color: transparent !important;
+  }
 }

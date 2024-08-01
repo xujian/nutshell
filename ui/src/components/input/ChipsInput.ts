@@ -1,4 +1,4 @@
-import { buildFlexClasses, buildFlexStyles, useDesignProps, useFieldProps, useFlexProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { useDesignProps, useFieldProps, useFlexProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 import { UniDataItem } from '../../shared'
 import { PropType } from 'vue'
@@ -38,12 +38,6 @@ export const NsChipsInput = define({
       // 对参数做前期的处理
       return {
         props: {
-          classes: [
-            ...buildFlexClasses(props),
-          ],
-          style: {
-            ...buildFlexStyles(props),
-          },
           rules: finalRules as FullValidationRule[]
         }
       }

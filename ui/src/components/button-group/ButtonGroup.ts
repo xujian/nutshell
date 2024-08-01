@@ -92,6 +92,7 @@ export const NsButtonGroup = defineComponent({
       class: [
         'ns-button-group',
         'row',
+        ...props.variant ? [`variant-${props.variant}`] : ['variant-plain'],
         ...buildFlexClasses(props),
       ],
       style: {
