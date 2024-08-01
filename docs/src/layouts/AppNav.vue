@@ -351,6 +351,7 @@ const menuData = computed(() => [
     &.ant-menu-light {
       color: var(--ns-text);
       background-color: transparent;
+      border-inline-end: 0;
       .ant-menu-item-selected {
         background-color: var(--ns-primary);
       }
