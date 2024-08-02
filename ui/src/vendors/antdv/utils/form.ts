@@ -28,7 +28,6 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
     {
       class: [
         'ns-form-item',
-        ...props.variant ? [`variant-${props.variant}`] : [],
         ...label === null ? ['no-label' ] : []
       ],
       label: label !== null

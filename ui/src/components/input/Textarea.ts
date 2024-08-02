@@ -1,6 +1,6 @@
 import { define, MakePropsType } from '../../utils'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
-import { FullValidationRule, ValidationRule, buildStyles, formatRules } from '../../props/field'
+import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 import { PropType } from 'vue'
 
 export type AutoSizeType = Boolean | Object
@@ -55,7 +55,6 @@ export const NsTextarea = define({
     const finalRules = formatRules(props.rules as ValidationRule[], props)
     return {
       props: {
-        style: buildStyles(props),
         rules: finalRules as FullValidationRule[]
       }
     }

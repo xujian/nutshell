@@ -1,7 +1,7 @@
 import type { ObjectEmitsOptions, PropType, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
-import { FullValidationRule, ValidationRule, buildStyles, formatRules } from '../../props/field'
+import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 
 /**
  * 输入框类型
@@ -117,7 +117,6 @@ export const NsInput = define({
     const finalRules = formatRules(props.rules as ValidationRule[], props)
     return {
       props: {
-        style: buildStyles(props),
         rules: finalRules as FullValidationRule[]
       }
     }

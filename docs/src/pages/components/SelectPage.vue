@@ -1,7 +1,7 @@
 <template>
   <h1 class="my-lg">下拉选框 &lt;ns-select&gt;</h1>
   <h2 class="my-md">Variants</h2>
-  <ns-card>
+  <ns-card fill="#fff">
     <ns-row class="variants" v-for="(variant) in variants" align="center" :key="variant">
       <h4 class="variant-label">{{ variant }}</h4>
       <ns-select
@@ -17,7 +17,7 @@
   <p>&nbsp;</p>
   <h2>多项选择</h2>
   <p>&nbsp;</p>
-  <ns-card>
+  <ns-card fill="#fff">
     <ns-row>
       <ns-multiple-select
         v-model="multipleValue"

@@ -6,7 +6,6 @@
       width="48%"
       hight="400"
       justify="center"
-      stroke="secondary"
       motion="001"
       :animated="true"
       :value="value1" />
@@ -36,8 +35,7 @@
       hight="100"
       align="start"
       mainAlign="center"
-      pattern="002"
-      foreground="#fff"
+      pattern="001"
       :auto-trend="true"
       :minimum-fraction-digits="2"
       :value="value3" />

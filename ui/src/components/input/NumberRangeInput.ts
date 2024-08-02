@@ -1,7 +1,7 @@
 import { InputEmits, inputEmits } from './Input'
 import { useFieldProps, useModelValuePropsForArray, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
-import { FullValidationRule, ValidationRule, buildStyles, formatRules } from '../../props/field'
+import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 
 export const numberRangeInputProps = {
   lazy: {
@@ -33,7 +33,6 @@ export const NsNumberRangeInput = define({
     const finalRules = formatRules(props.rules as ValidationRule[], props)
     return {
       props: {
-        style: buildStyles(props),
         rules: finalRules as FullValidationRule[]
       }
     }

@@ -1,5 +1,4 @@
 import { define, MakePropsType } from '../../utils'
-import { buildStyles } from '../../props/field'
 import { inputEmits, InputEmits } from './Input'
 import { PropType } from 'vue'
 import { useSizeProps, useVariantProps } from '../../props'
@@ -35,7 +34,6 @@ export const NsInputGroup = define({
   setup(props, ctx) {
     return {
       props: {
-        style: buildStyles(props),
       }
     }
   }

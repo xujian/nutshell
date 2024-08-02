@@ -2,7 +2,7 @@ import { PropType, useSlots } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps, useFlexProps } from '../../props'
 import { UniDataItem } from '../../shared'
-import { ValidationRule, buildStyles, formatRules } from '../../props/field'
+import { ValidationRule, formatRules } from '../../props/field'
 
 export const radioGroupProps = {
   ...useModelValuePropsForInput(),
@@ -55,7 +55,6 @@ export const NsRadioGroup = define({
 
     return {
       props: {
-        style: buildStyles(props),
         // 这样写是为了避免用 undefine 覆盖掉原值 丢失 reactive
         ...items && { items },
         rules

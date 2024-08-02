@@ -64,6 +64,7 @@
     <p>&nbsp;</p>
     <ns-button-group
       color="primary"
+      round
       v-model="variant"
       :options="variantOptions"/>
   </ns-card>

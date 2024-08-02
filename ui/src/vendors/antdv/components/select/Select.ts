@@ -21,11 +21,11 @@ export const Select = defineComponent({
 
     return () => renderFormItem({
         ...props,
+      }, ctx.slots,
+      () => h(AntSelect, {
         class: [
           props.variant ? `variant-${props.variant}` : '',
         ],
-      }, ctx.slots,
-      () => h(AntSelect, {
         name: props.name,
         options: props.options,
         allowClear: clearable,
