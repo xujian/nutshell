@@ -23,9 +23,6 @@ export const Select = defineComponent({
         ...props,
       }, ctx.slots,
       () => h(AntSelect, {
-        class: [
-          props.variant ? `variant-${props.variant}` : '',
-        ],
         name: props.name,
         options: props.options,
         allowClear: clearable,

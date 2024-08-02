@@ -1,6 +1,6 @@
 .ns-form-item {
   width: 420px;
-  border-width: 1px;
+  border-width: 0px;
   border-radius: var(--ns-border-radius);
   border-style: solid;
   border-color: transparent;
@@ -61,12 +61,20 @@
     }
   }
   .ant-form-item-control-input {
-    border-width: 0;
+    --stroke: var(--ns-stroke);
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
     border-radius: var(--ns-border-radius);
     background-color: var(--ns-fill);
     &:focus {
       outline: none;
       box-shadow: none;
+    }
+  }
+  &.variant-outlined {
+    .ant-form-item-control-input {
+      border-color: var(--stroke, var(--ns-stroke));
     }
   }
   &.ant-form-item-with-help {

@@ -10,7 +10,7 @@
   </ns-card>
   <h2 class="my-md">Variants</h2>
   <ns-card fill="#fff">
-    <ns-row class="variants" v-for="(variant) in variants" align="center" :key="variant">
+    <ns-row class="variants" v-for="(variant) in variants" align="start" justify="start" :key="variant">
       <h4 class="variant-label">{{ variant }}</h4>
       <ns-input
         :name="`client-variant-${variant}`"

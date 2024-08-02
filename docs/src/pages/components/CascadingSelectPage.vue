@@ -1,15 +1,16 @@
 <template>
   <h1 class="my-lg">级联下拉选框 &lt;ns-cascading-select&gt;</h1>
   <h2 class="my-md">Variants</h2>
-  <ns-row class="variants" v-for="(variant) in variants" :key="variant">
+  <ns-row class="variants" v-for="(variant) in variants" align="start" justify="start" :key="variant">
     <h4 class="variant-label">{{ variant }}</h4>
     <ns-cascading-select
       :options="cities"
       v-model="value"
       :name="`client-variant-${variant}`"
       :key="'primary'"
-      :color="'primary'" 
-      :variant="variant" label="创建订单"></ns-cascading-select>
+      :color="'primary'"
+      :variant="variant"
+      label="选择地区"></ns-cascading-select>
     </ns-row>
 </template>
 

@@ -1,7 +1,8 @@
 .ns-cascading-select {
   .ant-select {
     .ant-select-selector {
-      border-color: var(--ns-stroke);
+      border-width: 0;
+      background-color: transparent;
       color: var(--na-text);
     }
     .ant-select-clear {

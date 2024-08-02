@@ -1,6 +1,6 @@
 import { MakePropsType, define } from '../../utils'
 import { PropType } from 'vue'
-import { useFieldProps } from '../../props'
+import { useFieldProps, useVariantProps } from '../../props'
 import { ValidationRule, formatRules } from '../../props/field'
 
 export type CascadingSelectOption = {
@@ -47,7 +47,8 @@ export const cascadingSelectProps = {
   searchable: {
     type: Boolean,
     default: false,
-  }
+  },
+  ...useVariantProps(),
 }
 
 export type CascadingSelectProps = MakePropsType<typeof cascadingSelectProps>
