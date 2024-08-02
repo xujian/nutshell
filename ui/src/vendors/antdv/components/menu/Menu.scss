@@ -1,4 +1,6 @@
 .ns-menu {
+  width: fit-content;
+  min-width: 100px;
   &.ant-menu,
   &.ant-menu-sub {
     border-radius: var(--ns-border-radius);

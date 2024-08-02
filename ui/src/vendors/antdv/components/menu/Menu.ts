@@ -13,7 +13,7 @@ export const Menu = (props: MenuProps, ctx: SetupContext) => {
     return {
       key: item.value,
       label: item.label,
-      popupClassName: ['ns-menu', ...classes].join(' '),
+      popupClassName: ['ns-menu'].join(' '),
       ...(item.children
         ? {
             children: item.children.map(transformItem)

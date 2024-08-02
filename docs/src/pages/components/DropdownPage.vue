@@ -14,11 +14,9 @@
       label="排序" :key="color"></ns-dropdown>
   </ns-row>
   <h2 class="my-md">Variants</h2>
-  <ns-row class="variants" v-for="(variant) in variants" align="center" :key="variant">
+  <ns-row class="variants" v-for="(variant) in variants" align="center" justify="start" :key="variant">
     <h4 class="variant-label">{{ variant }}</h4>
-    <ns-dropdown v-for="(color) in colors" class="my-xs"
-      :key="color"
-      :color="color"
+    <ns-dropdown class="my-xs"
       :items="menuItems"
       :variant="variant" label="排序"></ns-dropdown>
     </ns-row>
