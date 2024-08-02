@@ -8,7 +8,6 @@ export const Form = (props: FormProps & MarginProps, { slots }: SetupContext) =>
   return h(AntdvForm, {
     ref: props.vendorRef,
     class: [
-      ...props.classes || [],
       ...props.variant ? [`variant-${props.variant}`] : [],
     ],
     name: props.name,

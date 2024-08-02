@@ -1,13 +1,12 @@
 import { h, ref, SetupContext, useAttrs, VNode } from 'vue'
 import { ChipsProps, NsButton, NsCheckboxGroup, NsChip, NsPopover } from '../../../../components'
 import { UniDataItem } from '../../../../shared'
-import { VendorContainer } from '../../../Container'
+import { VendorWrapper } from '../../../VendorWrapper'
 
 export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
   const options = props.options || []
 
   const attrs = useAttrs()
-  console.log('===attrs chips', attrs)
 
   const onItemClick = (item: UniDataItem) => {
     const value = props.modelValue || [],
@@ -18,7 +17,7 @@ export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
     props['onUpdate:modelValue']?.(newValue)
   }
 
-  return h(VendorContainer, {
+  return h(VendorWrapper, {
     ignoresDesign: true
   }, {
     default: () => options.map((o) => {
@@ -26,7 +25,6 @@ export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
       return h(NsChip, {
         class: [
           ...on ? ['active'] : [],
-          ...props.classes ?? [],
         ],
         style: attrs.style,
         variant: props.variant,

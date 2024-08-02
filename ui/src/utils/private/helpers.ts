@@ -7,7 +7,8 @@ export type StyleObject = Record<string, string | number>
  */
 export type MarginProps = {
   classes?: string[],
-  style?: StyleObject,
+  styles?: StyleObject,
+  structured?: boolean,
   vendorRef?: Ref,
 }
 
@@ -18,7 +19,12 @@ export const marginProps = {
     type: Array as PropType<string[]>,
     default: []
   },
-  vendorRef: null,
+  styles: {
+    type: Object as PropType<StyleObject>,
+  },
+  vendorRef: {
+    type: Object as PropType<Ref>,
+  },
 }
 
 export type EmitsToProps<T extends ObjectEmitsOptions> = {

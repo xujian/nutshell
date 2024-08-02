@@ -1,4 +1,4 @@
-import { SetupContext, computed, h, VNode, ref, reactive, defineComponent, getCurrentInstance } from 'vue'
+import { SetupContext, computed, h, VNode, ref, reactive, defineComponent, getCurrentInstance, useAttrs } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents } from 'vxe-table'
 import type { VxeTablePropTypes } from 'vxe-table'
 import type { CustomColumnFunctionalRender, TableColumnData, TableProps,
@@ -61,6 +61,7 @@ export const Table = defineComponent({
   emits: tableEmits,
   setup (props: TableProps & MarginProps, ctx: SetupContext) {
 
+    console.log('===table props', props.styles)
     /**
      * 状态
      */
@@ -77,11 +78,6 @@ export const Table = defineComponent({
         ? `table-columns-${routePath.split('/').join('-')}-${props.cacheColumns}`
         : ''
     const $n = useNutshell()!
-
-    const classes = [
-      ...props.classes || [],
-      ...props.hasPagination ? ['table-has-pagination'] : []
-    ]
 
     // 用来处理复选框逻辑
     const selectionOptions = {
@@ -635,20 +631,23 @@ export const Table = defineComponent({
             ...props.tooltipMethod ? {contentMethod: props.tooltipMethod} : {}
           },
           border: border.value,
-          round: props.round,
           // loading: loading,
           // pagination: false,
           // rowKey: props.rowKey,
           // rowSelection,
           spanMethod,
+          class: [
+            ...props.classes || [],
+          ],
           style: {
-            ...fills
+            ...fills,
+            ...props.styles,
           }
         }, () => columns)
       },
       pagination = () => h(NsPagination, {
         class: [
-          'table-pagination'
+          'ns-table-pagination'
         ],
         ...props.paging,
         onChange: (value: number, pageSize: number) => {
@@ -690,16 +689,15 @@ export const Table = defineComponent({
     }
 
     vm.render = () => h('div', {
-        class: classes,
-        style: props.style,
-      }, {
-          default: () => [
-            vxe(),
-            props.hasPagination
-              ? pagination()
-              : null
-          ]
-        }
+        class: [
+          ...props.hasPagination ? ['has-pagination'] : [],
+        ]
+      }, [
+          vxe(),
+          props.hasPagination
+            ? pagination()
+            : null
+        ]
     )
 
     props.vendorRef!.value = {

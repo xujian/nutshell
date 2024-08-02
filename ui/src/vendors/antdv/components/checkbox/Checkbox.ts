@@ -7,12 +7,8 @@ import { MarginProps } from '../../../../utils'
 export const Checkbox = (props: CheckboxProps & MarginProps, ctx: SetupContext) => {
 
   return h(AntdvCheckbox, {
-    class: [
-      ...props.classes || []
-    ],
     checked: props.modelValue,
     'onUpdate:checked': (value: boolean) => {
-      console.log('++++++', value, props['onUpdate:modelValue'])
       props['onUpdate:modelValue']?.(value)
     },
     disabled: props.disabled ?? false,

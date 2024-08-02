@@ -22,7 +22,6 @@ const getSize = (size?: Size): ButtonSize => {
 export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext) => {
   const classes = [
     ...props.size ? [`size-${props.size}`] : [],
-    ...(props.classes ?? []),
     ...props.variant ? [`variant-${props.variant}`] : [],
     ...props.iconPosition ? [`icon-position-${props.iconPosition}`] : [],
   ]
@@ -45,7 +44,6 @@ export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext
 
   const shape = props.round === true ? void 0 : ('suqare' as ButtonShape)
   const style = {
-    ...props.style,
     ...props.iconFill ? {'--icon-fill': props.iconFill} : {},
   }
 

@@ -312,7 +312,6 @@ export const NsTable = define({
     }
 
     const style = computed(() => ({
-      ...buildDesignStyles(props),
       ...props.headerColor ? { '--header-color': props.headerColor } : {},
       ...props.rowHeight ? { '--row-height': `${props.rowHeight}px` } : {},
       ...props.headerHeight ? { '--header-height': `${props.headerHeight}px` } : {},
@@ -332,6 +331,7 @@ export const NsTable = define({
         showColumns,
         clearChecked
       },
+      structured: true,
       vendorRef,
     }
   }

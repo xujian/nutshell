@@ -10,9 +10,6 @@ export const Switch = (props: SwitchProps, ctx: Omit<SetupContext, 'expose'>) =>
       },
       ctx.slots,
       () => h(NutSwitch, {
-        class: [
-          ...props.classes || []
-        ].join(' '),
         modelValue: props.modelValue,
         disabled: props.disabled,
         size: props.size === 'xs' ? 'small' : 'default',

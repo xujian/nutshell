@@ -60,7 +60,8 @@ export function define<
       methods?: Record<string, any>,
       // style?: StyleObject,
       // classes?: string[],
-      vendorRef?: Ref
+      vendorRef?: Ref,
+      structured?: boolean,
     }
   },
 ) {
@@ -79,7 +80,7 @@ export function define<
     // the real setup
     // const { setup: setupOriginal } = options
     const v = useVendor()
-    const { props: extraProps, methods, vendorRef} = options.setup(props, ctx)
+    const { props: extraProps, methods, vendorRef, structured} = options.setup(props, ctx)
     const { slots, emit } = ctx
     const defaultSlot = slots.default
     const render: Ref<FunctionalComponent<Props, EmitsOptions, any>>
@@ -95,20 +96,27 @@ export function define<
 
     const vm = getCurrentInstance() as any
     const className = kebabCase(options.name),
+      // 自动处理 design props 产生的 class / style
+      // 唯有当 发现参数 structured 的时候
+      // 前端要求将 classes/styles 独立返回
       classes = hasDesignProps(props)
         ? computed(() => buildDesignClasses(props))
         : computed(() => []),
-      style = hasDesignProps(props)
+      styles = hasDesignProps(props)
         ? computed(() => buildDesignStyles(props))
-        : computed(() => [])
+        : computed(() => ({}))
+    console.log('===define styles.value', styles.value)
     vm.render = () => h(render.value, {
       ...props,
       ...extraProps,
       class: [
         className,
-        ...classes.value,
+        ...structured ? [] : classes.value,
       ],
-      style: style.value,
+      ...structured ? {} : { style: styles.value },
+      // 用特定的名称返回计算好的 classes/styles
+      ...structured ? { classes: classes.value } : {},
+      ...structured ? { styles: styles.value } : {},
       vendorRef,
     }, ctx.slots)
 

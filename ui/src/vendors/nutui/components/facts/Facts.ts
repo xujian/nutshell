@@ -38,11 +38,7 @@ export const Facts = (props: FactsProps & MarginProps, ctx: Omit<SetupContext, '
   return h('div', {
     class: [
       'ns-facts',
-      ...props.classes || [],
     ],
-    styles: {
-      ...props.style
-    }
   }, {
       default: slots
     }

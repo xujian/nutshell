@@ -1,24 +1,43 @@
 @import 'vxe-table/lib/style.css';
 
-:root {
-  --vxe-table-border-color: var(--stroke, var(--ns-stroke));
-}
-
 .ns-table {
   --vxe-table-column-padding-default: var(--table-cell-padding);
   --vxe-table-row-height-default: 40px;
   --vxe-primary-color: var(--ns-primary);
-  --vxe-table-body-background-color: var(--fill);
   width: 100%;
-  &.with-design {
-    --fill: #fff;
+  .round {
+    border-radius: inherit;
   }
   .vxe-table {
-    border-color: var(--stroke, var(--ns-stroke));
     border-style: solid;
     border-width: 0px;
     border-radius: var(--border-radius, var(--ns-border-radius));
     overflow: hidden;
+    --stroke: var(--ns-stroke);
+    --vxe-table-border-color: var(--stroke, var(--ns-stroke));
+    --vxe-table-body-background-color: var(--fill);
+    &.with-design {
+      --fill: #fff;
+    }
+    // 处理边框
+    // 用 vxe-table 内置的边框线 class 和 自定义 class 层叠出最终样式
+    &.borders-all {
+      .vxe-table--border-line {
+        border-color: var(--ns-table-border-color, var(--ns-stroke));
+        border-width: var(--stroke, 1px);
+      }
+    }
+    &.borders-none {
+      border-color: transparent
+    }
+    &.borders-none {
+      border-color: transparent
+    }
+  }
+  &.has-pagination {
+    .vxe-table {
+      margin-bottom: var(--ns-spacing);
+    }
   }
   .vxe-table--body {
     height: 100%;
@@ -119,7 +138,7 @@
     &.border--full,
     &.border--outer {
       .vxe-table--header-wrapper {
-        color: var(--foreground, var(--ns-text));
+        color: unset;
       }
     }
     .vxe-body--row {
@@ -127,15 +146,6 @@
         // 鼠标 hover 行高亮
         background-color: color-mix(in srgb, var(--fill, var(--ns-fill)) 90%, #000);
       }
-    }
-  }
-  &.variant-primary {
-    .ant-table {
-        background-color: var(--ns-primary);
-    }
-    .ant-table-cell-fix-left,
-    .ant-table-cell-fix-right {
-      background-color: var(--ns-primary);
     }
   }
   .table-column-crypto {
@@ -198,27 +208,6 @@
       z-index: 9;
     }
   }
-  // 处理边框
-  // 用 vxe-table 内置的边框线 class 和 自定义 class 层叠出最终样式
-  &.borders-all {
-    .vxe-table {
-      .vxe-table--border-line {
-        border-color: var(--ns-table-border-color, var(--ns-stroke));
-        border-width: var(--stroke, 1px);
-      }
-    }
-  }
-  &.borders-none {
-    .vxe-table {
-      border-color: transparent
-    }
-  }
-  &.borders-none {
-    .vxe-table {
-      border-color: transparent
-    }
-  }
-
   .ns-table-column-btn {
     &:not(.ns-table-column-btn-th) .vxe-cell {
       padding: 0;
@@ -231,9 +220,6 @@
   .vxe-checkbox--icon {
     font-weight: normal !important;
   }
-}
-
-.table-has-pagination {
   .ns-pagination {
     text-align: right;
   }
