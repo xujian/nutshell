@@ -1,6 +1,5 @@
 import { h, SetupContext } from 'vue'
 import { TabsItem, TabsProps } from '../../../../components'
-import { buildDesignClasses, buildDesignStyles } from '../../../../props'
 
 export const Tabs = (props: TabsProps, { emit, slots }: Omit<SetupContext, 'expose'>) => {
   // 确定 children
@@ -24,12 +23,9 @@ export const Tabs = (props: TabsProps, { emit, slots }: Omit<SetupContext, 'expo
 
   return h(NutTabs, {
     class: [
-      'ns-tabs',
       ...props.variant ? [`variant-${props.variant}`] : [],
       `tabs-align-${props.align || 'start'}`,
-      ...buildDesignClasses(props),
     ],
-    style: buildDesignStyles(props),
     swipeable: true,
     align: 'left',
     modelValue: props.modelValue,

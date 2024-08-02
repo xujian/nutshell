@@ -165,13 +165,6 @@ export const useFieldProps = buildProps(fieldProps)
 
 export type FieldProps = MakePropsType<typeof fieldProps>
 
-export const buildStyles = (props: FieldProps) => {
-  const style = {
-    ...props.fill && { '--ns-fill': props.fill }
-  }
-  return style
-}
-
 const tippy = {
   mounted (el: HTMLDivElement) {
     makeFieldHint(el)

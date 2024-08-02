@@ -42,7 +42,6 @@ export const NumberRangeInput = defineComponent({
         h(
           AntInputNumber,
           {
-            class: props.classes,
             maxlength: 20,
             disabled: props.disabled ?? false,
             value: props.modelValue?.[0],
@@ -69,7 +68,6 @@ export const NumberRangeInput = defineComponent({
         h(FormItemRest, {}, {
           default: () => h(AntInputNumber,
             {
-              class: props.classes,
               disabled: props.disabled ?? false,
               value: props.modelValue?.[1],
               placeholder: props.placeholder,

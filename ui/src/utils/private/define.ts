@@ -105,7 +105,6 @@ export function define<
       styles = hasDesignProps(props)
         ? computed(() => buildDesignStyles(props))
         : computed(() => ({}))
-    console.log('===define styles.value', styles.value)
     vm.render = () => h(render.value, {
       ...props,
       ...extraProps,

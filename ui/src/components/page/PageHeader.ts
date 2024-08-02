@@ -15,7 +15,6 @@ export const NsPageBottom = defineComponent({
   setup (props, { slots }) {
 
     const style = {
-      ...buildDesignVariables(props),
       ...buildDesignStyles(props),
     }
 

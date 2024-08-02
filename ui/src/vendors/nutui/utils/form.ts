@@ -51,10 +51,6 @@ export type FormItemProps = FieldProps & VariantProps & DesignProps
  */
 export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: FunctionalComponent) => {
 
-  const styles = {
-    ...buildDesignVariables(props),
-  }
-
   const rules = transformRules(props.rules as FullValidationRule[])
   const formItemRef = ref(null)
 
@@ -70,7 +66,6 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
         ...props.label ? [] : ['no-label']
 
       ],
-      style: styles,
       label: props.label || '',
       // form 字段
       prop: props.name as string,

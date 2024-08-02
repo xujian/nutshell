@@ -11,12 +11,10 @@ export const CascadingSelect = defineComponent({
 
     const { clearable, searchable } = props
 
-    const classes = ['ns-select', 'ns-cascading-select'].join(' ')
-
     return () => renderFormItem(props, ctx.slots,
       () =>
         h(AntCascader, {
-          class: classes,
+          class: ['ns-cascading-select'],
           name: props.name,
           options: props.options,
           allowClear: clearable,

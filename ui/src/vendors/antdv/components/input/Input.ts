@@ -47,7 +47,6 @@ export const Input = defineComponent({
         () => h(
           AntInput,
           {
-            class: props.classes,
             type: props.type as AntInputType,
             maxlength: props.maxlength ?? 50,
             showCount: props.hasCount ?? false,

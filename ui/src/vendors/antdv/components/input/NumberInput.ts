@@ -28,7 +28,6 @@ export const NumberInput = defineComponent({
           AntInputNumber,
           {
             ref: inputNumberRef,
-            class: props.classes,
             maxlength: props.maxlength ?? 20,
             disabled: props.disabled ?? false,
             // @ts-ignore

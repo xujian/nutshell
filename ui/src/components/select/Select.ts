@@ -1,6 +1,6 @@
 import { PropType } from 'vue'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
-import { ValidationRule, buildStyles, formatRules } from '../../props/field'
+import { ValidationRule, formatRules } from '../../props/field'
 import { MakePropsType } from '../../utils/private/helpers'
 import { define } from '../../utils'
 import { UniDataItem } from '../../shared'
@@ -59,7 +59,6 @@ export const NsSelect = define({
     const rules = formatRules(props.rules as ValidationRule[], props)
     return {
       props: {
-        style: buildStyles(props),
         rules
       }
     }

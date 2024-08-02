@@ -12,14 +12,12 @@ export const MultipleSelect = defineComponent({
   setup(props, ctx) {
     const { emit } = ctx
 
-    const classes = ['ns-select', 'ns-multiple-select'].join(' ')
-
     const { clearable, searchable } = props
 
     const rules = transformRules(props.rules as FullValidationRule[])
     return () => renderFormItem(props, ctx.slots,() =>
         h(AntSelect, {
-          class: classes,
+          class: ['ns-multiple-select'],
           name: props.name,
           mode: props.tagsMode ? 'tags' : 'multiple',
           options: props.options,

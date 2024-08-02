@@ -61,7 +61,6 @@ export const Table = defineComponent({
   emits: tableEmits,
   setup (props: TableProps & MarginProps, ctx: SetupContext) {
 
-    console.log('===table props', props.styles)
     /**
      * 状态
      */
@@ -128,7 +127,6 @@ export const Table = defineComponent({
           ),
           modelValue: state.visibleColumns,
           'onUpdate:modelValue': (labels: string[]) => {
-            console.log('===labels', labels)
             state.visibleColumns = labels
             localStorage.setItem(columnsCacheKey, labels.join(','))
           }

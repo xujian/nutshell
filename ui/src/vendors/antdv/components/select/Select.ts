@@ -3,16 +3,20 @@ import { defineComponent, h } from 'vue'
 import { Select as AntSelect } from 'ant-design-vue'
 import { SelectValue } from 'ant-design-vue/es/select'
 import { renderFormItem } from '../../utils'
+import { marginProps } from '../../../../utils'
 
 export const Select = defineComponent({
   name: 'AntdvSelect',
-  props: selectProps,
+  props: {
+    ...selectProps,
+    ...marginProps
+  },
   setup (props, ctx) {
 
     const { emit } = ctx
 
     const {
-      clearable, searchable
+      clearable, searchable, classes
     } = props
 
     return () => renderFormItem({
