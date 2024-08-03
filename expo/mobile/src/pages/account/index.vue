@@ -5,7 +5,8 @@
       class="account-header"
       title="大道云 Pro"
       :minimal="false"
-      texture="https://simple.shensi.tech/motions/wave.svg">
+      texture="https://simple.shensi.tech/motions/wave.svg"
+      :style="{'--d': d}">
       <div class="avatar row align-center justify-start">
         <div class="west col px-sm">
           <img src="https://ddjf-test-oss.ddjf.info/user-central/photo-1718094978288438524.jpeg" />
@@ -24,8 +25,20 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useTabbar } from '@uxda/appkit'
+
+const width = ref(375),
+  height = ref(196),
+  d = computed(() => [
+    `"M0 ${height.value - 20}`,
+    `V0H${width.value}`,
+    `V${height.value - 20}`,
+    `C${width.value},${height.value - 20} ${width.value - 20},${height.value} ${width.value / 2},${height.value}`,
+    `C20,${height.value} 0,${height.value - 20} 0,${height.value - 20}`,
+    'Z"'
+    ].join('')
+  )
 
 const menu1Items = [
   {
@@ -63,6 +76,9 @@ onMounted(() => {
 
 <style lang="scss">
 .account-page {
+  .account-header {
+    clip-path: path(var(--d));
+  }
   .avatar {
     padding-bottom: 20px;
     img {
