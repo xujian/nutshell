@@ -3,6 +3,7 @@ node_modules/
 .Thumbs.db
 ui/dist/
 docs/dist/
+plot/dist/
 docs/public/svg/
 yarn.lock
 ui/.eslintrc-auto-import.json
