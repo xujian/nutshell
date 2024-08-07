@@ -48,7 +48,7 @@ const menuData = computed(() => [
         key: '/variants'
       },
       {
-        label: '毛玻璃效果',
+        label: '磨砂玻璃效果',
         key: '/design/glassmorphism'
       },
       {
@@ -248,6 +248,24 @@ const menuData = computed(() => [
             label: '文件表 files',
             key: '/components/files'
           }
+        ]
+      },
+      {
+        label: '图表',
+        key: 'plot',
+        children: [
+          {
+            label: '折线图 line-chart',
+            key: '/plot/line'
+          },
+          {
+            label: '柱状图 bar-chart',
+            key: '/plot/bar'
+          },
+          {
+            label: '饼图 pie-chart',
+            key: '/plot/pie'
+          },
         ]
       },
       {
