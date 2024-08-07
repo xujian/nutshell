@@ -42,6 +42,9 @@ const ListPage = () => import('../pages/components/ListPage.vue')
 const RepeatorPage = () => import('../pages/components/RepeatorPage.vue')
 const MenuPage = () => import('../pages/components/MenuPage.vue')
 const DividerPage = () => import('../pages/components/DividerPage.vue')
+const LineChartPage = () => import('../pages/plot/LineChartPage.vue')
+const BarChartPage = () => import('../pages/plot/BarChartPage.vue')
+const PieChartPage = () => import('../pages/plot/PieChartPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
 const DrawerPage = () => import('../pages/interactive/DrawerPage.vue')
@@ -254,6 +257,21 @@ const router = createRouter({
           path: '/components/divider',
           name: 'components-divider',
           component: DividerPage
+        },
+        {
+          path: '/plot/line',
+          name: 'plot-line',
+          component: LineChartPage,
+        },
+        {
+          path: '/plot/bar',
+          name: 'plot-bar',
+          component: BarChartPage,
+        },
+        {
+          path: '/plot/pie',
+          name: 'plot-pie',
+          component: PieChartPage,
         },
         {
           path: '/interactive/dialog',
