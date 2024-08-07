@@ -5,19 +5,15 @@
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "sass": "dist/styles/main.scss",
-  "styles": "dist/nutshell.css",
   "moduleResolution": "node",
-  "types": "dist/nutshell.d.ts",
-  "typings": "dist/nutshell.d.ts",
+  "types": "dist/plot.d.ts",
+  "typings": "dist/plot.d.ts",
   "files": [
     "dist/",
     "src/"
   ],
   "exports": {
-    ".": "./dist/index.js",
-    "./dist/*": "./dist/*",
-    "./main.css": "./dist/main.css"
+    ".": "./dist/index.js"
   },
   "scripts": {
     "dev": "rollup -c rollup.config.js --watch",
@@ -39,16 +35,9 @@
     "@histoire/plugin-vue": "^0.17.17",
     "@rollup/plugin-alias": "^5.0.0",
     "@types/lodash-es": "^4.17.12",
-    "@vitejs/plugin-vue": "^5.1.0",
-    "postcss": "^8.4.27",
     "rollup": "^4.19.0",
-    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dts": "^6.1.1",
-    "rollup-plugin-esbuild": "^6.1.1",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-scss": "^4.0.0",
-    "unplugin-auto-import": "^0.18.2",
-    "unplugin-vue-components": "^0.27.3"
+    "rollup-plugin-esbuild": "^6.1.1"
   },
   "vetur": {
     "tags": "dist/json/tags.json",
@@ -57,11 +46,7 @@
   "dependencies": {
     "chart.js": "^4.4.3",
     "chroma-js": "^2.4.2",
-    "compressorjs": "^1.2.1",
-    "dayjs": "^1.11.9",
     "lodash-es": "^4.17.21",
-    "odometer": "^0.4.8",
-    "tippy.js": "^6.3.7",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
