@@ -78,6 +78,7 @@ const brands = [
     width: fit-content;
   }
   .shades {
+    overflow: hidden;
     .tints-row, .shades-row, .alphas-row {
       border-style: solid;
       border-width: 1px;
@@ -86,7 +87,6 @@ const brands = [
         width: 32px;
         height: 32px;
       }
-      overflow: hidden;
     }
   }
 }
