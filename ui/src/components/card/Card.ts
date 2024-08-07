@@ -25,6 +25,7 @@ export type CardSlots = {
   corner?: () => any,
   header?: () => any,
   title?: () => any,
+  titleAfter?: () => any,
   footer?: () => any,
   bottom?: () => any,
 }
@@ -65,8 +66,8 @@ export const NsCard = defineComponent({
       : null
 
     const titleAfter = () => h('div', {
-      class: 'title-after spacer'
-    }, () => slots.header?.())
+      class: 'title-after'
+    }, slots.titleAfter?.())
 
     const corner = () => h('div', {
       class: 'title-corner'
@@ -82,6 +83,7 @@ export const NsCard = defineComponent({
           : [
               label(),
               titleAfter(),
+              h('div', {class: 'spacer'}),
               corner(),
             ]
         )

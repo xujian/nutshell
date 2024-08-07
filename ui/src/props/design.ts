@@ -130,7 +130,7 @@ const designProps = {
  */
 export type DesignProps = MakePropsType<typeof designProps>
 
-const isResource = (value: string) => /^\d{3}$/.test(value);
+const isArtifact = (value: string) => /^\d{3}$/.test(value);
 
 export function hasDesignProps (props: DesignProps): props is DesignProps {
   return props.__design === true
@@ -150,8 +150,8 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.round ? ['round'] : []),
     ...(props.square ? ['square'] : []),
     ...(props.gradient
-        ? isResource(props.gradient)
-          ? [`gradient-${props.gradient}`]
+        ? isArtifact(props.gradient)
+          ? ['artifact-gradient', `gradient-${props.gradient}`]
           : ['with-gradient']
         : []),
     ...props.motion
@@ -163,7 +163,7 @@ const buildDesignClasses = (props: DesignProps) => {
     // ...(props.gradient && /\d{3}/.test(props.gradient) ? [`gradient-${props.gradient}`] : []),
     ...(props.texture ? ['with-texture'] : []),
     ...(props.pattern
-        ? isResource(props.pattern)
+        ? isArtifact(props.pattern)
           ? [`pattern-${props.pattern}`]
           : ['with-pattern']
         : []),
@@ -209,7 +209,7 @@ const buildTextureStyles: (props: DesignProps) => StyleObject = (props) => {
         }
       : {},
     // /pattern/ 指的是 连续平铺的图案
-    ...props.pattern && !isResource(props.pattern)
+    ...props.pattern && !isArtifact(props.pattern)
       ? {
           '--pattern': `url(${props.pattern})`,
         }

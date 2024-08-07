@@ -2,27 +2,29 @@
   border-radius: var(--ns-border-radius);
   --fill: var(--ns-surface);
   overflow: hidden;
+  gap: 0;
   .card-header, .card-title {
-    padding: var(--ns-spacing);
+    padding: calc(var(--ns-spacing) /2 );
     .title {
-      flex-grow: 1;
       display: flex;
       align-items: center;
-      color: var(--foreground, var(--ns-text))
     }
   }
   .card-header {
-    margin-bottom: calc(var(--ns-spacing) * -1/2)
+    // margin-bottom: calc(var(--ns-spacing) * -1/2)
   }
   .card-body {
-    padding: var(--ns-spacing);
+    padding: calc(var(--ns-spacing) / 2);
     background: var(--body-fill);
     border-radius: var(--ns-border-radius);
+    .breakout {
+      margin: calc(var(--ns-spacing) * -1 / 2)
+    }
   }
   .card-footer {
     display: flex;
     flex-direction: row;
-    padding: var(--ns-spacing);
+    padding: calc(var(--ns-spacing) / 2);
   }
   h3.title-label {
     font-size: var(--ns-font-sm);
@@ -30,10 +32,10 @@
     position: relative;
   }
   .title-after {
-    padding-left: 1em;
+    padding-left: calc(var(--ns-spacing) / 2);
   }
   .title-corner {
-    padding-right: 1em;
+    // padding-right: 1em;
   }
   &.variant-outlined {
     border-color: var(--ns-stroke);

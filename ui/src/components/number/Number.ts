@@ -233,7 +233,7 @@ export const NsNumber = defineComponent({
       ...props.mainJustify
         ? { '--mainJustify': props.mainJustify }
         : {},
-      ...props.padding
+      ...props.padding !== void 0
         ? { padding: `${props.padding}px` }
         : {}
     }

@@ -35,7 +35,6 @@
     align-items: var(--mainAlign, var(--flex-align, center));
     justify-content: var(--mainJustify, var(--justify, var(--flex-justify, center)));
     height: var(--mainHeight);
-    padding: 0 var(--horizontalPadding, 0);
   }
   .negative {
     .digits {

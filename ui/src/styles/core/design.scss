@@ -74,6 +74,9 @@
   &:not(.square):not(.round) {
     border-radius: var(--radius, var(--ns-border-radius));
   }
+  &.with-gradient, .artifact-gradient {
+    border: 0;
+  }
   &.with-gradient {
     background:
       var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),

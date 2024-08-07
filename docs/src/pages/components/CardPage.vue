@@ -3,7 +3,10 @@
     <h1 class="my-lg">卡片 &lt;ns-card&gt;</h1>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <h2>卡片橱窗</h2>
+    <h2>结构说明</h2>
+    <p>&nbsp;</p>
+    <story is-plain file="card/anatomy" />
+    <h2>橱窗</h2>
     <p>&nbsp;</p>
     <story is-plain file="card/showcase" />
     <h2 class="my-md">Colors</h2>
@@ -37,10 +40,6 @@ const label = '提交'
 
 <style lang="scss">
 .card-page {
-  .ns-card {
-    min-height: 160px;
-    margin: 20px 0;
-  }
   .variants, .colors {
     .ns-card {
       width: 200px;
@@ -51,7 +50,6 @@ const label = '提交'
   }
   .story-card {
     .ns-card {
-      margin: 0 10px;
       min-width: 20%;
     }
   }
