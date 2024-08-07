@@ -36,6 +36,7 @@ export * from './divider'
 export * from './button-group'
 export * from './page'
 export * from './search'
+export * from './image'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -77,6 +78,7 @@ import { NsNumber } from './number'
 import { NsButtonGroup } from './button-group'
 import { NsPage, NsPageHeader, NsPageContent, NsPageBottom } from './page'
 import { NsSearch } from './search'
+import { NsImage } from './image'
 
 const components = {
   NsApp,
@@ -135,6 +137,7 @@ const components = {
   NsUpload,
   NsNumber,
   NsCropUpload,
+  NsImage,
   NsTable,
   NsPopover,
   NsPopoverConfirm,
