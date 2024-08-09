@@ -253,7 +253,7 @@ fetchTableData()
           <ns-chip label="线索"></ns-chip>
           <ns-icon source="/icons/call.svg" />
         </ns-flex-item>
-        <ns-cflex-iteml span="24">
+        <ns-flex-item span="24">
           <ns-input name="client" type="text" label="客户名称"
             placeholder="客户名称"
             v-model="formData.client"
