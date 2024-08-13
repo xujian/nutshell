@@ -8,7 +8,8 @@ export interface DimensionProps {
   maxWidth?: Dimension
   minHeight?: Dimension
   minWidth?: Dimension
-  width?: Dimension
+  width?: Dimension,
+  ratio?: string,
 }
 
 export const useDimensionProps = buildProps({
@@ -30,6 +31,9 @@ export const useDimensionProps = buildProps({
   width: {
     type: [Number, String] as PropType<Dimension>,
   },
+  ratio: {
+    type: String,
+  }
 })
 
 export function convertDimension (input?: Dimension): string | undefined {
@@ -45,14 +49,15 @@ export function convertDimension (input?: Dimension): string | undefined {
 }
 
 
-export function buildDimensionProps (props: DimensionProps) {
+export function buildDimensionStyles (props: DimensionProps) {
   const dimensionStyles = {
-    height: convertDimension(props.height),
-    maxHeight: convertDimension(props.maxHeight),
-    maxWidth: convertDimension(props.maxWidth),
-    minHeight: convertDimension(props.minHeight),
-    minWidth: convertDimension(props.minWidth),
-    width: convertDimension(props.width),
+    ...props.height !== void 0 ? { height: convertDimension(props.height) } : {},
+    ...props.width !== void 0 ? { width: convertDimension(props.width) } : {},
+    ...props.maxHeight !== void 0 ? { maxHeight: convertDimension(props.maxHeight) } : {},
+    ...props.maxWidth !== void 0 ? { maxWidth: convertDimension(props.maxWidth) } : {},
+    ...props.minHeight !== void 0 ? { minHeight: convertDimension(props.minHeight) } : {},
+    ...props.minWidth !== void 0 ? { minWidth: convertDimension(props.minWidth) } : {},
+    ...props.ratio ? { aspectRadio: props.ratio } : {},
   }
 
   return dimensionStyles
