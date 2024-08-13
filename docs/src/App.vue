@@ -31,4 +31,7 @@ useHead({
 </template>
 
 <style scoped>
+.ns-app {
+  --ns-border-radius: 16px;
+}
 </style>
