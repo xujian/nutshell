@@ -1,5 +1,5 @@
 .ns-app {
   background-color: var(--ns-background);
-  color: var(--ns-text);
+  color: var(--foreground, var(--ns-text));
   transition: background-color .5s;
 }

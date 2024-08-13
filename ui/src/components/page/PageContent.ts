@@ -58,6 +58,9 @@ export const NsPageContent = defineComponent({
         class: [
           'ns-page-content',
           'page-content',
+          'grow',
+          'column',
+          'align-stretch'
         ],
         style: {
           paddingBottom: `${props.bottom}px`
