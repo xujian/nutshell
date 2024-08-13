@@ -169,7 +169,7 @@ export const Page = defineComponent({
     return () => h('div', {
         ref: page,
         class: [
-          'page',
+          'page column align-stretch',
           ...scroll.value > 0 ? ['scrolled'] : [],
           ...props.scrollable ? ['scrollable'] : [],
           'theme-present'

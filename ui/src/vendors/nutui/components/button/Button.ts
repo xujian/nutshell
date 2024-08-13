@@ -1,4 +1,4 @@
-import { SetupContext, h } from 'vue'
+import { SetupContext, h, useAttrs } from 'vue'
 import { NsIcon, type ButtonEmits, type ButtonProps } from '../../../../components'
 import { Size } from '../../../../props/size'
 import type { ButtonSize, ButtonShape } from '@nutui/nutui-taro'
@@ -20,10 +20,13 @@ const getSize = (size?: Size): ButtonSize => {
 }
 
 export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext) => {
+
+  const $attrs = useAttrs()
   const classes = [
     ...props.size ? [`size-${props.size}`] : [],
     ...props.variant ? [`variant-${props.variant}`] : [],
     ...props.iconPosition ? [`icon-position-${props.iconPosition}`] : [],
+    $attrs.class || ''
   ]
   const { label, width, disabled, maxWidth, height, maxHeight, minWidth, minHeight, ...p } = props
 
@@ -45,6 +48,7 @@ export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext
   const shape = props.round === true ? void 0 : ('suqare' as ButtonShape)
   const style = {
     ...props.iconFill ? {'--icon-fill': props.iconFill} : {},
+    ...$attrs.style || {},
   }
 
   return h(

@@ -38,7 +38,7 @@ const nutuiVendor: CoreVendor = {
     this.loading = (options: LoadingOptions) => {
       $bus.emit('loading', options)
     }
-    $n.drawer = (options: DrawerOptions) => {
+    this.drawer = (options: DrawerOptions) => {
       $bus.emit('drawer', options)
     }
     this.sheet = (options: DrawerOptions) => {

@@ -6,9 +6,6 @@
     padding: 0;
     padding-top: var(--top);
     min-height: var(--height);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
     margin-bottom: 0;
     transition: background-color .5s;
     &.sticky {

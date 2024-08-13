@@ -17,6 +17,7 @@
     padding: calc(var(--ns-spacing) / 2);
     background: var(--body-fill);
     border-radius: var(--ns-border-radius);
+    flex-grow: 1;
     .breakout {
       margin: calc(var(--ns-spacing) * -1 / 2)
     }

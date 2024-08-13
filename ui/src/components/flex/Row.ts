@@ -25,7 +25,6 @@ export const rowProps = {
   },
   grow: {
     type: Number,
-    default: 1
   }
 }
 
@@ -47,7 +46,7 @@ export const NsRow = defineComponent({
         `align-${props.align}`,
         ...props.wrap ? ['wrap'] : [],
         ...(props.gap && typeof props.gap === 'string') ? [`gap-${props.gap}`] : [],
-        ...props.grow ? ['grow'] : []
+        ...props.grow !== void 0 ? ['grow'] : []
       ],
       style: {
         ...props.gap ? {'--gap': `${props.gap}px`} : {}

@@ -67,6 +67,7 @@
 .with-design {
   --fill: unset;
   --stroke: unset;
+  color: var(--foreground);
   background-color: var(--fill);
   border-color: var(--stroke, transparent);
   border-style: solid;

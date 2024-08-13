@@ -1,4 +1,4 @@
-.page {
+.ns-page {
   min-height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
@@ -17,6 +17,7 @@
     padding: var(--ns-spacing);
     top: calc(var(--status) + var(--nav));
     box-sizing: border-box;
+    flex-grow: 1;
   }
   .page-notice {
     position: absolute;

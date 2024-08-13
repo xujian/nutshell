@@ -1,6 +1,7 @@
 .ns-button {
   padding: 0 16px;
   &.nut-button {
+    width: unset;
     &:not(.full-width) {
       width: auto;
     }
@@ -40,6 +41,9 @@
     }
     &.variant-plain {
       border-color: transparent;
+    }
+    &.full-width {
+      width: 100%;
     }
   }
   &:not(.nut-button--round) {

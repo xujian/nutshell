@@ -45,6 +45,10 @@
   flex-wrap: wrap;
 }
 
+.grow {
+  flex-grow: 1;
+}
+
 /* main axis */
 .justify-start {
   justify-content: flex-start;
