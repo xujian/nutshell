@@ -1,6 +1,6 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, computed } from 'vue'
 import { buildFillStyle, buildGradientStyle, Color } from '../../composables/theme'
-import { buildDesignClasses, buildDesignStyles, buildDesignVariables, useDesignProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, buildDesignVariables, buildDimensionStyles, useDesignProps, useDimensionProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
 
 export const imageProps = {
@@ -8,6 +8,8 @@ export const imageProps = {
     type: String,
     retuired: true
   },
+  ...useDimensionProps(),
+  ...useDesignProps(),
 }
 
 export type ImageEmits = {
@@ -34,12 +36,15 @@ export const NsImage = defineComponent({
   setup (props, { slots }) {
 
     const style = {
-      backgroundImage: `url(${props.src})`
+      backgroundImage: `url(${props.src})`,
+      ...buildDimensionStyles(props),
+      ...buildDesignStyles(props),
     }
 
     return () => h('div', {
       class: [
         'ns-image',
+        ...buildDesignClasses(props),
       ],
       style,
     })

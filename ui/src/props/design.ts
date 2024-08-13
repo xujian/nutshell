@@ -62,6 +62,9 @@ const designProps = {
     type: Boolean,
     default: true
   },
+  /**
+   * 使用圆角
+   */
   round: {
     type: Boolean
   },
@@ -79,6 +82,9 @@ const designProps = {
    */
   stroke: {
     type: String as PropType<Color>
+  },
+  edge: {
+    type: String,
   },
   /**
    * 线宽
@@ -182,10 +188,10 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...(fill ? { '--fill': makeColor(fill) } : {}),
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
     ...(props.accent ? { '--accent': makeColor(props.accent) } : {}),
-    ...(props.stroke ? { '--stroke': makeColor(props.stroke) } : {}),
-    ...(props.dotted ? { borderStyle: 'dotted' } : {}),
-    ...(props.radius ? { '--radius': `${props.radius}px` } : {}),
-    ...(props.thick ? { '--thick': `${props.thick}px` } : {}),
+    ...(props.stroke !== void 0 ? { '--stroke': makeColor(props.stroke) } : {}),
+    ...(props.dotted === true ? { borderStyle: 'dotted' } : {}),
+    ...(props.radius !== void 0 ? { '--radius': `${props.radius}px` } : {}),
+    ...(props.thick !== void 0 ? { '--thick': `${props.thick}px` } : {}),
     ...(props.foreground ? {
         '--text': makeColor(props.foreground),
         '--foreground': makeColor(props.foreground)
@@ -205,7 +211,7 @@ const buildTextureStyles: (props: DesignProps) => StyleObject = (props) => {
     // /texture/ 指的是 填充形式的背景图
     ...props.texture
       ? {
-          '--texture': props.texture,
+          '--texture': `url(${props.texture})`,
         }
       : {},
     // /pattern/ 指的是 连续平铺的图案
