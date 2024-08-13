@@ -17,6 +17,10 @@
     }
   }
 
+  .nut-form-item__label {
+    width: fit-content;
+  }
+
   .nut-form-item__label.required:before {
     content: '';
     margin-right: 0;

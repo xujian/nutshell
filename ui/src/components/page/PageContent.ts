@@ -17,7 +17,7 @@ export const pageContentProps = {
    */
   bottom: {
     type: Number,
-    default: 100
+    default: 0
   }
 }
 
