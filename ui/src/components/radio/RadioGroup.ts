@@ -6,7 +6,7 @@ import { ValidationRule, formatRules } from '../../props/field'
 
 export const radioGroupProps = {
   ...useModelValuePropsForInput(),
-  items: {
+  options: {
     type: Array as PropType<UniDataItem[]>,
     default: []
   },
@@ -40,12 +40,12 @@ export const NsRadioGroup = define({
   setup (props, ctx) {
     const rules = formatRules(props.rules as ValidationRule[], props)
 
-    // 从子组件读取 items
+    // 从子组件读取 options
     const { default: defaultSlot } = useSlots(),
       slots = defaultSlot && defaultSlot()
     // 这里的逻辑
-    // 当使用子组件(ns-radio)时，items 属性自动失效
-    const items = slots
+    // 当使用子组件(ns-radio)时，options 属性自动失效
+    const options = slots
       && slots.length
       && slots.map(slot => ({
           name: props.name,
@@ -56,7 +56,7 @@ export const NsRadioGroup = define({
     return {
       props: {
         // 这样写是为了避免用 undefine 覆盖掉原值 丢失 reactive
-        ...items && { items },
+        ...options && { options },
         rules
       }
     }

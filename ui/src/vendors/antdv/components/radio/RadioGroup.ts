@@ -10,7 +10,7 @@ export const RadioGroup = defineComponent({
 
     const { emit } = ctx
 
-    const children = () => props.items?.map(item => h(AntdvRadio, {
+    const children = () => props.options?.map(item => h(AntdvRadio, {
       value: item.value,
       disabled: item.disabled,
     }, () => item.label))

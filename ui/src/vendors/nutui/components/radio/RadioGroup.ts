@@ -9,7 +9,7 @@ export const RadioGroup = defineComponent({
 
     const { emit } = ctx
 
-    const children = () => props.items?.map(item => h(NutRadio, {
+    const children = () => props.options?.map(item => h(NutRadio, {
       label: item.value, // 这里没写错 傻逼的属性名
       disabled: item.disabled,
       // shape: 'button'
