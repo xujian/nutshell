@@ -1,3 +1,4 @@
+import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDesignProps, useFlexProps } from '../../props'
 import { MakePropsType } from '../../utils'
 import { h } from 'vue'
 import { PropType, SlotsType, defineComponent } from 'vue'
@@ -24,7 +25,8 @@ export const listProps = {
   },
   hasNumbers: {
     type: Boolean
-  }
+  },
+  ...useDesignProps(),
 }
 
 export type ListEmits = {
@@ -59,7 +61,7 @@ export const NsList = defineComponent({
         class: ['list-item-section list-item-section-main']
       }, [
         h('h4', {}, row.title),
-        h('p', { class: ['list-item-caption', 'caption']}, row.caption)
+        row.caption ? h('p', { class: ['list-item-caption', 'caption']}, row.caption) : null,
       ])
     }
 
@@ -84,7 +86,13 @@ export const NsList = defineComponent({
       })
 
     return () => h('div', {
-      class: ['ns-list', 'r-md', 'flex', 'flex-column'],
+      class: [
+        'ns-list', 'r-md',
+        ...buildDesignClasses(props),
+      ],
+      style: {
+        ...buildDesignStyles(props),
+      }
     }, [
       header,
       body,

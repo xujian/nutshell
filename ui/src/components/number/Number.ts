@@ -1,9 +1,9 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, onMounted, ref, computed } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, onMounted, ref, computed, useAttrs } from 'vue'
 import { CountUp } from 'countup.js'
 // import { Odometer } from 'odometer'
 import { MakePropsType } from '../../utils'
 import { useModelValuePropsForInput,
-  buildDimensionProps,useDimensionProps, buildFlexStyles,
+  buildDimensionStyles,useDimensionProps, buildFlexStyles,
   useFlexProps, Align, Justify, useDesignProps,
   buildDesignStyles,
   useTooltipProps,
@@ -121,7 +121,8 @@ export const NsNumber = defineComponent({
   emits: numberEmits,
   setup (props, { slots }) {
     const root = ref<HTMLDivElement>(),
-      digitsRef = ref<HTMLDivElement>()
+      digitsRef = ref<HTMLDivElement>(),
+      $attrs = useAttrs()
 
     // 数字组件不同于 <ns-number-input>/<ns-table-column-number>
     // 用于数字的显示
@@ -218,7 +219,7 @@ export const NsNumber = defineComponent({
       ])
 
     const styles = {
-      ...buildDimensionProps(props),
+      ...buildDimensionStyles(props),
       ...buildFlexStyles(props),
       ...buildDesignStyles(props),
       ...props.mainHeight
@@ -257,6 +258,7 @@ export const NsNumber = defineComponent({
           class: [
             'ns-number', `size-${props.size}`, 'column',
             ...buildDesignClasses(props),
+            $attrs.class,
           ],
           style: styles,
           ref: root

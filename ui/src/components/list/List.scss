@@ -1,25 +1,14 @@
 .ns-list {
-  border-color: var(--ns-stroke);
-  border-style: solid;
-  border-width: 1px;
   overflow: hidden;
   .list-item {
     display: flex;
     width: 100%;
     flex-direction: row;
     align-items: center;
-    border-bottom-color: var(--ns-stroke);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    padding: 0 1em;
     &:last-child{
       border-bottom: none;
     }
-    &:hover {
-      background-color: var(--ns-hover);
-    }
     .list-item-section {
-      padding: 1em;
       flex-grow: 0;
     }
     .list-item-section-main {
@@ -29,6 +18,21 @@
       color: var(--ns-caption);
       line-height: 1.5em;
       min-height: 1.5em;
+    }
+  }
+  &.variant-outlined {
+    border-color: var(--stroke, var(--ns-stroke));
+    border-style: solid;
+    border-width: var(--thick, 1px);
+    .list-item {
+      border-bottom-color: var(--stroke, var(--ns-stroke));
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+    }
+  }
+  &.hoverable {
+    .list-item:hover {
+      background-color: var(--ns-hover);
     }
   }
 }
