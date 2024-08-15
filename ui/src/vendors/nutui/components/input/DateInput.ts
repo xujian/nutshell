@@ -3,6 +3,8 @@ import { marginProps } from '../../../../utils'
 import { dateInputProps, dateInputEmits } from '../../../../components'
 import { renderFormItem } from '../../utils'
 import dayjs from 'dayjs'
+// import 'dayjs/locale/zh-cn'
+// import 'dayjs/locale/zh-hk'
 
 // 这是一个复合组件
 export const DateInput = defineComponent({
@@ -26,6 +28,7 @@ export const DateInput = defineComponent({
       console.log('===value', value)
     }
 
+    dayjs().locale('en')
     const today = dayjs().format('YYYY-MM-DD')
 
     return () => renderFormItem(props, slots,
