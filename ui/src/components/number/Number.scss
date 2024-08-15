@@ -16,13 +16,13 @@
     flex-grow: 1;
   }
   .header {
-    color: var(--foreground, var(--theme-text));
+    color: var(--foreground, var(--ns-text));
     justify-content: var(--justify, var(--heading-horizontalAlign, center));
     align-items: var(--heading-verticalAlign, flex-end);
   }
   .footer {
     font-size: var(--footer-fontSize);
-    color: var(--footer-color, var(--foreground, var(--theme-text)));
+    color: var(--footer-color, var(--foreground, var(--ns-text)));
     font-weight: var(--footnote-fontWeight);
     justify-content: var(--footnote-horizontalAlign, var(--justify, center));
     align-items: var(--footnote-verticalAlign, flex-start);
@@ -45,7 +45,7 @@
     display: flex;
     font-size: var(--fontSize, 40px);
     line-height: 1em;
-    color: var(--foreground, var(--theme-text));
+    color: var(--foreground, var(--ns-text));
     .number-background {
       position: relative;
       display: inline-block;
@@ -86,11 +86,11 @@
   }
   .prefix {
     padding-inline-end: .5em;
-    color: var(--foreground, var(--theme-text));
+    color: var(--foreground, var(--ns-text));
   }
   .suffix {
     padding-inline-start: .5em;
-    color: var(--foreground, var(--theme-text));
+    color: var(--foreground, var(--ns-text));
   }
   .arrow {
     padding-inline-start: .5em;
