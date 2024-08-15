@@ -27,5 +27,5 @@ export type Layer = {
  */
 export type UniData = {
   layers: Layer[],
-}
+} | UniDataItem[][]
 
