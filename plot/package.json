@@ -46,6 +46,7 @@
   "dependencies": {
     "chart.js": "^4.4.3",
     "chroma-js": "^2.4.2",
+    "intl": "^1.2.5",
     "lodash-es": "^4.17.21",
     "typescript": "^5.2.2"
   },
