@@ -1,5 +1,6 @@
 .ns-radio-group {
   .nut-radio-group--horizontal {
+    display: flex;
     justify-content: flex-end;
     .nut-radio {
       margin-bottom: 0;

@@ -36,9 +36,8 @@ export const RadioGroup = defineComponent({
               'onUpdate:modelValue': (value: string | number) => {
                 emit('update:modelValue', value)
               },
-              onChange: (e: any) => {
-                e.stopPropagation()
-                emit('change', e.target.value)
+              onChange: (value: string) => {
+                emit('change', value)
               }
             },
             {
