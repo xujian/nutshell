@@ -54,8 +54,6 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
   const rules = transformRules(props.rules as FullValidationRule[])
   const formItemRef = ref(null)
 
-  console.log('===render form', props.label)
-
   return h(
     NutFormItem,
     {
@@ -74,8 +72,8 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
       rules,
     },
     {
-      label: () => props.label,
-      default: () => h(defaultSlot, props),
+      label: props.label,
+      default: defaultSlot,
       extra: slots.append
         ? () => h('div', {
             class: 'form-item-append'
