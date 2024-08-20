@@ -112,7 +112,7 @@ export type HttpTransform = (data: ResponseData) => ResponseData
 /**
  * 接口设置
  */
-export type HttpEndpoint = {
+export type HttpEndpointDef = {
   path: string,
   translate?: HttpTranslate,
   transform?: HttpTransform,
@@ -121,8 +121,18 @@ export type HttpEndpoint = {
 /**
  * 接口组
  */
+export type HttpEndpointGroup = {
+  [name: string]: HttpEndpointDef
+}
+
 export type HttpEndpoints = {
-  [name: string]: HttpEndpoint
+  [name: string]: string
+}
+
+export type MergedEndpoints = {
+  endpoints: HttpEndpoints,
+  translates: HttpTranslates,
+  transforms: HttpTransforms,
 }
 
 /**
