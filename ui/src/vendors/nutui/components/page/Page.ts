@@ -2,6 +2,7 @@ import { Component, defineComponent, h, onMounted, onUnmounted, ref, SetupContex
 import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, type PageProps } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
 import { DialogOptions } from '../../../../services/dialog'
+import { ToastOptions } from 'src/services/toast'
 
 export type NoticeType = 'info' | 'warning' | 'error'
 
@@ -48,6 +49,14 @@ export const Page = defineComponent({
             ],
           }, noticeData.value.content)
         : null
+    }
+
+    const showToast = ({message, options}: {message: string, options: ToastOptions}) => {
+      wx.showToast({
+        title: message,
+        duration: options.duration || 2000,
+        icon: options.type || 'none'
+      })
     }
 
     const showNotice = (payload: Notice) => {
@@ -140,6 +149,7 @@ export const Page = defineComponent({
     // @ts-ignore
     useDidShow(() => {
       console.log('===useDidShow')
+      $bus.on('toast', showToast)
       $bus.on('notice', showNotice)
       $bus.on('drawer', openDrawer)
       $bus.on('sheet', openSheet)
@@ -149,6 +159,7 @@ export const Page = defineComponent({
 
     useDidHide(() => {
       console.log('===useDidHide')
+      $bus.off('toast', showToast)
       $bus.off('notice', showNotice)
       $bus.off('drawer', openDrawer)
       $bus.off('sheet', openSheet)

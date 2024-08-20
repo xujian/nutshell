@@ -95,12 +95,12 @@ export const useForm = () => {
     console.log('===validate result', result)
     if (!result.valid) {
       result.errors.forEach((e: any) => {
-        $bus.emit('dialog', () => h('div', {}, 'UUU'))
+        // $bus.emit('dialog', () => h('div', {}, 'UUU'))
         // $bus.emit('notice', {
         //   type: 'error',
         //   content: e.message
         // })
-        // $n.toast(e.message, {})
+        $n.toast(e.message, {})
       })
     }
   }
