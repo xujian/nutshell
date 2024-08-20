@@ -1,14 +1,12 @@
 .ns-search {
-  padding: 4px 0px;
   .content {
     border-radius: var(--ns-border-radius);
     border-color: var(--stroke, transparent);
-    padding: 4px 10px;
+    padding: 2px 6px;
     gap: var(--ns-spacing-sm);
     border-style: solid;
     border-width: 1px;
-    background-color: var(--ns-fill);
-    margin: 4px 10px;
+    background-color: var(--fill, var(--ns-fill));
   }
   .icon {
     background-image: url(https://cdn.ddjf.com/static/images/wx-yunservice/search-icon.png);

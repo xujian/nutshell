@@ -3,7 +3,7 @@
   &.nut-button {
     width: unset;
     &:not(.full-width) {
-      width: auto;
+      // width: auto;
     }
     .nut-button__text {
       margin-left: 0; // fix nut-button style
@@ -49,21 +49,36 @@
   &:not(.nut-button--round) {
     border-radius: var(--ns-border-radius, var(--ns-border-radius-xs));
   }
-  &.nut-button--mini {
+  &.size-xs {
     height: var(--ns-size-xs);
+    &.round {
+      border-radius: calc(var(--ns-size-xs)/2);
+    }
   }
-  &.v-button--small {
+  &.size-sm {
     height: var(--ns-size-sm);
+    &.round {
+      border-radius: calc(var(--ns-size-sm)/2);
+    }
   }
-  &.nut-button--normal {
+  &.size-auto {
     height: var(--ns-size-md);
+    &.round {
+      border-radius: calc(var(--ns-size-md)/2);
+    }
   }
-  &.nut-button--large {
+  &.size-lg {
     height: var(--ns-size-lg);
     padding: 0 24px;
-    &.size-xl {
-      height: var(--ns-size-xl);
-      padding: 0 48px;
+    &.round {
+      border-radius: calc(var(--ns-size-lg)/2);
+    }
+  }
+  &.size-xl {
+    height: var(--ns-size-xl);
+    padding: 0 48px;
+    &.round {
+      border-radius: calc(var(--ns-size-xl)/2);
     }
   }
   .nut-button--disabled {

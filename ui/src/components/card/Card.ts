@@ -90,7 +90,7 @@ export const NsCard = defineComponent({
       : null
 
     const body = () => h('div', {
-      class: 'card-body',
+      class: 'card-body column align-stretch',
       style: {
         ...props.bodyFill ? { '--body-fill': props.bodyFill } : {}
       }

@@ -8,6 +8,8 @@
     min-height: var(--height);
     margin-bottom: 0;
     transition: background-color .5s;
+    box-sizing: border-box;
+    z-index: 0;
     &.sticky {
       position: sticky;
       top: 0;
