@@ -21,15 +21,15 @@ const quickValidationMethods: string[] = [
 
 export type QuickValidationMethod = typeof quickValidationMethods[number]
 
-const quickRuleMapping: Record<QuickValidationMethod, (v: string) => boolean> = {
+const quickRuleMapping: Record<QuickValidationMethod, (v: string | number) => boolean> = {
   required: v => !!v,
-  numeric: v => /^\d+$/.test(v),
+  numeric: v => /^\d+$/.test(`${v}`),
     // 假值不调用具体校验方法
-  id: v => !!v && isIdentityCard(v, 'zh-CN'),
-  mobile: v => !!v && isMobilePhone(v, 'zh-CN'),
+  id: v => !!v && isIdentityCard(`${v}`, 'zh-CN'),
+  mobile: v => !!v && isMobilePhone(`${v}`, 'zh-CN'),
 }
 
-export type FunctionValidationMethod = (value: string) => boolean
+export type FunctionValidationMethod = (value: string | number) => boolean
 export type ValidationTrigger = 'blur' | 'change'
 
 export type FullValidationRule = {
