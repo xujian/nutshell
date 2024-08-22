@@ -25,7 +25,7 @@ const book: Map<string, BusListener[]> = new Map<string, BusListener[]>
 export type BusOnFn<T = any> = (event: string, fn: BusListener<T>) => void
 export type BusOffFn<T = any> = (event: string, fn: BusListener<T>) => void
 export type BusOnceFn<T = any> = (event: string, fn: BusListener<T>) => void
-export type BusEmitFn<T = any> = (event: string, payload: T) => void
+export type BusEmitFn<T = any> = (event: string, payload?: T) => void
 
 export type BusInstance = {
   on: BusOnFn,
