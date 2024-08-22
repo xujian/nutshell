@@ -74,6 +74,9 @@ export const Page = defineComponent({
           modelValue: drawerOpen.value,
           'onUpdate:modelValue': (value: boolean) => {
             drawerOpen.value = value
+            if (value === false) {
+              $bus.emit('drawer.close')
+            }
           }
         }, {
           default: () => drawerData.value?.component
@@ -84,6 +87,7 @@ export const Page = defineComponent({
 
     const openDrawer = () => {
       drawerOpen.value = true
+      $bus.emit('drawer.open')
     }
 
     const renderSheet = () => {
@@ -94,6 +98,9 @@ export const Page = defineComponent({
           modelValue: sheetOpen.value,
           'onUpdate:modelValue': (value: boolean) => {
             sheetOpen.value = value
+            if (value === false) {
+              $bus.emit('sheet.close')
+            }
           }
         }, {
           default: () => sheetData.value?.component
@@ -107,6 +114,7 @@ export const Page = defineComponent({
       sheetData.value.component = component
       sheetData.value.props = props
       sheetOpen.value = true
+      $bus.emit('sheet.open')
     }
 
     const renderDialog = () => {
@@ -117,6 +125,9 @@ export const Page = defineComponent({
           modelValue: dialogOpen.value,
           'onUpdate:modelValue': (value: boolean) => {
             dialogOpen.value = value
+            if (value === false) {
+              $bus.emit('dialog.close')
+            }
           }
         }, {
           default: () => dialogData.value?.component
@@ -130,6 +141,7 @@ export const Page = defineComponent({
       dialogData.value.component = component
       dialogData.value.props = props
       dialogOpen.value = true
+      $bus.emit('dialog.open')
     }
 
     const onScroll = (e: any) => {

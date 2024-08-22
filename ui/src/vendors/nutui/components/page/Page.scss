@@ -50,7 +50,7 @@
   }
   .app-sheet {
     .nut-popup {
-      height: var(--height, 50vh);
+      height: var(--height, fit-content);
       width: 100vw;
       transform: translate3d(0, 100vw, 0);
       transition: all .5s;

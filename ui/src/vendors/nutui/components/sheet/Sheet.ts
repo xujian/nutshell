@@ -20,6 +20,12 @@ export const Sheet = (props: SheetProps, { slots }: Omit<SetupContext, 'expose'>
     })
   }
 
+  const height = props.height
+    ? typeof props.height === 'number'
+      ? `${props.height}px`
+      : props.height
+    : '50vh'
+
   return h(NutPopup, {
     popClass: [
       ...props.modelValue ? ['open'] : []
@@ -31,7 +37,7 @@ export const Sheet = (props: SheetProps, { slots }: Omit<SetupContext, 'expose'>
     visible: open.value,
     title: props.title,
     closable: true,
-    height: props.height || '50vh',
+    height,
     closeable: props.closable === false ? false : true,
     destroyOnClose: props.destroyOnClose,
     overlay: props.mask === false ? false : true,
