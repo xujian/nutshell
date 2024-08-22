@@ -19,13 +19,18 @@ export type UniDataItem = {
 
 export type Layer = {
   label: string,
+  y?: string,
   data: UniDataItem[],
 }
 
 /**
  * 标准数据格式
+ * // 两种形式
+ * 1. 分 layer, 层之下有 series
+ * 2. 没有 layer, 只有 series
  */
-export type UniData = {
-  layers: Layer[],
-} | UniDataItem[][]
+export type UniData = Layer[] | UniDataItem[][]
 
+export function isLayer (d: UniData[number]): d is Layer {
+  return Reflect.has(d, 'label')
+}

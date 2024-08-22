@@ -5,7 +5,7 @@ import { MakePropsType } from '../utils'
 
 const dataProps = {
   data: {
-    type: Array as PropType<UniData[]>,
+    type: Array as PropType<UniData>,
     default: []
   }
 }

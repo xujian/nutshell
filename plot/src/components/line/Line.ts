@@ -5,6 +5,9 @@ import { useDataProps } from '../../props'
 import { Vendor } from '../../shared'
 
 export const lineChartProps = {
+  x: {
+    type: Array as PropType<string[]>,
+  },
   colors: {
     type: Array as PropType<Color[]>,
     default: [
