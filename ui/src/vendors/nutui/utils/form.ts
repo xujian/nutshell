@@ -18,6 +18,7 @@ export const transformRules = (rules: FullValidationRule[]) => {
       result.push({
         required: true,
         message: r.message,
+        trigger: 'blur'
       })
     } else {
       result.push({
@@ -32,7 +33,7 @@ export const transformRules = (rules: FullValidationRule[]) => {
           return Promise.resolve()
         },
         message: r.message,
-        trigger: r.trigger ?? 'change',
+        trigger: r.trigger ?? 'blur',
       })
     }
   })
@@ -72,13 +73,8 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
       rules,
     },
     {
-      label: props.label,
-      default: () => h(defaultSlot, {
-        ...props,
-        onBlur: () => {
-          form.validate(props.name as string)
-        }
-      }),
+      label: () => props.label,
+      default: defaultSlot,
       extra: slots.append
         ? () => h('div', {
             class: 'form-item-append'
