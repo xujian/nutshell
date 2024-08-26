@@ -1,6 +1,7 @@
 import { PropType, ObjectEmitsOptions, SlotsType, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useVariantProps } from '../../props'
+import { useNutshell } from '../../framework'
 
 export type NamePath = string | number | (string | number)[]
 
@@ -29,6 +30,11 @@ export type FormSlots = {
 
 export type FormProps = MakePropsType<typeof formProps, FormEmits>
 
+export type ValidateResult = {
+  valid: boolean,
+  errors: any[]
+}
+
 /**
  * 表单 <ns-form>
  */
@@ -38,12 +44,24 @@ export const NsForm = define({
   emits: formEmits,
   setup (props, ctx) {
     const vendorRef = ref()
+    const $n = useNutshell()
 
     // 触发表单验证
-    function validate (nameList?: NamePath): Promise<boolean> {
+    function validate (nameList?: NamePath): Promise<boolean | ValidateResult> {
+      console.log('===NsForm validate', nameList)
       return new Promise<boolean>((resolve, reject) => {
         vendorRef.value.validate(nameList).then((result: any) => {
-          resolve(true)
+          console.log('===vendorRef validate', result)
+          if (result === void 0) {
+            resolve(true)
+          } else {
+            if (result.valid === false) {
+              result.errors.forEach((e: any) => {
+                $n.toast(e.message, {})
+              })
+            }
+            resolve(result)
+          }
         }).catch((result: any) => {
           resolve(result.errorFields.length === 0)
         })

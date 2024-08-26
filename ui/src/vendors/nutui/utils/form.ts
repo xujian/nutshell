@@ -53,7 +53,7 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
 
   const rules = transformRules(props.rules as FullValidationRule[])
   const formItemRef = ref(null)
-
+  const form = useForm()
   return h(
     NutFormItem,
     {
@@ -73,7 +73,12 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
     },
     {
       label: props.label,
-      default: defaultSlot,
+      default: () => h(defaultSlot, {
+        ...props,
+        onBlur: () => {
+          form.validate(props.name as string)
+        }
+      }),
       extra: slots.append
         ? () => h('div', {
             class: 'form-item-append'
@@ -90,9 +95,9 @@ export const useForm = () => {
   const form = inject(NutuiFormSymbol)
   const $n = useNutshell()
   const $bus = useBus()
-  const validate = async (props: any) => {
-    const result = await form?.value?.validate(props.name) as any
-    console.log('===validate result', result)
+  const validate = async (name?: string) => {
+    const result = await form?.value?.validate(name) as any
+    console.log('===useForm validate(validate result', result)
     if (!result.valid) {
       result.errors.forEach((e: any) => {
         // $bus.emit('dialog', () => h('div', {}, 'UUU'))

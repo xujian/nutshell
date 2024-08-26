@@ -12,11 +12,11 @@ export const Form = defineComponent({
   emits: formEmits,
   setup (props, { slots }) {
 
-    const form = ref()
-    provide(NutuiFormSymbol, form)
+    // @ts-ignore
+    provide(NutuiFormSymbol, props.vendorRef)
 
     return () =>  h(NutForm, {
-      ref: form,
+      ref: props.vendorRef,
       class: 'ns-form',
       modelValue: props.modelValue,
     }, slots)
