@@ -1,23 +1,15 @@
 import { PropType, ObjectEmitsOptions, SlotsType, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDisplayProps, useModelValuePropsForArray, useModelValuePropsForStringArray } from '../../props'
+import { useDisplayProps, useModelValuePropsForArray, useFieldProps } from '../../props'
 import { Media } from '../../types'
+import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 
 export type BeforeUploadMethod = ((file: Media) => Promise<Blob>)
 
 export type UploadHandler = (file: Media) => Promise<Media>
 
 export const uploadProps = {
-  /**
-   * 表单项名称
-   */
-  name: {
-    type: String,
-    default: 'file',
-  },
-  label: {
-    type: String
-  },
+
   caption: {
     type: String,
   },
@@ -57,6 +49,14 @@ export const uploadProps = {
   },
   ...useModelValuePropsForArray(),
   ...useDisplayProps(),
+  ...useFieldProps(),
+   /**
+   * 表单项名称
+   */
+   name: {
+    type: String,
+    default: 'file',
+  },
 }
 
 export type UploadEmits = {
@@ -88,7 +88,11 @@ export const NsUpload = define({
   props: uploadProps,
   emits: uploadEmits,
   setup (props, slots) {
+    const finalRules = formatRules(props.rules as ValidationRule[], props)
     return {
+      props: {
+        rules: finalRules as FullValidationRule[]
+      }
     }
   }
 })

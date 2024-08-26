@@ -8,8 +8,9 @@ export const Upload = defineComponent({
   props: uploadProps,
   emits: uploadEmits,
   setup: (props, { slots, emit }) => {
+    console.log(props, 'props')
 
-    const result: Ref<Media[]> = ref([])
+    const result: Ref<Media[]> = ref(Array.isArray(props.modelValue) ? props.modelValue : [])
 
     const getStyle = () => {
       const [m] = result.value
@@ -37,6 +38,7 @@ export const Upload = defineComponent({
             if (media) {
               result.value.push(media)
             }
+            props['onUpdate:modelValue']?.(result.value)
           }
         }
       })
