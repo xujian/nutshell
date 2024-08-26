@@ -133,6 +133,8 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
               } as T
             : response
         )
+      } else if (raw.status == 200) {
+        resolve(raw.data as T)
       } else {
         reject(`未知错误`)
       }
