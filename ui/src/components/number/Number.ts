@@ -99,9 +99,11 @@ export const numberProps = {
 }
 
 export type NumberEmits = {
+  click: (...args: any[]) => void
 }
 
 const numberEmits: NumberEmits = {
+  click: (...args: any[]) => {}
 }
 
 export type NumberSlots = {
