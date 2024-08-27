@@ -37,6 +37,7 @@ export const Upload = defineComponent({
             console.log('===ns-uxxxp[load', media)
             if (media) {
               result.value.push(media)
+              props['onUpdate:modelValue']?.(result.value)
             }
             props['onUpdate:modelValue']?.(result.value)
           }
