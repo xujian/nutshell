@@ -104,7 +104,15 @@ export const Page = defineComponent({
           }
         }, {
           default: () => sheetData.value?.component
-            ? h(sheetData.value?.component, sheetData.value?.props)
+            ? h(sheetData.value?.component, {
+                ...sheetData.value?.props,
+                onComplete: (result: any) => {
+                  if (result !== false) {
+                    sheetOpen.value = false
+                    sheetData.value?.props?.onComplete?.(result)
+                  }
+                }
+              })
             : null
         })
     }
