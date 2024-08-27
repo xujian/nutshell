@@ -2,7 +2,7 @@ import { Component, defineComponent, h, onMounted, onUnmounted, ref, SetupContex
 import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, type PageProps } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
 import { DialogOptions } from '../../../../services/dialog'
-import { ToastOptions } from 'src/services/toast'
+import { ToastOptions } from '../../../../services/toast'
 
 export type NoticeType = 'info' | 'warning' | 'error'
 
@@ -139,7 +139,13 @@ export const Page = defineComponent({
     const openDialog = ({component, props}: DialogOptions) => {
       console.log('===options', component)
       dialogData.value.component = component
-      dialogData.value.props = props
+      dialogData.value.props = {
+        ...props,
+        onComplete (payload: any) {
+          dialogOpen.value = false
+          props.onComplete(payload)
+        }
+      }
       dialogOpen.value = true
       $bus.emit('dialog.open')
     }

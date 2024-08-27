@@ -61,7 +61,7 @@
   }
   .app-dialog {
     .nut-popup {
-      height: var(--height, 60vh);
+      height: var(--height, fit-content);
       width: var(--height, 80vw);
       transition: all .5s;
     }
