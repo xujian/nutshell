@@ -1,7 +1,7 @@
 .ns-button {
   padding: 0 16px;
   &.nut-button {
-    width: unset;
+    width: fit-content;
     &:not(.full-width) {
       // width: auto;
     }
