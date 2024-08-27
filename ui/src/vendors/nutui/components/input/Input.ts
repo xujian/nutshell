@@ -27,6 +27,9 @@ export const Input = defineComponent({
           'onUpdate:modelValue': (value: number | string) => {
             props['onUpdate:modelValue']?.(value)
           },
+          onBlur: () => {
+            form.validate(props.name as string)
+          }
         },
         {
           ...slots.prepend ? { left: slots.prepend} : {},
