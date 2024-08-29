@@ -37,19 +37,17 @@ export const dialogProps = {
 }
 
 export type DialogEmits = {
-  'update:modelValue': (value: boolean) => void,
-  ok (): boolean,
-  show (): void,
-  hide (): void,
-  close (): void,
+  ok: () => boolean,
+  show: () => void,
+  hide: () => void,
+  close: () => void,
 }
 
 export const dialogEmits: DialogEmits = {
-  'update:modelValue': (value: boolean) => void 0,
-  ok () { return true},
-  show () {},
-  hide () {},
-  close () {},
+  ok: () => { return true},
+  show: () => {},
+  hide: () => {},
+  close: () => {},
 }
 
 export type DialogSlots = {
@@ -73,12 +71,7 @@ export const NsDialog = define({
   emits: dialogEmits,
   setup (props, ctx) {
     return {
-      props: {
-        style: {
-          // 输出 CSS varibales 给内部结构使用
-          ...props.fill ? { '--dialog-content': props.fill }: {}
-        }
-      }
+      structured: true,
     }
   }
 })

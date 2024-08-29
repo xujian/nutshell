@@ -1,6 +1,13 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
 import { define, MakePropsType } from '../../utils'
 
+// page scroll
+// 滚动有三
+// 1. <page> 负责滚动, <ns-page> 高度自由
+// 2. <ns-page> 负责滚动
+// 3. <na-page-content> 负责滚动
+
+
 export const pageProps = {
   title: {
     type: String
@@ -10,7 +17,7 @@ export const pageProps = {
    */
   scrollable: {
     type: Boolean,
-    default: true,
+    default: false,
   }
 }
 
