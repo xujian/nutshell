@@ -5,8 +5,7 @@
   background-position: center;
   background-attachment: fixed;
   &.scrollable {
-    height: fit-content;
-    min-height: 100vh;
+    height: 100vh;
   }
   .page-content-scroll-view {
     top: calc(var(--status) + var(--nav));
@@ -50,20 +49,10 @@
   }
   .app-sheet {
     .nut-popup {
-      height: var(--height, fit-content);
-      width: 100vw;
-      transform: translate3d(0, 100vw, 0);
-      transition: all .5s;
-      &.open {
-        transform: translate3d(0, 0, 0);
-      }
     }
   }
   .app-dialog {
     .nut-popup {
-      height: var(--height, fit-content);
-      width: var(--height, 80vw);
-      transition: all .5s;
     }
   }
   .page-bottom {

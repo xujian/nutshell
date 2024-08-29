@@ -14,7 +14,7 @@ export interface CoreVendor {
   app: App | null,
   prepare: (app: App) => void,
   render: VendorRenderFunction,
-  dialog (options: DialogOptions): DialogInstance | undefined,
+  dialog: (options: DialogOptions) => void,
   notice: (message: string, options?: ToastOptions) => void,
   sheet: (options: SheetOptions) => void,
   drawer: (options: DrawerOptions) => void,

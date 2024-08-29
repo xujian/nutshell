@@ -1,13 +1,14 @@
 import { App, Component } from 'vue'
 import { VendorSymbol } from '../shared/symbols'
 import { DollarNutshell } from '../framework'
+import { PopupChildComponent } from './types'
 
 export type SheetOptions = {
   title?: string,
   /**
    * 嵌入子组件
    */
-  component?: Component,
+  component?: PopupChildComponent,
   /**
    * 透传给子组件的属性
    */
@@ -17,6 +18,7 @@ export type SheetOptions = {
   mask?: boolean,
   destroyOnClose?: boolean,
 }
+
 /**
  * Sheet Service
  * Dynamically create a toast

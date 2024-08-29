@@ -3,8 +3,8 @@ import { SheetProps } from '../../../../components'
 
 export const Sheet = (props: SheetProps, { slots }: Omit<SetupContext, 'expose'>) => {
 
-  const open = computed({
-    get: () => props.modelValue,
+  const visible = computed({
+    get: () => !!props.modelValue,
     set: () => {
       props['onUpdate:modelValue']?.(false)
     }
@@ -14,7 +14,7 @@ export const Sheet = (props: SheetProps, { slots }: Omit<SetupContext, 'expose'>
     return h('scroll-view', {
       class: [
         'full-height'
-      ]
+      ],
     }, {
       default: content
     })
@@ -30,12 +30,14 @@ export const Sheet = (props: SheetProps, { slots }: Omit<SetupContext, 'expose'>
     popClass: [
       ...props.modelValue ? ['open'] : []
     ].join(' '),
+    overlayClass: 'sheet-overlay',
     style: {
       ...props.height ? {'--height': props.height} : {}
     },
     position: 'bottom',
-    visible: open.value,
+    visible: visible.value,
     title: props.title,
+    catchMove: true,
     closable: true,
     height,
     closeable: props.closable === false ? false : true,

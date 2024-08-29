@@ -1,17 +1,20 @@
 import { App } from 'vue'
-import dialog from './dialog'
-import type { DialogChildComponent, DialogChildComponentMethods } from './dialog'
-import toast from './toast'
+import dialog, { type DialogOptions } from './dialog'
+import toast, { type ToastOptions } from './toast'
 import loading from './loading'
-import sheet from './sheet'
+import sheet, { type SheetOptions } from './sheet'
 import { DollarNutshell } from '../framework'
 
 export type Service = {
   install (app: App, $n: DollarNutshell): void
 }
 
+export * from './types'
+
 export {
-  DialogChildComponent, DialogChildComponentMethods
+  DialogOptions,
+  SheetOptions,
+  ToastOptions
 }
 
 const services: Service[] = [

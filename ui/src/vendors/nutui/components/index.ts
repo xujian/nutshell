@@ -52,6 +52,7 @@ const components: Record<string, VendorComponent> = {
   Checkbox,
   // @ts-ignore
   Page,
+  // @ts-ignore
   Dialog,
   Drawer,
   Sheet,

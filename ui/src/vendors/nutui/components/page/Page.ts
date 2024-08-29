@@ -1,8 +1,7 @@
-import { Component, defineComponent, h, onMounted, onUnmounted, ref, SetupContext } from 'vue'
-import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, type PageProps } from '../../../../components'
+import { Component, defineComponent, h, onMounted, onUnmounted, ref, SetupContext, shallowRef } from 'vue'
+import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
-import { DialogOptions } from '../../../../services/dialog'
-import { ToastOptions } from '../../../../services/toast'
+import { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions } from '../../../../services'
 
 export type NoticeType = 'info' | 'warning' | 'error'
 
@@ -29,16 +28,12 @@ export const Page = defineComponent({
       props: {}
     }))
     const drawerOpen = ref(false)
-    const sheetData = ref<{component?: Component, props?: any}>({
-      component: void 0,
-      props: {}
-    })
-    const sheetOpen = ref(false)
-    const dialogData = ref<DialogOptions>({
-      component: void 0,
-      props: {}
-    })
-    const dialogOpen = ref(false)
+    const sheetComponent = shallowRef<PopupChildComponent | null>(null),
+      sheetProps = shallowRef<any>(),
+      sheetOpen = ref(false)
+    const dialogComponent = shallowRef<PopupChildComponent | null>(null),
+      dialogProps = shallowRef<any>(),
+      dialogOpen = ref(false)
 
     const renderNotice = () => {
       return noticeData.value
@@ -90,70 +85,28 @@ export const Page = defineComponent({
       $bus.emit('drawer.open')
     }
 
-    const renderSheet = () => {
-      return h(NsSheet, {
-          class: [
-            'app-sheet',
-          ],
-          modelValue: sheetOpen.value,
-          'onUpdate:modelValue': (value: boolean) => {
-            sheetOpen.value = value
-            if (value === false) {
-              $bus.emit('sheet.close')
-            }
-          }
-        }, {
-          default: () => sheetData.value?.component
-            ? h(sheetData.value?.component, {
-                ...sheetData.value?.props,
-                onComplete: (result: any) => {
-                  if (result !== false) {
-                    sheetOpen.value = false
-                    sheetData.value?.props?.onComplete?.(result)
-                  }
-                }
-              })
-            : null
-        })
-    }
-
-    const openSheet = ({component, props}: {component: Component, props: any}) => {
+    const openSheet = ({component, props}: SheetOptions) => {
       console.log('===openSheet', component)
-      sheetData.value.component = component
-      sheetData.value.props = props
+      sheetComponent.value = component!
+      sheetProps.value = props
       sheetOpen.value = true
       $bus.emit('sheet.open')
     }
 
-    const renderDialog = () => {
-      return h(NsDialog, {
-          class: [
-            'app-dialog',
-          ],
-          modelValue: dialogOpen.value,
-          'onUpdate:modelValue': (value: boolean) => {
-            dialogOpen.value = value
+    const openDialog = ({component, props}: DialogOptions) => {
+      console.log('===open dialog 3', component, props)
+      dialogComponent.value = component!
+      dialogProps.value = {
+        ...props,
+        'onUpdate:modelValue': (value: boolean) => {
+            if (value !== sheetOpen.value) {
+              sheetOpen.value = value
+            }
             if (value === false) {
-              $bus.emit('dialog.close')
+              $bus.emit('sheet.close')
             }
           }
-        }, {
-          default: () => dialogData.value?.component
-            ? h(dialogData.value?.component, dialogData.value?.props)
-            : null
-        })
-    }
-
-    const openDialog = ({component, props}: DialogOptions) => {
-      console.log('===options', component)
-      dialogData.value.component = component
-      dialogData.value.props = {
-        ...props,
-        onComplete (payload: any) {
-          dialogOpen.value = false
-          props.onComplete(payload)
         }
-      }
       dialogOpen.value = true
       $bus.emit('dialog.open')
     }
@@ -170,10 +123,6 @@ export const Page = defineComponent({
     onMounted(() => {
       console.log('===onMounted')
       page.value?.setAttribute('data-theme', 'present')
-    })
-
-    // @ts-ignore
-    useDidShow(() => {
       console.log('===useDidShow')
       $bus.on('toast', showToast)
       $bus.on('notice', showNotice)
@@ -183,7 +132,7 @@ export const Page = defineComponent({
       $bus.on('scroll', onScroll)
     })
 
-    useDidHide(() => {
+    onUnmounted(() => {
       console.log('===useDidHide')
       $bus.off('toast', showToast)
       $bus.off('notice', showNotice)
@@ -217,13 +166,49 @@ export const Page = defineComponent({
           '--bottom': `${safeArea.bottom}px`,
           '--scroll': `${scroll.value}px`,
         },
-        'data-mike': 'ppp'
       }, [
         slots.default?.(),
         renderNotice(),
         renderDrawer(),
-        renderSheet(),
-        renderDialog(),
+        // sheetOpen.value ? renderSheet() : null,
+        h(NsSheet, {
+          class: [
+            'app-sheet',
+          ],
+          modelValue: sheetOpen.value,
+          'onUpdate:modelValue': (value: boolean) => {
+            if (value !== sheetOpen.value) {
+              sheetOpen.value = value
+            }
+            if (value === false) {
+              $bus.emit('sheet.close')
+            }
+          }
+        }, {
+          default: () => sheetComponent.value
+            ? h(sheetComponent.value, sheetProps.value)
+            : null
+        }),
+        // renderDialog(),
+        h(NsDialog, {
+          class: [
+            'app-dialog',
+          ],
+          modelValue: dialogOpen.value,
+          'onUpdate:modelValue': (value: boolean) => {
+            if (value !== dialogOpen.value) {
+              dialogOpen.value = value
+            }
+            if (value === false) {
+              dialogComponent.value = null
+              $bus.emit('dialog.close')
+            }
+          }
+        }, {
+          default: () => dialogComponent.value
+            ? h(dialogComponent.value, dialogProps.value)
+            : null
+        })
       ])
   }
 })

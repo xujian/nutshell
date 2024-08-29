@@ -30,7 +30,6 @@ const nutuiVendor: CoreVendor = {
       $n =  app.runWithContext(() => inject(NutshellSymbol))!
     this.dialog = (options: DialogOptions) => {
       $bus.emit('dialog', options)
-      return void 0
     }
     this.toast = (message: string, options: ToastOptions) => {
       $bus.emit('toast', {message, options})
