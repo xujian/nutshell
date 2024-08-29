@@ -1,7 +1,7 @@
 import { computed, SetupContext, h } from 'vue'
 import { DialogProps } from '../../../../components'
 
-export const Dialog = (props: DialogProps, { slots }: Omit<SetupContext, 'expose'>) => {
+export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, 'expose'>) => {
 
   const visible = computed({
     get: () => !!props.modelValue,
@@ -10,14 +10,23 @@ export const Dialog = (props: DialogProps, { slots }: Omit<SetupContext, 'expose
     }
   })
 
+  const content = () => h(slots.default!, {
+    onComplete: (result: any) => {
+      console.log('===Dialog.ts content complete', result)
+      emit('complete', result)
+    },
+    onCancel: () => {
+      console.log('===Dialog.ts content cancel')
+      emit('cancel')
+    }
+  })
+
   const scrollView = (content: any) => {
     return h('scroll-view', {
       class: [
         'full-height'
       ]
-    }, {
-      default: content
-    })
+    }, content())
   }
 
   const height = props.height
@@ -50,6 +59,6 @@ export const Dialog = (props: DialogProps, { slots }: Omit<SetupContext, 'expose
       props['onUpdate:modelValue']?.(value)
     },
   }, {
-    default: () => scrollView(slots.default)
+    default: () => scrollView(content)
   })
 }

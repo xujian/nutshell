@@ -30,10 +30,12 @@ export const Page = defineComponent({
     const drawerOpen = ref(false)
     const sheetComponent = shallowRef<PopupChildComponent | null>(null),
       sheetProps = shallowRef<any>(),
-      sheetOpen = ref(false)
+      sheetOpen = ref(false),
+      sheetOptions = shallowRef<any>({})
     const dialogComponent = shallowRef<PopupChildComponent | null>(null),
       dialogProps = shallowRef<any>(),
-      dialogOpen = ref(false)
+      dialogOpen = ref(false),
+      dialogOptions = shallowRef<any>({})
 
     const renderNotice = () => {
       return noticeData.value
@@ -85,31 +87,47 @@ export const Page = defineComponent({
       $bus.emit('drawer.open')
     }
 
-    const openSheet = ({component, props}: SheetOptions) => {
+    const openSheet = ({component, props, ...options}: SheetOptions) => {
       console.log('===openSheet', component)
       sheetComponent.value = component!
       sheetProps.value = props
       sheetOpen.value = true
+      sheetOptions.value = options
       $bus.emit('sheet.open')
     }
 
-    const openDialog = ({component, props}: DialogOptions) => {
+    const onSheetComplete = (result: any) => {
+      if (result !== false) {
+        sheetOptions.value.onComplete?.(result)
+        sheetOpen.value = false
+        $bus.emit('sheet.close')
+      }
+    },
+    onSheetCalcel = () => {
+      sheetOpen.value = false
+      $bus.emit('sheet.close')
+    }
+
+    const openDialog = ({component, props, ...options}: DialogOptions) => {
       console.log('===open dialog 3', component, props)
       dialogComponent.value = component!
-      dialogProps.value = {
-        ...props,
-        'onUpdate:modelValue': (value: boolean) => {
-            if (value !== sheetOpen.value) {
-              sheetOpen.value = value
-            }
-            if (value === false) {
-              $bus.emit('sheet.close')
-            }
-          }
-        }
+      dialogProps.value = props,
       dialogOpen.value = true
+      dialogOptions.value = options
       $bus.emit('dialog.open')
     }
+
+    const onDialogComplete = (result: any) => {
+        if (result !== false) {
+          dialogOptions.value.onComplete?.(result)
+          dialogOpen.value = false
+          $bus.emit('dialog.close')
+          $bus.emit('dialog.close')
+        }
+      },
+      onDialogCalcel = () => {
+        dialogOpen.value = false
+      }
 
     const onScroll = (e: any) => {
       console.log('===ONSCROLL===', e)
@@ -183,10 +201,16 @@ export const Page = defineComponent({
             if (value === false) {
               $bus.emit('sheet.close')
             }
-          }
+          },
+          onComplete: onSheetComplete,
+          onCancel: onSheetCalcel,
         }, {
           default: () => sheetComponent.value
-            ? h(sheetComponent.value, sheetProps.value)
+            ? h(sheetComponent.value, {
+              ...sheetProps.value,
+              onComplete: onSheetComplete,
+              onCancel: onSheetCalcel
+            })
             : null
         }),
         // renderDialog(),
@@ -203,10 +227,16 @@ export const Page = defineComponent({
               dialogComponent.value = null
               $bus.emit('dialog.close')
             }
-          }
+          },
+          onComplete: onDialogComplete,
+          onCancel: onDialogCalcel,
         }, {
           default: () => dialogComponent.value
-            ? h(dialogComponent.value, dialogProps.value)
+            ? h(dialogComponent.value, {
+              ...dialogProps.value,
+              onComplete: onDialogComplete,
+              onCancel: onDialogCalcel,
+            })
             : null
         })
       ])

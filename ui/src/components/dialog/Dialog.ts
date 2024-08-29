@@ -41,6 +41,7 @@ export type DialogEmits = {
   show: () => void,
   hide: () => void,
   close: () => void,
+  complete: (result: any) => void,
 }
 
 export const dialogEmits: DialogEmits = {
@@ -48,6 +49,7 @@ export const dialogEmits: DialogEmits = {
   show: () => {},
   hide: () => {},
   close: () => {},
+  complete: () => {}
 }
 
 export type DialogSlots = {

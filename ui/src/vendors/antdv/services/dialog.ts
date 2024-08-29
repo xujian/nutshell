@@ -37,8 +37,8 @@ function createDialog (options: DialogOptions, app: App) {
     : () => message
 
   const onOk = () => {
-    if (options.onOk) {
-      visible.value = options.onOk(completeResult) === false
+    if (options.onComplete) {
+      visible.value = options.onComplete(completeResult) === false
     } else if (typeof options.component !== 'function') {
       // 内嵌组件 可阻止弹窗关闭
       Promise.resolve(contentRef.value.couldComplete?.()).then((could: boolean) => {

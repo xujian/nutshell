@@ -26,7 +26,7 @@ export type DialogOptions = {
   mask?: boolean,
   destroyOnClose?: boolean,
   classes?: string[],
-  onOk?: (result?: any) => boolean | undefined
+  onComplete?: (result?: any) => boolean | undefined
   onCancel?: () => boolean | undefined
   centered?: boolean
 }
@@ -36,7 +36,9 @@ export type ConfirmOptions = {
   message?: string,
   okText?: string,
   cancelText?: string,
-  okColor?: Color
+  okColor?: Color,
+  onComplete?: (result?: any) => boolean | undefined
+  onCancel?: () => boolean | undefined
 }
 
 export type DialogInstance = {
