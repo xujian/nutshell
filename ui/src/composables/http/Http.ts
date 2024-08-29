@@ -54,6 +54,7 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
       data = omit({
         ...data,
         ...paging,
+        pageSize: paging.pageSize || 10
       }, 'page')
     }
     console.log(`[][][][][]HTTP.${c.method}, ${c.baseUrl}${c.url}`, data)
