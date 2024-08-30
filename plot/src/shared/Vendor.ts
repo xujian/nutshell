@@ -71,6 +71,7 @@ class Vendor {
       }
     }
     const [d] = data
+    // @ts-ignore
     if (isLayer(d) && data.length > 1) {
       result = {
         ...result,
@@ -86,23 +87,26 @@ class Vendor {
   }
 
   draw () {
-    console.log('===this.container.id', this.container.id)
+    // console.log('===this.container.id', this.container.id)
     setTimeout(() => {
+      // console.log('===draw()', this.container.id)
       const query = wx.createSelectorQuery(),
         container = query.select(`#${this.container.id}`),
         canvas = query.select(`#${this.container.id} .canvas`)
+        // console.log('===draw(1)', container, canvas)
         container.boundingClientRect((rect: any) => {
           this.width = rect.width,
           this.height = rect.height
         })
-      canvas.node(({ node: canvas }: { node: any}) => {
+      canvas.node(({ node: paint }: { node: any}) => {
         const isDevTool = /Macintosh/.test(navigator.userAgent)
         const devicePixelRatio = isDevTool ? 1 : wx.getSystemInfoSync().pixelRatio
-        console.log('===devicePixelRatio', navigator.userAgent, isDevTool, devicePixelRatio)
+        // console.log('===devicePixelRatio', navigator.userAgent, isDevTool, devicePixelRatio)
         Chart.defaults.font.size = 10 * devicePixelRatio
-        const context = canvas.getContext('2d')
-        canvas.width = this.width
-        canvas.height = this.height
+        const context = paint.getContext('2d')
+        // console.log('===ownerDocument', paint.ownerDocument)
+        paint.width = this.width
+        paint.height = this.height
         const options = this.buildOptions(this.props)
         const datasets = this.props.data?.map((d, index) => ({
           label: isLayer(d) ? d.label : '',
@@ -129,6 +133,8 @@ class Vendor {
           },
           options: {
             devicePixelRatio,
+            // resonsive=true 会报错 resize()
+            responsive: false,
             layout: {
               padding: 0,
             },
@@ -147,13 +153,13 @@ class Vendor {
           }
           }
         }
-        console.log('===chart config', config)
+        // console.log('===chart config', config)
         this.instance = new Chart(
           context, config
         )
       })
       .exec((res: any) => {
-        console.log('===res', res)
+        // console.log('===res', res)
       })
     }, 1000)
   }
