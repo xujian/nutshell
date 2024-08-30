@@ -1,6 +1,6 @@
 import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
 import { MakePropsType } from '../../utils'
-import { buildDesignClasses, buildDesignStyles, useDesignProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, useDesignProps, useVariantProps, useModelValuePropsForInput } from '../../props'
 
 export const searchProps = {
   label: {
@@ -11,12 +11,21 @@ export const searchProps = {
   },
   ...useDesignProps(),
   ...useVariantProps(),
+  ...useModelValuePropsForInput(),
 }
 
 export type SearchEmits = {
+  keyup: (code: string) => void
+  enter: () => void
 }
 
 const searchEmits: SearchEmits = {
+  keyup: (code: string) => {
+    return true
+  },
+  enter: () => {
+    return true
+  },
 }
 
 export type SearchSlots = {
@@ -44,6 +53,12 @@ export const NsSearch = defineComponent({
       ],
       name: 'search',
       placeholder: props.placeholder,
+      onConfirm: () => {
+        ctx.emit('enter')
+      },
+      onInput: (e: any) => {
+        props['onUpdate:modelValue']?.(e.detail.value)
+      },
     })
 
     return () => h('div', {
