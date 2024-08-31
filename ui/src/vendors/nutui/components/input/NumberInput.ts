@@ -13,12 +13,13 @@ export const NumberInput = defineComponent({
   setup (props, { slots }) {
 
     const form = useForm()
+    console.log(props.precision, 'props.precision')
 
     return () => renderFormItem(props, slots,
       () => h(NutInput, {
           border: false,
           name: props.name,
-          type: 'number',
+          type: (props.precision as number) > 0 ? 'digit' : 'number',
           placeholder: props.placeholder,
           modelValue: props.modelValue,
           inputAlign: props.variant === 'solid' ? 'left' : 'right',
