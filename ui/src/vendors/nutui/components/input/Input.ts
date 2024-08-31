@@ -11,7 +11,7 @@ export const Input = defineComponent({
   },
   emits: inputEmits,
   slots: inputSlots,
-  setup (props, { slots }) {
+  setup (props, { slots, emit }) {
 
     const form = useForm()
 
@@ -30,6 +30,7 @@ export const Input = defineComponent({
           },
           onBlur: () => {
             form.validate(props.name as string)
+            emit('blur')
           }
         },
         {
