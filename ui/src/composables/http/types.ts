@@ -55,7 +55,8 @@ export type ResponseRaw<T = ResponseData> = {
   status: number,
   headers?: Record<string, string | number>,
   message: string,
-  data: T
+  data: T,
+  paging?: Paging,
 }
 
 /**
@@ -157,12 +158,13 @@ export type Paging = {
   /**
    * 当前页
    */
-  current?: number,
+  current: number,
   /**
    * 数据总数
    */
-  total?: number,
-  pageSize?: number,
+  total: number,
+  totalPages: number,
+  pageSize: number,
   jumpable?: boolean,
   pageSizeChangable?: boolean
 }

@@ -48,15 +48,6 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
       && clientConfig.translates[c.url]
         ? clientConfig.translates[c.url]?.(c.data || {})
         : c.data
-    // 处理 分页
-    if (clientConfig.paging && data && data.page) {
-      const paging = clientConfig.paging.translate(data as PagingParams)
-      data = omit({
-        ...data,
-        ...paging,
-        pageSize: paging.pageSize || 10
-      }, 'page')
-    }
     console.log(`[][][][][]HTTP.${c.method}, ${c.baseUrl}${c.url}`, data)
     clientConfig.vendor?.request({
       url: `${c.baseUrl}${c.url}`,
@@ -124,8 +115,9 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
         // 在 endpoints transform 之前格式化分页数据
         // 并拼装回原 raw 数据
         const paging = config.data?.page
-          ? clientConfig.paging?.transform(raw.data)
+          ? raw.paging
           : void 0
+        console.log('===paging ooo ooo', paging)
         resolve(
           paging
             ? {
