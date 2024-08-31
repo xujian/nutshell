@@ -10,10 +10,9 @@ export const NumberInput = defineComponent({
     ...marginProps
   },
   emits: numberInputEmits,
-  setup (props, { slots }) {
+  setup (props, { slots, emit }) {
 
     const form = useForm()
-    console.log(props.precision, 'props.precision')
 
     return () => renderFormItem(props, slots,
       () => h(NutInput, {
@@ -26,6 +25,9 @@ export const NumberInput = defineComponent({
           placeholderClass: 'input-placeholder',
           'onUpdate:modelValue': (value: number | string) => {
             props['onUpdate:modelValue']?.(value)
+          },
+          onBlur: (e: FocusEvent) => {
+            emit('blur')
           },
         },
         {
