@@ -1,13 +1,20 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, reactive, InjectionKey, Ref, Reactive } from 'vue'
 import { define, MakePropsType } from '../../utils'
 
-// page scroll
-// 滚动有三
-// 1. <page> 负责滚动, <ns-page> 高度自由
-// 2. <ns-page> 负责滚动
-// 3. <na-page-content> 负责滚动
+/**
+ * page scroll
+ * 滚动有三
+ * 1. <page> 负责滚动, <ns-page> 高度是内容高度
+ * 2. <ns-page> 负责滚动 高度 100vh
+ * 3. <na-page-content> 负责滚动
+ * <ns-page> 高度
+ **/
 
 
+
+/**
+ *
+ */
 export const pageProps = {
   title: {
     type: String
@@ -32,6 +39,12 @@ export type PageSlots = {
 }
 
 export type PageProps = MakePropsType<typeof pageProps, PageEmits>
+
+export type PageConfig = {
+  contentScrollable: boolean
+}
+
+export const PageSymbol: InjectionKey<Reactive<PageConfig>> = Symbol('ns-page')
 
 /**
  *  组件 <ns-page>

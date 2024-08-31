@@ -1,6 +1,7 @@
-import { defineComponent, h, PropType } from 'vue'
+import { defineComponent, h, inject, PropType } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useBus } from '../../composables'
+import { PageSymbol } from './Page'
 
 export type PageContentColorMode = 'light' | 'dark'
 
@@ -21,19 +22,30 @@ export const pageContentProps = {
   }
 }
 
-export type PageContentmits = {
+export type PageContentEmits = {
+  /**
+   * 可滚动部件达到底部
+   */
+  bottomReached: () => void
 }
 
-export const pageContentEmits: PageContentmits = {
+export const pageContentEmits: PageContentEmits = {
+  bottomReached: () => true
 }
 
-export type PageContentProps = MakePropsType<typeof pageContentProps, PageContentmits>
+export type PageContentProps = MakePropsType<typeof pageContentProps, PageContentEmits>
 
 export const NsPageContent = defineComponent({
   name: 'NsPageContent',
   props: pageContentProps,
   emits: pageContentEmits,
   setup (props, { slots, emit }) {
+
+    const page = inject(PageSymbol)
+
+    if (props.scrollable) {
+      page && (page.contentScrollable = true)
+    }
 
     const $bus = useBus()
 
@@ -47,28 +59,41 @@ export const NsPageContent = defineComponent({
       })
     }
 
-    const renderScrollview = (content: any) => h('scroll-view', {
-        class: ['page-content-scroll-view'],
+    const renderScrollview = (content: any) => h(ScrollView, {
+        class: ['page-content-scroll-view', 'scroll'],
         style: cssVars,
         'scroll-y': true,
         onScroll,
+        lowerThreshold: 50,
+        onScrolltoupper () {
+          console.log('===onScrollToUpper===')
+        },
+        onScrolltolower () {
+          console.log('===bindscrolltolower===')
+          console.log('===onScrolltolower===', props)
+          emit('bottomReached')
+        }
+      }, h('div', {
+        class: 'page-content-scroll-content'
       }, content)
+    )
 
-    const content = () => h('div', {
+    return () => h('div', {
         class: [
           'ns-page-content',
           'page-content',
           'grow',
           'column',
-          'align-stretch'
+          'align-stretch',
+          ...props.scrollable ? ['scrollable'] : [],
         ],
         style: {
           paddingBottom: `${props.bottom}px`
         }
-      }, slots)
-
-    return () => props.scrollable
-      ? renderScrollview(content())
-      : content()
+      },
+      props.scrollable
+        ? renderScrollview(slots)
+        : slots
+    )
   }
 })

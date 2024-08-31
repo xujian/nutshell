@@ -39,7 +39,8 @@
     "story:preview": "histoire preview"
   },
   "peerDependencies": {
-    "@tarojs/taro": "^3.6.8",
+    "@tarojs/taro": "^4.0.0",
+    "@tarojs/components": "^4.0.0",
     "ant-design-vue": "4.x",
     "vue": "^3.3.4"
   },
@@ -63,6 +64,7 @@
     "rollup-plugin-esbuild": "^6.1.1",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-scss": "^4.0.0",
+    "rollup-plugin-vue": "^6.0.0",
     "rollup-plugin-vue-jsx-compat": "^0.0.6",
     "unplugin-auto-import": "^0.18.2",
     "unplugin-vue-components": "^0.27.3"
@@ -74,6 +76,7 @@
   "dependencies": {
     "@nutui/nutui": "^4.3.2",
     "@nutui/nutui-taro": "^4.3.9",
+    "@tarojs/components": "^4.0.5",
     "@types/lodash-es": "^4.17.12",
     "@types/validator": "^13.11.0",
     "chroma-js": "^2.4.2",

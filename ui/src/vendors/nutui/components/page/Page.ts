@@ -1,5 +1,5 @@
-import { Component, defineComponent, h, onMounted, onUnmounted, ref, SetupContext, shallowRef } from 'vue'
-import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog } from '../../../../components'
+import { Component, defineComponent, h, onMounted, onUnmounted, provide, reactive, ref, SetupContext, shallowRef } from 'vue'
+import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, PageSymbol, PageConfig } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
 import { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions } from '../../../../services'
 
@@ -15,6 +15,13 @@ export const Page = defineComponent({
   props: pageProps,
   emit: pageEmits,
   setup: (props, {slots, emit}) => {
+
+
+    const pageConfig = reactive<PageConfig>({
+      contentScrollable: false,
+    })
+
+    provide(PageSymbol, pageConfig)
 
     // 内置 notice-bar, app-drawer, app-sheet
     const page = ref<HTMLElement>()
@@ -141,7 +148,6 @@ export const Page = defineComponent({
     onMounted(() => {
       console.log('===onMounted')
       page.value?.setAttribute('data-theme', 'present')
-      console.log('===useDidShow')
       $bus.on('toast', showToast)
       $bus.on('notice', showNotice)
       $bus.on('drawer', openDrawer)
@@ -176,6 +182,7 @@ export const Page = defineComponent({
           'page column align-stretch',
           ...scroll.value > 0 ? ['scrolled'] : [],
           ...props.scrollable ? ['scrollable'] : [],
+          ...pageConfig.contentScrollable ? ['content-scrollable'] : [],
           'theme-present'
         ],
         style: {

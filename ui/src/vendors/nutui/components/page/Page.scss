@@ -7,16 +7,34 @@
   &.scrollable {
     height: 100vh;
   }
-  .page-content-scroll-view {
-    top: calc(var(--status) + var(--nav));
-    height: calc(100vh - var(--status) - var(--nav));
-  }
-
   .page-content {
     padding: var(--ns-spacing);
     top: calc(var(--status) + var(--nav));
     box-sizing: border-box;
     flex-grow: 1;
+    &.scrollable {
+      padding: 0;
+    }
+  }
+  &.content-scrollable {
+    height: 100vh;
+    .page-header {
+
+    }
+    .page-content {
+      height: calc(100vh - var(--status) - var(--nav));
+      flex-grow: 1;
+    }
+  }
+  .page-content-scroll-view {
+    // top: calc(var(--status) + var(--nav));
+    // height: calc(100vh - var(--status) - var(--nav));
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .page-content-scroll-content {
+    padding: var(--ns-spacing);
   }
   .page-notice {
     position: absolute;

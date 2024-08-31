@@ -7,6 +7,7 @@ import scss from 'rollup-plugin-scss'
 import postcss from 'rollup-plugin-postcss'
 import { resolve } from 'path'
 import json from './rollup/plugin-json.js'
+import vue from 'rollup-plugin-vue'
 // import alias from '@rollup/plugin-alias'
 // import NutUIResolver from '@nutui/nutui/dist/resolver'
 // import path from 'path'
@@ -59,20 +60,31 @@ const taroEvents = [
   'useLoad',
   'usePullDownRefresh',
   'useReachBottom',
-  'useResize'
+  'useResize',
+]
+
+const taroComponents = [
+  'ScrollView',
 ]
 
 const TaroHookResolver = (name) => {
+  console.log('===TaroHookResolver===', name)
   if (taroEvents.includes(name)) {
     return {
       name: name,
       from: '@tarojs/taro',
     }
   }
+  if (taroComponents.includes(name)) {
+    return {
+      name: name,
+      from: '@tarojs/components',
+    }
+  }
 }
 
 // 返回一个假的Taro
-// 避免 Desktio/H5 引入整个Taro包
+// 避免 Desktop/H5 引入整个Taro包
 // 见 vendors/nutui/service/toast.ts
 const PsuedoTaroResolver = (name) => {
   if (name === 'Taro') {
@@ -133,6 +145,7 @@ export default [
           }
         ]
       }),
+      vue(),
       vueJsx(),
       esbuild({
         jsx: 'transform', // default, or 'preserve'
@@ -169,6 +182,7 @@ export default [
           TaroHookResolver,
         ]
       }),
+      vue(),
       vueJsx(),
       esbuild({
         jsx: 'transform', // default, or 'preserve'
