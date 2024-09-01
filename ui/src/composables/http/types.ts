@@ -160,12 +160,24 @@ export type Paging = {
    */
   current: number,
   /**
-   * 数据总数
+   * 数据总条数
+   */
+  totalRecords: number,
+  /**
+   * 总页数
    */
   total: number,
-  totalPages: number,
+  /**
+   * 每页条数
+   */
   pageSize: number,
+  /**
+   * 可跳跃(用于分页器)
+   */
   jumpable?: boolean,
+  /**
+   * 可改变每页条数(用于分页器)
+   */
   pageSizeChangable?: boolean
 }
 

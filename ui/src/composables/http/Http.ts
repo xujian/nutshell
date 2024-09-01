@@ -117,7 +117,6 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
         const paging = config.data?.page
           ? raw.paging
           : void 0
-        console.log('===paging ooo ooo', paging)
         resolve(
           paging
             ? {
