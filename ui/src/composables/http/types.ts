@@ -178,7 +178,11 @@ export type Paging = {
   /**
    * 可改变每页条数(用于分页器)
    */
-  pageSizeChangable?: boolean
+  pageSizeChangable?: boolean,
+  /**
+   * 数据已加载的标记
+   */
+  loaded?: boolean
 }
 
 /**

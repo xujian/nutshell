@@ -1,4 +1,3 @@
-import { omit } from 'lodash'
 import { HttpInstance, HttpClientConfig,
   HttpMethod, HttpRequestConfig,
   RequestData, ResponseData,
@@ -48,6 +47,9 @@ const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
       && clientConfig.translates[c.url]
         ? clientConfig.translates[c.url]?.(c.data || {})
         : c.data
+    if (data && clientConfig.paging?.translate) {
+      data = clientConfig.paging?.translate(data as PagingParams)
+    }
     console.log(`[][][][][]HTTP.${c.method}, ${c.baseUrl}${c.url}`, data)
     clientConfig.vendor?.request({
       url: `${c.baseUrl}${c.url}`,
