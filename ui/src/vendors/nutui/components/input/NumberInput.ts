@@ -27,6 +27,7 @@ export const NumberInput = defineComponent({
             props['onUpdate:modelValue']?.(value)
           },
           onBlur: (e: FocusEvent) => {
+            form.validate(props.name as string)
             emit('blur')
           },
         },
@@ -34,7 +35,8 @@ export const NumberInput = defineComponent({
           ...slots.prepend ? {
             // @ts-ignore
             left: () => slots.prepend()
-          } : {}
+          } : {},
+          ...slots.append ? { right: slots.append } : {}
         }
       )
     )

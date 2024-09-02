@@ -1,7 +1,7 @@
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
-import { PropType } from 'vue'
+import { PropType, SlotsType } from 'vue'
 
 export type NumberInputFormatter = (value: string | number) => string
 
@@ -54,10 +54,20 @@ export type NumberInputEmits = {
 }
 
 export const numberInputEmits: NumberInputEmits = {
-  change: (value?: number) => {},
-  blur: () => {},
-  focus: () => {},
-  enter: () => {},
+  change: (value?: number) => true,
+  blur: () => true,
+  focus: () => true,
+  enter: () => true,
+}
+
+export type NumberInputSlots = {
+  /** 前缀 */
+  prepend: never
+  /** 后缀 */
+  append: never
+}
+
+export const numberInputSlots: SlotsType<NumberInputSlots> = {
 }
 
 export type NumberInputProps = MakePropsType<typeof numberInputProps, NumberInputEmits>
@@ -69,6 +79,7 @@ export const NsNumberInput = define({
   name: 'NsNumberInput',
   props: numberInputProps,
   emits: numberInputEmits,
+  slots: numberInputSlots,
   setup(props, ctx) {
     const finalRules = formatRules(props.rules as ValidationRule[], props)
     return {
