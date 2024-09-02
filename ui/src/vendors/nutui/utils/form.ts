@@ -2,10 +2,16 @@ import { FunctionalComponent, InjectionKey, Ref, Slots, h, inject, ref } from 'v
 import { DesignProps, FieldProps, FullValidationRule, VariantProps, buildDesignVariables } from '../../../props'
 import { useNutshell } from '../../../framework'
 import { useBus } from '../../../composables'
-import { FormInstance } from '@nutui/nutui-taro'
 import { FormItemRule } from '@nutui/nutui-taro/dist/types/__VUE/form/types'
+import { FormProps } from '../../../components'
+import { FormInstance } from '@nutui/nutui-taro'
 
-export const NutuiFormSymbol: InjectionKey<Ref<FormInstance | undefined>> = Symbol('nutui-form')
+export type FormProvided = {
+  props: FormProps,
+  vendor: Ref<FormInstance | undefined>
+}
+
+export const NutuiFormSymbol: InjectionKey<FormProvided | undefined> = Symbol('nutui-form')
 
 // 标准校验格式转换为 Nutui FormItemRule 格式
 export const transformRules = (rules: FullValidationRule[]) => {
@@ -22,8 +28,9 @@ export const transformRules = (rules: FullValidationRule[]) => {
       })
     } else {
       result.push({
-        validator (value: string | string[], rule: any) {
+        validator: (value: string | string[], rule: any) => {
           // 未填写 不继续校验
+          // console.log('===validator', typeof value, value)
           if (!value) {
             return Promise.resolve()
           }
@@ -37,6 +44,7 @@ export const transformRules = (rules: FullValidationRule[]) => {
       })
     }
   })
+  // console.log('===transformRules', result)
   return result
 }
 
@@ -51,7 +59,7 @@ export type FormItemProps = FieldProps & VariantProps & DesignProps
  * @returns
  */
 export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: FunctionalComponent) => {
-
+  // console.log('===renderFormItem', props.name, props.rules)
   const rules = transformRules(props.rules as FullValidationRule[])
   const formItemRef = ref(null)
   const form = useForm()
@@ -92,17 +100,20 @@ export const useForm = () => {
   const $n = useNutshell()
   const $bus = useBus()
   const validate = async (name?: string) => {
-    const result = await form?.value?.validate(name) as any
+    const result = await form?.vendor.value?.validate(name) as any
     console.log('===useForm validate(validate result', result)
+    // 校验失败时报告错误
+    // 基于 form 的属性 failed (报错方式)
     if (!result.valid) {
-      result.errors.forEach((e: any) => {
-        // $bus.emit('dialog', () => h('div', {}, 'UUU'))
-        // $bus.emit('notice', {
-        //   type: 'error',
-        //   content: e.message
-        // })
-        $n.toast(e.message, {})
-      })
+      const [error] = result.errors
+      const failed = form?.props.failed || 'toast'
+      if (failed === 'toast') {
+        $n.toast(error.message, {})
+      } else if (failed === 'notice') {
+        $n.notice(error.message, {
+          type: 'error'
+        })
+      }
     }
   }
   return {

@@ -2,6 +2,7 @@ import { defineComponent, getCurrentInstance, h, inject, onMounted, provide, ref
 import { formProps, type FormProps, formEmits, } from '../../../../components'
 import { marginProps } from '../../../../utils'
 import { NutuiFormSymbol } from '../../utils'
+import { FormInstance } from 'ant-design-vue'
 
 export const Form = defineComponent({
   name: 'NutuiInput',
@@ -12,8 +13,11 @@ export const Form = defineComponent({
   emits: formEmits,
   setup (props, { slots }) {
 
-    // @ts-ignore
-    provide(NutuiFormSymbol, props.vendorRef)
+    provide(NutuiFormSymbol, {
+      props,
+      // @ts-ignore
+      vendor: props.vendorRef
+    })
 
     return () =>  h(NutForm, {
       ref: props.vendorRef,

@@ -5,12 +5,22 @@ import { useNutshell } from '../../framework'
 
 export type NamePath = string | number | (string | number)[]
 
+export type FormValidateFailed =
+  'toast' | 'notice' | 'none'
+
 export const formProps = {
   name: {
     type: String
   },
   modelValue: {
     type: Object,
+  },
+  /**
+   * 校验失败时的报错方式
+   */
+  failed: {
+    type: String as PropType<FormValidateFailed>,
+    default: 'toast'
   },
   ...useVariantProps(),
   'onUpdate:modelValue': {

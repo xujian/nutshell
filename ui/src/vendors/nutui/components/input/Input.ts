@@ -32,7 +32,7 @@ export const Input = defineComponent({
             form.validate(props.name as string)
             emit('blur')
           },
-          onChange: (e) => {
+          onChange: (e: any) => {
             emit('change', e.detail.value)
           },
           // onBlur: (e) => {
