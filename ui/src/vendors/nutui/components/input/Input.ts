@@ -11,7 +11,11 @@ export const Input = defineComponent({
   },
   emits: inputEmits,
   slots: inputSlots,
+<<<<<<< HEAD
   setup (props, { slots, emit }) {
+=======
+  setup (props, { emit, slots }) {
+>>>>>>> 70139ce (feat: 移动端input添加change事件)
 
     const form = useForm()
 
@@ -31,7 +35,22 @@ export const Input = defineComponent({
           onBlur: () => {
             form.validate(props.name as string)
             emit('blur')
-          }
+          },
+          onChange: (e) => {
+            emit('change', e.detail.value)
+          },
+          // onBlur: (e) => {
+          //   emit('blur')
+          // },
+          // onFocus: (e: FocusEvent) => {
+          //   emit('focus')
+          // },
+          // onKeyup: (e: KeyboardEvent) => {
+          //   emit('keyup', e.key)
+          // },
+          // onPressEnter: (e: KeyboardEvent) => {
+          //   emit('enter')
+          // }
         },
         {
           ...slots.prepend ? { left: slots.prepend} : {},
