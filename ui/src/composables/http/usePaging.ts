@@ -25,18 +25,21 @@ export const usePaging: UsePaging = (load: UsePagingLoadFunction) => {
   })
 
   const nextPage = async (page?: number) => {
-      // 强制回到第一页
     if (page) {
+      // 强制回到第一页
       paging.current = page
+      paging.loaded = false
+    } else {
+      paging.current ++
     }
     // 到达末页
-    if (paging.loaded && paging.total === paging.current) {
+    if (paging.loaded && paging.current >= paging.total) {
+      paging.current = paging.total
       return Promise.resolve({
         paging,
         data: []
       })
     }
-    paging.current ++
     return load(paging.current).then((result) => {
       paging.loaded = true
       paging.total = result.paging.total

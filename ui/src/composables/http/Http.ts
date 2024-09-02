@@ -38,17 +38,24 @@ const downloadFile = ({data, contentType, fileName}: DownloadFileParams) => {
  */
 const request: HttpInstance['request'] = <T>(config: HttpRequestConfig) => {
   const c = {
-    ...clientConfig,
-    ...config,
-  }
+      ...clientConfig,
+      ...config,
+    },
+    paging = c.paging
   return new Promise<T>((resolve, reject) => {
     let data = config.data
       && clientConfig.translates
       && clientConfig.translates[c.url]
         ? clientConfig.translates[c.url]?.(c.data || {})
         : c.data
-    if (data && clientConfig.paging?.translate) {
-      data = clientConfig.paging?.translate(data as PagingParams)
+    if (data?.page && paging?.translate) {
+      data = {
+        ...data,
+        ...paging?.translate({
+          page: data.page,
+          ...data.pageSize ? { pageSize: data.pgeSize } : {}
+        })
+      }
     }
     console.log(`[][][][][]HTTP.${c.method}, ${c.baseUrl}${c.url}`, data)
     clientConfig.vendor?.request({
