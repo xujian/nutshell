@@ -11,11 +11,7 @@ export const Input = defineComponent({
   },
   emits: inputEmits,
   slots: inputSlots,
-<<<<<<< HEAD
   setup (props, { slots, emit }) {
-=======
-  setup (props, { emit, slots }) {
->>>>>>> 70139ce (feat: 移动端input添加change事件)
 
     const form = useForm()
 
