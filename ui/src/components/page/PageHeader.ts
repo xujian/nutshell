@@ -1,7 +1,8 @@
-import { defineComponent, h, PropType } from 'vue'
+import { defineComponent, h, inject, PropType } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useSafeArea } from '../../composables'
 import { buildDesignClasses, buildDesignStyles, buildDesignVariables, type TextAlign, useDesignProps } from '../../props'
+import { PageSymbol } from './Page'
 
 export const pageBottomProps = {
   ...useDesignProps()
@@ -76,6 +77,10 @@ export const NsPageHeader = defineComponent({
   props: pageHeaderProps,
   emits: pageHeaderEmits,
   setup (props, { slots, emit }) {
+
+    const page = inject(PageSymbol)
+
+    page && (page.hasHeader = true)
 
     const safeArea = useSafeArea()
 

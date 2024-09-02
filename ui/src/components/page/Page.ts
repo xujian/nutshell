@@ -41,7 +41,8 @@ export type PageSlots = {
 export type PageProps = MakePropsType<typeof pageProps, PageEmits>
 
 export type PageConfig = {
-  contentScrollable: boolean
+  contentScrollable: boolean,
+  hasHeader: boolean
 }
 
 export const PageSymbol: InjectionKey<Reactive<PageConfig>> = Symbol('ns-page')

@@ -5,7 +5,8 @@ import type { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions, No
 
 export type Notice = {
   options?: {
-    type: NoticeType,
+    type?: NoticeType,
+    duration?: number,
   }
   message: string
 }
@@ -19,6 +20,7 @@ export const Page = defineComponent({
 
     const pageConfig = reactive<PageConfig>({
       contentScrollable: false,
+      hasHeader: false,
     })
 
     provide(PageSymbol, pageConfig)
@@ -28,7 +30,7 @@ export const Page = defineComponent({
     const $bus = useBus()
     const scroll = ref(0)
     const safeArea = useSafeArea()
-    const noticeDuration = 50000
+    const noticeDuration = 5000
     const noticeData = ref<Notice>()
     const drawerData = ref(<{component?: Component, props?: any}>({
       component: void 0,
@@ -53,14 +55,13 @@ export const Page = defineComponent({
     }
 
     const showNotice = (payload: Notice) => {
-      console.log('===Page.ts showNotice', payload)
       noticeData.value = {
         message: payload.message,
         options: payload.options
       }
       setTimeout(() => {
         noticeData.value = void 0
-      }, noticeDuration)
+      }, payload?.options?.duration ?? noticeDuration)
     }
 
     const renderDrawer = () => {
@@ -175,6 +176,7 @@ export const Page = defineComponent({
           'page column align-stretch',
           ...scroll.value > 0 ? ['scrolled'] : [],
           ...props.scrollable ? ['scrollable'] : [],
+          ...pageConfig.hasHeader ? ['has-header'] : [],
           ...pageConfig.contentScrollable ? ['content-scrollable'] : [],
           'theme-present'
         ],

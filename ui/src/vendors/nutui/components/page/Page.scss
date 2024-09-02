@@ -38,7 +38,7 @@
   }
   .page-notice {
     position: absolute;
-    top: calc(var(--status) + var(--nav));
+    top: 0;
     left: 0;
     padding: .5em;
     line-height: 1.2em;
@@ -49,6 +49,9 @@
     background-color: var(--ns-warning);
     font-size: 12px;
     transition: all .5s;
+  }
+  &.has-header {
+    top: calc(var(--status) + var(--nav));
   }
   .app-drawer {
     .nut-overlay {
