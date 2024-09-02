@@ -74,6 +74,8 @@ export const NsButtonGroup = defineComponent({
       },
       size: props.size,
       color: props.color,
+      fill: props.fill,
+      foreground: props.foreground,
       variant: props.variant,
       round: props.round,
       label: item.label || '',
