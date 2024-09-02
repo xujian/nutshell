@@ -22,7 +22,7 @@ export const Input = defineComponent({
           placeholder: props.placeholder,
           modelValue: props.modelValue,
           disabled: props.disabled ?? false,
-          maxlength: props.maxlength ?? 50,
+          maxLength: props.maxlength ?? 50,
           inputAlign: props.variant === 'solid' ? 'left' : 'right',
           placeholderClass: 'input-placeholder',
           'onUpdate:modelValue': (value: number | string) => {
