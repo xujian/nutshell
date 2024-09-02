@@ -1,13 +1,13 @@
 import { Component, defineComponent, h, onMounted, onUnmounted, provide, reactive, ref, SetupContext, shallowRef } from 'vue'
 import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, PageSymbol, PageConfig } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
-import { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions } from '../../../../services'
-
-export type NoticeType = 'info' | 'warning' | 'error'
+import type { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType } from '../../../../services'
 
 export type Notice = {
-  type: NoticeType,
-  content: string
+  options?: {
+    type: NoticeType,
+  }
+  message: string
 }
 
 export const Page = defineComponent({
@@ -28,7 +28,7 @@ export const Page = defineComponent({
     const $bus = useBus()
     const scroll = ref(0)
     const safeArea = useSafeArea()
-    const noticeDuration = 5000
+    const noticeDuration = 50000
     const noticeData = ref<Notice>()
     const drawerData = ref(<{component?: Component, props?: any}>({
       component: void 0,
@@ -44,17 +44,6 @@ export const Page = defineComponent({
       dialogOpen = ref(false),
       dialogOptions = shallowRef<any>({})
 
-    const renderNotice = () => {
-      return noticeData.value
-        ? h('div', {
-            class: [
-              'page-notice',
-              `${noticeData.value?.type || ''}`
-            ],
-          }, noticeData.value.content)
-        : null
-    }
-
     const showToast = ({message, options}: {message: string, options: ToastOptions}) => {
       wx.showToast({
         title: message,
@@ -64,7 +53,11 @@ export const Page = defineComponent({
     }
 
     const showNotice = (payload: Notice) => {
-      noticeData.value = payload
+      console.log('===Page.ts showNotice', payload)
+      noticeData.value = {
+        message: payload.message,
+        options: payload.options
+      }
       setTimeout(() => {
         noticeData.value = void 0
       }, noticeDuration)
@@ -193,7 +186,13 @@ export const Page = defineComponent({
         },
       }, [
         slots.default?.(),
-        renderNotice(),
+        h('div', {
+            class: [
+              'page-notice',
+              noticeData.value?.message ? [''] : ['hidden'],
+              `${noticeData.value?.options?.type || ''}`
+            ],
+          }, noticeData.value?.message),
         renderDrawer(),
         // sheetOpen.value ? renderSheet() : null,
         h(NsSheet, {

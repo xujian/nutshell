@@ -4,10 +4,7 @@ import { CoreVendor } from '../../shared/models/CoreVendor'
 import components from './components'
 import { ConfirmOptions, DialogOptions } from '../../services/dialog'
 import { BusSymbol } from '../../composables'
-import { ToastOptions } from '../../services/toast'
-import { LoadingOptions } from '../../services/loading'
-import { DrawerOptions } from '../../services/drawer'
-import { SheetOptions } from '../../services/sheet'
+import type { ToastOptions, NoticeOptions, LoadingOptions, DrawerOptions, SheetOptions } from '../../services'
 import { NutshellSymbol } from '../../framework'
 
 const makeDummy = (name: string) => {
@@ -43,8 +40,8 @@ const nutuiVendor: CoreVendor = {
     this.sheet = (options: DrawerOptions) => {
       $bus.emit('sheet', options)
     }
-    this.notice = (message: string) => {
-      $bus.emit('notice', { message })
+    this.notice = (message: string, options?: NoticeOptions) => {
+      $bus.emit('notice', { message, options })
     }
     this.confirm = (message: string, onOk: () => void, options?: ConfirmOptions) => {
       $bus.emit('confirm', {
