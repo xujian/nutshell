@@ -8,12 +8,9 @@ export const Upload = defineComponent({
   props: uploadProps,
   emits: uploadEmits,
   setup: (props, { slots, emit }) => {
-    console.log(props, 'props')
-
-    const result: Ref<Media[]> = ref(Array.isArray(props.modelValue) ? props.modelValue : [])
 
     const getStyle = () => {
-      const [m] = result.value
+      const [m] = props.modelValue || []
       return m ? {
         backgroundImage: `url(${m.thumb || m.url})`,
         backgroundPosition: 'center',
@@ -34,12 +31,18 @@ export const Upload = defineComponent({
             const media = await props.handler?.({
               path: f.tempFilePath
             })
-            console.log('===ns-uxxxp[load', media)
+            let medias = props.modelValue || []
             if (media) {
-              result.value.push(media)
-              props['onUpdate:modelValue']?.(result.value)
+              if (props.multiple) {
+                // 多文件上传
+                medias.push(media)
+              } else {
+                // 单文件上传
+                medias = [media]
+              }
+              props['onUpdate:modelValue']?.(medias)
             }
-            props['onUpdate:modelValue']?.(result.value)
+            props['onUpdate:modelValue']?.(medias)
           }
         }
       })
@@ -48,7 +51,8 @@ export const Upload = defineComponent({
     return () => renderFormItem(props, slots,
       () => h('div', {
         class: [
-          'ns-upload-button'
+          'ns-upload-button',
+          ...props.modelValue?.length ? ['uploaded'] : ['empty']
         ],
         style: getStyle(),
         onClick

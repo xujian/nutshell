@@ -9,6 +9,7 @@ export type Media = {
   id?: string,
   name?: string,
   type?: MediaType,
+  path?: string,
   url?: string,
   thumb?: string,
   blob?: File | Blob
