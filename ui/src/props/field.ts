@@ -4,6 +4,7 @@ import { isIdentityCard, isMobilePhone } from 'validator'
 import { Color } from '../composables/theme'
 import { MakePropsType } from '../utils'
 import { useTippy } from 'vue-tippy'
+import { FormValidateFailed } from '../components/form/Form'
 
 const quickValidationMethods: string[] = [
   'required',
@@ -37,7 +38,8 @@ export type FullValidationRule = {
   method?: FunctionValidationMethod,
   message?: string,
   trigger?: ValidationTrigger
-  required?: boolean
+  required?: boolean,
+  failed?: FormValidateFailed
 }
 
 /**
