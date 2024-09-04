@@ -9,7 +9,7 @@
   }
   .page-content {
     padding: var(--ns-spacing);
-    top: calc(var(--status) + var(--nav));
+    // top: calc(var(--status) + var(--nav));
     box-sizing: border-box;
     flex-grow: 1;
     &.scrollable {
