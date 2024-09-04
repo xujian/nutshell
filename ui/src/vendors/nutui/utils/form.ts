@@ -100,8 +100,8 @@ export const useForm = () => {
   const $n = useNutshell()
   const $bus = useBus()
   const validate = async (name?: string) => {
-    const result = await form?.vendor.value?.validate(name) as any
-    console.log('===useForm validate(validate result', result)
+    const f = form?.vendor.value
+    const result = await f?.validate(name) as any
     // 校验失败时报告错误
     // 基于 form 的属性 failed (报错方式)
     if (!result.valid) {
