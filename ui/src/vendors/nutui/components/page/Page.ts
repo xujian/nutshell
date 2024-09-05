@@ -131,7 +131,7 @@ export const Page = defineComponent({
       }
 
     const onScroll = (e: any) => {
-      console.log('===ONSCROLL===', e)
+      // console.log('===ONSCROLL===', e)
       scroll.value = e.y
     }
 
@@ -139,8 +139,8 @@ export const Page = defineComponent({
       scroll.value = payload.scrollTop
     })
 
-    onMounted(() => {
-      console.log('===onMounted')
+    useDidShow(() => {
+      console.log('===useDidShow')
       page.value?.setAttribute('data-theme', 'present')
       $bus.on('toast', showToast)
       $bus.on('notice', showNotice)
@@ -150,7 +150,7 @@ export const Page = defineComponent({
       $bus.on('scroll', onScroll)
     })
 
-    onUnmounted(() => {
+    useDidHide(() => {
       console.log('===useDidHide')
       $bus.off('toast', showToast)
       $bus.off('notice', showNotice)
@@ -158,6 +158,10 @@ export const Page = defineComponent({
       $bus.off('sheet', openSheet)
       $bus.off('dialog', openDialog)
       $bus.off('scroll', onScroll)
+      dialogOpen.value
+        = drawerOpen.value
+        = sheetOpen.value
+        = false
     })
 
     // @ts-ignore
