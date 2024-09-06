@@ -25,6 +25,9 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
   const pickerOpen = ref(false)
 
   const openPicker = () => {
+    if (props.disabled) {
+      return
+    }
     pickerOpen.value = true
   }
   const closePicker = () => {
@@ -46,6 +49,7 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
         name: props.name,
         placeholder: props.placeholder,
         modelValue: selected.value.label,
+        disabled: props.disabled,
         onClick: openPicker,
         readonly: true,
         inputAlign: props.variant === 'solid' ? 'left' : 'right',
