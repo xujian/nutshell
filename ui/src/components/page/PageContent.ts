@@ -88,7 +88,7 @@ export const NsPageContent = defineComponent({
           ...props.scrollable ? ['scrollable'] : [],
         ],
         style: {
-          paddingBottom: `${props.bottom}px`
+          ...props.bottom ? { paddingBottom: `${props.bottom}px` } : {}
         }
       },
       props.scrollable
