@@ -33,7 +33,7 @@ export const usePaging: UsePaging = (load: UsePagingLoadFunction) => {
       paging.current ++
     }
     // 到达末页
-    if (paging.loaded && paging.current >= paging.total) {
+    if (paging.loaded && paging.current > paging.total) {
       paging.current = paging.total
       return Promise.resolve({
         paging,
