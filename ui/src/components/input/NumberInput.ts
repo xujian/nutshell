@@ -28,8 +28,13 @@ export const numberInputProps = {
   parser: {
     type: Function
   },
-  precision: {
-    type: Number
+  // 最多小数位
+  maximumFractionDigits: {
+    type: Number,
+  },
+  // 最少小数位
+  minimumFractionDigits: {
+    type: Number,
   },
   /**
    * 带有金额大写
