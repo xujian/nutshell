@@ -24,3 +24,11 @@
     margin-left: 0.5em;
   }
 }
+
+.row.justify-stretch {
+  .ns-button {
+    + .ns-button {
+      margin-left: 0;
+    }
+  }
+}
