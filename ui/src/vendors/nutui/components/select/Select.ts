@@ -6,8 +6,8 @@ import { renderFormItem } from '../../utils'
 export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose'>) => {
 
   const columns = props.options?.map(o => ({
-    text: o.label, value: o.value
-  }))
+      text: o.label, value: o.value
+    }))
 
   const selected = computed<UniDataItem>(() => {
     if (!props.modelValue) {
@@ -32,7 +32,7 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
   }
 
   const onPickerConfirm = ({selectedValue}: any) => {
-    props['onUpdate:modelValue']?.(selectedValue[0])
+    props['onUpdate:modelValue']?.(selectedValue?.[0] || void 0)
     pickerOpen.value = false
   }
 
@@ -58,7 +58,7 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
       }, {
         default: () => h(NutPicker, {
           // @ts-ignore
-          modelValue: [props.modelValue],
+          modelValue: props.modelValue ? [props.modelValue] : [columns[0].value],
           columns: columns!,
           onConfirm: onPickerConfirm,
           onCancel: closePicker,
