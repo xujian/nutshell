@@ -13,7 +13,11 @@
     "snippets": [
       {
         "language": "typescript",
-        "path": "./snippets/snippets.code-snippets"
+        "path": "./snippets/setup.code-snippets"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/components.code-snippets"
       }
     ]
   }

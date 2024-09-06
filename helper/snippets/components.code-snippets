@@ -1,0 +1,44 @@
+{
+  "打 log": {
+    "prefix": "log",
+    "body": [
+      "console.log('===${1}', ${1})"
+    ],
+    "description": "Log output to console"
+  },
+  "组件属性": {
+    "prefix": ["defineProps", "props"],
+    "body": [
+      "type ${1:$TM_FILENAME_BASE}Props = {",
+      "}",
+      "const props = defineProps<${1}Props>()"
+    ],
+    "description": "组件属性"
+  },
+  "使用 $bus": {
+    "prefix": ["useBus", "bus"],
+    "body": [
+      "import { useBus } from '@uxda/nutshell'",
+      "const $bus = useBus()",
+      "const onHambergerClick = () => {",
+      "  $bus.emit('nav:hide${1}', {})",
+      "}"
+    ]
+  },
+  "h function": {
+    "prefix": ["h", "hfunc"],
+    "body": [
+      "() => h(${1}, {",
+      "  class: [",
+      "${2}",
+      "  ]",
+      "}, ${3})"
+    ]
+  },
+  "mark": {
+    "prefix": ["mark"],
+    "body": [
+      "// MARK: - ${1}"
+    ]
+  }
+}

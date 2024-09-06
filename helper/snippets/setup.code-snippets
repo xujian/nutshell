@@ -10,9 +10,9 @@
     "prefix": ["useHttp", "http"],
     "body": [
       "import { endpoints, useHttp } from '../api'",
-      "const \$http = useHttp()",
-      "$http.get<${1}>(endpoints.${2}', {${3}}).then((data: ${4}) => {",
-      "  ${3}"
+      "const $http = useHttp()",
+      "$http.get<${1}>(endpoints.${2}, {${3}}).then((data: ${4}) => {",
+      "  ${3}",
       "}",
     ],
     "description": "使用 $http"
@@ -26,7 +26,7 @@
       "import axios from 'axios'",
       "",
       "export const HttpSymbol: InjectionKey<HttpInstance>",
-      "  = Symbol.for('\$http')",
+      "  = Symbol.for('$http')",
       "",
       "const vendor = {",
       "  async request <T>(config: HttpRequestConfig) {",
@@ -106,5 +106,30 @@
     "body": [
       "// MARK: - ${1}"
     ]
-  }
+  },
+  "新建 endpoints": {
+    "prefix": ["endpoint"],
+    "body": [
+      "import { HttpEndpointGroup } from '@uxda/nutshell'",
+      "const mappings = {",
+      "  id: 'id',",
+      "}",
+      "",
+      "const transformRow = (row: any) => {",
+      "  return Object.fromEntries(",
+      "    Object.entries(row)",
+      "      .map(([k, v]) => [mappings[k] || k, v])",
+      "  )",
+      "}",
+      "",
+      "export const endpoints: HttpEndpointGroup = {",
+      "  获取${1}: {",
+      "    path: '/${2}',",
+      "    translate: (data: any) => data,",
+      "    transform: (result: any) => result.map((d: any) => transformRow(d))",
+      "  },",
+      "} as const",
+    ],
+    "description": "新建 endpoints"
+  },
 }
