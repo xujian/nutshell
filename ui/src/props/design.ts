@@ -138,7 +138,7 @@ export type DesignProps = MakePropsType<typeof designProps>
 
 const isArtifact = (value: string) => /^\d{3}$/.test(value);
 
-export function hasDesignProps (props: DesignProps): props is DesignProps {
+export function hasDesignProps (props: any): props is DesignProps {
   return props.__design === true
 }
 

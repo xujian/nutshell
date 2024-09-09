@@ -1,13 +1,14 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
-import { useDesignProps, useSizeProps, useVariantProps } from '../../props'
+import { buildDesignStyles, useDesignProps, useSizeProps, useVariantProps } from '../../props'
 import { define, MakePropsType } from '../../utils'
 import { useDimensionProps, useLoadingProps } from '../../props'
 import { Color } from '../../composables/theme'
 import { IconFormat } from '../icon'
+import { buildProps } from '../../utils/private/props'
 
 export type IconPosition = 'start' | 'end'
 
-export const useButtonProps = () => ({
+export const useButtonProps = buildProps({
   /**
    * 显示的文字
    */
@@ -71,10 +72,6 @@ export const NsButton = define({
   setup (props) {
     // 对参数做前期的处理
     return {
-      props: {
-      }
     }
   }
 })
-
-export type NsButton = InstanceType<typeof NsButton>
