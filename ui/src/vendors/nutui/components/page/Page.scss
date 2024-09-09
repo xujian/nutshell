@@ -9,6 +9,7 @@
   }
   .page-content {
     padding: var(--ns-spacing);
+    padding-bottom: var(--bottom);
     // top: calc(var(--status) + var(--nav));
     box-sizing: border-box;
     flex-grow: 1;

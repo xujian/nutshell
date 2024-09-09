@@ -158,10 +158,9 @@ export const Page = defineComponent({
       $bus.off('sheet', openSheet)
       $bus.off('dialog', openDialog)
       $bus.off('scroll', onScroll)
-      dialogOpen.value
-        = drawerOpen.value
-        = sheetOpen.value
-        = false
+      dialogOpen.value = false
+      drawerOpen.value = false
+      sheetOpen.value = false
     })
 
     // @ts-ignore
