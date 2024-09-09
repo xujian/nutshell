@@ -1,4 +1,4 @@
-import { HttpEndpoints } from '@uxda/nutshell'
+import { HttpEndpointGroup } from '@uxda/nutshell'
 
 const mappings = {
   name: '姓名',
@@ -19,7 +19,7 @@ const transformRow = (row: any) => {
   )
 }
 
-const endpointsList: HttpEndpoints = {
+export const endpoints: HttpEndpointGroup = {
   获取客户列表: {
     path: '/json/clients.json',
     translate: (data: any) => data,
@@ -28,25 +28,3 @@ const endpointsList: HttpEndpoints = {
     }
   },
 } as const
-
-const keys = Object.keys(endpointsList as any)
-
-type Keys = typeof keys[number]
-
-const endpoints: Record<Keys, string> = Object.fromEntries(
-  Object.entries(endpointsList).map(([name, def]) => [name, def.path])
-)
-
-const translates = Object.fromEntries(
-  Object.entries(endpointsList).map(([, def]) => [def.path, def.translate])
-)
-
-const transforms = Object.fromEntries(
-  Object.entries(endpointsList).map(([, def]) => [def.path, def.transform])
-)
-
-export {
-  endpoints,
-  translates,
-  transforms,
-}

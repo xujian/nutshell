@@ -1,48 +1,24 @@
+import { mergeEndpoints } from '@uxda/nutshell'
+
 import {
-  endpoints as approvalsEnpoints,
-  translates as approvalsTranslates,
-  transforms as approvalsTransforms,
+  endpoints as home,
+} from './home'
+
+import {
+  endpoints as approvals,
  } from './approvals'
 
- import {
-  endpoints as productsEnpoints,
-  translates as productsTranslates,
-  transforms as productsTransforms,
+import {
+  endpoints as products,
  } from './products'
 
- import {
-  endpoints as clientsEnpoints,
-  translates as clientsTranslates,
-  transforms as clientsTransforms,
- } from './clients'
+import {
+  endpoints as clients,
+} from './clients'
 
- import {
-  endpoints as homeEnpoints,
-  translates as homeTranslates,
-  transforms as homeTransforms,
- } from './home'
-
-const endpoints = {
-   ...approvalsEnpoints,
-   ...productsEnpoints,
-   ...clientsEnpoints,
-   ...homeEnpoints,
- },
- translates = {
-   ...approvalsTranslates,
-   ...productsTranslates,
-   ...clientsTranslates,
-   ...homeTranslates,
- },
- transforms = {
-   ...approvalsTransforms,
-   ...productsTransforms,
-   ...clientsTransforms,
-   ...homeTransforms,
- }
-
-export {
- endpoints,
- translates,
- transforms,
-}
+export const { endpoints, translates, transforms } = mergeEndpoints([
+  home,
+  approvals,
+  products,
+  clients,
+])

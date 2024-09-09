@@ -19,10 +19,14 @@ const vendor = {
           data: config.data,
         })
         .then(({ data }) => {
+          console.log('===request data', data)
           resolve({
             status: data.code,
             message: data.msg,
             data: data.result.list || data.result as T,
+            paging: data.result.pageNum !== void 0
+              ? clientConfig.paging?.transform(data.result)
+              : void 0
           })
         })
         .catch((e: any) => {
@@ -42,22 +46,15 @@ const paging = {
     return {
       current: data.pageNum,
       pageSize: data.pageSize,
-      total: data.total
+      totalRecords: data.total,
+      total: data.totalPages,
     }
   }
 }
 
-function useHttp() {
-  // const appkitOptions = useAppKitOptions()
+function useHttp () {
   const headers = {
-    // Token: appkitOptions.tempToken() || appkitOptions.token(),
-    // Appcode: appkitOptions.app(),
-    // cookie: `tid=${appkitOptions.tenant()}`,
-    // gray: appkitOptions.gray ? appkitOptions.gray() : '0',
   }
-  /**
-   * 传入配置获取 Http instanse
-   */
   const $http = createHttp({
     vendor,
     baseUrl: clientConfig.baseUrl,
@@ -65,7 +62,6 @@ function useHttp() {
     interceptors: [
       (raw) => {
         if (raw.status == 401) {
-          // appkitOptions[401]()
           return true
         }
         return false
