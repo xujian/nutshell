@@ -24,7 +24,7 @@
         </ns-repeator>
       </scroll-view>
       <h2 class="h2">快捷入口</h2>
-      <ns-row class="mt-md" justify="stretch" :gap="10">
+      <ns-row class="entries" justify="stretch" :gap="10">
         <ns-card class="create-client entry flex-grow"
           gradient="#FA8BFF,#2BD2FF,#2BFF88/90"
           texture="https://simple.shensi.tech/images/client-girl.svg"
@@ -41,7 +41,7 @@
           <p class="caption">创建产品订单</p>
         </ns-card>
       </ns-row>
-      <ns-row class="reminders" justify="stretch" :gap="10">
+      <ns-row class="reminders mt-md" justify="stretch" :gap="10">
         <ns-card variant="outlined" class="entry my-md flex-grow"
           :repeat="false"
           texture="https://simple.shensi.tech/images/campain.svg">
@@ -84,10 +84,11 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 import { useTabbar } from '@uxda/appkit'
-  import { endpoints, useHttp } from '../../api'
-import { WithPaging } from '@uxda/nutshell'
+import { WithPaging, usePaging } from '@uxda/nutshell/taro'
 import Taro from '@tarojs/taro'
-  const http = useHttp()
+import { endpoints, useHttp } from '../../api'
+
+const $http = useHttp()
 
 const numbers = [
   { title: '今日到店客户', value: 10 },
@@ -103,14 +104,20 @@ const onReportClick = () => Taro.navigateTo({
   url: '/pages/home/report'
 })
 
+const 获取消息 = (page: number) => {
+    $http.get<WithPaging<any[]>>(endpoints.获取消息, {
+      page
+    }).then((result) => {
+      console.log('===获取消息', result)
+      messages.value = result.data
+    })
+  },
+  { nextPage } = usePaging(获取消息)
+
 onMounted(() => {
   const { setTab } = useTabbar()
   setTab('home')
-  http.get<WithPaging<any[]>>(endpoints.获取消息, {
-    page: 1
-  }).then((rsp) => {
-    messages.value = rsp.data
-  })
+  nextPage(1)
 })
 </script>
 
