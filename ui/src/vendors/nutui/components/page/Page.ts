@@ -55,6 +55,7 @@ export const Page = defineComponent({
     }
 
     const showNotice = (payload: Notice) => {
+      console.log('===showNotice', payload)
       noticeData.value = {
         message: payload.message,
         options: payload.options
@@ -139,8 +140,21 @@ export const Page = defineComponent({
       scroll.value = payload.scrollTop
     })
 
+    const cleanup = () => {
+      console.log('===///cleanup===')
+      $bus.off('toast', showToast)
+      $bus.off('notice', showNotice)
+      $bus.off('drawer', openDrawer)
+      $bus.off('sheet', openSheet)
+      $bus.off('dialog', openDialog)
+      $bus.off('scroll', onScroll)
+      dialogOpen.value = false
+      drawerOpen.value = false
+      sheetOpen.value = false
+    }
+
     useDidShow(() => {
-      console.log('===useDidShow')
+      console.log('===///useDidShow')
       page.value?.setAttribute('data-theme', 'present')
       $bus.on('toast', showToast)
       $bus.on('notice', showNotice)
@@ -151,26 +165,18 @@ export const Page = defineComponent({
     })
 
     useDidHide(() => {
-      console.log('===useDidHide')
-      $bus.off('toast', showToast)
-      $bus.off('notice', showNotice)
-      $bus.off('drawer', openDrawer)
-      $bus.off('sheet', openSheet)
-      $bus.off('dialog', openDialog)
-      $bus.off('scroll', onScroll)
-      dialogOpen.value = false
-      drawerOpen.value = false
-      sheetOpen.value = false
+      // 页面返回不触发
+      console.log('===///useDidHide')
+      cleanup()
     })
 
-    // @ts-ignore
     useLoad(() => {
       console.log('===///useLoad===')
     })
 
-    // @ts-ignore
     useUnload(() => {
       console.log('===///useUnload===')
+      cleanup()
     })
 
     return () => h('div', {

@@ -47,7 +47,7 @@ export function createBus (): BusInstance {
 
   const off: BusOffFn = (event, fn) => {
     let listeners = book.get(event) || []
-    listeners = listeners.filter(listener => listener === fn)
+    listeners = listeners.filter(listener => listener !== fn)
     book.set(event, listeners)
   }
 
