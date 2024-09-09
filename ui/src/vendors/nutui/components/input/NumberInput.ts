@@ -55,6 +55,9 @@ export const NumberInput = defineComponent({
             form.validate(props.name as string)
             emit('blur')
           },
+          onChange: ({detail}: any) => {
+            emit('change', +detail.value)
+          }
         },
         {
           ...slots.prepend ? {
