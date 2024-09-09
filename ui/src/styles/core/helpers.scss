@@ -23,6 +23,10 @@
   font-feature-settings: "trum";
 }
 
+.hidden {
+  display: none;
+}
+
 .clickable {
   cursor: pointer;
   &:hover {
