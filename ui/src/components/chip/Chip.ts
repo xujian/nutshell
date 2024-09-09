@@ -52,8 +52,6 @@ export const NsChip = define({
     emits: chipEmits,
     setup (props, ctx) {
       return {
-        props: {
-        }
       }
     }
   }

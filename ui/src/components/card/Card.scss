@@ -4,7 +4,7 @@
   overflow: hidden;
   gap: 0;
   .card-header, .card-title {
-    padding: calc(var(--ns-spacing) /2 );
+    padding: var(--ns-spacing);
     .title {
       display: flex;
       align-items: center;
@@ -14,7 +14,7 @@
     // margin-bottom: calc(var(--ns-spacing) * -1/2)
   }
   .card-body {
-    padding: calc(var(--ns-spacing) / 2);
+    padding: var(--ns-spacing);
     background: var(--body-fill);
     border-radius: var(--ns-border-radius);
     flex-grow: 1;

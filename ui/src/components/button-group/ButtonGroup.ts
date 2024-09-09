@@ -78,7 +78,7 @@ export const NsButtonGroup = defineComponent({
       foreground: props.foreground,
       variant: props.variant,
       round: props.round,
-      label: item.label || '',
+      label: item.label,
     })
 
     const items = () => h('div', {
