@@ -11,9 +11,11 @@ export const RadioGroup = defineComponent({
 
     const children = () => props.options?.map(item => h(NutRadio, {
       label: item.value, // 这里没写错 傻逼的属性名
-      disabled: item.disabled,
+      disabled: props.disabled,
       // shape: 'button'
     }, () => item.label))
+
+    console.log('===NutRadioGroup', props.disabled)
 
     return () =>
       renderFormItem(
@@ -27,7 +29,12 @@ export const RadioGroup = defineComponent({
             NutRadioGroup,
             {
               class: [
-                ...(props.direction === 'column' ? ['flex', 'flex-column'] : ['flex', 'flex-row'])
+                ...(props.direction === 'column'
+                  ? ['flex', 'flex-column']
+                  : ['flex', 'flex-row']),
+                ...props.disabled
+                  ? ['disabled']
+                  : []
               ],
               name: (props.name || 'radio') as string,
               direction: 'horizontal',

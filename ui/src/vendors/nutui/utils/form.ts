@@ -70,6 +70,7 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
       class: [
         'ns-form-item',
         ...props.variant ? [`variant-${props.variant}`] : [],
+        ...props.disabled ? ['disabled'] : [],
         ...props.label ? [] : ['no-label']
 
       ],
