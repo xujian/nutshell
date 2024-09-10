@@ -1,6 +1,6 @@
 {
   "name": "@uxda/nutshell",
-  "version": "1.4.14",
+  "version": "1.4.18",
   "description": "A Vue 3 UI library base on Nutui",
   "type": "module",
   "main": "dist/index.js",

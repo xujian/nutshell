@@ -1,5 +1,5 @@
 import { computed, defineComponent, h, Ref, ref, SetupContext } from 'vue'
-import { uploadEmits, uploadProps, UploadProps } from '../../../../components'
+import { NsButton, NsIcon, uploadEmits, uploadProps, UploadProps } from '../../../../components'
 import { renderFormItem } from '../../utils'
 import { getMediaType, Media } from '../../../../types/media'
 
@@ -18,7 +18,24 @@ export const Upload = defineComponent({
       }: {}
     }
 
+    const onDeleteClick = () => {
+      props['onUpdate:modelValue']?.([])
+    }
+
     const onClick = () => {
+      console.log('===NsUpload onClick', props.modelValue?.length)
+      if (props.modelValue) {
+        const [m] = props.modelValue
+        // 预览图片
+        wx.previewImage({
+          current: m.url,
+          urls: props.modelValue.map(m => m.url)
+        })
+        return
+      }
+      if (props.disabled) {
+        return false
+      }
       wx.chooseMedia({
         count: 1,
         mediaType: ['image'],
@@ -51,12 +68,20 @@ export const Upload = defineComponent({
     return () => renderFormItem(props, slots,
       () => h('div', {
         class: [
-          'ns-upload-button',
-          ...props.modelValue?.length ? ['uploaded'] : ['empty']
+          'ns-upload-item',
+          ...props.modelValue?.length ? ['uploaded'] : ['empty'],
         ],
         style: getStyle(),
         onClick
-      })
+      }, h(NsButton, {
+            icon: 'delete',
+            class: 'delete-button',
+            fill: 'negtive',
+            round: true,
+            size: 'sm',
+            onClick: onDeleteClick
+          })
+        )
     )
   }
 })

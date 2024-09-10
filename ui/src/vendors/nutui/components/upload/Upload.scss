@@ -1,5 +1,5 @@
 .ns-upload {
-  .ns-upload-button {
+  .ns-upload-item {
     width: 100px;
     height: 100px;
     background-color: #f5f5f5;
@@ -12,6 +12,17 @@
     background-position: center;
     background-repeat: no-repeat;
     background-clip: content-box;
+    position: relative
+  }
+  .ns-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &.disabled {
+    .delete-button {
+      display: none;
+    }
   }
   .nut-form-item__body__slots {
     display: flex;
