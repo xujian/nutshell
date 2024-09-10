@@ -26,6 +26,9 @@ export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext
     ...props.size ? [`size-${props.size}`] : [],
     ...props.variant ? [`variant-${props.variant}`] : [],
     ...props.iconPosition ? [`icon-position-${props.iconPosition}`] : [],
+    ...props.icon && !props.label
+      ? ['icon']
+      : [],
     $attrs.class || ''
   ]
   const { label, width, disabled, maxWidth, height, maxHeight, minWidth, minHeight, ...p } = props
