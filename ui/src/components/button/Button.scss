@@ -23,6 +23,11 @@
   + .ns-button {
     margin-left: 0.5em;
   }
+  &.icon {
+    padding: 0;
+    width: unset;
+    aspect-ratio: 1;
+  }
 }
 
 .row.justify-stretch {

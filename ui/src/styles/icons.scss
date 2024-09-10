@@ -1,52 +1,52 @@
-@function build-svg($d, $fill-color) {
-  @return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="' + $fill-color + '" d="' + $d + '"/></svg>';
-}
+// @function build-svg($d, $fill-color) {
+//   @return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="' + $fill-color + '" d="' + $d + '"/></svg>';
+// }
 
-@function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-  }
-  @return $string;
-}
+// @function str-replace($string, $search, $replace: '') {
+//   $index: str-index($string, $search);
+//   @if $index {
+//     @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+//   }
+//   @return $string;
+// }
 
-@function url-encode($string) {
-  $map: (
-    "%": "%25",
-    "<": "%3C",
-    ">": "%3E",
-    " ": "%20",
-    "!": "%21",
-    "*": "%2A",
-    "'": "%27",
-    '"': "%22",
-    "(": "%28",
-    ")": "%29",
-    ";": "%3B",
-    ":": "%3A",
-    "@": "%40",
-    "&": "%26",
-    "=": "%3D",
-    "+": "%2B",
-    "$": "%24",
-    ",": "%2C",
-    "/": "%2F",
-    "?": "%3F",
-    "#": "%23",
-    "[": "%5B",
-    "]": "%5D"
-  );
-  $new: $string;
-  @each $search, $replace in $map {
-    $new: str-replace($new, $search, $replace);
-  }
-  @return $new;
-}
+// @function url-encode($string) {
+//   $map: (
+//     "%": "%25",
+//     "<": "%3C",
+//     ">": "%3E",
+//     " ": "%20",
+//     "!": "%21",
+//     "*": "%2A",
+//     "'": "%27",
+//     '"': "%22",
+//     "(": "%28",
+//     ")": "%29",
+//     ";": "%3B",
+//     ":": "%3A",
+//     "@": "%40",
+//     "&": "%26",
+//     "=": "%3D",
+//     "+": "%2B",
+//     "$": "%24",
+//     ",": "%2C",
+//     "/": "%2F",
+//     "?": "%3F",
+//     "#": "%23",
+//     "[": "%5B",
+//     "]": "%5D"
+//   );
+//   $new: $string;
+//   @each $search, $replace in $map {
+//     $new: str-replace($new, $search, $replace);
+//   }
+//   @return $new;
+// }
 
-@function inline-svg($d) {
-  $svg-content: build-svg($d, #666600);
-  @return url('data:image/svg+xml;utf8,#{url-encode($svg-content)}');
-}
+// @function inline-svg($d) {
+//   $svg-content: build-svg($d, #666600);
+//   @return url('data:image/svg+xml;utf8,#{url-encode($svg-content)}');
+// }
 
 
 .ns-icon {
@@ -72,3 +72,6 @@ $arrow-right: 'M2 8.66667L11.724 8.66667L8.19533 12.1953L9.138 13.138L14.276 8L9
   background-image: inline-svg($arrow-right);
 }
 
+.ns-icon-delete {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMuNzMzMzMgMi4xMzMzM0MzLjU5Njg2IDIuMTMzMzMgMy40NjAyNSAyLjE4NTMxIDMuMzU2MjUgMi4yODk1OEwyLjI4OTU4IDMuMzU2MjVDMi4wODEwNSAzLjU2NDc4IDIuMDgxMDUgMy45MDI0MSAyLjI4OTU4IDQuMTEwNDFMNi4xNzkxNiA4TDIuMjg5NTggMTEuODg5NkMyLjA4MTA1IDEyLjA5ODEgMi4wODEwNSAxMi40MzU3IDIuMjg5NTggMTIuNjQzN0wzLjM1NjI1IDEzLjcxMDRDMy41NjQ3OCAxMy45MTg5IDMuOTAyNDEgMTMuOTE4OSA0LjExMDQxIDEzLjcxMDRMOCA5LjgyMDgzTDExLjg4OTYgMTMuNzEwNEMxMi4wOTc2IDEzLjkxODkgMTIuNDM1NyAxMy45MTg5IDEyLjY0MzcgMTMuNzEwNEwxMy43MTA0IDEyLjY0MzdDMTMuOTE4OSAxMi40MzUyIDEzLjkxODkgMTIuMDk3NiAxMy43MTA0IDExLjg4OTZMOS44MjA4MyA4TDEzLjcxMDQgNC4xMTA0MUMxMy45MTg5IDMuOTAyNDEgMTMuOTE4OSAzLjU2NDI1IDEzLjcxMDQgMy4zNTYyNUwxMi42NDM3IDIuMjg5NThDMTIuNDM1MiAyLjA4MTA1IDEyLjA5NzYgMi4wODEwNSAxMS44ODk2IDIuMjg5NThMOCA2LjE3OTE2TDQuMTEwNDEgMi4yODk1OEM0LjAwNjE1IDIuMTg1MzEgMy44Njk4IDIuMTMzMzMgMy43MzMzMyAyLjEzMzMzWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==");
+}
