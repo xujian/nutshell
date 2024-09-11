@@ -62,7 +62,11 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
       }, {
         default: () => h(NutPicker, {
           // @ts-ignore
-          modelValue: props.modelValue ? [props.modelValue] : [columns[0].value],
+          modelValue: props.modelValue
+            ? [props.modelValue]
+            : columns?.length
+              ? [columns[0].value]
+              : [],
           columns: columns!,
           onConfirm: onPickerConfirm,
           onCancel: closePicker,
