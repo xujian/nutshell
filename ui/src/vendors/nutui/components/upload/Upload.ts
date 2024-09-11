@@ -18,13 +18,16 @@ export const Upload = defineComponent({
       }: {}
     }
 
-    const onDeleteClick = () => {
+    const onDeleteClick = (e: any) => {
+      console.log('===onDeleteClick', e)
+      e.preventDefault()
+      e.stopImmediatePropagation(),
       props['onUpdate:modelValue']?.([])
     }
 
     const onClick = () => {
       console.log('===NsUpload onClick', props.modelValue?.length)
-      if (props.modelValue) {
+      if (props.modelValue?.length) {
         const [m] = props.modelValue
         // 预览图片
         wx.previewImage({
@@ -78,7 +81,7 @@ export const Upload = defineComponent({
             class: 'delete-button',
             fill: 'negtive',
             round: true,
-            size: 'sm',
+            size: 'xs',
             onClick: onDeleteClick
           })
         )

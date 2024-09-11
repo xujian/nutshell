@@ -24,6 +24,11 @@
       display: none;
     }
   }
+  .empty {
+    .delete-button {
+      display: none;
+    }
+  }
   .nut-form-item__body__slots {
     display: flex;
     flex-direction: row;
