@@ -1,6 +1,6 @@
 {
   "name": "@uxda/plot",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A Vue 3 Data Visualization library base on Chart.js",
   "type": "module",
   "main": "dist/index.js",
@@ -28,14 +28,14 @@
   "repository": "http://gitlab.ddjf.local/fed/nutshell",
   "author": "Nutshell Team",
   "devDependencies": {
-    "@babel/cli": "^7.22.9",
-    "@babel/core": "^7.22.9",
-    "@babel/preset-env": "^7.22.9",
+    "@babel/cli": "^7.25.6",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
     "@babel/preset-typescript": "^7.22.5",
     "@histoire/plugin-vue": "^0.17.17",
     "@rollup/plugin-alias": "^5.0.0",
     "@types/lodash-es": "^4.17.12",
-    "rollup": "^4.19.0",
+    "rollup": "^4.21.2",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-esbuild": "^6.1.1"
   },
@@ -44,8 +44,8 @@
     "attributes": "dist/json/attributes.json"
   },
   "dependencies": {
-    "chart.js": "^4.4.3",
-    "chroma-js": "^2.4.2",
+    "chart.js": "^4.4.4",
+    "chroma-js": "^3.1.1",
     "intl": "^1.2.5",
     "lodash-es": "^4.17.21",
     "typescript": "^5.2.2"
