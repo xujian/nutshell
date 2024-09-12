@@ -18,7 +18,7 @@ export default function button (
       href: props.href ?? 'javascript:void(0);',
       onClick: (e) => {
         e.preventDefault()
-        e.stopImmediatePropagation(),
+        e.stopImmediatePropagation()
         props.onClick?.({value, row, rowIndex})
       }
     },
