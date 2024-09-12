@@ -49,7 +49,7 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
         name: props.name,
         placeholder: props.placeholder,
         modelValue: selected.value.label,
-        disabled: props.disabled,
+        // disabled: props.disabled,
         onClick: openPicker,
         readonly: true,
         inputAlign: props.variant === 'solid' ? 'left' : 'right',

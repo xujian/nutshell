@@ -1,0 +1,7 @@
+.ns-select {
+  &.disabled {
+    .input-text {
+      color: var(--nut-input-disabled-color);
+    }
+  }
+}
