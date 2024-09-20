@@ -7,7 +7,7 @@ export type StyleObject = Record<string, string | number>
  * 传给 vendor 的属性里加了一些字段
  */
 export type MarginProps = {
-  classes?: string[],
+  classes?: string[] | Ref<string[]>,
   styles?: StyleObject,
   structured?: boolean,
   vendorRef?: Ref,
@@ -17,7 +17,7 @@ export type WithMarginProps<T = {}> = T & MarginProps
 
 export const marginProps = {
   classes: {
-    type: Array as PropType<string[]>,
+    type: [Array, Object] as PropType<string[] | Ref<string[]>>,
     default: []
   },
   styles: {

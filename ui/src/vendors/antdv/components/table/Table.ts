@@ -635,7 +635,7 @@ export const Table = defineComponent({
           // rowSelection,
           spanMethod,
           class: [
-            ...props.classes || [],
+            // ...props.classes || [],
           ],
           style: {
             ...fills,

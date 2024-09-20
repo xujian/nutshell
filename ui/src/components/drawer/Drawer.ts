@@ -15,6 +15,9 @@ export const drawerProps = {
   width: {
     type: String,
   },
+  round: {
+    type: Boolean,
+  },
   className: {
     type: String,
   },

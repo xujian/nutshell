@@ -17,10 +17,11 @@ export const Tabs = (props: TabsProps, { emit, slots }: Omit<SetupContext, 'expo
   }) || props.items || []
 
   const defaultSlot = () => items?.map(item => h(NutTabPane, {
-    class: ['tab-pane'],
-    paneKey: item.value || item.label,
-    title: item.label
-  }, item.content))
+        class: ['tab-pane'],
+        paneKey: item.value || item.label,
+        title: item.label
+      }, item.content)
+    )
 
   return h(NutTabs, {
     class: [

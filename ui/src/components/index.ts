@@ -37,6 +37,7 @@ export * from './button-group'
 export * from './page'
 export * from './search'
 export * from './image'
+export * from './preview'
 
 import { NsApp } from './app'
 import { NsButton } from './button'
@@ -76,9 +77,10 @@ import { NsTimeline } from './timeline'
 import { NsDivider } from './divider'
 import { NsNumber } from './number'
 import { NsButtonGroup } from './button-group'
-import { NsPage, NsPageHeader, NsPageContent, NsPageBottom } from './page'
+import { NsPage, NsPageHeader, NsPageContent, NsPageFooter } from './page'
 import { NsSearch } from './search'
 import { NsImage } from './image'
+import { NsPreview } from './preview'
 
 const components = {
   NsApp,
@@ -147,8 +149,9 @@ const components = {
   NsPage,
   NsPageHeader,
   NsPageContent,
-  NsPageBottom,
+  NsPageFooter,
   NsSearch,
+  NsPreview,
 }
 
 const properties = Object.fromEntries(

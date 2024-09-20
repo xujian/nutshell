@@ -3,6 +3,9 @@ import { CoreVendor, VendorComponent } from '../../shared'
 import components from './components'
 import { dialog, confirm, toast, loading } from './services'
 import VXETable from 'vxe-table'
+import { PreviewOptions } from '../../services/drawer'
+import { Media } from '../../types'
+import { PreviewMediaParam } from '../../framework'
 
 // fallback for component not implemented
 const dummy = (name: string) => {
@@ -33,6 +36,7 @@ const antdvVendor: CoreVendor = {
   toast,
   loading,
   drawer: () => {},
+  preview: (media: PreviewMediaParam, options: PreviewOptions) => {},
   sheet: () => {},
   notice: (message: string) => {},
 }

@@ -28,7 +28,8 @@ export type DialogOptions = {
   classes?: string[],
   onComplete?: (result?: any) => boolean | undefined
   onCancel?: () => boolean | undefined
-  centered?: boolean
+  centered?: boolean,
+  fullScreen?: boolean,
 }
 
 export type ConfirmOptions = {

@@ -1,6 +1,4 @@
 .ns-tabs {
-  user-select: none;
-  padding: 0 var(--ns-spacing);
   &.nut-tabs .nut-tabs__titles {
     background: transparent;
   }
@@ -32,6 +30,7 @@
     }
   }
   .nut-tab-pane {
+    padding: 0;
   }
   &.round {
     .nut-tabs__titles {

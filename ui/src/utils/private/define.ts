@@ -9,23 +9,7 @@ import { ComponentObjectPropsOptions,
 import { useVendor } from '../../shared/vendor'
 import { kebabCase } from '../text'
 import { buildDesignClasses, buildDesignStyles, hasDesignProps } from '../../props'
-import { MakePropsType } from './helpers'
-
-const buildClasses = (props: any): string[] => {
-  if (!props) return []
-  const { variant } = props
-  const result: string[] = []
-  if (variant) {
-    result.push(`variant-${variant}`)
-  }
-  if (!props.classes) return result
-  if (isRef(props.classes)) {
-    result.push(...unref(props.classes || []))
-  } else {
-    result.push(...props.classes)
-  }
-  return result
-}
+import { MakePropsType, MarginProps } from './helpers'
 
 /**
  * Our private defineComponent
@@ -49,10 +33,10 @@ export function define<
     emits?: Emits,
     slots?: Slots,
     setup: (
-      props: Props,
+      props: Props & MarginProps,
       ctx: SetupContext<Emits, Slots>
     ) => {
-      props?: Props,
+      props?: Props & MarginProps,
       methods?: Record<string, any>,
       // style?: StyleObject,
       // classes?: string[],
@@ -69,13 +53,14 @@ export function define<
    * 3. DX 对开发友好
    */
   const setup = function (
-      props: Props,
+      props: Props & MarginProps,
       ctx: SetupContext<Emits, Slots>
     ) {
     // the real setup
     // const { setup: setupOriginal } = options
     const v = useVendor()
     const { props: extraProps, methods, vendorRef, structured} = options.setup(props, ctx)
+    // console.log('===define===classes', extraProps?.classes)
     const render: Ref<FunctionalComponent<Props, EmitsOptions, any>>
       = ref((props: Props, ctx: Omit<SetupContext, 'expose'>) => h('div'))
 
@@ -97,7 +82,13 @@ export function define<
       styles = hasDesignProps(props)
         ? computed(() => buildDesignStyles(props))
         : computed(() => ({}))
-
+      const getExtraClasses: () => string[] = () => extraProps?.classes
+        ? isRef<string[]>(extraProps?.classes)
+          ? extraProps?.classes.value
+          : extraProps?.classes
+        : []
+    // @ts-ignore
+    // console.log('===extraClasses', extraProps?.classes?.value, extraClasses)
     ctx.expose({
       ...methods
     })
@@ -107,6 +98,7 @@ export function define<
       ...extraProps,
       class: [
         className,
+        ...getExtraClasses(),
         ...structured ? [] : classes.value,
       ],
       ...structured ? {} : { style: styles.value },
