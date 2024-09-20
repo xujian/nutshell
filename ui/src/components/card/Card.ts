@@ -65,15 +65,19 @@ export const NsCard = defineComponent({
         )
       : null
 
-    const titleAfter = () => h('div', {
-      class: 'title-after'
-    }, slots.titleAfter?.())
+    const titleAfter = () => slots.titleAfter
+      ? h('div', {
+          class: 'title-after'
+        }, slots.titleAfter())
+      : null
 
-    const corner = () => h('div', {
-      class: 'title-corner'
-    }, [
-      slots.corner?.()
-    ])
+    const corner = () => slots.corner
+      ? h('div', {
+          class: 'title-corner'
+        }, [
+          slots.corner()
+        ])
+      : null
 
     const header = () => props.title || slots.header
       ? h('div', {
