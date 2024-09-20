@@ -48,7 +48,7 @@
     "chroma-js": "^3.1.1",
     "intl": "^1.2.5",
     "lodash-es": "^4.17.21",
-    "typescript": "^5.2.2"
+    "typescript": "^5.6.2"
   },
   "publishConfig": {
     "access": "public"

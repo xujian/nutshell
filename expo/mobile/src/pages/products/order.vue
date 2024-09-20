@@ -1,13 +1,14 @@
 <template>
-<ns-page class="has-page-bottom">
-  <div class="page-content">
+<ns-page class="order-page">
+  <ns-page-header title="进件" fill="#fff" has-back-button />
+  <ns-page-content :scrollable="formData.是否法人">
     <ns-card
       title="广发银行 - 过桥贷"
       fill="#ffffff33"
       :blur="20"
       :brightness="2">
     </ns-card>
-    <ns-form class="">
+    <ns-form v-model="formData">
       <ns-card title="企业信息" body-fill="#fff">
         <div class="breakout">
           <ns-switch
@@ -20,11 +21,6 @@
             label="注册时间"
             name="注册时间"
             v-model="formData.注册时间" />
-          <ns-radio-group
-            label="缴纳社保"
-            name="近2年是否缴纳社保"
-            v-model="formData.缴纳社保"
-            :items="yesNoItems" />
         </div>
       </ns-card>
       <p>&nbsp;</p>
@@ -43,12 +39,13 @@
             label="婚姻状态"
             name="婚姻状态"
             v-model="formData.婚姻状态"
-            :items="婚姻状态选项" />
+            :options="婚姻状态选项" />
           <ns-radio-group
             label="缴纳社保"
             name="近2年是否缴纳社保"
             v-model="formData.申请人缴纳社保"
-            :items="yesNoItems" />
+            :options="yesNoItems" />
+          <ns-upload label="上传身份证" v-model="formData.上传身份证" :handler="onUpload" />
         </div>
       </ns-card>
       <p>&nbsp;</p>
@@ -114,8 +111,8 @@
         </div>
       </ns-card>
     </ns-form>
-  </div>
-  <ns-page-bottom fill="#ffffff11"
+  </ns-page-content>
+  <ns-page-footer fill="#000000cc"
     :blur="10" :brightness="2">
     <div class="row">
       <ns-button
@@ -131,13 +128,14 @@
         icon-fill="#00000088"
         @click="onNextClick" />
     </div>
-  </ns-page-bottom>
+  </ns-page-footer>
 </ns-page>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue'
 import Taro from '@tarojs/taro'
+import { Media } from '@uxda/nutshell'
 
 const yesNoItems = [
   { label: '是', value: 1 },
@@ -171,7 +169,7 @@ const 贷款类型选项 = [
 ]
 
 const formData = reactive({
-  是否法人: void 0,
+  是否法人: true,
   注册时间: void 0,
   缴纳社保: void 0,
   证件号码: void 0,
@@ -187,12 +185,23 @@ const formData = reactive({
   前手贷款类型: void 0,
   共同申请人证件号码: void 0,
   共同申请人姓名: void 0,
+  上传身份证: [
+    { url: 'https://simple.shensi.tech/upload/photo-sample.jpg' }
+  ]
 })
 
 const regionOptions = ref<{id: string, name: string}[][]>([])
 
 const onNextClick = () => {
 
+}
+
+const onUpload = async (media: Media) => {
+  console.log('===onUPload', media)
+  return Promise.resolve({
+    url: media.path
+    // url: 'https://simple.shensi.tech/upload/asimo.jpg'
+  })
 }
 
 onMounted(() => {

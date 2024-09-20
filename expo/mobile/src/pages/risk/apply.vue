@@ -48,13 +48,13 @@
           v-model="formData.dateRange" />
       </ns-form>
     </ns-page-content>
-    <ns-page-bottom>
+    <ns-page-footer>
       <ns-button label="提交申请"
         round
         size="lg"
         color="secondary"
         class="full-width" />
-    </ns-page-bottom>
+    </ns-page-footer>
   </ns-page>
 </template>
 

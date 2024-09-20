@@ -7,7 +7,7 @@
     </ns-page-header>
     <ns-page-content>
       <div class="basic">
-        <h1 class="name h1">{{ client.姓名 }}</h1>
+        <h1 class="name h1 text-gradient">{{ client.姓名 }}</h1>
       </div>
       <ns-card class="stage-card my-md" fill="#ffffff33">
         <ns-stepper :items="steps" :model-value="stage" />
@@ -16,8 +16,7 @@
         class="my-md"
         fill="#ffffff44"
         :blur="10"
-        :items="tabs"
-        round />
+        :items="tabs" />
       <h2 class="h2">意向</h2>
       <ns-facts>
         <ns-facts-item label="意向等级">

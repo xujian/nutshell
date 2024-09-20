@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="product-details-page has-page-bottom">
+  <ns-page class="product-details-page">
     <ns-page-header
       title="产品"
       gradient="#799f0c,#ffffff33/180"
@@ -53,7 +53,7 @@
         </ul>
       </ns-card>
     </ns-page-content>
-    <ns-page-bottom fill="#ffffff33"
+    <ns-page-footer fill="#ffffff33"
       :blur="10" :brightness="1.2">
       <div class="row">
         <ns-button
@@ -69,7 +69,7 @@
           icon-fill="#00000088"
           @click="onOrderClick" />
       </div>
-    </ns-page-bottom>
+    </ns-page-footer>
   </ns-page>
 
 </template>

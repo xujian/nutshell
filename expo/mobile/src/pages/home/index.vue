@@ -1,7 +1,7 @@
 <template>
   <ns-page class="home-page">
     <ns-page-header reveal sticky
-      title="大道云 PRO"
+      title="深思客户管理"
       :blur="20"
       :brightness="1.5"
       fill="#aaaaaa88"></ns-page-header>
