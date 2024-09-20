@@ -1,0 +1,21 @@
+.ns-preview {
+  background-color: #00000066;
+  .ns-page-content {
+    .media {
+      margin: var(--ns-spacing);
+      overflow: hidden;
+      max-width: 100%;
+      max-height: 100%;
+      .image {
+        border-radius: var(--ns-border-radius);
+        width: 100vw;
+        max-width: 100%;
+        max-height: 75vh;
+        transition: all .3s;
+      }
+    }
+    .footer {
+      padding: var(--ns-spacing);
+    }
+  }
+}
