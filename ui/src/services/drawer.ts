@@ -1,15 +1,16 @@
 import { App } from 'vue'
 import { VendorSymbol } from '../shared/symbols'
-import { DollarNutshell } from '../framework'
+import { DollarNutshell, PreviewMediaParam } from '../framework'
 import { Color } from '../composables'
-import type { Component, ComputedOptions, MethodOptions } from 'vue'
+import { Media } from '../types'
+import { PopupChildComponent } from './types'
 
 export type DrawerOptions = {
   title?: string,
   /**
    * 嵌入子组件
    */
-  component?: Component,
+  component?: PopupChildComponent,
   /**
    * 透传给子组件的属性
    */
@@ -19,11 +20,28 @@ export type DrawerOptions = {
   fill?: Color,
   mask?: boolean,
   destroyOnClose?: boolean,
+  round?: boolean,
 }
 
 export type DrawerInstance = {
   hide: () => void,
   destory: () => void
+}
+
+export type PreviewInstance = {
+  update (value: Media[]): void
+}
+
+export type PreviewButtonClickCallback = {
+  description: string;
+  (this: PreviewInstance): void;
+}
+
+
+export type PreviewOptions = {
+  fill?: Color,
+  button?: string,
+  onButtonClick (this: PreviewInstance): void
 }
 
 /**
@@ -37,7 +55,13 @@ export default {
     $n.drawer = (options: DrawerOptions) => {
       const vendor = app._context.provides[VendorSymbol as symbol]
       Promise.resolve(vendor).then(p => {
-        p.dialog(options)
+        p.drawer(options)
+      })
+    }
+    $n.preview = (media: PreviewMediaParam, options?: PreviewOptions) => {
+      const vendor = app._context.provides[VendorSymbol as symbol]
+      Promise.resolve(vendor).then(p => {
+        p.preview(media, options)
       })
     }
   }

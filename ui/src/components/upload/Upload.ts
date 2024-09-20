@@ -41,6 +41,10 @@ export const uploadProps = {
     type: Boolean,
     default: false,
   },
+  deletable: {
+    type: Boolean,
+    default: true
+  },
   beforeUpload: {
     type: Function as PropType<BeforeUploadMethod>
   },

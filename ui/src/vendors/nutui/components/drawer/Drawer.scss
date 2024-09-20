@@ -1,7 +1,11 @@
 .ns-drawer {
   .nut-popup {
+    border-radius: 0;
     scroll-view {
       height: 100%;
+    }
+    &.round {
+      border-radius: var(--radius, var(--ns-border-radius));
     }
   }
 }

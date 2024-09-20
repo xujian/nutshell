@@ -1,13 +1,16 @@
 import { computed, defineComponent, h, Ref, ref, SetupContext } from 'vue'
-import { NsButton, NsIcon, uploadEmits, uploadProps, UploadProps } from '../../../../components'
+import { NsButton, NsIcon, NsPreview, uploadEmits, uploadProps, UploadProps } from '../../../../components'
 import { renderFormItem } from '../../utils'
 import { getMediaType, Media } from '../../../../types/media'
+import { useNutshell } from '../../../../framework'
 
 export const Upload = defineComponent({
   name: 'NutuiUpload',
   props: uploadProps,
   emits: uploadEmits,
   setup: (props, { slots, emit }) => {
+
+    const $n = useNutshell()
 
     const getStyle = () => {
       const [m] = props.modelValue || []
@@ -25,22 +28,9 @@ export const Upload = defineComponent({
       props['onUpdate:modelValue']?.([])
     }
 
-    const onClick = () => {
-      console.log('===NsUpload onClick', props.modelValue?.length)
-      if (props.modelValue?.length) {
-        const [m] = props.modelValue
-        // 预览图片
-        wx.previewImage({
-          current: m.url,
-          urls: props.modelValue.map(m => m.url)
-        })
-        return
-      }
-      if (props.disabled) {
-        return false
-      }
+    const reUpload = (callback?: (medias: Media[]) => void) => {
       wx.chooseMedia({
-        count: 1,
+        count: props.maxFileSize || 1,
         mediaType: ['image'],
         soruceType: ['album', 'camera'],
         maxDuration: 30,
@@ -48,6 +38,7 @@ export const Upload = defineComponent({
         success: async (selected: any) => {
           const {tempFiles: files} = selected
           for (const f of files) {
+            console.log('===f', f)
             const media = await props.handler?.({
               path: f.tempFilePath
             })
@@ -60,12 +51,32 @@ export const Upload = defineComponent({
                 // 单文件上传
                 medias = [media]
               }
-              props['onUpdate:modelValue']?.(medias)
             }
             props['onUpdate:modelValue']?.(medias)
+            callback?.(medias)
           }
         }
       })
+    }
+
+    const onClick = () => {
+      console.log('===NsUpload onClick', props.modelValue?.length)
+      if (props.modelValue?.length) {
+        // 预览图片
+        $n.preview(props.modelValue, {
+          button: '更换图片',
+          onButtonClick () {
+            reUpload((medias: Media[]) => {
+              this.update(medias)
+            })
+          }
+        })
+        return
+      }
+      if (props.disabled) {
+        return false
+      }
+      reUpload()
     }
 
     return () => renderFormItem(props, slots,
@@ -76,14 +87,14 @@ export const Upload = defineComponent({
         ],
         style: getStyle(),
         onClick
-      }, h(NsButton, {
+      }, props.deletable !== false ? h(NsButton, {
             icon: 'delete',
             class: 'delete-button',
             fill: 'negtive',
             round: true,
             size: 'xs',
             onClick: onDeleteClick
-          })
+          }) : void 0
         )
     )
   }
