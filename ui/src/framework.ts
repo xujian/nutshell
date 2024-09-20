@@ -6,11 +6,13 @@ import { BusSymbol, PlatformSymbol, createBus, createPlatform } from './composab
 import directives from './directives'
 import services from './services'
 import { ConfirmOptions, DialogOptions } from './services/dialog'
+import { PreviewOptions } from './services/drawer'
 import { ToastOptions } from './services/toast'
 import { LoadingOptions } from './services/loading'
 import { IconFormat } from './components'
 import { DrawerOptions } from './services/drawer'
 import { SheetOptions } from './services/sheet'
+import { Media } from './types'
 
 /**
  * Nulshell framework options holding by app
@@ -21,9 +23,12 @@ export interface NutshellOptions {
   icon?: IconFormat
 }
 
+export type PreviewMediaParam = string | Media | string[] | Media[]
+
 export type DollarNutshell = {
   dialog: (options: DialogOptions) => void,
   confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => void,
+  preview: (media: PreviewMediaParam, options?: PreviewOptions) => void,
   toast: (message: string, options?: ToastOptions) => void,
   notice: (message: string, options?: ToastOptions) => void,
   sheet: (options: SheetOptions) => void,
@@ -59,6 +64,7 @@ export function Nutshell ({
     const $n: DollarNutshell = {
       dialog: (options: DialogOptions) => {},
       confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => {},
+      preview: (media: PreviewMediaParam, options?: PreviewOptions) => {},
       toast: (message: string, options?: ToastOptions) => {},
       notice: (message: string, options?: ToastOptions) => {},
       sheet: (options: SheetOptions) => {},

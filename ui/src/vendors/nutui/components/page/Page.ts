@@ -1,7 +1,8 @@
-import { Component, defineComponent, h, onMounted, onUnmounted, provide, reactive, ref, SetupContext, shallowRef } from 'vue'
+import { Component, computed, defineComponent, h, onMounted, onUnmounted, provide, reactive, ref, SetupContext, shallowRef } from 'vue'
 import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, PageSymbol, PageConfig } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
-import type { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType } from '../../../../services'
+import type { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType, DrawerOptions } from '../../../../services'
+import { marginProps } from '../../../../utils'
 
 export type Notice = {
   options?: {
@@ -13,18 +14,12 @@ export type Notice = {
 
 export const Page = defineComponent({
   name: 'NutuiPage',
-  props: pageProps,
+  props: {
+    ...pageProps,
+    ...marginProps
+  },
   emit: pageEmits,
   setup: (props, {slots, emit}) => {
-
-
-    const pageConfig = reactive<PageConfig>({
-      contentScrollable: false,
-      hasHeader: false,
-    })
-
-    provide(PageSymbol, pageConfig)
-
     // 内置 notice-bar, app-drawer, app-sheet
     const page = ref<HTMLElement>()
     const $bus = useBus()
@@ -32,11 +27,9 @@ export const Page = defineComponent({
     const safeArea = useSafeArea()
     const noticeDuration = 5000
     const noticeData = ref<Notice>()
-    const drawerData = ref(<{component?: Component, props?: any}>({
-      component: void 0,
-      props: {}
-    }))
-    const drawerOpen = ref(false)
+    const drawerComponent = shallowRef<PopupChildComponent | null>(null),
+      drawerOpen = ref(false),
+      drawerOptions = shallowRef<any>({})
     const sheetComponent = shallowRef<PopupChildComponent | null>(null),
       sheetProps = shallowRef<any>(),
       sheetOpen = ref(false),
@@ -55,7 +48,6 @@ export const Page = defineComponent({
     }
 
     const showNotice = (payload: Notice) => {
-      console.log('===showNotice', payload)
       noticeData.value = {
         message: payload.message,
         options: payload.options
@@ -69,8 +61,11 @@ export const Page = defineComponent({
       return h(NsDrawer, {
           class: [
             'app-drawer',
+            ...drawerOptions.value.round ? ['round'] : [],
           ],
           modelValue: drawerOpen.value,
+          round: drawerOptions.value.round,
+          width: drawerOptions.value.width,
           'onUpdate:modelValue': (value: boolean) => {
             drawerOpen.value = value
             if (value === false) {
@@ -78,19 +73,25 @@ export const Page = defineComponent({
             }
           }
         }, {
-          default: () => drawerData.value?.component
-            ? h(drawerData.value?.component, drawerData.value?.props)
+          default: () => drawerComponent.value
+            ? h(drawerComponent.value, {
+                ...drawerOptions.value,
+                onClose: () => {
+                  drawerOpen.value = false
+                }
+              })
             : null
         })
     }
 
-    const openDrawer = () => {
+    const openDrawer = ({component, ...options}: DrawerOptions) => {
+      drawerComponent.value = component!
+      drawerOptions.value = options
       drawerOpen.value = true
       $bus.emit('drawer.open')
     }
 
     const openSheet = ({component, props, ...options}: SheetOptions) => {
-      console.log('===openSheet', component)
       sheetComponent.value = component!
       sheetProps.value = props
       sheetOpen.value = true
@@ -111,7 +112,6 @@ export const Page = defineComponent({
     }
 
     const openDialog = ({component, props, ...options}: DialogOptions) => {
-      console.log('===open dialog 3', component, props)
       dialogComponent.value = component!
       dialogProps.value = props,
       dialogOpen.value = true
@@ -123,7 +123,6 @@ export const Page = defineComponent({
         if (result !== false) {
           dialogOptions.value.onComplete?.(result)
           dialogOpen.value = false
-          $bus.emit('dialog.close')
           $bus.emit('dialog.close')
         }
       },
@@ -140,8 +139,15 @@ export const Page = defineComponent({
       scroll.value = payload.scrollTop
     })
 
+    const exit = () => {
+      drawerOpen.value = false
+    }
+
+    /**
+     * 关闭所有对话框
+     */
     const cleanup = () => {
-      console.log('===///cleanup===')
+      // console.log('===///cleanup===')
       $bus.off('toast', showToast)
       $bus.off('notice', showNotice)
       $bus.off('drawer', openDrawer)
@@ -149,12 +155,11 @@ export const Page = defineComponent({
       $bus.off('dialog', openDialog)
       $bus.off('scroll', onScroll)
       dialogOpen.value = false
-      drawerOpen.value = false
       sheetOpen.value = false
     }
 
     useDidShow(() => {
-      console.log('===///useDidShow')
+      // console.log('===///useDidShow')
       page.value?.setAttribute('data-theme', 'present')
       $bus.on('toast', showToast)
       $bus.on('notice', showNotice)
@@ -164,31 +169,36 @@ export const Page = defineComponent({
       $bus.on('scroll', onScroll)
     })
 
+    onUnmounted(() => {
+      exit()
+    })
+
     useDidHide(() => {
       // 页面返回不触发
-      console.log('===///useDidHide')
+      // console.log('===///useDidHide')
       cleanup()
     })
 
     useLoad(() => {
-      console.log('===///useLoad===')
+      // console.log('===///useLoad===')
     })
 
     useUnload(() => {
-      console.log('===///useUnload===')
+      // console.log('===///useUnload===')
       cleanup()
     })
 
+    const classes = computed<string[]>(() => [
+      'page column align-stretch',
+      ...scroll.value > 0 ? ['scrolled'] : [],
+      ...props.scrollable ? ['scrollable'] : [],
+      // ...props.classes || [],
+      'theme-present'
+    ])
+
     return () => h('div', {
         ref: page,
-        class: [
-          'page column align-stretch',
-          ...scroll.value > 0 ? ['scrolled'] : [],
-          ...props.scrollable ? ['scrollable'] : [],
-          ...pageConfig.hasHeader ? ['has-header'] : [],
-          ...pageConfig.contentScrollable ? ['content-scrollable'] : [],
-          'theme-present'
-        ],
+        class: classes.value,
         style: {
           '--status': `${safeArea.status}px`,
           '--nav': `${safeArea.nav}px`,

@@ -1,7 +1,7 @@
-import { defineComponent, h, inject, PropType } from 'vue'
+import { defineComponent, h, inject, PropType, watch } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useBus } from '../../composables'
-import { PageSymbol } from './Page'
+import { PageSymbol, usePage } from './Page'
 
 export type PageContentColorMode = 'light' | 'dark'
 
@@ -41,11 +41,7 @@ export const NsPageContent = defineComponent({
   emits: pageContentEmits,
   setup (props, { slots, emit }) {
 
-    const page = inject(PageSymbol)
-
-    if (props.scrollable) {
-      page && (page.contentScrollable = true)
-    }
+    const page = usePage()
 
     const $bus = useBus()
 
@@ -77,6 +73,10 @@ export const NsPageContent = defineComponent({
         class: 'page-content-scroll-content'
       }, content)
     )
+
+    watch(() => props.scrollable, () => {
+      page.contentScrollable = props.scrollable
+    })
 
     return () => h('div', {
         class: [

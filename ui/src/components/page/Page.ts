@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, reactive, InjectionKey, Ref, Reactive } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, reactive, InjectionKey, Ref, Reactive, inject, provide, computed } from 'vue'
 import { define, MakePropsType } from '../../utils'
 
 /**
@@ -41,8 +41,9 @@ export type PageSlots = {
 export type PageProps = MakePropsType<typeof pageProps, PageEmits>
 
 export type PageConfig = {
-  contentScrollable: boolean,
-  hasHeader: boolean
+  contentScrollable?: boolean,
+  hasHeader?: boolean,
+  hasFooter?: boolean,
 }
 
 export const PageSymbol: InjectionKey<Reactive<PageConfig>> = Symbol('ns-page')
@@ -56,12 +57,33 @@ export const NsPage = define({
   emits: pageEmits,
   setup (props, ctx) {
 
+    const pageConfig = reactive<PageConfig>({
+      contentScrollable: false,
+      hasHeader: false,
+      hasFooter: false,
+    })
+
+    provide(PageSymbol, pageConfig)
+
+    const classes = computed<string[]>(() => {
+      return [
+      ...pageConfig.hasHeader ? ['has-header'] : [],
+      ...pageConfig.contentScrollable ? ['content-scrollable'] : [],
+      ...pageConfig.hasFooter ? ['has-footer'] : [],
+    ]})
     // 分别为 desktop/小程序 渲染页面所需要的基本组件
     // 包含
     // 1. 页头 page-header
     // 2. 重要通知 notice
     // 3. 侧栏 drawer
     return {
+      props: {
+        classes
+      }
     }
   }
 })
+
+export const usePage = () => {
+  return inject(PageSymbol)!
+}

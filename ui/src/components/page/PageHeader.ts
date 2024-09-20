@@ -2,32 +2,7 @@ import { defineComponent, h, inject, PropType } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useSafeArea } from '../../composables'
 import { buildDesignClasses, buildDesignStyles, buildDesignVariables, type TextAlign, useDesignProps } from '../../props'
-import { PageSymbol } from './Page'
-
-export const pageBottomProps = {
-  ...useDesignProps()
-}
-
-export type PageBottomProps = MakePropsType<typeof pageBottomProps>
-
-export const NsPageBottom = defineComponent({
-  name: 'NsPageBottom',
-  props: pageBottomProps,
-  setup (props, { slots }) {
-
-    const style = {
-      ...buildDesignStyles(props),
-    }
-
-    return () => h('div', {
-      class: [
-        'page-bottom',
-        ...buildDesignClasses(props),
-      ],
-      style,
-    }, slots)
-  }
-})
+import { PageSymbol, usePage } from './Page'
 
 export type PageHeaderColorMode = 'light' | 'dark'
 
@@ -78,7 +53,7 @@ export const NsPageHeader = defineComponent({
   emits: pageHeaderEmits,
   setup (props, { slots, emit }) {
 
-    const page = inject(PageSymbol)
+    const page = usePage()
 
     page && (page.hasHeader = true)
 

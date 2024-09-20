@@ -3,9 +3,12 @@ import { CoreVendor } from '../../shared/models/CoreVendor'
 // import { dialog, toast, loading, notice, drawer, sheet } from './services'
 import components from './components'
 import { ConfirmOptions, DialogOptions } from '../../services/dialog'
+import { PreviewOptions } from '../../services/drawer'
 import { BusSymbol } from '../../composables'
 import type { ToastOptions, NoticeOptions, LoadingOptions, DrawerOptions, SheetOptions } from '../../services'
-import { NutshellSymbol } from '../../framework'
+import { NutshellSymbol, PreviewMediaParam } from '../../framework'
+import { Media } from '../../types'
+import { NsPreview } from '../../components/preview'
 
 const makeDummy = (name: string) => {
   return () => dummy(name.toUpperCase())
@@ -52,7 +55,18 @@ const nutuiVendor: CoreVendor = {
         }
       })
     }
-    console.log('===prepare', this.drawer)
+    this.preview = (media: string | Media, options?: PreviewOptions) => {
+      const m = typeof media === 'string' ? { url: media } : media
+      $bus.emit('drawer', {
+        width: '100vw',
+        round: false,
+        backable: true,
+        component: NsPreview,
+        onClose:
+        media,
+        ...options,
+      })
+    }
   },
   render (props: any, ctx: Omit<SetupContext, 'expose'>) {
     const { parent } = getCurrentInstance()!
@@ -61,13 +75,14 @@ const nutuiVendor: CoreVendor = {
     const { slots } = ctx
     return h(component, props, slots)
   },
-  dialog: (options: DialogOptions) => {return undefined},
+  dialog: (options: DialogOptions) => {},
   toast: (message: string, options: ToastOptions) => {},
   loading: (options: LoadingOptions) => {},
   drawer: (options: DrawerOptions) => {},
   sheet: (options: SheetOptions) => {},
   notice: (message: string) => {},
-  confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => {}
+  confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => {},
+  preview: (media: PreviewMediaParam, options?: PreviewOptions) => {},
 }
 
 export default nutuiVendor
