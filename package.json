@@ -10,7 +10,8 @@
     "icons",
     "helper",
     "expo/desktop",
-    "expo/mobile"
+    "expo/mobile",
+    "expo/play"
   ],
   "license": "MIT",
   "description": "A Vue 3 UI library",

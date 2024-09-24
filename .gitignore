@@ -22,3 +22,5 @@ icons/svg/
 **/.env*
 ui/src/auto-imports-taro.d.ts
 ui/src/auto-imports.d.ts
+expo/play/.swc/*
+expo/play/dist/*
