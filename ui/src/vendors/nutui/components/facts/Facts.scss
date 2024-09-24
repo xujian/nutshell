@@ -1,12 +1,14 @@
 .ns-facts {
   .item {
-    padding: 6px 0;
+    min-height: 24px;
     .label {
+      padding: calc(var(--ns-spacing) / 2);
       white-space: nowrap;
     }
     .value {
       color: var(--ns-text);
       font-weight: bold;
+      padding: calc(var(--ns-spacing) / 2);
       padding-inline-start: 1em;
     }
     &.direction-column {

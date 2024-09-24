@@ -22,7 +22,7 @@ export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose
         class: ['label']
       }, props.label),
     h('div', {
-        class: ['value']
+        class: ['value', 'row', 'justify-end']
       }, {
         default: content
       })
