@@ -20,6 +20,11 @@ const NutshellResolver = (name) => {
 
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
+const outputRoots = {
+  h5: 'dist/h5',
+  weapp: 'dist/weapp',
+}
+
 const config = {
   projectName: 'expo-mobile',
   date: '2023-7-21',
@@ -28,10 +33,10 @@ const config = {
     640: 2.34 / 2,
     750: 1,
     828: 1.81 / 2,
-    375: 2 / 1
+    375: 2 / 1,
   },
   sourceRoot: 'src',
-  outputRoot: 'dist',
+  outputRoot: outputRoots[process.env.TARO_ENV],
   plugins: [
     '@tarojs/plugin-html'
   ],
@@ -102,6 +107,12 @@ const config = {
     }
   },
   h5: {
+    devServer: {
+      open: false,
+    },
+    router: {
+      mode: 'browser', // browser/hash
+    },
     webpackChain(chain) {
       chain.plugin('unplugin-vue-components').use(Components({
         resolvers: [
@@ -114,6 +125,22 @@ const config = {
     staticDirectory: 'static',
     esnextModules: ['nutui-taro', 'icons-vue-taro'],
     postcss: {
+      pxtransform: {
+        enable: false,
+        config: {
+          rootValue: 14,
+          onePxTransform: false,
+          unitPrecision: 5,
+          propList: ['*'],
+          selectorBlackList: [],
+          replace: true,
+          mediaQuery: false,
+          minPixelValue: 0,
+          baseFontSize: 14,
+          maxRootSize: 14,
+          minRootSize: 14
+        }
+      },
       // autoprefixer: {
       //   enable: true,
       //   config: {

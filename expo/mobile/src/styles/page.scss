@@ -1,4 +1,4 @@
-page {
+.ns-page {
   font-family: -apple-system, "Roboto", Helvetica, Segoe UI, Arial, Roboto, "PingFang SC", "miui", "Hiragino Sans GB", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -16,16 +16,6 @@ page {
   font-size: 14px;
   color: #333;
   background-color: var(--ns-background);
-}
-
-page .h1 {
-  font-size: 24px;
-  font-weight: bold;
-}
-page .h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 1em 0;
 }
 
 .v-enter-active,

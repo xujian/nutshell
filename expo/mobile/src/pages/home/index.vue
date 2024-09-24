@@ -104,12 +104,12 @@ const onReportClick = () => Taro.navigateTo({
   url: '/pages/home/report'
 })
 
-const 获取消息 = (page: number) => {
-    $http.get<WithPaging<any[]>>(endpoints.获取消息, {
+const 获取消息 = async (page: number) => {
+    return $http.get<WithPaging<any[]>>(endpoints.获取消息, {
       page
-    }).then((result) => {
-      console.log('===获取消息', result)
-      messages.value = result.data
+    }).then(({paging, data}) => {
+      messages.value = data
+      return {paging, data}
     })
   },
   { nextPage } = usePaging(获取消息)

@@ -2,14 +2,15 @@
   <ns-page class="client-detail-page">
     <ns-page-header title="客户详情"
       colorMode="dark"
-      fill="transparent"
-      has-back-button>
+      fill="#000"
+      has-back-button
+      reveal>
     </ns-page-header>
     <ns-page-content>
-      <div class="basic">
+      <div class="hero cover row align-end breakout sticky">
         <h1 class="name h1 text-gradient">{{ client.姓名 }}</h1>
       </div>
-      <ns-card class="stage-card my-md" fill="#ffffff33">
+      <ns-card class="stage-card overlap" fill="#ffffff55" :blur="50">
         <ns-stepper :items="steps" :model-value="stage" />
       </ns-card>
       <ns-tabs v-model="tab"
@@ -26,17 +27,18 @@
           抵押类
         </ns-facts-item>
         <ns-facts-item label="客户标签" direction="column">
-          <ns-chips :options="tags" justify="end" />
+          <ns-chips :items="tags" color="#ff9800" justify="end" />
         </ns-facts-item>
         <ns-facts-item label="客户来源">
           直营
         </ns-facts-item>
-        <ns-facts-item label="意向产品" direction="vertical">
-          <ns-chips :options="intrests" color="primary" justify="end" />
+        <ns-facts-item label="意向产品" direction="column">
+          <ns-chips :items="intrests" color="#ff9800" justify="end" />
         </ns-facts-item>
       </ns-facts>
       <h2 class="h2">提醒记录</h2>
       <h2 class="h2">跟进记录</h2>
+      <div class="follow-records"></div>
     </ns-page-content>
   </ns-page>
 </template>
@@ -99,9 +101,26 @@ const steps = [
   background-image: url(http://simple.shensi.tech/images/background.jpeg);
   color: #fff;
   --text: #fff;
+  .hero {
+    position: sticky;
+    top: calc(var(--status) + var(--nav));
+    height: 240px;
+    background-image: url(http://simple.shensi.tech/upload/asimo.jpg);
+    padding: 2em 1em;
+    transition: height 1s;
+    box-sizing: border-box;
+  }
   .name {
     font-size: 24px;
     font-weight: bold;
+  }
+  .follow-records {
+    height: 800px;
+  }
+  &.scrolled {
+    .hero {
+      height: calc(var(--status) + var(--nav));
+    }
   }
 }
 </style>

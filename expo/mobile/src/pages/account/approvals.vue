@@ -1,8 +1,7 @@
 <template>
   <ns-page class="page-approvals">
     <ns-page-header
-      fill="#fff"
-      @close="onPageHeaderClose">
+      fill="#fff">
       <template #title>
         <ns-form>
           <ns-input class="search-input full-width"
@@ -25,7 +24,6 @@
 </template>
 
 <script lang="ts" setup>
-import Taro from '@tarojs/taro'
 import { WithPaging } from '@uxda/nutshell'
 import { onMounted, ref } from 'vue'
 import { endpoints, useHttp } from '../../api'
@@ -57,10 +55,6 @@ const tabs = [
     label: '审批拒绝'
   }
 ]
-
-function onPageHeaderClose () {
-  Taro.navigateBack()
-}
 
 onMounted(() => {
   $http.get<WithPaging<any>>(endpoints.获取审批列表, {
