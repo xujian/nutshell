@@ -4,7 +4,7 @@
   }
   &.horizontal .nut-sticky__box>.nut-tabs__titles,
   &.horizontal>.nut-tabs__titles {
-    height: 40px;
+    height: 32px;
     .nut-tabs__titles-item {
       min-width: 40px;
       width: fit-content;
@@ -12,7 +12,7 @@
       &.active {
         background-color: #ffffff66;
         font-size: unset;
-        color: unset;
+        color: var(--ns-accent);
       }
     }
   }
@@ -21,10 +21,9 @@
       width: fit-content;
       &.active {
         font-size: 16px;
-        color: var(--ns-secondary);
         .nut-tabs__titles-item__line {
           bottom: 0;
-          background: var(--ns-secondary);
+          background: transparent;
         }
       }
     }
