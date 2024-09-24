@@ -1,0 +1,22 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-play
+    privileged: false
+    restart : always
+    ports:
+      - 8042:8042
+    expose:
+      - 8042
+    volumes:
+      - ./app:/var/www
+      - ./site.conf:/etc/nginx/conf.d/site.conf
+    environment:
+      - VIRTUAL_HOST=play.shensi.tech
+      - VIRTUAL_PORT=8042
+      - LETSENCRYPT_HOST=play.shensi.tech
+      - DEBUG=true
+networks:
+  default:
+      name: nginx-proxy-network

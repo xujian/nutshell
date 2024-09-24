@@ -31,6 +31,7 @@
     "@tarojs/helper": "^4.0.6",
     "@tarojs/plugin-framework-vue3": "^4.0.6",
     "@tarojs/plugin-html": "^4.0.6",
+    "@tarojs/plugin-platform-h5": "^4.0.6",
     "@tarojs/plugin-platform-weapp": "^4.0.6",
     "@tarojs/runtime": "^4.0.6",
     "@tarojs/shared": "^4.0.6",
