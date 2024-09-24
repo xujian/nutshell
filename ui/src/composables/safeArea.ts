@@ -22,10 +22,11 @@ export type SafeArea = {
  * @returns
  */
 export function useSafeArea (): SafeArea {
-  if (!wx) {
+  const env = Taro.getEnv() as string
+  if (env !== 'WEAPP') {
     return {
       status: 0,
-      nav: 0,
+      nav: 40,
       bottom: 0
     }
   }

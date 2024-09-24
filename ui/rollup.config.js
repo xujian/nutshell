@@ -31,21 +31,22 @@ const NutResolver = (name) => {
   }
 }
 
-const NutTypeResolver = (name) => {
-  if (nutTypeRegex.test(name)) {
-    const dir = name.slice(3, -4).toLowerCase()  //NutButtonType => button/type
-    return {
-      name: NutButtonType,
-      from: `@nutui/nutui/dist/types/__VUE/${dir}`,
-    }
-  }
-}
+// const NutTypeResolver = (name) => {
+//   if (nutTypeRegex.test(name)) {
+//     const dir = name.slice(3, -4).toLowerCase()  //NutButtonType => button/type
+//     return {
+//       name: NutButtonType,
+//       from: `@nutui/nutui/dist/types/__VUE/${dir}`,
+//     }
+//   }
+// }
 
 // 只用来解析 Taro
 const OnlyTaroResolver = (name) => {
   if (name === 'Taro') {
     return {
-      name: 'Taro',
+      name: 'default',
+      as: 'Taro',
       from: '@tarojs/taro',
     }
   }
@@ -68,7 +69,6 @@ const taroComponents = [
 ]
 
 const TaroHookResolver = (name) => {
-  console.log('===TaroHookResolver===', name)
   if (taroEvents.includes(name)) {
     return {
       name: name,
@@ -120,7 +120,7 @@ export default [
         dirs: [
           'src/vendors/nutui/**',
         ],
-        dts: true,
+        dts: 'src/auto-imports.d.ts',
         include: [
           /\.ts$/,
         ],
@@ -167,9 +167,16 @@ export default [
     plugins: [
       AutoImport({
         dirs: [
+          'src/composables/',
+          'src/composables/**',
           'src/vendors/nutui/**',
         ],
-        dts: true,
+        imports: [{
+          '@tarojs/taro': [
+            ['default', 'Taro']
+          ]
+        }],
+        dts: 'src/auto-imports-taro.d.ts',
         include: [
           /\.ts$/,
         ],
@@ -177,8 +184,8 @@ export default [
           enabled: true,
         },
         resolvers: [
+          // OnlyTaroResolver,
           NutTaroResolver,
-          OnlyTaroResolver,
           TaroHookResolver,
         ]
       }),

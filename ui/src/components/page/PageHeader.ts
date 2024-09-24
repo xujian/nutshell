@@ -77,7 +77,7 @@ export const NsPageHeader = defineComponent({
           ? h('div', {
               class: 'back-button',
               onClick: () => {
-                wx.navigateBack()
+                Taro.navigateBack()
                 emit('close')
               }
             })

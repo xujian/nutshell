@@ -1,5 +1,5 @@
-import { Component, computed, defineComponent, h, onMounted, onUnmounted, provide, reactive, ref, SetupContext, shallowRef } from 'vue'
-import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, PageSymbol, PageConfig } from '../../../../components'
+import { computed, defineComponent, h, onUnmounted, ref, shallowRef } from 'vue'
+import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog } from '../../../../components'
 import { useBus, useSafeArea } from '../../../../composables'
 import type { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType, DrawerOptions } from '../../../../services'
 import { marginProps } from '../../../../utils'

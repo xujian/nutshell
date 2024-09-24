@@ -20,3 +20,5 @@ expo/desktop/.eslintrc-auto-import.json
 icons/fonts/*
 icons/svg/
 **/.env*
+ui/src/auto-imports-taro.d.ts
+ui/src/auto-imports.d.ts

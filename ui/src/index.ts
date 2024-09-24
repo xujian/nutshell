@@ -8,8 +8,13 @@ export * from './props'
 export * from './types'
 export * from './Resolver'
 
-const Taro = {
-  showToast (options: any) {}
+const Taro: any = {
+  showToast (options: any) {},
+  navigateBack: () => {},
+  getSystemInfoSync: () => {},
+  getMenuButtonBoundingClientRect: () => {},
+  navigateTo: (options: any) => {},
+  chooseMedia: (options: any) => {}
 }
 
 export {
