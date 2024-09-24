@@ -1,10 +1,10 @@
-import { h, ref, SetupContext, useAttrs, VNode } from 'vue'
-import { ChipsProps, NsButton, NsCheckboxGroup, NsChip, NsPopover } from '../../../../components'
+import { h, SetupContext, useAttrs } from 'vue'
+import { ChipsProps, NsChip } from '../../../../components'
 import { UniDataItem } from '../../../../shared'
 import { VendorWrapper } from '../../../VendorWrapper'
 
 export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
-  const options = props.options || []
+  const items = props.items || []
 
   const attrs = useAttrs()
 
@@ -20,7 +20,7 @@ export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
   return h(VendorWrapper, {
     ignoresDesign: true
   }, {
-    default: () => options.map((o) => {
+    default: () => items.map((o) => {
       const on = props.modelValue && props.modelValue.includes(o.value as string)
       return h(NsChip, {
         class: [

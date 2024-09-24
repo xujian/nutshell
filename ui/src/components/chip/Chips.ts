@@ -10,7 +10,7 @@ export const chipsProps = {
   color: {
     type: String as PropType<Color>,
   },
-  options: {
+  items: {
     type: Array as PropType<UniDataItem[]>,
     default: [],
   },
