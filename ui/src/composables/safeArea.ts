@@ -16,19 +16,35 @@ export type SafeArea = {
   bottom: number
 }
 
+export type PhoneModel =
+  'iphone-x' | 'iphone-14'
+
+/**
+ * 手机型号具体尺寸
+ */
+const models: Record<PhoneModel, SafeArea> = {
+  'iphone-x': {
+    status: 40,
+    nav: 40,
+    bottom: 0
+  },
+  'iphone-14': {
+    status: 59,
+    nav: 40,
+    bottom: 0
+  }
+}
+
 /**
  * 获取屏幕安全区域
  * 从系统 API 获取
  * @returns
  */
-export function useSafeArea (): SafeArea {
+export function useSafeArea (model?: PhoneModel): SafeArea {
+  const m = model || 'iphone-14'
   const env = Taro.getEnv() as string
   if (env !== 'WEAPP') {
-    return {
-      status: 0,
-      nav: 40,
-      bottom: 0
-    }
+    return models[m]
   }
   const systemInfo = wx.getSystemInfoSync(),
     capsule = wx.getMenuButtonBoundingClientRect()
