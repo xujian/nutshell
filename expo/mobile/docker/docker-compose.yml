@@ -1,0 +1,22 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-expo
+    privileged: false
+    restart : always
+    ports:
+      - 8044:8044
+    expose:
+      - 8044
+    volumes:
+      - ./app:/var/www
+      - ./site.conf:/etc/nginx/conf.d/site.conf
+    environment:
+      - VIRTUAL_HOST=expo.shensi.tech
+      - VIRTUAL_PORT=8044
+      - LETSENCRYPT_HOST=expo.shensi.tech
+      - DEBUG=true
+networks:
+  default:
+      name: nginx-proxy-network
