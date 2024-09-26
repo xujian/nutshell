@@ -3,15 +3,31 @@ import { MakePropsType } from '../../utils'
 import { h } from 'vue'
 import { PropType, SlotsType, defineComponent } from 'vue'
 
-export type ListRow = {
-  title: string,
-  /**
-   * 列表项副标题
-   */
-  caption: string,
-  icon: string,
-  [x: string]: string,
+export const listItemProps = {
+  number: {
+    type: Number
+  },
+  title: {
+    type: String,
+  },
+  name: {
+    type: String,
+  },
+  caption: {
+    type: String,
+  },
+  link: {
+    type: String,
+  },
+  icon: {
+    type: String
+  },
+  hasArrow: {
+    type: Boolean,
+  }
 }
+
+export type ListItemProps = MakePropsType<typeof listItemProps>
 
 export const listProps = {
   title: {
@@ -21,7 +37,7 @@ export const listProps = {
     type: String,
   },
   data: {
-    type: Array as PropType<ListRow[]>
+    type: Array as PropType<ListItemProps[]>
   },
   hasNumbers: {
     type: Boolean
@@ -41,6 +57,58 @@ export interface ListSlots extends SlotsType {
 
 export type ListProps = MakePropsType<typeof listProps, ListEmits>
 
+export const NsListItem = defineComponent({
+  name: 'NsListItem',
+  props: listItemProps,
+  setup (props) {
+
+    const main = (props: ListItemProps) => {
+      return h('div', {
+        class: [
+          'list-item-section',
+          'list-item-section-main',
+        ],
+      }, [
+        h('h4', {
+          class: 'title'
+        }, props.title),
+        props.name
+          ? h('p', { class: ['list-item-caption', 'caption']}, props.name)
+          : null,
+        props.caption
+          ? h('p', { class: ['list-item-caption', 'caption']}, props.caption)
+          : null,
+      ])
+    }
+    const no = (n: number) => {
+      return h('div', {
+        class: ['list-item-section list-item-section-no number'],
+      }, n)
+    }
+    const arrow = () => {
+      return h('div', {
+        class: ['list-item-section-arrow'],
+      })
+    }
+    return () => h('div', {
+        class: [
+          'list-item',
+          ...props.link ? ['has-link'] : [],
+        ],
+        ...props.link
+          ? { onClick: () => { Taro.navigateTo({url: props.link}) } }
+          : {}
+      }, [
+        props.number !== void 0
+          ? no(props.number)
+          : null,
+        main(props),
+        props.hasArrow ? arrow() : null,
+      ]
+    )
+  }
+})
+
 /**
  * 列表组件 <ns-list>
  */
@@ -48,7 +116,7 @@ export const NsList = defineComponent({
   name: 'NsList',
   props: listProps,
   emits,
-  setup (props, ctx) {
+  setup (props, { slots }) {
 
     const header = props.title
       ? h('div', {
@@ -56,30 +124,14 @@ export const NsList = defineComponent({
         }, () => props.title)
       : null
 
-    const main = (row: ListRow) => {
-      return h('div', {
-        class: ['list-item-section list-item-section-main']
-      }, [
-        h('h4', {}, row.title),
-        row.caption ? h('p', { class: ['list-item-caption', 'caption']}, row.caption) : null,
-      ])
-    }
-
-    const no = (row: ListRow, index: number) => {
-      return h('div', {
-        class: ['list-item-section list-item-section-no number'],
-      }, index + 1)
-    }
-
     const body = props.data
-      ? props.data.map((d: ListRow, index: number) => {
-          return h('div', {
-              class: ['list-item']
-            }, [
-              props.hasNumbers ? no(d, index) : null,
-              main(d)
-            ]
-          )
+      ? props.data.map((d: ListItemProps, index: number) => {
+          return h(NsListItem, {
+            ...d,
+            ...props.hasNumbers
+              ? { number: index + 1 }
+              : {},
+          })
         })
       : h('div', {
         class: ['ns-empty']
@@ -96,6 +148,7 @@ export const NsList = defineComponent({
     }, [
       header,
       body,
+      slots.default?.()
     ])
   }
 })

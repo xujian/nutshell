@@ -5,8 +5,12 @@
     width: 100%;
     flex-direction: row;
     align-items: center;
+    padding: .5em 0;
     &:last-child{
       border-bottom: none;
+    }
+    &.has-link {
+      cursor: pointer;
     }
     .list-item-section {
       flex-grow: 0;
@@ -16,8 +20,24 @@
     }
     .caption {
       color: var(--ns-caption);
-      line-height: 1.5em;
-      min-height: 1.5em;
+      line-height: 1em;
+      min-height: 1em;
+    }
+    .title {
+      line-height: 1.2em;
+    }
+    .list-item-section-no {
+      width: 40px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .list-item-section-arrow {
+      width: 40px;
+      min-height: 24px;
+      background-image: url(http://simple.shensi.tech/icons/arrow-right.svg);
+      background-repeat: no-repeat;
+      background-size: 24px;
+      background-position: center;
     }
   }
   &.variant-outlined {
