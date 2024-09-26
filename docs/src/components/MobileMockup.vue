@@ -8,6 +8,7 @@
             :src="url"></iframe>
         </div>
         <div class="status"></div>
+        <div class="time">9:41</div>
         <div class="bottombar"></div>
       </div>
       <div class="notch"></div>
@@ -49,7 +50,7 @@ const props = withDefaults(
   // $phone-screen-width: $phone-width ;
   $phone-screen-height: 844px;
   // $phone-screen-height: $phone-height - ($phone-outer-bezel-size * 2) - ($phone-inner-bezel-size * 2);
-  $phone-screen-border-radius: 40px;
+  $phone-screen-border-radius: 64px;
 
   $black: #1f1f1f;
 
@@ -102,10 +103,7 @@ const props = withDefaults(
   $phone-dynamic-island-height: 37px;
   $phone-dynamic-island-border-radius: 18.5px;
 
-  // use https://yoksel.github.io/url-encoder/ to edit and convert svgs
-  // and https://jakearchibald.github.io/svgomg/ to optimize before conversion
-  $phone-top-icons-height: 31px;
-  $phone-top-icons-base64-svg: url("data:image/svg+xml,%3Csvg width='391' height='32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M348.2 21.71c0-1.1.9-2 2-2h14.17a2 2 0 012 2v4.57a2 2 0 01-2 2H350.2a2 2 0 01-2-2v-4.57z' fill='%23020202'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M350.53 18.85a3.15 3.15 0 00-3.15 3.15v4a3.15 3.15 0 003.15 3.15h13.5a3.15 3.15 0 003.15-3.15v-4a3.15 3.15 0 00-3.15-3.15h-13.5zm-4 3.15a4 4 0 014-4h13.5a4 4 0 014 4v4a4 4 0 01-4 4h-13.5a4 4 0 01-4-4v-4z' fill='%23979797'/%3E%3Cpath d='M368.87 26.43a2.57 2.57 0 001.66-2.43c0-1.12-.7-2.07-1.66-2.43v4.86z' fill='%23979797'/%3E%3Cpath d='M340.2 28.03c-.33.49-.8.85-1.41 1.1-.6.23-1.3.35-2.1.35a3.85 3.85 0 01-3.62-2.2 5.64 5.64 0 01-.54-2.44v-.87c0-1.5.35-2.66 1.05-3.48a3.67 3.67 0 012.95-1.24c1.04 0 1.88.27 2.51.8a3.46 3.46 0 011.16 2.26h-1.3c-.25-1.32-1.04-1.98-2.36-1.98-.88 0-1.55.31-2 .93-.45.61-.68 1.5-.69 2.68v.81c0 1.12.26 2 .77 2.67.51.66 1.2.98 2.07.98.5 0 .92-.05 1.3-.16.36-.11.67-.3.9-.55v-2.24h-2.3v-1.07h3.61v3.65zM324.89 24.35l.5-4.96h5.1v1.17h-4.02l-.3 2.71a3.21 3.21 0 011.66-.43c.9 0 1.63.3 2.16.9.53.6.8 1.4.8 2.43a3.4 3.4 0 01-.84 2.42c-.55.6-1.32.89-2.31.89-.88 0-1.6-.25-2.16-.73a2.92 2.92 0 01-.95-2.03h1.2c.08.57.28 1 .6 1.3.34.28.77.42 1.3.42.6 0 1.06-.2 1.39-.6.34-.4.5-.95.5-1.66 0-.66-.18-1.2-.54-1.6-.36-.4-.84-.6-1.44-.6-.56 0-.99.11-1.3.36l-.34.27-1.01-.26zM315.8 18.86c0-.48.31-.86.69-.86h1.36c.38 0 .68.38.68.86v10.28c0 .48-.3.86-.68.86h-1.36c-.38 0-.68-.38-.68-.86V18.86zM311.72 21.43c0-.47.3-.86.68-.86h1.36c.38 0 .68.39.68.86v7.71c0 .48-.3.86-.68.86h-1.36c-.38 0-.68-.38-.68-.86v-7.71zM307.63 24c0-.47.3-.86.68-.86h1.36c.38 0 .68.39.68.86v5.14c0 .48-.3.86-.68.86h-1.36c-.38 0-.69-.38-.69-.86V24zM303.53 26.57c0-.47.3-.86.69-.86h1.36c.38 0 .68.39.68.86v2.57c0 .48-.3.86-.68.86h-1.36c-.38 0-.69-.38-.69-.86v-2.57zM62.56 31h-8.39v-1.17l4.43-4.92c.66-.75 1.1-1.35 1.36-1.81.25-.47.37-.95.37-1.45 0-.67-.2-1.22-.6-1.65-.4-.42-.95-.64-1.62-.64-.8 0-1.44.23-1.89.7-.45.45-.67 1.1-.67 1.91h-1.62c0-1.17.37-2.13 1.13-2.85a4.23 4.23 0 013.05-1.1c1.19 0 2.13.32 2.82.95.7.62 1.04 1.45 1.04 2.49 0 1.25-.8 2.75-2.41 4.5l-3.43 3.71h6.43V31zM50.93 26.7h1.77v1.33h-1.77V31h-1.64v-2.97h-5.82v-.96l5.73-8.87h1.73v8.5zm-5.62 0h3.98v-6.27l-.19.35-3.79 5.92zM39.82 30.15c0-.28.08-.52.25-.7.17-.2.42-.29.75-.29.34 0 .59.1.76.28.17.2.26.43.26.7 0 .28-.09.5-.26.68-.17.19-.42.28-.76.28-.33 0-.58-.1-.75-.28a.97.97 0 01-.25-.67zm0-7.76c0-.28.09-.52.25-.7.17-.2.43-.29.76-.29s.59.1.76.28c.17.2.26.43.26.7 0 .28-.09.5-.26.68-.17.19-.43.28-.76.28s-.59-.1-.76-.28a.97.97 0 01-.24-.67zM36.46 26.7h1.78v1.33h-1.78V31h-1.63v-2.97H29v-.96l5.73-8.87h1.73v8.5zm-5.61 0h3.98v-6.27l-.2.35-3.78 5.92z' fill='%23020202'/%3E%3C/svg%3E");
+  $phone-status-svg: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTM5IiBoZWlnaHQ9IjE0IiB2aWV3Qm94PSIwIDAgMTM5IDE0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQ0Ljg2NSAyLjAzMzAyQzQ0Ljg2NSAxLjM5OTk3IDQ0LjM4NzUgMC44ODY3OTEgNDMuNzk4NCAwLjg4Njc5MUg0Mi43MzE3QzQyLjE0MjYgMC44ODY3OTEgNDEuNjY1IDEuMzk5OTcgNDEuNjY1IDIuMDMzMDJWMTEuOTY3QzQxLjY2NSAxMi42IDQyLjE0MjYgMTMuMTEzMiA0Mi43MzE3IDEzLjExMzJINDMuNzk4NEM0NC4zODc1IDEzLjExMzIgNDQuODY1IDEyLjYgNDQuODY1IDExLjk2N1YyLjAzMzAyWk0zNy40MzA5IDMuMzMyMDdIMzguNDk3NkMzOS4wODY3IDMuMzMyMDcgMzkuNTY0MyAzLjg1NzU3IDM5LjU2NDMgNC41MDU4MVYxMS45Mzk1QzM5LjU2NDMgMTIuNTg3NyAzOS4wODY3IDEzLjExMzIgMzguNDk3NiAxMy4xMTMySDM3LjQzMDlDMzYuODQxOCAxMy4xMTMyIDM2LjM2NDMgMTIuNTg3NyAzNi4zNjQzIDExLjkzOTVWNC41MDU4MUMzNi4zNjQzIDMuODU3NTcgMzYuODQxOCAzLjMzMjA3IDM3LjQzMDkgMy4zMzIwN1pNMzMuMDk5MiA1Ljk4MTEySDMyLjAzMjVDMzEuNDQzNCA1Ljk4MTEyIDMwLjk2NTggNi41MTMzMSAzMC45NjU4IDcuMTY5OFYxMS45MjQ1QzMwLjk2NTggMTIuNTgxIDMxLjQ0MzQgMTMuMTEzMiAzMi4wMzI1IDEzLjExMzJIMzMuMDk5MkMzMy42ODgzIDEzLjExMzIgMzQuMTY1OCAxMi41ODEgMzQuMTY1OCAxMS45MjQ1VjcuMTY5OEMzNC4xNjU4IDYuNTEzMzEgMzMuNjg4MyA1Ljk4MTEyIDMzLjA5OTIgNS45ODExMlpNMjcuNzk4NCA4LjQyNjQxSDI2LjczMTdDMjYuMTQyNiA4LjQyNjQxIDI1LjY2NSA4Ljk1MSAyNS42NjUgOS41OTgxMVYxMS45NDE1QzI1LjY2NSAxMi41ODg2IDI2LjE0MjYgMTMuMTEzMiAyNi43MzE3IDEzLjExMzJIMjcuNzk4NEMyOC4zODc1IDEzLjExMzIgMjguODY1IDEyLjU4ODYgMjguODY1IDExLjk0MTVWOS41OTgxMUMyOC44NjUgOC45NTEgMjguMzg3NSA4LjQyNjQxIDI3Ljc5ODQgOC40MjY0MVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNjAuNDM2NSAzLjMwMjEzQzYyLjkyMzYgMy4zMDIyMyA2NS4zMTU3IDQuMjI0MzIgNjcuMTE4MiA1Ljg3NzhDNjcuMjUzOSA2LjAwNTQ1IDY3LjQ3MDkgNi4wMDM4NCA2Ny42MDQ1IDUuODc0MTlMNjguOTAyIDQuNjEwNzJDNjguOTY5NyA0LjU0NDk2IDY5LjAwNzUgNC40NTU4OCA2OS4wMDY5IDQuMzYzMkM2OS4wMDYzIDQuMjcwNTIgNjguOTY3NSA0LjE4MTg3IDY4Ljg5OSA0LjExNjg4QzY0LjE2OCAtMC4yNTc4MzMgNTYuNzA0MyAtMC4yNTc4MzMgNTEuOTczMyA0LjExNjg4QzUxLjkwNDggNC4xODE4MyA1MS44NjU5IDQuMjcwNDQgNTEuODY1MiA0LjM2MzEzQzUxLjg2NDYgNC40NTU4MSA1MS45MDIzIDQuNTQ0OTEgNTEuOTY5OSA0LjYxMDcyTDUzLjI2NzggNS44NzQxOUM1My40MDE0IDYuMDA0MDQgNTMuNjE4NSA2LjAwNTY1IDUzLjc1NDIgNS44Nzc4QzU1LjU1NjkgNC4yMjQyMSA1Ny45NDkyIDMuMzAyMTIgNjAuNDM2NSAzLjMwMjEzWk02MC40MzMyIDcuNTIyNEM2MS43OTA1IDcuNTIyMzIgNjMuMDk5NCA4LjAzNDA2IDY0LjEwNTUgOC45NTgxOUM2NC4yNDE2IDkuMDg5MzQgNjQuNDU1OSA5LjA4NjUgNjQuNTg4NiA4Ljk1MTc4TDY1Ljg3NTkgNy42MzI0N0M2NS45NDM3IDcuNTYzMjcgNjUuOTgxMyA3LjQ2OTM5IDY1Ljk4MDMgNy4zNzE4NEM2NS45NzkzIDcuMjc0MjkgNjUuOTM5OCA3LjE4MTIxIDY1Ljg3MDcgNy4xMTM0MkM2Mi44MDY4IDQuMjIyNTcgNTguMDYyMSA0LjIyMjU3IDU0Ljk5ODMgNy4xMTM0MkM1NC45MjkxIDcuMTgxMjEgNTQuODg5NiA3LjI3NDM0IDU0Ljg4ODcgNy4zNzE5MkM1NC44ODc4IDcuNDY5NSA1NC45MjU1IDcuNTYzMzcgNTQuOTkzNSA3LjYzMjQ3TDU2LjI4MDQgOC45NTE3OEM1Ni40MTMgOS4wODY1IDU2LjYyNzQgOS4wODkzNCA1Ni43NjM1IDguOTU4MTlDNTcuNzY4OSA4LjAzNDY3IDU5LjA3NjggNy41MjI5NyA2MC40MzMyIDcuNTIyNFpNNjIuOTU3NiAxMC4zMTZDNjIuOTU5NSAxMC40MjEzIDYyLjkyMjUgMTAuNTIyOSA2Mi44NTUyIDEwLjU5NjdMNjAuNjc4NSAxMy4wNTE0QzYwLjYxNDcgMTMuMTIzNiA2MC41Mjc3IDEzLjE2NDIgNjAuNDM2OSAxMy4xNjQyQzYwLjM0NjIgMTMuMTY0MiA2MC4yNTkyIDEzLjEyMzYgNjAuMTk1NCAxMy4wNTE0TDU4LjAxODMgMTAuNTk2N0M1Ny45NTExIDEwLjUyMjggNTcuOTE0MSAxMC40MjEyIDU3LjkxNjEgMTAuMzE1OUM1Ny45MTgxIDEwLjIxMDUgNTcuOTU4OSAxMC4xMTA4IDU4LjAyODkgMTAuMDQwMUM1OS40MTkgOC43MjYyNSA2MS40NTQ5IDguNzI2MjUgNjIuODQ1IDEwLjA0MDFDNjIuOTE0OSAxMC4xMTA4IDYyLjk1NTcgMTAuMjEwNiA2Mi45NTc2IDEwLjMxNloiIGZpbGw9IndoaXRlIi8+CjxyZWN0IG9wYWNpdHk9IjAuMzUiIHg9Ijc2LjUwNjgiIHk9IjEiIHdpZHRoPSIyNCIgaGVpZ2h0PSIxMiIgcng9IjMuOCIgc3Ryb2tlPSJ3aGl0ZSIvPgo8cGF0aCBvcGFjaXR5PSIwLjQiIGQ9Ik0xMDIuMDA3IDUuMjgxMTNWOS4zNTY2QzEwMi44MTIgOS4wMTE0MyAxMDMuMzM1IDguMjA4NDcgMTAzLjMzNSA3LjMxODg2QzEwMy4zMzUgNi40MjkyNiAxMDIuODEyIDUuNjI2MyAxMDIuMDA3IDUuMjgxMTNaIiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB4PSI3OC4wMDY4IiB5PSIyLjUiIHdpZHRoPSIyMSIgaGVpZ2h0PSI5IiByeD0iMi41IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K");
   .iphone {
     // outer bezel
     position: relative;
@@ -210,17 +208,29 @@ const props = withDefaults(
       height: 100%;
       border: 0 none;
     }
-    // time, coverage, battery
+    .time,
     .status {
       position: absolute;
       z-index: 7;
-      width: 100%;
-      height: $phone-top-icons-height;
-      top: 0;
-      left: 0;
-      background-size: 100%;
+      width: 139px;
+      height: $phone-dynamic-island-height;
+      top: $phone-dynamic-island-pad;
+    }
+    .time {
+      font-family: 'SF Pro';
+      font-weight: bold;
+      text-align: center;
+      width: 139px;
+      line-height: $phone-dynamic-island-height;
+      color: #fff;
+      font-size: 14px;
+    }
+    .status {
+      right: 0;
+      background-size: 139px;
       background-repeat: no-repeat;
-      background-image: $phone-top-icons-base64-svg;
+      background-image: $phone-status-svg;
+      background-position: center;
     }
     .bottombar {
       position: absolute;
