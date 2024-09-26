@@ -94,6 +94,7 @@ const config = {
   h5: {
     devServer: {
       open: false,
+      port: 10087
     },
     router: {
       mode: 'browser', // browser/hash
