@@ -33,9 +33,9 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-typescript": "^7.22.5",
     "@histoire/plugin-vue": "^0.17.17",
-    "@rollup/plugin-alias": "^5.0.0",
+    "@rollup/plugin-alias": "^5.1.1",
     "@types/lodash-es": "^4.17.12",
-    "rollup": "^4.21.2",
+    "rollup": "^4.22.4",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-esbuild": "^6.1.1"
   },

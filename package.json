@@ -11,7 +11,8 @@
     "helper",
     "expo/desktop",
     "expo/mobile",
-    "expo/play"
+    "expo/play",
+    "taro-plugin"
   ],
   "license": "MIT",
   "description": "A Vue 3 UI library",
