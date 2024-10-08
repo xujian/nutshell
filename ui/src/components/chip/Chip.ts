@@ -16,6 +16,7 @@ export const useChipProps = buildProps({
    */
   color: {
     type: String as PropType<Color>,
+    default: 'primary'
   },
   /**
    * 字色
@@ -52,6 +53,9 @@ export const NsChip = define({
     emits: chipEmits,
     setup (props, ctx) {
       return {
+        props: {
+          fill: props.fill || props.color
+        }
       }
     }
   }
