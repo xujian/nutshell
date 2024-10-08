@@ -40,16 +40,18 @@ export const NsRow = defineComponent({
     const { slots } = ctx
     return () => h('div', {
       class: [
+        'ns-row',
         'flex',
         'row',
         `justify-${props.justify}`,
         `align-${props.align}`,
         ...props.wrap ? ['wrap'] : [],
         ...(props.gap && typeof props.gap === 'string') ? [`gap-${props.gap}`] : [],
-        ...props.grow !== void 0 ? ['grow'] : []
+        ...props.grow !== void 0 ? ['grow'] : [],
+        ...props.gap ? ['has-gap'] : []
       ],
       style: {
-        ...props.gap ? {'--gap': `${props.gap}px`} : {}
+        ...props.gap !== void 0 ? {'--gap': `${props.gap}px`} : {}
       }
     }, slots)
   }

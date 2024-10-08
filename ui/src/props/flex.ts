@@ -49,6 +49,7 @@ export const buildFlexClasses = (props: FlexProps) => {
     ...props.align ? [`align-${props.align}`] : [],
     ...props.justify ? [`justify-${props.justify}`] : [],
     ...props.wrap ? ['wrap'] : [],
+    ...props.gap ? ['has-gap'] : [],
   ]
 }
 

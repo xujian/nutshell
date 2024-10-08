@@ -45,16 +45,23 @@ export const NsColumn = defineComponent({
   setup (props, { slots }) {
     return () => h('div', {
       class: [
+        'ns-column',
         'flex',
         'flex-column',
-        ...props.grow ? ['flex-grow'] : [],
+        ...props.grow > 0  ? ['flex-grow'] : [],
+        ...props.grow === 0  ? ['flex-fixed'] : [],
         ...props.justify ? [`justify-${props.justify}`] : [],
         ...props.align ? [`align-${props.align}`] : [],
+        ...props.gap > 0 ? ['has-gap'] : []
       ],
       style: {
-        '--gap': typeof props.gap === 'number'
-          ? `${props.gap}px`
-          : props.gap
+        ...props.gap !== void 0
+          ? {
+              '--gap': typeof props.gap === 'number'
+                ? `${props.gap}px`
+                : props.gap
+            }
+          : {},
       }
     }, slots)
   }

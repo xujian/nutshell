@@ -100,6 +100,10 @@
 .flex-shrink {
   flex-shrink: 1;
 }
+.flex-fixed {
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+}
 .spacer {
   flex-grow: 1;
 }
