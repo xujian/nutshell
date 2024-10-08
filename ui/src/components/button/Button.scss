@@ -17,9 +17,6 @@
   //     color: var(--ns-primary);
   //   }
   // }
-  &.icon-position-end {
-    padding-inline-end: 24px;
-  }
   + .ns-button {
     margin-left: 0.5em;
   }
@@ -30,8 +27,8 @@
   }
 }
 
-.row.justify-stretch {
-  .ns-button {
+.has-gap {
+  >.ns-button {
     + .ns-button {
       margin-left: 0;
     }
