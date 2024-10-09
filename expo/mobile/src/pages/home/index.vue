@@ -6,7 +6,6 @@
       :brightness="1.5"
       fill="#aaaaaa88"></ns-page-header>
     <ns-page-content>
-      <h2 class="h2">销售助手</h2>
       <scroll-view scroll-x="true">
         <ns-repeator class="numbers"
           :items="numbers"
@@ -20,7 +19,8 @@
             justify="center"
             foreground="#fff"
             stroke="#CDDC39"
-            gradient="#799f0c,#ffe000/45" />
+            gradient="#799f0c,#ffe000/45"
+            v-link="'/pages/clients/list'" />
         </ns-repeator>
       </scroll-view>
       <h2 class="h2">快捷入口</h2>
@@ -144,8 +144,10 @@ onMounted(() => {
         padding: 0;
       }
       h4 {
+        text-align: center;
+        font-size: 10px;
         background-color: #000000;
-        height: 20px;
+        line-height: 20px;
         border-radius: 10px;
         padding-inline: 10px;
       }

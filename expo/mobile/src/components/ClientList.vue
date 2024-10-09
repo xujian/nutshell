@@ -7,13 +7,13 @@
     align="stretch"
     :gap="10">
     <ns-card class="client-card" fill="#ffffff33" :blur="10">
-      <ns-row justify="stretch" align="start" jusstify="between" @click="() => onRowClick(item)">
-        <div class="stage">结单</div>
+      <ns-row justify="stretch" align="start" jusstify="between" :gap="10" @click="() => onRowClick(item)">
+        <ns-column :grow="0"><ns-chip class="stage">结单</ns-chip></ns-column>
         <ns-column align="start" :gap="0">
           <h3 class="name">{{ item.姓名 }}</h3>
           <ns-rating :value="4" />
         </ns-column>
-        <ns-column :grow="1" align="end">
+        <ns-column :grow="0" align="end">
           <h4 class="mobile number">18910890099</h4>
         </ns-column>
       </ns-row>
@@ -57,14 +57,6 @@ const onRowClick = (client: Client) => {
       font-size: 16px;
     }
     .stage {
-      border-radius: 8px;
-      background-color: var(--ns-warning-50);
-      width: 32px;
-      height: 32px;
-      text-align: center;
-      line-height: 32px;
-      font-size: 12px;
-      margin-right: 10px;
     }
   }
 }

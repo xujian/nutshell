@@ -253,31 +253,28 @@ export const NsNumber = defineComponent({
       }
     })
 
-    return () => [
-      h(
-        'div',
-        {
-          class: [
-            'ns-number', `size-${props.size}`, 'column',
-            ...buildDesignClasses(props),
-            $attrs.class,
-          ],
-          style: styles,
-          ref: root
-        },
-        [
-          content(),
-          props.hasDaxie
-          ? h(
-              'div',
-              {
-                class: 'ns-number-amount'
-              },
-              amountChinese(Number(props.value))
-            )
-          : null
-        ]
-      ),
-    ]
+    return () => h('div',
+      {
+        class: [
+          'ns-number', `size-${props.size}`, 'column',
+          ...buildDesignClasses(props),
+          $attrs.class,
+        ],
+        style: styles,
+        ref: root
+      },
+      [
+        content(),
+        props.hasDaxie
+        ? h(
+            'div',
+            {
+              class: 'ns-number-amount'
+            },
+            amountChinese(Number(props.value))
+          )
+        : null
+      ]
+    )
   }
 })
