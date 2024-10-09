@@ -1,4 +1,6 @@
 import { App, Component, InjectionKey, inject } from 'vue'
+import Toast from 'vue-toastification'
+import 'vue-toastification/dist/index.css'
 import { createTheme } from './composables/theme'
 import { VendorSymbol } from './shared/symbols'
 import { createVendor, prepareVendor } from './shared/vendor'
@@ -88,6 +90,21 @@ export function Nutshell ({
       directive.install(app, $n)
     }
     prepareVendor(app, theVendor)
+    app.use(Toast, {
+      containerClassName: 'toast',
+      position: 'top-center',
+      transition: 'fade',
+      timeout: 5000,
+      closeOnClick: true,
+      pauseOnFocusLoss: true,
+      pauseOnHover: true,
+      draggable: true,
+      draggablePercent: 0.6,
+      showCloseButtonOnHover: false,
+      hideProgressBar: true,
+      closeButton: false,
+      icon: false,
+    })
     // for (const key in components) {
     //   // app.component(key, components[key])
     // }

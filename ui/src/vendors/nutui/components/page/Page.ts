@@ -1,6 +1,7 @@
 import { computed, defineComponent, h, onUnmounted, ref, shallowRef } from 'vue'
+import { useToast } from 'vue-toastification'
 import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog } from '../../../../components'
-import { useBus, useSafeArea } from '../../../../composables'
+import { useBus, useSafeArea, usePlatform } from '../../../../composables'
 import type { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType, DrawerOptions } from '../../../../services'
 import { marginProps } from '../../../../utils'
 
@@ -20,6 +21,10 @@ export const Page = defineComponent({
   },
   emit: pageEmits,
   setup: (props, {slots, emit}) => {
+
+    const platform = usePlatform(),
+      $toast = useToast()
+
     // 内置 notice-bar, app-drawer, app-sheet
     const page = ref<HTMLElement>()
     const $bus = useBus()
@@ -40,11 +45,15 @@ export const Page = defineComponent({
       dialogOptions = shallowRef<any>({})
 
     const showToast = ({message, options}: {message: string, options: ToastOptions}) => {
-      wx.showToast({
-        title: message,
-        duration: options.duration || 2000,
-        icon: options.type || 'none'
-      })
+      if (platform?.weixin) {
+        Taro.showToast({
+          title: message,
+          duration: options.duration || 2000,
+          icon: options.type || 'none'
+        })
+      } else {
+        $toast.info(message)
+      }
     }
 
     const showNotice = (payload: Notice) => {

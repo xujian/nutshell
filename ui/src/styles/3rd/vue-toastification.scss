@@ -1,0 +1,29 @@
+// $vt-color-success: #000;
+// $vt-text-color-success: #fff;
+
+// // Import the regular Vue Toastification stylesheets (or create your own)
+// @import 'vue-toastification/src/scss/_variables';
+// @import 'vue-toastification/src/scss/_toastContainer';
+// @import 'vue-toastification/src/scss/_toast';
+// @import 'vue-toastification/src/scss/_closeButton';
+// @import 'vue-toastification/src/scss/_progressBar';
+// @import 'vue-toastification/src/scss/_icon';
+// @import 'vue-toastification/src/scss/animations/_bounce';
+
+.Vue-Toastification__container.toast {
+  border-radius: var(--ns-border-radius);
+  align-items: center;
+  padding: var(--ns-spacing-md);
+  .Vue-Toastification__toast {
+    width: fit-content;
+    min-width: auto;
+    min-height: auto;
+    padding: var(--ns-spacing-md);
+    border-radius: var(--ns-border-radius);
+    background-color: #000;
+    color: #fff;
+  }
+  .Vue-Toastification__toast-body {
+    font-size: 14px;
+  }
+}

@@ -28,6 +28,7 @@ function getPlatform (): PlatformInstance {
   const edge = match(/edge/i)
   const win = match(/win/i)
   const mac = match(/mac/i)
+  const weixin = match(/MQQBrowser/i)
 
   return {
     android,
@@ -36,6 +37,7 @@ function getPlatform (): PlatformInstance {
     edge,
     win,
     mac,
+    weixin,
     touch: 'ontouchstart' in window
   }
 }

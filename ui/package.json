@@ -96,6 +96,7 @@
     "viewerjs": "^1.11.6",
     "vue-draggable-plus": "^0.5.3",
     "vue-tippy": "v6",
+    "vue-toastification": "^2.0.0-rc.5",
     "vxe-table": "^4.6.19"
   },
   "publishConfig": {
