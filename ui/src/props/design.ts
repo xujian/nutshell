@@ -41,6 +41,12 @@ const designProps = {
     type: String as PropType<GradientString>
   },
   /**
+   * 颗粒
+   */
+  grain: {
+    type: String as PropType<GradientString>
+  },
+  /**
    * 动画填充
    */
   motion: {
@@ -107,6 +113,12 @@ const designProps = {
   blur: {
     type: Number
   },
+  /**
+   * 格纹玻璃效果
+   */
+  fluted: {
+    type: Number,
+  },
   brightness: {
     type: Number
   },
@@ -163,9 +175,6 @@ const buildDesignClasses = (props: DesignProps) => {
     ...props.motion
         ? [`motion-${props.motion}`]
         : [],
-    ...props.motion
-        ? [`motion-${props.motion}`]
-        : [],
     // ...(props.gradient && /\d{3}/.test(props.gradient) ? [`gradient-${props.gradient}`] : []),
     ...(props.texture ? ['with-texture'] : []),
     ...(props.pattern
@@ -177,6 +186,7 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.gradient && props.pattern ? ['with-pattern-gradient'] : []),
     ...(props.shadow || props.depth ? ['with-shadow'] : []),
     ...(props.stroke && isGradient(props.stroke) ? ['with-stroke-gradient'] : []),
+    ...props.fluted ? ['fluted'] : [],
     ...filterClasses
   ]
   return result
@@ -200,6 +210,7 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...props.brightness && props.brightness != 1 ? {'--brightness': props.brightness} : {},
     ...props.shadow ? {'--shadow': makeColor(props.shadow)} : {},
     ...props.depth ? {'--depth': `${props.depth}px`} : {},
+    ...props.fluted ? { '--fluted': `${props.fluted}px` } : {},
     ...buildGradientStyle(props.gradient),
     ...buildTextureStyles(props),
   } as StyleObject
@@ -219,7 +230,7 @@ const buildTextureStyles: (props: DesignProps) => StyleObject = (props) => {
       ? {
           '--pattern': `url(${props.pattern})`,
         }
-      : {}
+      : {},
   }
   return style
 }

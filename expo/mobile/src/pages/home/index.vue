@@ -30,13 +30,15 @@
           texture="https://simple.shensi.tech/images/client-girl.svg"
           :repeat="false"
           foreground="#fff"
-          stroke="#fff">
+          stroke="#ffffff44"
+          :fluted="10">
           <h3 class="b">客户建档</h3>
           <p class="caption">新建意向客户</p>
         </ns-card>
         <ns-card class="entry flex-grow" fill="#000"
           foreground="#fff"
-          stroke="#fff">
+          stroke="#ffffff44"
+          :fluted="10">
           <h3 class="b">产品进件</h3>
           <p class="caption">创建产品订单</p>
         </ns-card>
