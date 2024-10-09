@@ -16,10 +16,11 @@ export interface PlatformInstance {
 }
 
 function getPlatform (): PlatformInstance {
-  const userAgent = window.navigator.userAgent
+  const userAgent = window?.navigator.userAgent,
+    env = Taro.getEnv()
 
   function match (regexp: RegExp) {
-    return Boolean(userAgent.match(regexp))
+    return Boolean(userAgent?.match(regexp))
   }
 
   const android = match(/android/i)
@@ -28,7 +29,7 @@ function getPlatform (): PlatformInstance {
   const edge = match(/edge/i)
   const win = match(/win/i)
   const mac = match(/mac/i)
-  const weixin = match(/MQQBrowser/i)
+  const weixin = match(/MQQBrowser/i) || env === 'WEAPP'
 
   return {
     android,
