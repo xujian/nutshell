@@ -26,10 +26,10 @@
     margin-right: 0;
   }
   .nut-form-item__label.required:after {
-    content: "✱";
+    content: "*";
     color: var(--nut-form-item-required-color, var(--nut-required-color, #fa2c19));
-    margin-left: var(--nut-form-item-required-margin-right, 8rpx);
-    font-size: 10px;
+    margin-left: var(--nut-form-item-required-margin-right, 3px);
+    font-size: 16px;
     display: inline-block;
     vertical-align: bottom;
   }
