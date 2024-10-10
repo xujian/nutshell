@@ -28,6 +28,9 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
     if (props.disabled) {
       return
     }
+    if (props.options && props.options?.length <= 1) {
+      return
+    }
     pickerOpen.value = true
   }
   const closePicker = () => {
