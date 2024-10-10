@@ -2,6 +2,7 @@ import { PropType, defineComponent } from 'vue'
 import { MakePropsType } from '../../utils'
 import { h } from 'vue'
 import { buildFlexClasses, buildFlexStyles, useFlexProps } from '../../props'
+import { NsEmpty } from '../empty'
 
 export const repeatorProps = {
   /**
@@ -47,14 +48,14 @@ export const NsRepeator = defineComponent({
 
     const slot = () => 'item'
 
-    const item = () => props.items.map(item => h('div', {
+    const item = () => (props.items.map(item => h('div', {
         class: [
           'ns-repeator-item',
           'flex-item'
         ]
       }, [
-        slots.default?.(item)
-      ]))
+        slots.default?.(item),
+      ])))
 
     const style = {
       ...buildFlexStyles(props),
@@ -70,8 +71,6 @@ export const NsRepeator = defineComponent({
         ...buildFlexClasses(props),
       ],
       style
-    }, {
-      default: item
-    })
+    }, props?.items?.length ? item() : h(NsEmpty))
   }
 })
