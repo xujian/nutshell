@@ -264,6 +264,7 @@ export const Page = defineComponent({
               $bus.emit('dialog.close')
             }
           },
+          mask: dialogOptions.value.mask,
           onComplete: onDialogComplete,
           onCancel: onDialogCalcel,
         }, {
