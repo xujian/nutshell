@@ -22,7 +22,7 @@ export type Trend  = 'up' | 'down'
 
 export const numberProps = {
   value: {
-    type: Number,
+    type: [Number, String],
   },
   prefix: {
     type: String,
