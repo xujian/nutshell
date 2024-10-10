@@ -20,13 +20,16 @@ export const emptyProps = {
     default: 'data'
   },
   description: {
-    type: String
+    type: String,
+    required: false,
   },
   image: {
-    type: String
+    type: String,
+    required: false,
   },
   size: {
-    type: String as PropType<EmptySizeType>
+    type: String as PropType<EmptySizeType>,
+    required: false,
   }
 }
 

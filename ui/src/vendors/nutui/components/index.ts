@@ -19,6 +19,7 @@ import { Stepper } from './stepper'
 import { Rating, RatingInput } from './rating'
 import { Timeline } from './timeline'
 import { Upload } from './upload'
+import { Empty } from './empty'
 import { VendorComponent } from '../../../shared'
 
 const components: Record<string, VendorComponent> = {
@@ -66,6 +67,8 @@ const components: Record<string, VendorComponent> = {
   Timeline,
   // @ts-ignore
   Upload,
+  // @ts-ignore
+  Empty,
 }
 
 export default components
