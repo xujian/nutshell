@@ -3,6 +3,7 @@ import { NsButton, NsIcon, NsPreview, uploadEmits, uploadProps, UploadProps } fr
 import { renderFormItem } from '../../utils'
 import { getMediaType, Media } from '../../../../types/media'
 import { useNutshell } from '../../../../framework'
+import { PreviewMediaParam } from 'dist/nutshell'
 
 export const Upload = defineComponent({
   name: 'NutuiUpload',
@@ -29,7 +30,7 @@ export const Upload = defineComponent({
     }
 
     const reUpload = (callback?: (medias: Media[]) => void) => {
-      wx.chooseMedia({
+      Taro.chooseMedia({
         count: props.maxFileSize || 1,
         mediaType: ['image'],
         soruceType: ['album', 'camera'],
@@ -59,18 +60,22 @@ export const Upload = defineComponent({
       })
     }
 
+    const preview = (images: PreviewMediaParam) => {
+      $n.preview(images, {
+        button: '更换图片',
+        mode: props.previewMode,
+        onButtonClick () {
+          reUpload((medias: Media[]) => {
+            this.update(medias)
+          })
+        }
+      })
+    }
+
     const onClick = () => {
-      console.log('===NsUpload onClick', props.modelValue?.length)
       if (props.modelValue?.length) {
         // 预览图片
-        $n.preview(props.modelValue, {
-          button: '更换图片',
-          onButtonClick () {
-            reUpload((medias: Media[]) => {
-              this.update(medias)
-            })
-          }
-        })
+        preview(props.modelValue)
         return
       }
       if (props.disabled) {

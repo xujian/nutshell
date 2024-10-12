@@ -1,10 +1,8 @@
-import { defineComponent, h, inject, PropType } from 'vue'
+import { defineComponent, getCurrentInstance, h, PropType } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useSafeArea } from '../../composables'
-import { buildDesignClasses, buildDesignStyles, buildDesignVariables, type TextAlign, useDesignProps } from '../../props'
-import { PageSymbol, usePage } from './Page'
-
-export type PageHeaderColorMode = 'light' | 'dark'
+import { buildDesignClasses, buildDesignStyles, type TextAlign, useDesignProps } from '../../props'
+import { usePage } from './Page'
 
 export const pageHeaderProps = {
   title: {
@@ -16,10 +14,6 @@ export const pageHeaderProps = {
   sticky: {
     type: Boolean,
     default: true,
-  },
-  colorMode: {
-    type: String as PropType<PageHeaderColorMode>,
-    default: 'light'
   },
   hasBackButton: {
     type: Boolean,
@@ -37,27 +31,30 @@ export const pageHeaderProps = {
   ...useDesignProps(),
 }
 
-export type PageHeadermits = {
-  close (): void
+export type PageHeaderEmits = {
+  /**
+   * 返回按钮
+   */
+  back: () => void
 }
 
-export const pageHeaderEmits: PageHeadermits = {
-  close: () => {}
+export const pageHeaderEmits: PageHeaderEmits = {
+  /**
+   * 返回按钮
+   */
+  back: () => true
 }
 
-export type PageHeaderProps = MakePropsType<typeof pageHeaderProps, PageHeadermits>
+export type PageHeaderProps = MakePropsType<typeof pageHeaderProps, PageHeaderEmits>
 
-export const NsPageHeader = defineComponent({
-  name: 'NsPageHeader',
-  props: pageHeaderProps,
-  emits: pageHeaderEmits,
-  setup (props, { slots, emit }) {
+export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
+  (props, { slots, emit }) => {
 
-    const page = usePage()
+    const page = usePage(),
+      safeArea = useSafeArea(),
+      $props = getCurrentInstance()?.vnode.props
 
     page && (page.hasHeader = true)
-
-    const safeArea = useSafeArea()
 
     const cssVars = {
       '--top': `${safeArea.status}px`,
@@ -69,6 +66,15 @@ export const NsPageHeader = defineComponent({
       ? h('div', { class: 'title-content'}, slots.title())
       : h('div', { class: 'title-heading'}, props.title)
 
+    const onBackButtonClick = () => {
+      // 如果用户使用了 @back/onBack, 则执行
+      if ($props?.onBack) {
+        $props?.onBack()
+      } else {
+        Taro.navigateBack()
+      }
+    }
+
     const title = () => h('div', {
         class: ['title']
       }, [
@@ -76,21 +82,22 @@ export const NsPageHeader = defineComponent({
         props.hasBackButton
           ? h('div', {
               class: 'back-button',
-              onClick: () => {
-                Taro.navigateBack()
-                emit('close')
-              }
+              onClick: onBackButtonClick
             })
           : null
       ])
 
-    const content = () => h('div', { class: ['content'] }, { default: slots.default })
+    const content = () => h('div', {
+        class: ['content']
+      }, {
+        default: slots.default
+      }
+    )
 
     return () => h('div', {
       class: [
         'ns-page-header',
         'page-header',
-        `color-mode-${props.colorMode}`,
         // 默认不用圆角
         ...props.round ? ['round'] : ['square'],
         ...props.minimal ? ['minimal'] : [],
@@ -101,11 +108,16 @@ export const NsPageHeader = defineComponent({
       ],
       style: {
         ...cssVars,
-        ...buildDesignStyles(props),
+        ...buildDesignStyles  (props),
       }
     }, [
       title(),
       content(),
     ])
-  }
-})
+  },
+  {
+    name: 'NsPageHeader',
+    inheritAttrs: false,
+    props: pageHeaderProps,
+    emits: pageHeaderEmits,
+  })

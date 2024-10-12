@@ -6,6 +6,13 @@ import { PreviewButtonClickCallback } from '../../services/drawer'
 import { NsPage, NsPageContent, NsPageHeader } from '../page'
 import { NsRow } from '../flex'
 
+/**
+ * 使用场景
+ * 1. circle 用户头像
+ * 2. normal 一般图片
+ */
+export type PreviewMode = 'circle' | 'normal'
+
 export const previewProps = {
   /**
    * 预览的图片或视频
@@ -19,6 +26,10 @@ export const previewProps = {
    */
   button: {
     type: String,
+  },
+  mode: {
+    type: String as PropType<PreviewMode>,
+    default: 'normal'
   },
   /**
    * 单击按钮的处理过程
@@ -34,7 +45,10 @@ export type PreviewEmits = {
 }
 
 const previewEmits: PreviewEmits = {
-  close: () => {}
+  /**
+   * 关闭
+   */
+  close: () => true
 }
 
 export type PreviewSlots = {
@@ -68,14 +82,24 @@ export const NsPreview = defineComponent({
 
     const medias = shallowRef<Media[]>(getMedias())
 
-    const image = () => h('image', {
-      class: [
-        'image'
-      ],
-      width: '100vw',
-      mode: 'widthFix',
-      src: medias.value?.[0]?.url
-    })
+    const image = () => props.mode === 'circle'
+      // object-fit 不能用
+      ? h('div', {
+          class: [
+            'image',
+            'cover'
+          ],
+          style: {
+            backgroundImage: `url(${medias.value?.[0]?.url})`
+          }
+        })
+      : h('img', {
+          class: [
+            'image'
+          ],
+          mode: 'widthFix',
+          src: medias.value?.[0]?.url
+        })
 
     // 用于更新图片 // 重新上传
     const me = {
@@ -84,48 +108,62 @@ export const NsPreview = defineComponent({
       }
     }
 
+    const pageHeader = () => h(NsPageHeader, {
+      fill: '#000',
+      hasBackButton: true,
+      onBack: () => {
+        emit('close')
+      }
+    })
+
     return () => h(NsPage, {
+        minimal: true, // NsPage 的简化版 没有 drawer/sheet/dialog
+        dark: true,
+        fill: '#000',
         class: [
           'ns-preview',
         ]
       },
       [
-        h(NsPageHeader, {
-          fill: '#00000000',
-          hasBackButton: true,
-          onClose: () => emit('close')
-        }),
+        pageHeader(),
         h(NsPageContent, {
-          class: [
-            'column', 'align-center', 'justify-center'
-          ]
-        },
-          [h('div', {
-              class: [
-                'media',
-              ]
-            },
-            image()
-          ),
-          h(NsRow, {
-              align: 'center',
-              class: [
-                'footer'
-              ]
-            },
-            props.button ? h(NsButton, {
-                label: props.button,
-                color: '#fff',
-                variant: 'outlined',
-                onClick: (e) => {
-                  props.onButtonClick?.call(me)
-                  e.stopImmediatePropagation()
-                  e.preventDefault()
-                }
-              })
-            : void 0
-          )
-        ]
+            class: [
+              'column', 'align-center', 'justify-center'
+            ]
+          },
+          {
+            default: [
+              h('div', {
+                  class: [
+                    'media',
+                    'flex',
+                    'align-center',
+                    'justify-center',
+                    `mode-${props.mode}`
+                  ]
+                },
+                image()
+              ),
+              h(NsRow, {
+                  align: 'center',
+                  class: [
+                    'footer'
+                  ]
+                },
+                props.button ? h(NsButton, {
+                    label: props.button,
+                    color: '#fff',
+                    variant: 'outlined',
+                    onClick: (e) => {
+                      props.onButtonClick?.call(me)
+                      e.stopImmediatePropagation()
+                      e.preventDefault()
+                      props.onClose
+                    }
+                  })
+                : void 0)
+            ]
+          }
         )
       ]
     )

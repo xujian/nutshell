@@ -62,8 +62,7 @@ const nutuiVendor: CoreVendor = {
         round: false,
         backable: true,
         component: NsPreview,
-        onClose:
-        media,
+        props: { media },
         ...options,
       })
     }

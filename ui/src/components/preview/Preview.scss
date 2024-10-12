@@ -1,5 +1,5 @@
 .ns-preview {
-  background-color: #00000066;
+  --ns-background: #000000;
   .ns-page-content {
     .media {
       margin: var(--ns-spacing);
@@ -7,11 +7,24 @@
       max-width: 100%;
       max-height: 100%;
       .image {
-        border-radius: var(--ns-border-radius);
-        width: 100vw;
-        max-width: 100%;
-        max-height: 75vh;
         transition: all .3s;
+      }
+      &.mode-normal {
+        .image {
+          border-radius: var(--ns-border-radius);
+          width: 100vw;
+          height: auto;
+          max-width: 100%;
+          max-height: 75vh;
+        }
+      }
+      &.mode-circle {
+        .image {
+          aspect-ratio: 1;
+          width: 75vw;
+          height: auto;
+          border-radius: 50%;
+        }
       }
     }
     .footer {

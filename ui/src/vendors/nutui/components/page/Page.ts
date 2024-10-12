@@ -19,7 +19,7 @@ export const Page = defineComponent({
     ...pageProps,
     ...marginProps
   },
-  emit: pageEmits,
+  emits: pageEmits,
   setup: (props, {slots, emit}) => {
 
     const platform = usePlatform(),
@@ -33,6 +33,7 @@ export const Page = defineComponent({
     const noticeDuration = 5000
     const noticeData = ref<Notice>()
     const drawerComponent = shallowRef<PopupChildComponent | null>(null),
+      drawerProps = ref({}),
       drawerOpen = ref(false),
       drawerOptions = shallowRef<any>({})
     const sheetComponent = shallowRef<PopupChildComponent | null>(null),
@@ -69,7 +70,7 @@ export const Page = defineComponent({
     const renderDrawer = () => {
       return h(NsDrawer, {
           class: [
-            'app-drawer',
+            // 'app-drawer',
             ...drawerOptions.value.round ? ['round'] : [],
           ],
           modelValue: drawerOpen.value,
@@ -84,6 +85,7 @@ export const Page = defineComponent({
         }, {
           default: () => drawerComponent.value
             ? h(drawerComponent.value, {
+                ...drawerProps.value,
                 ...drawerOptions.value,
                 onClose: () => {
                   drawerOpen.value = false
@@ -93,12 +95,38 @@ export const Page = defineComponent({
         })
     }
 
-    const openDrawer = ({component, ...options}: DrawerOptions) => {
+    const openDrawer = ({component, props, ...options}: DrawerOptions) => {
       drawerComponent.value = component!
       drawerOptions.value = options
+      drawerProps.value = props
       drawerOpen.value = true
       $bus.emit('drawer.open')
     }
+
+    const renderSheet = () => h(NsSheet, {
+      class: [
+        'app-sheet',
+      ],
+      modelValue: sheetOpen.value,
+      'onUpdate:modelValue': (value: boolean) => {
+        if (value !== sheetOpen.value) {
+          sheetOpen.value = value
+        }
+        if (value === false) {
+          $bus.emit('sheet.close')
+        }
+      },
+      onComplete: onSheetComplete,
+      onCancel: onSheetCalcel,
+    }, {
+      default: () => sheetComponent.value
+        ? h(sheetComponent.value, {
+          ...sheetProps.value,
+          onComplete: onSheetComplete,
+          onCancel: onSheetCalcel
+        })
+        : null
+    })
 
     const openSheet = ({component, props, ...options}: SheetOptions) => {
       sheetComponent.value = component!
@@ -119,6 +147,32 @@ export const Page = defineComponent({
       sheetOpen.value = false
       $bus.emit('sheet.close')
     }
+
+    const renderDialog = () => h(NsDialog, {
+      class: [
+        'app-dialog',
+      ],
+      modelValue: dialogOpen.value,
+      'onUpdate:modelValue': (value: boolean) => {
+        if (value !== dialogOpen.value) {
+          dialogOpen.value = value
+        }
+        if (value === false) {
+          dialogComponent.value = null
+          $bus.emit('dialog.close')
+        }
+      },
+      onComplete: onDialogComplete,
+      onCancel: onDialogCalcel,
+    }, {
+      default: () => dialogComponent.value
+        ? h(dialogComponent.value, {
+          ...dialogProps.value,
+          onComplete: onDialogComplete,
+          onCancel: onDialogCalcel,
+        })
+        : null
+    })
 
     const openDialog = ({component, props, ...options}: DialogOptions) => {
       dialogComponent.value = component!
@@ -198,7 +252,7 @@ export const Page = defineComponent({
     })
 
     const classes = computed<string[]>(() => [
-      'page column align-stretch',
+      'ns-page page column align-stretch',
       ...scroll.value > 0 ? ['scrolled'] : [],
       ...props.scrollable ? ['scrollable'] : [],
       // ...props.classes || [],
@@ -223,59 +277,9 @@ export const Page = defineComponent({
               `${noticeData.value?.options?.type || ''}`
             ],
           }, noticeData.value?.message),
-        renderDrawer(),
-        // sheetOpen.value ? renderSheet() : null,
-        h(NsSheet, {
-          class: [
-            'app-sheet',
-          ],
-          modelValue: sheetOpen.value,
-          'onUpdate:modelValue': (value: boolean) => {
-            if (value !== sheetOpen.value) {
-              sheetOpen.value = value
-            }
-            if (value === false) {
-              $bus.emit('sheet.close')
-            }
-          },
-          onComplete: onSheetComplete,
-          onCancel: onSheetCalcel,
-        }, {
-          default: () => sheetComponent.value
-            ? h(sheetComponent.value, {
-              ...sheetProps.value,
-              onComplete: onSheetComplete,
-              onCancel: onSheetCalcel
-            })
-            : null
-        }),
-        // renderDialog(),
-        h(NsDialog, {
-          class: [
-            'app-dialog',
-          ],
-          modelValue: dialogOpen.value,
-          'onUpdate:modelValue': (value: boolean) => {
-            if (value !== dialogOpen.value) {
-              dialogOpen.value = value
-            }
-            if (value === false) {
-              dialogComponent.value = null
-              $bus.emit('dialog.close')
-            }
-          },
-          mask: dialogOptions.value.mask,
-          onComplete: onDialogComplete,
-          onCancel: onDialogCalcel,
-        }, {
-          default: () => dialogComponent.value
-            ? h(dialogComponent.value, {
-              ...dialogProps.value,
-              onComplete: onDialogComplete,
-              onCancel: onDialogCalcel,
-            })
-            : null
-        })
+        !props.minimal && renderDrawer(),
+        !props.minimal && renderSheet(),
+        !props.minimal && renderDialog(),
       ])
   }
 })

@@ -135,6 +135,12 @@ const designProps = {
     type: Number
   },
   /**
+   * 暗色调
+   */
+  dark: {
+    type: Boolean,
+  },
+  /**
    * 用来识别属性里包含 Design Props
    */
   __design: {
@@ -187,6 +193,7 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.shadow || props.depth ? ['with-shadow'] : []),
     ...(props.stroke && isGradient(props.stroke) ? ['with-stroke-gradient'] : []),
     ...props.fluted ? ['fluted'] : [],
+    ...props.dark ? ['dark'] : [],
     ...filterClasses
   ]
   return result

@@ -45,7 +45,7 @@ export type DialogEmits = {
 }
 
 export const dialogEmits: DialogEmits = {
-  ok: () => { return true},
+  ok: () => { return true },
   show: () => {},
   hide: () => {},
   close: () => {},

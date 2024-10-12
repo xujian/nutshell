@@ -3,8 +3,6 @@ import { MakePropsType } from '../../utils'
 import { useBus } from '../../composables'
 import { PageSymbol, usePage } from './Page'
 
-export type PageContentColorMode = 'light' | 'dark'
-
 export const pageContentProps = {
   /**
    * Page content 允许滚动

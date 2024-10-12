@@ -4,6 +4,7 @@ import { DollarNutshell, PreviewMediaParam } from '../framework'
 import { Color } from '../composables'
 import { Media } from '../types'
 import { PopupChildComponent } from './types'
+import { PreviewMode } from '../components'
 
 export type DrawerOptions = {
   title?: string,
@@ -40,6 +41,7 @@ export type PreviewButtonClickCallback = {
 
 export type PreviewOptions = {
   fill?: Color,
+  mode?: PreviewMode,
   button?: string,
   onButtonClick (this: PreviewInstance): void
 }

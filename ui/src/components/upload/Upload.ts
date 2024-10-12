@@ -3,6 +3,7 @@ import { define, MakePropsType } from '../../utils'
 import { useDisplayProps, useModelValuePropsForArray, useFieldProps } from '../../props'
 import { Media } from '../../types'
 import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
+import { PreviewMode } from '../preview'
 
 export type BeforeUploadMethod = ((file: Media) => Promise<Blob>)
 
@@ -43,13 +44,16 @@ export const uploadProps = {
   },
   deletable: {
     type: Boolean,
-    default: true
+    default: false
   },
   beforeUpload: {
     type: Function as PropType<BeforeUploadMethod>
   },
   handler: {
     type: Function as PropType<UploadHandler>
+  },
+  previewMode: {
+    type: String as PropType<PreviewMode>,
   },
   ...useModelValuePropsForArray(),
   ...useDisplayProps(),
