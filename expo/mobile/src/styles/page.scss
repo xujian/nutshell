@@ -11,11 +11,10 @@
   --ns-spacing: 10px;
   --ns-border-radius: 16px;
   --ns-paper: #fff;
-  --ns-background: #f0f0f0;
   --ns-text: #333;
   font-size: 14px;
   color: #333;
-  background-color: var(--ns-background);
+  background-color: var(--ns-background, #f0f0f0);
 }
 
 .v-enter-active,

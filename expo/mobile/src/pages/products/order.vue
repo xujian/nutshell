@@ -1,6 +1,8 @@
 <template>
 <ns-page class="order-page">
-  <ns-page-header title="进件" fill="#fff" has-back-button />
+  <ns-page-header title="进件"
+    fill="#fff"
+    has-back-button />
   <ns-page-content :scrollable="formData.是否法人">
     <ns-card
       title="广发银行 - 过桥贷"
@@ -45,7 +47,10 @@
             name="近2年是否缴纳社保"
             v-model="formData.申请人缴纳社保"
             :options="yesNoItems" />
-          <ns-upload label="上传身份证" v-model="formData.上传身份证" :handler="onUpload" />
+          <ns-upload label="上传身份证"
+            v-model="formData.上传身份证"
+            preview-mode="circle"
+            :handler="onUpload" />
         </div>
       </ns-card>
       <p>&nbsp;</p>
@@ -192,8 +197,8 @@ const formData = reactive({
 
 const regionOptions = ref<{id: string, name: string}[][]>([])
 
-const onNextClick = () => {
-
+const onNextClick = ($event) => {
+  console.log('===onNextClick', $event)
 }
 
 const onUpload = async (media: Media) => {
