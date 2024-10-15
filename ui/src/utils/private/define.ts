@@ -121,9 +121,10 @@ export function define<
     Slots
   >(
     setup, {
-      inheritAttrs: true,
       name: options.name,
       props: options.props,
+      emits: options.emits,
+      slots: options.slots,
     }
   )
 }

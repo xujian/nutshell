@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType, ObjectEmitsOptions, SlotsType, useAttrs } from 'vue'
 import { buildDesignStyles, useDesignProps, useSizeProps, useVariantProps } from '../../props'
 import { define, MakePropsType } from '../../utils'
 import { useDimensionProps, useLoadingProps } from '../../props'
@@ -49,11 +49,9 @@ const buttonProps = {
 }
 
 export type ButtonEmits = {
-  click: (...args: any[]) => void
 }
 
 const emits: ButtonEmits = {
-  click: (...args: any[]) => {}
 }
 
 export type ButtonSlots = {
@@ -70,6 +68,8 @@ export const NsButton = define({
   props: buttonProps,
   emits,
   setup (props) {
+    const $attrs = useAttrs()
+    console.log('===NsButton, props', props, $attrs)
     // 对参数做前期的处理
     return {
     }

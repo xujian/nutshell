@@ -62,7 +62,6 @@ export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext
       disabled,
       size: getSize(props.size),
       loading: props.loading,
-      onClick: props.onClick,
       style,
     },
     {
