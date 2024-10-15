@@ -117,7 +117,7 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
   },
   {
     name: 'NsPageHeader',
-    inheritAttrs: false,
+    inheritAttrs: true,
     props: pageHeaderProps,
     emits: pageHeaderEmits,
   })
