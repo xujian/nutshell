@@ -89,11 +89,9 @@ export const NsPageContent = defineComponent({
           ...props.bottom ? { '--bottom': `${props.bottom}px` } : {}
         }
       },
-      {
-        default: () => props.scrollable
-          ? renderScrollview(slots)
-          : slots
-      }
+      props.scrollable
+        ? renderScrollview(slots)
+        : slots
     )
   }
 })
