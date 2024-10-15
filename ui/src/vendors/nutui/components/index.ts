@@ -56,6 +56,7 @@ const components: Record<string, VendorComponent> = {
   // @ts-ignore
   Dialog,
   Drawer,
+  // @ts-ignore
   Sheet,
   // @ts-ignore
   RadioGroup,

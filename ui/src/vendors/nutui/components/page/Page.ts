@@ -79,6 +79,7 @@ export const Page = defineComponent({
           'onUpdate:modelValue': (value: boolean) => {
             drawerOpen.value = value
             if (value === false) {
+              drawerComponent.value = null
               $bus.emit('drawer.close')
             }
           }
@@ -96,6 +97,7 @@ export const Page = defineComponent({
     }
 
     const openDrawer = ({component, props, ...options}: DrawerOptions) => {
+      // console.log('===Page openDrawer', props)
       drawerComponent.value = component!
       drawerOptions.value = options
       drawerProps.value = props
@@ -118,6 +120,7 @@ export const Page = defineComponent({
       },
       onComplete: onSheetComplete,
       onCancel: onSheetCalcel,
+      ...sheetOptions.value
     }, {
       default: () => sheetComponent.value
         ? h(sheetComponent.value, {
@@ -210,7 +213,10 @@ export const Page = defineComponent({
      * 关闭所有对话框
      */
     const cleanup = () => {
-      // console.log('===///cleanup===')
+      // console.log('===///cleanup===', props.minimal)
+      if (props.minimal) {
+        return
+      }
       $bus.off('toast', showToast)
       $bus.off('notice', showNotice)
       $bus.off('drawer', openDrawer)
@@ -222,8 +228,11 @@ export const Page = defineComponent({
     }
 
     useDidShow(() => {
-      // console.log('===///useDidShow')
+      // console.log('===///useDidShow', props.minimal)
       page.value?.setAttribute('data-theme', 'present')
+      if (props.minimal) {
+        return
+      }
       $bus.on('toast', showToast)
       $bus.on('notice', showNotice)
       $bus.on('drawer', openDrawer)
@@ -247,7 +256,7 @@ export const Page = defineComponent({
     })
 
     useUnload(() => {
-      // console.log('===///useUnload===')
+      // /.log('===///useUnload===')
       cleanup()
     })
 

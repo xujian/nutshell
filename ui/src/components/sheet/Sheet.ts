@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForBoolean, usePopupProps, useSizeProps } from '../../props'
 
@@ -43,6 +43,7 @@ export const NsSheet = define({
   props: sheetProps,
   emits: sheetEmits,
   setup (props, ctx) {
+
     return {
     }
   }
