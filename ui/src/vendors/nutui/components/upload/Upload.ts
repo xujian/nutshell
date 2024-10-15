@@ -23,7 +23,6 @@ export const Upload = defineComponent({
     }
 
     const onDeleteClick = (e: any) => {
-      console.log('===onDeleteClick', e)
       e.preventDefault()
       e.stopImmediatePropagation(),
       props['onUpdate:modelValue']?.([])
@@ -39,7 +38,6 @@ export const Upload = defineComponent({
         success: async (selected: any) => {
           const {tempFiles: files} = selected
           for (const f of files) {
-            console.log('===f', f)
             const media = await props.handler?.({
               path: f.tempFilePath
             })

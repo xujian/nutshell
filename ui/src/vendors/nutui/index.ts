@@ -62,7 +62,7 @@ const nutuiVendor: CoreVendor = {
         round: false,
         backable: true,
         component: NsPreview,
-        props: { media },
+        props: { media: m },
         ...options,
       })
     }

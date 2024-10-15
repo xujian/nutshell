@@ -154,7 +154,7 @@ export const NsPreview = defineComponent({
                     label: props.button,
                     color: '#fff',
                     variant: 'outlined',
-                    onClick: (e) => {
+                    onClick: (e: any) => {
                       props.onButtonClick?.call(me)
                       e.stopImmediatePropagation()
                       e.preventDefault()
