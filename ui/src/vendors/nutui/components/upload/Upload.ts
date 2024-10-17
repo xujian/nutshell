@@ -1,9 +1,8 @@
-import { computed, defineComponent, h, Ref, ref, SetupContext } from 'vue'
-import { NsButton, NsIcon, NsPreview, uploadEmits, uploadProps, UploadProps } from '../../../../components'
+import { defineComponent, h } from 'vue'
+import { NsButton, uploadEmits, uploadProps } from '../../../../components'
 import { renderFormItem } from '../../utils'
-import { getMediaType, Media } from '../../../../types/media'
-import { useNutshell } from '../../../../framework'
-import { PreviewMediaParam } from 'dist/nutshell'
+import { Media } from '../../../../types/media'
+import { PreviewMediaParam, useNutshell } from '../../../../framework'
 
 export const Upload = defineComponent({
   name: 'NutuiUpload',
@@ -60,7 +59,7 @@ export const Upload = defineComponent({
 
     const preview = (images: PreviewMediaParam) => {
       $n.preview(images, {
-        button: '更换图片',
+        button: props.disabled ? '' : '更换图片',
         mode: props.previewMode,
         onButtonClick () {
           reUpload((medias: Media[]) => {

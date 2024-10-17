@@ -151,8 +151,12 @@ export const NsPreview = defineComponent({
                   ]
                 },
                 props.button ? h(NsButton, {
+                    class: 'preview-button',
                     label: props.button,
-                    color: '#fff',
+                    color: '#00000000',
+                    foreground: '#ddd',
+                    stroke: '#ddd',
+                    round: true,
                     variant: 'outlined',
                     onClick: (e: any) => {
                       props.onButtonClick?.call(me)
