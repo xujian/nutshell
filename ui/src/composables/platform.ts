@@ -16,30 +16,43 @@ export interface PlatformInstance {
 }
 
 function getPlatform (): PlatformInstance {
-  const userAgent = window?.navigator.userAgent,
-    env = Taro.getEnv()
+  if (window) {
+    const userAgent = window?.navigator.userAgent
 
-  function match (regexp: RegExp) {
-    return Boolean(userAgent?.match(regexp))
-  }
+    const match = (regexp: RegExp) => Boolean(userAgent?.match(regexp))
 
-  const android = match(/android/i)
-  const ios = match(/iphone|ipad|ipod/i)
-  const chrome = match(/chrome/i)
-  const edge = match(/edge/i)
-  const win = match(/win/i)
-  const mac = match(/mac/i)
-  const weixin = match(/MQQBrowser/i) || env === 'WEAPP'
+    const android = match(/android/i)
+    const ios = match(/iphone|ipad|ipod/i)
+    const chrome = match(/chrome/i)
+    const edge = match(/edge/i)
+    const win = match(/win/i)
+    const mac = match(/mac/i)
+    const weixin = match(/MQQBrowser/i)
 
-  return {
-    android,
-    ios,
-    chrome,
-    edge,
-    win,
-    mac,
-    weixin,
-    touch: 'ontouchstart' in window
+    return {
+      android,
+      ios,
+      chrome,
+      edge,
+      win,
+      mac,
+      weixin,
+      touch: 'ontouchstart' in window
+    }
+  } else {
+    const env = Taro.getEnv(),
+      app = Taro.getAppInfo()
+    console.log('===usePlatform', app)
+    return {
+      android: false,
+      ios: false,
+      chrome: false,
+      edge: false,
+      win: false,
+      mac: false,
+      touch: false,
+      weixin: env === 'WEAPP'
+    }
   }
 }
 
