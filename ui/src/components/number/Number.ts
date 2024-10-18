@@ -256,7 +256,9 @@ export const NsNumber = defineComponent({
     return () => h('div',
       {
         class: [
-          'ns-number', `size-${props.size}`, 'column',
+          'ns-number',
+          `number-size-${props.size}`,
+          'column',
           ...buildDesignClasses(props),
           $attrs.class,
         ],

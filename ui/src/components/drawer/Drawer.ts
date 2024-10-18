@@ -2,15 +2,9 @@ import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForBoolean, usePopupProps, useSizeProps } from '../../props'
 
-export type DrawerAnchor = 'top' | 'right' | 'bottom' | 'left'
-
 export const drawerProps = {
   title: {
     type: String,
-  },
-  anchor: {
-    type: String as PropType<DrawerAnchor>,
-    default: 'right'
   },
   width: {
     type: String,
@@ -23,7 +17,6 @@ export const drawerProps = {
   },
   ...usePopupProps(),
   ...useModelValuePropsForBoolean(),
-  ...useSizeProps(),
 }
 
 export type DrawerEmits = {

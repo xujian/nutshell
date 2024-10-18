@@ -64,22 +64,22 @@
       }
     }
   }
-  &.size-xs {
+  &.number-size-xs {
     .digits {
       font-size: var(--fontSize, 14px)
     }
   }
-  &.size-sm {
+  &.number-size-sm {
     .digits {
       font-size: var(--fontSize, 20px)
     }
   }
-  &.size-md {
+  &.number-size-md {
     .digits {
       font-size: var(--fontSize, 32px)
     }
   }
-  &.size-lg {
+  &.number-size-lg {
     .digits {
       font-size: var(--fontSize, 40px)
     }

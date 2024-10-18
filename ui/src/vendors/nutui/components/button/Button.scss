@@ -4,6 +4,7 @@
   &.nut-button {
     width: fit-content;
     --icon-size: 12px;
+    line-height: 1em;
     &:not(.full-width) {
       // width: auto;
     }
@@ -52,43 +53,6 @@
   &:not(.round) {
     border-radius: var(--ns-border-radius, var(--ns-border-radius-xs));
   }
-  &.size-xs {
-    height: var(--ns-size-xs);
-    --icon-size: calc(var(--ns-size-xs) - 8px);
-    &.round {
-      border-radius: calc(var(--ns-size-xs)/2);
-    }
-  }
-  &.size-sm {
-    height: var(--ns-size-sm);
-    --icon-size: calc(var(--ns-size-sm) - 8px);
-    &.round {
-      border-radius: calc(var(--ns-size-sm)/2);
-    }
-  }
-  &.size-auto {
-    height: var(--ns-size-md);
-    --icon-size: calc(var(--ns-size-md) - 8px);
-    &.round {
-      border-radius: calc(var(--ns-size-md)/2);
-    }
-  }
-  &.size-lg {
-    height: var(--ns-size-lg);
-    --icon-size: calc(var(--ns-size-lg) - 8px);
-    padding: 0 24px;
-    &.round {
-      border-radius: calc(var(--ns-size-lg)/2);
-    }
-  }
-  &.size-xl {
-    height: var(--ns-size-xl);
-    --icon-size: calc(var(--ns-size-xl) - 8px);
-    padding: 0 48px;
-    &.round {
-      border-radius: calc(var(--ns-size-xl)/2);
-    }
-  }
   .nut-button--disabled {
     opacity: 0.5;
   }
@@ -97,6 +61,12 @@
     .nut-button__text {
       margin-inline-start: var(--text-margin-for-icon);
     }
+  }
+  &.round {
+    border-radius: calc(var(--h) * 1px / 2);
+  }
+  &.size-xs {
+    font-size: 12px;
   }
   .icon {
     height: var(--icon-size);

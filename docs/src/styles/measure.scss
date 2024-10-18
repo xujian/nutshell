@@ -1,0 +1,36 @@
+@property --w {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --h {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.with-measure {
+  position: relative;
+  &.measure-height {
+    &::after {
+      overflow: visible;
+      content: counter(h);
+      counter-reset: h var(--h);
+      position: absolute;
+      top: 0;
+      color: #000;
+      font-size: 9px;
+      line-height: calc(var(--h) * 1px - 14px);
+      border-image-source: url(https://simple.shensi.tech/images/measure-height.svg);
+      border-image-slice: 7 10;
+      border-image-repeat: round;
+      width: 10px;
+      height: 100%;
+      right: -10px;
+      border-width: 7px 0 7px 10px;
+      border-style: solid;
+      border-color: transparent;
+      box-sizing: border-box;
+    }
+  }
+}

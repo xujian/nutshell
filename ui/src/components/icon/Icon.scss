@@ -1,25 +1,6 @@
 .ns-icon {
-  width: var(--ns-size-sm);
-  height: var(--ns-size-sm);
+  width: auto;
+  aspect-ratio: 1;
+  height: var(--ns-size-md);
   fill: #fff;
-  .size-xs {
-    width: var(--ns-size-xs);
-    height: var(--ns-size-xs);
-  }
-  .size-sm {
-    width: var(--ns-size-sm);
-    height: var(--ns-size-sm);
-  }
-  .size-md {
-    width: var(--ns-size-md);
-    height: var(--ns-size-md);
-  }
-  .size-lg {
-    width: var(--ns-size-lg);
-    height: var(--ns-size-lg);
-  }
-  .size-xl {
-    width: var(--ns-size-xl);
-    height: var(--ns-size-xl);
-  }
 }

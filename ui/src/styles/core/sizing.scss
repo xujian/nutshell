@@ -2,11 +2,18 @@
 
 @each $name, $value in $sizing {
   #{'.font-size-'}#{$name} {
-    font-size: var(--ns-font-#{$name})
+    font-size: var(--ns-font-#{$name});
   }
 }
 :root, page {
   @each $name, $value in $sizing {
-    #{'--ns-size-'}#{$name}: #{$value}
+    #{'--ns-size-'}#{$name}: #{$value}px;
+  }
+  @each $name, $value in $sizing {
+    .size-#{$name} {
+      --h: #{$value};
+      --icon-size: calc(var(--ns-size-#{$name}) - 8px);
+      height: var(--ns-size-#{$name});
+    }
   }
 }

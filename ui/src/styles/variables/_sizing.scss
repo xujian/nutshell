@@ -7,11 +7,11 @@
 $sizing: () !default;
 $sizing: map-deep-merge(
   (
-    xs: 20px,
-    sm: 24px,
-    md: 32px,
-    lg: 40px,
-    xl: 48px,
+    xs: 20,
+    sm: 24,
+    md: 32,
+    lg: 40,
+    xl: 48,
   ),
   $sizing
 )

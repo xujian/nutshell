@@ -4,7 +4,7 @@
 :root, page {
   --ns-spacing: var(--ns-spacing-sm);
   @each $name, $value in $spacing {
-    #{'--ns-spacing-'}#{$name}: #{$value};
+    #{'--ns-spacing-'}#{$name}: #{$value}px;
   }
 }
 

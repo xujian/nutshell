@@ -1,5 +1,5 @@
-import { PropType, ObjectEmitsOptions, SlotsType, useAttrs } from 'vue'
-import { buildDesignStyles, useDesignProps, useSizeProps, useVariantProps } from '../../props'
+import { PropType } from 'vue'
+import { useDesignProps, useSizeProps, useVariantProps } from '../../props'
 import { define, MakePropsType } from '../../utils'
 import { useDimensionProps, useLoadingProps } from '../../props'
 import { Color } from '../../composables/theme'
@@ -68,8 +68,8 @@ export const NsButton = define({
   props: buttonProps,
   emits,
   setup (props) {
-    const $attrs = useAttrs()
-    console.log('===NsButton, props', props, $attrs)
+    // const $attrs = useAttrs()
+    // console.log('===NsButton, props', props, $attrs)
     // 对参数做前期的处理
     return {
     }

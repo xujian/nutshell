@@ -44,9 +44,5 @@ const onIconClick = (name: string) => {
       background-color: #ffffff33;
     }
   }
-  .ns-icon {
-    width: 32px;
-    height: 32px;
-  }
 }
 </style>
