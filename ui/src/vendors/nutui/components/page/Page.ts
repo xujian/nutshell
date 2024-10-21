@@ -167,6 +167,7 @@ export const Page = defineComponent({
       },
       onComplete: onDialogComplete,
       onCancel: onDialogCalcel,
+      ...dialogOptions.value
     }, {
       default: () => dialogComponent.value
         ? h(dialogComponent.value, {
