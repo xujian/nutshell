@@ -2,10 +2,8 @@ import { h } from 'vue'
 import { InputNumber as AntInputNumber, FormItemRest } from 'ant-design-vue'
 import { defineComponent } from 'vue'
 import { numberRangeInputProps, inputEmits } from '../../../../components/input'
-import { FullValidationRule } from '../../../../props/field'
-import { transformRules } from './rules'
 import { marginProps } from '../../../../utils/private/helpers'
-import { amountFormatter, amountParser, amountChinese } from '../../../../composables/amount'
+import { amountFormatter } from '../../../../composables/amount'
 import { renderFormItem } from '../../utils'
 
 /**
@@ -19,8 +17,6 @@ export const NumberRangeInput = defineComponent({
   },
   emits: inputEmits,
   setup: (props, { emit, slots }) => {
-    const rules = transformRules(props.rules as FullValidationRule[])
-
     const sepertor = () => h('div', {
       class: [
         'seperator'

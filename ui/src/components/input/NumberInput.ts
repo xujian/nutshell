@@ -52,17 +52,9 @@ export const numberInputProps = {
 }
 
 export type NumberInputEmits = {
-  change: (value?: number) => void
-  blur: () => void
-  focus: () => void
-  enter: () => void
 }
 
 export const numberInputEmits: NumberInputEmits = {
-  change: (value?: number) => true,
-  blur: () => true,
-  focus: () => true,
-  enter: () => true,
 }
 
 export type NumberInputSlots = {

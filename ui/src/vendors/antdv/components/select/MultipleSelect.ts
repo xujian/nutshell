@@ -1,8 +1,6 @@
 import { multipleSelectProps } from '../../../../components/select'
 import { defineComponent, h } from 'vue'
 import { Select as AntSelect } from 'ant-design-vue'
-import { transformRules } from '../input/rules'
-import { FullValidationRule } from '../../../../props/field'
 import { SelectValue } from 'ant-design-vue/es/select'
 import { renderFormItem } from '../../utils'
 
@@ -14,7 +12,6 @@ export const MultipleSelect = defineComponent({
 
     const { clearable, searchable } = props
 
-    const rules = transformRules(props.rules as FullValidationRule[])
     return () => renderFormItem(props, ctx.slots,() =>
         h(AntSelect, {
           class: ['ns-multiple-select'],

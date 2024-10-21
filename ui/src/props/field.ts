@@ -85,10 +85,19 @@ export const formatRules: FormatRuleFunction = (rules, props) => {
       })
     }
     if (typeof rule === 'object') {
-      result.push({
-        ...rule,
-        name: 'custom',
-      })
+      if (quickValidationMethods.includes(rule.name)) {
+        // 适用于 { name: 'required', message: '请输入金额'}
+        const method = quickRuleMapping[rule.name]
+        result.push({
+          method,
+          ...rule,
+        })
+      } else {
+        result.push({
+          ...rule,
+          name: 'custom',
+        })
+      }
     }
   })
   return result

@@ -2,8 +2,6 @@ import { h, ref, nextTick } from 'vue'
 import { Textarea as AntTextarea } from 'ant-design-vue'
 import { defineComponent } from 'vue'
 import { textareaProps, textareaEmits } from '../../../../components/input'
-import { FullValidationRule } from '../../../../props/field'
-import { transformRules } from './rules'
 import { ChangeEvent } from 'ant-design-vue/es/_util/EventInterface'
 import { marginProps } from '../../../../utils/private/helpers'
 import { renderFormItem } from '../../utils'
@@ -20,8 +18,6 @@ export const Textarea = defineComponent({
   },
   emits: textareaEmits,
   setup: (props, { emit, slots }) => {
-    const rules = transformRules(props.rules as FullValidationRule[])
-
     const textareaRef = ref()
     return () =>
       renderFormItem(props, slots, () =>

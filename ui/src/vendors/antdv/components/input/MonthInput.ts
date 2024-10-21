@@ -1,10 +1,8 @@
-import {h, ref, defineComponent, Ref, computed, toRaw} from 'vue'
+import { h, ref, defineComponent, Ref, computed } from 'vue'
 import { DatePicker } from 'ant-design-vue'
 import { dateInputProps } from '../../../../components'
-import { transformRules } from './rules'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
-import { FullValidationRule } from '../../../../props/field'
 import { renderFormItem } from '../../utils'
 
 /**
@@ -21,7 +19,6 @@ export const MonthInput = defineComponent({
     close = () => {
       visible.value = false
     }
-    const rules = transformRules(props.rules as FullValidationRule[])
     const value: Ref<string | Dayjs | undefined> = computed(() => props.modelValue
         ? dayjs(props.modelValue) || dayjs()
         : undefined

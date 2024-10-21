@@ -2,6 +2,7 @@ import { defineComponent, h } from 'vue'
 import { inputEmits, inputProps, inputSlots } from '../../../../components'
 import { marginProps } from '../../../../utils'
 import { renderFormItem, useForm } from '../../utils'
+import { FullValidationRule } from '../../../../props'
 
 export const Input = defineComponent({
   name: 'NutuiInput',
@@ -35,9 +36,6 @@ export const Input = defineComponent({
           onChange: (e: any) => {
             emit('change', e.detail.value)
           },
-          // onBlur: (e) => {
-          //   emit('blur')
-          // },
           // onFocus: (e: FocusEvent) => {
           //   emit('focus')
           // },

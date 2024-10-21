@@ -1,5 +1,5 @@
 import { FunctionalComponent, InjectionKey, Ref, Slots, h, inject, ref } from 'vue'
-import { DesignProps, FieldProps, FullValidationRule, VariantProps, buildDesignVariables } from '../../../props'
+import { DesignProps, FieldProps, FullValidationRule, VariantProps } from '../../../props'
 import { useNutshell } from '../../../framework'
 import { useBus } from '../../../composables'
 import { FormItemRule } from '@nutui/nutui-taro/dist/types/__VUE/form/types'
@@ -44,7 +44,6 @@ export const transformRules = (rules: FullValidationRule[]) => {
       })
     }
   })
-  // console.log('===transformRules', result)
   return result
 }
 
@@ -62,7 +61,6 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
   // console.log('===renderFormItem', props.name, props.rules)
   const rules = transformRules(props.rules as FullValidationRule[])
   const formItemRef = ref(null)
-  const form = useForm()
   return h(
     NutFormItem,
     {
@@ -99,7 +97,6 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
 export const useForm = () => {
   const form = inject(NutuiFormSymbol)
   const $n = useNutshell()
-  const $bus = useBus()
   const validate = async (name?: string) => {
     const f = form?.vendor.value
     const result = await f?.validate(name) as any

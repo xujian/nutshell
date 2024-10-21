@@ -1,12 +1,9 @@
-import {h, ref, defineComponent, computed, ComputedRef } from 'vue'
+import { h, ref, defineComponent, computed, ComputedRef } from 'vue'
 import { RangePicker } from 'ant-design-vue'
-import { DateRangeInputProps, dateRangeInputEmits, dateRangeInputProps } from '../../../../components'
-import { transformRules } from './rules'
+import { dateRangeInputEmits, dateRangeInputProps } from '../../../../components'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
-import { FullValidationRule } from '../../../../props/field'
 import { renderFormItem } from '../../utils'
-import { DateRange } from '../../../../types'
 
 dayjs.locale('zh-cn')
 type DateValue = string | Dayjs
@@ -26,8 +23,6 @@ export const DateRangeInput = defineComponent({
     close = () => {
       visible.value = false
     }
-
-    const rules = transformRules(props.rules as FullValidationRule[])
 
     const value: ComputedRef<[DateValue | undefined, DateValue | undefined]> = computed(() => {
       const [from, to] = props.modelValue || []

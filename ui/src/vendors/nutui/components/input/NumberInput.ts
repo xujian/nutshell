@@ -43,14 +43,13 @@ export const NumberInput = defineComponent({
             props['onUpdate:modelValue']?.(value)
           },
           onBlur: (e: any) => {
-            if (props.modelValue === void 0) {
-              return
-            }
-            const v = `${props.modelValue}`,
-              [s, f] = v.split('.')
-              // 清理无效的、末尾小数点
-            if (f === '') {
-              props['onUpdate:modelValue']?.(s)
+            if (props.modelValue !== void 0) {
+              const v = `${props.modelValue}`,
+                [s, f] = v.split('.')
+                // 清理无效的、末尾小数点
+              if (f === '') {
+                props['onUpdate:modelValue']?.(s)
+              }
             }
             form.validate(props.name as string)
             emit('blur')

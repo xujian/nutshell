@@ -2,8 +2,6 @@ import { h, nextTick, ref } from 'vue'
 import { InputNumber as AntInputNumber } from 'ant-design-vue'
 import { defineComponent } from 'vue'
 import { numberInputProps, inputEmits } from '../../../../components/input'
-import { FullValidationRule } from '../../../../props/field'
-import { transformRules } from './rules'
 import { marginProps } from '../../../../utils/private/helpers'
 import { amountFormatter, amountParser, amountChinese } from '../../../../composables/amount'
 import { renderFormItem } from '../../utils'
@@ -19,9 +17,8 @@ export const NumberInput = defineComponent({
   },
   emits: inputEmits,
   setup: (props, { emit, slots }) => {
-    const rules = transformRules(props.rules as FullValidationRule[])
-
-    const inputNumberRef = ref()
+    const form = useForm(),
+      inputNumberRef = ref()
     return () =>
       renderFormItem(props, slots, () => [
         h(
@@ -63,6 +60,7 @@ export const NumberInput = defineComponent({
               emit('change', val)
             },
             onBlur: (e: FocusEvent) => {
+              form.validate(props.name as string)
               emit('blur')
             },
             onFocus: (e: FocusEvent) => {

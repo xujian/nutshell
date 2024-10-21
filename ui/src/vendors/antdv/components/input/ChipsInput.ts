@@ -2,7 +2,6 @@ import { h, ref, SetupContext, VNode } from 'vue'
 import { ChipsInputProps, NsButton, NsCheckboxGroup, NsChip, NsPopover } from '../../../../components'
 import { UniDataItem } from '../../../../shared'
 import { FullValidationRule } from '../../../../props/field'
-import { transformRules } from './rules'
 import { renderFormItem } from '../../utils'
 
 export const ChipsInput = (props: ChipsInputProps, { emit, slots }: SetupContext) => {
@@ -16,8 +15,6 @@ export const ChipsInput = (props: ChipsInputProps, { emit, slots }: SetupContext
         : Array.from(new Set([...value, `${item.value}`]))
     props['onUpdate:modelValue']?.(newValue)
   }
-
-  const rules = transformRules(props.rules as FullValidationRule[])
 
   let defaultSlot: () => VNode | VNode[]
 
