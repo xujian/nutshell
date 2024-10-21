@@ -47,7 +47,7 @@
   }
   .page-notice {
     position: absolute;
-    top: var(--header);
+    top: 0;
     left: 0;
     padding: .5em;
     line-height: 1.2em;
@@ -61,6 +61,9 @@
   }
   &.has-header {
     top: var(--header);
+    .page-notice {
+      top: var(--header);
+    }
   }
   &.has-footer {
     .page-content {
