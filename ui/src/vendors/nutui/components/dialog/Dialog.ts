@@ -52,7 +52,7 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
     catchMove: true,
     closeable: props.closable === false ? false : true,
     destroyOnClose: props.destroyOnClose,
-    closeOnClickOverlay: props.mask === false ? false : true,
+    closeOnClickOverlay: props.modal === false,
     round: true,
     'onUpdate:visible': (value: boolean) => {
       props['onUpdate:modelValue']?.(value)
