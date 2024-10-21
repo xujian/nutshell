@@ -1,5 +1,10 @@
 import { InjectionKey, inject } from 'vue'
 
+export type Screen = {
+  width: number,
+  height: number
+}
+
 /**
  * 用户设备、浏览器及系统环境
  */
@@ -13,14 +18,14 @@ export interface PlatformInstance {
   touch: boolean,
   weixin?: boolean,
   dingding?: boolean,
+  screen: Screen
 }
 
 function getPlatform (): PlatformInstance {
-  if (window) {
-    const userAgent = window?.navigator.userAgent
-
-    const match = (regexp: RegExp) => Boolean(userAgent?.match(regexp))
-
+  if (window && !('WeixinJSBridge' in window)) {
+    // 还有微信开发工具内的情况
+    const ua = window.navigator.userAgent
+    const match = (regexp: RegExp) => Boolean(ua?.match(regexp))
     const android = match(/android/i)
     const ios = match(/iphone|ipad|ipod/i)
     const chrome = match(/chrome/i)
@@ -28,7 +33,6 @@ function getPlatform (): PlatformInstance {
     const win = match(/win/i)
     const mac = match(/mac/i)
     const weixin = match(/MQQBrowser/i)
-
     return {
       android,
       ios,
@@ -37,12 +41,14 @@ function getPlatform (): PlatformInstance {
       win,
       mac,
       weixin,
-      touch: 'ontouchstart' in window
+      touch: 'ontouchstart' in window,
+      screen: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      }
     }
   } else {
-    const env = Taro.getEnv(),
-      app = Taro.getAppInfo()
-    console.log('===usePlatform', app)
+    const system = Taro.getSystemInfoSync()
     return {
       android: false,
       ios: false,
@@ -51,7 +57,11 @@ function getPlatform (): PlatformInstance {
       win: false,
       mac: false,
       touch: false,
-      weixin: env === 'WEAPP'
+      weixin: true,
+      screen: {
+        width: system.screenWidth,
+        height: system.screenHeight,
+      }
     }
   }
 }
