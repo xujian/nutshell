@@ -100,7 +100,7 @@ class Vendor {
         })
       canvas.node(({ node: paint }: { node: any}) => {
         const isDevTool = /Macintosh/.test(navigator.userAgent)
-        const devicePixelRatio = isDevTool ? 1 : wx.getSystemInfoSync().pixelRatio
+        const devicePixelRatio = isDevTool ? 1 : wx.getWindowInfo().pixelRatio
         // console.log('===devicePixelRatio', navigator.userAgent, isDevTool, devicePixelRatio)
         Chart.defaults.font.size = 10 * devicePixelRatio
         const context = paint.getContext('2d')
