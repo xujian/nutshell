@@ -4,6 +4,7 @@ import { dateRangeInputEmits, dateRangeInputProps } from '../../../../components
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import { renderFormItem } from '../../utils'
+import { DateRange } from '../../../../types'
 
 dayjs.locale('zh-cn')
 type DateValue = string | Dayjs
@@ -53,6 +54,10 @@ export const DateRangeInput = defineComponent({
             : [undefined, undefined]
           props['onUpdate:modelValue']?.(val)
           // emit('change', val)
+        },
+        // @ts-ignore
+        onChange: (value: DateRange, dateString: [string, string]) => {
+          emit('change', value)
         },
         disabled: props.disabled ?? false,
         ...props.inside
