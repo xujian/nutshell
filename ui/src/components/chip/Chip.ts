@@ -35,11 +35,9 @@ export const chipProps = {
 }
 
 export type ChipEmits = {
-  click (): void,
 }
 
 export const chipEmits: ChipEmits = {
-  click () {},
 }
 
 export type ChipProps = MakePropsType<typeof chipProps, ChipEmits>

@@ -45,11 +45,11 @@ export type DialogEmits = {
 }
 
 export const dialogEmits: DialogEmits = {
-  ok: () => { return true },
-  show: () => {},
-  hide: () => {},
-  close: () => {},
-  complete: () => {}
+  ok: () => true,
+  show: () => true,
+  hide: () => true,
+  close: () => true,
+  complete: (result: any) => true,
 }
 
 export type DialogSlots = {

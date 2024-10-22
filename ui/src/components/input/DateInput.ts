@@ -57,7 +57,7 @@ export type DateInputEmits = {
 }
 
 export const dateInputEmits: DateInputEmits = {
-  change: (value: string | number) => {}
+  change: (value: string | number) => true
 }
 
 export type DateInputProps = MakePropsType<typeof dateInputProps, DateInputEmits>

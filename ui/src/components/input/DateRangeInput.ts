@@ -34,9 +34,7 @@ export type DateRangeInputEmits = {
 }
 
 export const dateRangeInputEmits: DateRangeInputEmits = {
-  change: (value?: DateRange) => {
-    return true
-  }
+  change: (value?: DateRange) => true
 }
 
 export type DateRangeInputProps = MakePropsType<typeof dateRangeInputProps, DateRangeInputEmits>

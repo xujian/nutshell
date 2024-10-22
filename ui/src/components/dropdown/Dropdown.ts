@@ -28,11 +28,9 @@ export const dropdownProps = {
 }
 
 export type DropdownEmits = {
-  click: () => void
 }
 
 const emits: DropdownEmits = {
-  click: () => void 0
 }
 
 export type DropdownProps = MakePropsType<typeof dropdownProps, DropdownEmits>
