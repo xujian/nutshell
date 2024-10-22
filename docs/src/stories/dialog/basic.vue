@@ -1,15 +1,16 @@
 <template>
-  <ns-button
-    size="sm"
-    width="100"
-    color="negtive"
-    label="弹出对话框" @click="onOpenDialogButtonClick" />
-
-  <ns-button
-    size="sm"
-    width="100"
-    color="negtive"
-    label="无按钮弹窗" @click="onOpenDialogNoButtonsButtonClick" />
+  <ns-row justify="start">
+    <ns-button
+      size="sm"
+      width="100"
+      color="negtive"
+      label="弹出对话框" @click="onOpenDialogButtonClick" />
+    <ns-button
+      size="sm"
+      width="100"
+      color="negtive"
+      label="无按钮弹窗" @click="onOpenDialogNoButtonsButtonClick" />
+  </ns-row>
 </template>
 
 <script lang="ts" setup>

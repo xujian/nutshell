@@ -57,7 +57,7 @@
           message: '金额要大于1000'
         }]">
         <template #append>
-          <ns-button color="neutral" variant="outlined">检查</ns-button>
+          <ns-button size="sm" color="neutral" variant="outlined">检查</ns-button>
         </template>
       </ns-number-input>
     </ns-form>

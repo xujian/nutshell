@@ -8,7 +8,8 @@
     v-model="dialogOpen"
     title="新建客户"
     :top="20"
-    :left="20">
+    :left="20"
+    @hide="onDialogHide">
     <ns-form v-model="formData"
       name="client"
       ref="formRef">
@@ -22,6 +23,7 @@
         label="证件号码"/>
       <ns-select
         v-model="formData.marrage"
+
         name="marrage"
         label="婚姻状态"
         :options="marrageOptions" />
@@ -52,5 +54,13 @@ const formData = reactive({
 
 function onOpenDialogButtonClick () {
   dialogOpen.value = true
+}
+
+function onDialogHide () {
+  console.log('===onDialogHide')
+}
+
+function onDialogAch () {
+  console.log('===onDialogAch')
 }
 </script>

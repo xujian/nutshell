@@ -15,8 +15,10 @@
       <ns-radio value="4" label="单位名称"></ns-radio>
     </ns-radio-group>
   </ns-form>
-  <ns-button label="提交" @click="onFormSubmit"></ns-button>
-  <ns-button label="重置" @click="onFormReset"></ns-button>
+  <ns-row justify="end">
+    <ns-button label="重置" @click="onFormReset"></ns-button>
+    <ns-button color="primary" label="提交" @click="onFormSubmit"></ns-button>
+  </ns-row>
 </template>
 
 <script lang="ts" setup>
