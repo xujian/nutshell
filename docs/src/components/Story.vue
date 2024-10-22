@@ -76,29 +76,34 @@ onMounted(importStory)
 </script>
 
 <style lang="scss">
-.story-card {
-  min-height: 100px;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  .card-footer {
-    // border-top: 1px solid var(--ns-stroke);
-  }
-  .expand-leave-active,
-  .expand-enter-active {
-    transition: all 500ms ease;
-    overflow: hidden;
-  }
-  .expand-enter-to,
-  .expand-leave-from {
-    max-height: 400px;
-  }
-  .expand-enter-from,
-  .expand-leave-to {
-    max-height: 0;
-  }
-  .ns-code-view {
-    width: 100%;
+.ns-card {
+  &.story-card {
+    min-height: 100px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    .card-body {
+      padding: calc(var(--ns-spacing) / 2);
+    }
+    .card-footer {
+      // border-top: 1px solid var(--ns-stroke);
+    }
+    .expand-leave-active,
+    .expand-enter-active {
+      transition: all 500ms ease;
+      overflow: hidden;
+    }
+    .expand-enter-to,
+    .expand-leave-from {
+      max-height: 400px;
+    }
+    .expand-enter-from,
+    .expand-leave-to {
+      max-height: 0;
+    }
+    .ns-code-view {
+      width: 100%;
+    }
   }
 }
 </style>

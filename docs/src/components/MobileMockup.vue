@@ -50,7 +50,7 @@ const props = withDefaults(
   // $phone-screen-width: $phone-width ;
   $phone-screen-height: 844px;
   // $phone-screen-height: $phone-height - ($phone-outer-bezel-size * 2) - ($phone-inner-bezel-size * 2);
-  $phone-screen-border-radius: 64px;
+  $phone-screen-border-radius: 55px;
 
   $black: #1f1f1f;
 
