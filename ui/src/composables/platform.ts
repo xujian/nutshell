@@ -48,7 +48,7 @@ function getPlatform (): PlatformInstance {
       }
     }
   } else {
-    const system = Taro.getSystemInfoSync()
+    const win = Taro.getWindowInfo()
     return {
       android: false,
       ios: false,
@@ -59,8 +59,8 @@ function getPlatform (): PlatformInstance {
       touch: false,
       weixin: true,
       screen: {
-        width: system.screenWidth,
-        height: system.screenHeight,
+        width: win.screenWidth,
+        height: win.screenHeight,
       }
     }
   }

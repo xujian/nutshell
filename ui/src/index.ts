@@ -11,7 +11,7 @@ export * from './Resolver'
 const Taro: any = {
   showToast (options: any) {},
   navigateBack: () => {},
-  getSystemInfoSync: () => {},
+  getWindowInfo: () => {},
   getMenuButtonBoundingClientRect: () => {},
   navigateTo: (options: any) => {},
   chooseMedia: (options: any) => {}

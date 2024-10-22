@@ -46,19 +46,15 @@ export function useSafeArea (model?: PhoneModel): SafeArea {
   if (env !== 'WEAPP') {
     return models[m]
   }
-  const systemInfo = wx.getSystemInfoSync(),
-    capsule = wx.getMenuButtonBoundingClientRect()
-  /**
-   * 状态条高度
-   */
-  const status = systemInfo.statusBarHeight || 0,
+  const { screenHeight, statusBarHeight: status, safeArea } = wx.getWindowInfo(),
+    capsule = wx.getMenuButtonBoundingClientRect(),
     /**
      * 据说是胶囊上下间距
      */
     gap = capsule.top - status,
     nav = capsule.height + gap * 2,
-    safeAreaBottom = systemInfo.safeArea?.bottom || 0,
-    bottom = systemInfo.screenHeight - safeAreaBottom
+    bottom = screenHeight - safeArea.bottom
+  console.log('===safeArea', { status, nav, bottom })
   return {
     status,
     nav,
