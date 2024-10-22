@@ -42,6 +42,7 @@ export const DateRangeInput = defineComponent({
         ref: formItem,
         visible: visible.value,
         onClose: close,
+        presets: props.presets,
         // @ts-ignore
         value: value.value,
         'onUpdate:value': (value: DateValue[]) => {

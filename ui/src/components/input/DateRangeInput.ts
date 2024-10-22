@@ -20,7 +20,13 @@ export const dateRangeInputProps = {
   inside: {
     type: Boolean,
     default: false,
-  }
+  },
+  /**
+   * 预设时间范围快捷选择
+   */
+  presets: {
+    type: Array as unknown as PropType<any>
+  },
 }
 
 export type DateRangeInputEmits = {
