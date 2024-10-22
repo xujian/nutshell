@@ -8,6 +8,7 @@
       border-color: var(--stroke, transparent);
       background-color: var(--fill);
       min-height: 32px;
+      border-radius: var(--ns-border-radius-input);
     }
     .ant-select-clear {
       border-radius: 6px;

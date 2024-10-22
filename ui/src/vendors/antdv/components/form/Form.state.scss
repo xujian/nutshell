@@ -1,38 +1,48 @@
-.ns-form-item {
-  .ant-input-status-error {
-    &:not(.ant-input-disabled) {
-      &:not(.ant-input-borderless) {
-        &.ant-input {
-           border-color: var(--ns-negtive);
-        }
-      }
-    }
-  }
-  .ant-input-number-status-error {
-    &:not(.ant-input-number-disabled) {
-      &:not(.ant-input-number-borderless) {
-        &.ant-number-input {
-           border-color: var(--ns-negtive);
-        }
-      }
-    }
-  }
-  .ant-select-status-error {
-    &:not(.ant-select-disabled) {
-      &:not(.ant-select-borderless) {
-        &.ant-select {
-           border-color: var(--ns-negtive);
-        }
-      }
-    }
-  }
-  .ant-picker-status-error {
-    &:not(.ant-picker-disabled) {
-      &:not(.ant-picker-borderless) {
-        &.ant-picker {
-           border-color: var(--ns-negtive);
+@use "sass:selector";
+
+@mixin build-error-state ($child) {
+  @at-root #{selector.nest(&, $child)} {
+    &:not(#{$child}-disabled) {
+      &:not(#{$child}-borderless) {
+        &#{$child}-status-error {
+          border-color: var(--ns-negtive);
+          @content;
         }
       }
     }
   }
 }
+
+@mixin build-hover-state ($child) {
+  @at-root #{selector.nest(&, $child)} {
+    &:not(#{$child}-disabled) {
+      &:not(#{$child}-customized-input) {
+        &:hover {
+          border-color: var(--active);
+          @content;
+        }
+      }
+    }
+  }
+}
+
+.ns-form-item {
+  --active: var(--ns-primary);
+  @include build-error-state('.ant-input-affix-wrapper') {
+  }
+  @include build-error-state('.ant-input-number') {
+  }
+  @include build-error-state('.ant-select') {
+  }
+  @include build-error-state('.ant-picker') {
+  }
+  @include build-hover-state('.ant-input-affix-wrapper') {}
+  @include build-hover-state('.ant-picker') {}
+  @include build-hover-state('.ant-drowdown') {}
+  @include build-hover-state('.ant-select') {
+    .ant-select-selector {
+      border-color: #099; //var(--active);
+    }
+  }
+}
+

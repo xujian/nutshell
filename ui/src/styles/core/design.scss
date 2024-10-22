@@ -42,10 +42,6 @@
   initial-value: 1px;
 }
 
-:root, page {
-  --ns-border-radius: 8px;
-}
-
 @each $name, $value in design.$borders {
   #{'.border-'}#{$name} {
     border: #{$value} solid var(--stroke, #999);
@@ -53,9 +49,11 @@
 }
 
 :root, page {
+  --ns-border-radius: 8px;
   @each $name, $value in design.$rounded {
     #{'--ns-border-radius-'}#{$name}: #{$value};
   }
+  --ns-border-radius-input: var(--ns-border-radius-sm);
 }
 
 @each $name, $value in design.$rounded {

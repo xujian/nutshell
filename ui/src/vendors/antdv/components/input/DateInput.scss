@@ -1,6 +1,7 @@
 .ns-form-item {
   &.ant-form-item {
     .ant-picker {
+      border-radius: var(--ns-border-radius-input);
       width: 100%;
       border-color: var(--stroke);
       background-color: var(--fill);
