@@ -30,9 +30,11 @@ export const buttonGroupProps = {
 }
 
 export type ButtonGroupEmits = {
+  change: (value: string) => void
 }
 
 const buttonGroupEmits: ButtonGroupEmits = {
+  change: (value: string) => true
 }
 
 export type ButtonGroupSlots = {
