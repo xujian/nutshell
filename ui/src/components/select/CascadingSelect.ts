@@ -48,6 +48,19 @@ export const cascadingSelectProps = {
     type: Boolean,
     default: false,
   },
+  /**
+   * 最多显示多少个 tag, 默认不限制
+   */
+  maxTags: {
+    type: [Number, String] as PropType<number | 'responsive'>
+  },
+  /**
+   * 是否多选
+   */
+  multiple: {
+    type: Boolean,
+    default: false,
+  },
   ...useVariantProps(),
 }
 
