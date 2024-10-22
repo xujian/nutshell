@@ -123,7 +123,7 @@ export function define<
     setup, {
       name: options.name,
       props: options.props,
-      emits: options.emits,
+      // emits: options.emits,
       slots: options.slots,
     }
   )
