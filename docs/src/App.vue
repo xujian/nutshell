@@ -1,37 +1,43 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import { useHead } from 'unhead'
-
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+dayjs.locale('zh-cn')
 useHead({
   link: [
     {
       rel: 'stylesheet',
-      href: 'https://simple.shensi.tech/system-assets/gradients/web.css'
+      href: 'https://artifacts.shensi.tech/gradients/web.css'
     },
     {
       rel: 'stylesheet',
-      href: 'https://simple.shensi.tech/system-assets/gradients/built-in.css'
+      href: 'https://artifacts.shensi.tech/gradients/built-in.css'
     },
     {
       rel: 'stylesheet',
-      href: 'https://simple.shensi.tech/system-assets/motions/motions.css'
+      href: 'https://artifacts.shensi.tech/motions/motions.css'
     },
     {
       rel: 'stylesheet',
-      href: 'https://simple.shensi.tech/system-assets/patterns/patterns.css'
+      href: 'https://artifacts.shensi.tech/patterns/patterns.css'
     }
   ]
 })
 </script>
 
 <template>
-  <ns-app>
-    <RouterView />
-  </ns-app>
+  <a-config-provider :locale="zhCN">
+    <ns-app>
+      <RouterView />
+    </ns-app>
+  </a-config-provider>
 </template>
 
 <style scoped>
 .ns-app {
   --ns-border-radius: 16px;
+  --ns-border-radius-input: 16px;
 }
 </style>

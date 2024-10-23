@@ -9,3 +9,5 @@ export type ChildComponent = DefineComponent<any> | AsyncComponentLoader
 export type DateAsStringOrNumber = string | number | undefined
 
 export type DateRange = [DateAsStringOrNumber, DateAsStringOrNumber]
+
+export const DATE_FORMAT = 'YYYY-MM-DD'

@@ -1,6 +1,7 @@
-import {h, ref, defineComponent, Ref, computed, toRaw} from 'vue'
+import { h, defineComponent, computed, ComputedRef } from 'vue'
 import { DatePicker } from 'ant-design-vue'
-import { dateInputProps } from '../../../../components'
+// import locale from 'ant-design-vue/es/date-picker/locale/zh_CN'
+import { dateInputEmits, dateInputProps } from '../../../../components'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import { renderFormItem } from '../../utils'
@@ -11,24 +12,24 @@ import { renderFormItem } from '../../utils'
 export const DateInput = defineComponent({
   name: 'DateInput',
   props: dateInputProps,
+  emits: dateInputEmits,
   setup: (props, ctx) => {
-    const visible = ref(false)
-    const open = () => {
-      visible.value = true
-    },
-    close = () => {
-      visible.value = false
-    }
-    const value: Ref<string | Dayjs | undefined> = computed(() => props.modelValue
-        ? dayjs(props.modelValue) || dayjs()
+
+    const transformValue = (v: string | Dayjs) => v === null
+      ? ''
+      : (typeof v === 'string'
+          ? dayjs(v, props.format)
+          : v
+        ).format(props.format)
+
+    const value: ComputedRef<Dayjs | undefined> = computed(() => props.modelValue
+        ? dayjs(props.modelValue, props.format) || dayjs()
         : undefined
       )
 
     return () => renderFormItem(
       props, ctx.slots,
       () => h(DatePicker, {
-          visible: visible.value,
-          onClose: close,
           placeholder: props.placeholder,
           showTime: props.hasTime === true
             ? {
@@ -37,21 +38,17 @@ export const DateInput = defineComponent({
               }
             : false,
           showNow: props.hasNow,
-          format: props.format,
+          // format: props.format,
           ...value.value
-            ? { value: dayjs(value.value) }
+            ? {value: value.value}
             : {},
-          'onUpdate:value': (value: string | Dayjs) => {
-            const val = value === null
-              ? ''
-              : (typeof value === 'string'
-                  ? dayjs(value)
-                  : value
-                ).format(props.format)
-            props['onUpdate:modelValue']?.(val)
+
+          'onUpdate:value': (v: string | Dayjs) => {
+            props['onUpdate:modelValue']?.(transformValue(v))
+            // ctx.emit('update:modelValue', val)
           },
-          onChange: (value: string | Dayjs, dateString: string) => {
-            ctx.emit('change', value)
+          onChange: (v: string | Dayjs, dateString: string) => {
+            ctx.emit('change', transformValue(v))
           },
           disabledDate: props.disabledDate,
           disabledTime: props.disabledTime,

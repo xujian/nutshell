@@ -1,6 +1,6 @@
 {
   "name": "@uxda/nutshell",
-  "version": "1.4.38",
+  "version": "1.4.42",
   "description": "A Vue 3 UI library base on Nutui",
   "type": "module",
   "main": "dist/index.js",
@@ -87,7 +87,6 @@
     "compressorjs": "^1.2.1",
     "countup.js": "^2.8.0",
     "cropperjs": "^1.6.1",
-    "dayjs": "^1.11.13",
     "lodash-es": "^4.17.21",
     "odometer": "^0.4.8",
     "tippy.js": "^6.3.7",
