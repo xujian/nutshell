@@ -28,14 +28,14 @@
   "repository": "http://gitlab.ddjf.local/fed/nutshell",
   "author": "Nutshell Team",
   "devDependencies": {
-    "@babel/cli": "^7.25.6",
-    "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.4",
-    "@babel/preset-typescript": "^7.22.5",
+    "@babel/cli": "^7.25.7",
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
+    "@babel/preset-typescript": "^7.25.7",
     "@histoire/plugin-vue": "^0.17.17",
     "@rollup/plugin-alias": "^5.1.1",
     "@types/lodash-es": "^4.17.12",
-    "rollup": "^4.22.4",
+    "rollup": "^4.24.0",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-esbuild": "^6.1.1"
   },
@@ -48,7 +48,7 @@
     "chroma-js": "^3.1.1",
     "intl": "^1.2.5",
     "lodash-es": "^4.17.21",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   },
   "publishConfig": {
     "access": "public"
