@@ -18,6 +18,7 @@
 import { onMounted, ref } from 'vue'
 import { NsTable, NsTableColumn,
   NsTableColumnCurrency,
+  usePaging,
   type Paging,
   type WithPaging} from '@uxda/nutshell'
 import { useHttp } from '@/plugins'
@@ -25,11 +26,7 @@ import { useHttp } from '@/plugins'
 const $http = useHttp()
 const tableRef = ref(null)
 const page = ref(1)
-const paging = ref<Paging>({
-  current: 1,
-  total: 1,
-  pageSize: 10,
-})
+const paging = ref<Paging>()
 
 export type 科目余额 = {
   科目名称: string,
@@ -43,21 +40,21 @@ export type 科目余额 = {
 
 const balanceRows = ref<科目余额[]>([])
 
-function load () {
-  $http.get<WithPaging<科目余额[]>>('/json/balances-paging.json', {
-    page: page.value
-  }).then(({result}) => {
-    balanceRows.value = result.data
-    paging.value = result.paging
-  })
+async function 获取科目余额 (page: number) {
+  const result = await $http.get<WithPaging<科目余额[]>>('/json/balances-paging.json', { page })
+  balanceRows.value = result.data
+  paging.value = result.paging
+  return result
 }
+
+const { nextPage } = usePaging(获取科目余额)
 
 function onPageChange (value: number) {
   page.value = 1
-  load()
+  nextPage(value)
 }
 
 onMounted(() => {
-  load()
+  nextPage(1)
 })
 </script>
