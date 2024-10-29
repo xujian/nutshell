@@ -2,6 +2,9 @@
 @use './overrides.scss';
 @use './scrollbar.scss';
 @use './measure.scss';
+@use '@uxda/nutshell/styles-nutui';
+@use '@uxda/nutshell/styles-antdv';
+@use '@uxda/nutshell/styles';
 
 :root {
   color-scheme: dark light;

@@ -1,4 +1,4 @@
-@use '../tools/functions' as *;
+@use '../tools';
 
 $space-root: 4px !default;
 
@@ -8,7 +8,7 @@ $space-root: 4px !default;
  **/
 
 $spacing: () !default;
-$spacing: map-deep-merge(
+$spacing: tools.map-deep-merge(
   (
     0: 0,
     xs: 2,

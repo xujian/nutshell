@@ -1,12 +1,12 @@
 @forward '../variables';
-@use '../tools/functions' as *;
+@use '../tools';
 
 /**
- * 
+ *
  **/
 
 $gunmetal: () !default;
-$gunmetal: map-deep-merge(
+$gunmetal: tools.map-deep-merge(
   (
     brand: (
       primary: #496386,

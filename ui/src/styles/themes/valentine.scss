@@ -1,12 +1,12 @@
 @forward '../variables';
-@use '../tools/functions' as *;
+@use '../tools';
 
 /**
  * Saas 系统现用主题
  **/
 
 $valentine: () !default;
-$valentine: map-deep-merge(
+$valentine: tools.map-deep-merge(
   (
     brand: (
       primary: #1d242c,

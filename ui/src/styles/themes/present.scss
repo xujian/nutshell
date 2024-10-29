@@ -1,12 +1,12 @@
 @forward '../variables';
-@use '../tools/functions' as *;
+@use '../tools';
 
 /**
  * Saas 系统现用主题
  **/
 
 $present: () !default;
-$present: map-deep-merge(
+$present: tools.map-deep-merge(
   (
     brand: (
       primary: #017FFF,

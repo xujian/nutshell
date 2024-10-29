@@ -1,7 +1,7 @@
-@use '../tools/functions' as *;
+@use '../tools';
 
 $fonts: () !default;
-$fonts: map-deep-merge(
+$fonts: tools.map-deep-merge(
   (
     root: 16px,
     auto: 0.75rem,          // 12px

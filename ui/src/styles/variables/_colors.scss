@@ -1,8 +1,8 @@
-@use '../tools/functions' as *;
+@use '../tools';
 
 // (1) Semantic Colors
 $base: () !default;
-$base: map-deep-merge(
+$base: tools.map-deep-merge(
   (
     name: 'base',
     brand: (

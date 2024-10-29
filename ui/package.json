@@ -15,13 +15,13 @@
   "typings": "dist/nutshell.d.ts",
   "sideEffects": [
     "*.scss",
-
     "*.css",
     "*.vue"
   ],
   "files": [
     "dist/",
-    "_variables.scss"
+    "_variables.scss",
+    "_styles.scss"
   ],
   "bin": {
     "svg-sprite": "./src/bin/svg-sprite.js"
@@ -31,7 +31,6 @@
     "./dist/*": "./dist/*",
     "./taro": "./dist/taro/index.js",
     "./api/components": "./dist/api/components.js",
-    "./styles": "./dist/styles.scss",
     "./nutshell.css": "./dist/nutshell.css",
     "./nutui.css": "./dist/nutui.css",
     "./antdv.css": "./dist/antdv.css",

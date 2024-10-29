@@ -1,14 +1,14 @@
 /**
  * Varibles about design system
  **/
-@use '../tools/functions' as *;
+@use '../tools';
 @use './spacing';
 
 $border-radius-root: 4px !default;
 // $border-color-root: map-get(colors.brand, 'stroke') !default;
 
 $borders: () !default;
-$borders: map-deep-merge(
+$borders: tools.map-deep-merge(
   (
     0: 0,
     none: thin,
@@ -22,7 +22,7 @@ $borders: map-deep-merge(
 );
 
 $rounded: () !default;
-$rounded: map-deep-merge(
+$rounded: tools.map-deep-merge(
   (
     0: 0,
     none: 0,

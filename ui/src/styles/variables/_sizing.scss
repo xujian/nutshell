@@ -1,11 +1,11 @@
-@use '../tools/functions' as *;
+@use '../tools';
 
 // 小型组件的尺寸控制
 // 图标、按钮、CHIP、输入框等等
 // xs, sm, md, lg, xl 五档
 
 $sizing: () !default;
-$sizing: map-deep-merge(
+$sizing: tools.map-deep-merge(
   (
     xs: 20,
     sm: 24,

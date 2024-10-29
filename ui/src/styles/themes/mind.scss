@@ -1,8 +1,8 @@
 @forward '../variables';
-@use '../tools/functions' as *;
+@use '../tools';
 
 $mind: () !default;
-$mind: map-deep-merge(
+$mind: tools.map-deep-merge(
   (
     brand: (
       primary: #135952,

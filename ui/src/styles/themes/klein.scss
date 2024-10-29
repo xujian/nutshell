@@ -1,12 +1,12 @@
 @forward '../variables';
-@use '../tools/functions' as *;
+@use '../tools';
 
 /**
  * 高饱和度(Klein blue theme)
  **/
 
 $klein: () !default;
-$klein: map-deep-merge(
+$klein: tools.map-deep-merge(
   (
     brand: (
       primary: #0014d4,

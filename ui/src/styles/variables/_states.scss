@@ -1,9 +1,9 @@
-@use '../tools/mixins' as *;
+@use '../tools';
 @use '../variables/colors';
 @use "sass:color";
 
 $states: () !default;
-$states: map-deep-merge(
+$states: tools.map-deep-merge(
   (
     hover: #ffffff88,
   ), $states
