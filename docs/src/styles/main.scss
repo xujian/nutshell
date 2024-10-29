@@ -1,6 +1,7 @@
-@import './reset.scss';
-@import './scrollbar.scss';
-@import './measure.scss';
+@use './reset.scss';
+@use './overrides.scss';
+@use './scrollbar.scss';
+@use './measure.scss';
 
 :root {
   color-scheme: dark light;
