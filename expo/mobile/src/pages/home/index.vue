@@ -38,7 +38,8 @@
         <ns-card class="entry flex-grow" fill="#000"
           foreground="#fff"
           stroke="#ffffff44"
-          :fluted="10">
+          :fluted="10"
+          v-link="'/pages/products/order'">
           <h3 class="b">产品进件</h3>
           <p class="caption">创建产品订单</p>
         </ns-card>
@@ -80,6 +81,7 @@
           </template>
         </ns-timeline>
       </ns-card>
+      <ns-button @click="onButtonClick">BUTTON</ns-button>
     </ns-page-content>
   </ns-page>
 </template>
@@ -115,6 +117,10 @@ const 获取消息 = async (page: number) => {
     })
   },
   { nextPage } = usePaging(获取消息)
+
+const onButtonClick = () => {
+  console.log('===onButtonClick', )
+}
 
 onMounted(() => {
   const { setTab } = useTabbar()

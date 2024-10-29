@@ -140,7 +140,7 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue'
 import Taro from '@tarojs/taro'
-import { Media } from '@uxda/nutshell'
+import { Media } from '@uxda/nutshell/taro'
 
 const yesNoItems = [
   { label: '是', value: 1 },

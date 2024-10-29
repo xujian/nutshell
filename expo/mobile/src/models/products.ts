@@ -1,4 +1,4 @@
-import { UniDataItem } from '@uxda/nutshell'
+import { UniDataItem } from '@uxda/nutshell/taro'
 
 export type Product = {
   id?: string,

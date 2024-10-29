@@ -30,7 +30,7 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { useNutshell, WithPaging } from '@uxda/nutshell'
+import { useNutshell, WithPaging } from '@uxda/nutshell/taro'
 import { endpoints, useHttp } from '../../api'
 import { Product } from '../../models'
 import Taro from '@tarojs/taro'

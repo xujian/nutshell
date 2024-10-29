@@ -26,10 +26,13 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue'
+import { usePlatform } from '@uxda/nutshell/taro'
 import { useTabbar } from '@uxda/appkit'
 
-const width = ref(375),
-  height = ref(196),
+const platform = usePlatform()
+
+const width = ref(platform.screen.width),
+  height = ref(200),
   d = computed(() => [
     `"M0 ${height.value - 20}`,
     `V0H${width.value}`,

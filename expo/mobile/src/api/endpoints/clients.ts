@@ -1,4 +1,4 @@
-import { HttpEndpointGroup } from '@uxda/nutshell'
+import { HttpEndpointGroup } from '@uxda/nutshell/taro'
 
 const mappings = {
   name: '姓名',

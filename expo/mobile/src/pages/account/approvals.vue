@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { WithPaging } from '@uxda/nutshell'
+import { WithPaging } from '@uxda/nutshell/taro'
 import { onMounted, ref } from 'vue'
 import { endpoints, useHttp } from '../../api'
 import ApprovalList from '../../components/ApprovalList.vue'

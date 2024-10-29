@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { UniDataItem } from '@uxda/nutshell'
+import { UniDataItem } from '@uxda/nutshell/taro'
 import { computed, PropType } from 'vue'
 
 const props = defineProps({

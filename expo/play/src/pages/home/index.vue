@@ -17,7 +17,7 @@
   </ns-page>
 </template>
 <script lang="ts" setup>
-import { ListItemProps } from '@uxda/nutshell'
+import { ListItemProps } from '@uxda/nutshell/taro'
 
 
 const groups: {title: string, data: ListItemProps[]}[] = [

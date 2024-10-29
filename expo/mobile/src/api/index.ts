@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { HttpRequestConfig, Paging, PagingParams, ResponseRaw, createHttp } from '@uxda/nutshell'
+import { HttpRequestConfig, Paging, PagingParams, ResponseRaw, createHttp } from '@uxda/nutshell/taro'
 import { translates, transforms } from './endpoints'
 // import { useAppKitOptions } from '../../Appkit'
 import clientConfig from './config'

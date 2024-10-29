@@ -46,7 +46,7 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { type WithPaging } from '@uxda/nutshell'
+import { type WithPaging } from '@uxda/nutshell/taro'
 import { endpoints, useHttp } from '../../api'
 import { type Client } from '../../models'
 import ClientList from '../../components/ClientList.vue'

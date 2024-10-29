@@ -1,4 +1,4 @@
-import { mergeEndpoints } from '@uxda/nutshell'
+import { mergeEndpoints } from '@uxda/nutshell/taro'
 
 import {
   endpoints as home,
