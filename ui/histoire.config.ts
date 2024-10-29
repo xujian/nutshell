@@ -11,6 +11,6 @@ export default defineConfig({
     },
   },
   viteNodeInlineDeps: [
-    '@nutui/nutui'
+    '@nutui/nutui-taro'
   ]
 })

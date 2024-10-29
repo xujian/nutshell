@@ -123,7 +123,7 @@ export default [
     output: [
       {
         format: 'es',
-        file: 'dist/nutshell.esm.js',
+        file: 'dist/nutshell.js',
         sourcemap: true,
         // banner,
         // exports: 'named',
@@ -211,7 +211,15 @@ export default [
         }
       }
     ],
-    external: ['vue', 'vue-router', '@nutui/nutui-taro']
+    external: [
+      'vue',
+      'vue-router',
+      '@nutui/nutui',
+      '@nutui/nutui-taro',
+      'ant-design-vue',
+      '@tarojs/taro',
+      'vxe-table',
+    ]
   },
   {
     input: 'src/index.ts',

@@ -6,8 +6,8 @@
     "name": "UXDA team"
   },
   "license": "MIT",
-  "main": "dist/nutshell.esm.js",
-  "module": "dist/nutshell.esm.js",
+  "main": "dist/nutshell.js",
+  "module": "dist/nutshell.js",
   "sass": "dist/styles/main.scss",
   "styles": "dist/nutshell.css",
   "moduleResolution": "node",
@@ -27,7 +27,7 @@
     "svg-sprite": "./src/bin/svg-sprite.js"
   },
   "exports": {
-    ".": "./dist/nutshell.esm.js",
+    ".": "./dist/nutshell.js",
     "./dist/*": "./dist/*",
     "./taro": "./dist/taro/index.js",
     "./api/components": "./dist/api/components.js",
