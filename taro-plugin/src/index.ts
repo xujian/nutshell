@@ -1,10 +1,14 @@
 import type { IPluginContext } from '@tarojs/service'
 import webpackChain from 'webpack-chain'
 
+export type PluginOptions = {
+  artifacts: boolean | string[]
+}
+
 /**
  * 编译过程扩展
  */
-export default (ctx: IPluginContext, options: any) => {
+export default (ctx: IPluginContext, options: PluginOptions) => {
   ctx.onBuildStart(() => {
     console.log('NUTSHELL-TARO-PLUGIN ===插件入参：', options)
     console.log('NUTSHELL-TARO-PLUGIN ===编译开始')
@@ -33,11 +37,11 @@ export default (ctx: IPluginContext, options: any) => {
 
   ctx.modifyBuildAssets(({ assets }) => {
     const wxss = assets['app.wxss']
-    if (options.artifacts) {
-      if (wxss && wxss._value) {
-        wxss._value = wxss._value + '@import "./artifacts.wxss";'
-      }
-    }
+    // if (options.artifacts) {
+    //   if (wxss && wxss._value) {
+    //     wxss._value = wxss._value + '@import "./artifacts.wxss";'
+    //   }
+    // }
     // console.log('NUTSHELL-TARO-PLUGIN ===修改编译后的结果', Object.keys(assets))
     // // 示例：修改html产物内容
     // const indexHtml = assets['index.html']

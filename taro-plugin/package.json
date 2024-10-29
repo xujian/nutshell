@@ -32,6 +32,6 @@
     "webpack-chain": "^6.5.1"
   },
   "devDependencies": {
-    "@types/node": "^22.7.3"
+    "@types/node": "^22.7.5"
   }
 }
