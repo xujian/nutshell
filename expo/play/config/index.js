@@ -3,6 +3,11 @@ import NutUIResolver from '@nutui/nutui-taro/dist/resolver'
 import path from 'path'
 
 /**
+ * @typedef { import("@uxda/taro-plugin").PluginOptions } PluginOptions
+ * @type {PluginOptions}
+ **/
+
+/**
  * 这是一个微信小程序应用
  * 使用自定义的 unplugin-vue-components resolver
  */
@@ -36,7 +41,10 @@ const config = {
   sourceRoot: 'src',
   outputRoot: outputRoots[process.env.TARO_ENV],
   plugins: [
-    '@tarojs/plugin-html'
+    '@tarojs/plugin-html',
+    ['@uxda/taro-plugin', {
+      artifacts: true
+    }]
   ],
   defineConstants: {
   },

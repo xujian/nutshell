@@ -1,7 +1,10 @@
 export default defineAppConfig({
   pages: [
     'pages/home/index',
+    'pages/components/page',
     'pages/components/button',
+    'pages/guide/dialog',
+    'pages/guide/scroll',
   ],
   // tabBar: {
   //   custom: true,
