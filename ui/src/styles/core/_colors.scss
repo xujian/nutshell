@@ -1,6 +1,7 @@
 @use '../tools/mixins' as *;
 @use '../variables/colors';
 @use 'sass:color';
+@use "sass:map";
 
 $alphas: (
   10: -0.1,
@@ -23,7 +24,7 @@ $alphas: (
   @include build-theme(colors.$base);
 }
 
-@each $name, $value in map-get(colors.$base, 'brand') {
+@each $name, $value in map.get(colors.$base, 'brand') {
   #{'.text-'}#{$name} {
     color: var(--ns-#{$name})
   }

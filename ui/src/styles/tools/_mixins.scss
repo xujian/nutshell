@@ -1,5 +1,6 @@
 @use './functions' as *;
 @use 'sass:color';
+@use "sass:map";
 
 $shades: (
   10: 10%,
@@ -39,7 +40,7 @@ $alphas: (
 
 @mixin build-theme ($theme) {
 
-  @each $name, $value in map-get($theme, 'brand') {
+  @each $name, $value in map.get($theme, 'brand') {
     #{'--ns-'}#{$name}: #{$value};
     // ALPHA 透明度
     @each $a, $v in $alphas {
@@ -55,31 +56,31 @@ $alphas: (
     }
   }
 
-  @each $name, $value in map-get($theme, 'layout') {
+  @each $name, $value in map.get($theme, 'layout') {
     #{'--ns-'}#{$name}: #{$value};
   }
 
-  @each $name, $value in map-get($theme, 'states') {
+  @each $name, $value in map.get($theme, 'states') {
     #{'--ns-'}#{$name}: #{$value};
   }
 
-  @each $name, $value in map-get($theme, 'abstract') {
+  @each $name, $value in map.get($theme, 'abstract') {
     #{'--ns-'}#{$name}: #{$value};
   }
 
-  @each $name, $value in map-get($theme, 'abstract') {
+  @each $name, $value in map.get($theme, 'abstract') {
     .fill-#{$name} {
       background-color: var(--ns-#{$name});
     }
   }
 
-  @each $name, $value in map-get($theme, 'brand') {
+  @each $name, $value in map.get($theme, 'brand') {
     .fill-#{$name} {
       --nut-button-default-color: var(--ns-#{$name}--text);
       --nut-button-default-bg-color: var(--ns-#{$name});
       --nut-button-default-border-color: var(--ns-#{$name});
       background-color: var(--ns-#{$name});
-      @if lightness($value) > 80 {
+      @if color.channel($value, 'lightness', $space: hsl) > 80 {
         color: var(--ns-text);
         #{'--ns-'}#{$name}#{'--text'}: var(--ns-text);
         #{'--ns-'}#{$name}#{'--hover'}: #00000044;
@@ -105,7 +106,7 @@ $alphas: (
         }
         &.active {
           background-color: var(--ns-#{$name});
-          @if lightness($value) > 80 {
+          @if color.channel($value, 'lightness', $space: hsl) > 80 {
             color: var(--ns-text)
           }
           @else {

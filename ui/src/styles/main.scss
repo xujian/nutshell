@@ -1,20 +1,12 @@
 
-@forward 'variables';
+@forward './variables';
 
-@import './core/colors.scss';
-@import './core/fonts.scss';
-@import './core/design.scss';
-@import './core/spacing.scss';
-@import './core/sizing.scss';
-@import './core/elevations.scss';
-@import './core/flex.scss';
-@import './core/helpers.scss';
-@import './design/variants.scss';
-@import './design/text.scss';
-@import './components.scss';
-@import './directives.scss';
-@import './themes.scss';
-@import './icons.scss';
-@import './animations.scss';
-@import './h5.scss';
-@import './3rd/index.scss';
+@use './core';
+@use './design';
+@use './components';
+@use './directives';
+@use './themes';
+@use './icons';
+@use './animations';
+@use './h5';
+@use './third';
