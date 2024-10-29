@@ -4,7 +4,6 @@ import { useDisplayProps, useModelValuePropsForArray, useModelValuePropsForStrin
 import { NsUpload } from './Upload'
 import Cropper from 'cropperjs'
 import { throttle } from 'lodash-es'
-import 'cropperjs/dist/cropper.css'
 import { NsButton } from '../button'
 import { Media } from '../../types'
 

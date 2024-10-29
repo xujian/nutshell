@@ -27,6 +27,7 @@ export type DialogOptions = {
   destroyOnClose?: boolean,
   classes?: string[],
   onComplete?: (result?: any) => boolean | undefined
+  onOk?: (result?: any) => boolean | undefined
   onCancel?: () => boolean | undefined
   centered?: boolean,
   fullScreen?: boolean,

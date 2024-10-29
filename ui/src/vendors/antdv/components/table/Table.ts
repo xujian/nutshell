@@ -1,18 +1,19 @@
-import { SetupContext, computed, h, VNode, ref, reactive, defineComponent, getCurrentInstance, useAttrs } from 'vue'
+import { SetupContext, computed, h, VNode, ref, reactive, defineComponent, getCurrentInstance } from 'vue'
 import { VxeTable, VxeColumn, VxeColumnProps, VxeColumnPropTypes, VxeTableEvents } from 'vxe-table'
-import type { VxeTablePropTypes } from 'vxe-table'
-import type { CustomColumnFunctionalRender, TableColumnData, TableProps,
-    CustomColumnSlots, TableColumnDefinition, TableColumnProps,
-    TableFilterQuery, TableColumnFilterSettings,
-    TableColumnEditableMode,
-    PaginationProps,
-  } from '../../../../components'
-import { NsPagination, isCustomColumnSlots, tableProps, NsTableColumnSelector,
-  tableEmits, NsInput, NsNumberInput, NsDateInput, NsSelect, NsMultipleSelect  } from '../../../../components'
-import columnCustomRenders from './columns'
-import { MarginProps, marginProps, pascalize } from '../../../../utils'
-import { useNutshell } from '../../../../framework'
 import { useRoute } from 'vue-router'
+import type { VxeTablePropTypes } from 'vxe-table'
+import type {
+  CustomColumnFunctionalRender, TableColumnData, TableProps,
+  CustomColumnSlots, TableColumnDefinition, TableColumnProps,
+  TableFilterQuery
+} from '../../../../components'
+import {
+  NsPagination, isCustomColumnSlots, tableProps, NsTableColumnSelector,
+  tableEmits, NsInput, NsNumberInput, NsDateInput, NsSelect, NsMultipleSelect
+} from '../../../../components'
+import columnCustomRenders from './columns'
+import { MarginProps, marginProps } from '../../../../utils'
+import { useNutshell } from '../../../../framework'
 import { Borders } from '../../../../props'
 
 type ColumnConfig = {

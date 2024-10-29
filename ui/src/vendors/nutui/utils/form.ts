@@ -5,11 +5,7 @@ import { useBus } from '../../../composables'
 import { FormItemRule } from '@nutui/nutui-taro/dist/types/__VUE/form/types'
 import { FormProps } from '../../../components'
 import { FormInstance } from '@nutui/nutui-taro'
-
-export type FormProvided = {
-  props: FormProps,
-  vendor: Ref<FormInstance | undefined>
-}
+import { FormProvided } from '../../../utils'
 
 export const NutuiFormSymbol: InjectionKey<FormProvided | undefined> = Symbol('nutui-form')
 

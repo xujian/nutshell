@@ -1,5 +1,4 @@
 import Viewer from 'viewerjs'
-import 'viewerjs/dist/viewer.min.css'
 import { onBeforeUnmount, onMounted, Ref } from 'vue'
 
 

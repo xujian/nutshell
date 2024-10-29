@@ -1,10 +1,11 @@
 import { h, nextTick, ref } from 'vue'
 import { InputNumber as AntInputNumber } from 'ant-design-vue'
 import { defineComponent } from 'vue'
-import { numberInputProps, inputEmits } from '../../../../components/input'
+import { numberInputProps, numberInputEmits } from '../../../../components/input'
 import { marginProps } from '../../../../utils/private/helpers'
 import { amountFormatter, amountParser, amountChinese } from '../../../../composables/amount'
 import { renderFormItem } from '../../utils'
+import { useForm } from '../../utils'
 
 /**
  * Antdv InputNumber
@@ -15,7 +16,7 @@ export const NumberInput = defineComponent({
     ...numberInputProps,
     ...marginProps
   },
-  emits: inputEmits,
+  emits: numberInputEmits,
   setup: (props, { emit, slots }) => {
     const form = useForm(),
       inputNumberRef = ref()

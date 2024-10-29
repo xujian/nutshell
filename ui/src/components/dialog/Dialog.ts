@@ -1,4 +1,4 @@
-import { ObjectEmitsOptions, PropType, SlotsType } from 'vue'
+import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDesignProps, useDimensionProps, useModelValuePropsForBoolean, usePopupProps } from '../../props'
 import { Color } from '../../composables/theme'
