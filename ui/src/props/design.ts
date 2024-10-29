@@ -140,6 +140,9 @@ const designProps = {
   dark: {
     type: Boolean,
   },
+  clip: {
+    type: String,
+  },
   /**
    * 用来识别属性里包含 Design Props
    */
