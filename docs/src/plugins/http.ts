@@ -1,7 +1,7 @@
 import { inject, type App, type InjectionKey } from 'vue'
 import { createHttp } from '@uxda/nutshell'
 import type { HttpInstance, HttpRequestConfig, ResponseRaw } from '@uxda/nutshell'
-import axios from 'axios'
+import axios, { type Method } from 'axios'
 
 /**
  * 用于 inject 的 symbol
@@ -17,7 +17,7 @@ const vendor = {
   async request <T>(config: HttpRequestConfig) {
     return axios.request({
       url: config.url,
-      method: config.method,
+      method: config.method as Method,
       baseURL: config.baseUrl,
       headers: config.headers,
       data: config.data,

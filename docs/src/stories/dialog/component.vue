@@ -8,12 +8,12 @@
 
 <script lang="ts" setup>
 import { defineComponent, getCurrentInstance, h, reactive, ref } from 'vue'
-import { useNutshell, NsInput, NsForm, type DialogChildComponent } from '@uxda/nutshell'
+import { useNutshell, NsInput, NsForm, type PopupChildComponent } from '@uxda/nutshell'
 
 const $n = useNutshell()
 
 // 以下模拟一个 Vue 组件
-const ExcampleComponent: DialogChildComponent = defineComponent({
+const ExcampleComponent: PopupChildComponent = defineComponent({
   name: 'ExamplecComponent',
   props: {
     label: {
