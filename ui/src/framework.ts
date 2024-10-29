@@ -1,6 +1,5 @@
 import { App, Component, InjectionKey, inject } from 'vue'
 import Toast from 'vue-toastification'
-import 'vue-toastification/dist/index.css'
 import { createTheme } from './composables/theme'
 import { VendorSymbol } from './shared/symbols'
 import { createVendor, prepareVendor } from './shared/vendor'

@@ -1,4 +1,6 @@
- module.exports = {
+const pack = require('./package.json')
+
+module.exports = {
   assumptions: {
     noDocumentAll: true
   },
@@ -10,16 +12,10 @@
     '@babel/preset-typescript',
   ],
   plugins: [
-    // ['@vue/babel-plugin-jsx', { optimize: false, enableObjectSlots: false }],
-    // ['transform-define', {
-    //   __VERSION__: '1.0.50',
-    // }],
-    // ['module-resolver', {
-    //   root: ['.'],
-    //   alias: {
-    //     '@': './src',
-    //   },
-    // }],
+    ['transform-define', {
+      __VERSION__: pack.version,
+      __REQUIRED_VUE__: pack.peerDependencies.vue,
+    }],
   ],
   env: {
     test: {
@@ -34,10 +30,6 @@
       ignore: ['**/__tests__'],
       plugins: [
         ['babel-plugin-add-import-extension', { extension: 'mjs' }],
-        // ['./build/babel-plugin-replace-import-extension', { extMapping: {
-        //   '.sass': '.css',
-        //   '.scss': '.css',
-        // }}],
       ],
     },
   },

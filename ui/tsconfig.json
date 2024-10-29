@@ -6,7 +6,6 @@
     "noFallthroughCasesInSwitch": true,
     "declaration": true, //automatically generate declaration files
     "declarationDir": "dist",
-    "moduleResolution": "node",
     "outDir": "dist",
     "removeComments": false,
     "strict": true,

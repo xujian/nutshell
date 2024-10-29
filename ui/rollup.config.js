@@ -1,13 +1,15 @@
-import dts from 'rollup-plugin-dts'
-import vueJsx from 'rollup-plugin-vue-jsx-compat'
-import esbuild from 'rollup-plugin-esbuild'
+import path from 'upath'
+import { fileURLToPath } from 'url'
 import AutoImport from 'unplugin-auto-import/rollup'
 import copy from 'rollup-plugin-copy'
 import scss from 'rollup-plugin-scss'
+import commonjs from '@rollup/plugin-commonjs'
 import postcss from 'rollup-plugin-postcss'
 import { resolve } from 'path'
-import json from './rollup/plugin-json.js'
 import vue from 'rollup-plugin-vue'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import { babel } from '@rollup/plugin-babel'
+import packageJson from '../package.json' with { type: 'json' }
 // import alias from '@rollup/plugin-alias'
 // import NutUIResolver from '@nutui/nutui/dist/resolver'
 // import path from 'path'
@@ -15,6 +17,12 @@ import vue from 'rollup-plugin-vue'
 // const __filename = fileURLToPath(import.meta.url),
 //   __dirname = path.dirname(__filename),
 //   __root = path.resolve(__dirname)
+
+const banner = `/*!
+* @uxda/nutshell v${packageJson.version}
+* Forged by UXDA team
+* Released under the MIT License.
+*/\n`
 
 const nutRegex = /^Nut[A-Z].*$/
 const nutTypeRegex = /^Nut[\w]+Type$/
@@ -78,7 +86,7 @@ const TaroHookResolver = (name) => {
   if (taroComponents.includes(name)) {
     return {
       name: name,
-      from: '@tarojs/components',
+      from: '@tarojs/taro',
     }
   }
 }
@@ -86,14 +94,16 @@ const TaroHookResolver = (name) => {
 // 返回一个假的Taro
 // 避免 Desktop/H5 引入整个Taro包
 // 见 vendors/nutui/service/toast.ts
-const PsuedoTaroResolver = (name) => {
-  if (name === 'Taro') {
-    return {
-      name: 'Taro',
-      from: '@uxda/nutshell',
-    }
-  }
-}
+// const PsuedoTaroResolver = (name) => {
+//   if (name === 'Taro') {
+//     return {
+//       name: 'Taro',
+//       from: {
+//         path: './src/index.ts',
+//       }
+//     }
+//   }
+// }
 
 const NutTaroResolver = (name) => {
   if (nutRegex.test(name)) {
@@ -104,23 +114,55 @@ const NutTaroResolver = (name) => {
   }
 }
 
+const extensions = ['.ts', '.js', '.mjs'],
+  root = path.resolve(fileURLToPath(import.meta.url), '../..')
+
 export default [
   {
     input: 'src/index.ts',
     output: [
       {
         format: 'es',
-        // file: 'dist/nutshell.js',
-        exports: 'named',
-        dir: 'dist'
+        file: 'dist/nutshell.esm.js',
+        sourcemap: true,
+        // banner,
+        // exports: 'named',
+        // dir: 'dist'
+        inlineDynamicImports: true,
       },
+      // {
+      //   file: 'dist/nutshell.js',
+      //   name: 'Nutshell',
+      //   format: 'umd',
+      //   globals: { vue: 'Vue' },
+      //   sourcemap: true,
+      //   banner,
+      // },
+      // {
+      //   file: 'dist/nutshell.min.js',
+      //   name: 'Vuetify',
+      //   format: 'umd',
+      //   globals: { vue: 'Vue' },
+      //   plugins: [terser({
+      //     format: { comments: /^!/, ecma: 2015, semicolons: false },
+      //   })],
+      //   sourcemap: true,
+      //   banner,
+      // },
     ],
     plugins: [
+      commonjs(),
+      nodeResolve({ extensions }),
+      babel({
+        extensions,
+        babelHelpers: 'inline',
+      }),
       AutoImport({
         dirs: [
           'src/vendors/nutui/**',
         ],
         dts: 'src/auto-imports.d.ts',
+        defaultExportByFilename: true,
         include: [
           /\.ts$/,
         ],
@@ -130,8 +172,16 @@ export default [
         resolvers: [
           NutResolver,
           // NutTypeResolver,
-          PsuedoTaroResolver
+          // PsuedoTaroResolver
         ]
+      }),
+      scss({
+        output (styles, styleNodes) {
+          console.log('===///===///===///===///===///===///styles', styleNodes)
+          // for (const {id, content} of styleNodes) {
+          //   console.log('===///===///===///===///===///===///styles', id)
+          // }
+        }
       }),
       copy({
         targets: [
@@ -146,31 +196,50 @@ export default [
         ]
       }),
       vue(),
-      vueJsx(),
-      esbuild({
-        jsx: 'transform', // default, or 'preserve'
-        jsxFactory: 'vueJsxCompat',
-      }),
-      json(),
+      // vueJsx(),
+      // json(),
+      {
+        async buildEnd () {
+          const id = (await this.resolve('src/components/index.ts')).id
+          console.log('========================================================== ROLLUP BUILD END', id)
+          { // Components
+            // const { importedIds } = this.getModuleInfo(
+            //   (await this.resolve('src/components/index.ts')).id
+            // )
+            // console.log(importedIds)
+          }
+        }
+      }
     ],
-    external: ['vue']
+    external: ['vue', 'vue-router', '@nutui/nutui-taro']
   },
   {
     input: 'src/index.ts',
     output: [
       {
         format: 'es',
-        // file: 'dist/taro/nutshell.js',
-        dir: 'dist/taro'
+        // file: 'dist/taro/nutshell.esm.js',
+        sourcemap: true,
+        // banner,
+        exports: 'named',
+        dir: 'dist/taro',
+        // inlineDynamicImports: true,
       },
     ],
     plugins: [
+      commonjs(),
+      nodeResolve({ extensions }),
+      babel({
+        extensions,
+        babelHelpers: 'inline',
+      }),
       AutoImport({
         dirs: [
           'src/composables/',
           'src/composables/**',
           'src/vendors/nutui/**',
         ],
+        defaultExportByFilename: true,
         imports: [{
           '@tarojs/taro': [
             ['default', 'Taro']
@@ -189,33 +258,36 @@ export default [
           TaroHookResolver,
         ]
       }),
-      vue(),
-      vueJsx(),
-      esbuild({
-        jsx: 'transform', // default, or 'preserve'
-        jsxFactory: 'vueJsxCompat',
+      scss({
+        output (styles, styleNodes) {
+          console.log('===///===///===///===///===///===///styles', styleNodes)
+          // for (const {id, content} of styleNodes) {
+          //   console.log('===///===///===///===///===///===///styles', id)
+          // }
+        }
       }),
+      vue(),
     ],
-    external: ['vue']
+    external: ['vue', '@nutui/nutui-taro', '@tarojs/taro']
   },
-  {
-    input: './dist/index.d.ts',
-    output: {
-      file: 'dist/nutshell.d.ts',
-      exports: 'named',
-      format: 'es',
-    },
-    plugins: [dts()]
-  },
-  {
-    input: './dist/index.d.ts',
-    output: {
-      file: 'dist/taro/nutshell.d.ts',
-      exports: 'named',
-      format: 'es',
-    },
-    plugins: [dts()]
-  },
+  // {
+  //   input: './dist/index.d.ts',
+  //   output: {
+  //     file: 'dist/nutshell.d.ts',
+  //     exports: 'named',
+  //     format: 'es',
+  //   },
+  //   plugins: [dts()]
+  // },
+  // {
+  //   input: './dist/index.d.ts',
+  //   output: {
+  //     file: 'dist/taro/nutshell.d.ts',
+  //     exports: 'named',
+  //     format: 'es',
+  //   },
+  //   plugins: [dts()]
+  // },
   {
     input: './src/styles/main.scss',
     output: {
