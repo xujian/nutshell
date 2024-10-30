@@ -186,10 +186,6 @@ export default [
       copy({
         targets: [
           {
-            src: 'src/styles/**',
-            dest: 'dist/styles'
-          },
-          {
             src: 'components.d.ts',
             dest: 'dist/api/'
           }

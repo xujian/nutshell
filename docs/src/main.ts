@@ -6,6 +6,7 @@ import App from './App.vue'
 import router from './router'
 import { Nutshell } from '@uxda/nutshell'
 import plugins from './plugins'
+import '@nutui/nutui/dist/style.css';
 import '@uxda/icons/font.css'
 import './styles/main.scss'
 

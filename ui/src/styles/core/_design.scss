@@ -49,10 +49,10 @@
 }
 
 :root, page {
-  --ns-border-radius: 8px;
   @each $name, $value in design.$rounded {
     #{'--ns-border-radius-'}#{$name}: #{$value};
   }
+  --ns-border-radius: var(--ns-border-radius-md);
   --ns-border-radius-input: var(--ns-border-radius-sm);
 }
 

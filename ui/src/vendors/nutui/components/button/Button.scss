@@ -1,10 +1,10 @@
 .ns-button {
   padding-inline: 1em;
   padding-block: 0;
+  --icon-size: 12px;
   --padding-for-icon: calc(var(--icon-size) + 4px + 4px);
   &.nut-button {
     width: fit-content;
-    --icon-size: 12px;
     line-height: 1em;
     &:not(.full-width) {
       // width: auto;

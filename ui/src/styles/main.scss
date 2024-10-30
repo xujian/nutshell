@@ -2,10 +2,10 @@
 @forward './variables';
 
 @use './core';
-@use './design';
 @use './components';
 @use './directives';
 @use './themes';
+@use './design';
 @use './icons';
 @use './animations';
 @use './h5';

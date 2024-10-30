@@ -2,6 +2,7 @@
   <div class="page glassmorphism-page">
     <h1 class="mt-lg">Glassmorphism</h1>
     <p class="caption">磨砂玻璃效果</p>
+    <p>&nbsp;</p>
     <story file="design/play" />
   </div>
 </template>

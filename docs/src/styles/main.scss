@@ -1,10 +1,16 @@
 @use './reset.scss';
-@use './overrides.scss';
 @use './scrollbar.scss';
 @use './measure.scss';
+// 使用 SCSS variables
+// 下面的写法可覆盖 Nutshell 原始的 SCSS 变量
+@use './overrides.scss';
+@use '@uxda/nutshell/styles';
 @use '@uxda/nutshell/styles-nutui';
 @use '@uxda/nutshell/styles-antdv';
-@use '@uxda/nutshell/styles';
+// 下面使用组件库固定的 CSS
+// @use '@uxda/nutshell/dist/nutshell.css';
+// @use '@uxda/nutshell/dist/nutui.css';
+// @use '@uxda/nutshell/dist/antdv.css';
 
 :root {
   color-scheme: dark light;

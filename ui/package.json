@@ -21,7 +21,9 @@
   "files": [
     "dist/",
     "_variables.scss",
-    "_styles.scss"
+    "_styles.scss",
+    "_styles-nutui.scss",
+    "_styles-antdv.scss"
   ],
   "bin": {
     "svg-sprite": "./src/bin/svg-sprite.js"
@@ -42,7 +44,7 @@
     "dev": "rollup -c rollup.config.js --watch",
     "dev:serve": "concurrently \"rollup -c rollup.config.js --watch\" \"node ./server.js\"",
     "start": "rollup -c rollup.config.js --watch",
-    "build": "rimraf dist && yarn build:lib && yarn build:types && yarn build:dist",
+    "build": "rimraf dist && yarn build:lib && yarn build:dist && yarn build:types",
     "build:dist": "rollup --config rollup.config.js",
     "build:types": "tsc --pretty --emitDeclarationOnly",
     "build:lib": "NODE_ENV=lib babel src --out-dir dist --source-maps --extensions \".ts\" --copy-files --no-copy-ignored --out-file-extension .mjs",
