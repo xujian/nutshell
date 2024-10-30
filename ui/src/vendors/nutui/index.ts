@@ -9,7 +9,6 @@ import type { ToastOptions, NoticeOptions, LoadingOptions, DrawerOptions, SheetO
 import { NutshellSymbol, PreviewMediaParam } from '../../framework'
 import { Media } from '../../types'
 import { NsPreview } from '../../components/preview'
-import '@nutui/nutui/dist/style.css'
 
 const makeDummy = (name: string) => {
   return () => dummy(name.toUpperCase())

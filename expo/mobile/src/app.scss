@@ -1,8 +1,4 @@
-@import url(./styles/variables.scss);
-@import url(./styles/page.scss);
-::-webkit-scrollbar {
-  display: none;
-  width:0;
-  height:0;
-  color:transparent;
-}
+@use './styles/variables.scss';
+@use '@uxda/nutshell/styles';
+@use '@uxda/nutshell/styles-nutui';
+@use './styles/page.scss';

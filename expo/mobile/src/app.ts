@@ -1,13 +1,12 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { Nutshell } from '@uxda/nutshell/taro'
-import '@uxda/nutshell/nutui.css'
-import '@uxda/nutshell/nutshell.css'
+import '@nutui/nutui/dist/style.css';
+import './app.scss'
 import AppKit from '@uxda/appkit'
 import '@uxda/appkit/appkit.css'
 import '@uxda/icons/sprite.css'
 import Taro from '@tarojs/taro'
-import './app.scss'
 
 const App = createApp({
   onShow() {},
