@@ -23,6 +23,7 @@ const antdvVendor: CoreVendor = {
   render (props: any, ctx) {
     const { parent } = getCurrentInstance() as any
     const name = parent.type.name.slice(2) as keyof typeof components
+    console.log('----------', name)
     let component = components[name] as FunctionalComponent
     if (!component) {
       if (this.fallback) {

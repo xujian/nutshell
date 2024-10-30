@@ -1,0 +1,51 @@
+.ns-page {
+  min-height: 100vh;
+  width: var(--width);
+  &.scrollable {
+    height: 100vh;
+  }
+  .h1 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 1em 0;
+  }
+  .page-content {
+    padding: var(--ns-spacing);
+    padding-bottom: var(--bottom);
+    // top: calc(var(--status) + var(--nav));
+    box-sizing: border-box;
+    flex-grow: 1;
+    &.scrollable {
+      padding: 0;
+    }
+  }
+  &.content-scrollable {
+    height: 100vh;
+    .page-content {
+      height: calc(100vh - var(--header));
+      flex-grow: 1;
+    }
+  }
+  .page-content-scroll-view {
+    // top: calc(var(--status) + var(--nav));
+    // height: calc(100vh - var(--status) - var(--nav));
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .page-content-scroll-content {
+    padding: var(--ns-spacing);
+  }
+  &.has-header {
+  }
+  &.has-footer {
+  }
+  .page-footer {
+  }
+  .page-title {
+  }
+}
