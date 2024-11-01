@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { colors, sizes, variants } from '../../props'
+import { colors, sizes, variants } from '@uxda/nutshell'
 
 </script>
 

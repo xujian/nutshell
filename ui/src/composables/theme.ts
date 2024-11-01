@@ -6,7 +6,7 @@ export type ThemeOptions = false | {
 
 const DEFAULT_THEME = 'present'
 
-export const BRANDS = [
+export const brands = [
   'primary',
   'secondary',
   'neutral',
@@ -23,8 +23,8 @@ export const ESSENTIALS = [
   'stroke'
 ] as const
 
-export type BrandColor = typeof BRANDS[number]
-export type EssentialColor = typeof BRANDS[number]
+export type BrandColor = typeof brands[number]
+export type EssentialColor = typeof brands[number]
 
 export type HexColor = `#${string}`
 export type RgbColor = `rgb(${string})`
@@ -65,7 +65,7 @@ export function useTheme () {
 
 export function isBrand (color?: Color) {
   if (!color) return false
-  const result = BRANDS.includes(color as BrandColor)
+  const result = brands.includes(color as BrandColor)
   return result
 }
 
@@ -75,7 +75,7 @@ export function isGradient (color?: Color) {
 }
 
 export function makeColor (color: Color): string {
-  return BRANDS.includes(color as typeof BRANDS[number]) ||
+  return brands.includes(color as typeof brands[number]) ||
     ESSENTIALS.includes(color as typeof ESSENTIALS[number])
       ? `var(--ns-${color})`
       : color as string

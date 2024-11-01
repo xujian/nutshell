@@ -19,6 +19,7 @@ export type {
 } from './theme'
 
 export {
+  brands,
   useTheme,
 } from './theme'
 

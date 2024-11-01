@@ -31,7 +31,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { colors, sizes, variants } from '../../props'
+import { colors, sizes, variants } from '@uxda/nutshell'
 
 const label = '受限用户',
   checked = ref(false)

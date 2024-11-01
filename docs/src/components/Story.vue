@@ -83,7 +83,7 @@ onMounted(importStory)
     align-items: stretch;
     justify-content: center;
     .card-body {
-      padding: calc(var(--ns-spacing) / 2);
+      padding: calc(var(--ns-spacing) / 2) 0;
     }
     .card-footer {
       // border-top: 1px solid var(--ns-stroke);

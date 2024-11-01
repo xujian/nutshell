@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Size } from '../../props'
+import type { Size } from '@uxda/nutshell'
 import { reactive, ref } from 'vue'
 
 const state = reactive({

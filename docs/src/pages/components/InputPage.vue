@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import { colors, variants } from '../../props'
+import { colors, variants } from '@uxda/nutshell'
 
 </script>
 

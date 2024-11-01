@@ -1,8 +1,11 @@
 import { buildProps } from '../utils/private/props'
 import { PropType } from 'vue'
 
-export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-// extra-small, small, medium, large, extra-large
+export const sizes = [
+  'xs', 'sm', 'md', 'lg', 'xl'
+] as const
+
+export type Size = typeof sizes[number]
 
 export const useSizeProps = buildProps({
   size: {

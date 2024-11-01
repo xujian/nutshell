@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { variants } from '../../props'
+import { variants } from '@uxda/nutshell'
 
 const rating = ref(0)
 </script>

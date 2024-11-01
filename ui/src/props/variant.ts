@@ -2,26 +2,15 @@ import { MakePropsType } from '../utils'
 import { buildProps } from '../utils/private/props'
 import { PropType } from 'vue'
 
+
+export const variants: string[] = [
+  'solid', 'outlined', 'soft', 'plain'
+] as const
+
 /**
  * 组件的内置样式风格
  */
-export type Variant =
-  /**
-   * 简洁风格
-   */
-  'plain' |
-  /**
-   * 外框
-   */
-  'outlined' |
-  /**
-   * 柔和色彩风格
-   */
-  'soft' |
-  /**
-   * 填色风格
-   */
-  'solid'
+export type Variant = typeof variants[number]
 
 export const variantProps = {
     variant: {

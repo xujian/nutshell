@@ -32,7 +32,7 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import { variants } from '../../props'
+import { variants } from '@uxda/nutshell'
 
 const value = ref('')
 const multipleValue = ref([])
