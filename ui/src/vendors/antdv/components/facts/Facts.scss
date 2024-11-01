@@ -3,17 +3,33 @@
     overflow: hidden;
     .ant-descriptions-view {
       overflow: hidden;
+      border-radius: 0;
     }
     .ant-descriptions-item-label {
       background-color: var(--ns-surface);
-      padding: .5em;
+      padding: var(--ns-spacing);
       color: var(--ns-text);
     }
     .ant-descriptions-item-content {
-      padding: .5em;
+      padding: var(--ns-spacing);
       background-color: var(--ns-fill);
       color: var(--ns-text);
       font-size: var(--ns-font-xs);
+    }
+  }
+  &.horizontal {
+    .ant-descriptions-item-label {
+      width: 25%;
+    }
+    .ant-descriptions-item-content {
+    }
+  }
+  &.vertical {
+    .ant-descriptions-item-label {
+      text-align: center;
+    }
+    .ant-descriptions-item-content {
+      text-align: center;
     }
   }
 }

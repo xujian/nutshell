@@ -11,6 +11,18 @@ export const factsProps = {
   items: {
     type: Array as PropType<FactsItem[]>,
   },
+  /**
+   * 纵向
+   */
+  vertical: {
+    type: Boolean,
+  },
+  /**
+   * 横排列数
+   */
+  columns: {
+    type: Number,
+  },
   ...useFlexProps(),
 }
 
@@ -22,6 +34,7 @@ const factsEmits: FactsEmits = {
 
 export type FactsSlots = {
   default: never,
+  item: never
 }
 
 export type FactsProps = MakePropsType<typeof factsProps, FactsEmits>

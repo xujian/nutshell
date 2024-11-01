@@ -8,18 +8,37 @@ export const Facts = (props: FactsProps & MarginProps, ctx: SetupContext) => {
   const items = props.items || []
 
   const slots = items.length !== 0
-    ? items.map(item => h(DescriptionsItem, {
-        label: item.label,
-        span: item.span ?? 1,
-      }, () => item.value))
+    ? () => items.map(item => h(DescriptionsItem, {
+          label: item.label,
+          span: item.span ?? 1,
+        }, () => ctx.slots.item
+          ? ctx.slots.item(item)
+          : item.value
+        )
+      )
     : ctx.slots
+  const count = items.length || 3
+  console.log('===props.columns', props.columns)
 
   return h(Descriptions, {
     class: [
-      'ns-facts'
+      'ns-facts',
+      ...props.vertical ? ['vertical'] : ['horizontal']
     ],
     bordered: true,
-    // 纵向排列
-    column: props.direction === 'column' ? 1 : 3
+    layout: props.vertical === true
+      ? 'vertical'
+      : 'horizontal',
+    column: props.columns
+      || (props.vertical === true
+        ? {
+          xxl: count,
+          xl: count,
+          lg: count,
+          md: count,
+          sm: 1,
+          xs: 1
+        }
+        : props.direction === 'column' ? 1 : 3)
   }, slots)
 }
