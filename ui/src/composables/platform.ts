@@ -15,11 +15,13 @@ export interface PlatformInstance {
   edge: boolean,
   win: boolean,
   mac: boolean,
+  desktop: boolean,
   touch: boolean,
   weixin?: boolean,
   dingding?: boolean,
   screen: Screen
 }
+
 
 function getPlatform (): PlatformInstance {
   if (window && !('WeixinJSBridge' in window)) {
@@ -33,6 +35,7 @@ function getPlatform (): PlatformInstance {
     const win = match(/win/i)
     const mac = match(/mac/i)
     const weixin = match(/MQQBrowser/i)
+    console.log('===getPlatform', ua)
     return {
       android,
       ios,
@@ -40,6 +43,7 @@ function getPlatform (): PlatformInstance {
       edge,
       win,
       mac,
+      desktop: win || mac,
       weixin,
       touch: 'ontouchstart' in window,
       screen: {
@@ -56,6 +60,7 @@ function getPlatform (): PlatformInstance {
       edge: false,
       win: false,
       mac: false,
+      desktop: false,
       touch: false,
       weixin: true,
       screen: {
@@ -75,7 +80,7 @@ export const PlatformSymbol: InjectionKey<PlatformInstance>
   = Symbol.for('nutshell:platform')
 
 
-export function usePlatform () {
+export function usePlatform (): PlatformInstance {
   const platform = inject(PlatformSymbol)
-  return platform
+  return platform!
 }

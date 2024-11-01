@@ -1,3 +1,4 @@
+import { usePlatform } from './platform'
 /**
  * 屏幕安全区域
  */
@@ -41,6 +42,14 @@ const models: Record<PhoneModel, SafeArea> = {
  * @returns
  */
 export function useSafeArea (model?: PhoneModel): SafeArea {
+  const platform = usePlatform()
+  if (platform.desktop) {
+    return {
+      status: 0,
+      nav: 0,
+      bottom: 0
+    }
+  }
   const m = model || 'iphone-14'
   const env = Taro.getEnv() as string
   if (env !== 'WEAPP') {
