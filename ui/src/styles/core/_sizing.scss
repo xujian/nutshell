@@ -1,11 +1,12 @@
 @use '../variables/sizing' as *;
 
-@each $name, $value in $sizing {
-  #{'.font-size-'}#{$name} {
-    font-size: var(--ns-font-#{$name});
-  }
-}
+
 :root, page {
+  @each $name, $value in $sizing {
+    #{'.font-size-'}#{$name} {
+      font-size: var(--ns-font-#{$name});
+    }
+  }
   @each $name, $value in $sizing {
     #{'--ns-size-'}#{$name}: #{$value}px;
   }
@@ -14,6 +15,7 @@
       --h: #{$value};
       --icon-size: calc(var(--ns-size-#{$name}) - 8px);
       height: var(--ns-size-#{$name});
+      padding-inline: calc(var(--ns-size-#{$name}) - 8px);
     }
   }
 }
