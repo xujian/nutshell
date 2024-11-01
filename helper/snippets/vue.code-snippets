@@ -1,0 +1,11 @@
+{
+  "defineSlots": {
+    "prefix": "slots",
+    "body": [
+      "const slots = defineSlots<{",
+      " default(props: { msg: string }): any",
+      "}>()"
+    ],
+    "description": ""
+  }
+}
