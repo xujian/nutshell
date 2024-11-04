@@ -11,6 +11,9 @@
   <h2>使用 ns-facts-item</h2>
   <p>&nbsp;</p>
   <story file="facts/items.vue" />
+  <h2>Variants</h2>
+  <p>&nbsp;</p>
+  <story file="facts/variants.vue" />
 </template>
 
 <script lang="ts" setup>

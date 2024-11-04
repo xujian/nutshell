@@ -23,7 +23,8 @@ export const Facts = (props: FactsProps & MarginProps, ctx: SetupContext) => {
   return h(Descriptions, {
     class: [
       'ns-facts',
-      ...props.vertical ? ['vertical'] : ['horizontal']
+      ...props.vertical ? ['vertical'] : ['horizontal'],
+      `direction-${props.direction || 'row'}`
     ],
     bordered: true,
     layout: props.vertical === true

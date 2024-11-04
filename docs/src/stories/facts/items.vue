@@ -23,7 +23,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { NsFacts, NsFactsItem, NsNumber } from '@uxda/nutshell'
 
 const accountInfo = ref({
   账户类型: '监管户',
