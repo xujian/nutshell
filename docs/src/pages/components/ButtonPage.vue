@@ -8,28 +8,28 @@
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <h2 class="my-md">Size</h2>
-      <size-samples v-slot="{size}" vertical>
+      <size-cases v-slot="{size}" vertical>
         <ns-button color="primary"
           class="with-measure measure-height"
           :size label="确定" />
-      </size-samples>
+      </size-cases>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <h2 class="my-md">Color</h2>
-      <color-samples v-slot="{color}" vertical>
+      <color-cases v-slot="{color}" vertical>
         <ns-button
           :color="color"
           label="确定" />
-      </color-samples>
+      </color-cases>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <h2 class="my-md">Variants</h2>
-      <variant-samples v-slot="{variant}">
+      <variant-cases v-slot="{variant}">
         <ns-button v-for="(color) in brands" class="my-xs"
           :key="color"
           :color="color"
           :variant="variant" label="创建订单"></ns-button>
-      </variant-samples>
+      </variant-cases>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <h2 class="my-md">形状</h2>

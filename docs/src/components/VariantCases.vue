@@ -1,6 +1,6 @@
 <template>
   <ns-facts
-    class="variant-samples"
+    class="variant-cases"
     direction="column"
     :vertical="vertical"
     :columns="1">
@@ -32,7 +32,7 @@ const slots = defineSlots<{
 </script>
 
 <style lang="scss">
-.variant-samples {
+.variant-cases {
   &.ns-facts {
     .ant-descriptions-item-label {
       width: 100px;

@@ -1,19 +1,19 @@
 <template>
   <ns-facts
-    class="size-samples"
+    class="color-cases"
     direction="column"
     :vertical="vertical"
-    :columns="5">
-    <ns-facts-item v-for="size in sizes"
-      :key="size"
-      :label="`size=${size}`">
-      <slot :size="size"></slot>
+    :columns="7">
+    <ns-facts-item v-for="color in brands"
+      :key="color"
+      :label="`color=${color}`">
+      <slot :color="color"></slot>
     </ns-facts-item>
   </ns-facts>
 </template>
 
 <script lang="ts" setup>
-import { sizes } from '@uxda/nutshell'
+import { brands } from '@uxda/nutshell'
 
 defineProps({
   vertical: {
