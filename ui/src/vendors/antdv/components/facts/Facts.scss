@@ -1,34 +1,71 @@
 .ns-facts {
   &.ant-descriptions {
+    --fill: initial;
     overflow: hidden;
+    border-color: transparent;
     .ant-descriptions-view {
+      width: auto;
+      max-width: 100%;
       overflow: hidden;
       border-radius: 0;
+      table {
+        width: auto;
+        max-width: 100%;
+        table-layout: fixed;
+      }
     }
     .ant-descriptions-item-label {
-      background-color: var(--ns-surface);
+      min-width: 160px;
+      background-color: var(--fill, var(--ns-surface));
       padding: var(--ns-spacing);
       color: var(--ns-text);
     }
     .ant-descriptions-item-content {
+      min-width: 160px;
       padding: var(--ns-spacing);
-      background-color: var(--ns-fill);
+      background-color: var(--fill, var(--ns-fill));
       color: var(--ns-text);
-      font-size: var(--ns-font-xs);
+    }
+  }
+  &:not(.variant-outlined) {
+    .ant-descriptions-view {
+      border-color: transparent;
+    }
+    .ant-descriptions-item-label, .ant-descriptions-item-content {
+      border-color: transparent;
     }
   }
   &.horizontal {
     .ant-descriptions-item-label {
+      width: 25%;
     }
     .ant-descriptions-item-content {
+      width: 25%;
     }
   }
   &.vertical {
     .ant-descriptions-item-label {
       text-align: center;
+      + .ant-descriptions-item-label {
+        border-inline-start: 1.5px solid var(--ns-stroke);
+      }
     }
     .ant-descriptions-item-content {
       text-align: center;
+      + .ant-descriptions-item-content {
+        border-inline-start: 1.5px solid var(--ns-stroke);
+      }
+    }
+    .ant-descriptions-row {
+      border-bottom-color: transparent;
+    }
+  }
+  &.variant-plain {
+    .ant-descriptions-item-label {
+      background-color: var(--fill, transparent);
+    }
+    .ant-descriptions-item-content {
+      background-color: var(--fill, transparent);
     }
   }
 }

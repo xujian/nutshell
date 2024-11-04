@@ -1,7 +1,7 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { UniDataItem } from '../../shared'
-import { useFlexProps, useVariantProps } from '../../props'
+import { useDesignProps, useFlexProps, useVariantProps } from '../../props'
 
 export type FactsItem = {
   span?: number,
@@ -24,6 +24,7 @@ export const factsProps = {
     type: Number,
   },
   ...useVariantProps(),
+  ...useDesignProps(),
   ...useFlexProps(),
 }
 

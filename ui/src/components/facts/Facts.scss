@@ -1,3 +1,7 @@
 .ns-facts {
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
+  &:not(.square) {
+    border-radius: var(--ns-border-radius);
+  }
 }
