@@ -10,10 +10,16 @@
   <story file="facts/slot.vue" />
   <h2>使用 ns-facts-item</h2>
   <p>&nbsp;</p>
-  <story file="facts/items.vue" />
+  <story minimal file="facts/items.vue" />
   <h2>Variants</h2>
   <p>&nbsp;</p>
-  <story file="facts/variants.vue" />
+  <story minimal file="facts/variants.vue" />
+  <h2>竖排</h2>
+  <p>&nbsp;</p>
+  <story minimal file="facts/vertical.vue" />
+  <h2>样式配置</h2>
+  <p>&nbsp;</p>
+  <story minimal file="facts/style.vue" />
 </template>
 
 <script lang="ts" setup>

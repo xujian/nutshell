@@ -3,30 +3,30 @@
   <p>&nbsp;</p>
   <h3>缺省样式</h3>
   <p>&nbsp;</p>
-  <story is-plain file="table/basic" />
+  <story minimal file="table/basic" />
   <h3>全特性表格</h3>
   <p>&nbsp;</p>
-  <story is-plain file="table/full-featured" />
+  <story minimal file="table/full-featured" />
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h3>外观配置</h3>
   <p>&nbsp;</p>
-  <story is-plain file="table/design" />
+  <story minimal file="table/design" />
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h3>隐藏列</h3>
   <p>&nbsp;</p>
-  <story is-plain file="table/hidden-columns" />
+  <story minimal file="table/hidden-columns" />
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h3>合并单元格</h3>
   <p>&nbsp;</p>
-  <story is-plain file="table/merge" />
+  <story minimal file="table/merge" />
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h3>单元格内编辑</h3>
   <p>&nbsp;</p>
-  <story is-plain file="table/editable" />
+  <story minimal file="table/editable" />
 </template>
 
 <script lang="ts" setup>

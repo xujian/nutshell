@@ -1,6 +1,6 @@
 <template>
   <h1 class="my-lg">表单 &lt;ns-form&gt;</h1>
-  <story is-plain file="form/regular" />
+  <story minimal file="form/regular" />
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <h2>用户输入校验</h2>

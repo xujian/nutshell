@@ -5,10 +5,10 @@
     <p>&nbsp;</p>
     <h2>结构说明</h2>
     <p>&nbsp;</p>
-    <story is-plain file="card/anatomy" />
+    <story minimal file="card/anatomy" />
     <h2>橱窗</h2>
     <p>&nbsp;</p>
-    <story is-plain file="card/showcase" />
+    <story minimal file="card/showcase" />
     <h2 class="my-md">Colors</h2>
     <ns-row class="colors" :gap="10">
       <ns-card v-for="color in brands"
@@ -27,7 +27,7 @@
       </ns-row>
       <p>&nbsp;</p>
       <h2>支持渐变</h2>
-      <story is-plain file="card/gradients" />
+      <story minimal file="card/gradients" />
     </div>
 </template>
 

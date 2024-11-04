@@ -1,7 +1,8 @@
 <template>
-  <ns-card :variant="props.isPlain ? 'plain' : 'solid'"
-    :fill="props.isPlain ? 'transparent' : '#ffffff'"
-    class="story-card">
+  <ns-card :variant="props.minimal ? 'plain' : 'solid'"
+    :fill="props.minimal ? 'transparent' : '#ffffff'"
+    class="story-card"
+    :class="{minimal: props.minimal}">
     <component :is="StoryComponent" v-if="isLoaded" />
     <template #footer>
       <div class="full-width flex-row">
@@ -35,7 +36,7 @@ const props = defineProps({
       type: String,
       required: true,
     },
-    isPlain: {
+    minimal: {
       type: Boolean,
       default: false,
     }
@@ -103,6 +104,12 @@ onMounted(importStory)
     }
     .ns-code-view {
       width: 100%;
+    }
+    &.minimal {
+      border-radius: 0;
+      .card-body {
+        border-radius: 0;
+      }
     }
   }
 }
