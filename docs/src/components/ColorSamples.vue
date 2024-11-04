@@ -4,7 +4,7 @@
     direction="column"
     :vertical="vertical"
     :columns="7">
-    <ns-facts-item v-for="color in colors"
+    <ns-facts-item v-for="color in brands"
       :key="color"
       :label="`color=${color}`">
       <slot :color="color"></slot>
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { colors } from '@uxda/nutshell'
+import { brands } from '@uxda/nutshell'
 
 defineProps({
   vertical: {
