@@ -339,5 +339,17 @@ export default [
         extract: resolve('./dist/tabbar.css'),
       })
     ]
+  },
+  {
+    input: './src/vendors/antdv/styles/third.scss',
+    output: {
+      dir: './dist'
+    },
+    plugins: [
+      postcss({
+        use: ['sass'],
+        extract: resolve('./dist/third.css'),
+      })
+    ]
   }
 ]

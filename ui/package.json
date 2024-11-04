@@ -1,6 +1,6 @@
 {
   "name": "@uxda/nutshell",
-  "version": "1.4.42",
+  "version": "1.5.0",
   "description": "A Vue 3 UI library base on Nutui & ant-design-vue",
   "author": {
     "name": "UXDA team"
@@ -36,6 +36,7 @@
     "./nutshell.css": "./dist/nutshell.css",
     "./nutui.css": "./dist/nutui.css",
     "./antdv.css": "./dist/antdv.css",
+    "./third.css": "./dist/third.css",
     "./*": "./*"
   },
   "scripts": {
