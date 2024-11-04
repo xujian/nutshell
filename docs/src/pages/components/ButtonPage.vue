@@ -25,7 +25,7 @@
       <p>&nbsp;</p>
       <h2 class="my-md">Variants</h2>
       <variant-samples v-slot="{variant}">
-        <ns-button v-for="(color) in colors" class="my-xs"
+        <ns-button v-for="(color) in brands" class="my-xs"
           :key="color"
           :color="color"
           :variant="variant" label="创建订单"></ns-button>
@@ -75,7 +75,7 @@
 </template>
 
 <script lang="ts" setup>
-import { colors } from '@uxda/nutshell'
+import { brands } from '@uxda/nutshell'
 import { MobileMockup } from '@/components'
 
 </script>
