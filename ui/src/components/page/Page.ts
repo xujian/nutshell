@@ -25,7 +25,6 @@ export const pageProps = {
    */
   scrollable: {
     type: Boolean,
-    default: false,
   },
   minimal: {
     type: Boolean,

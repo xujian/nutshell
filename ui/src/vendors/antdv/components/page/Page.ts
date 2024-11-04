@@ -20,7 +20,7 @@ export const Page = defineComponent({
     const classes = computed<string[]>(() => [
       'ns-page desktop page column align-stretch',
       ...scroll.value > 0 ? ['scrolled'] : [],
-      ...props.scrollable ? ['scrollable'] : [],
+      ...props.scrollable === false ? [] : ['scrollable'],
       // ...props.classes || [],
       'theme-present'
     ])
