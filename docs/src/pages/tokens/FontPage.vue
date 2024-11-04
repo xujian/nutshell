@@ -15,7 +15,7 @@
     <div><span :class="`font-${size}`">待办任务</span></div>
   </ns-row>
   <h2 class="my-md">Colors</h2>
-  <ns-row class="colors" v-for="color in colors" align="start" :key="color" >
+  <ns-row class="colors" v-for="color in brands" align="start" :key="color" >
     <ns-flex-item class="label" span="12">
       <h4>{{ color }}</h4>
     </ns-flex-item>
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-import { colors, sizes, variants } from '@uxda/nutshell'
+import { brands, sizes, variants } from '@uxda/nutshell'
 
 const label = '提交'
 

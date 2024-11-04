@@ -9,7 +9,7 @@
   </ns-row>
   <h2 class="my-md">Color</h2>
   <ns-row class="colors">
-    <ns-checkbox v-for="color in colors" :color="color"
+    <ns-checkbox v-for="color in brands" :color="color"
       v-model="checked"
       :label="label" :key="color"></ns-checkbox>
   </ns-row>
@@ -31,7 +31,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { colors, sizes, variants } from '@uxda/nutshell'
+import { brands, sizes, variants } from '@uxda/nutshell'
 
 const label = '受限用户',
   checked = ref(false)

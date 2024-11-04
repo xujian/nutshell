@@ -9,7 +9,7 @@
   </ns-row>
   <h2 class="my-md">Color</h2>
   <ns-row class="colors" justify="start">
-    <ns-dropdown v-for="color in colors" :fill="color"
+    <ns-dropdown v-for="color in brands" :fill="color"
       :items="menuItems"
       label="排序" :key="color"></ns-dropdown>
   </ns-row>
@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import { colors, sizes, variants } from '@uxda/nutshell'
+import { brands, sizes, variants } from '@uxda/nutshell'
 
 const label = '提交'
 

@@ -2,7 +2,7 @@
   <h1 class="my-lg">文本输入框</h1>
 <h2 class="my-md">Color</h2>
   <ns-card fill="#fff">
-    <ns-input v-for="color in colors"
+    <ns-input v-for="color in brands"
       name="`client-color-${color}`"
       :color="color"
       :label="color"
@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import { colors, variants } from '@uxda/nutshell'
+import { brands, variants } from '@uxda/nutshell'
 
 </script>
 

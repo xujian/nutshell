@@ -6,7 +6,7 @@
   </ns-row>
   <h2 class="my-md">Color</h2>
   <ns-row class="colors">
-    <ns-chip v-for="color in colors" :fill="color" :label="color" :key="color"></ns-chip>
+    <ns-chip v-for="color in brands" :fill="color" :label="color" :key="color"></ns-chip>
   </ns-row>
   <h2 class="my-md">Variants</h2>
   <ns-row class="variants" v-for="(variant) in variants" align="center" :key="variant">
@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { colors, sizes, variants } from '@uxda/nutshell'
+import { brands, sizes, variants } from '@uxda/nutshell'
 
 const label = '标签'
 

@@ -11,7 +11,7 @@
     <story is-plain file="card/showcase" />
     <h2 class="my-md">Colors</h2>
     <ns-row class="colors" :gap="10">
-      <ns-card v-for="color in colors"
+      <ns-card v-for="color in brands"
         title="卡片"
         :fill="color"
         :key="color"></ns-card>
@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts" setup>
-import { colors, sizes, variants } from '@uxda/nutshell'
+import { brands, sizes, variants } from '@uxda/nutshell'
 
 const label = '提交'
 
