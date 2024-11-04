@@ -19,7 +19,6 @@ export const RadioGroup = defineComponent({
       renderFormItem(
         {
           ...props,
-          class: [props.variant ? `variant-${props.variant}` : '']
         },
         ctx.slots,
         () =>

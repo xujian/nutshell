@@ -49,7 +49,6 @@ export const NsCard = defineComponent({
       'flex',
       'flex-column',
       'align-stretch',
-      props.variant ? `variant-${props.variant}` : '',
       ...buildDesignClasses(props),
     ])
 

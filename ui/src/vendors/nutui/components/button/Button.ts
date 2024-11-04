@@ -6,7 +6,6 @@ export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext
 
   const classes = [
     ...props.size ? [`size-${props.size}`] : [],
-    ...props.variant ? [`variant-${props.variant}`] : [],
     ...props.icon
       ? !props.label
         ? ['icon']

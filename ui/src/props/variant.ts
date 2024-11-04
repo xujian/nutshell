@@ -7,6 +7,10 @@ export const variants: string[] = [
   'solid', 'outlined', 'soft', 'plain'
 ] as const
 
+export function hasVariantProps (props: any): props is  VariantProps {
+  return 'variant' in props
+}
+
 /**
  * 组件的内置样式风格
  */

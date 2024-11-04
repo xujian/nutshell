@@ -64,7 +64,6 @@ export const NsSearch = defineComponent({
     return () => h('div', {
         class: [
           'ns-search',
-          ...props.variant ? [`variant-${props.variant}`] : [],
           ...buildDesignClasses(props),
         ],
         style: {

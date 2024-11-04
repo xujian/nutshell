@@ -11,7 +11,6 @@ export const Dropdown = defineComponent({
 
     return () => h(AntdvDropdownButton, {
       class: [
-        ...props.variant ? [`variant-${props.variant}`] : []
       ],
       width: props.width,
       height: props.height,

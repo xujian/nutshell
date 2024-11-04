@@ -8,7 +8,7 @@ import { ComponentObjectPropsOptions,
   computed} from 'vue'
 import { useVendor } from '../../shared/vendor'
 import { kebabCase } from '../text'
-import { buildDesignClasses, buildDesignStyles, hasDesignProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, hasDesignProps, hasVariantProps } from '../../props'
 import { MakePropsType, MarginProps } from './helpers'
 
 /**
@@ -76,9 +76,10 @@ export function define<
       // 自动处理 design props 产生的 class / style
       // 唯有当 发现参数 structured 的时候
       // 前端要求将 classes/styles 独立返回
-      classes = hasDesignProps(props)
-        ? computed(() => buildDesignClasses(props))
-        : computed(() => []),
+      classes = computed(() => [
+        ...hasDesignProps(props) ? buildDesignClasses(props) : [],
+        ...hasVariantProps(props) ? [`variant-${props.variant}`] : [],
+        ]),
       styles = hasDesignProps(props)
         ? computed(() => buildDesignStyles(props))
         : computed(() => ({}))

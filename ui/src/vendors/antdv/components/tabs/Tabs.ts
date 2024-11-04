@@ -24,7 +24,6 @@ export const Tabs = (props: TabsProps, { emit, slots }: SetupContext) => {
 
   return h(AntdvTabs, {
     class: [
-      ...props.variant ? [`variant-${props.variant}`] : [],
       `tabs-align-${props.align || 'start'}`
     ],
     type: props.variant === 'card' ? 'card' : 'line',

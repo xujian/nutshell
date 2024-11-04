@@ -55,8 +55,6 @@ export const NsButtonGroup = defineComponent({
     const button = (item: UniDataItem) => h(NsButton, {
       class: [
         ...props.size ? [`size-${props.size}`] : [],
-        // ...isBrand(props.color) ? [`fill-${props.color}`] : [],
-        // ...props.variant ? [`variant-${props.variant}`] : ['variant-plain'],
         ...item.value == props.modelValue ? ['active'] : [],
       ],
       onClick () {
@@ -88,7 +86,6 @@ export const NsButtonGroup = defineComponent({
       class: [
         'ns-button-group',
         'row',
-        ...props.variant ? [`variant-${props.variant}`] : ['variant-plain'],
         ...buildFlexClasses(props),
       ],
       style: {
