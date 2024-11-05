@@ -107,7 +107,7 @@ onMounted(importStory)
     }
     &.minimal {
       border-radius: 0;
-      .card-body {
+      >.card-body {
         border-radius: 0;
       }
     }
