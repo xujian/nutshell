@@ -101,10 +101,6 @@ const formData = reactive({
       h1 {
         font-size: 32px;
       }
-      .caption {
-        font-size: 12px;
-        color: #4d4dff;
-      }
     }
   }
   .filter {

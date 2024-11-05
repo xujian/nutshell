@@ -78,6 +78,9 @@
       var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
       var(--fill, transparent);
   }
+  &.variant-outlined {
+    --stroke: var(--ns-stroke);
+  }
 }
 
 .with-texture {

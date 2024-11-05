@@ -138,9 +138,6 @@ onMounted(() => {
   }
   .entry {
     background-color: var(--ns-primary);
-    .caption {
-      font-size: var(--ns-font-xs);
-    }
   }
   .reminders {
     .entry {

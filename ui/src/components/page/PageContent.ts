@@ -53,7 +53,7 @@ export const NsPageContent = defineComponent({
       })
     }
 
-    const renderScrollview = (content: any) => h(ScrollView, {
+    const renderScrollview = (content: any) => h('scroll-view', {
         class: ['page-content-scroll-view', 'scroll'],
         style: cssVars,
         'scroll-y': true,

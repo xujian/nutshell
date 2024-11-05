@@ -89,13 +89,6 @@ onMounted(() => {
       height: 64px;
       border-radius: 32px;
     }
-    h2 {
-      font-size: 20px;
-      font-weight: 500;
-    }
-    .caption {
-      font-size: 14px;
-    }
   }
 }
 </style>

@@ -1,4 +1,4 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, reactive, InjectionKey, Ref, Reactive, inject, provide, computed } from 'vue'
+import { reactive, InjectionKey, Reactive, inject, provide, computed } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDesignProps } from '../../props'
 
@@ -25,6 +25,7 @@ export const pageProps = {
    */
   scrollable: {
     type: Boolean,
+    default: void 0,
   },
   minimal: {
     type: Boolean,

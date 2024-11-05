@@ -4,8 +4,10 @@
   --icon-size: 12px;
   --padding-for-icon: calc(var(--icon-size) + 4px + 4px);
   &.nut-button {
+    --fill: var(--ns-neutral--10);
     width: fit-content;
     line-height: 1em;
+    background-color: var(--fill, var(--ns-neutral--10));
     &:not(.full-width) {
       // width: auto;
     }
