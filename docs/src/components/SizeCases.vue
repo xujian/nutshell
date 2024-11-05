@@ -1,25 +1,17 @@
 <template>
-  <ns-facts
-    class="size-cases"
-    direction="column"
-    :vertical="vertical"
-    :columns="5">
-    <ns-facts-item v-for="size in sizes"
-      :key="size"
-      :label="`size=${size}`">
+  <div
+    class="case-list size-cases flex">
+    <div class="item flex align-center justify-center"
+       v-for="size in sizes"
+      :key="color">
+      <h6 class="title">size="<span class="b">{{ size }}</span>"</h6>
       <slot :size="size"></slot>
-    </ns-facts-item>
-  </ns-facts>
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { sizes } from '@uxda/nutshell'
-
-defineProps({
-  vertical: {
-    type: Boolean,
-  }
-})
 
 const slots = defineSlots<{
   default(props: {

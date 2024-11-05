@@ -1,0 +1,35 @@
+.case-list {
+  border-radius: var(--ns-border-radius);
+  width: fit-content;
+  overflow: hidden;
+  .item {
+    color: var(--ns-neutral);
+    background-color: #fff;
+    display: flex;
+    position: relative;
+    min-width: 160px;
+    min-height: 160px;
+    padding: var(--ns-spacing);
+    .title {
+      font-size: 12px;
+      position: absolute;
+      font-weight: normal;
+      top: 10px;
+      left: 10px;
+    }
+  }
+  &.column {
+    align-items: start;
+    .item + .item {
+      border-block-start: 1px solid var(--ns-stroke);
+    }
+  }
+  &:not(.column) {
+    .item + .item {
+      border-inline-start: 1px solid var(--ns-stroke);
+    }
+  }
+  .b {
+    font-weight: bold;
+  }
+}

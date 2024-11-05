@@ -1,25 +1,17 @@
 <template>
-  <ns-facts
-    class="variant-cases"
-    direction="column"
-    :vertical="vertical"
-    :columns="1">
-    <ns-facts-item v-for="variant in variants"
-      :key="variant"
-      :label="`variant=${variant}`">
+  <div
+    class="case-list variant-cases flex">
+    <div class="item flex align-center justify-center"
+      v-for="variant in variants"
+      :key="color">
+      <h6 class="title">variant="<span class="b">{{ variant }}</span>"</h6>
       <slot :variant="variant"></slot>
-    </ns-facts-item>
-  </ns-facts>
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { variants } from '@uxda/nutshell'
-
-defineProps({
-  vertical: {
-    type: Boolean,
-  }
-})
 
 const slots = defineSlots<{
   default(props: {
@@ -33,10 +25,5 @@ const slots = defineSlots<{
 
 <style lang="scss">
 .variant-cases {
-  &.ns-facts {
-    .ant-descriptions-item-label {
-      width: 100px;
-    }
-  }
 }
 </style>

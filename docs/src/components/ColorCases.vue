@@ -1,24 +1,19 @@
 <template>
-  <ns-facts
-    class="color-cases"
-    direction="column"
-    :vertical="vertical"
-    :columns="7">
-    <ns-facts-item v-for="color in brands"
-      :key="color"
-      :label="`color=${color}`">
+  <div
+    class="case-list color-cases flex">
+    <div class="item flex align-center justify-center" v-for="color in brands"
+      :key="color">
+      <h6 class="title">color="<span class="b">{{ color }}</span>"</h6>
       <slot :color="color"></slot>
-    </ns-facts-item>
-  </ns-facts>
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { brands } from '@uxda/nutshell'
 
 defineProps({
-  vertical: {
-    type: Boolean,
-  }
+  direction: String
 })
 
 const slots = defineSlots<{
