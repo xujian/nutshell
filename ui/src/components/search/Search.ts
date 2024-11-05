@@ -52,6 +52,7 @@ export const NsSearch = defineComponent({
         'input'
       ],
       name: 'search',
+      value: props.modelValue,
       placeholder: props.placeholder,
       onConfirm: () => {
         ctx.emit('enter')
