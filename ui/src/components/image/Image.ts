@@ -8,6 +8,12 @@ export const imageProps = {
     type: String,
     retuired: true
   },
+  /**
+   * 正方形
+   */
+  squared: {
+    type: Boolean
+  },
   ...useDimensionProps(),
   ...useDesignProps(),
 }
@@ -45,6 +51,9 @@ export const NsImage = defineComponent({
       class: [
         'ns-image',
         ...buildDesignClasses(props),
+        ...props.squared === true
+          ? ['squared']
+          : []
       ],
       style,
     })

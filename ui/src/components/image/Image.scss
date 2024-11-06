@@ -1,5 +1,12 @@
 .ns-image {
   background-size: cover;
   aspect-ratio: 16/9;
-  border-radius: var(--ns-border-radius);
+  border-radius: var(--radius, var(--ns-border-radius));
+  min-width: 64px;
+  min-height: 36px;
+  aspect-ratio: 4/3;
+  background-position: center center;
+  &.squared {
+    aspect-ratio: 1;
+  }
 }
