@@ -1,6 +1,7 @@
 <template>
-  <div class="page card-page">
-    <h1 class="my-lg">卡片 &lt;ns-card&gt;</h1>
+  <ns-page class="card-page">
+    <ns-page-content>
+    <h1>卡片 &lt;ns-card&gt;</h1>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <h2>结构说明</h2>
@@ -16,8 +17,11 @@
         :fill="color"
         :key="color"></ns-card>
     </ns-row>
-    <h2 class="my-md">Variants</h2>
-    <ns-row class="variants" align="center" :gap="10" justify="start">
+    <h2>Variants</h2>
+    <ns-row class="variants"
+      align="center"
+      :gap="10"
+      justify="start">
       <ns-card class="my-xs"
         v-for="(variant) in variants"
         :key="variant"
@@ -28,7 +32,8 @@
       <p>&nbsp;</p>
       <h2>支持渐变</h2>
       <story minimal file="card/gradients" />
-    </div>
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>

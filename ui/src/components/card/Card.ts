@@ -7,6 +7,9 @@ export const cardProps = {
   title: {
     type: String
   },
+  padding: {
+    type: Number,
+  },
   bodyFill: {
     type: String as PropType<Color>,
   },
@@ -52,7 +55,12 @@ export const NsCard = defineComponent({
       ...buildDesignClasses(props),
     ])
 
-    const style = computed(() => buildDesignStyles(props))
+    const style = computed(() => ({
+      ...buildDesignStyles(props),
+      ...props.padding !== void 0
+        ? { '--padding': props.padding }
+        : {}
+    }))
 
     const label = () => props.title
       ? h('div', {

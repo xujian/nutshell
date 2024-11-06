@@ -14,18 +14,18 @@
     // margin-bottom: calc(var(--ns-spacing) * -1/2)
   }
   .card-body {
-    padding: var(--ns-spacing);
+    padding: var(--padding, var(--ns-spacing));
     background: var(--body-fill);
     border-radius: var(--ns-border-radius);
     flex-grow: 1;
     .breakout {
-      margin: calc(var(--ns-spacing) * -1 / 2)
+      margin: calc(var(--ns-spacing) * -1);
     }
   }
   .card-footer {
     display: flex;
     flex-direction: row;
-    padding: calc(var(--ns-spacing) / 2);
+    padding: calc(var(--ns-spacing) / 2) var(--ns-spacing);
   }
   h3.title-label {
     font-size: var(--ns-font-sm);
