@@ -1,14 +1,20 @@
 <template>
-  <h1 class="my-lg">列表 &lt;ns-list&gt;</h1>
-  <h2 class="my-md">Variants</h2>
-  <latest-releases />
+  <ns-page>
+    <ns-page-content>
+      <h1>列表</h1>
+      <div class="caption">&lt;ns-list&gt;</div>
+      <p>列表是单栏的数据表示组件。</p>
+      <story minimal file="list/basic" />
+      <p>&nbsp;</p>
+      <h2>带边框、箭头</h2>
+      <story minimal file="list/border" />
+      <h2>使用 SLOTS</h2>
+      <story minimal file="list/slots" />
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
-import axios from 'axios'
-import { variants } from '@uxda/nutshell'
-import LatestReleases from '@/components/LatestReleases.vue'
 
 </script>
 

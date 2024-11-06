@@ -1,11 +1,13 @@
 .ns-list {
+  --stroke: initial !important;
   overflow: hidden;
+  width: max-content;
   .list-item {
     display: flex;
     width: 100%;
     flex-direction: row;
     align-items: center;
-    padding: .5em 0;
+    padding: var(--ns-spacing) 0;
     &:last-child{
       border-bottom: none;
     }
@@ -17,6 +19,7 @@
     }
     .list-item-section-main {
       flex-grow: 1;
+      padding-inline-end: var(--ns-spacing);
     }
     .caption {
       color: var(--ns-caption);
@@ -24,7 +27,8 @@
       min-height: 1em;
     }
     .title {
-      line-height: 1.2em;
+      line-height: 1.1em;
+      margin: 0;
     }
     .list-item-section-no {
       width: 40px;
@@ -39,6 +43,9 @@
       background-size: 24px;
       background-position: center;
     }
+    .prepend, .append {
+      padding: 0 var(--ns-spacing);
+    }
   }
   &.variant-outlined {
     border-color: var(--stroke, var(--ns-stroke));
@@ -48,6 +55,14 @@
       border-bottom-color: var(--stroke, var(--ns-stroke));
       border-bottom-style: solid;
       border-bottom-width: 1px;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  &.dense {
+    .list-item {
+      padding-block: 0;
     }
   }
   &.hoverable {

@@ -1,31 +1,42 @@
-import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDesignProps, useFlexProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDesignProps, useFlexProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
-import { h } from 'vue'
+import { h, VNode } from 'vue'
 import { PropType, SlotsType, defineComponent } from 'vue'
+
+export type ListItemData = {
+  number?: number,
+  title?: string,
+  name?: string,
+  caption?: string,
+  link?: string,
+  icon?: string,
+  arrow?: boolean,
+  [key: string]: any,
+}
 
 export const listItemProps = {
   number: {
-    type: Number
-  },
-  title: {
-    type: String,
-  },
-  name: {
-    type: String,
-  },
-  caption: {
-    type: String,
-  },
-  link: {
-    type: String,
-  },
-  icon: {
-    type: String
+    type: Number,
   },
   hasArrow: {
     type: Boolean,
-  }
+  },
+  data: Object as PropType<ListItemData>
 }
+
+export interface ListItemSlots extends SlotsType {
+  default: never,
+  /**
+   * 主体后侧
+   */
+  append: () => VNode,
+  /**
+   * 主体前侧
+   */
+  prepend: () => VNode,
+}
+
+const listItemSlots: SlotsType<ListItemSlots> = {}
 
 export type ListItemProps = MakePropsType<typeof listItemProps>
 
@@ -42,6 +53,13 @@ export const listProps = {
   hasNumbers: {
     type: Boolean
   },
+  hasArrows: {
+    type: Boolean,
+  },
+  dense: {
+    type: Boolean,
+  },
+  ...useVariantProps(),
   ...useDesignProps(),
 }
 
@@ -53,30 +71,45 @@ const emits: ListEmits = {
 
 export interface ListSlots extends SlotsType {
   default: never,
+  /**
+   * 主体后侧
+   */
+  append: (item: Record<string, any>) => VNode,
+  /**
+   * 主体前侧
+   */
+  prepend: (item: Record<string, any>) => VNode,
 }
+
+const listSlots: SlotsType<ListSlots> = {}
 
 export type ListProps = MakePropsType<typeof listProps, ListEmits>
 
 export const NsListItem = defineComponent({
   name: 'NsListItem',
   props: listItemProps,
-  setup (props) {
+  slots: listItemSlots,
+  setup (props, { slots, emit }) {
 
-    const main = (props: ListItemProps) => {
+    console.log('===hasArrow', props.hasArrow)
+
+    const main = ({ data }: ListItemProps) => {
       return h('div', {
         class: [
           'list-item-section',
           'list-item-section-main',
         ],
       }, [
-        h('h4', {
-          class: 'title'
-        }, props.title),
-        props.name
-          ? h('p', { class: ['list-item-caption', 'caption']}, props.name)
+        data?.title
+          ? h('h4', {
+              class: 'title'
+            }, data.title)
           : null,
-        props.caption
-          ? h('p', { class: ['list-item-caption', 'caption']}, props.caption)
+        data?.name
+          ? h('p', { class: ['list-item-caption', 'caption']}, data.name)
+          : null,
+        data?.caption
+          ? h('p', { class: ['list-item-caption', 'caption']}, data.caption)
           : null,
       ])
     }
@@ -93,16 +126,20 @@ export const NsListItem = defineComponent({
     return () => h('div', {
         class: [
           'list-item',
-          ...props.link ? ['has-link'] : [],
+          ...props.data?.link ? ['has-link'] : [],
         ],
-        ...props.link
-          ? { onClick: () => { Taro.navigateTo({url: props.link}) } }
+        ...props.data?.link
+          ? { onClick: () => { Taro.navigateTo({url: props.data}) } }
           : {}
       }, [
+        // 输出 数字栏
+        // 由 <ns-list> 属性控制
         props.number !== void 0
-          ? no(props.number)
+          ? no(props.data?.number || props.number)
           : null,
+        slots.append?.(),
         main(props),
+        slots.prepend?.(),
         props.hasArrow ? arrow() : null,
       ]
     )
@@ -115,6 +152,7 @@ export const NsListItem = defineComponent({
 export const NsList = defineComponent({
   name: 'NsList',
   props: listProps,
+  sltos: listSlots,
   emits,
   setup (props, { slots }) {
 
@@ -125,12 +163,33 @@ export const NsList = defineComponent({
       : null
 
     const body = props.data
-      ? props.data.map((d: ListItemProps, index: number) => {
+      ? props.data.map((d: Record<string, any>, index: number) => {
           return h(NsListItem, {
-            ...d,
+            ...props,
             ...props.hasNumbers
               ? { number: index + 1 }
               : {},
+            ...props.hasArrows
+              ? {
+                  hasArrow: true
+                }
+              : {},
+            data: d
+          }, {
+            ...slots.prepend
+              ? {
+                prepend: () => h('div', {
+                    class: 'prepend'
+                  }, slots.prepend?.(d))
+                }
+              : {},
+            ...slots.append
+              ? {
+                prepend: () => h('div', {
+                    class: 'append'
+                  }, slots.append?.(d))
+                }
+              : {}
           })
         })
       : h('div', {
@@ -139,7 +198,9 @@ export const NsList = defineComponent({
 
     return () => h('div', {
       class: [
-        'ns-list', 'r-md',
+        'ns-list',
+        ...props.variant ? [`variant-${props.variant}`] : [],
+        ...props.dense ? ['dense'] : [],
         ...buildDesignClasses(props),
       ],
       style: {
