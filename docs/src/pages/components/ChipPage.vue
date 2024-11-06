@@ -1,26 +1,31 @@
 <template>
-  <h1 class="my-lg">标签 &lt;ns-chip&gt;</h1>
-  <h2 class="my-md">Size</h2>
-  <ns-row class="sizes">
-    <ns-chip color="primary" v-for="size in sizes" :key="size" :label="size" :size="size"></ns-chip>
-  </ns-row>
-  <h2 class="my-md">Color</h2>
-  <ns-row class="colors">
-    <ns-chip v-for="color in brands" :fill="color" :label="color" :key="color"></ns-chip>
-  </ns-row>
-  <h2 class="my-md">Variants</h2>
-  <ns-row class="variants" v-for="(variant) in variants" align="center" :key="variant">
-    <h4 class="variant-label">{{ variant }}</h4>
-    <ns-chip v-for="(color) in colors" class="my-xs"
-      :key="color"
-      :color="color"
-      :variant="variant" label="线索"></ns-chip>
-  </ns-row>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <h2>Chips</h2>
-  <p>&nbsp;</p>
-  <story file="chip/basic.vue" />
+  <ns-page class="button-page">
+    <ns-page-content>
+      <h1 class="my-lg">标签</h1>
+      <div class="caption">&lt;ns-chip&gt;</div>
+      <h2>Color</h2>
+      <color-cases v-slot="{color}">
+        <ns-chip
+          label="已批复"
+          :color="color" />
+      </color-cases>
+      <p>&nbsp;</p>
+      <h2>Variants</h2>
+      <variant-cases v-slot="{variant}" class="column">
+        <ns-chip
+          v-for="color in brands"
+          :key="variant"
+          :fill="color"
+          label="已批复"
+          :variant="variant" />
+      </variant-cases>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <h2>Chips</h2>
+      <p>&nbsp;</p>
+      <story file="chip/basic.vue" />
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>

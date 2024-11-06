@@ -1,29 +1,35 @@
 <template>
-  <h1 class="my-lg">下拉菜单 &lt;ns-dropdown&gt;</h1>
-  <h2 class="my-md">Size</h2>
-  <ns-row class="sizes" justify="start">
-    <ns-dropdown
-      v-for="size in sizes" :key="size"
-      :items="menuItems"
-      label="排序" :size="size"></ns-dropdown>
-  </ns-row>
-  <h2 class="my-md">Color</h2>
-  <ns-row class="colors" justify="start">
-    <ns-dropdown v-for="color in brands" :fill="color"
-      :items="menuItems"
-      label="排序" :key="color"></ns-dropdown>
-  </ns-row>
-  <h2 class="my-md">Variants</h2>
-  <ns-row class="variants" v-for="(variant) in variants" align="center" justify="start" :key="variant">
-    <h4 class="variant-label">{{ variant }}</h4>
-    <ns-dropdown class="my-xs"
-      :items="menuItems"
-      :variant="variant" label="排序"></ns-dropdown>
-    </ns-row>
+  <ns-page class="button-page">
+    <ns-page-content>
+      <h1 class="my-lg">下拉菜单</h1>
+      <div class="caption">&lt;ns-dropdown&gt;</div>
+        <ns-dropdown
+          :items="menuItems"
+          label="排序" />
+      <p>&nbsp;</p>
+      <h2>Color</h2>
+      <color-cases v-slot="{color}">
+        <ns-dropdown
+          :items="menuItems"
+          label="排序" :fill="color" />
+      </color-cases>
+      <p>&nbsp;</p>
+      <h2 class="my-md">Variants</h2>
+      <variant-cases v-slot="{variant}" class="column">
+        <ns-dropdown
+          v-for="color in brands"
+          :key="color"
+          :items="menuItems"
+          :fill="color"
+          label="排序"
+          :variant="variant" />
+      </variant-cases>
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { brands, sizes, variants } from '@uxda/nutshell'
+import { brands } from '@uxda/nutshell'
 
 const label = '提交'
 

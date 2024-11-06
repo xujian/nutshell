@@ -2,8 +2,9 @@
   <ns-page class="button-page">
     <ns-page-content>
       <h1>按钮</h1>
-      <div class="caption">用来替换标准的 HTML 按钮</div>
+      <div class="caption">&lt;ns-button&gt;</div>
       <story minimal file="button/basic.vue" />
+      <p>用来替换标准的 HTML 按钮</p>
       <!--panel file="forms/tasks.vue" /-->
       <!--board file="contracts/query.vue" /-->
       <p>&nbsp;</p>
