@@ -1,6 +1,6 @@
 <template>
   <ns-row class="card-showcase" wrap align="stretch" justify="start" :gap="10">
-    <ns-card title="卡片" fill="neutral" class="card-1" :padding="0">
+    <ns-card title="卡片" fill="neutral" class="card-1">
       <ns-image class="breakout" src="https://images.unsplash.com/photo-1519999482648-25049ddd37b1" />
       <template #footer>
         <div class="div">
@@ -26,14 +26,14 @@
     <ns-card title="标准套餐" fill="#17ffa6" stroke="#ffffff88" class="card-4" foreground="#fff">
       <ns-number :value="5" prefix="$" surfix="员工·月" footer="基本功能完备适用于小型团队" />
       <ns-button color="positive" round class="full-width mb-md">试用</ns-button>
-      <ns-list :data="specs" variant="plain">
+      <ns-list dense :data="specs" variant="plain">
       </ns-list>
     </ns-card>
     <ns-card fill="#fff" class="card-5">
       <ns-column align="stretch" justify="between">
         <div class="flex-grow">
           <h3>Estee Lauder Blockbuster</h3>
-          <ns-number :value="512" prefix="$" size="sm" :padding="0" class="my-md"></ns-number>
+          <ns-number :value="512" prefix="$" size="sm" class="my-md"></ns-number>
           <ns-row justify="between">
             <ns-chip color="#000" foreground="#fff">海外直邮</ns-chip>
             <ns-chip>亚马逊</ns-chip>
@@ -50,7 +50,7 @@
       <ns-column align="stretch" justify="between">
         <div class="flex-grow">
           <h3>Estee Lauder Blockbuster</h3>
-          <ns-number :value="512" prefix="$" size="sm" :padding="0" class="my-md"></ns-number>
+          <ns-number :value="512" prefix="$" size="sm" class="my-md"></ns-number>
           <ns-row justify="between">
             <ns-chip color="#000" foreground="#fff">海外直邮</ns-chip>
             <ns-chip>亚马逊</ns-chip>

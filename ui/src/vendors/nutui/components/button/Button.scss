@@ -5,7 +5,7 @@
   --padding-for-icon: calc(var(--icon-size) + 4px + 4px);
   &.nut-button {
     --fill: var(--ns-neutral--10);
-    width: fit-content;
+    width: auto;
     line-height: 1em;
     background-color: var(--fill, var(--ns-neutral--10));
     &:not(.full-width) {
@@ -13,6 +13,7 @@
     }
     .nut-button__text {
       margin-left: 0; // fix nut-button style
+      white-space: nowrap;
     }
     // &:not(.variant-plain):hover {
     //   box-shadow: 0 1px 2px var(--ns-primary--80);

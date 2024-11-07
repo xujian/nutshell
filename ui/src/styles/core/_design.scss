@@ -63,10 +63,11 @@
 }
 
 .ns-page .with-design {
-  --fill: unset;
-  --stroke: unset;
+  --fill: initial;
+  --stroke: initial;
   color: var(--foreground);
   background-color: var(--fill);
+  background-repeat: no-repeat;
   border-color: var(--stroke, transparent);
   border-style: solid;
   border-width: var(--thick);
