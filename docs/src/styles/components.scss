@@ -20,6 +20,9 @@
   }
   &.column {
     align-items: start;
+    .item {
+      padding-inline: var(--ns-spacing-xl);
+    }
     .item + .item {
       border-block-start: 1px solid var(--ns-stroke);
     }

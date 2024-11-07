@@ -3,7 +3,7 @@
 @property --fill {
   syntax: "<color>";
   inherits: false;
-  initial-value: transparent;
+  initial-value: var(--ns-fill);
 }
 
 @property --gradient {

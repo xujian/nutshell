@@ -83,12 +83,6 @@ onMounted(importStory)
     display: flex;
     align-items: stretch;
     justify-content: center;
-    >.card-body {
-      padding: calc(var(--ns-spacing) / 2) 0;
-    }
-    >.card-footer {
-      // border-top: 1px solid var(--ns-stroke);
-    }
     .expand-leave-active,
     .expand-enter-active {
       transition: all 500ms ease;
@@ -106,8 +100,10 @@ onMounted(importStory)
       width: 100%;
     }
     &.minimal {
+      background-color: transparent;
       border-radius: 0;
       >.card-body {
+        padding: 0;
         border-radius: 0;
       }
     }
