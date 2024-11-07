@@ -4,7 +4,7 @@
       border-radius: var(--ns-border-radius-input);
       width: 100%;
       border-color: var(--stroke);
-      background-color: var(--fill);
+      background-color: unset;
       input {
         color: var(--ns-text);
         &::placeholder {

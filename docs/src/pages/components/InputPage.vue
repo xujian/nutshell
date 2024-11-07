@@ -1,33 +1,24 @@
 <template>
-  <h1 class="my-lg">文本输入框</h1>
-<h2 class="my-md">Color</h2>
-  <ns-card fill="#fff">
-    <ns-input v-for="color in brands"
-      name="`client-color-${color}`"
-      :color="color"
-      :label="color"
-      :key="color"></ns-input>
-  </ns-card>
-  <h2 class="my-md">Variants</h2>
-  <ns-card fill="#fff">
-    <ns-row class="variants" v-for="(variant) in variants" align="start" justify="start" :key="variant">
-      <h4 class="variant-label">{{ variant }}</h4>
-      <ns-input
-        :name="`client-variant-${variant}`"
-        :key="'primary'"
-        :color="'primary'"
-        :variant="variant" label="创建订单"></ns-input>
-    </ns-row>
-  </ns-card>
-  <p>&nbsp;</p>
-  <ns-card fill="#fff" title="特殊输入框">
-    <ns-search-input name="q" placeholder="搜索" />
-  </ns-card>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <h2>使用 SLOTS</h2>
-  <p>&nbsp;</p>
-  <story file="input/slots" />
+  <ns-page>
+    <ns-page-content>
+      <h1 class="my-lg">文本输入框</h1>
+      <p class="caption">&lt;ns-input&gt;</p>
+      <h2>Variants</h2>
+      <variant-cases v-slot="{variant}" class="column">
+        <ns-input
+          name="input"
+          color="'primary'"
+          :variant="variant" label="创建订单" />
+      </variant-cases>
+      <p>&nbsp;</p>
+      <h2>特殊输入框</h2>
+      <story file="input/special" />
+      <p>&nbsp;</p>
+      <h2>使用 SLOTS</h2>
+      <p>&nbsp;</p>
+      <story file="input/slots" />
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>

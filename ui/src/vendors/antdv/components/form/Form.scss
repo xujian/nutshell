@@ -6,6 +6,7 @@
   border-color: transparent;
   border-radius: var(--ns-border-radius);
   display: inline-block;
+  height: 32px;
   &:focus {
     box-shadow: 0 0 2px 1px color-mix(in srgb, var(--ns-accent) 30%, transparent);
     outline: none;
@@ -18,8 +19,13 @@
       display: none;
     }
   }
+  .ant-form-item-row {
+    border-radius: var(--radius, var(--ns-border-radius));
+    align-items: start;
+  }
   .ant-form-item-label {
     min-width: 120px;
+    border-radius: var(--ns-border-radius-input) 0 0 var(--ns-border-radius-input);
     >label {
       display: inline-flex;
       align-items: center;
@@ -60,10 +66,7 @@
       margin-right: 4px;
     }
   }
-  .ant-form-item-control {
-  }
   .ant-form-item-control-input {
-    --stroke: var(--ns-stroke);
     border-width: 1px;
     border-style: solid;
     border-color: transparent;
@@ -72,11 +75,6 @@
     &:focus {
       outline: none;
       box-shadow: none;
-    }
-  }
-  &.variant-outlined {
-    .ant-form-item-control-input {
-      border-color: var(--stroke, var(--ns-stroke));
     }
   }
   &.ant-form-item-with-help {

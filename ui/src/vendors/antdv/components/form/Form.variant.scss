@@ -1,21 +1,25 @@
-.ns-form {
-  &.ant-form {
+.ns-form-item {
+  &.ant-form-item {
     --stroke: transparent;
-    --fill: var(--ns-fill);
-    &.variant-outline, .variant-outline {
+    &.variant-outlined, .variant-outlined {
       --stroke: var(--ns-stroke);
-    }
-    .variant-outline {
       &:hover {
         --stroke: var(--ns-accent);
+      }
+      .ant-input-affix-wrapper {
+        border-color: var(--stroke, var(--ns-stroke));
       }
     }
     &.variant-plain, .variant-plain {
       --fill: transparent;
     }
-    &.variant-solid .ns-form-item,
-    .ns-form-item.variant-solid {
-      background-color: var(--ns-fill);
+    &.variant-solid, .variant-solid {
+      .ant-form-item-control-input {
+        border-radius: 0 var(--ns-border-radius-input) var(--ns-border-radius-input) 0;
+      }
+      .ant-form-item-label {
+        background-color: var(--fill, var(--ns-fill));
+      }
     }
   }
 }

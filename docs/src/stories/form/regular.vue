@@ -1,10 +1,9 @@
 <template>
-  <ns-card fill="#fff">
     <ns-form
       :variant="variant"
       name="client" autocomplete="off"
       v-model="formData">
-      <h3 class="mb-md">基础信息</h3>
+      <h3>基础信息</h3>
       <ns-display label="金额">
         <ns-number :model-value="1024"
           size="xs"
@@ -37,7 +36,7 @@
       <ns-mobile-input name="mobile"
         label="手机号"
         v-model="formData.mobile" />
-      <h3 class="mb-md">基础信息</h3>
+      <h3>基础信息</h3>
       <ns-rating-input label="意向等级"
         name="intention"
         v-model="formData.intention" />
@@ -61,13 +60,14 @@
         </template>
       </ns-number-input>
     </ns-form>
-    <p>&nbsp;</p>
-    <ns-button-group
-      color="primary"
-      round
-      v-model="variant"
-      :options="variantOptions"/>
-  </ns-card>
+    <ns-row justify="end">
+      <ns-button-group
+        color="primary"
+        size="xs"
+        round
+        v-model="variant"
+        :options="variantOptions"/>
+    </ns-row>
 </template>
 
 <script lang="ts" setup>

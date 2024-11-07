@@ -6,7 +6,7 @@
     .ant-select-selector {
       color: var(--ns-text);
       border-color: var(--stroke, transparent);
-      background-color: var(--fill);
+      background-color: unset;
       min-height: 32px;
       border-radius: var(--ns-border-radius-input);
     }

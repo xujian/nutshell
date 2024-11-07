@@ -1,23 +1,23 @@
 <template>
-  <h1 class="my-lg">级联下拉选框 &lt;ns-cascading-select&gt;</h1>
-  <h2 class="my-md">Variants</h2>
-  <ns-row class="variants" v-for="(variant) in variants" align="start" justify="start" :key="variant">
-    <h4 class="variant-label">{{ variant }}</h4>
-    <ns-cascading-select
-      :options="cities"
-      v-model="value"
-      :name="`client-variant-${variant}`"
-      :key="'primary'"
-      :color="'primary'"
-      :variant="variant"
-      label="选择地区"></ns-cascading-select>
-    </ns-row>
+  <ns-page>
+    <ns-page-content>
+      <h1>级联下拉选框</h1>
+      <p class="caption">&lt;ns-cascading-select&gt;</p>
+      <h2>Variants</h2>
+      <variant-cases v-slot="{variant}" class="column">
+        <ns-cascading-select
+          :options="cities"
+          v-model="value"
+          :variant="variant"
+          label="选择区域" />
+      </variant-cases>
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import { variants } from '@uxda/nutshell'
 
 const value = ref([])
 const cities = ref<any[]>([])
