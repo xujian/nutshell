@@ -1,5 +1,6 @@
 .ns-switch {
   min-width: 36px;
+  width: fit-content;
   height: 20px;
   &:not(.ant-switch-checked) {
     background: #C4C4C4;

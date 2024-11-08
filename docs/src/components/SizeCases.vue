@@ -3,7 +3,7 @@
     class="case-list size-cases flex">
     <div class="item flex align-center justify-center"
        v-for="size in sizes"
-      :key="color">
+      :key="size">
       <h6 class="title">size="<span class="b">{{ size }}</span>"</h6>
       <slot :size="size"></slot>
     </div>
