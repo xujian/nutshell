@@ -78,6 +78,7 @@
     background:
       var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
       var(--fill, transparent);
+    background-attachment: local;
   }
   &.variant-outlined {
     --stroke: var(--ns-stroke);
