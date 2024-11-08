@@ -1,4 +1,4 @@
-import { defineComponent, h, SetupContext } from 'vue'
+import { defineComponent, h } from 'vue'
 import { RadioGroup as AntdvRadioGroup, Radio as AntdvRadio, RadioChangeEvent } from 'ant-design-vue'
 import { radioGroupProps } from '../../../../components'
 import { renderFormItem } from '../../utils'
@@ -26,7 +26,7 @@ export const RadioGroup = defineComponent({
             AntdvRadioGroup,
             {
               class: [
-                ...(props.direction === 'column' ? ['flex', 'flex-column'] : ['flex', 'flex-row'])
+                ...(props.direction === 'column' ? ['column'] : ['row'])
               ],
               name: (props.name || 'radio') as string,
               value: props.modelValue,

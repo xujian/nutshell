@@ -1,5 +1,6 @@
 .ns-radio-group {
-  .ant-radio-group {
+  width: auto;
+  &.ant-radio-group {
     flex-wrap: wrap;
     .ant-radio-wrapper {
       height: 2em;
@@ -7,6 +8,9 @@
       color: var(--ns-text);
       margin-right: 12px;
     }
+  }
+  .ant-form-item-control {
+    align-items: start;
   }
   .ant-form-item-control-input {
     background: transparent;

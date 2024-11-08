@@ -187,24 +187,24 @@ const menuData = computed(() => [
             key: '/components/date-input'
           },
           {
+            label: '单选框 radio',
+            key: '/components/radio'
+          },
+          {
             label: '复选框 checkbox',
             key: '/components/checkbox'
+          },
+          {
+            label: '开关 switch',
+            key: '/components/switch'
           },
           {
             label: '按钮组',
             key: '/components/button-group'
           },
           {
-            label: '单选框 radio',
-            key: '/components/radio'
-          },
-          {
             label: '星星输入框 rating-input',
             key: '/components/rating-input'
-          },
-          {
-            label: '开关 switch',
-            key: '/components/switch'
           },
           {
             label: '文件上传 upload',
