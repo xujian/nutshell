@@ -1,6 +1,5 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, computed } from 'vue'
-import { buildFillStyle, buildGradientStyle, Color } from '../../composables/theme'
-import { buildDesignClasses, buildDesignStyles, buildDesignVariables, buildDimensionStyles, useDesignProps, useDimensionProps, useVariantProps } from '../../props'
+import { SlotsType, defineComponent, h } from 'vue'
+import { buildDesignClasses, buildDesignStyles, buildDimensionStyles, useDesignProps, useDimensionProps } from '../../props'
 import { MakePropsType } from '../../utils'
 
 export const imageProps = {
@@ -13,6 +12,9 @@ export const imageProps = {
    */
   squared: {
     type: Boolean
+  },
+  aspectRatio: {
+    type: String
   },
   ...useDimensionProps(),
   ...useDesignProps(),
@@ -45,6 +47,9 @@ export const NsImage = defineComponent({
       backgroundImage: `url(${props.src})`,
       ...buildDimensionStyles(props),
       ...buildDesignStyles(props),
+      ...props.aspectRatio
+        ? { '--aspect-ratio': props.aspectRatio }
+        : {}
     }
 
     return () => h('div', {

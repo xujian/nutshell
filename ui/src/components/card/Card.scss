@@ -25,7 +25,7 @@
   .card-footer {
     display: flex;
     flex-direction: row;
-    padding: calc(var(--ns-spacing) / 2) var(--ns-spacing);
+    padding: var(--ns-spacing);
   }
   h3.title-label {
     font-size: var(--ns-font-sm);

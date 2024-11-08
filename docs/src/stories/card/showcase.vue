@@ -1,7 +1,9 @@
 <template>
   <ns-row class="card-showcase" wrap align="stretch" justify="start" :gap="10">
     <ns-card title="卡片" fill="neutral" class="card-1">
-      <ns-image class="breakout" src="https://images.unsplash.com/photo-1519999482648-25049ddd37b1" />
+      <ns-image class="breakout"
+        aspect-ratio="2"
+        src="https://images.unsplash.com/photo-1519999482648-25049ddd37b1" />
       <template #footer>
         <div class="div">
           <h3>基滨现状</h3>
