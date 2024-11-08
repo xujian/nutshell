@@ -16,6 +16,7 @@ import { Stepper } from './stepper'
 import { Timeline } from './timeline'
 import { Drawer } from './drawer'
 import { RadioGroup } from './radio'
+import { ButtonGroupInput } from './button-group'
 import { Pagination } from './pagination'
 import { Facts, FactsItem } from './facts'
 import { Upload } from './upload'
@@ -53,6 +54,7 @@ const components = {
   Timeline,
   Drawer,
   RadioGroup,
+  ButtonGroupInput,
   Pagination,
   Facts,
   FactsItem,

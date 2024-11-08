@@ -12,6 +12,17 @@
     &.active {
       font-weight: bold;
       backdrop-filter: brightness(1.2);
+      background-color: var(--ns-accent);
+      color: #fff;
+    }
+  }
+}
+
+.ant-form-item {
+  &.ns-button-group-input {
+    width: max-content;
+    .ant-form-item-control-input {
+      background-color: transparent;
     }
   }
 }

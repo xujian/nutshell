@@ -76,7 +76,7 @@ import { NsUpload, NsCropUpload } from './upload'
 import { NsTimeline } from './timeline'
 import { NsDivider } from './divider'
 import { NsNumber } from './number'
-import { NsButtonGroup } from './button-group'
+import { NsButtonGroup, NsButtonGroupInput } from './button-group'
 import { NsPage, NsPageHeader, NsPageContent, NsPageFooter } from './page'
 import { NsSearch } from './search'
 import { NsImage } from './image'
@@ -146,6 +146,7 @@ const components = {
   NsTimeline,
   NsDivider,
   NsButtonGroup,
+  NsButtonGroupInput,
   NsPage,
   NsPageHeader,
   NsPageContent,

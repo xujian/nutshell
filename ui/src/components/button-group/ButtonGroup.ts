@@ -64,7 +64,7 @@ export const NsButtonGroup = defineComponent({
         props['onUpdate:modelValue']?.(`${item.value}`)
         emit('change', `${item.value}`)
       },
-      size: props.size,
+      size: props.size || 'sm',
       color: props.color,
       fill: props.fill,
       foreground: props.foreground,
