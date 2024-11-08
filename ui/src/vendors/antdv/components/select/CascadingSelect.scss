@@ -1,9 +1,10 @@
 .ns-cascading-select {
   .ant-select {
     .ant-select-selector {
-      border-width: 0;
-      background-color: transparent;
+      border-color: var(--stroke, transparent);
+      background-color: unset;
       color: var(--na-text);
+      border-radius: var(--ns-border-radius-input);
     }
     .ant-select-clear {
       border-radius: 6px;
