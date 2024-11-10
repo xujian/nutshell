@@ -1,10 +1,12 @@
 <template>
-  <div class="column">
-    <div class="row">
-      <ns-upload v-model="files" :has-files="false" @complete="onUploadComplete" />
-    </div>
+  <ns-column align="start">
+    <ns-upload
+      v-model="files"
+      :has-files="false"
+      @complete="onUploadComplete" />
+    <p class="caption">其他内容</p>
     <ns-files :items="files" />
-  </div>
+  </ns-column>
 </template>
 
 <script lang="ts" setup>

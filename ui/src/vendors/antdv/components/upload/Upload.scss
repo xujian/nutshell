@@ -1,6 +1,11 @@
 .ns-upload {
   .ant-upload-wrapper {
     color: var(--ns-text);
+    &.ant-upload-picture-card-wrapper {
+      .ant-upload-select {
+        border-radius: var(--radius, var(--ns-border-radius));
+      }
+    }
   }
   &.single {
     .ant-upload-list-item-container {
