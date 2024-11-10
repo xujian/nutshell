@@ -1,6 +1,7 @@
 <template>
   <div
-    class="case-list size-cases flex">
+    class="case-list size-cases flex"
+    :class="[direction]">
     <div class="item flex align-center justify-center"
        v-for="size in sizes"
       :key="size">
@@ -12,6 +13,10 @@
 
 <script lang="ts" setup>
 import { sizes } from '@uxda/nutshell'
+
+defineProps({
+  direction: String
+})
 
 const slots = defineSlots<{
   default(props: {

@@ -1,6 +1,7 @@
 <template>
   <div
-    class="case-list color-cases flex">
+    class="case-list color-cases flex"
+    :class="[direction]">
     <div class="item flex align-center justify-center" v-for="color in brands"
       :key="color">
       <h6 class="title">color="<span class="b">{{ color }}</span>"</h6>
