@@ -36,25 +36,10 @@ const tabs = [
 </script>
 
 <template>
-  <ns-column :gap="10" align="start">
-    <ns-button-group v-model="value" :options="tabs" />
-    <ns-button-group
-      v-model="value"
-      round
-      variant="solid"
-      color="primary"
-      :options="tabs" />
-    <ns-button-group
-      v-model="value"
-      round
-      variant="soft"
-      color="primary"
-      :options="tabs" />
-    <ns-button-group
-      v-model="value"
-      round
-      variant="outlined"
-      color="primary"
-      :options="tabs" />
-  </ns-column>
+  <ns-button-group
+    v-model="value"
+    round
+    variant="solid"
+    color="primary"
+    :options="tabs" />
 </template>

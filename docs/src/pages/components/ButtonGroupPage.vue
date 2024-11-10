@@ -1,15 +1,47 @@
 <template>
-  <div class="page button-group-page">
-    <h1 class="my-lg">按钮组  &lt;ns-button-group&gt;</h1>
-    <story file="button-group/basic" />
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-  </div>
+  <ns-page class="button-group-page">
+    <ns-page-content>
+      <h1>按钮组</h1>
+      <p class="caption">&lt;ns-button-group&gt;</p>
+      <h2>Color</h2>
+      <color-cases direction="column" v-slot="{color}">
+        <ns-button-group v-model="state.selected" :options size="xs" />
+      </color-cases>
+      <p>&nbsp;</p>
+      <h2>Size</h2>
+      <size-cases direction="column" v-slot="{size}">
+        <ns-button-group v-model="state.selected" :size :options />
+      </size-cases>
+      <p>&nbsp;</p>
+      <h2>Variant</h2>
+      <variant-cases direction="column" v-slot="{variant}">
+        <ns-button-group v-model="state.selected" :variant :options size="xs" />
+      </variant-cases>
+      <p>&nbsp;</p>
+      <h2>用法</h2>
+      <story file="button-group/basic" />
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { colors, sizes, variants } from '@uxda/nutshell'
+import { reactive } from 'vue'
 
+const state = reactive({
+  selected: 1
+})
+const options = [
+  {
+    value: '1',
+    label: '已跟进'
+  },
+  {
+    value: '2',
+    label: '未跟进'
+  },
+]
 </script>
 
 <style lang="scss">
