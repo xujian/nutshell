@@ -1,7 +1,4 @@
 <template>
-  <ns-stepper class="basic-stepper"
-    status="wait"
-    :items="items" />
 </template>
 <script lang='ts' setup>
 const items = [
