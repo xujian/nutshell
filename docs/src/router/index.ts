@@ -22,7 +22,6 @@ const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const RatingInputPage = () => import('../pages/components/RatingInputPage.vue')
 const SwitchPage = () => import('../pages/components/SwitchPage.vue')
 const PopoverPage = () => import('../pages/components/PopoverPage.vue')
-const PopoverConfirmPage = () => import('../pages/components/PopoverConfirmPage.vue')
 const FactsPage = () => import('../pages/components/FactsPage.vue')
 const FilesPage = () => import('../pages/components/FilesPage.vue')
 const EmptyPage = () => import('../pages/components/EmptyPage.vue')
@@ -53,6 +52,8 @@ const TablePerfPage = () => import('../pages/labs/TablePerfPage.vue')
 const ComponentListPage = () => import('../pages/labs/ComponentList.vue')
 const TooltipPage = () => import('../pages/directives/TooltipPage.vue')
 const LoadingPage = () => import('../pages/directives/LoadingPage.vue')
+const RowPage = () => import('../pages/components/RowPage.vue')
+const ColumnPage = () => import('../pages/components/ColumnPage.vue')
 const NotFoundPage = () => import('../pages/NotFoundPage.vue')
 
 const router = createRouter({
@@ -194,11 +195,6 @@ const router = createRouter({
           component: PopoverPage
         },
         {
-          path: '/components/popover-confirm',
-          name: 'components-popover-confirm',
-          component: PopoverConfirmPage
-        },
-        {
           path: '/components/rating-input',
           name: 'components-rating-input',
           component: RatingInputPage
@@ -287,6 +283,16 @@ const router = createRouter({
           path: '/interactive/drawer',
           name: 'interactive-drawer',
           component: DrawerPage
+        },
+        {
+          path: '/layout/row',
+          name: 'layout-row',
+          component: RowPage
+        },
+        {
+          path: '/layout/column',
+          name: 'layout-column',
+          component: ColumnPage
         },
         {
           path: '/interactive/menu',

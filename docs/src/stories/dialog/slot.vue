@@ -1,9 +1,11 @@
 <template>
-  <ns-button
-    size="sm"
-    width="100"
-    color="negtive"
-    label="弹出对话框" @click="onOpenDialogButtonClick" />
+  <ns-row justify="start">
+    <ns-button
+      size="sm"
+      width="100"
+      color="negtive"
+      label="弹出对话框" @click="onOpenDialogButtonClick" />
+  </ns-row>
   <ns-dialog v-model="dialogOpen"
     title="跟进客户"
     @ok="onDialogOk"
@@ -27,10 +29,10 @@
         :options="marrageOptions" />
     </ns-form>
     <template #footer>
-      <div class="row justify-start">
+      <ns-row justify="end">
         <ns-button color="warning" @click="onPostponeClick">延后跟进</ns-button>
         <ns-button color="primary" @click="onFollowupClick">立即跟进</ns-button>
-    </div>
+      </ns-row>
     </template>
   </ns-dialog>
 </template>

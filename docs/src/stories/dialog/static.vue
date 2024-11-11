@@ -1,9 +1,10 @@
 <template>
-  <ns-button
-    size="sm"
-    width="100"
-    color="negtive"
-    label="弹出对话框" @click="onOpenDialogButtonClick" />
+  <ns-row justify="start">
+    <ns-button
+      size="sm"
+      color="negtive"
+      label="弹出对话框" @click="onOpenDialogButtonClick" />
+  </ns-row>
   <ns-dialog
     v-model="dialogOpen"
     title="新建客户"

@@ -1,9 +1,11 @@
 <template>
-  <ns-button
-    size="sm"
-    width="100"
-    color="negtive"
-    label="弹出消息" @click="onOpenDialogButtonClick" />
+  <ns-row justify="start">
+    <ns-button
+      size="sm"
+      width="100"
+      color="negtive"
+      label="弹出消息" @click="onOpenDialogButtonClick" />
+  </ns-row>
 </template>
 
 <script lang="ts" setup>

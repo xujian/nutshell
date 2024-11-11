@@ -1,8 +1,11 @@
 <template>
-  <div class="page toast-page">
-  <h1 class="my-lg">消息 &lt;ns-toast&gt;</h1>
-    <story file="toast/basic.vue" />
-  </div>
+  <ns-page class="toast-page">
+    <ns-page-content>
+      <h1>消息</h1>
+      <p class="caption">&lt;ns-toast&gt;</p>
+      <story file="toast/basic.vue" />
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>

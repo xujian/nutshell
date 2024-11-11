@@ -289,10 +289,6 @@ const menuData = computed(() => [
             key: '/components/popover'
           },
           {
-            label: '气泡确认框 popover-confirm',
-            key: '/components/popover-confirm'
-          },
-          {
             label: '选单 menu',
             key: '/interactive/menu'
           }
@@ -300,15 +296,15 @@ const menuData = computed(() => [
       },
       {
         label: '版式组件',
-        key: 'interactive',
+        key: 'layout',
         children: [
           {
             label: '横向排列 row',
-            key: 'row'
+            key: '/layout/row'
           },
           {
-            label: '纵向排列 row',
-            key: 'col'
+            label: '纵向排列 column',
+            key: '/layout/column'
           }
         ]
       },

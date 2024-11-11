@@ -1,8 +1,9 @@
 <template>
-  <div class="page card-page">
-    <h1 class="my-lg">提示 v-tooltip</h1>
-    <ns-button label="保存草稿" color="primary" v-tooltip="{
-      content: '草稿需要发布才生效'
-    }" />
-  </div>
+  <ns-page class="tooltip-page">
+    <ns-page-content>
+      <h1>提示</h1>
+      <p class="caption">v-tooltip</p>
+      <story file="tooltip/basic" />
+    </ns-page-content>
+  </ns-page>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <ns-row>
+  <ns-row justify="around">
     <ns-button label="保存草稿">
       <ns-popover title="提示">
         <p>1. 草稿需要发布才能生效</p>
