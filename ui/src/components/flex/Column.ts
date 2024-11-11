@@ -1,12 +1,7 @@
 import { PropType, h } from 'vue'
 import { defineComponent } from 'vue'
+import type { Justify, Align } from '../../props'
 import { MakePropsType } from '../../utils/private/helpers'
-
-const JUSTIFY = ['start', 'end', 'center', 'between', 'around', 'evenly'] as const
-type JustifyValue = typeof JUSTIFY[number]
-
-const ALIGN = ['start', 'end', 'center', 'stretch'] as const
-type AlignValue = typeof ALIGN[number]
 
 const props = {
   gap: {
@@ -14,11 +9,11 @@ const props = {
     default: 10,
   },
   justify: {
-    type: String as PropType<JustifyValue>,
+    type: String as PropType<Justify>,
     default: 'center'
   },
   align: {
-    type: String as PropType<AlignValue>,
+    type: String as PropType<Align>,
     default: 'center'
   },
   span: {

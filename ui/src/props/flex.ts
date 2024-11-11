@@ -1,11 +1,14 @@
-import { ExtractPropTypes, PropType } from 'vue'
-import { Color, GradientString } from '../composables/theme'
+import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
 
+export const justifies = ['start', 'end', 'center', 'between', 'around', 'evenly'] as const
+export type Justify = typeof justifies[number]
+
+export const aligns = ['start', 'end', 'center', 'stretch'] as const
+export type Align = typeof aligns[number]
+
 export type FlexDirection = 'row' | 'column'
-export type Align = 'start' | 'end' | 'between' | 'space'
-export type Justify = 'start' | 'end' | 'between' | 'space'
 export type TextAlign = 'start' | 'end' | 'center'
 
 const flexProps = {

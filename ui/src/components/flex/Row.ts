@@ -1,19 +1,13 @@
 import {ExtractPropTypes, PropType, defineComponent, h } from 'vue'
-import type { Size } from '../../props'
-
-const JUSTIFY = ['start', 'end', 'center', 'around', 'between', 'eventy'] as const
-type JustifyValue = typeof JUSTIFY[number]
-
-const ALIGN = ['start', 'end', 'center', 'stretch'] as const
-type AlignValue = typeof ALIGN[number]
+import type { Align, Justify } from '../../props'
 
 export const rowProps = {
   justify: {
-    type: String as PropType<JustifyValue>,
+    type: String as PropType<Justify>,
     default: 'center'
   },
   align: {
-    type: String as PropType<AlignValue>,
+    type: String as PropType<Align>,
     default: 'center'
   },
   gap: {
