@@ -39,7 +39,7 @@ export const useDimensionProps = buildProps({
 export function convertDimension (input?: Dimension): string | undefined {
   if (!input) {
     return void 0
-  } else if (typeof input === 'number') {
+  } else if (typeof input === 'number' || input.match(/^\d+$/)) {
     // 直接使用数字值时 相当于 px
     return `${input}px`
   } else {
@@ -50,7 +50,7 @@ export function convertDimension (input?: Dimension): string | undefined {
 
 
 export function buildDimensionStyles (props: DimensionProps) {
-  const dimensionStyles = {
+  return {
     ...props.height !== void 0 ? { height: convertDimension(props.height) } : {},
     ...props.width !== void 0 ? { width: convertDimension(props.width) } : {},
     ...props.maxHeight !== void 0 ? { maxHeight: convertDimension(props.maxHeight) } : {},
@@ -59,6 +59,4 @@ export function buildDimensionStyles (props: DimensionProps) {
     ...props.minWidth !== void 0 ? { minWidth: convertDimension(props.minWidth) } : {},
     ...props.ratio ? { aspectRadio: props.ratio } : {},
   }
-
-  return dimensionStyles
 }

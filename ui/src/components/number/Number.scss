@@ -1,10 +1,12 @@
 .ns-number {
   --stroke: transparent;
   --text: var(--foreground);
+  --fill: #fff;
   font-size: 12px;
   height: fit-content;
   border-radius: var(--border-radius, var(--ns-border-radius));
   padding: var(--padding, var(--ns-spacing));
+  justify-content: var(--align, center); /* 这里没有写错 */
   .content {
     width: 100%;
     white-space: nowrap;
@@ -33,7 +35,7 @@
     width: 100%;
     flex-grow: 0;
     flex-direction: row;
-    align-items: var(--mainAlign, var(--flex-align, center));
+    align-items: var(--mainAlign, var(--align, center));
     justify-content: var(--mainJustify, var(--justify, var(--flex-justify, center)));
     height: var(--mainHeight);
   }

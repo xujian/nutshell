@@ -220,7 +220,7 @@ export const NsNumber = defineComponent({
           : props.footer ? footer() : null
       ])
 
-    const styles = {
+    const styles = computed(() => ({
       ...buildDimensionStyles(props),
       ...buildFlexStyles(props),
       ...buildDesignStyles(props),
@@ -239,7 +239,7 @@ export const NsNumber = defineComponent({
       ...props.padding !== void 0
         ? { padding: `${props.padding}px` }
         : {}
-    }
+    }))
 
     onMounted(() => {
       if (props.tooltip) {
@@ -253,16 +253,18 @@ export const NsNumber = defineComponent({
       }
     })
 
+    const classes = computed(() => [
+      'ns-number',
+      `number-size-${props.size}`,
+      'column',
+      ...buildDesignClasses(props),
+      $attrs.class,
+    ])
+
     return () => h('div',
       {
-        class: [
-          'ns-number',
-          `number-size-${props.size}`,
-          'column',
-          ...buildDesignClasses(props),
-          $attrs.class,
-        ],
-        style: styles,
+        class: classes.value,
+        style: styles.value,
         ref: root
       },
       [
