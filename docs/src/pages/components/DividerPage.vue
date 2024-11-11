@@ -1,17 +1,19 @@
 <template>
-  <h1 class="my-lg">分割线 ns-divider</h1>
-  <h4 class="my-lg">基本用法</h4>
-  <ns-divider> text </ns-divider>
-
-  <h4 class="my-lg">虚线</h4>
-  <ns-divider dashed> text </ns-divider>
-
-
-  <h4 class="my-lg">垂直分割线</h4>
-  <ns-divider dashed direction="vertical" />
-  text1
-  <ns-divider dashed direction="vertical" />
-  text2
+  <ns-page class="divider-page">
+    <ns-page-content>
+      <h1>分割线</h1>
+      <p class="caption">&lt;ns-divider&gt;</p>
+      <h2>基本用法</h2>
+      <ns-divider> text </ns-divider>
+      <h2>虚线</h2>
+      <ns-divider dashed> text </ns-divider>
+      <h2>垂直分割线</h2>
+      <ns-divider dashed direction="vertical" />
+      text1
+      <ns-divider dashed direction="vertical" />
+      text2
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>
