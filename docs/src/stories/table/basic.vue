@@ -15,13 +15,15 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
-import { NsTable, NsTableColumn,
+import { useHttp } from '@/plugins'
+import {
+  NsTable, NsTableColumn,
   NsTableColumnCurrency,
   usePaging,
   type Paging,
-  type WithPaging} from '@uxda/nutshell'
-import { useHttp } from '@/plugins'
+  type WithPaging
+} from '@uxda/nutshell'
+import { onMounted, ref } from 'vue'
 
 const $http = useHttp()
 const tableRef = ref(null)
@@ -42,6 +44,7 @@ const balanceRows = ref<科目余额[]>([])
 
 async function 获取科目余额 (page: number) {
   const result = await $http.get<WithPaging<科目余额[]>>('/json/balances-paging.json', { page })
+  console.log('===result', result)
   balanceRows.value = result.data
   paging.value = result.paging
   return result

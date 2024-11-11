@@ -11,8 +11,10 @@
     <ns-table-column-currency field="余额" label="余额" align="right" width="120" />
   </ns-table>
   <p>&nbsp;</p>
-  <ns-button color="primary" @click="onHideButtonClick">隐藏科目类型</ns-button>
-  <ns-button color="primary" @click="onShowButtonClick">显示科目类型</ns-button>
+  <ns-row justify="start">
+    <ns-button color="primary" @click="onHideButtonClick">隐藏科目类型</ns-button>
+    <ns-button color="primary" @click="onShowButtonClick">显示科目类型</ns-button>
+  </ns-row>
 </template>
 
 <script lang="ts" setup>

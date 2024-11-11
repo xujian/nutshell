@@ -1,6 +1,6 @@
 import { inject, type App, type InjectionKey } from 'vue'
 import { createHttp } from '@uxda/nutshell'
-import type { HttpInstance, HttpRequestConfig, ResponseRaw } from '@uxda/nutshell'
+import type { HttpInstance, HttpRequestConfig, ResponseRaw, PagingParams, PagingData } from '@uxda/nutshell'
 import axios, { type Method } from 'axios'
 
 /**

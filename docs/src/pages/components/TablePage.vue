@@ -1,32 +1,31 @@
 <template>
-  <h1 class="my-lg">数据表格 &lt;ns-table&gt;</h1>
-  <p>&nbsp;</p>
-  <h3>缺省样式</h3>
-  <p>&nbsp;</p>
-  <story minimal file="table/basic" />
-  <h3>全特性表格</h3>
-  <p>&nbsp;</p>
-  <story minimal file="table/full-featured" />
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <h3>外观配置</h3>
-  <p>&nbsp;</p>
-  <story minimal file="table/design" />
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <h3>隐藏列</h3>
-  <p>&nbsp;</p>
-  <story minimal file="table/hidden-columns" />
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <h3>合并单元格</h3>
-  <p>&nbsp;</p>
-  <story minimal file="table/merge" />
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <h3>单元格内编辑</h3>
-  <p>&nbsp;</p>
-  <story minimal file="table/editable" />
+  <ns-page class="table-page">
+    <ns-page-content>
+      <h1>数据表格</h1>
+      <p class="caption">&lt;ns-table&gt;</p>
+      <p>&nbsp;</p>
+      <h2>缺省样式</h2>
+      <story minimal file="table/basic" />
+      <h2>全特性表格</h2>
+      <p>&nbsp;</p>
+      <story minimal file="table/full-featured" />
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <h2>外观配置</h2>
+      <story minimal file="table/design" />
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <h2>隐藏列</h2>
+      <story minimal file="table/hidden-columns" />
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <h2>合并单元格</h2>
+      <story minimal file="table/merge" />
+      <p>&nbsp;</p>
+      <h2>单元格内编辑</h2>
+      <story minimal file="table/editable" />
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>
