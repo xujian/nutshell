@@ -49,6 +49,8 @@ const SheetPage = () => import('../pages/interactive/SheetPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
 const DrawerPage = () => import('../pages/interactive/DrawerPage.vue')
 const FontPage = () => import('../pages/tokens/FontPage.vue')
+const SizingPage = () => import('../pages/tokens/SizingPage.vue')
+const SpacingPage = () => import('../pages/tokens/SpacingPage.vue')
 const TablePerfPage = () => import('../pages/labs/TablePerfPage.vue')
 const ComponentListPage = () => import('../pages/labs/ComponentList.vue')
 const TooltipPage = () => import('../pages/directives/TooltipPage.vue')
@@ -307,8 +309,18 @@ const router = createRouter({
         },
         {
           path: '/tokens/font',
-          name: 'tokens-toast',
+          name: 'tokens-font',
           component: FontPage
+        },
+        {
+          path: '/tokens/sizing',
+          name: 'tokens-sizing',
+          component: SizingPage
+        },
+        {
+            path: '/tokens/spacing',
+            name: 'tokens-spacing',
+            component: SpacingPage
         },
         {
           path: '/about',

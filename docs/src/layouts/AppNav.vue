@@ -75,12 +75,12 @@ const menuData = computed(() => [
         key: '/tokens/font'
       },
       {
-        label: '尺寸 sizing',
-        key: '/tokens/sizes'
+        label: '间距 spacing',
+        key: '/tokens/spacing'
       },
       {
-        label: '间距 spacing',
-        key: '/tokens/spacings'
+        label: '尺寸 sizing',
+        key: '/tokens/sizing'
       },
       {
         label: '交互状态 state',

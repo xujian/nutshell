@@ -1,34 +1,36 @@
 <template>
-  <div class="page patterns-page">
-    <h1 class="mt-lg">Built-in Patterns</h1>
-    <p class="caption">预制图案填充</p>
-    <p>&nbsp;</p>
-    <ns-column align="stretch" :gap="10" class="playground full-width">
-      <ns-card class="sample-card" fill="primary" :pattern>
-        <ns-number
-          prefix="2012年净利润"
-          suffix="亿元人民币"
-          width="48%"
-          hight="400"
-          justify="center"
-          stroke="secondary"
-          fill="#ffffff22"
-          foreground="#fff"
-          :animated="true"
-          :value="8012.591" />
-      </ns-card>
-      <ns-row :gap="10" justify="start" wrap class="select full-width">
-        <ns-button
-          class="sample-button"
-          fill="primary"
-          v-for="(g) in patterns"
-          :pattern="g.value"
-          :key="g.value"
-          @click="pattern = `${g.value}`"
-          >{{ g.value }}</ns-button>
-      </ns-row>
-    </ns-column>
-  </div>
+  <ns-page class="patterns-page">
+    <ns-page-content>
+      <h1>Built-in Patterns</h1>
+      <p class="caption">预制图案填充</p>
+      <p>&nbsp;</p>
+      <ns-column align="stretch" :gap="10" class="playground full-width">
+        <ns-card class="sample-card" fill="primary" :pattern>
+          <ns-number
+            prefix="2012年净利润"
+            suffix="亿元人民币"
+            width="48%"
+            hight="400"
+            justify="center"
+            stroke="secondary"
+            fill="#ffffff22"
+            foreground="#fff"
+            :animated="true"
+            :value="8012.591" />
+        </ns-card>
+        <ns-row :gap="10" justify="start" wrap class="select full-width">
+          <ns-button
+            class="sample-button"
+            fill="primary"
+            v-for="(g) in patterns"
+            :pattern="g.value"
+            :key="g.value"
+            @click="pattern = `${g.value}`"
+            >{{ g.value }}</ns-button>
+        </ns-row>
+      </ns-column>
+    </ns-page-content>
+  </ns-page>
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'

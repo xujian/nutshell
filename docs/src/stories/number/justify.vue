@@ -9,7 +9,7 @@
     :align
     :value="净利润" />
   <ns-row justify="between">
-    <h4>JUSTIFY</h4>
+    <h5>JUSTIFY</h5>
     <div class="caption">横向</div>
     <div class="spacer"></div>
     <ns-button-group
@@ -19,7 +19,7 @@
       v-model="justify" />
   </ns-row>
   <ns-row justify="between">
-    <h4>ALIGN</h4>
+    <h5>ALIGN</h5>
     <div class="caption">纵向</div>
     <div class="spacer"></div>
     <ns-button-group
