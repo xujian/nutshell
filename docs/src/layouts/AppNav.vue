@@ -277,6 +277,10 @@ const menuData = computed(() => [
             key: '/interactive/dialog'
           },
           {
+            label: '底部弹窗 sheet',
+            key: '/interactive/sheet'
+          },
+          {
             label: '消息 toast',
             key: '/interactive/toast'
           },

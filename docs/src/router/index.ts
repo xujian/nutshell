@@ -45,6 +45,7 @@ const LineChartPage = () => import('../pages/plot/LineChartPage.vue')
 const BarChartPage = () => import('../pages/plot/BarChartPage.vue')
 const PieChartPage = () => import('../pages/plot/PieChartPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
+const SheetPage = () => import('../pages/interactive/SheetPage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
 const DrawerPage = () => import('../pages/interactive/DrawerPage.vue')
 const FontPage = () => import('../pages/tokens/FontPage.vue')
@@ -273,6 +274,11 @@ const router = createRouter({
           path: '/interactive/dialog',
           name: 'interactive-dialog',
           component: DialogPage
+        },
+        {
+          path: '/interactive/sheet',
+          name: 'interactive-sheet',
+          component: SheetPage
         },
         {
           path: '/interactive/toast',

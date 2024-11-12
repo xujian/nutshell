@@ -7,6 +7,7 @@ import { Checkbox, CheckboxGroup } from './checkbox'
 import { Rating, RatingInput } from './rating'
 import { Table } from './table'
 import { Dialog } from './dialog'
+import { Sheet } from './sheet'
 import { Select, CascadingSelect, MultipleSelect } from './select'
 import { Dropdown } from './dropdown'
 import { Tabs } from './tabs'
@@ -38,6 +39,7 @@ const components = {
   Switch,
   Table,
   Dialog,
+  Sheet,
   Select,
   Empty,
   CascadingSelect,
