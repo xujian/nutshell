@@ -66,7 +66,7 @@ export const NsCard = defineComponent({
       ? h('div', {
           class: 'title'
         },
-        h('h4', {
+        h('h5', {
             class: 'title-label'
           }, props.title)
         )

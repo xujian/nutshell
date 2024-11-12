@@ -67,7 +67,6 @@
   --stroke: initial;
   color: var(--foreground);
   background-color: var(--fill);
-  background-repeat: no-repeat;
   border-color: var(--stroke, transparent);
   border-style: solid;
   border-width: var(--thick);
@@ -82,6 +81,9 @@
   }
   &.variant-outlined {
     --stroke: var(--ns-stroke);
+  }
+  &:not(.with-pattern) {
+    background-repeat: no-repeat;
   }
 }
 

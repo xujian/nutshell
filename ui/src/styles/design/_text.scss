@@ -1,6 +1,19 @@
 .text-gradient {
-  background: linear-gradient(to right, #fff, #333);
+  background-image: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   width: fit-content;
+}
+
+.decor-101 {
+  &::before {
+    background-color: #c50000;
+    border-radius: 0.25rem;
+    content: '';
+    display: block;
+    height: 0.25rem;
+    width: 42px;
+    margin-bottom: 1.25rem;
+  }
 }

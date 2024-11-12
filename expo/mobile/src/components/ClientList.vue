@@ -14,7 +14,7 @@
           <ns-rating :value="4" />
         </ns-column>
         <ns-column :grow="0" align="end">
-          <h4 class="mobile number">18910890099</h4>
+          <h5 class="mobile number">18910890099</h5>
         </ns-column>
       </ns-row>
       <template #footer>

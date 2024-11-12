@@ -101,7 +101,7 @@ export const NsListItem = defineComponent({
         ],
       }, [
         data?.title
-          ? h('h4', {
+          ? h('h5', {
               class: 'title'
             }, data.title)
           : null,

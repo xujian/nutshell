@@ -1,6 +1,6 @@
 <template>
   <div class="colomn" v-for="variant in variants">
-    <h4>variant="{{ variant }}"</h4>
+    <h5>variant="{{ variant }}"</h5>
     <ns-facts square :variant="variant">
       <ns-facts-item label="账户类型">
         监管户

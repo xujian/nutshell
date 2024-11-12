@@ -43,6 +43,14 @@ h2 {
 
 
 h3 {
+  font-size: var(--ns-font-md);
+  + .caption {
+    margin-top: calc(var(--ns-font-md) * -1);
+    margin-bottom: var(--ns-font-md)
+  }
+}
+
+h4 {
   font-size: var(--ns-font-sm);
   + .caption {
     margin-top: calc(var(--ns-font-sm) * -1);

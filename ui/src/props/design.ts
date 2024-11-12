@@ -188,7 +188,7 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.texture ? ['with-texture'] : []),
     ...(props.pattern
         ? isArtifact(props.pattern)
-          ? [`pattern-${props.pattern}`]
+          ? ['with-pattern', `pattern-${props.pattern}`]
           : ['with-pattern']
         : []),
     ...(props.gradient && props.texture ? ['with-texture-gradient'] : []),

@@ -1,9 +1,9 @@
 <template>
   <ns-facts :items="items">
     <template #item="item">
-      <h4>
+      <h5>
         {{ item.value }}
-      </h4>
+      </h5>
       <div class="caption">不可更改</div>
     </template>
   </ns-facts>

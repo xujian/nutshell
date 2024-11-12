@@ -1,15 +1,17 @@
 @use '../tools';
 
+$root: 16px;
+
 $fonts: () !default;
 $fonts: tools.map-deep-merge(
   (
-    root: 16px,
+    root: $root,
     auto: 0.75rem,          // 12px
-    xs: 0.6666666667rem,   // 10px
-    sm: .75rem,             // 12px
-    md: .875rem,            // 14px
-    lg: 1rem,            // 16px
-    xl: 1.5rem,             // 24px
+    xs: 0.75,               // 12px
+    sm: .875em,             // 四标题 14px
+    md: 1rem,               // 三标题 16px
+    lg: 1.25rem,            // 二标题 20px
+    xl: 1.5rem,             // 大标题 2px
   ),
   $fonts
 )

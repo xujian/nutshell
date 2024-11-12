@@ -1,36 +1,43 @@
 <template>
-  <h1 class="my-lg">字型 font</h1>
-
-  <h2 class="my-md">标题</h2>
-  <ns-row justify="start"><label class="heading-label">h1</label><h1>标题</h1></ns-row>
-  <ns-row justify="start"><label class="heading-label">h2</label><h2>标题</h2></ns-row>
-  <ns-row justify="start"><label class="heading-label">h3</label><h3>标题</h3></ns-row>
-  <ns-row justify="start"><label class="heading-label">h4</label><h4>标题</h4></ns-row>
-  <ns-row justify="start"><label class="heading-label">h5</label><h5>标题</h5></ns-row>
-  <ns-row justify="start"><label class="heading-label">h6</label><h6>标题</h6></ns-row>
-  <h2 class="my-md">Size</h2>
-
-  <ns-row  v-for="size in sizes" :key="size" justify="start">
-    <label class="heading-label">{{ size }}</label>
-    <div><span :class="`font-${size}`">待办任务</span></div>
-  </ns-row>
-  <h2 class="my-md">Colors</h2>
-  <ns-row class="colors" v-for="color in brands" align="start" :key="color" >
-    <ns-flex-item class="label" span="12">
-      <h4>{{ color }}</h4>
-    </ns-flex-item>
-    <ns-flex-item span="12">
-      <h1 :class="`text-${color}`" >待办任务</h1>
-    </ns-flex-item>
-  </ns-row>
-  <h2 class="my-md">Variants</h2>
-  <ns-row class="variants" v-for="(variant) in variants" align="start" :key="variant">
-    <h4 class="variant-label">{{ variant }}</h4>
-    <div v-for="(color) in colors" class="my-xs"
-      :key="color"
-      :color="color"
-      :variant="variant" label="创建订单"></div>
-  </ns-row>
+  <ns-page class="font-page">
+    <ns-page-content>
+      <ns-image class="full-width"
+        src="https://simple.shensi.tech/images/raptors.jpg"></ns-image>
+      <h1>字型与版式</h1>
+      <p class="caption">font</p>
+      <h2>二标题</h2>
+      <p class="caption">副标题</p>
+      <p><lorem /></p>
+      <h3>三标题</h3>
+      <p class="caption">副标题</p>
+      <ns-row :gap="10">
+        <ns-card fill="#fff">
+          <p><lorem /></p>
+        </ns-card>
+        <ns-card fill="#333" foreground="#fff">
+          <p><lorem /></p>
+        </ns-card>
+        <ns-card fill="primary">
+          <p><lorem /></p>
+        </ns-card>
+      </ns-row>
+      <p>&nbsp;</p>
+      <h3>四标题</h3>
+      <p class="caption">副标题</p>
+      <story minimal file="list/basic" />
+      <p>&nbsp;</p>
+      <h2>特殊样式</h2>
+      <story file="font/gradient" />
+      <p>&nbsp;</p>
+      <h2>特殊样式</h2>
+      <story file="font/decor" />
+      <p>&nbsp;</p>
+      <h2>Colors</h2>
+      <color-cases v-slot="{color}">
+        <h1 :class="`text-${color}`">待办任务</h1>
+      </color-cases>
+    </ns-page-content>
+  </ns-page>
 </template>
 
 <script lang="ts" setup>
@@ -41,21 +48,4 @@ const label = '提交'
 </script>
 
 <style lang="scss">
-.heading-label {
-  width: 120px;
-}
-.colors {
-  .label {
-    width: 120px;
-    text-align: left;
-  }
-}
-.variants {
-  .ns-button {
-    margin: 2px
-  }
-  .variant-label {
-    width: 100px
-  }
-}
 </style>
