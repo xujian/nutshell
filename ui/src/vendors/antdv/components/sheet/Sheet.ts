@@ -1,6 +1,6 @@
 import { defineComponent, h } from 'vue'
 import { type SheetProps, sheetProps, sheetEmits, type SheetEmits } from '../../../../components/sheet'
-import { Modal as AntdvModal } from 'ant-design-vue'
+import { Drawer as AntdvDrawer } from 'ant-design-vue'
 import { LegacyButtonType } from 'ant-design-vue/es/button/buttonTypes'
 import { NsButton } from '../../../../components'
 
@@ -64,7 +64,9 @@ export const Sheet = defineComponent<SheetProps, SheetEmits>(
       }),
     ])
 
-    return () => h(AntdvModal, {
+    return () => h(AntdvDrawer, {
+      placement: 'bottom',
+      class: 'xxx',
       open: props.modelValue,
       closable: props.closable === false ? false : true,
       title: props.title,

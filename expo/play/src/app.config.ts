@@ -5,6 +5,7 @@ export default defineAppConfig({
     'pages/components/button',
     'pages/guide/dialog',
     'pages/guide/scroll',
+    'pages/tokens/spacing',
   ],
   // tabBar: {
   //   custom: true,

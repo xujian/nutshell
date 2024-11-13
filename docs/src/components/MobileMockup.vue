@@ -4,8 +4,7 @@
       :class="[model, {realistic}]">
       <div class="screen">
         <div class="viewport">
-          <iframe class="iframe" allowTransparency="true"
-            :src="url"></iframe>
+          <iframe class="iframe" allowTransparency="true" :src="src"></iframe>
         </div>
         <div class="status"></div>
         <div class="time">9:41</div>
@@ -23,6 +22,9 @@
 
 <script lang="ts" setup>
 import type { PhoneModel } from '@uxda/nutshell'
+import { computed } from 'vue'
+
+const host = 'http://localhost:10087'
 
 export type MobileMockupProps = {
   /**
@@ -39,6 +41,13 @@ const props = withDefaults(
     model: 'iphone-14'
   }
 )
+
+const src = computed(() => props.url
+    ? props.url.startsWith('http')
+      ? props.url
+      : `${host}/${props.url}`
+    : host
+  )
 </script>
 
 <style lang="scss">

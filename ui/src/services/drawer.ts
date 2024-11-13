@@ -11,7 +11,7 @@ export type DrawerOptions = {
   /**
    * 嵌入子组件
    */
-  component?: PopupChildComponent,
+  component: PopupChildComponent,
   /**
    * 透传给子组件的属性
    */
@@ -22,6 +22,8 @@ export type DrawerOptions = {
   mask?: boolean,
   destroyOnClose?: boolean,
   round?: boolean,
+  onComplete?: (result?: any) => boolean | undefined,
+  onCancel?: () => boolean | undefined
 }
 
 export type DrawerInstance = {

@@ -1,7 +1,18 @@
+.ant-drawer-right {
+  >.ant-drawer-content-wrapper {
+    box-shadow: none;
+  }
+}
+.ant-drawer-content-wrapper {
+  box-shadow: none;
+}
+.ant-drawer-footer {
+  .ns-button + .ns-button {
+    margin-left: 12px;
+  }
+}
 .ns-drawer {
-  .ant-drawer-footer {
-    .ns-button + .ns-button {
-      margin-left: 12px;
-    }
+  &.ant-drawer-content {
+    background-color: var(--fill, var(--ns-paper)) !important;
   }
 }

@@ -4,15 +4,21 @@ import { DrawerProps } from '../../../../components'
 
 export const Drawer = (props: DrawerProps, ctx: SetupContext) => {
 
+  const styles = {
+    ...props.fill
+      ? { '--fill': props.fill }
+      : {}
+  }
+
   return h(AntdvDrawer, {
     rootClassName: [
       props.className,
-      'ns-drawer'
     ].join(' '),
     open: props.modelValue,
     title: props.title,
     closable: false,
     width: props.width,
+    style: styles,
     destroyOnClose: props.destroyOnClose,
     placement: 'right',
     mask: props.mask === false ? false : true,

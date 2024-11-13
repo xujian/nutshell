@@ -1,7 +1,7 @@
 import { getCurrentInstance, h, App, FunctionalComponent } from 'vue'
 import { CoreVendor, VendorComponent } from '../../shared'
 import components from './components'
-import { dialog, confirm, toast, loading } from './services'
+import { dialog, confirm, toast, loading, drawer } from './services'
 import VXETable from 'vxe-table'
 import { PreviewOptions } from '../../services/drawer'
 import { Media } from '../../types'
@@ -23,7 +23,6 @@ const antdvVendor: CoreVendor = {
   render (props: any, ctx) {
     const { parent } = getCurrentInstance() as any
     const name = parent.type.name.slice(2) as keyof typeof components
-    console.log('----------', name)
     let component = components[name] as FunctionalComponent
     if (!component) {
       if (this.fallback) {
@@ -36,7 +35,7 @@ const antdvVendor: CoreVendor = {
   confirm,
   toast,
   loading,
-  drawer: () => {},
+  drawer,
   preview: (media: PreviewMediaParam, options: PreviewOptions) => {},
   sheet: () => {},
   notice: (message: string) => {},
