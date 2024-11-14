@@ -17,13 +17,13 @@ export type SafeArea = {
   bottom: number
 }
 
-export type PhoneModel =
-  'iphone-x' | 'iphone-14'
+export type Device =
+  'iphone-x' | 'iphone-14' | 'android'
 
 /**
  * 手机型号具体尺寸
  */
-const models: Record<PhoneModel, SafeArea> = {
+const devices: Record<Device, SafeArea> = {
   'iphone-x': {
     status: 40,
     nav: 40,
@@ -31,6 +31,11 @@ const models: Record<PhoneModel, SafeArea> = {
   },
   'iphone-14': {
     status: 59,
+    nav: 40,
+    bottom: 0
+  },
+  'android': {
+    status: 32,
     nav: 40,
     bottom: 0
   }
@@ -41,8 +46,11 @@ const models: Record<PhoneModel, SafeArea> = {
  * 从系统 API 获取
  * @returns
  */
-export function useSafeArea (model?: PhoneModel): SafeArea {
+export function useSafeArea (device?: Device): SafeArea {
   const platform = usePlatform()
+  if (platform.mock) {
+    return devices[platform.mock]
+  }
   if (platform.desktop) {
     return {
       status: 0,
@@ -50,10 +58,10 @@ export function useSafeArea (model?: PhoneModel): SafeArea {
       bottom: 0
     }
   }
-  const m = model || 'iphone-14'
+  const d = device || 'iphone-14'
   const env = Taro.getEnv() as string
   if (env !== 'WEAPP') {
-    return models[m]
+    return devices[d]
   }
   const { screenHeight, statusBarHeight: status, safeArea } = wx.getWindowInfo(),
     capsule = wx.getMenuButtonBoundingClientRect(),
@@ -63,7 +71,6 @@ export function useSafeArea (model?: PhoneModel): SafeArea {
     gap = capsule.top - status,
     nav = capsule.height + gap * 2,
     bottom = screenHeight - safeArea.bottom
-  console.log('===safeArea', { status, nav, bottom })
   return {
     status,
     nav,

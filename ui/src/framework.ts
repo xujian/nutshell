@@ -10,7 +10,7 @@ import { ConfirmOptions, DialogOptions } from './services/dialog'
 import { PreviewOptions } from './services/drawer'
 import { ToastOptions } from './services/toast'
 import { LoadingOptions } from './services/loading'
-import { IconFormat } from './components'
+import { AppSymbol, IconFormat } from './components'
 import { DrawerOptions } from './services/drawer'
 import { SheetOptions } from './services/sheet'
 import { Media } from './types'
@@ -80,6 +80,7 @@ export function Nutshell ({
     app.config.globalProperties.$n = $n
     app.provide(VendorSymbol, theVendor)
     app.provide(NutshellSymbol, $n)
+    app.provide(AppSymbol, {})
     app.provide(PlatformSymbol, platform)
     app.provide(BusSymbol, bus)
     for (const service of services) {

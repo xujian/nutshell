@@ -1,6 +1,5 @@
 import { defineComponent, getCurrentInstance, h, PropType } from 'vue'
 import { MakePropsType } from '../../utils'
-import { useSafeArea } from '../../composables'
 import { buildDesignClasses, buildDesignStyles, type TextAlign, useDesignProps } from '../../props'
 import { usePage } from './Page'
 
@@ -10,6 +9,9 @@ export const pageHeaderProps = {
   },
   titleAlign: {
     type: String as PropType<TextAlign>,
+  },
+  caption: {
+    type: String
   },
   sticky: {
     type: Boolean,
@@ -51,14 +53,11 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
   (props, { slots, emit }) => {
 
     const page = usePage(),
-      safeArea = useSafeArea(),
       $props = getCurrentInstance()?.vnode.props
 
     page && (page.hasHeader = true)
 
     const cssVars = {
-      '--top': `${safeArea.status}px`,
-      '--height': `${safeArea.nav}px`,
       ...props.titleAlign ? { '--titleAlign': props.titleAlign } : {},
     }
 

@@ -1,12 +1,25 @@
-import { defineComponent, h, onMounted, onBeforeUnmount } from 'vue'
-import { useTheme } from '../../composables'
+import { defineComponent, h, onMounted, onBeforeUnmount, InjectionKey, reactive, provide, inject } from 'vue'
+import { Device, useTheme } from '../../composables'
 import { useBus } from '../../composables'
+
+export type AppSettings = {
+  /**
+   * 运行在设备模拟器中
+   */
+  mock?: Device
+}
+
+export const AppSymbol: InjectionKey<AppSettings | undefined> = Symbol('nutshell-app')
 
 const appProps = {
   theme: {
     type: String,
     default: 'present'
   }
+}
+
+export const useApp = () => {
+  return inject(AppSymbol)!
 }
 
 /**
@@ -20,6 +33,10 @@ export const NsApp = defineComponent({
     // 1. initiates global configs/settings
     // 2. provides system values and state
     // 3. listens to app level events
+    const settings = reactive<AppSettings>({})
+
+    provide(AppSymbol, settings)
+
     const { slots } = ctx
     const classes = [
       'ns-app',
@@ -43,7 +60,7 @@ export const NsApp = defineComponent({
     onBeforeUnmount(() => {
       $bus.off('theme:change', handleThemeChange)
     })
-  
+
     return () => h('div', {
       class: classes,
     }, slots)

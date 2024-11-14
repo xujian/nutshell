@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, onUnmounted, ref, shallowRef } from 'vue'
 import { useToast } from 'vue-toastification'
-import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog } from '../../../../components'
+import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, useApp } from '../../../../components'
 import { useBus, useSafeArea, usePlatform } from '../../../../composables'
 import type { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType, DrawerOptions } from '../../../../services'
 import { marginProps } from '../../../../utils'
@@ -262,22 +262,24 @@ export const Page = defineComponent({
     })
 
     const classes = computed<string[]>(() => [
-      'ns-page page column align-stretch',
+      'ns-page page column align-stretch is-mobile',
       ...scroll.value > 0 ? ['scrolled'] : [],
       ...props.scrollable === true ? ['scrollable'] : [],
       // ...props.classes || [],
       'theme-present'
     ])
 
+    const styles = computed(() => ({
+      '--status': `${safeArea.status}px`,
+      '--nav': `${safeArea.nav}px`,
+      '--bottom': `${safeArea.bottom}px`,
+      '--scroll': `${scroll.value}px`,
+    }))
+
     return () => h('div', {
         ref: page,
         class: classes.value,
-        style: {
-          '--status': `${safeArea.status}px`,
-          '--nav': `${safeArea.nav}px`,
-          '--bottom': `${safeArea.bottom}px`,
-          '--scroll': `${scroll.value}px`,
-        },
+        style: styles.value,
       }, [
         slots.default?.(),
         h('div', {

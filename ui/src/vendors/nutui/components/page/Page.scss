@@ -1,5 +1,6 @@
 .ns-page {
   --header: calc(var(--status) + var(--nav));
+  background-color: var(--fill, var(--ns-background));
   min-height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;

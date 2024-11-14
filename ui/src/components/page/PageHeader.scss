@@ -4,8 +4,8 @@
     display: flex;
     flex-direction: column;
     padding: 0;
-    padding-top: var(--top);
-    min-height: var(--height);
+    padding-top: var(--status);
+    min-height: var(--nav);
     margin-bottom: 0;
     transition: background-color .5s;
     box-sizing: border-box;
