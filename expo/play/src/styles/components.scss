@@ -1,0 +1,39 @@
+.case-list {
+  width: fit-content;
+  overflow: hidden;
+  flex-wrap: wrap;
+  .item {
+    color: var(--ns-neutral);
+    background-color: #fff;
+    display: flex;
+    position: relative;
+    min-width: 50vw;
+    min-height: 50vw;
+    box-sizing: border-box;
+    padding: var(--ns-spacing);
+    .title {
+      font-size: 12px;
+      position: absolute;
+      font-weight: normal;
+      top: 10px;
+      left: 10px;
+    }
+  }
+  &.column {
+    align-items: start;
+    .item {
+      padding-inline: var(--ns-spacing-xl);
+    }
+    .item + .item {
+      border-block-start: 1px solid var(--ns-stroke);
+    }
+  }
+  &:not(.column) {
+    .item + .item {
+      border-inline-start: 1px solid var(--ns-stroke);
+    }
+  }
+  .b {
+    font-weight: bold;
+  }
+}

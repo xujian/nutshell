@@ -3,6 +3,8 @@
     <ns-page-content>
       <h1>按钮</h1>
       <p class="caption">&lt;ns-button&gt;</p>
+      <mobile-button url="pages/components/button" />
+      <p>&nbsp;</p>
       <story minimal file="button/basic.vue" />
       <p>用来替换标准的 HTML 按钮</p>
       <!--panel file="forms/tasks.vue" /-->
@@ -41,8 +43,6 @@
       <div class="caption">自定义填色及渐变效果</div>
       <story minimal file="button/design.vue" />
       <p>&nbsp;</p>
-      <h2>移动端模拟器</h2>
-      <mobile-mockup url="http://localhost:10087" />
     </ns-page-content>
   </ns-page>
 </template>

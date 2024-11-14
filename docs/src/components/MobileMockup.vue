@@ -1,10 +1,10 @@
 <template>
   <div class="mobile-mockup">
     <div class="device iphone"
-      :class="[model, {realistic}]">
+      :class="[device, {realistic}]">
       <div class="screen">
         <div class="viewport">
-          <iframe class="iframe" allowTransparency="true" :src="src"></iframe>
+          <iframe ref="iframe" class="iframe" allowTransparency="true" :src></iframe>
         </div>
         <div class="status"></div>
         <div class="time">9:41</div>
@@ -21,16 +21,18 @@
 </template>
 
 <script lang="ts" setup>
-import type { PhoneModel } from '@uxda/nutshell'
-import { computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
+import type { Device } from '@uxda/nutshell'
 
 const host = 'http://localhost:10087'
+
+const iframe = ref<HTMLIFrameElement>(null)
 
 export type MobileMockupProps = {
   /**
    * 手机型号
    */
-  model?: PhoneModel,
+  device?: Device,
   realistic?: boolean,
   url: string
 }
@@ -38,16 +40,21 @@ export type MobileMockupProps = {
 const props = withDefaults(
   defineProps<MobileMockupProps>(),
   {
-    model: 'iphone-14'
+    device: 'iphone-14'
   }
 )
 
-const src = computed(() => props.url
+const src = computed(() => {
+  const url = props.url
     ? props.url.startsWith('http')
       ? props.url
       : `${host}/${props.url}`
     : host
-  )
+  return `${url}?mock=${props.device}`
+})
+
+onMounted(() => {
+})
 </script>
 
 <style lang="scss">
@@ -204,8 +211,6 @@ const src = computed(() => props.url
       right: 0;
       bottom: $phone-viewport-distance-from-screen-bottom;
       overflow: hidden;
-      border-top: 1px solid #e3e4e8;
-      border-bottom: 1px solid #e3e4e8;
       background: #fff;
     }
     .iframe {

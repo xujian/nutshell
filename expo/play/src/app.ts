@@ -1,18 +1,26 @@
-import { createApp, onMounted } from 'vue'
-import { Nutshell } from '@uxda/nutshell/taro'
+import { createApp, onMounted, provide, reactive } from 'vue'
+import { useRouter } from '@tarojs/taro'
+import { Nutshell, AppSymbol} from '@uxda/nutshell/taro'
+import type { AppSettings } from '@uxda/nutshell/taro'
+import { useHead } from 'unhead'
 
 import '@uxda/appkit/appkit.css'
 import '@uxda/icons/sprite.css'
 import './app.scss'
-import { useHead } from 'unhead'
 
 const App = createApp({
   onShow() {
   },
   onHide() {},
   setup () {
+    const settings = reactive<AppSettings>({})
+    const router = useRouter()
+    if (router.params.mock) {
+      settings.mock = router.params.mock
+    }
+    provide(AppSymbol, settings)
+
     onMounted(() => {
-      console.log('===play on mounted')
       useHead({
         link: [
           {
