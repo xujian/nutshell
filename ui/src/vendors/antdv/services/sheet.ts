@@ -5,7 +5,6 @@ import { SheetOptions } from '../../../services/sheet'
 import { NsSheet } from '../../../components'
 import { CoreVendor } from '../../../shared/models/CoreVendor'
 import type { AsyncComponentLoader } from 'vue'
-import { Dimension } from 'src/types'
 
 
 function createSheet (options: SheetOptions, app: App) {
