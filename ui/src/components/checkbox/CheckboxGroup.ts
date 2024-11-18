@@ -1,24 +1,24 @@
 import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
 import { MakePropsType, define } from '../../utils'
 import { UniDataItem } from '../../shared'
+import { useFieldProps, useModelValuePropsForStringArray, useVariantProps, useFlexProps, formatRules, ValidationRule } from '../../props'
 
 export const checkboxGroupProps = {
-  modelValue: {
-    type: Array as PropType<string[]>,
-    default: []
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: string[]) => void>
-  },
+  ...useModelValuePropsForStringArray(),
   options: {
     type: Array as PropType<UniDataItem[]>,
-  }
+  },
+  ...useFieldProps(),
+  ...useFlexProps(),
+  ...useVariantProps(),
 }
 
 export type CheckboxGroupEmits = {
+  change: (value: string[] | number[] ) => void
 }
 
 const emits: CheckboxGroupEmits = {
+  change: (value: string[] | number[] ) => {}
 }
 
 export type CheckboxGroupSlots = {
@@ -35,7 +35,12 @@ export const NsCheckboxGroup = define({
   props: checkboxGroupProps,
   emits,
   setup (props, ctx) {
+    const rules = formatRules(props.rules as ValidationRule[], props)
+
     return {
+      props: {
+        rules
+      }
     }
   }
 })
