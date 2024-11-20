@@ -17,6 +17,10 @@ useHead({
     },
     {
       rel: 'stylesheet',
+      href: 'https://artifacts.shensi.tech/gradients/mesh.css'
+    },
+    {
+      rel: 'stylesheet',
       href: 'https://artifacts.shensi.tech/motions/motions.css'
     },
     {

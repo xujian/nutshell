@@ -33,6 +33,10 @@ const App = createApp({
           },
           {
             rel: 'stylesheet',
+            href: 'https://simple.shensi.tech/system-assets/gradients/mesh.css'
+          },
+          {
+            rel: 'stylesheet',
             href: 'https://simple.shensi.tech/system-assets/motions/motions.css'
           },
           {

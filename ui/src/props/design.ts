@@ -40,6 +40,9 @@ const designProps = {
   gradient: {
     type: String as PropType<GradientString>
   },
+  mesh: {
+    type: String,
+  },
   /**
    * 颗粒
    */
@@ -191,6 +194,9 @@ const buildDesignClasses = (props: DesignProps) => {
           ? ['with-pattern', `pattern-${props.pattern}`]
           : ['with-pattern']
         : []),
+      ...(props.mesh
+          ? ['with-mesh', `mesh-${props.mesh}`]
+          : []),
     ...(props.gradient && props.texture ? ['with-texture-gradient'] : []),
     ...(props.gradient && props.pattern ? ['with-pattern-gradient'] : []),
     ...(props.shadow || props.depth ? ['with-shadow'] : []),
