@@ -5,6 +5,10 @@
       <p class="caption">&lt;ns-button&gt;</p>
       <mobile-button url="pages/components/button" />
       <p>&nbsp;</p>
+      <note title="NOTE">
+
+      </note>
+      <p>&nbsp;</p>
       <story minimal file="button/basic.vue" />
       <p>用来替换标准的 HTML 按钮</p>
       <!--panel file="forms/tasks.vue" /-->
@@ -39,9 +43,18 @@
       <div class="caption">图标可前置及后置</div>
       <story minimal file="button/icon.vue" />
       <p>&nbsp;</p>
+      <h2>等待状态</h2>
+      <div class="caption">执行长任务时</div>
+      <story minimal file="button/loading.vue" />
+      <p>&nbsp;</p>
       <h2>视觉效果</h2>
       <div class="caption">自定义填色及渐变效果</div>
       <story minimal file="button/design.vue" />
+      <p>&nbsp;</p>
+      <h2>用在 &lt;ns-card&gt; 内</h2>
+      <div class="caption">自定义填色及渐变效果</div>
+      <story minimal file="button/card.vue" />
+      <p>&nbsp;</p>
       <p>&nbsp;</p>
     </ns-page-content>
   </ns-page>

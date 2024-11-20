@@ -1,6 +1,7 @@
 <template>
   <ns-page>
-    <ns-page-header title="按钮" fill="#00000088" :blur="10" has-back-button />
+    <ns-page-header title="按钮"
+      :blur="10" reveal has-back-button />
     <ns-page-content>
       <h2>Size</h2>
       <size-cases class="breakout" v-slot="{size}">
