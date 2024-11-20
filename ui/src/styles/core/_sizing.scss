@@ -15,7 +15,7 @@
       --h: #{$value};
       --icon-size: calc(var(--ns-size-#{$name}) - 8px);
       height: var(--ns-size-#{$name});
-      padding-inline: calc(var(--ns-size-#{$name}) - 8px);
+      padding-inline: calc(var(--ns-size-#{$name}) / 2);
     }
   }
 }

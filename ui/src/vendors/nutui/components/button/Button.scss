@@ -1,9 +1,9 @@
 .ns-button {
   padding-inline: 1em;
   padding-block: 0;
-  --icon-size: 12px;
-  --padding-for-icon: calc(var(--icon-size) + 4px + 4px);
   &.nut-button {
+    --icon-size: calc(var(--height - 8px));
+    --padding-for-icon: calc(var(--icon-size) + 4px + 4px);
     --fill: var(--ns-neutral--10);
     width: max-content;
     line-height: 1em;
@@ -15,37 +15,6 @@
       margin-left: 0; // fix nut-button style
       white-space: nowrap;
     }
-    // &:not(.variant-plain):hover {
-    //   box-shadow: 0 1px 2px var(--ns-primary--80);
-    // }
-    &.color-primary.variant-solid:hover, &.color-primary:not([class*="variant-"]):hover {
-      background-color: var(--ns-primary--10);
-      box-shadow: none;
-    }
-    &.color-secondary.variant-solid:hover, &.color-secondary:not([class*="variant-"]):hover {
-      background-color: var(--ns-secondary--10);
-      box-shadow: none;
-    }
-    &.color-accent.variant-solid:hover, &.color-accent:not([class*="variant-"]):hover {
-      background-color: var(--ns-accent--10);
-      box-shadow: none;
-    }
-    &.color-neutral.variant-solid:hover, &.color-neutral:not([class*="variant-"]):hover {
-      background-color: var(--ns-neutral--10);
-      box-shadow: none;
-    }
-    &.color-positive.variant-solid:hover, &.color-positive:not([class*="variant-"]):hover {
-      background-color: var(--ns-positive--10);
-      box-shadow: none;
-    }
-    &.color-negtive.variant-solid:hover, &.color-negtive:not([class*="variant-"]):hover {
-      background-color: var(--ns-negtive--20);
-      box-shadow: none;
-    }
-    &.color-warning.variant-solid:hover, &.color-warning:not([class*="variant-"]):hover {
-      background-color: var(--ns-warning--10);
-      box-shadow: none;
-    }
     &.variant-plain {
       border-color: transparent;
     }
@@ -55,7 +24,7 @@
     }
   }
   &:not(.round) {
-    border-radius: var(--ns-r);
+    border-radius: var(--r, var(--ns-r));
   }
   .nut-button--disabled {
     opacity: 0.5;

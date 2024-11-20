@@ -3,7 +3,7 @@
  **/
 @use '../tools';
 
-$border-radius-root: 4px !default;
+$r-root: 4px !default;
 // $border-color-root: map-get(colors.brand, 'stroke') !default;
 
 $borders: () !default;
@@ -26,11 +26,11 @@ $rounded: tools.map-deep-merge(
     0: 0,
     none: 0,
     auto: var(--ns-r),
-    xs: $border-radius-root,
-    sm: $border-radius-root * 2,
-    md: $border-radius-root * 4,
-    lg: $border-radius-root * 6,
-    xl: $border-radius-root * 8,
+    xs: $r-root,
+    sm: $r-root * 2,
+    md: $r-root * 4,
+    lg: $r-root * 6,
+    xl: $r-root * 8,
   ),
   $rounded
 )
