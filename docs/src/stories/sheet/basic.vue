@@ -4,7 +4,7 @@
       size="sm"
       width="100"
       color="negtive"
-      label="弹出对话框" @click="onOpenDialogButtonClick" />
+      label="底部弹窗" @click="openSheet" />
   </ns-row>
 </template>
 
@@ -65,8 +65,8 @@ const ExcampleComponent: PopupChildComponent = defineComponent({
   }
 })
 
-const onOpenDialogButtonClick = () => {
-  $n.dialog({
+const openSheet = () => {
+  $n.sheet({
     title: '客户',
     component: ExcampleComponent,
     props: {

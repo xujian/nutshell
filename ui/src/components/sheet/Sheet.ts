@@ -2,6 +2,7 @@ import { PropType, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForBoolean, usePopupProps, useSizeProps } from '../../props'
 import { Dimension } from '../../types'
+import { Color } from '../../composables'
 
 export type SheetAnchor = 'top' | 'right' | 'bottom' | 'left'
 

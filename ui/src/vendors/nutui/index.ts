@@ -40,7 +40,7 @@ const nutuiVendor: CoreVendor = {
     this.drawer = (options: DrawerOptions) => {
       $bus.emit('drawer', options)
     }
-    this.sheet = (options: DrawerOptions) => {
+    this.sheet = (options: SheetOptions) => {
       $bus.emit('sheet', options)
     }
     this.notice = (message: string, options?: NoticeOptions) => {
