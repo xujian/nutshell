@@ -26,6 +26,7 @@
   align-items: center;
   flex-direction: row;
   gap: var(--gap);
+  width: 100%;
 }
 .flex-column-reverse {
   flex-direction: column-reverse;

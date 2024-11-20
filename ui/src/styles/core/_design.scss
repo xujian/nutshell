@@ -62,138 +62,140 @@
   }
 }
 
-.ns-page .with-design {
-  --fill: initial;
-  --stroke: initial;
-  color: var(--foreground);
-  background-color: var(--fill);
-  border-color: var(--stroke, transparent);
-  border-style: solid;
-  border-width: var(--thick);
-  &:not(.square):not(.round) {
-    border-radius: var(--radius, var(--ns-border-radius));
+@layer design {
+  .ns-page .with-design {
+    --fill: initial;
+    --stroke: initial;
+    color: var(--foreground);
+    background-color: var(--fill);
+    border-color: var(--stroke, transparent);
+    border-style: solid;
+    border-width: var(--thick);
+    &:not(.square):not(.round) {
+      border-radius: var(--radius, var(--ns-border-radius));
+    }
+    &.with-gradient {
+      background:
+        var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
+        var(--fill, transparent);
+      background-attachment: local;
+    }
+    &.variant-outlined {
+      --stroke: var(--ns-stroke);
+    }
+    &:not(.with-pattern) {
+      background-repeat: no-repeat;
+    }
   }
-  &.with-gradient {
+
+  .with-texture {
     background:
+      var(--texture),
+      var(--fill, transparent);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .with-pattern {
+    background:
+      var(--pattern),
+      var(--fill, transparent);
+    background-repeat: repeat;
+    background-size: 100% auto;
+    background-position: left top;
+  }
+
+  .with-texture-gradient {
+    background:
+      var(--texture),
       var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
       var(--fill, transparent);
-    background-attachment: local;
   }
-  &.variant-outlined {
-    --stroke: var(--ns-stroke);
+
+  .with-pattern-gradient {
+    background:
+      var(--pattern),
+      var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
+      var(--fill, transparent);
   }
-  &:not(.with-pattern) {
-    background-repeat: no-repeat;
-  }
-}
 
-.with-texture {
-  background:
-    var(--texture),
-    var(--fill, transparent);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-
-.with-pattern {
-  background:
-    var(--pattern),
-    var(--fill, transparent);
-  background-repeat: repeat;
-  background-size: 100% auto;
-  background-position: left top;
-}
-
-.with-texture-gradient {
-  background:
-    var(--texture),
-    var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
-    var(--fill, transparent);
-}
-
-.with-pattern-gradient {
-  background:
-    var(--pattern),
-    var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
-    var(--fill, transparent);
-}
-
-.with-stroke-gradient {
-  position: relative;
-  border-width: 1px;
-  border-color: transparent;
-  border-style: solid;
-  box-sizing: border-box;
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    z-index: -1;
-    margin: -1px;
-    border-radius: inherit;
-    border-image: linear-gradient(#f6b73c, #4d9f0c) 1;
+  .with-stroke-gradient {
+    position: relative;
     border-width: 1px;
+    border-color: transparent;
+    border-style: solid;
+    box-sizing: border-box;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      z-index: -1;
+      margin: -1px;
+      border-radius: inherit;
+      border-image: linear-gradient(#f6b73c, #4d9f0c) 1;
+      border-width: 1px;
+    }
   }
-}
 
-.blur {
-  backdrop-filter: brightness(1.5) blur(20px);
-}
+  .blur {
+    backdrop-filter: brightness(1.5) blur(20px);
+  }
 
-.fluted {
-  position: relative;
-}
+  .fluted {
+    position: relative;
+  }
 
-.fluted::before, .fluted::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
+  .fluted::before, .fluted::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-.fluted::before {
-  mask-image: repeating-linear-gradient(
-    90deg,
-    black 0px,
-    black 1px,
-    transparent 3px,
-    transparent var(--fluted)px);
-  background-color: #ffffff00;
-}
+  .fluted::before {
+    mask-image: repeating-linear-gradient(
+      90deg,
+      black 0px,
+      black 1px,
+      transparent 3px,
+      transparent var(--fluted)px);
+    background-color: #ffffff00;
+  }
 
-.fluted::after {
-  mask-image: repeating-linear-gradient(
-    90deg,
-    transparent 0px,
-    transparent 1px,
-    black calc(var(--fluted) - 2px),
-    black calc(var(--fluted) - 1px),
-    transparent var(--fluted));
-  background-color: #ffffff33;
-}
+  .fluted::after {
+    mask-image: repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 1px,
+      black calc(var(--fluted) - 2px),
+      black calc(var(--fluted) - 1px),
+      transparent var(--fluted));
+    background-color: #ffffff33;
+  }
 
-.backdrop-filter {
-  backdrop-filter: brightness(var(--brightness, 1)) blur(var(--blur, 0px));
-}
+  .backdrop-filter {
+    backdrop-filter: brightness(var(--brightness, 1)) blur(var(--blur, 0px));
+  }
 
-.with-shadow {
-  box-shadow:
-    0 1px 0 0 #ffffff66 inset,
-    0 0 var(--depth, 5px) var(--depth, 5px) var(--shadow, #00000011);
-}
+  .with-shadow {
+    box-shadow:
+      0 1px 0 0 #ffffff66 inset,
+      0 0 var(--depth, 5px) var(--depth, 5px) var(--shadow, #00000011);
+  }
 
-.cover {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+  .cover {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
-.with-design {
-  &.ignores-design {
-    background-color: transparent !important;
+  .with-design {
+    &.ignores-design {
+      background-color: transparent !important;
+    }
   }
 }
