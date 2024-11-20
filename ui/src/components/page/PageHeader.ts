@@ -21,6 +21,9 @@ export const pageHeaderProps = {
     type: Boolean,
     default: false,
   },
+  backUrl: {
+    type: String,
+  },
   /**
    * 简化版
    */
