@@ -83,7 +83,10 @@ const designProps = {
   square: {
     type: Boolean
   },
-  radius: {
+  /**
+   * R角
+   */
+  r: {
     type: Number
   },
   /**
@@ -216,7 +219,7 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...(props.accent ? { '--accent': makeColor(props.accent) } : {}),
     ...(props.stroke !== void 0 ? { '--stroke': makeColor(props.stroke) } : {}),
     ...(props.dotted === true ? { borderStyle: 'dotted' } : {}),
-    ...(props.radius !== void 0 ? { '--radius': `${props.radius}px` } : {}),
+    ...(props.radius !== void 0 ? { '--r': `${props.radius}px` } : {}),
     ...(props.thick !== void 0 ? { '--thick': `${props.thick}px` } : {}),
     ...(props.foreground ? {
         '--text': makeColor(props.foreground),

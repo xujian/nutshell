@@ -42,7 +42,7 @@
           </ns-row>
         </div>
         <ns-image class="picture"
-          :radius="12"
+          :r="12"
           ratio="2"
           src="https://simple.shensi.tech/system-assets/pictures/perfume.jpg"
           />
@@ -59,7 +59,7 @@
           </ns-row>
         </div>
         <ns-image class="picture"
-          :radius="12"
+          :r="12"
           ratio="2"
           src="https://simple.shensi.tech/system-assets/pictures/perfume.jpg"
           />

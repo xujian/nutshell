@@ -7,7 +7,7 @@
     foreground="#ffffff"
     header-color="#00000055"
     :header-height="48"
-    :border-radius="0"
+    :r="0"
     stroke="#00000033"
     round>
     <ns-table-column field="科目名称" label="科目名称" width="720" align="left" />
