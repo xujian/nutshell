@@ -34,7 +34,7 @@
   &.round {
     .nut-tabs__titles {
       .nut-tabs__titles-item {
-        border-radius: var(--border-radius, var(--ns-border-radius));
+        border-radius: var(--r, var(--ns-r));
       }
     }
   }

@@ -25,7 +25,7 @@ $rounded: tools.map-deep-merge(
   (
     0: 0,
     none: 0,
-    auto: var(--ns-border-radius),
+    auto: var(--ns-r),
     xs: $border-radius-root,
     sm: $border-radius-root * 2,
     md: $border-radius-root * 4,

@@ -55,7 +55,7 @@
     }
   }
   &:not(.round) {
-    border-radius: var(--ns-border-radius);
+    border-radius: var(--ns-r);
   }
   .nut-button--disabled {
     opacity: 0.5;

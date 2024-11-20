@@ -77,7 +77,7 @@ const fill = ref(fills[0].value),
 .design-row {
   background-color: var(--ns-primary--50);
   padding-inline-start: var(--ns-spacing);
-  border-radius: var(--ns-border-radius);
+  border-radius: var(--ns-r);
   color: #666;
 }
 </style>

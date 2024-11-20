@@ -50,10 +50,10 @@
 
 :root, page {
   @each $name, $value in design.$rounded {
-    #{'--ns-border-radius-'}#{$name}: #{$value};
+    #{'--ns-r-'}#{$name}: #{$value};
   }
-  --ns-border-radius: var(--ns-border-radius-md);
-  --ns-border-radius-input: var(--ns-border-radius-sm);
+  --ns-r: var(--ns-r-md);
+  --ns-r-input: var(--ns-r-sm);
 }
 
 @each $name, $value in design.$rounded {
@@ -72,7 +72,7 @@
     border-style: solid;
     border-width: var(--thick);
     &:not(.square):not(.round) {
-      border-radius: var(--radius, var(--ns-border-radius));
+      border-radius: var(--r, var(--ns-r));
     }
     &.with-gradient {
       background:

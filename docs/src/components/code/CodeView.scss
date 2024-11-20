@@ -1,5 +1,5 @@
 .ns-code-view {
-  border-radius: 10px;
+  border-radius: var(--ns-r);
   margin: 0;
   &[class*="language-"] {
     margin: 0;

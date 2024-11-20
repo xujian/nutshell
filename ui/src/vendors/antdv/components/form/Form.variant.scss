@@ -15,7 +15,7 @@
     }
     &.variant-solid, .variant-solid {
       .ant-form-item-control-input {
-        border-radius: 0 var(--ns-border-radius-input) var(--ns-border-radius-input) 0;
+        border-radius: 0 var(--ns-r-input) var(--ns-r-input) 0;
       }
       .ant-form-item-label {
         background-color: var(--fill, var(--ns-fill));

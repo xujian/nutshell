@@ -11,7 +11,7 @@
 // @import 'vue-toastification/src/scss/animations/_bounce';
 
 .Vue-Toastification__container.toast {
-  border-radius: var(--ns-border-radius);
+  border-radius: var(--ns-r);
   align-items: center;
   padding: var(--ns-spacing-md);
   .Vue-Toastification__toast {
@@ -19,7 +19,7 @@
     min-width: auto;
     min-height: auto;
     padding: var(--ns-spacing-md);
-    border-radius: var(--ns-border-radius);
+    border-radius: var(--ns-r);
     background-color: #000;
     color: #fff;
   }

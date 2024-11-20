@@ -3,7 +3,7 @@
     color: var(--ns-text);
     &.ant-upload-picture-card-wrapper {
       .ant-upload-select {
-        border-radius: var(--radius, var(--ns-border-radius));
+        border-radius: var(--r, var(--ns-r));
       }
     }
   }

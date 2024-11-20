@@ -1,10 +1,10 @@
 .ns-form-item {
   width: 420px;
   border-width: 0px;
-  border-radius: var(--ns-border-radius);
+  border-radius: var(--ns-r);
   border-style: solid;
   border-color: transparent;
-  border-radius: var(--ns-border-radius);
+  border-radius: var(--ns-r);
   display: inline-block;
   height: 32px;
   &:focus {
@@ -20,12 +20,12 @@
     }
   }
   .ant-form-item-row {
-    border-radius: var(--radius, var(--ns-border-radius));
+    border-radius: var(--r, var(--ns-r));
     align-items: start;
   }
   .ant-form-item-label {
     min-width: 120px;
-    border-radius: var(--ns-border-radius-input) 0 0 var(--ns-border-radius-input);
+    border-radius: var(--ns-r-input) 0 0 var(--ns-r-input);
     >label {
       display: inline-flex;
       align-items: center;
@@ -70,7 +70,7 @@
     border-width: 0px;
     border-style: solid;
     border-color: transparent;
-    border-radius: var(--ns-border-radius-input);
+    border-radius: var(--ns-r-input);
     background-color: var(--ns-fill);
     &:focus {
       outline: none;

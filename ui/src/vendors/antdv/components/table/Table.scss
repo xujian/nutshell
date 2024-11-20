@@ -10,7 +10,7 @@
   .vxe-table {
     border-style: solid;
     border-width: 0px;
-    border-radius: var(--border-radius, var(--ns-border-radius));
+    border-radius: var(--r, var(--ns-r));
     overflow: hidden;
     --stroke: var(--ns-stroke);
     --vxe-table-border-color: var(--stroke, var(--ns-stroke));
@@ -57,7 +57,7 @@
   .vxe-table--render-default {
     color: var(--foreground, var(--ns-text));
     .vxe-table--border-line {
-      border-radius: var(--border-radius, var(--ns-border-radius));
+      border-radius: var(--r, var(--ns-r));
     }
     .vxe-cell.c--tooltip {
       &:has(.table-column-chips) {

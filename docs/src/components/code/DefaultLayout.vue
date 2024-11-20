@@ -11,7 +11,7 @@
 <style lang="scss">
 .code-editor-layout {
   border: 1px solid var(--ns-stroke);
-  border-radius: 10px;
+  border-radius: var(--ns-r);
   background-color: #00000022;
   min-height: 320px;
   max-height: 600px;

@@ -5,7 +5,7 @@
       height: 100%;
     }
     &.round {
-      border-radius: var(--radius, var(--ns-border-radius));
+      border-radius: var(--r, var(--ns-r));
     }
   }
 }

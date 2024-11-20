@@ -24,7 +24,7 @@
     left: 0;
     bottom: 0;
     transition: transform .33s;
-    border-radius: var(--ns-border-radius);
+    border-radius: var(--ns-r);
     cursor: default;
     .icon {
       height: 24px;
@@ -53,7 +53,7 @@
     height: 100px;
     overflow: hidden;
     position: relative;
-    border-radius: var(--ns-border-radius);
+    border-radius: var(--ns-r);
     cursor: pointer;
     .toolbar {
       transform: translate3d(0, 32px, 0);
