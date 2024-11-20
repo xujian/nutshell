@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import VirtualPlugin from './vite/virtual-plugin'
+import NutshellPlugin from 'vite-plugin-nutshell'
 
 const nsRegex = /^Ns[A-Z][\w]+/
 const NsResolver = (name: string) => {
@@ -20,6 +21,7 @@ const NsResolver = (name: string) => {
 export default defineConfig({
   plugins: [
     vue(),
+    NutshellPlugin(),
     Components({
       resolvers: [
         AntDesignVueResolver({
@@ -34,6 +36,13 @@ export default defineConfig({
     VirtualPlugin('panels'),
     VirtualPlugin('boards'),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern',
+      },
+    },
+  },
   server: {
     port: 2024,
     open: true,

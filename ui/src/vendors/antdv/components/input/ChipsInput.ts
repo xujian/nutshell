@@ -58,6 +58,7 @@ export const ChipsInput = (props: ChipsInputProps, { emit, slots }: SetupContext
               modelValue: props.modelValue || [],
               options: options || [],
               label: props.label,
+              // @ts-ignore
               onChange: (value: string[]) => {
                 emit('update:modelValue', value)
               }

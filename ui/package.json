@@ -120,7 +120,7 @@
     "vue-draggable-plus": "^0.5.3",
     "vue-tippy": "v6",
     "vue-toastification": "^2.0.0-rc.5",
-    "vxe-table": "^4.6.23"
+    "vxe-table": "~4.6.21"
   },
   "publishConfig": {
     "access": "public"
