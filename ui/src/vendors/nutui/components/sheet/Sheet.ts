@@ -1,5 +1,4 @@
 import { computed, defineComponent, h, provide, reactive } from 'vue'
-import { Drawer as AntdvDrawer, DrawerProps as AntdvDrawerProps } from 'ant-design-vue'
 import { sheetProps } from '../../../../components'
 import { PopupState, PopupStateSymbol } from '../../../../props'
 
@@ -40,7 +39,7 @@ export const Sheet = defineComponent(
         : props.height
       : '50vh'
 
-    return () => h(AntdvDrawer, {
+    return () => h(NutPopup, {
       popClass: [
         ...props.modelValue ? ['open'] : []
       ].join(' '),
@@ -48,8 +47,8 @@ export const Sheet = defineComponent(
       style: {
         ...props.height ? {'--height': props.height} : {}
       },
-      placement: 'bottom',
-      open: props.modelValue,
+      position: 'bottom',
+      visible: visible.value,
       title: props.title,
       catchMove: true,
       closable: true,
@@ -76,7 +75,7 @@ export const Sheet = defineComponent(
       default: () => scrollView(slots.default)
     })
   }, {
-    name: 'AntdvSheet',
+    name: 'NutuiSheet',
     props: sheetProps
   }
 )
