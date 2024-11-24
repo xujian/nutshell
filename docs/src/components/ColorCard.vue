@@ -20,7 +20,6 @@ const props = defineProps({
 <style lang="scss">
 .color-card {
   display: inline-block;
-  background-color: var(--ns-white---90);
   width: 200px;
   .paint {
     height: 100px;

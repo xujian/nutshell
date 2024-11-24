@@ -5,9 +5,7 @@
       <p class="caption">&lt;ns-button&gt;</p>
       <mobile-button url="pages/components/button" />
       <p>&nbsp;</p>
-      <note title="NOTE">
-
-      </note>
+      <note>按钮</note>
       <p>&nbsp;</p>
       <story minimal file="button/basic.vue" />
       <p>用来替换标准的 HTML 按钮</p>

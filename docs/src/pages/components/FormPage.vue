@@ -1,8 +1,9 @@
 <template>
-  <ns-page>
+  <ns-page class="form-page">
     <ns-page-content>
       <h1 class="my-lg">表单</h1>
       <p class="caption">&lt;ns-form&gt;</p>
+      <mobile-button url="pages/components/form" />
       <h2>基本样式</h2>
       <story file="form/regular" />
       <p>&nbsp;</p>

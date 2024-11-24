@@ -27,7 +27,7 @@
           :key="variant"
           :title="variant"
           :color="'#999'"
-          :variant="variant" label="创建订单"></ns-card>
+          :variant="variant"></ns-card>
       </ns-row>
       <p>&nbsp;</p>
       <h2>支持渐变</h2>

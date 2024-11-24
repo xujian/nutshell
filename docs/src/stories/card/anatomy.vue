@@ -19,8 +19,8 @@
       :value="1.25" />
       <template #footer>
         <ns-button
-          fill="primary"
-          size="sm"
+          fill="#fff"
+          size="xs"
           round
           icon="http://simple.shensi.tech/icons/arrow-right.svg"
           icon-position="end">数据图表</ns-button>

@@ -34,6 +34,7 @@ export type MobileMockupProps = {
    */
   device?: Device,
   realistic?: boolean,
+  statusColorMode: 'light',
   url: string
 }
 
@@ -236,7 +237,7 @@ onMounted(() => {
       text-align: center;
       width: 139px;
       line-height: $phone-dynamic-island-height;
-      color: #fff;
+      color: #000;
       font-size: 14px;
     }
     .status {
@@ -245,6 +246,7 @@ onMounted(() => {
       background-repeat: no-repeat;
       background-image: $phone-status-svg;
       background-position: center;
+      filter: invert(1);
     }
     .bottombar {
       position: absolute;
