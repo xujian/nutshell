@@ -3,6 +3,8 @@
 // 用数字或字符串表示 CSS 的量
 // 用来替代模糊的 number | string
 
+import { Size } from '../props'
+
 
 /**
  * CSS 尺寸单位
@@ -18,4 +20,4 @@ export type Dimension = number | `${number}${DimensionUnit}`
 // const s: Dimension = 10 只用数字 =10px
 // const s2: Dimension = '10px'
 // const s3: Dimension = '10%'
-const s4: Dimension = '0.5em'
+// const s4: Dimension = '0.5em'

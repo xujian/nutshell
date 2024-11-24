@@ -5,7 +5,6 @@
     --icon-size: calc(var(--height - 8px));
     --padding-for-icon: calc(var(--icon-size) + 4px + 4px);
     --fill: var(--ns-neutral--10);
-    width: max-content;
     line-height: 1em;
     background-color: var(--fill, var(--ns-neutral--10));
     &:not(.full-width) {

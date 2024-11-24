@@ -7,6 +7,7 @@
   min-height: 45px;
   .card-header, .card-title {
     padding: var(--ns-spacing);
+    padding-bottom: calc(var(--ns-spacing) / 2);
     .title {
       display: flex;
       align-items: center;
@@ -22,6 +23,11 @@
     flex-grow: 1;
     .breakout {
       margin: calc(var(--ns-spacing) * -1);
+    }
+  }
+  &:not(.has-body-fill) {
+    .card-body {
+      padding-top: calc(var(--ns-spacing) / 2);
     }
   }
   .card-footer {

@@ -1,20 +1,19 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, computed } from 'vue'
-import { buildFillStyle, buildGradientStyle, Color } from '../../composables/theme'
-import { buildDesignClasses, buildDesignStyles, buildDesignVariables, useDesignProps, useVariantProps } from '../../props'
+import { PropType, SlotsType, defineComponent, h, computed } from 'vue'
+import { Color } from '../../composables/theme'
+import { buildBoxClasses, buildBoxStyles, buildDesignClasses, buildDesignStyles, Size, useBoxProps, useDesignProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
+import { Dimension } from '../../types'
 
 export const cardProps = {
   title: {
     type: String
-  },
-  padding: {
-    type: Number,
   },
   bodyFill: {
     type: String as PropType<Color>,
   },
   ...useDesignProps(),
   ...useVariantProps(),
+  ...useBoxProps(),
 }
 
 export type CardEmits = {
@@ -53,6 +52,7 @@ export const NsCard = defineComponent({
       'flex-column',
       'align-stretch',
       ...buildDesignClasses(props),
+      ...props.bodyFill ? ['has-body-fill'] : [],
     ])
 
     const style = computed(() => ({
@@ -101,9 +101,13 @@ export const NsCard = defineComponent({
       : null
 
     const body = () => h('div', {
-      class: 'card-body column align-stretch',
+      class: [
+        'card-body', 'column', 'align-start',
+        ...buildBoxClasses(props)
+      ],
       style: {
-        ...props.bodyFill ? { '--body-fill': props.bodyFill } : {}
+        ...props.bodyFill ? { '--body-fill': props.bodyFill } : {},
+        ...buildBoxStyles(props)
       }
     }, slots.default?.())
 

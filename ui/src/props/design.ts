@@ -10,6 +10,8 @@ import {
 } from '../composables/theme'
 import { buildProps } from '../utils/private/props'
 import { MakePropsType, StyleObject } from '../utils'
+import { Dimension } from '../types'
+import { Size } from './size'
 
 export const BORDERS_VALUES = ['all', 'vertical', 'horizonal', 'inner', 'outer', 'none'] as const
 
@@ -28,9 +30,15 @@ const designProps = {
   surface: {
     type: String as PropType<Color>
   },
+  /**
+   * 字色
+   */
   foreground: {
     type: String as PropType<Color>
   },
+  /**
+   * 选中色
+   */
   accent: {
     type: String as PropType<Color>,
   },
@@ -40,6 +48,9 @@ const designProps = {
   gradient: {
     type: String as PropType<GradientString>
   },
+  /**
+   * Mesh Gradient
+   */
   mesh: {
     type: String,
   },
@@ -87,7 +98,7 @@ const designProps = {
    * R角
    */
   r: {
-    type: Number
+    type: [String, Number] as PropType<Size | Dimension>
   },
   /**
    * 描边

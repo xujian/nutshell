@@ -1,4 +1,5 @@
 export * from './size'
+export * from './box'
 export * from './field'
 export * from './dimension'
 export * from './variant'

@@ -1,7 +1,7 @@
 .ns-number {
   --stroke: transparent;
   --text: var(--foreground);
-  --fill: #fff;
+  --fill: transparent;
   font-size: 12px;
   height: fit-content;
   border-radius: var(--r, var(--ns-r));

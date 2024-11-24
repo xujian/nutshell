@@ -10,50 +10,50 @@
 
 @each $name, $value in $spacing {
   #{'.m-'}#{$name} {
-    margin: var(--ns-spacing-#{$name});
+    margin: var(--ns-spacing-#{$name}) !important;
   }
   #{'.mx-'}#{$name} {
-    margin-left: var(--ns-spacing-#{$name});
-    margin-right: var(--ns-spacing-#{$name});
+    margin-left: var(--ns-spacing-#{$name}) !important;
+    margin-right: var(--ns-spacing-#{$name}) !important;
   }
   #{'.my-'}#{$name} {
-    margin-top: var(--ns-spacing-#{$name});
-    margin-bottom: var(--ns-spacing-#{$name});
+    margin-top: var(--ns-spacing-#{$name}) !important;
+    margin-bottom: var(--ns-spacing-#{$name}) !important;
   }
   #{'.ml-'}#{$name} {
-    margin-left: var(--ns-spacing-#{$name});
+    margin-left: var(--ns-spacing-#{$name}) !important;
   }
   #{'.mr-'}#{$name} {
-    margin-right: var(--ns-spacing-#{$name});
+    margin-right: var(--ns-spacing-#{$name}) !important;
   }
   #{'.mt-'}#{$name} {
-    margin-top: var(--ns-spacing-#{$name});
+    margin-top: var(--ns-spacing-#{$name}) !important;
   }
   #{'.mb-'}#{$name} {
-    margin-bottom: var(--ns-spacing-#{$name});
+    margin-bottom: var(--ns-spacing-#{$name}) !important;
   }
   #{'.p-'}#{$name} {
-    padding: var(--ns-spacing-#{$name});
+    padding: var(--ns-spacing-#{$name}) !important;
   }
   #{'.px-'}#{$name} {
-    padding-left: var(--ns-spacing-#{$name});
-    padding-right: var(--ns-spacing-#{$name});
+    padding-left: var(--ns-spacing-#{$name}) !important;
+    padding-right: var(--ns-spacing-#{$name}) !important;
   }
   #{'.py-'}#{$name} {
-    padding-top: var(--ns-spacing-#{$name});
-    padding-bottom: var(--ns-spacing-#{$name});
+    padding-top: var(--ns-spacing-#{$name}) !important;
+    padding-bottom: var(--ns-spacing-#{$name}) !important;
   }
   #{'.pl-'}#{$name} {
-    padding-left: var(--ns-spacing-#{$name});
+    padding-left: var(--ns-spacing-#{$name}) !important;
   }
   #{'.pr-'}#{$name} {
-    padding-right: var(--ns-spacing-#{$name});
+    padding-right: var(--ns-spacing-#{$name}) !important;
   }
   #{'.pt-'}#{$name} {
-    padding-top: var(--ns-spacing-#{$name});
+    padding-top: var(--ns-spacing-#{$name}) !important;
   }
   #{'.pb-'}#{$name} {
-    padding-bottom: var(--ns-spacing-#{$name});
+    padding-bottom: var(--ns-spacing-#{$name}) !important;
   }
 }
 
