@@ -43,7 +43,7 @@ const config = {
   plugins: [
     '@tarojs/plugin-html',
     ['@uxda/taro-plugin', {
-      artifacts: true
+      // artifacts: true
     }]
   ],
   defineConstants: {

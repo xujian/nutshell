@@ -15,7 +15,7 @@ const App = createApp({
   setup () {
     const settings = reactive<AppSettings>({})
     const router = useRouter()
-    if (router.params.mock) {
+    if (router?.params?.mock) {
       settings.mock = router.params.mock
     }
     provide(AppSymbol, settings)

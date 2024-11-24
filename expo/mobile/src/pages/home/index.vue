@@ -24,7 +24,7 @@
         </ns-repeator>
       </scroll-view>
       <h2 class="h2">快捷入口</h2>
-      <ns-row class="entries" justify="stretch" :gap="10">
+      <ns-row clazss="entries" justify="stretch" :gap="10">
         <ns-card class="create-client entry flex-grow"
           gradient="#FA8BFF,#2BD2FF,#2BFF88/90"
           texture="https://simple.shensi.tech/images/client-girl.svg"
@@ -68,7 +68,7 @@
         </ns-card>
       </ns-row>
       <h2 class="h2">消息</h2>
-      <ns-card class="messages" fill="#000000" foreground="#fff">
+      <ns-card class="messages full-width" fill="#000000" foreground="#fff">
         <ns-timeline :items="messages">
           <template #title="{item}">
             <ns-row align="center" justify="between">
@@ -81,7 +81,6 @@
           </template>
         </ns-timeline>
       </ns-card>
-      <ns-button @click="onButtonClick">BUTTON</ns-button>
     </ns-page-content>
   </ns-page>
 </template>
@@ -117,10 +116,6 @@ const 获取消息 = async (page: number) => {
     })
   },
   { nextPage } = usePaging(获取消息)
-
-const onButtonClick = () => {
-  console.log('===onButtonClick', )
-}
 
 onMounted(() => {
   const { setTab } = useTabbar()

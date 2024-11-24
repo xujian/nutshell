@@ -1,6 +1,18 @@
 import { Ref } from 'vue'
 import { FormProps } from '../components'
-import { FormInstance } from 'ant-design-vue'
+
+export type FormValidateError = {
+  message: string,
+}
+
+export type FormValidateResult = {
+  valid: boolean,
+  errors: FormValidateError[]
+}
+
+export type FormInstance = {
+  validate (name?: string): FormValidateResult
+}
 
 export type FormProvided = {
   props: FormProps,
