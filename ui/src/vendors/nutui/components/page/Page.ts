@@ -262,7 +262,7 @@ export const Page = defineComponent({
     })
 
     const classes = computed<string[]>(() => [
-      'ns-page page column align-stretch is-mobile',
+      'ns-page page column align-stretch mobile',
       ...scroll.value > 0 ? ['scrolled'] : [],
       ...props.scrollable === true ? ['scrollable'] : [],
       // ...props.classes || [],

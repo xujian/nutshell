@@ -11,6 +11,7 @@
     // top: calc(var(--status) + var(--nav));
     box-sizing: border-box;
     flex-grow: 1;
+    width: 100%;
     &.scrollable {
       padding: 0;
     }

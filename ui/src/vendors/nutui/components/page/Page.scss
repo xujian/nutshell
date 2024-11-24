@@ -20,6 +20,11 @@
       padding: 0;
     }
   }
+  &.mobile {
+    .page-content {
+      align-items: stretch;
+    }
+  }
   &.content-scrollable {
     height: 100vh;
     .page-content {

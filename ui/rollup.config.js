@@ -272,7 +272,12 @@ export default [
       }),
       vue(),
     ],
-    external: ['vue', '@nutui/nutui-taro', '@tarojs/taro']
+    external: [
+      'vue',
+      '@nutui/nutui',
+      '@nutui/nutui-taro',
+      '@tarojs/taro'
+    ]
   },
   // {
   //   input: './dist/index.d.ts',

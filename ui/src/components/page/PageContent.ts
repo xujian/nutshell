@@ -82,7 +82,7 @@ export const NsPageContent = defineComponent({
           'page-content',
           'grow',
           'column',
-          'align-stretch',
+          'align-start',
           ...props.scrollable ? ['scrollable'] : [],
         ],
         style: {
