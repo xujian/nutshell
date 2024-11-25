@@ -1,6 +1,10 @@
 <template>
   <ns-page>
-    <ns-page-header title="连续平铺" has-back-button></ns-page-header>
+    <ns-page-header title="连续平铺" has-back-button>
+      <template #prepend>
+        <ns-icon name="http://simple.shensi.tech/icons/camera.svg" />
+      </template>
+    </ns-page-header>
     <ns-page-content>
       <h2>草稿箱</h2>
       <div class="caption">可右滑删除</div>

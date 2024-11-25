@@ -1,4 +1,4 @@
-import { defineComponent, getCurrentInstance, h, PropType } from 'vue'
+import { defineComponent, getCurrentInstance, h, PropType, SlotsType, VNode } from 'vue'
 import { MakePropsType } from '../../utils'
 import { buildDesignClasses, buildDesignStyles, type TextAlign, useDesignProps } from '../../props'
 import { usePage } from './Page'
@@ -50,6 +50,12 @@ export const pageHeaderEmits: PageHeaderEmits = {
   back: () => true
 }
 
+export interface PageHeaderSlots extends SlotsType {
+  prepend: () => VNode,
+}
+
+const pageHeaderSlots: SlotsType<PageHeaderSlots> = {}
+
 export type PageHeaderProps = MakePropsType<typeof pageHeaderProps, PageHeaderEmits>
 
 export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
@@ -86,6 +92,13 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
               class: 'back-button',
               onClick: onBackButtonClick
             })
+          : null,
+        slots.prepend
+          ? h('div', {
+              class: ['prepend', 'row', 'align-center', 'justify-center'],
+            }, [
+              slots.prepend?.()
+            ])
           : null
       ])
 
@@ -122,4 +135,5 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
     inheritAttrs: true,
     props: pageHeaderProps,
     emits: pageHeaderEmits,
+    slots: pageHeaderSlots,
   })

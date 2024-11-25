@@ -34,16 +34,22 @@
         padding-right: 100px;
         padding-left: var(--ns-spacing);
       }
-      .back-button {
+      .back-button, .prepend {
         position: absolute;
         top: var(--top);
         left: 0px;
-        width: var(--nav);
         height: var(--nav);
+      }
+      .back-button {
+        width: var(--nav);
         background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDIiIGhlaWdodD0iNDIiIHZpZXdCb3g9IjAgMCA0MiA0MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggb3BhY2l0eT0iMC4wMSIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wLjk5OTg3OCA0MUw0MC45OTk5IDQxTDQwLjk5OTkgMUwwLjk5OTg3OCAxTDAuOTk5ODc4IDQxWiIgZmlsbD0iI0Q4RDhEOCIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLW9wYWNpdHk9IjAuMDEiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMi45OTMzIDE4Ljk0NzdDMTEuODYzMyAyMC4wMTQ1IDExLjgxMiAyMS43OTU0IDEyLjg3ODggMjIuOTI1NUwyNy45MTA1IDM3LjEzNDVDMjguNjkyNSAzNy44NzM0IDI5LjkyNTUgMzcuODM4NCAzMC42NjQ0IDM3LjA1NjRDMzEuMzY4MSAzNi4zMTE2IDMxLjM2OTkgMzUuMTU3OSAzMC42OTI5IDM0LjQxMTRMMTYuNTAxMiAyMC45OTM5TDMwLjU4NTcgNy42OTc4NUMzMS4zMzA4IDYuOTk0NDkgMzEuMjk4MiA1LjcyNzk1IDMwLjY2NDkgNC45NDQwMkMyOS45NjE2IDQuMTk4OTUgMjguODA5OCA0LjEzMTI5IDI4LjAyNTkgNC43NjQ1MkwxMi45OTMzIDE4Ljk0NzdaIiBmaWxsPSJibGFjayIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLW9wYWNpdHk9IjAuMDEiLz4KPC9zdmc+Cg==');
         background-size: 50%;
         background-repeat: no-repeat;
         background-position: center center;
+      }
+      .prepend {
+        left: var(--nav);
+        width: fit-content;
       }
     }
     .content {
