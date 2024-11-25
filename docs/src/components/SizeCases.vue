@@ -12,18 +12,9 @@
 </template>
 
 <script lang="ts" setup>
-import { sizes } from '@uxda/nutshell'
+import { sizes, type Size } from '@uxda/nutshell'
 
 defineProps({
   direction: String
 })
-
-const slots = defineSlots<{
-  default(props: {
-    item: {
-      label: string,
-      value: any
-    }}
-  ): any
-}>()
 </script>

@@ -16,13 +16,4 @@ import { brands } from '@uxda/nutshell'
 defineProps({
   direction: String
 })
-
-const slots = defineSlots<{
-  default(props: {
-    item: {
-      label: string,
-      value: any
-    }}
-  ): any
-}>()
 </script>
