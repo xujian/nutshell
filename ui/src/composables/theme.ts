@@ -1,7 +1,4 @@
-import { DesignProps } from '../props'
-
 export type ThemeOptions = false | {
-
 }
 
 const DEFAULT_THEME = 'present'

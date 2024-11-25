@@ -1,15 +1,19 @@
-import { PropType, defineComponent } from 'vue'
+import { PropType, defineComponent, h } from 'vue'
 import { MakePropsType } from '../../utils'
-import { h } from 'vue'
-import { buildFlexClasses, buildFlexStyles, useFlexProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDesignProps, useFlexProps } from '../../props'
 import { NsEmpty } from '../empty'
+
+export type Swipable = {
+    label: string,
+    click (item: any): void
+  }
 
 export const repeatorProps = {
   /**
    * 平铺数据
    */
   items: {
-    type: Array,
+    type: Array as PropType<any[]>,
     default: () => []
   },
   /**
@@ -18,6 +22,13 @@ export const repeatorProps = {
   divides: {
     type: Number,
   },
+  /**
+   * 支持滑动手势
+   */
+  swipable: {
+    type: [Boolean, Array] as PropType<boolean | Swipable[]>
+  },
+  ...useDesignProps(),
   ...useFlexProps()
 }
 
@@ -29,6 +40,7 @@ const repeatorEmits: RepeatorEmits = {
 
 export type RepeatorSlots = {
   default: never,
+  swipe: never,
 }
 
 export type RepeatorProps = MakePropsType<typeof repeatorProps, RepeatorEmits>
@@ -46,16 +58,27 @@ export const NsRepeator = defineComponent({
   emits: repeatorEmits,
   setup (props, { slots }) {
 
-    const slot = () => 'item'
+    const classes = [
+      'ns-repeator-item',
+      'flex-item',
+      ...buildDesignClasses(props),
+    ]
 
-    const item = () => (props.items.map(item => h('div', {
-        class: [
-          'ns-repeator-item',
-          'flex-item'
-        ]
-      }, [
-        slots.default?.(item),
-      ])))
+    const item = () => props.items.map(
+      item => h('div', {
+            class: classes,
+            style: buildDesignStyles(props),
+          }, [
+            props.swipable
+              ? h(NutSwipe, {
+                  class: ['swipe'],
+                }, {
+                  default: () => slots.default?.(item),
+                  right: () => slots.swipe?.(item)
+                })
+              : slots.default?.(item),
+          ])
+      )
 
     const style = {
       ...buildFlexStyles(props),
@@ -69,6 +92,7 @@ export const NsRepeator = defineComponent({
         'ns-repeator',
         ...props.divides ? ['has-divides'] : [],
         ...buildFlexClasses(props),
+        ...props.swipable ? ['swipable'] : []
       ],
       style
     }, props?.items?.length ? item() : h(NsEmpty))

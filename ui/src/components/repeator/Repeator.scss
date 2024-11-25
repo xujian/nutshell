@@ -6,4 +6,18 @@
       }
     }
   }
+  &.swipable {
+    .ns-repeator-item {
+      border-width: 0;
+      overflow: hidden;
+    }
+  }
+  .nut-swipe__right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .ns-button {
+      height: 100%;
+    }
+  }
 }

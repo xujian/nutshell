@@ -5,7 +5,8 @@ import type { AppSettings } from '@uxda/nutshell/taro'
 import { useHead } from 'unhead'
 
 import '@uxda/appkit/appkit.css'
-import '@uxda/icons/sprite.css'
+// import '@uxda/icons/sprite.css'
+import '@nutui/nutui-taro/dist/style.css'
 import './app.scss'
 
 const App = createApp({

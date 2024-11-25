@@ -1,11 +1,16 @@
+const components = [
+  'page',
+  'button',
+  'repeator'
+]
+
 export default defineAppConfig({
   pages: [
     'pages/home/index',
-    'pages/components/page',
-    'pages/components/button',
     'pages/guide/dialog',
     'pages/guide/scroll',
     'pages/tokens/spacing',
+    ...components.map(x => `pages/components/${x}`)
   ],
   // tabBar: {
   //   custom: true,

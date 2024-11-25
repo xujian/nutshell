@@ -150,6 +150,18 @@ const groups: {title: string, data: ListItemProps[]}[] = [
         hasArrow: true,
       }
     ]
+  },
+  {
+    title: '数据组件',
+    data: [
+      {
+        title: '连续平铺',
+        name: 'ns-repeator',
+        caption: '',
+        link: '/pages/components/repeator',
+        hasArrow: true,
+      },
+    ]
   }
 ]
 </script>
