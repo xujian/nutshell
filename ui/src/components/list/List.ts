@@ -129,7 +129,7 @@ export const NsListItem = defineComponent({
           ...props.data?.link ? ['has-link'] : [],
         ],
         ...props.data?.link
-          ? { onClick: () => { Taro.navigateTo({url: props.data}) } }
+          ? { onClick: () => { Taro.navigateTo({url: props.data?.link}) } }
           : {}
       }, [
         // 输出 数字栏
