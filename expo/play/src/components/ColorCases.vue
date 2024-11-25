@@ -11,18 +11,9 @@
 </template>
 
 <script lang="ts" setup>
-import { brands } from '@uxda/nutshell'
+import { brands } from '@uxda/nutshell/taro'
 
 defineProps({
   direction: String
 })
-
-const slots = defineSlots<{
-  default(props: {
-    item: {
-      label: string,
-      value: any
-    }}
-  ): any
-}>()
 </script>

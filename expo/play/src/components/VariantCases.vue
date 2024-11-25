@@ -12,20 +12,11 @@
 </template>
 
 <script lang="ts" setup>
-import { variants } from '@uxda/nutshell'
+import { variants } from '@uxda/nutshell/taro'
 
 defineProps({
   direction: String
 })
-
-const slots = defineSlots<{
-  default(props: {
-    item: {
-      label: string,
-      value: any
-    }}
-  ): any
-}>()
 </script>
 
 <style lang="scss">
