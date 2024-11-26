@@ -7,7 +7,9 @@ const components = [
 export default defineAppConfig({
   pages: [
     'pages/home/index',
-    'pages/guide/dialog',
+    'pages/interactive/dialog',
+    'pages/interactive/drawer',
+    'pages/interactive/sheet',
     'pages/guide/scroll',
     'pages/tokens/spacing',
     ...components.map(x => `pages/components/${x}`)
