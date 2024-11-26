@@ -30,13 +30,15 @@ export const NumberInput = defineComponent({
     }
 
     return () => renderFormItem(props, slots,
-      () => h(NutInput, {
+      () => h(props.step ? NutInputNumber : NutInput, {
           border: false,
           name: props.name,
           modelValue: props.modelValue,
           // type: props.maximumFractionDigits !== void 0 ? 'number' : 'digit',
           placeholder: props.placeholder,
           formatter: formatter,
+          min: props.min,
+          max: props.max,
           inputAlign: props.variant === 'solid' ? 'left' : 'right',
           placeholderClass: 'input-placeholder',
           'onUpdate:modelValue': (value: number | string) => {
@@ -54,8 +56,10 @@ export const NumberInput = defineComponent({
             form.validate(props.name as string)
             emit('blur')
           },
-          onChange: ({detail}: any) => {
-            emit('change', +detail.value)
+          onChange: (data: any) => {
+            if (props.step === void 0) {
+              emit('change', +data.detail.value)
+            }
           }
         },
         {

@@ -19,6 +19,9 @@ export const numberInputProps = {
   min: {
     type: Number
   },
+  /**
+   * 带有加减按钮
+   */
   step: {
     type: Number
   },

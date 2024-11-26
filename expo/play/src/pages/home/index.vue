@@ -152,6 +152,18 @@ const groups: {title: string, data: ListItemProps[]}[] = [
     ]
   },
   {
+    title: '输入组件',
+    data: [
+      {
+        title: '表单',
+        name: 'ns-form',
+        caption: '',
+        link: '/pages/components/form',
+        hasArrow: true,
+      },
+    ]
+  },
+  {
     title: '数据组件',
     data: [
       {
