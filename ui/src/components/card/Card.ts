@@ -53,6 +53,7 @@ export const NsCard = defineComponent({
       'align-stretch',
       ...buildDesignClasses(props),
       ...props.bodyFill ? ['has-body-fill'] : [],
+      ...slots.header ? ['has-header'] : [],
     ])
 
     const style = computed(() => ({
@@ -82,6 +83,7 @@ export const NsCard = defineComponent({
       ? h('div', {
           class: 'title-corner'
         }, [
+          h('div', {class: 'spacer'}),
           slots.corner()
         ])
       : null
@@ -94,7 +96,6 @@ export const NsCard = defineComponent({
           : [
               label(),
               titleAfter(),
-              h('div', {class: 'spacer'}),
               corner(),
             ]
         )
