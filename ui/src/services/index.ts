@@ -1,5 +1,6 @@
 import { App } from 'vue'
-import dialog, { type DialogOptions } from './dialog'
+import dialog from './dialog'
+import type { DialogOptions, ConfirmOptions } from './dialog'
 import toast, { type ToastOptions } from './toast'
 import loading, { type LoadingOptions } from './loading'
 import sheet, { type SheetOptions } from './sheet'
@@ -15,6 +16,7 @@ export * from './types'
 
 export {
   DialogOptions,
+  ConfirmOptions,
   SheetOptions,
   ToastOptions,
   NoticeOptions,

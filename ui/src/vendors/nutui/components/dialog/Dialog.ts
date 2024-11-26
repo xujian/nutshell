@@ -1,5 +1,5 @@
 import { computed, SetupContext, h } from 'vue'
-import { DialogProps } from '../../../../components'
+import { DialogProps, NsRow, NsButton, NsCard } from '../../../../components'
 
 export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, 'expose'>) => {
 
@@ -21,12 +21,39 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
     }
   })
 
+  const footer = () => props.footer
+    ? h(NsRow, {
+        class: ['dialog-footer'],
+        justify: 'center'
+      }, [
+        h(NsButton, {
+          variant: 'outlined',
+          color: props.okColor || '#fff',
+          label: props.cancelText || '取消',
+          onClick: () => emit('close')
+        }),
+        h(NsButton, {
+          color: props.okColor || 'primary',
+          label: props.okText || '确定',
+          onClick: () => emit('complete')
+        })
+      ])
+    : null
+
+  const card = () => h(NsCard, {
+      class: ['dialog-card'],
+      title: props.title
+    }, {
+      default: content,
+      footer
+  })
+
   const scrollView = (content: any) => {
     return h('scroll-view', {
       class: [
         'full-height'
       ]
-    }, content())
+    }, card())
   }
 
   const height = props.height

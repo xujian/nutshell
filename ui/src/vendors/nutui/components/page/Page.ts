@@ -2,7 +2,7 @@ import { computed, defineComponent, h, onUnmounted, ref, shallowRef } from 'vue'
 import { useToast } from 'vue-toastification'
 import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, useApp } from '../../../../components'
 import { useBus, useSafeArea, usePlatform } from '../../../../composables'
-import type { DialogOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType, DrawerOptions } from '../../../../services'
+import type { DialogOptions, ConfirmOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType, DrawerOptions } from '../../../../services'
 import { marginProps } from '../../../../utils'
 
 export type Notice = {
@@ -151,6 +151,14 @@ export const Page = defineComponent({
       $bus.emit('sheet.close')
     }
 
+    const message = () => {
+      const messages = dialogOptions.value.message
+      console.log('===message//////===', messages)
+      return Array.isArray(messages)
+        ? messages.map((m: string) => h('p', {}, m))
+        : h('p', {}, messages)
+    }
+
     const renderDialog = () => h(NsDialog, {
       class: [
         'app-dialog',
@@ -171,18 +179,33 @@ export const Page = defineComponent({
     }, {
       default: () => dialogComponent.value
         ? h(dialogComponent.value, {
-          ...dialogProps.value,
-          onComplete: onDialogComplete,
-          onCancel: onDialogCalcel,
-        })
-        : null
+            ...dialogProps.value,
+            onComplete: onDialogComplete,
+            onCancel: onDialogCalcel,
+          })
+        : h('div', {
+            class: ['dialog-content']
+          }, message())
     })
 
     const openDialog = ({component, props, ...options}: DialogOptions) => {
+      console.log('===options===', options)
       dialogComponent.value = component!
       dialogProps.value = props,
       dialogOpen.value = true
       dialogOptions.value = options
+      $bus.emit('dialog.open')
+    }
+
+    const openConfirm = (options: ConfirmOptions) => {
+      const op = {
+        title: '确认',
+        ...options
+      }
+      dialogComponent.value = null
+      dialogProps.value = {},
+      dialogOpen.value = true
+      dialogOptions.value = op
       $bus.emit('dialog.open')
     }
 
@@ -223,6 +246,7 @@ export const Page = defineComponent({
       $bus.off('drawer', openDrawer)
       $bus.off('sheet', openSheet)
       $bus.off('dialog', openDialog)
+      $bus.off('confirm', openConfirm)
       $bus.off('scroll', onScroll)
       dialogOpen.value = false
       sheetOpen.value = false
@@ -239,6 +263,7 @@ export const Page = defineComponent({
       $bus.on('drawer', openDrawer)
       $bus.on('sheet', openSheet)
       $bus.on('dialog', openDialog)
+      $bus.on('confirm', openConfirm)
       $bus.on('scroll', onScroll)
     })
 

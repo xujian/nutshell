@@ -6,7 +6,7 @@ import { PopupChildComponent } from './types'
 
 export type DialogOptions = {
   title?: string,
-  message?: string,
+  message?: string | string[],
   /**
    * 嵌入子组件
    */
@@ -35,7 +35,7 @@ export type DialogOptions = {
 
 export type ConfirmOptions = {
   title?: string,
-  message?: string,
+  message?: string | string[],
   okText?: string,
   cancelText?: string,
   okColor?: Color,

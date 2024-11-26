@@ -1,2 +1,14 @@
 .ns-dialog {
+  .dialog-card {
+    min-width: 80vw;
+    .card-header {
+      justify-content: center;
+    }
+    .title-label {
+      font-weight: bold;
+    }
+    .card-body {
+      justify-content: center;
+    }
+  }
 }
