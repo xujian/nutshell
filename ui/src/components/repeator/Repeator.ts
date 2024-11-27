@@ -69,7 +69,7 @@ export const NsRepeator = defineComponent({
             class: classes,
             style: buildDesignStyles(props),
           }, [
-            props.swipable
+            props.swipable && item.swipable !== false
               ? h(NutSwipe, {
                   class: ['swipe'],
                 }, {
