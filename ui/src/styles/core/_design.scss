@@ -58,7 +58,7 @@
 
 @each $name, $value in design.$rounded {
   #{'.r-'}#{$name} {
-    border-radius: #{$value};
+    border-radius: #{$value} !important;
   }
 }
 

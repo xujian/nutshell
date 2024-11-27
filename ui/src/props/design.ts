@@ -217,6 +217,9 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.stroke && isGradient(props.stroke) ? ['with-stroke-gradient'] : []),
     ...props.fluted ? ['fluted'] : [],
     ...props.dark ? ['dark'] : [],
+    ...props.r && typeof props.r === 'string'
+        ? [`r-${props.r}`]
+        : [],
     ...filterClasses
   ]
   return result
@@ -230,7 +233,12 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...(props.accent ? { '--accent': makeColor(props.accent) } : {}),
     ...(props.stroke !== void 0 ? { '--stroke': makeColor(props.stroke) } : {}),
     ...(props.dotted === true ? { borderStyle: 'dotted' } : {}),
-    ...(props.r !== void 0 ? { '--r': `${props.r}px` } : {}),
+    ...(props.r !== void 0 && typeof props.r === 'number'
+        ? {
+          '--r': `${props.r}px`
+          }
+        : {}
+      ),
     ...(props.thick !== void 0 ? { '--thick': `${props.thick}px` } : {}),
     ...(props.foreground ? {
         '--text': makeColor(props.foreground),
