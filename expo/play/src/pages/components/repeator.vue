@@ -37,7 +37,8 @@ const items = [
   },
   {
     name: '小贷结清证明',
-    time: '2024-10-15 9:24'
+    time: '2024-10-15 9:24',
+    swipable: false
   },
   {
     name: '赎楼交易通用合同',

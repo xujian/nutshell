@@ -3,24 +3,18 @@
     <ns-page-header title="按钮"
       :blur="10" reveal has-back-button />
     <ns-page-content>
-      <h2>Size</h2>
-      <size-cases class="breakout" v-slot="{size}">
-        <ns-button color="primary"
-          class="with-measure measure-height"
-          :size label="确定" />
-      </size-cases>
       <h2>Color</h2>
       <color-cases class="breakout" v-slot="{color}">
-        <ns-button
+        <ns-chip
           :color
           label="确定" />
       </color-cases>
       <h2>Variants</h2>
       <variant-cases v-slot="{variant}" class="breakout column">
-        <ns-button v-for="(color) in colors"
+        <ns-chip v-for="(color) in colors"
           :key="color"
           :color
-          :variant label="创建订单"></ns-button>
+          :variant label="创建订单" />
       </variant-cases>
       <p>&nbsp;</p>
     </ns-page-content>

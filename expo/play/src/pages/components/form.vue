@@ -10,6 +10,7 @@
           <ns-number-input
             v-model="formData.count"
             name="count"
+            :step="1"
             :min="90"
             :max="110"
             label="最大数量" />

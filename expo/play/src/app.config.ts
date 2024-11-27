@@ -1,7 +1,9 @@
 const components = [
   'page',
   'button',
-  'repeator'
+  'chip',
+  'repeator',
+  'form',
 ]
 
 export default defineAppConfig({
