@@ -1,12 +1,10 @@
 import { PropType } from 'vue'
-import { useDesignProps, useSizeProps, useVariantProps } from '../../props'
+import { useDesignProps, useSizeProps, useVariantProps,
+  useDimensionProps, useLoadingProps, useHasIconProps } from '../../props'
+import { type IconSlots } from '../../props'
 import { define, MakePropsType } from '../../utils'
-import { useDimensionProps, useLoadingProps } from '../../props'
 import { Color } from '../../composables/theme'
-import { IconFormat } from '../icon'
 import { buildProps } from '../../utils/private/props'
-
-export type IconPosition = 'start' | 'end'
 
 export const useButtonProps = buildProps({
   /**
@@ -18,31 +16,22 @@ export const useButtonProps = buildProps({
   color: {
     type: String as PropType<Color>,
   },
-  icon: {
-    type: String
-  },
-  iconPosition: {
-    type: String as PropType<IconPosition>,
-  },
-  iconFill: {
-    type: String as PropType<Color>,
-  },
-  iconFormat: {
-    type: String as PropType<IconFormat>,
-  },
-  ...useSizeProps(),
-  ...useDesignProps(),
   /**
    * 禁用
    */
   disabled: {
     type: Boolean,
     default: false
-  }
+  },
+  ...useSizeProps(),
 })
+
+console.log('===useWithIconProps', useHasIconProps)
 
 const buttonProps = {
   ...useButtonProps(),
+  ...useHasIconProps(),
+  ...useDesignProps(),
   ...useDimensionProps(),
   ...useVariantProps(),
   ...useLoadingProps()
@@ -56,7 +45,7 @@ const emits: ButtonEmits = {
 
 export type ButtonSlots = {
   default: never
-}
+} & IconSlots
 
 export type ButtonProps = MakePropsType<typeof buttonProps, ButtonEmits>
 

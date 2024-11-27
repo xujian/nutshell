@@ -1,6 +1,7 @@
 import { SetupContext, h } from 'vue'
-import { NsIcon, type ButtonProps } from '../../../../components'
+import { type ButtonProps } from '../../../../components'
 import { MarginProps } from '../../../../utils'
+import { buildHasIcon, buildHasIconClasses } from '../../../../props'
 
 export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext) => {
 
@@ -12,26 +13,14 @@ export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext
         : ['has-icon']
       : [],
     ...props.round ? ['round'] : [],
-    ...props.iconPosition ? [`icon-position-${props.iconPosition}`] : [],
+    ...buildHasIconClasses(props)
   ]
 
-  const isStaticImage = (url: string) =>
-    url.endsWith('.svg') || url.endsWith('.png') || url.endsWith('.jpg') || url.endsWith('.jpeg')
-
-  const icon = props.icon
-    ? isStaticImage(props.icon)
-      ? () => h('img', {
-          src: props.icon,
-          class: 'icon'
-        })
-      : () => h(NsIcon, {
-          name: props.icon,
-          format: props.iconFormat,
-        })
-    : slots.icon
   const style = {
     ...props.iconFill ? {'--icon-fill': props.iconFill} : {},
   }
+
+  const icon = () => buildHasIcon(props, slots)
 
   return h(
     NutButton,
