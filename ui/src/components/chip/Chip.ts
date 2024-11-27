@@ -1,7 +1,7 @@
 import { PropType } from 'vue'
 import { buildProps } from '../../utils/private/props'
 import { Color } from '../../composables'
-import { useDesignProps, useSizeProps, useVariantProps } from '../../props'
+import { IconPosition, useDesignProps, useHasIconProps, useSizeProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 
 export const useChipProps = buildProps({
@@ -26,7 +26,8 @@ export const useChipProps = buildProps({
   },
   ...useSizeProps(),
   ...useVariantProps(),
-  ...useDesignProps()
+  ...useDesignProps(),
+  ...useHasIconProps(),
 })
 
 export const chipProps = {

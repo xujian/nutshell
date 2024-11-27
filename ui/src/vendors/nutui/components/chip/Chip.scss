@@ -1,0 +1,17 @@
+.ns-chip {
+  &.nut-tag {
+    height: 17px;
+    padding: 0px 6px;
+    .icon {
+      height: 10px;
+      width: 10px;
+      margin-inline-end: 2px;
+    }
+  }
+  &.icon-position-end {
+    .icon {
+      margin-inline-start: 2px;
+      margin-inline-end: 0px;
+    }
+  }
+}
