@@ -10,6 +10,8 @@
           :color="color" />
       </color-cases>
       <p>&nbsp;</p>
+      <h2>图标及R角</h2>
+      <story file="chip/icon.vue" />
       <h2>Variants</h2>
       <variant-cases v-slot="{variant}" class="column">
         <ns-chip
