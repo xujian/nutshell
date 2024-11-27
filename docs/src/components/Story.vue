@@ -83,6 +83,7 @@ onMounted(importStory)
     display: flex;
     align-items: stretch;
     justify-content: center;
+    width: 100%;
     .expand-leave-active,
     .expand-enter-active {
       transition: all 500ms ease;
