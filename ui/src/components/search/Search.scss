@@ -1,12 +1,12 @@
 .ns-search {
+  border-radius: var(--ns-r);
+  border-color: var(--stroke, transparent);
+  border-style: solid;
+  border-width: 1px;
+  background-color: var(--fill, var(--ns-fill));
   .content {
-    border-radius: var(--ns-r);
-    border-color: var(--stroke, transparent);
     padding: 2px 6px;
     gap: var(--ns-spacing-sm);
-    border-style: solid;
-    border-width: 1px;
-    background-color: var(--fill, var(--ns-fill));
   }
   .icon {
     background-image: url(https://cdn.ddjf.com/static/images/wx-yunservice/search-icon.png);
@@ -16,11 +16,18 @@
     background-repeat: no-repeat;
   }
   .input {
+    background-color: transparent;
+    border: none;
     height: 24px;
     line-height: 24px;
     padding: 0 .5em;
     flex-grow: 1;
     font-size: 12px;
+    color: var(--ns-text);
+    &:focus {
+      border: none;
+      outline: none;
+    }
   }
   &.round {
     border-radius: 50%;
