@@ -46,9 +46,11 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
 
     () => h('div', {
       class: [
-        ].join(' '),
+        ...props.formatter ? ['has-formatter'] : []
+      ]
     }, [
       h(NutInput, {
+        class: ['placeholder-input'],
         name: props.name,
         placeholder: props.placeholder,
         modelValue: selected.value.label,
@@ -56,15 +58,19 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
         onClick: openPicker,
         readonly: true,
         inputAlign: props.variant === 'solid' ? 'left' : 'right',
+        formatter: props.formatter,
+        formatTrigger: 'onChange'
       }, {
-        right: () => h('img', {
-          src: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEwLjM2MjEgMjMuOTAxNkMxMC4wNjY3IDI0LjE2ODMgOS45MzkxNyAyNC41Njg5IDEwLjAyNzYgMjQuOTUyNkMxMC4xMTYgMjUuMzM2MiAxMC40MDY5IDI1LjY0NDYgMTAuNzkwNyAyNS43NjE1QzExLjE3NDUgMjUuODc4NCAxMS41OTI5IDI1Ljc4NjIgMTEuODg4MyAyNS41MTk0TDIxLjYzNzggMTYuNzE0NkMyMS44Njg3IDE2LjUwNjIgMjIgMTYuMjEyOSAyMiAxNS45MDU3QzIyIDE1LjU5ODQgMjEuODY4NyAxNS4zMDUxIDIxLjYzNzggMTUuMDk2N0wxMS44ODgzIDYuMjkxODZDMTEuNDMxNiA1Ljg3OTU1IDEwLjcxOTggNS45MDc0NiAxMC4yOTgzIDYuMzU0MjNDOS44NzY5IDYuODAwOTkgOS45MDU0NCA3LjQ5NzQ0IDEwLjM2MjEgNy45MDk3NUwxOS4yMTYyIDE1LjkwNTNMMTAuMzYyMSAyMy45MDE2WiIgZmlsbD0iI0RGREZERiIvPgo8L3N2Zz4K',
-          style: {
-            width: '16px',
-            height: '16px',
-          }
-        }, '')
+        right: () => h('i', { class: ['icon', 'arrow'] })
       }),
+      props.formatter
+        ? h('div', {
+            class: ['formatter-mask'],
+            onClick: openPicker,
+          }, {
+            default: () => props.formatter?.(selected.value.value)
+          })
+        : null,
       h(NutPopup, {
         visible: pickerOpen.value,
         position: 'bottom',

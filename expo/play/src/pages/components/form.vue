@@ -14,6 +14,12 @@
             :min="90"
             :max="110"
             label="最大数量" />
+          <ns-select
+            v-model="formData.due"
+            :options
+            :formatter
+            :rules="['required']"
+            label="截止日期" />
         </ns-form>
       </ns-card>
 
@@ -23,9 +29,28 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import dayjs from 'dayjs'
+
+const options = [
+  { label: '1天', value: 1 },
+  { label: '2天', value: 2 },
+  { label: '3天', value: 3 },
+  { label: '4天', value: 4 },
+  { label: '5天', value: 5 },
+]
+
+const formatter = (value: number | string) => {
+  const today = dayjs(),
+    due = today.add(+value, 'day').format('YYYY-MM-DD')
+  return value
+    ? `${value}天, ${due}`
+    : ''
+}
 
 const formData = reactive({
-  count: 100
+  count: 100,
+  due: void 0
 })
+
 </script>
 

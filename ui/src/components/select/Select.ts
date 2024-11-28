@@ -2,7 +2,7 @@ import { PropType } from 'vue'
 import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { ValidationRule, formatRules } from '../../props/field'
 import { MakePropsType } from '../../utils/private/helpers'
-import { define } from '../../utils'
+import { define, InputFormatter } from '../../utils'
 import { UniDataItem } from '../../shared'
 
 export type SelectOption = UniDataItem & {
@@ -16,6 +16,9 @@ export const selectProps = {
    */
   options: {
     type: Array as PropType<SelectOption[]>,
+  },
+  formatter: {
+    type: Function as PropType<InputFormatter>
   },
   ...useVariantProps(),
   ...useModelValuePropsForInput(),

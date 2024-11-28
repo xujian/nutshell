@@ -18,3 +18,5 @@ export type FormProvided = {
   props: FormProps,
   vendor: Ref<FormInstance | undefined>
 }
+
+export type InputFormatter = (value: number | string) => string
