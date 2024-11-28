@@ -1,29 +1,32 @@
 <template>
   <ns-page class="products-page">
-    <ns-search placeholder="产品名称" fill="#fff" />
-    <ns-tabs :items="tabs" fill="#ffffff33" :blur="10"></ns-tabs>
-    <ns-repeator :items="products"
-      align="stretch"
-      direction="column"
-      v-slot="item"
-      :gap="10"
-      class="my-md">
-      <ns-card fill="#fff" @click="() => onItemClick(item)">
-        <h3 class="b">{{item.机构名称}} - {{item.名称}}</h3>
-        <ns-chips :options="item.tags.map(t => ({ value: t, label: t }))" color="primary" />
-        <div class="row rates">
-          <ns-number header="最低年利率"
-            size="sm"
-            :value="item.最低年利率" suffix="%" />
-          <ns-number header="最低月利率"
-            size="sm"
-            :value="item.最低月利率" suffix="%" />
-          <ns-number header="最低日年利率"
-            size="sm"
-            :value="item.最低日利率" suffix="%" />
-        </div>
-      </ns-card>
-    </ns-repeator>
+    <ns-page-header fill="#ffffff99" :blur="10" :shadow="10" title="产品" />
+    <ns-page-content>
+      <ns-search placeholder="产品名称" fill="#fff" />
+      <ns-tabs :items="tabs" fill="#ffffff33" :blur="10"></ns-tabs>
+      <ns-repeator :items="products"
+        align="stretch"
+        direction="column"
+        v-slot="item"
+        :gap="10"
+        class="my-md">
+        <ns-card fill="#fff" @click="() => onItemClick(item)">
+          <h5 class="b">{{item.机构名称}} - {{item.名称}}</h5>
+          <ns-chips :options="item.tags.map(t => ({ value: t, label: t }))" color="primary" />
+          <div class="row rates">
+            <ns-number header="最低年利率"
+              size="sm"
+              :value="item.最低年利率" suffix="%" />
+            <ns-number header="最低月利率"
+              size="sm"
+              :value="item.最低月利率" suffix="%" />
+            <ns-number header="最低日年利率"
+              size="sm"
+              :value="item.最低日利率" suffix="%" />
+          </div>
+        </ns-card>
+      </ns-repeator>
+    </ns-page-content>
   </ns-page>
 
 </template>
@@ -75,15 +78,14 @@ onMounted(() => {
 
 <style lang="scss">
 .products-page {
-  h3 {
-    font-size: 16px;
+  background-color: var(--ns-neutral);
+  h5 {
+    font-size: 14px;
+    color: var(--ns-primary);
   }
   .bg-white {
     background-color: #fff;
     padding: 5px 0;
-  }
-  .ns-repeator {
-    padding: 0 10px;
   }
   .ns-tabs {
     position: sticky;

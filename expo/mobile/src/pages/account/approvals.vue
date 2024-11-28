@@ -3,17 +3,7 @@
     <ns-page-header
       fill="#fff">
       <template #title>
-        <ns-form>
-          <ns-input class="search-input full-width"
-            placeholder="搜索审批记录"
-            round
-            name="search"
-            variant="solid">
-            <template #prepend>
-              <ns-icon name="https://cdn.ddjf.com/static/images/wx-yunservice/search-icon.png" />
-            </template>
-          </ns-input>
-        </ns-form>
+        <ns-search placeholder="产品名称" />
       </template>
     </ns-page-header>
     <ns-page-content>
@@ -67,6 +57,7 @@ onMounted(() => {
 
 <style lang="scss">
 .page-approvals {
+  background-color: var(--ns-neutral);
 }
 .approvals-scroll {
   height: calc(100vh - 130px);
