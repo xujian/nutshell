@@ -103,7 +103,7 @@ export const NsCard = defineComponent({
 
     const body = () => h('div', {
       class: [
-        'card-body', 'column', 'align-start',
+        'card-body',
         ...buildBoxClasses(props)
       ],
       style: {

@@ -17,6 +17,16 @@ export const BORDERS_VALUES = ['all', 'vertical', 'horizonal', 'inner', 'outer',
 
 export type Borders = (typeof BORDERS_VALUES)[number]
 
+export type ColorMode =
+  /**
+   * 浅色
+   */
+  'light' |
+  /**
+   * 深色
+   */
+  'dark'
+
 const designProps = {
   /**
    * 填色
@@ -154,8 +164,8 @@ const designProps = {
   /**
    * 暗色调
    */
-  dark: {
-    type: Boolean,
+  colorMode: {
+    type: String as PropType<ColorMode>,
   },
   clip: {
     type: String,
@@ -216,7 +226,7 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.shadow || props.depth ? ['with-shadow'] : []),
     ...(props.stroke && isGradient(props.stroke) ? ['with-stroke-gradient'] : []),
     ...props.fluted ? ['fluted'] : [],
-    ...props.dark ? ['dark'] : [],
+    ...props.colorMode ? [props.colorMode] : [],
     ...props.r && typeof props.r === 'string'
         ? [`r-${props.r}`]
         : [],
