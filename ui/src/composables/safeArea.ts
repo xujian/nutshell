@@ -14,7 +14,12 @@ export type SafeArea = {
   /**
    * 屏幕底部范围
    */
-  bottom: number
+  bottom: number,
+  gap?: number,
+  /**
+   * 屏幕底部范围
+   */
+  capsule?: number,
 }
 
 export type Device =
@@ -37,7 +42,7 @@ const devices: Record<Device, SafeArea> = {
   'android': {
     status: 32,
     nav: 40,
-    bottom: 0
+    bottom: 0,
   }
 }
 
@@ -74,6 +79,8 @@ export function useSafeArea (device?: Device): SafeArea {
   return {
     status,
     nav,
-    bottom
+    bottom,
+    gap,
+    capsule: capsule.height
   }
 }

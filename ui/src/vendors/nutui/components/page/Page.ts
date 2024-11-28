@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, onUnmounted, ref, shallowRef } from 'vue'
 import { useToast } from 'vue-toastification'
-import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog, useApp } from '../../../../components'
+import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog } from '../../../../components'
 import { useBus, useSafeArea, usePlatform } from '../../../../composables'
 import type { DialogOptions, ConfirmOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType, DrawerOptions } from '../../../../services'
 import { marginProps } from '../../../../utils'
@@ -153,7 +153,6 @@ export const Page = defineComponent({
 
     const message = () => {
       const messages = dialogOptions.value.message
-      console.log('===message//////===', messages)
       return Array.isArray(messages)
         ? messages.map((m: string) => h('p', {}, m))
         : h('p', {}, messages)
@@ -298,6 +297,12 @@ export const Page = defineComponent({
       '--status': `${safeArea.status}px`,
       '--nav': `${safeArea.nav}px`,
       '--bottom': `${safeArea.bottom}px`,
+      ...safeArea.gap !== void 0
+        ? { '--gap': `${safeArea.gap}px` }
+        : {},
+      ...safeArea.capsule !== void 0
+        ? { '--capsule': `${safeArea.capsule}px` }
+        : {},
       '--scroll': `${scroll.value}px`,
     }))
 

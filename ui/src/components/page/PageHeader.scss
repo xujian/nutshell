@@ -3,7 +3,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     padding: 0;
+    border: 0;
     padding-top: var(--status);
     min-height: var(--nav);
     margin-bottom: 0;
@@ -13,30 +15,27 @@
     &.sticky {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
     }
     .title {
-      display: flex;
-      height: var(--nav);
+      height: var(--capsule, 32px);
+      padding: var(--gap, 4px) var(--ns-spacing);
       align-items: center;
-      width: 100%;
       .title-heading {
         width: 100%;
-        padding: 0 var(--ns-spacing);
-        height: var(--height);
         font-size: 16px;
-        line-height: var(--height);
+        line-height: var(--capsule, 32px);
         text-align: var(--titleAlign, center);
         box-sizing: border-box;
       }
       .title-content {
         width: 100%;
-        padding-right: 100px;
-        padding-left: var(--ns-spacing);
+        padding-right: 78px;
+        box-sizing: border-box;
       }
       .back-button, .prepend {
         position: absolute;
-        top: var(--top);
+        top: var(--status);
         left: 0px;
         height: var(--nav);
       }
@@ -52,8 +51,7 @@
         width: fit-content;
       }
     }
-    .content {
-      margin-top: cacl(var(--top) + var(--height));
+    >.content {
       width: 100%;
       box-sizing: border-box;
       &:not(:empty) {
