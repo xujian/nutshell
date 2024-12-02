@@ -1,12 +1,12 @@
 <template>
-  <ns-page class="form-page">
+  <ns-page class="form-page" fill="neutral">
     <ns-page-header title="表单"
       caption="<ns-form>"
       :blur="10" reveal has-back-button />
     <ns-page-content>
-      <h3>数字输入框</h3>
-      <ns-card fill="#fff">
-        <ns-form v-model="formData">
+      <ns-form v-model="formData">
+        <h3>数字输入框</h3>
+        <ns-card fill="#fff">
           <ns-number-input
             v-model="formData.count"
             name="count"
@@ -14,15 +14,23 @@
             :min="90"
             :max="110"
             label="最大数量" />
-          <ns-select
-            v-model="formData.due"
-            :options
-            :formatter
-            :rules="['required']"
-            label="截止日期" />
-        </ns-form>
       </ns-card>
-
+      <h3>选择框</h3>
+      <ns-card fill="#fff">
+        <ns-select
+          v-model="formData.due"
+          :options
+          :formatter
+          :rules="['required']"
+          label="截止日期" />
+      </ns-card>
+      <h3>按钮组</h3>
+      <ns-card fill="#fff" color-mode="light">
+        <ns-button-group-input label="跟进状态"
+          v-model="formData.followup"
+          :options="followupOptions" size="xs" />
+      </ns-card>
+    </ns-form>
     </ns-page-content>
   </ns-page>
 </template>
@@ -39,6 +47,17 @@ const options = [
   { label: '5天', value: 5 },
 ]
 
+const followupOptions = [
+  {
+    value: '1',
+    label: '已跟进'
+  },
+  {
+    value: '2',
+    label: '未跟进'
+  },
+]
+
 const formatter = (value: number | string) => {
   const today = dayjs(),
     due = today.add(+value, 'day').format('YYYY-MM-DD')
@@ -49,7 +68,8 @@ const formatter = (value: number | string) => {
 
 const formData = reactive({
   count: 100,
-  due: void 0
+  due: void 0,
+  followup: void 0
 })
 
 </script>

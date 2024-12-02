@@ -11,6 +11,8 @@
   --ns-spacing: 10px;
   --ns-paper: #fff;
   --ns-text: #333;
+  --ns-text-light: #333;
+  --ns-text-dark: #fff;
   font-size: 14px;
   color: #333;
   background-color: var(--ns-background, #f0f0f0);
@@ -70,3 +72,4 @@
   list-style-position: outside;
   color: var(--ns-neutral);
 }
+
