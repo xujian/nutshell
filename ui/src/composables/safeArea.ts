@@ -15,7 +15,11 @@ export type SafeArea = {
    * 屏幕底部范围
    */
   bottom: number,
-  gap?: number,
+  /**
+   * 专门用来表示胶囊上下间距
+   * 为了不与 flex: gap 冲突
+   */
+  gutter?: number,
   /**
    * 屏幕底部范围
    */
@@ -73,14 +77,14 @@ export function useSafeArea (device?: Device): SafeArea {
     /**
      * 据说是胶囊上下间距
      */
-    gap = capsule.top - status,
-    nav = capsule.height + gap * 2,
+    gutter = capsule.top - status,
+    nav = capsule.height + gutter * 2,
     bottom = screenHeight - safeArea.bottom
   return {
     status,
     nav,
     bottom,
-    gap,
+    gutter,
     capsule: capsule.height
   }
 }

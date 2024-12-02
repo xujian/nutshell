@@ -297,8 +297,8 @@ export const Page = defineComponent({
       '--status': `${safeArea.status}px`,
       '--nav': `${safeArea.nav}px`,
       '--bottom': `${safeArea.bottom}px`,
-      ...safeArea.gap !== void 0
-        ? { '--gap': `${safeArea.gap}px` }
+      ...safeArea.gutter !== void 0
+        ? { '--gutter': `${safeArea.gutter}px` }
         : {},
       ...safeArea.capsule !== void 0
         ? { '--capsule': `${safeArea.capsule}px` }

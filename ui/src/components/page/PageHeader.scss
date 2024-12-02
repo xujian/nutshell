@@ -19,7 +19,7 @@
     }
     .title {
       height: var(--capsule, 32px);
-      padding: var(--gap, 4px) var(--ns-spacing);
+      padding: var(--gutter, 4px) var(--ns-spacing);
       align-items: center;
       .title-heading {
         width: 100%;

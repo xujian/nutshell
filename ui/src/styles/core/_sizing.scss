@@ -12,7 +12,7 @@
   }
   @each $name, $value in $sizing {
     .size-#{$name} {
-      --h: #{$value};
+      --h: #{$value}px;
       --icon-size: calc(var(--ns-size-#{$name}) - 8px);
       height: var(--ns-size-#{$name});
       padding-inline: calc(var(--ns-size-#{$name}) / 2);
