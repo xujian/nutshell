@@ -1,0 +1,10 @@
+.ns-button-group-input {
+  &.ns-form-item {
+    .nut-form-item__body__slots {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+  }
+}

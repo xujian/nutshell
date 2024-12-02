@@ -14,6 +14,7 @@ import { Dialog } from './dialog'
 import { Drawer } from './drawer'
 import { Sheet } from './sheet'
 import { RadioGroup } from './radio'
+import { ButtonGroupInput } from './button-group'
 import { Switch } from './switch'
 import { Stepper } from './stepper'
 import { Rating, RatingInput } from './rating'
@@ -60,6 +61,7 @@ const components: Record<string, VendorComponent> = {
   Sheet,
   // @ts-ignore
   RadioGroup,
+  ButtonGroupInput,
   // @ts-ignore
   Switch,
   Rating,

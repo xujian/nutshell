@@ -1,6 +1,6 @@
 import { PropType, defineComponent, h, } from 'vue'
 import {  MakePropsType } from '../../utils'
-import { buildFlexClasses, buildFlexStyles, useDesignProps, useDimensionProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDesignProps, useDimensionProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { UniDataItem } from '../../shared'
 import { Color } from '../../composables/theme'
 import { NsButton } from '../button/Button'
@@ -71,6 +71,7 @@ export const NsButtonGroup = defineComponent({
       variant: props.variant,
       round: props.round,
       label: item.label,
+      thick: props.thick,
     })
 
     const items = () => h('div', {
@@ -87,9 +88,11 @@ export const NsButtonGroup = defineComponent({
         'ns-button-group',
         'row',
         ...buildFlexClasses(props),
+        ...buildDesignClasses(props),
       ],
       style: {
         ...buildFlexStyles(props),
+        ...buildDesignStyles(props),
       },
     }, content())
   }

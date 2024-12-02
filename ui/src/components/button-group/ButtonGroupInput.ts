@@ -1,6 +1,6 @@
 import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDesignProps, useDimensionProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { useDesignProps, useDimensionProps, useFieldProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { UniDataItem } from '../../shared'
 import { Color } from '../../composables/theme'
 
@@ -21,6 +21,7 @@ export const buttonGroupInputProps = {
     type: Boolean,
     default: true,
   },
+  ...useFieldProps(),
   ...useVariantProps(),
   ...useDesignProps(),
   ...useFlexProps(),

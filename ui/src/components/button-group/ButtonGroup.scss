@@ -2,6 +2,7 @@
   max-width: 100%;
   width: fit-content;
   overflow: hidden;
+  border-radius: var(--ns-r);
   .buttons {
     width: fit-content;
   }
@@ -9,6 +10,7 @@
     margin: 0;
     background-color: var(--fill);
     transition: backdrop-filter .5s;
+    color: var(--foreground, #fff);
     &.active {
       font-weight: bold;
       backdrop-filter: brightness(1.2);

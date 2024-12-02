@@ -1,20 +1,16 @@
 import { defineComponent, h } from 'vue'
-import { RadioGroup as AntdvRadioGroup, Radio as AntdvRadio, RadioChangeEvent } from 'ant-design-vue'
 import { buttonGroupInputProps, NsButtonGroup } from '../../../../components'
 import { renderFormItem } from '../../utils'
 
 export const ButtonGroupInput = defineComponent({
-  name: 'AntdvButtonGroupInput',
+  name: 'NutuiButtonGroupInput',
   props: buttonGroupInputProps,
   setup (props, ctx) {
 
     const { emit } = ctx
 
     return () =>
-      renderFormItem(
-        {
-          ...props,
-        },
+      renderFormItem(props,
         ctx.slots,
         () =>
           h(
