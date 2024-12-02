@@ -7,9 +7,8 @@
     :gap="10">
     <ns-card fill="#fff">
       <template #header>
-        {{ item.审批状态 }}
+       <ns-chip :label="item.审批状态" fill="#FFC107" />
       </template>
-      <ns-facts :items="item.facts" />
       <template #footer>
         <ns-button variant="plain" size="sm" color="negtive">删除</ns-button>
         <div style="flex-grow: 1;"/>

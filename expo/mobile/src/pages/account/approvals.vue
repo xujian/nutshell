@@ -7,7 +7,7 @@
       </template>
     </ns-page-header>
     <ns-page-content>
-      <ns-tabs v-model="tab" :items="tabs" class="my-md" />
+      <ns-tabs v-model="tab" fill="#fff" :items="tabs" class="mb-md" />
       <approval-list :items="facts" />
     </ns-page-content>
   </ns-page>

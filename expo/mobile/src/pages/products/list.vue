@@ -3,7 +3,7 @@
     <ns-page-header fill="#ffffff99" :blur="10" :shadow="10" title="产品" />
     <ns-page-content>
       <ns-search placeholder="产品名称" fill="#fff" />
-      <ns-tabs :items="tabs" fill="#ffffff33" :blur="10"></ns-tabs>
+      <ns-tabs :items="tabs" fill="#ffffff33" :blur="10" class="my-md" />
       <ns-repeator :items="products"
         align="stretch"
         direction="column"

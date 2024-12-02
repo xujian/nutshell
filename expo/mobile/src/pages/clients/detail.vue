@@ -7,8 +7,10 @@
       reveal>
     </ns-page-header>
     <ns-page-content>
-      <div class="hero cover row align-end breakout sticky">
-        <h1 class="name h1 text-gradient">{{ client.姓名 }}</h1>
+      <div class="hero cover align-end breakout sticky">
+        <ns-row class="full-height" align="end" justify="start">
+          <h1 class="name h1 text-gradient">{{ client.姓名 }}</h1>
+        </ns-row>
       </div>
       <ns-card class="stage-card overlap" fill="#ffffff55" :blur="50">
         <ns-stepper :items="steps" :model-value="stage" />
@@ -39,13 +41,19 @@
       <h2 class="h2">提醒记录</h2>
       <h2 class="h2">跟进记录</h2>
       <div class="follow-records"></div>
+      <ns-row justify="start">
+        <ns-button color="negtive" @click="onDeleteClick">删除</ns-button>
+      </ns-row>
     </ns-page-content>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useNutshell } from '@uxda/nutshell/taro'
 import { Client } from '../../models'
+
+const $n = useNutshell()
 
 const client = ref<Client>({
     id: '1',
@@ -94,6 +102,14 @@ const steps = [
     { label: '支付宝', value: '1' },
     { label: '提放宝', value: '2' },
   ]
+
+const onDeleteClick = () => {
+  $n.confirm('确定要删除吗?', {
+    onOk: () => {
+      console.log('===delete')
+    }
+  })
+}
 </script>
 
 <style lang="scss">

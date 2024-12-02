@@ -79,6 +79,7 @@ onMounted(() => {
 
 <style lang="scss">
 .account-page {
+  background-color: var(--ns-neutral);
   .account-header {
     clip-path: path(var(--d));
   }

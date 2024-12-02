@@ -36,8 +36,10 @@
         round
         fill="#ffffff44"
         :blur="10"
-        :gap="4"
+        :gap="0"
         accent="#000"
+        foreground="#fff"
+        :thick="0"
         :options="tabs" />
       <client-list :items="clients" @click="onClientClick" />
     </ns-page-content>

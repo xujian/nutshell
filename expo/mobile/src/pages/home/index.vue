@@ -24,7 +24,7 @@
         </ns-repeator>
       </scroll-view>
       <h2 class="h2">快捷入口</h2>
-      <ns-row clazss="entries" justify="stretch" :gap="10">
+      <ns-row class="entries my-md" justify="stretch" :gap="10">
         <ns-card class="create-client entry flex-grow"
           gradient="#FA8BFF,#2BD2FF,#2BFF88/90"
           texture="https://simple.shensi.tech/images/client-girl.svg"
@@ -44,23 +44,23 @@
           <p class="caption">创建产品订单</p>
         </ns-card>
       </ns-row>
-      <ns-row class="reminders mt-md" justify="stretch" :gap="10">
-        <ns-card variant="outlined" class="entry my-md flex-grow"
+      <ns-row class="reminders" justify="stretch" :gap="10">
+        <ns-card variant="outlined" class="entry"
           :repeat="false"
           texture="https://simple.shensi.tech/images/campain.svg">
           <h4>营销活动</h4>
         </ns-card>
-        <ns-card variant="outlined" class="entry my-md flex-grow"
+        <ns-card variant="outlined" class="entry"
           :repeat="false"
           texture="https://simple.shensi.tech/images/tasks.svg">
           <h4>待办任务</h4>
         </ns-card>
-        <ns-card variant="outlined" class="entry my-md flex-grow"
+        <ns-card variant="outlined" class="entry"
           :repeat="false"
           texture="https://simple.shensi.tech/images/flows.svg">
           <h4>流程处理</h4>
         </ns-card>
-        <ns-card variant="outlined" class="entry my-md flex-grow"
+        <ns-card variant="outlined" class="entry"
           :repeat="false"
           texture="https://simple.shensi.tech/images/reports.svg"
           @click="onReportClick">
