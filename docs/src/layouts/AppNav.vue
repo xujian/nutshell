@@ -141,6 +141,10 @@ const menuData = computed(() => [
             key: '/components/tabs'
           },
           {
+            label: '按钮组',
+            key: '/components/button-group'
+          },
+          {
             label: '标签栏 Tabbar',
             key: '/components/tabbar'
           },
@@ -200,7 +204,7 @@ const menuData = computed(() => [
           },
           {
             label: '按钮组',
-            key: '/components/button-group'
+            key: '/components/button-group-input'
           },
           {
             label: '星星输入框 rating-input',

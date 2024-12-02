@@ -12,6 +12,7 @@ const MotionsPage = () => import('../pages/design/MotionsPage.vue')
 const StyleSystemPage = () => import('../pages/develop/StyleSystemPage.vue')
 const ButtonPage = () => import('../pages/components/ButtonPage.vue')
 const ButtonGroupPage = () => import('../pages/components/ButtonGroupPage.vue')
+const ButtonGroupInputPage = () => import('../pages/components/ButtonGroupInputPage.vue')
 const DropdownPage = () => import('../pages/components/DropdownPage.vue')
 const ChipPage = () => import('../pages/components/ChipPage.vue')
 const CardPage = () => import('../pages/components/CardPage.vue')
@@ -186,6 +187,11 @@ const router = createRouter({
           path: '/components/button-group',
           name: 'components-button-group',
           component: ButtonGroupPage
+        },
+        {
+          path: '/components/button-group-input',
+          name: 'components-button-group-input',
+          component: ButtonGroupInputPage
         },
         {
           path: '/components/empty',
