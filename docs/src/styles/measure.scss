@@ -1,10 +1,10 @@
 @property --w {
-  syntax: "<integer>";
+  syntax: "<length>";
   inherits: true;
   initial-value: 0;
 }
 @property --h {
-  syntax: "<integer>";
+  syntax: "<length>";
   inherits: true;
   initial-value: 0;
 }

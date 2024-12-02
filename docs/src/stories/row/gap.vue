@@ -19,11 +19,12 @@ const colors = [
 const gap = ref(10)
 
 const options = [
-  { label: 1, value: 1},
-  { label: 'sm', value: 5},
-  { label: 'ms', value: 10},
-  { label: 'lg', value: 15},
-  { label: 'xl', value: 20},
-  { label: '30', value: 20},
+  { label: 1, value: 1 },
+  { label: 'xs', value: 4 },
+  { label: 'sm', value: 6 },
+  { label: 'md', value: 10 },
+  { label: 'lg', value: 15 },
+  { label: 'xl', value: 20 },
+  { label: '30', value: 30 },
 ]
 </script>
