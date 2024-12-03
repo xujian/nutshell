@@ -1,12 +1,15 @@
 .ns-button {
   padding-inline: 1em;
   padding-block: 0;
+  &.nut-button--normal {
+    font-size: var(--font-size, 12px);
+  }
   &.nut-button {
     --icon-size: calc(var(--height - 8px));
     --padding-for-icon: calc(var(--icon-size) + 4px + 4px);
     --fill: var(--ns-neutral--10);
+    color: lch(from var(--fill) calc((49.44 - l) * infinity) 0 0);
     line-height: 1em;
-    background-color: var(--fill, var(--ns-neutral--10));
     &:not(.full-width) {
       // width: auto;
     }
@@ -22,6 +25,15 @@
       width: -webkit-fill-available;
     }
   }
+  &.nut-button--default {
+    border-width: var(--thick);
+    border-color: var(--stroke, transparent);
+    &:not([disabled]) {
+      &:active {
+        border-width: var(--thick);
+      }
+    }
+  }
   &:not(.round) {
     border-radius: var(--r, var(--ns-r));
   }
@@ -35,7 +47,7 @@
     }
   }
   &.round {
-    border-radius: calc(var(--h) * 1px / 2);
+    border-radius: calc(var(--h) / 2);
   }
   &.size-xs {
     font-size: 12px;
