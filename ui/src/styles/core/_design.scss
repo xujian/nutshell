@@ -65,7 +65,7 @@
 .with-design {
   --fill: initial;
   --stroke: initial;
-  color: var(--foreground);
+  color: var(--foreground, lch(from var(--fill) calc((49.44 - l) * infinity) 0 0));
   background-color: var(--fill);
   border-color: var(--stroke, transparent);
   border-style: solid;
