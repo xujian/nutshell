@@ -116,6 +116,12 @@ const designProps = {
   stroke: {
     type: String as PropType<Color>
   },
+  /**
+   * 外边框宽度
+   */
+  outline: {
+    type: [String, Number] as PropType<Size | Dimension>
+  },
   edge: {
     type: String,
   },
