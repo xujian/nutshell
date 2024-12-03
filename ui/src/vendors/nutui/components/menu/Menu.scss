@@ -1,6 +1,9 @@
 .ns-menu {
+  margin: var(--ns-spacing) 0;
   .nut-cell-group__wrap {
-    margin: 20px 0;
+    margin: 0 0;
+    box-shadow: none;
+    border-radius: var(--ns-r);
   }
   .nut-cell {
     height: 46px;
