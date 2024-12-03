@@ -39,7 +39,7 @@
 @property --thick {
   syntax: "<length>";
   inherits: false;
-  initial-value: 1px;
+  initial-value: 0;
 }
 
 @each $name, $value in design.$borders {
@@ -87,6 +87,12 @@
   }
   &:not(.with-pattern) {
     background-repeat: no-repeat;
+  }
+  &.light {
+    --foreground: var(--ns-text-light);
+  }
+  &.dark {
+    --foreground: var(--ns-text--dark);
   }
 }
 

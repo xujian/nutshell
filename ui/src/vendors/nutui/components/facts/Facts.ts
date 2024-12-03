@@ -6,6 +6,8 @@ import { MarginProps } from '../../../../utils'
 
 export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose'>) => {
 
+  console.log('===FactsItem', props)
+
   const content = ctx.slots.default ||
     (() => props.value)
 
@@ -20,7 +22,7 @@ export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose
   }, [
     h('div', {
         class: ['label']
-      }, props.label),
+      }, { default: () => props.label }),
     h('div', {
         class: ['value', 'row', 'justify-end']
       }, {
@@ -33,7 +35,7 @@ export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose
 export const Facts = (props: FactsProps & MarginProps, ctx: Omit<SetupContext, 'expose'>) => {
 
   const slots = ctx.slots.default
-    || (() => props.items?.map((item) => h(FactsItem, item.props)))
+    || (() => props.items?.map((item) => h(FactsItem, item as FactsItemProps)))
 
   return h('div', {
     class: [

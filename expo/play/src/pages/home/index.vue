@@ -1,7 +1,7 @@
 <template>
   <ns-page class="home-page">
     <ns-page-content>
-      <ns-card class="hero-card breakout" motion="001">
+      <ns-card class="hero-card breakout" gradient="#000000,#000000,#0048ff/180" :thick="0">
         <ns-row class="fit square" align="center" justify="center">
           <h2>标准组件库</h2>
         </ns-row>
@@ -171,6 +171,13 @@ const groups: {title: string, data: ListItemProps[]}[] = [
         name: 'ns-repeator',
         caption: '',
         link: '/pages/components/repeator',
+        hasArrow: true,
+      },
+      {
+        title: '详表',
+        name: 'ns-facts',
+        caption: '',
+        link: '/pages/components/facts',
         hasArrow: true,
       },
     ]
