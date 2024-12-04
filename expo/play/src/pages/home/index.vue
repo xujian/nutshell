@@ -148,7 +148,14 @@ const groups: {title: string, data: ListItemProps[]}[] = [
         caption: '',
         link: '/pages/components/chip',
         hasArrow: true,
-      }
+      },
+      {
+        title: '卡片',
+        name: 'ns-card',
+        caption: '',
+        link: '/pages/components/card',
+        hasArrow: true,
+      },
     ]
   },
   {

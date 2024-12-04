@@ -4,7 +4,8 @@ const components = [
   'chip',
   'repeator',
   'form',
-  'facts'
+  'facts',
+  'card',
 ]
 
 export default defineAppConfig({
