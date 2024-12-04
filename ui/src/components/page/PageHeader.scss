@@ -5,7 +5,8 @@
     flex-direction: column;
     align-items: stretch;
     padding: 0;
-    border: 0;
+    border-width: 0;
+    border-bottom-width: var(--thick);
     padding-top: var(--status);
     min-height: var(--nav);
     margin-bottom: 0;
@@ -54,9 +55,6 @@
     >.content {
       width: 100%;
       box-sizing: border-box;
-      &:not(:empty) {
-        padding: 10px;
-      }
     }
   }
 }

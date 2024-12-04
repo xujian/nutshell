@@ -92,7 +92,10 @@
     --foreground: var(--ns-text-light);
   }
   &.dark {
-    --foreground: var(--ns-text--dark);
+    --foreground: var(--ns-text-dark);
+  }
+  &.has-stroke {
+    border-width: var(--thick, 1px);
   }
 }
 

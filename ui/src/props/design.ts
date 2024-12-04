@@ -230,6 +230,7 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.gradient && props.texture ? ['with-texture-gradient'] : []),
     ...(props.gradient && props.pattern ? ['with-pattern-gradient'] : []),
     ...(props.shadow || props.depth ? ['with-shadow'] : []),
+    ...props.stroke ? ['has-stroke'] : [],
     ...(props.stroke && isGradient(props.stroke) ? ['with-stroke-gradient'] : []),
     ...props.fluted ? ['fluted'] : [],
     ...props.colorMode ? [props.colorMode] : [],
@@ -247,7 +248,10 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...(fill ? { '--fill': makeColor(fill) } : {}),
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
     ...(props.accent ? { '--accent': makeColor(props.accent) } : {}),
-    ...(props.stroke !== void 0 ? { '--stroke': makeColor(props.stroke) } : {}),
+    ...(props.stroke !== void 0 ? {
+        '--stroke': makeColor(props.stroke),
+        '--thick': `${props.thick || 1}px`
+      } : {}),
     ...(props.dotted === true ? { borderStyle: 'dotted' } : {}),
     ...(props.r !== void 0 && typeof props.r === 'number'
         ? {
