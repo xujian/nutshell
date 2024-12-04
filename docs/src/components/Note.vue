@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 export type NoteProps = {
-  title: string
+  title?: string
 }
 withDefaults(
   defineProps<NoteProps>(),
