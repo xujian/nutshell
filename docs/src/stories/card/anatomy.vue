@@ -1,5 +1,5 @@
 <template>
-  <ns-card title="卡片" class="card-anatomy">
+  <ns-card title="卡片" class="card-anatomy" body-fill="#fff" :padding="10">
     <template #titleAfter>
       <ns-chip color="primary" label="实名" />
     </template>
@@ -17,14 +17,14 @@
       :padding="0"
       :minimum-fraction-digits="2"
       :value="1.25" />
-      <template #footer>
-        <ns-button
-          fill="#fff"
-          size="xs"
-          round
-          icon="http://simple.shensi.tech/icons/arrow-right.svg"
-          icon-position="end">数据图表</ns-button>
-      </template>
+    <template #footer>
+      <ns-button
+        color="#fff"
+        size="xs"
+        round
+        icon="http://simple.shensi.tech/icons/arrow-right.svg"
+        icon-position="end">数据图表</ns-button>
+    </template>
   </ns-card>
 </template>
 
@@ -34,10 +34,6 @@
 <style lang="scss">
 .card-anatomy {
   width: 400px;
-  .note {
-    color: #999;
-    font-size: 10px;
-  }
   .card-header {
     background: repeating-linear-gradient(
     -45deg,

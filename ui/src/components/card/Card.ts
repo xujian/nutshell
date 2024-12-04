@@ -59,7 +59,7 @@ export const NsCard = defineComponent({
     const style = computed(() => ({
       ...buildDesignStyles(props),
       ...props.padding !== void 0
-        ? { '--padding': props.padding }
+        ? { '--padding': `${props.padding}px` }
         : {}
     }))
 
@@ -96,6 +96,7 @@ export const NsCard = defineComponent({
           : [
               label(),
               titleAfter(),
+              h('div', {class: ['spacer']}),
               corner(),
             ]
         )

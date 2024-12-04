@@ -18,7 +18,8 @@
     // margin-bottom: calc(var(--ns-spacing) * -1/2)
   }
   .card-body {
-    padding: var(--padding, var(--ns-spacing));
+    margin-inline: var(--padding, 0px);
+    padding: var(--ns-spacing);
     background: var(--body-fill);
     border-radius: var(--ns-r);
     flex-grow: 1;
