@@ -46,7 +46,7 @@ import { NsInput, NsDateInput, NsDateRangeInput, NsMonthRangeInput,
   NsMobileInput,
   NsIdInput, NsTextarea, NsNumberInput, NsNumberRangeInput,
   NsMonthInput, NsYearInput, NsChipsInput } from './input'
-import { NsSwitch } from './switch'
+import { NsSwitch, NsSwitchInput } from './switch'
 import { NsSelect, NsCascadingSelect, NsMultipleSelect, NsDateSelect } from './select'
 import { NsCheckbox } from './checkbox'
 import { NsRating, NsRatingInput } from './rating'
@@ -98,6 +98,7 @@ const components = {
   NsNumberRangeInput,
   NsChipsInput,
   NsSwitch,
+  NsSwitchInput,
   NsForm,
   NsDisplay,
   NsSelect,

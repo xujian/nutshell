@@ -15,7 +15,7 @@ import { Drawer } from './drawer'
 import { Sheet } from './sheet'
 import { RadioGroup } from './radio'
 import { ButtonGroupInput } from './button-group'
-import { Switch } from './switch'
+import { Switch, SwitchInput } from './switch'
 import { Stepper } from './stepper'
 import { Rating, RatingInput } from './rating'
 import { Timeline } from './timeline'
@@ -61,9 +61,11 @@ const components: Record<string, VendorComponent> = {
   Sheet,
   // @ts-ignore
   RadioGroup,
+  // @ts-ignore
   ButtonGroupInput,
   // @ts-ignore
   Switch,
+  SwitchInput,
   Rating,
   RatingInput,
   Stepper,

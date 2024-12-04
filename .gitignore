@@ -25,3 +25,4 @@ ui/src/auto-imports.d.ts
 expo/play/.swc/*
 expo/play/dist/*
 taro-plugin/dist/*
+vite-plugin/dist/index.cjs

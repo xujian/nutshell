@@ -3,7 +3,6 @@ import { define, MakePropsType } from '../../utils'
 import { useModelValuePropsForBoolean, useSizeProps } from '../../props'
 
 export const switchProps = {
-  // antd/nutui支持string和number，但我觉得没必要，布尔值就可以了
   ...useModelValuePropsForBoolean(),
   disabled: {
     type: Boolean,
@@ -34,9 +33,7 @@ export const NsSwitch = define({
   props: switchProps,
   emits,
   setup (props, ctx) {
-    // console.log('components/switch', props)
     return {
     }
   }
 })
-// 需要增加 import 到 ./index.ts, ../components.ts

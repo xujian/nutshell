@@ -30,6 +30,10 @@
           v-model="formData.followup"
           :options="followupOptions" size="xs" />
       </ns-card>
+      <h3>开关</h3>
+      <ns-card fill="#fff" color-mode="light">
+        <ns-switch-input label="允许撤销" v-model="formData.allowCancel" />
+      </ns-card>
     </ns-form>
     </ns-page-content>
   </ns-page>
@@ -69,7 +73,8 @@ const formatter = (value: number | string) => {
 const formData = reactive({
   count: 100,
   due: void 0,
-  followup: void 0
+  followup: void 0,
+  allowCancel: void 0
 })
 
 </script>
