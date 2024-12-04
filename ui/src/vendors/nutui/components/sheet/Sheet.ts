@@ -1,9 +1,11 @@
-import { computed, defineComponent, h, provide, reactive } from 'vue'
+import { computed, defineComponent, h, provide, reactive, useAttrs } from 'vue'
 import { sheetProps } from '../../../../components'
 import { PopupState, PopupStateSymbol } from '../../../../props'
 
 export const Sheet = defineComponent(
-  (props, { slots }) => {
+  (props, { slots, emit }) => {
+
+    const $attrs = useAttrs()
 
     // 可关闭状态 使用 provide/inject
     // 使子组件可控制浮窗 允许/不允许 关闭
@@ -23,13 +25,32 @@ export const Sheet = defineComponent(
       }
     })
 
-    const scrollView = (content: any) => {
+    const close = () =>
+      props.closable
+      ? h('div', {
+          class: ['ns-icon-close', 'icon'],
+          onClick: () => emit('cancel')
+        })
+      : null
+
+    const title = () =>
+      props.title
+        ? h('div', {
+            class: ['sheet-title', 'row', 'justify-center'],
+          }, [
+            h('h5', {}, props.title),
+            close(),
+          ])
+        : null
+
+    const content = () => {
       return h('scroll-view', {
         class: [
-          'full-height'
+          'sheet-content',
+          'grow',
         ],
       }, {
-        default: content
+        default: slots.default
       })
     }
 
@@ -41,6 +62,7 @@ export const Sheet = defineComponent(
 
     return () => h(NutPopup, {
       popClass: [
+        $attrs.class,
         ...props.modelValue ? ['open'] : []
       ].join(' '),
       overlayClass: 'sheet-overlay',
@@ -51,9 +73,8 @@ export const Sheet = defineComponent(
       visible: visible.value,
       title: props.title,
       catchMove: true,
-      closable: true,
+      closeable: false,
       height,
-      closeable: props.closable === false ? false : true,
       destroyOnClose: props.destroyOnClose,
       overlay: props.mask === false ? false : true,
       // props.modal: 不允许点击 overlay 直接关闭浮窗
@@ -71,9 +92,10 @@ export const Sheet = defineComponent(
           state.couldClose = state.beforeClose()
         }
       },
-    }, {
-      default: () => scrollView(slots.default)
-    })
+    }, [
+      title(),
+      content()
+    ])
   }, {
     name: 'NutuiSheet',
     props: sheetProps

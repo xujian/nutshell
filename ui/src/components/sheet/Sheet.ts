@@ -1,6 +1,6 @@
 import { PropType, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useModelValuePropsForBoolean, usePopupProps, useSizeProps } from '../../props'
+import { useDesignProps, useModelValuePropsForBoolean, usePopupProps, useSizeProps } from '../../props'
 import { Dimension } from '../../types'
 import { Color } from '../../composables'
 
@@ -35,6 +35,7 @@ export const sheetProps = {
   ...usePopupProps(),
   ...useModelValuePropsForBoolean(),
   ...useSizeProps(),
+  ...useDesignProps(),
 }
 
 export type SheetEmits = {
