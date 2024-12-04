@@ -26,7 +26,7 @@
   .page-content-scroll-view {
     // top: calc(var(--status) + var(--nav));
     // height: calc(100vh - var(--status) - var(--nav));
-    height: 100%;
+    max-height: 100%;
     width: 100%;
     box-sizing: border-box;
   }
