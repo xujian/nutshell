@@ -13,7 +13,6 @@ const props = defineProps<CodeViewProps>()
 const language = props.language || 'markup'
 const prismLanguage = Prism.languages[language],
   html = Prism.highlight(props.code.trim(), prismLanguage, prismLanguage as string)
-  console.log('===html', html)
 </script>
 
 <template>
