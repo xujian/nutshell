@@ -87,7 +87,7 @@ $alphas: (
       }
       @else {
         --foreground: #fff;
-        .icon {
+        > .icon {
           filter: invert(1);
         }
       }
