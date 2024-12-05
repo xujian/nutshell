@@ -13,11 +13,12 @@ export const Chip = (props: ChipProps & MarginProps, { slots }: Omit<SetupContex
       ...buildHasIconClasses(props),
     ],
     round: props.round ?? true,
-  }, [
+  }, {
+    default: () => [
       props.iconPosition !== 'end' && icon(),
       slots.default?.(),
       props.label,
       props.iconPosition === 'end' && icon(),
-    ],
-  )
+    ]
+  })
 }

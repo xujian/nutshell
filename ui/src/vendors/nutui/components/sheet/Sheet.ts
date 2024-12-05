@@ -92,10 +92,12 @@ export const Sheet = defineComponent(
           state.couldClose = state.beforeClose()
         }
       },
-    }, [
-      title(),
-      content()
-    ])
+    }, {
+        default: () => [
+          title(),
+          content()
+        ]
+      })
   }, {
     name: 'NutuiSheet',
     props: sheetProps

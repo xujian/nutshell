@@ -25,7 +25,8 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
     ? h(NsRow, {
         class: ['dialog-footer'],
         justify: 'center'
-      }, [
+      }, {
+        default: () => [
         h(NsButton, {
           variant: 'outlined',
           color: props.okColor || '#fff',
@@ -37,7 +38,7 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
           label: props.okText || '确定',
           onClick: () => emit('complete')
         })
-      ])
+      ]})
     : null
 
   const card = () => h(NsCard, {
