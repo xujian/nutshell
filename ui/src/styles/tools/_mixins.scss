@@ -86,9 +86,10 @@ $alphas: (
         #{'--ns-'}#{$name}#{'--hover'}: #00000044;
       }
       @else {
-        color: #fff;
-        #{'--ns-'}#{$name}#{'--text'}: #fff;
-        #{'--ns-'}#{$name}#{'--hover'}: #ffffff44;
+        --foreground: #fff;
+        .icon {
+          filter: invert(1);
+        }
       }
       &.active {
         background-color: color.adjust($value, $lightness: -20%);
