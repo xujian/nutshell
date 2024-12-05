@@ -17,6 +17,11 @@
           :variant label="创建订单" />
       </variant-cases>
       <p>&nbsp;</p>
+      <h2>可关闭</h2>
+      <ns-chip
+        color="primary"
+        closable
+        label="确定" />
     </ns-page-content>
   </ns-page>
 </template>

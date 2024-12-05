@@ -3,22 +3,35 @@ import type { ChipProps } from '../../../../components'
 import { MarginProps } from '../../../../utils'
 import { buildHasIcon, buildHasIconClasses } from '../../../../props'
 
-export const Chip = (props: ChipProps & MarginProps, { slots }: Omit<SetupContext, 'expose'>) => {
+export const Chip = (props: ChipProps & MarginProps, { slots, emit }: Omit<SetupContext, 'expose'>) => {
 
   const $attrs = useAttrs(),
-    icon = () => buildHasIcon(props, slots)
+    icon = () => buildHasIcon(props, slots),
+    close = () => h('div', {
+      class: ['ns-icon-close', 'icon'],
+      onClick: () => emit('close')
+    }),
+    text = () => h('span', {
+      class: ['text']
+    }, {
+      default: () => [
+        slots.default?.(),
+        props.label,
+      ]
+    })
 
   return h(NutTag, {
     class: [
       ...buildHasIconClasses(props),
+      ...props.closable ? ['closable'] : []
     ],
     round: props.round ?? true,
   }, {
     default: () => [
       props.iconPosition !== 'end' && icon(),
-      slots.default?.(),
-      props.label,
+      text(),
       props.iconPosition === 'end' && icon(),
+      props.closable && close(),
     ]
   })
 }

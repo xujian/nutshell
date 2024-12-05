@@ -24,6 +24,12 @@ export const useChipProps = buildProps({
   textColor: {
     type: String as PropType<Color>,
   },
+  /**
+   * 带关闭
+   */
+  closable: {
+    type: Boolean
+  },
   ...useSizeProps(),
   ...useVariantProps(),
   ...useDesignProps(),
