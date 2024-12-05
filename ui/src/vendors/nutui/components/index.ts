@@ -2,7 +2,7 @@ import { Button } from './button'
 import { Input, NumberInput, DateInput, DateRangeInput } from './input'
 import { Chip, Chips } from './chip'
 import { Icon } from './icon'
-import { Select, CascadingSelect } from './select'
+import { Select, CascadingSelect, MultipleSelect } from './select'
 import { Divider } from './divider'
 import { Menu } from './menu'
 import { Tabs } from './tabs'
@@ -43,6 +43,8 @@ const components: Record<string, VendorComponent> = {
   Select,
   // @ts-ignore
   CascadingSelect,
+  // @ts-ignore
+  MultipleSelect,
   // @ts-ignore
   Divider,
   Menu,

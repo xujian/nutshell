@@ -1,0 +1,20 @@
+.ns-multiple-select {
+  &.ns-form-item {
+    .nut-form-item__body {
+      height: 100%;
+    }
+    .nut-form-item__body__slots {
+      height: 100%;
+    }
+    .multiple-select-chips {
+
+    }
+    .multiple-select-sheet {
+      .nut-checkbox-group {
+        .nut-checkbox {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

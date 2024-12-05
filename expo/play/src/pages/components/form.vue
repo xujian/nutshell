@@ -24,6 +24,13 @@
           :rules="['required']"
           label="截止日期" />
       </ns-card>
+      <h3>多选框</h3>
+      <ns-card fill="#fff">
+        <ns-multiple-select
+          v-model="formData.regions"
+          :options="regions"
+          label="经营地区" />
+      </ns-card>
       <h3>按钮组</h3>
       <ns-card fill="#fff" color-mode="light">
         <ns-button-group-input label="跟进状态"
@@ -51,6 +58,17 @@ const options = [
   { label: '5天', value: 5 },
 ]
 
+const regions = [
+  { label: '北京', value: 'beijing' },
+  { label: '南京', value: 'nanjing' },
+  { label: '上海', value: 'shanghai' },
+  { label: '深圳', value: 'shenzhen' },
+  { label: '广州', value: 'guangzhou' },
+  { label: '厦门', value: 'xiamen' },
+  { label: '成都', value: 'chengdu' },
+  { label: '杭州', value: 'hangzhou' },
+]
+
 const followupOptions = [
   {
     value: '1',
@@ -74,7 +92,8 @@ const formData = reactive({
   count: 100,
   due: void 0,
   followup: void 0,
-  allowCancel: void 0
+  allowCancel: void 0,
+  regions: []
 })
 
 </script>
