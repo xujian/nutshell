@@ -5,12 +5,14 @@ import { buildHasIcon, buildHasIconClasses } from '../../../../props'
 
 export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext) => {
 
+  const hasLabel = props.label || slots.default
+
   const classes = [
     ...props.size ? [`size-${props.size}`] : [],
     ...props.icon
-      ? !props.label
-        ? ['icon']
-        : ['has-icon']
+      ? hasLabel
+        ? ['has-icon']
+        : ['icon']
       : [],
     ...props.round ? ['round'] : [],
     ...buildHasIconClasses(props)
