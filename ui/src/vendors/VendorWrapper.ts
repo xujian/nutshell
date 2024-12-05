@@ -4,6 +4,9 @@ const vendorWrapperProps = {
   ignoresDesign: {
     type: Boolean
   },
+  classes: {
+    type: Array as PropType<string[]>
+  }
 }
 
 /**
@@ -27,9 +30,9 @@ export const VendorWrapper = defineComponent({
   props: vendorWrapperProps,
   inheritAttrs: false,
   setup (props, { slots }) {
-
     return () => h('div', {
       class: [
+        ...(props.classes || []),
         'vendor-container',
         ...props.ignoresDesign ? ['ignores-design'] : [],
       ]

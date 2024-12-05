@@ -5,6 +5,7 @@ import { MarginProps } from '../../../../utils'
 import { VendorWrapper } from '../../../VendorWrapper'
 
 export const Chips = (props: ChipsProps & MarginProps, ctx: Omit<SetupContext, 'expose'>) => {
+
   return h(VendorWrapper, {
     ignoreDesign: true
   }, {

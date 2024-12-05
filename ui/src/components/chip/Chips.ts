@@ -1,12 +1,10 @@
-import { useDesignProps, useFieldProps, useFlexProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { useDesignProps, useFlexProps, useSizeProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 import { UniDataItem } from '../../shared'
 import { PropType } from 'vue'
-import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 import { Color } from '../../composables'
 
 export const chipsProps = {
-  ...useModelValuePropsForStringArray(),
   color: {
     type: String as PropType<Color>,
   },
@@ -20,7 +18,6 @@ export const chipsProps = {
   },
   ...useVariantProps(),
   ...useSizeProps(),
-  ...useFieldProps(),
   ...useFlexProps(),
   ...useDesignProps(),
 }
@@ -34,11 +31,8 @@ export const NsChips = define({
     name: 'NsChips',
     props: chipsProps,
     setup (props, ctx) {
-      const finalRules = formatRules(props.rules as ValidationRule[], props)
-      // 对参数做前期的处理
       return {
         props: {
-          rules: finalRules as FullValidationRule[]
         }
       }
     }
