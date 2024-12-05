@@ -25,7 +25,7 @@ const openDrawer = () => {
     props: {
       message: '香港著名演员梁朝伟获颁香港科技大学人文学荣誉博士'
     },
-    width: '80vw'
+    width: '100vw'
   })
 }
 </script>

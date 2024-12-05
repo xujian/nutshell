@@ -79,7 +79,11 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
       if ($props?.onBack) {
         $props?.onBack()
       } else {
-        Taro.navigateBack()
+        if (page.minimal) {
+          page.back?.()
+        } else {
+          Taro.navigateBack()
+        }
       }
     }
 

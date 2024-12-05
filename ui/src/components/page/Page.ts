@@ -1,6 +1,7 @@
 import { reactive, InjectionKey, Reactive, inject, provide, computed } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDesignProps } from '../../props'
+import { emit } from 'process'
 
 /**
  * page scroll
@@ -34,9 +35,11 @@ export const pageProps = {
 }
 
 export type PageEmits = {
+  back: () => void
 }
 
 export const pageEmits: PageEmits = {
+  back: () => true
 }
 
 export type PageSlots = {
@@ -49,6 +52,8 @@ export type PageConfig = {
   contentScrollable?: boolean,
   hasHeader?: boolean,
   hasFooter?: boolean,
+  minimal?: boolean,
+  back?: () => void
 }
 
 export const PageSymbol: InjectionKey<Reactive<PageConfig>> = Symbol('ns-page')
@@ -60,12 +65,14 @@ export const NsPage = define({
   name: 'NsPage',
   props: pageProps,
   emits: pageEmits,
-  setup (props, ctx) {
+  setup (props, { emit }) {
 
     const pageConfig = reactive<PageConfig>({
       contentScrollable: false,
       hasHeader: false,
       hasFooter: false,
+      minimal: props.minimal,
+      back: () => emit('back')
     })
 
     provide(PageSymbol, pageConfig)

@@ -88,7 +88,11 @@ export const Page = defineComponent({
             ? h(drawerComponent.value, {
                 ...drawerProps.value,
                 ...drawerOptions.value,
+                minimal: true,
                 onClose: () => {
+                  drawerOpen.value = false
+                },
+                onBack: () => {
                   drawerOpen.value = false
                 }
               })

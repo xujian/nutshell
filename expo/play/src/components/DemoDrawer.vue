@@ -1,5 +1,5 @@
 <template>
-  <ns-page>
+  <ns-page minimal class="demo-drawer">
     <ns-page-header title="DEMO" has-back-button />
     <ns-page-content>
       <div class="ns-row">
