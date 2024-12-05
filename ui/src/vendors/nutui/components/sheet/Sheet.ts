@@ -75,11 +75,11 @@ export const Sheet = defineComponent(
       catchMove: true,
       closeable: false,
       height,
-      destroyOnClose: props.destroyOnClose,
+      destroyOnClose: props.destroyOnClose === false ? false : true,
       overlay: props.mask === false ? false : true,
       // props.modal: 不允许点击 overlay 直接关闭浮窗
       // 关闭时需要询问子组件状态，确定是否可以关闭
-      closeOnClickOverlay: props.modal == false,
+      closeOnClickOverlay: props.modal === true ? false : true,
       round: true,
       'onUpdate:visible': (value: boolean) => {
         props['onUpdate:modelValue']?.(value)
