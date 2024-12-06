@@ -1,10 +1,11 @@
-import { useDesignProps, useFlexProps, useSizeProps, useVariantProps } from '../../props'
+import { useDesignProps, useFlexProps, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
 import { UniDataItem } from '../../shared'
 import { PropType } from 'vue'
 import { Color } from '../../composables'
 
 export const chipsProps = {
+  ...useModelValuePropsForStringArray(),
   color: {
     type: String as PropType<Color>,
   },

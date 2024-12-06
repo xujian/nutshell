@@ -24,7 +24,7 @@
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <h2>Chips</h2>
-      <p>&nbsp;</p>
+      <div class="caption">可以用 :items 输出标签</div>
       <story file="chip/basic.vue" />
     </ns-page-content>
   </ns-page>
