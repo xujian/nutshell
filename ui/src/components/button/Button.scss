@@ -4,8 +4,6 @@
   --r: #{$button-r};
   border-width: 1px;
   border-style: solid;
-  // background-color: var(--ns-fill);
-  color: var(--foreground, var(--ns-text));
   transition: all 0.15s;
   &:hover {
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);

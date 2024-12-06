@@ -2,7 +2,7 @@
   <ns-page class="page-page" fill="neutral" color-mode="light">
     <ns-page-header title="卡片" fill="#CDDC3999"
       :blur="40"
-      stroke="#999"
+      stroke="#CDDC39"
       foreground="text" has-back-button></ns-page-header>
     <ns-page-content :scrollable="contentScrollable">
       <h2>卡片</h2>
@@ -17,8 +17,32 @@
           <lorem />
         </ns-card>
       </ns-row>
-      <ns-card fill="#222" foreground="#fff" title="卡片" stroke="#fff" class="my-md">
-        <lorem />
+      <ns-card title="卡片" class="my-md" body-fill="#ffffff33" :padding="10">
+        <template #titleAfter>
+          <ns-chip color="primary" label="实名" />
+        </template>
+        <template #corner>
+          <ns-icon name="https://simple.shensi.tech/system-assets/icons/arrow-up-right.svg" />
+        </template>
+        <ns-number
+          header="季度环比"
+          suffix="%"
+          width="30%"
+          hight="100"
+          align="start"
+          mainAlign="center"
+          trend="down"
+          :padding="0"
+          :minimum-fraction-digits="2"
+          :value="1.25" />
+        <template #footer>
+          <div class="spacer"></div>
+          <ns-button
+            color="#fff"
+            size="xs"
+            icon="http://simple.shensi.tech/icons/arrow-right.svg"
+            icon-position="end">数据图表</ns-button>
+        </template>
       </ns-card>
     </ns-page-content>
     <ns-page-footer fill="#00000088" :blur="40">

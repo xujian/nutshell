@@ -2,7 +2,7 @@
   <ns-page class="clients-page">
     <ns-page-header title="客户列表"
       title-align="start"
-      colorMode="dark"
+      color-scheme="dark"
       fill="#00000088"
       :blur="10"
       :has-back-button="false"

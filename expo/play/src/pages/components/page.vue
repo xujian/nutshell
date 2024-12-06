@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="page-page" fill="neutral" color-mode="light">
+  <ns-page class="page-page">
     <ns-page-header title="页面构成" fill="#fff" foreground="text" has-back-button></ns-page-header>
     <ns-page-content :scrollable="contentScrollable">
       <h2>页面</h2>
@@ -45,5 +45,7 @@ const codes = [
 </script>
 
 <style lang="scss">
-
+.page-page {
+  background-color: var(--ns-neutral);
+}
 </style>

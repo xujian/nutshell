@@ -1,3 +1,5 @@
+import chroma from 'chroma-js'
+
 export type ThemeOptions = false | {
 }
 
@@ -92,14 +94,21 @@ export function buildFillStyle (fill?: Color): { backgroundColor?: string} {
  * 生成 gradient 样式
  */
 export function buildGradientStyle (gradient?: GradientString):
-  { '--gradient'?: string } {
+  { '--gradient'?: string, '--foreground'?: string } {
     // 平均拉开渐变
     if (!gradient) return {}
     if (/^\d{3}$/.test(gradient)) return {}
     const [colorString, angle = 0] = gradient.split('/') as [string, number],
       [start, ...colors] = colorString.split(','),
       seg = 100 / colors.length,
-      startColor = makeColor(start as Color)
+      startColor = makeColor(start as Color),
+      // 计算平均色值, 决定 text (foreground) color
+      valuedColors = [start, ...colors]
+        .filter(c => /^(#|rgb)/.test(c)),
+      averageColor = chroma.average(valuedColors),
+      colorScheme = averageColor.get('lab.l') > 70
+        ? 'light'
+        : 'dark'
     const notes = colors.map((c, index) => ({
         value: makeColor(c as Color),
         percent: (
@@ -109,6 +118,7 @@ export function buildGradientStyle (gradient?: GradientString):
           )
       })).map(c => `${c.value} ${c.percent}%`).join(',')
     return {
-      '--gradient': `linear-gradient(${angle}deg,${startColor} 0%,${notes})`
+      '--gradient': `linear-gradient(${angle}deg,${startColor} 0%,${notes})`,
+      '--foreground': `var(--ns-text-${colorScheme})`
     }
 }

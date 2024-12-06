@@ -1,4 +1,5 @@
 import { PropType } from 'vue'
+import chroma from 'chroma-js'
 import {
   Color,
   GradientString,
@@ -17,7 +18,7 @@ export const BORDERS_VALUES = ['all', 'vertical', 'horizonal', 'inner', 'outer',
 
 export type Borders = (typeof BORDERS_VALUES)[number]
 
-export type ColorMode =
+export type ColorScheme =
   /**
    * 浅色
    */
@@ -170,8 +171,8 @@ const designProps = {
   /**
    * 暗色调
    */
-  colorMode: {
-    type: String as PropType<ColorMode>,
+  colorScheme: {
+    type: String as PropType<ColorScheme>,
   },
   clip: {
     type: String,
@@ -205,7 +206,14 @@ const buildDesignClasses = (props: DesignProps) => {
         : []
   const result = [
     'with-design',
-    ...(fill && isBrand(fill) ? [`fill-${fill}`] : []),
+    ...(fill
+        ? isBrand(fill)
+          ? [`fill-${fill}`, 'color-scheme-dark']
+          : [ chroma(fill).get('lab.l') > 70
+            ? 'color-scheme-light'
+            : 'color-scheme-dark']
+        : []
+        ),
     ...(props.borders ? [`borders-${props.borders}`] : []),
     ...(props.round ? ['round'] : []),
     ...(props.square ? ['square'] : []),
@@ -233,7 +241,7 @@ const buildDesignClasses = (props: DesignProps) => {
     ...props.stroke ? ['has-stroke'] : [],
     ...(props.stroke && isGradient(props.stroke) ? ['with-stroke-gradient'] : []),
     ...props.fluted ? ['fluted'] : [],
-    ...props.colorMode ? [props.colorMode] : [],
+    ...props.colorScheme ? [`color-scheme-${props.colorScheme}`] : [],
     ...props.r && typeof props.r === 'string'
         ? [`r-${props.r}`]
         : [],
@@ -245,7 +253,17 @@ const buildDesignClasses = (props: DesignProps) => {
 const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignProps) => {
   const fill = props.fill || (Reflect.get(props, 'color') as Color)
   const style = {
+    ...props.colorScheme ? {
+      colorScheme: props.colorScheme
+    }: {},
     ...(fill ? { '--fill': makeColor(fill) } : {}),
+    .../^(#|rgb)/.test(fill)
+      ? {
+          colorScheme: chroma(fill).get('lab.l') > 70
+            ? 'color-scheme-light'
+            : 'color-scheme-dark'
+        }
+      : {},
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
     ...(props.accent ? { '--accent': makeColor(props.accent) } : {}),
     ...(props.stroke !== void 0 ? {
@@ -260,10 +278,6 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
         : {}
       ),
     ...(props.thick !== void 0 ? { '--thick': `${props.thick}px` } : {}),
-    ...(props.foreground ? {
-        '--text': makeColor(props.foreground),
-        '--foreground': makeColor(props.foreground)
-      } : {}),
     ...props.blur ? {'--blur': `${props.blur}px`} : {},
     ...props.brightness && props.brightness != 1 ? {'--brightness': props.brightness} : {},
     ...props.shadow ? {'--shadow': makeColor(props.shadow)} : {},
@@ -271,6 +285,10 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...props.fluted ? { '--fluted': `${props.fluted}px` } : {},
     ...buildGradientStyle(props.gradient),
     ...buildTextureStyles(props),
+    ...(props.foreground ? {
+      '--text': makeColor(props.foreground),
+      '--foreground': makeColor(props.foreground)
+    } : {}),
   } as StyleObject
   return style
 }

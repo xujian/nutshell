@@ -1,7 +1,7 @@
 <template>
   <ns-page class="client-detail-page">
     <ns-page-header title="客户详情"
-      colorMode="dark"
+      color-scheme="dark"
       fill="#000"
       has-back-button
       reveal>

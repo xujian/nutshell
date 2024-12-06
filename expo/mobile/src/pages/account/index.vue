@@ -1,7 +1,7 @@
 <template>
   <ns-page class="account-page">
     <ns-page-header
-      color-mode="dark"
+      color-scheme="dark"
       class="account-header"
       title="大道云 Pro"
       :minimal="false"

@@ -68,6 +68,9 @@ $alphas: (
     #{'--ns-'}#{$name}: #{$value};
   }
 
+  --ns-text-light: var(--ns-text);
+  --ns-text-dark: #fff;
+
   @each $name, $value in map.get($theme, 'abstract') {
     .fill-#{$name} {
       background-color: var(--ns-#{$name});
@@ -81,12 +84,12 @@ $alphas: (
       --nut-button-default-border-color: var(--ns-#{$name});
       background-color: var(--ns-#{$name});
       @if color.channel($value, 'lightness', $space: hsl) > 80 {
-        color: var(--ns-text);
-        #{'--ns-'}#{$name}#{'--text'}: var(--ns-text);
-        #{'--ns-'}#{$name}#{'--hover'}: #00000044;
+        color-scheme: light;
+        --foreground: var(--ns-text-light);
       }
       @else {
-        --foreground: #fff;
+        color-scheme: dark;
+        --foreground: var(--ns-text-dark);
         > .icon {
           filter: invert(1);
         }

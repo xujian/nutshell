@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import VirtualPlugin from './vite/virtual-plugin'
-import NutshellPlugin from 'vite-plugin-nutshell'
+import NutshellPlugin from '@uxda/vite-plugin-nutshell'
 
 const nsRegex = /^Ns[A-Z][\w]+/
 const NsResolver = (name: string) => {

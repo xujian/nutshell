@@ -1,7 +1,7 @@
 <template>
   <ns-page class="apply-page">
     <ns-page-header title="AI审批"
-      color-mode="dark"
+      color-scheme="dark"
       texture="http://simple.shensi.tech/images/mummy.svg"
       :minimal="false"
       fill="#0d0c98">

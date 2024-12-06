@@ -1,6 +1,7 @@
 .variant-plain {
   background-color: transparent;
   border-color: transparent;
+  --foreground: var(--ns-text);
 }
 
 .variant-outlined {

@@ -32,13 +32,13 @@
           label="经营地区" />
       </ns-card>
       <h3>按钮组</h3>
-      <ns-card fill="#fff" color-mode="light">
+      <ns-card fill="#fff" color-scheme="light">
         <ns-button-group-input label="跟进状态"
           v-model="formData.followup"
           :options="followupOptions" size="xs" />
       </ns-card>
       <h3>开关</h3>
-      <ns-card fill="#fff" color-mode="light">
+      <ns-card fill="#fff" color-scheme="light">
         <ns-switch-input label="允许撤销" v-model="formData.allowCancel" />
       </ns-card>
     </ns-form>
