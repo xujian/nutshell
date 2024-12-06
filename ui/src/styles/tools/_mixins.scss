@@ -85,11 +85,9 @@ $alphas: (
       background-color: var(--ns-#{$name});
       @if color.channel($value, 'lightness', $space: hsl) > 80 {
         color-scheme: light;
-        --foreground: var(--ns-text-light);
       }
       @else {
         color-scheme: dark;
-        --foreground: var(--ns-text-dark);
         > .icon {
           filter: invert(1);
         }

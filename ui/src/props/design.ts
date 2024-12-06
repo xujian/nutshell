@@ -199,6 +199,15 @@ export function hasDesignProps (props: any): props is DesignProps {
 
 const buildDesignClasses = (props: DesignProps) => {
   const fill = props.fill || (Reflect.get(props, 'color') as Color),
+    // 依据填色值确定 color scheme
+    colorScheme = props.colorScheme
+      || (fill
+        ? isBrand(fill)
+          ? 'dark'
+          : chroma(fill).get('lab.l') > 70
+            ? 'light'
+            : 'dark'
+        : ''),
     filterClasses = (
         props.blur
         || props.brightness
@@ -206,14 +215,10 @@ const buildDesignClasses = (props: DesignProps) => {
         : []
   const result = [
     'with-design',
-    ...(fill
-        ? isBrand(fill)
-          ? [`fill-${fill}`, 'color-scheme-dark']
-          : [ chroma(fill).get('lab.l') > 70
-            ? 'color-scheme-light'
-            : 'color-scheme-dark']
-        : []
-        ),
+    ...fill && isBrand(fill)
+      ? [`fill-${fill}`]
+      : [],
+    ...colorScheme ? [`color-scheme-${colorScheme}`] : [],
     ...(props.borders ? [`borders-${props.borders}`] : []),
     ...(props.round ? ['round'] : []),
     ...(props.square ? ['square'] : []),
@@ -241,7 +246,6 @@ const buildDesignClasses = (props: DesignProps) => {
     ...props.stroke ? ['has-stroke'] : [],
     ...(props.stroke && isGradient(props.stroke) ? ['with-stroke-gradient'] : []),
     ...props.fluted ? ['fluted'] : [],
-    ...props.colorScheme ? [`color-scheme-${props.colorScheme}`] : [],
     ...props.r && typeof props.r === 'string'
         ? [`r-${props.r}`]
         : [],
