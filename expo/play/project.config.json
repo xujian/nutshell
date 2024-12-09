@@ -27,6 +27,6 @@
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "libVersion": "3.0.0",
+  "libVersion": "3.7.1",
   "srcMiniprogramRoot": "dist/"
 }

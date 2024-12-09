@@ -6,10 +6,11 @@
           <h2>标准组件库</h2>
         </ns-row>
       </ns-card>
-      <ns-card class="mb-md" v-for="(g, index) in groups" :key="index"
+      <ns-card class="mb-md" v-for="(g, index) in groups"
+        :key="index"
         :title="g.title"
-        fill="#fff"
-        body-fill="#eee">
+        :fill="g.color || '#fff'"
+        body-fill="#ffffff33">
         <ns-list :data="g.data">
         </ns-list>
       </ns-card>
@@ -17,12 +18,13 @@
   </ns-page>
 </template>
 <script lang="ts" setup>
-import { ListItemProps } from '@uxda/nutshell/taro'
+import { ListItemProps, type Color } from '@uxda/nutshell/taro'
 
 
-const groups: {title: string, data: ListItemProps[]}[] = [
+const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   {
     title: '页面构成',
+    color: '#ffcfd2',
     data: [
       {
         title: '页',
@@ -62,6 +64,7 @@ const groups: {title: string, data: ListItemProps[]}[] = [
   },
   {
     title: '预设交互',
+    color: '#f1c0e8',
     data: [
       {
         title: '弹窗',
@@ -102,6 +105,7 @@ const groups: {title: string, data: ListItemProps[]}[] = [
   },
   {
     title: '视觉效果',
+    color: '#cfbaf0',
     data: [
       {
         title: '总述',
@@ -127,6 +131,7 @@ const groups: {title: string, data: ListItemProps[]}[] = [
   },
   {
     title: 'UI 组件',
+    color: '#a3c4f3',
     data: [
       {
         title: '按钮',
@@ -160,6 +165,7 @@ const groups: {title: string, data: ListItemProps[]}[] = [
   },
   {
     title: '输入组件',
+    color: '#90dbf4',
     data: [
       {
         title: '表单',
@@ -172,6 +178,7 @@ const groups: {title: string, data: ListItemProps[]}[] = [
   },
   {
     title: '数据组件',
+    color: '#8eecf5',
     data: [
       {
         title: '连续平铺',
@@ -185,6 +192,13 @@ const groups: {title: string, data: ListItemProps[]}[] = [
         name: 'ns-facts',
         caption: '',
         link: '/pages/components/facts',
+        hasArrow: true,
+      },
+      {
+        title: '时间线',
+        name: 'ns-timeline',
+        caption: '',
+        link: '/pages/components/timeline',
         hasArrow: true,
       },
     ]

@@ -264,8 +264,8 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     .../^(#|rgb)/.test(fill)
       ? {
           colorScheme: chroma(fill).get('lab.l') > 70
-            ? 'color-scheme-light'
-            : 'color-scheme-dark'
+            ? 'light'
+            : 'dark'
         }
       : {},
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),

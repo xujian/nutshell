@@ -1,5 +1,6 @@
-import { PropType, ObjectEmitsOptions, SlotsType, VNode } from 'vue'
+import { PropType, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
+import { useModelValuePropsForNumber } from '../../props'
 
 export type TimelineStatus = 'normal' | 'on' | 'off'
 
@@ -12,6 +13,7 @@ export type TimelineItem = {
 }
 
 export const timelineProps = {
+  ...useModelValuePropsForNumber(),
   items: {
     type: Array as PropType<TimelineItem[]>
   }

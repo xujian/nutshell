@@ -3,6 +3,19 @@
   &.nut-steps-vertical {
     padding: 0 var(--ns-spacing);
     box-sizing: border-box;
+    .nut-step-finish {
+      .nut-step-icon, .nut-step-line {
+        background-color: var(--ns-primary);
+      }
+    }
+    .nut-step-process {
+      .nut-step-icon {
+        background-color: var(--ns-primary);
+        &::before {
+          background-color: var(--ns-primary);
+        }
+      }
+    }
     .nut-step-main {
       flex-grow: 1;
       padding-left: 15px;

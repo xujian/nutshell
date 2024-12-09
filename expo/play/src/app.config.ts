@@ -6,6 +6,7 @@ const components = [
   'form',
   'facts',
   'card',
+  'timeline',
 ]
 
 export default defineAppConfig({

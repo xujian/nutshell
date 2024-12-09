@@ -7,6 +7,15 @@ export type ModelValueProps<T = any> = {
   modelValue: T
 }
 
+export const useModelValuePropsForNumber = buildProps({
+  modelValue: {
+    type: Number
+  },
+  'onUpdate:modelValue': {
+    type: Function as PropType<(value: number) => void>
+  },
+})
+
 export const useModelValuePropsForString = buildProps({
   modelValue: {
     type: String
