@@ -1,7 +1,8 @@
-import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDesignProps, useFlexProps, useVariantProps } from '../../props'
+import { h, defineComponent } from 'vue'
+import type { PropType, SlotsType, VNode } from 'vue'
+import { Color } from '../../composables'
+import { buildDesignClasses, buildDesignStyles, useDesignProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
-import { h, VNode } from 'vue'
-import { PropType, SlotsType, defineComponent } from 'vue'
 
 export type ListItemData = {
   number?: number,
@@ -20,6 +21,9 @@ export const listItemProps = {
   },
   hasArrow: {
     type: Boolean,
+  },
+  color: {
+    type: String as PropType<Color>
   },
   data: Object as PropType<ListItemData>
 }

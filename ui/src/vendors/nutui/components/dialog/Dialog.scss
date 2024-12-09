@@ -1,6 +1,7 @@
 .ns-dialog {
   .nut-popup {
     bottom: 0;
+    background-color: var(--ns-surface);
     min-height: 100px;
     transition: all .5s;
     height: fit-content;
