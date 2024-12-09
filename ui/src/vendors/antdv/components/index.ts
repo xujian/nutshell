@@ -15,6 +15,7 @@ import { Chips } from './chip'
 import { Menu } from './menu'
 import { Stepper } from './stepper'
 import { Timeline } from './timeline'
+import { Repeator } from './repeator'
 import { Drawer } from './drawer'
 import { RadioGroup } from './radio'
 import { ButtonGroupInput } from './button-group'
@@ -54,6 +55,7 @@ const components = {
   Menu,
   Stepper,
   Timeline,
+  Repeator,
   Drawer,
   RadioGroup,
   ButtonGroupInput,

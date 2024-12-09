@@ -19,6 +19,7 @@ import { Switch, SwitchInput } from './switch'
 import { Stepper } from './stepper'
 import { Rating, RatingInput } from './rating'
 import { Timeline } from './timeline'
+import { Repeator } from './repeator'
 import { Upload } from './upload'
 import { Empty } from './empty'
 import { VendorComponent } from '../../../shared'
@@ -70,6 +71,8 @@ const components: Record<string, VendorComponent> = {
   SwitchInput,
   Rating,
   RatingInput,
+  // @ts-ignore
+  Repeator,
   Stepper,
   Timeline,
   // @ts-ignore

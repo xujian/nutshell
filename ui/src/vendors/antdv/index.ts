@@ -1,10 +1,9 @@
 import { getCurrentInstance, h, App, FunctionalComponent } from 'vue'
-import { CoreVendor, VendorComponent } from '../../shared'
+import { CoreVendor } from '../../shared'
 import components from './components'
 import { dialog, confirm, toast, loading, drawer, sheet } from './services'
 import VXETable from 'vxe-table'
 import { PreviewOptions } from '../../services/drawer'
-import { Media } from '../../types'
 import { PreviewMediaParam } from '../../framework'
 
 // fallback for component not implemented

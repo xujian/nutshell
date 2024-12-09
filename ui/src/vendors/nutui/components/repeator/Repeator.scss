@@ -1,0 +1,10 @@
+.ns-repeator {
+  .nut-swipe__right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .ns-button {
+      height: 100%;
+    }
+  }
+}
