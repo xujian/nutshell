@@ -37,7 +37,7 @@ export const MultipleSelect = defineComponent({
       sheet = () => h(NsSheet, {
         class: ['multiple-select-sheet'],
         modelValue: pickerOpen.value,
-        colorMode: 'light',
+        colorScheme: 'light',
         mask: true,
         onClose: closePicker,
       }, {
