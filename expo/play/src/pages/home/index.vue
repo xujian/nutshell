@@ -161,6 +161,13 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         link: '/pages/components/card',
         hasArrow: true,
       },
+      {
+        title: 'Tabs',
+        name: 'ns-tabs',
+        caption: '',
+        link: '/pages/components/tabs',
+        hasArrow: true,
+      },
     ]
   },
   {

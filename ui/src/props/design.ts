@@ -123,8 +123,11 @@ const designProps = {
   outline: {
     type: [String, Number] as PropType<Size | Dimension>
   },
+  /**
+   * 外边缘
+   */
   edge: {
-    type: String,
+    type: Number,
   },
   /**
    * 线宽
@@ -274,6 +277,9 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
         '--stroke': makeColor(props.stroke),
         '--thick': `${props.thick || 1}px`
       } : {}),
+    ...props.edge ? {
+        '--edge': `${props.edge}px`
+      }: {},
     ...(props.dotted === true ? { borderStyle: 'dotted' } : {}),
     ...(props.r !== void 0 && typeof props.r === 'number'
         ? {
@@ -282,6 +288,7 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
         : {}
       ),
     ...(props.thick !== void 0 ? { '--thick': `${props.thick}px` } : {}),
+    ...(props.edge !== void 0 ? { '--edge': `${props.edge}px` } : {}),
     ...props.blur ? {'--blur': `${props.blur}px`} : {},
     ...props.brightness && props.brightness != 1 ? {'--brightness': props.brightness} : {},
     ...props.shadow ? {'--shadow': makeColor(props.shadow)} : {},

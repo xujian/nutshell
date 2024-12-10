@@ -1,13 +1,13 @@
 import { PropType, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDesignProps, useModelValuePropsForInput } from '../../props'
+import { useDesignProps, useModelValuePropsForInput, useSizeProps } from '../../props'
 import { UniDataItem } from '../../shared'
 
 export type TabsItem = {
   content?: string | VNode,
 } & UniDataItem
 
-export type TabsVariant = 'line' | 'card' | 'plain'
+export type TabsVariant = 'line' | 'button' | 'plain'
 export type TabsAlign = 'start' | 'center' | 'end'
 
 export const tabsProps = {
@@ -24,6 +24,7 @@ export const tabsProps = {
     type: String as PropType<TabsAlign>
   },
   ...useModelValuePropsForInput(),
+  ...useSizeProps(),
   ...useDesignProps(),
 }
 

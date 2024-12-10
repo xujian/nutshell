@@ -26,8 +26,11 @@ export const Tabs = (props: TabsProps, { emit, slots }: Omit<SetupContext, 'expo
   return h(NutTabs, {
     class: [
       `tabs-align-${props.align || 'start'}`,
+      ...props.size ? [`size-${props.size}`] : [],
+      ...props.variant ? [`variant-${props.variant}`] : [],
     ],
     swipeable: true,
+    titleScroll: true,
     align: 'left',
     modelValue: props.modelValue,
     tabChange: (item: any) => {
