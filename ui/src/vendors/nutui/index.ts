@@ -1,4 +1,4 @@
-import { getCurrentInstance, h, App, inject, Component, SetupContext } from 'vue'
+import { getCurrentInstance, h, App, inject, SetupContext } from 'vue'
 import { CoreVendor } from '../../shared/models/CoreVendor'
 // import { dialog, toast, loading, notice, drawer, sheet } from './services'
 import components from './components'
@@ -66,8 +66,9 @@ const nutuiVendor: CoreVendor = {
     }
   },
   render (props: any, ctx: Omit<SetupContext, 'expose'>) {
-    const { parent } = getCurrentInstance()!
-    const name = parent?.type?.name?.slice(2)! //.toLowerCase() // NsButton -> Button
+    const vm = getCurrentInstance()
+    const name = vm?.parent?.type?.name?.slice(2)! //.toLowerCase() // NsButton -> Button
+    console.log('===vmmmmmmmmm', vm, name)
     const component = components[name] || makeDummy(name)
     const { slots } = ctx
     return h(component, props, slots)

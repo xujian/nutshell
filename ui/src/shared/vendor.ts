@@ -1,13 +1,8 @@
-import { inject, App, VNode, Component } from 'vue'
+import { inject, App, VNode } from 'vue'
 import { getVendor } from '../vendors'
-import { ConfirmOptions, DialogInstance, DialogOptions } from '../services/dialog'
-import type { ToastOptions } from '../services/toast'
-import type { LoadingOptions } from '../services/loading'
 import { SetupContext } from 'vue'
 import { VendorSymbol } from './symbols'
 import { DefineComponent } from 'vue'
-import { DrawerOptions } from '../services/drawer'
-import { SheetOptions } from '../services/sheet'
 import { CoreVendor } from './models/CoreVendor'
 
 /**

@@ -1,5 +1,4 @@
 import { h } from 'vue'
-import { Image as NutImage } from '@nutui/nutui'
 import type { IconProps } from '../../../../components'
 
 export const Icon = (props: IconProps) => {

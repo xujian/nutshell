@@ -2,7 +2,6 @@ import { defineComponent, h } from 'vue'
 import { inputEmits, inputProps, inputSlots } from '../../../../components'
 import { marginProps } from '../../../../utils'
 import { renderFormItem, useForm } from '../../utils'
-import { FullValidationRule } from '../../../../props'
 
 export const Input = defineComponent({
   name: 'NutuiInput',

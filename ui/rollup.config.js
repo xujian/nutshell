@@ -276,7 +276,8 @@ export default [
       'vue',
       '@nutui/nutui',
       '@nutui/nutui-taro',
-      '@tarojs/taro'
+      '@tarojs/taro',
+      'ant-design-vue',
     ]
   },
   // {
