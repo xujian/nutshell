@@ -7,7 +7,7 @@ export type TabsItem = {
   content?: string | VNode,
 } & UniDataItem
 
-export type TabsVariant = 'line' | 'button' | 'plain'
+export type TabsVariant = 'line' | 'card' | 'button' | 'plain'
 export type TabsAlign = 'start' | 'center' | 'end'
 
 export const tabsProps = {
