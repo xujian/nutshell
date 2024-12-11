@@ -39,7 +39,9 @@
       </ns-card>
       <h3>开关</h3>
       <ns-card fill="#fff" color-scheme="light">
-        <ns-switch-input label="允许撤销" v-model="formData.allowCancel" />
+        <ns-switch-input label="允许撤销"
+          hint="仅支持最高 720p、5 秒，限每月 50 个视频"
+          v-model="formData.allowCancel" />
       </ns-card>
     </ns-form>
     </ns-page-content>
@@ -47,7 +49,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import dayjs from 'dayjs'
 
 const options = [
@@ -95,6 +97,18 @@ const formData = reactive({
   allowCancel: void 0,
   regions: []
 })
+const show1 = ref(false)
 
+const list = ref([
+  {
+    name: 'option1'
+  },
+  {
+    name: 'option2'
+  },
+  {
+    name: 'option3'
+  }
+])
 </script>
 

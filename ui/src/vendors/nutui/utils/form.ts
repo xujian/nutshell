@@ -3,6 +3,7 @@ import { DesignProps, FieldProps, FullValidationRule, VariantProps } from '../..
 import { useNutshell } from '../../../framework'
 import { FormItemRule } from '@nutui/nutui-taro/dist/types/__VUE/form/types'
 import { FormProvided } from '../../../utils'
+import { NsRow } from '../../../components'
 
 export const NutuiFormSymbol: InjectionKey<FormProvided | undefined> = Symbol('nutui-form')
 
@@ -54,6 +55,36 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
   // console.log('===renderFormItem', props.name, props.rules)
   const rules = transformRules(props.rules as FullValidationRule[])
   const formItemRef = ref(null)
+
+  const hintOpen = ref(false)
+
+  const label = () => h(NutPopover, {
+    customClass: 'form-item-label has-hint',
+    location: 'right',
+    theme: 'dark',
+    visible: hintOpen.value,
+    duration: 0,
+    closeOnClickOutside: true,
+    'onUpdate:visible': (value: boolean) => {
+      console.log('===hint onUpdate:visible', value)
+      hintOpen.value = value
+    },
+  }, {
+    content: () => h('div', {
+        class: 'form-item-hint-content'
+      }, props.hint),
+    reference: () => h(NsRow, {
+        class: ['form-item-label']
+      }, {
+        default: () => [
+          h('label', {}, props.label),
+          h('div', {
+            class: ['icon', 'hint-icon']
+          })
+        ]
+      })
+  })
+
   return h(
     NutFormItem,
     {
@@ -72,7 +103,9 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
       rules,
     },
     {
-      label: () => props.label,
+      ...props.hint
+        ? { label }
+        : {},
       default: defaultSlot,
       extra: slots.append
         ? () => h('div', {
