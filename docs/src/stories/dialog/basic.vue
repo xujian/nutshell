@@ -22,6 +22,7 @@ const onOpenDialogButtonClick = () => {
   $n.dialog({
     title: '客户',
     message: '消息内容',
+    cancelText: '',
     onOk: () => {
       return true
     }

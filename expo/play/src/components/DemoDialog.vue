@@ -1,5 +1,5 @@
 <template>
-  <ns-form v-model="formData">
+  <ns-form ref="form" v-model="formData">
     <ns-number-input
       label="兑换金额"
       name="amount"
@@ -13,25 +13,25 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 
-const emit = defineEmits(['complete', 'close'])
+const emit = defineEmits(['complete', 'close']),
+  form = ref()
 
-const props = defineProps({
-  total: Number,
-  default: 0
-})
+type DemoComponentProps = {
+  total: number,
+  default?: number
+}
+
+const props = defineProps<DemoComponentProps>()
 
 const formData = reactive<any>({
   amount: 0
 })
 
-const onOk = () => {
-  emit('complete')
-}
-
-const onCancel = () => {
-  emit('close')
+const couldComplete = async () => {
+  const result = await form.value.validate()
+  return result.valid
 }
 
 const amountRules = [
@@ -46,6 +46,10 @@ const amountRules = [
     message: '兑换金额超过了最大可兑换金额'
   }
 ]
+
+defineExpose({
+  couldComplete
+})
 </script>
 
 <style lang="scss">

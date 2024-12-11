@@ -27,18 +27,26 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
         justify: 'center'
       }, {
         default: () => [
-        h(NsButton, {
-          variant: 'outlined',
-          color: props.okColor || '#fff',
-          label: props.cancelText || '取消',
-          onClick: () => emit('close')
-        }),
-        h(NsButton, {
-          color: props.okColor || 'primary',
-          label: props.okText || '确定',
-          onClick: () => emit('complete')
-        })
-      ]})
+          props.cancelText === ''
+            ? null
+            : h(NsButton, {
+                variant: 'outlined',
+                color: props.okColor || '#fff',
+                label: props.cancelText || '取消',
+                onClick: () => {
+                  emit('close')
+                  emit('cancel')
+                }
+              }),
+          h(NsButton, {
+            color: props.okColor || 'primary',
+            label: props.okText || '确定',
+            onClick: () => {
+              emit('complete')
+              emit('ok')
+            }
+          })
+        ]})
     : null
 
   const card = () => h(NsCard, {

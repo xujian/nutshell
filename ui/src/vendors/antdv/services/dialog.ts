@@ -37,9 +37,10 @@ function createDialog (options: DialogOptions, app: App) {
     : () => message
 
   const onOk = () => {
-    if (options.onComplete) {
-      visible.value = options.onComplete(completeResult) === false
-    } else if (typeof options.component !== 'function') {
+    const callback = options.onComplete || options.onOk
+    if (callback) {
+      visible.value = callback(completeResult) === false
+    } else if (options.component && typeof options.component !== 'function') {
       // 内嵌组件 可阻止弹窗关闭
       Promise.resolve(contentRef.value.couldComplete?.()).then((could: boolean) => {
         visible.value = !(could === true)
@@ -51,10 +52,9 @@ function createDialog (options: DialogOptions, app: App) {
   }
 
   const onClose = () => {
-    // 内嵌组件 可阻止弹窗取消
-    if (!contentRef.value.couldClose) {
+    if (options.onCancel) {
+      options.onCancel()
       visible.value = false
-      return true
     }
     Promise.resolve(contentRef.value.couldClose?.()).then((couldClose: boolean) => {
       visible.value = !(couldClose === true)
@@ -76,6 +76,8 @@ function createDialog (options: DialogOptions, app: App) {
       },
       class: options.classes,
       okText: options.okText,
+      okColor: options.okColor,
+      cancelText: options.cancelText,
       destroyOnClose: options.destroyOnClose ?? true,
       mask: options.mask ?? true,
       footer: options.footer ?? true,

@@ -57,11 +57,13 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
         'justify-end'
       ],
     }, [
-      h(NsButton, {
-        class: ['cancel-button'],
-        label: props.cancelText || '取消',
-        onClick: onCancel,
-      }),
+      props.cancelText === ''
+       ? null
+       : h(NsButton, {
+            class: ['cancel-button'],
+            label: props.cancelText || '取消',
+            onClick: onCancel,
+          }),
       h(NsButton, {
         class: ['ok-button'],
         color: 'primary',

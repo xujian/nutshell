@@ -48,11 +48,9 @@ const nutuiVendor: CoreVendor = {
     }
     this.confirm = (message: string, onOk: () => void, options?: ConfirmOptions) => {
       $bus.emit('confirm', {
+        ...options,
         message,
-        options: {
-          ...options,
-          onOk
-        }
+        onOk
       })
     }
     this.preview = (media: string | Media, options?: PreviewOptions) => {

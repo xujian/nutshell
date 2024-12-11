@@ -38,6 +38,7 @@ const codes = [
     '该合同已过截止日期',
     '如需签署请重置截止日期'
   ],
+  cancelText: ''
 })`,
 `$n.dialog({
   component: DemoDialog,
@@ -55,6 +56,7 @@ const openMessageDialog = () => {
       '该合同已过截止日期',
       '如需签署请重置截止日期'
     ],
+    cancelText: ''
   })
 }
 

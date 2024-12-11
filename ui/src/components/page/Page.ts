@@ -1,7 +1,6 @@
 import { reactive, InjectionKey, Reactive, inject, provide, computed } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDesignProps } from '../../props'
-import { emit } from 'process'
 
 /**
  * page scroll

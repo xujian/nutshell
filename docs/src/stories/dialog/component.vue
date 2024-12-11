@@ -52,7 +52,7 @@ const ExcampleComponent: PopupChildComponent = defineComponent({
           name: 'name',
           label: props.label,
           modelValue: formData.name,
-          'onUpdate:modelValue': (v: string) => { formData.name = v},
+          'onUpdate:modelValue': (v: string) => { formData.name = v },
           rules: ['required']
         }))
     )

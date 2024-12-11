@@ -43,7 +43,8 @@ export const Page = defineComponent({
     const dialogComponent = shallowRef<PopupChildComponent | null>(null),
       dialogProps = shallowRef<any>(),
       dialogOpen = ref(false),
-      dialogOptions = shallowRef<any>({})
+      dialogOptions = shallowRef<any>({}),
+      dialogComponentRef = ref()
 
     const showToast = ({message, options}: {message: string, options: ToastOptions}) => {
       if (platform?.weixin) {
@@ -177,11 +178,12 @@ export const Page = defineComponent({
         }
       },
       onComplete: onDialogComplete,
-      onCancel: onDialogCalcel,
+      onClose: onDialogCalcel,
       ...dialogOptions.value
     }, {
       default: () => dialogComponent.value
         ? h(dialogComponent.value, {
+            ref: dialogComponentRef,
             ...dialogProps.value,
             onComplete: onDialogComplete,
             onCancel: onDialogCalcel,
@@ -192,7 +194,6 @@ export const Page = defineComponent({
     })
 
     const openDialog = ({component, props, ...options}: DialogOptions) => {
-      console.log('===options===', options)
       dialogComponent.value = component!
       dialogProps.value = props,
       dialogOpen.value = true
@@ -212,16 +213,28 @@ export const Page = defineComponent({
       $bus.emit('dialog.open')
     }
 
-    const onDialogComplete = (result: any) => {
+    const onDialogComplete = () => {
+      const fallback = dialogOptions.value.onComplete
+        || dialogOptions.value.onOk
+      if (fallback) {
+        const result = fallback()
         if (result !== false) {
           dialogOptions.value.onComplete?.(result)
           dialogOpen.value = false
           $bus.emit('dialog.close')
         }
-      },
-      onDialogCalcel = () => {
+      } else if (dialogComponentRef.value?.couldComplete) {
+        // 询问弹出的子界面 component 是否允许关闭
+        Promise.resolve(dialogComponentRef.value?.couldComplete?.()).then((could: boolean) => {
+          dialogOpen.value = !(could === true)
+        })
+      } else {
         dialogOpen.value = false
       }
+    },
+    onDialogCalcel = () => {
+      dialogOpen.value = false
+    }
 
     const onScroll = (e: any) => {
       // console.log('===ONSCROLL===', e)

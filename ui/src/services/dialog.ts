@@ -26,9 +26,9 @@ export type DialogOptions = {
   mask?: boolean,
   destroyOnClose?: boolean,
   classes?: string[],
-  onComplete?: (result?: any) => boolean | undefined
-  onOk?: (result?: any) => boolean | undefined
-  onCancel?: () => boolean | undefined
+  onOk?: (result?: any) => boolean | undefined,
+  onComplete?: (result?: any) => boolean | undefined,
+  onCancel?: () => boolean | undefined,
   centered?: boolean,
   fullScreen?: boolean,
 }
@@ -39,7 +39,7 @@ export type ConfirmOptions = {
   okText?: string,
   cancelText?: string,
   okColor?: Color,
-  onComplete?: (result?: any) => boolean | undefined
+  onOk?: (result?: any) => boolean | undefined
   onCancel?: () => boolean | undefined
 }
 
