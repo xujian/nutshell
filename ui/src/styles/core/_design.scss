@@ -66,7 +66,7 @@
 .with-design {
   --fill: initial;
   --stroke: initial;
-  color: var(--foreground, --ns-text);
+  color: var(--foreground, var(--ns-text));
   // 小程序不支持
   // color: light-dark(
   //   var(--foreground, var(--ns-text-light, var(--ns-text))),
@@ -99,7 +99,7 @@
     --foreground: var(--ns-text-dark, #fff);
   }
   &.color-scheme-light {
-    --foreground: var(--ns-text-light, --ns-text);
+    --foreground: var(--ns-text-light, var(--ns-text));
   }
   &.has-stroke {
     border-width: var(--thick, 1px);

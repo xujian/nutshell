@@ -29,7 +29,7 @@
         background-color: var(--ns-background);
         border-color: var(--ns-stroke);
         border-bottom-color: var(--ns-background);
-        color: var(--ns-text-active, --ns-text);
+        color: var(--ns-text-active, var(--ns-text));
       }
     }
   }
