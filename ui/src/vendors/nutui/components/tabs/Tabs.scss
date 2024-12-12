@@ -9,6 +9,7 @@
       height: var(--h, var(--ns-size-sm));
       .nut-tabs__list {
         width: fit-content;
+        min-width: 100%;
       }
       .nut-tabs__titles-item {
         min-width: 40px;
@@ -24,6 +25,7 @@
   .nut-tabs__titles {
     .nut-tabs__titles-item {
       width: fit-content;
+      min-width: 100%;
       height: 100%;
       font-size: 14px;
       &.active {
@@ -60,7 +62,7 @@
   &.variant-button {
     border-width: var(--edge, 0px);
     .nut-tabs__titles-item {
-    border-radius: var(--r, var(--ns-r));
+      border-radius: var(--r, var(--ns-r));
       &.active {
         background-color: #ffffff66;
         .nut-tabs__titles-item__line {
