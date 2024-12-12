@@ -79,7 +79,7 @@ export function useSafeArea (device?: Device): SafeArea {
      */
     gutter = capsule.top - status,
     nav = capsule.height + gutter * 2,
-    bottom = screenHeight - safeArea.bottom
+    bottom = Math.abs(screenHeight - safeArea.bottom)
   return {
     status,
     nav,
