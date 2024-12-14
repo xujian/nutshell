@@ -53,7 +53,7 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
         class: ['placeholder-input'],
         name: props.name,
         placeholder: props.placeholder,
-        modelValue: selected.value.label,
+        modelValue: props.formatter ? '' : selected.value.label,
         // disabled: props.disabled,
         onClick: openPicker,
         readonly: true,
