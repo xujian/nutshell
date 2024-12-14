@@ -29,10 +29,12 @@ export const MultipleSelect = defineComponent({
           pickerOpen.value = true
         }
       }, {
-        default: () => selected.value.map(s => h(NsChip, {
+        default: () => selected.value?.length ? selected.value.map(s => h(NsChip, {
           color: 'primary',
           label: s.label
-        }))
+        })) : h('span', {
+          class: ['multiple-select-placeholder']
+        }, props.placeholder || '请选择')
       }),
       sheet = () => h(NsSheet, {
         class: ['multiple-select-sheet'],
