@@ -44,7 +44,8 @@ export const DateRangeInput = defineComponent({
         h('div', { class: ['row', 'justify-between', 'align-center']}, [
             h(NutInput, {
               name: props.name,
-              onFocus: ({detail}) => openPicker(detail.value, 0),
+              readonly: true,
+              onClick: ({detail}) => openPicker(detail.value, 0),
               placeholder: '开始日期',
               modelValue: props.modelValue?.[0],
               inputAlign: props.variant === 'solid' ? 'left' : 'right',
@@ -52,7 +53,8 @@ export const DateRangeInput = defineComponent({
             seperator(),
             h(NutInput, {
               name: props.name,
-              onFocus: ({detail}) => openPicker(detail.value, 1),
+              readonly: true,
+              onClick: ({detail}) => openPicker(detail.value, 1),
               placeholder: '结束日期',
               modelValue: props.modelValue?.[1],
               inputAlign: props.variant === 'solid' ? 'left' : 'right',

@@ -41,7 +41,8 @@ export const DateInput = defineComponent({
           name: props.name,
           placeholder: props.placeholder,
           modelValue: props.modelValue,
-          onFocus: openPicker,
+          readonly: true,
+          onClick: openPicker,
           inputAlign: props.variant === 'solid' ? 'left' : 'right',
         }),
         h(NutPopup, {
