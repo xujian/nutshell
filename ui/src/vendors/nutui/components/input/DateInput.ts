@@ -1,7 +1,9 @@
 import { defineComponent, h, ref } from 'vue'
+import dayjs from 'dayjs'
 import { marginProps } from '../../../../utils'
 import { dateInputProps, dateInputEmits } from '../../../../components'
 import { renderFormItem } from '../../utils'
+
 // import 'dayjs/locale/zh-cn'
 // import 'dayjs/locale/zh-hk'
 
@@ -14,8 +16,6 @@ export const DateInput = defineComponent({
   },
   emits: dateInputEmits,
   setup: (props, { slots, emit }) => {
-
-    const dayjs = require('dayjs')
     const pickerOpen = ref(false)
     const openPicker = () => {
       pickerOpen.value = true

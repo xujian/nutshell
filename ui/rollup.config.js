@@ -153,7 +153,7 @@ export default [
       // },
     ],
     plugins: [
-      // commonjs(),
+      commonjs(),
       nodeResolve({ extensions }),
       babel({
         extensions,

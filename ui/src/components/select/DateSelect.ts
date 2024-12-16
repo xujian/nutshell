@@ -4,6 +4,7 @@ import { buildDesignClasses, buildDesignStyles, useDesignProps, useModelValuePro
 import { NsCard } from '../card'
 import { NsRow } from '../flex'
 import type { Dayjs } from 'dayjs'
+import dayjs from 'dayjs'
 
 
 export const dateSelectProps = {
@@ -39,8 +40,6 @@ export const NsDateSelect = defineComponent({
   props: dateSelectProps,
   emits: dateSelectEmits,
   setup (props, ctx) {
-
-    const dayjs = require('dayjs')
 
     const weekdays = '日一二三四五六'
     const scroll = ref<HTMLElement>()

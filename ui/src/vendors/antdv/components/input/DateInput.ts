@@ -3,7 +3,7 @@ import { DatePicker } from 'ant-design-vue'
 // import locale from 'ant-design-vue/es/date-picker/locale/zh_CN'
 import { dateInputEmits, dateInputProps } from '../../../../components'
 
-import type { Dayjs } from 'dayjs'
+import dayjs from 'dayjs'
 import { renderFormItem } from '../../utils'
 
 
@@ -15,16 +15,15 @@ export const DateInput = defineComponent({
   props: dateInputProps,
   emits: dateInputEmits,
   setup: (props, ctx) => {
-    const dayjs = require('dayjs')
 
-    const transformValue = (v: string | Dayjs) => v === null
+    const transformValue = (v: string | dayjs.Dayjs) => v === null
       ? ''
       : (typeof v === 'string'
           ? dayjs(v, props.format)
           : v
         ).format(props.format)
 
-    const value: ComputedRef<Dayjs | undefined> = computed(() => props.modelValue
+    const value: ComputedRef<dayjs.Dayjs | undefined> = computed(() => props.modelValue
         ? dayjs(props.modelValue, props.format) || dayjs()
         : undefined
       )
@@ -45,11 +44,11 @@ export const DateInput = defineComponent({
             ? {value: value.value}
             : {},
 
-          'onUpdate:value': (v: string | Dayjs) => {
+          'onUpdate:value': (v: string | dayjs.Dayjs) => {
             props['onUpdate:modelValue']?.(transformValue(v))
             // ctx.emit('update:modelValue', val)
           },
-          onChange: (v: string | Dayjs, dateString: string) => {
+          onChange: (v: string | dayjs.Dayjs, dateString: string) => {
             ctx.emit('change', transformValue(v))
           },
           disabledDate: props.disabledDate,

@@ -1,8 +1,8 @@
 import { h, ref, defineComponent, computed, ComputedRef } from 'vue'
 import { RangePicker } from 'ant-design-vue'
 import { monthRangeInputEmits, monthRangeInputProps } from '../../../../components'
-
 import type { Dayjs } from 'dayjs'
+import dayjs from 'dayjs'
 import { renderFormItem } from '../../utils'
 
 type DateValue = string | Dayjs
@@ -15,7 +15,6 @@ export const MonthRangeInput = defineComponent({
   props: monthRangeInputProps,
   emits: monthRangeInputEmits,
   setup: (props, { emit, slots }) => {
-    const dayjs = require('dayjs')
     dayjs.locale('zh-cn')
     const visible = ref(false)
     const open = () => {
