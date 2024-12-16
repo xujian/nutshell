@@ -46,7 +46,8 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
 
     () => h('div', {
       class: [
-        ...props.formatter ? ['has-formatter'] : []
+        ...props.formatter ? ['has-formatter'] : [],
+        ...props.modelValue !== void 0 ? ['has-value'] : []
       ]
     }, [
       h(NutInput, {

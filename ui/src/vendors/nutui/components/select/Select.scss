@@ -13,9 +13,6 @@
   }
   .has-formatter {
     position: relative;
-    .nut-input-box {
-      visibility: hidden;
-    }
     .formatter-mask {
       position: absolute;
       top: 0;
@@ -29,6 +26,15 @@
       color: #333;
       text-align: end;
       box-sizing: border-box;
+      display: none;
+    }
+    &.has-value {
+      .nut-input-box {
+        visibility: hidden;
+      }
+      .formatter-mask {
+        display: block;
+      }
     }
   }
 }
