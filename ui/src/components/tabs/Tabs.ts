@@ -23,6 +23,9 @@ export const tabsProps = {
   align: {
     type: String as PropType<TabsAlign>
   },
+  ellipsis: {
+    type: Boolean
+  },
   ...useModelValuePropsForInput(),
   ...useSizeProps(),
   ...useDesignProps(),

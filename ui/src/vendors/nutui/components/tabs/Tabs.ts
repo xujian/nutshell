@@ -36,6 +36,9 @@ export const Tabs = (props: TabsProps, { emit, slots }: Omit<SetupContext, 'expo
     swipeable: true,
     titleScroll: true,
     align: 'left',
+    ellipsis: props.ellipsis === true
+      ? true
+      : false,
     modelValue: props.modelValue,
     tabChange: (item: any) => {
       emit('update:modalValue', item.paneKey)
