@@ -26,8 +26,6 @@ export const useButtonProps = buildProps({
   ...useSizeProps(),
 })
 
-console.log('===useWithIconProps', useHasIconProps)
-
 const buttonProps = {
   ...useButtonProps(),
   ...useHasIconProps(),
