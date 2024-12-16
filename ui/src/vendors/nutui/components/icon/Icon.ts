@@ -7,7 +7,7 @@ export const Icon = (props: IconProps) => {
     || name?.startsWith('https:')
     || name?.startsWith('/')
   return isImage
-    ? h(NutImage, {
+    ? h('img', {
         class: [
           'ns-icon',
           `size-${size}`
