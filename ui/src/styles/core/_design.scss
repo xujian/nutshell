@@ -55,54 +55,53 @@
   --ns-r: var(--ns-r-md);
   --ns-r-input: var(--ns-r-sm);
   color-scheme: light dark;
+  .with-design {
+    --fill: initial;
+    --stroke: initial;
+    color: var(--foreground, var(--ns-text));
+    // 小程序不支持
+    // color: light-dark(
+    //   var(--foreground, var(--ns-text-light, var(--ns-text))),
+    //   var(--foreground, var(--ns-text-dark, #fff))
+    // );
+    // color: var(--foreground, lch(from var(--fill) calc((49.44 - l) * infinity) 0 0));
+    background-color: var(--fill);
+    border-color: var(--stroke, transparent);
+    border-style: solid;
+    border-width: var(--thick);
+    &:not(.square):not(.round) {
+      border-radius: var(--r, var(--ns-r));
+    }
+    &.square {
+      border-radius: 0 !important;
+    }
+    &.with-gradient {
+      background:
+        var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
+        var(--fill, transparent);
+      background-attachment: local;
+    }
+    &.variant-outlined {
+      --stroke: var(--ns-stroke);
+    }
+    &:not(.with-pattern) {
+      background-repeat: no-repeat;
+    }
+    &.color-scheme-dark {
+      --foreground: var(--ns-text-dark, #fff);
+    }
+    &.color-scheme-light {
+      --foreground: var(--ns-text-light, var(--ns-text));
+    }
+    &.has-stroke {
+      border-width: var(--thick, 1px);
+    }
+  }
 }
 
 @each $name, $value in design.$rounded {
   #{'.r-'}#{$name} {
     border-radius: #{$value} !important;
-  }
-}
-
-.with-design {
-  --fill: initial;
-  --stroke: initial;
-  color: var(--foreground, var(--ns-text));
-  // 小程序不支持
-  // color: light-dark(
-  //   var(--foreground, var(--ns-text-light, var(--ns-text))),
-  //   var(--foreground, var(--ns-text-dark, #fff))
-  // );
-  // color: var(--foreground, lch(from var(--fill) calc((49.44 - l) * infinity) 0 0));
-  background-color: var(--fill);
-  border-color: var(--stroke, transparent);
-  border-style: solid;
-  border-width: var(--thick);
-  &:not(.square):not(.round) {
-    border-radius: var(--r, var(--ns-r));
-  }
-  &.square {
-    border-radius: 0 !important;
-  }
-  &.with-gradient {
-    background:
-      var(--gradient, linear-gradient(0deg, #00000000 0%, #00000000 100%)),
-      var(--fill, transparent);
-    background-attachment: local;
-  }
-  &.variant-outlined {
-    --stroke: var(--ns-stroke);
-  }
-  &:not(.with-pattern) {
-    background-repeat: no-repeat;
-  }
-  &.color-scheme-dark {
-    --foreground: var(--ns-text-dark, #fff);
-  }
-  &.color-scheme-light {
-    --foreground: var(--ns-text-light, var(--ns-text));
-  }
-  &.has-stroke {
-    border-width: var(--thick, 1px);
   }
 }
 
