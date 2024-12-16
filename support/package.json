@@ -1,0 +1,12 @@
+{
+  "name": "@uxda/support",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "rollup -c rollup.config.js --watch",
+    "build": "rollup --config rollup.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

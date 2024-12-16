@@ -13,7 +13,8 @@
     "expo/mobile",
     "expo/play",
     "taro-plugin",
-    "vite-plugin"
+    "vite-plugin",
+    "support"
   ],
   "license": "MIT",
   "description": "A Vue 3 UI library",
