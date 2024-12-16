@@ -8,7 +8,9 @@ import postcss from 'rollup-plugin-postcss'
 import { resolve } from 'path'
 import vue from 'rollup-plugin-vue'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
+import terser from '@rollup/plugin-terser'
 import { babel } from '@rollup/plugin-babel'
+import { visualizer } from "rollup-plugin-visualizer";
 import packageJson from '../package.json' with { type: 'json' }
 // import alias from '@rollup/plugin-alias'
 // import NutUIResolver from '@nutui/nutui/dist/resolver'
@@ -151,7 +153,7 @@ export default [
       // },
     ],
     plugins: [
-      commonjs(),
+      // commonjs(),
       nodeResolve({ extensions }),
       babel({
         extensions,
@@ -235,7 +237,7 @@ export default [
       nodeResolve({ extensions }),
       babel({
         extensions,
-        babelHelpers: 'inline',
+        // babelHelpers: 'inline',
       }),
       AutoImport({
         dirs: [
@@ -271,13 +273,27 @@ export default [
         }
       }),
       vue(),
+      terser(),
+      visualizer(),
     ],
     external: [
       'vue',
       '@nutui/nutui',
       '@nutui/nutui-taro',
+      '@tarojs/components',
       '@tarojs/taro',
       'ant-design-vue',
+      'compressorjs',
+      'validator',
+      'viewerjs',
+      'cropperjs',
+      'vue-draggable-plus',
+      'chroma-js',
+      'vue-tippy',
+      'tippy.js',
+      'vue-toastification',
+      'vxe-table',
+      'lodash-es'
     ]
   },
   // {
