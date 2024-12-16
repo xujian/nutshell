@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import { TableColumnData, TableColumnDatetimeProps, tableColumnDatetimeProps as defaultProps } from '../../../../../components'
 import { h } from 'vue'
 
@@ -9,6 +8,7 @@ import { h } from 'vue'
 export default function datetime (
     props: TableColumnDatetimeProps,
   ) {
+    const dayjs = require('dayjs')
     Object.keys(defaultProps)
       .forEach((k) => {
           const defaultValue = Reflect.get(defaultProps, k).default

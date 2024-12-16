@@ -2,9 +2,10 @@ import { h, defineComponent, computed, ComputedRef } from 'vue'
 import { DatePicker } from 'ant-design-vue'
 // import locale from 'ant-design-vue/es/date-picker/locale/zh_CN'
 import { dateInputEmits, dateInputProps } from '../../../../components'
-import dayjs from 'dayjs'
+
 import type { Dayjs } from 'dayjs'
 import { renderFormItem } from '../../utils'
+
 
 /**
  * Antdv DateInput
@@ -14,6 +15,7 @@ export const DateInput = defineComponent({
   props: dateInputProps,
   emits: dateInputEmits,
   setup: (props, ctx) => {
+    const dayjs = require('dayjs')
 
     const transformValue = (v: string | Dayjs) => v === null
       ? ''

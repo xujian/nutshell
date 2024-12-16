@@ -1,6 +1,6 @@
-import dayjs from 'dayjs'
-import { TableColumnData, TableColumnCurrencyProps, tableColumnDatetimeProps as defaultProps } from '../../../../../components'
 import { h } from 'vue'
+import { TableColumnData, TableColumnCurrencyProps, tableColumnDatetimeProps as defaultProps } from '../../../../../components'
+
 
 /**
  * Table custom column: datetime

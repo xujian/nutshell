@@ -1,5 +1,5 @@
-import { ObjectEmitsOptions, PropType } from 'vue'
-import { Dayjs } from 'dayjs'
+import { PropType } from 'vue'
+import type { Dayjs } from 'dayjs'
 import { MakePropsType, define } from '../../utils'
 import { FullValidationRule, ValidationRule, formatRules, useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 

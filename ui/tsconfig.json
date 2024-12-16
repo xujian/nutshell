@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "allowJs": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,

@@ -1,9 +1,10 @@
-import { PropType, ObjectEmitsOptions, SlotsType, defineComponent, h, ref, onMounted, computed } from 'vue'
-import dayjs from 'dayjs'
+import { defineComponent, h, ref, onMounted, computed } from 'vue'
 import { MakePropsType } from '../../utils'
 import { buildDesignClasses, buildDesignStyles, useDesignProps, useModelValuePropsForString } from '../../props'
 import { NsCard } from '../card'
 import { NsRow } from '../flex'
+import type { Dayjs } from 'dayjs'
+
 
 export const dateSelectProps = {
   label: {
@@ -26,7 +27,7 @@ export type DateSelectSlots = {
 export type DateSelectProps = MakePropsType<typeof dateSelectProps, DateSelectEmits>
 
 export type DateItem = {
-  value: dayjs.Dayjs,
+  value: Dayjs,
   formated: string
  }
 
@@ -39,14 +40,16 @@ export const NsDateSelect = defineComponent({
   emits: dateSelectEmits,
   setup (props, ctx) {
 
-    const weekdays = '日一二三四五六';
-      const scroll = ref<HTMLElement>()
+    const dayjs = require('dayjs')
+
+    const weekdays = '日一二三四五六'
+    const scroll = ref<HTMLElement>()
 
     const previousDays = 30,
       afterDays = 0,
-      today: dayjs.Dayjs = dayjs(),
+      today: Dayjs = dayjs(),
       dates: DateItem[] = []
-    let count = 0, stone: dayjs.Dayjs = today
+    let count = 0, stone: Dayjs = today
     while (count < previousDays) {
       dates.unshift({
         value: stone,

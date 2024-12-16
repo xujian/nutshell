@@ -1,7 +1,6 @@
 import { h, ref, defineComponent, Ref, computed } from 'vue'
 import { DatePicker } from 'ant-design-vue'
 import { dateInputProps } from '../../../../components'
-import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import { renderFormItem } from '../../utils'
 
@@ -12,6 +11,7 @@ export const MonthInput = defineComponent({
   name: 'MonthInput',
   props: dateInputProps,
   setup: (props, ctx) => {
+    const dayjs = require('dayjs')
     const visible = ref(false)
     const open = () => {
       visible.value = true
