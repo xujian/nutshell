@@ -6,8 +6,6 @@ import { MakePropsType } from '../utils'
 
 export type IconPosition = 'start' | 'end'
 
-console.log('===xxx')
-
 export const hasIconProps = {
   icon: {
     type: String
@@ -24,7 +22,6 @@ export const hasIconProps = {
 }
 
 export const useHasIconProps = buildProps(hasIconProps)
-console.log('======useWithIconProps===useWithIconProps', useHasIconProps)
 
 export type HasIconProps = MakePropsType<typeof hasIconProps>
 
