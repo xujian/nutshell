@@ -169,6 +169,7 @@ export const NsList = defineComponent({
     const body = props.data
       ? props.data.map((d: Record<string, any>, index: number) => {
           return h(NsListItem, {
+            key: d.id || index,
             ...props,
             ...props.hasNumbers
               ? { number: index + 1 }
