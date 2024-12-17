@@ -19,9 +19,10 @@ export const Repeator = defineComponent({
     ]
 
     const item = () => props.items.map(
-      item => h('div', {
+      (item, index) => h('div', {
             class: classes,
             style: buildDesignStyles(props),
+            key: item.id || index
           }, {
             default: () => slots.default?.(item)
           })

@@ -34,6 +34,7 @@ export const Repeator = defineComponent({
           h('div', {
             class: classes,
             style: buildDesignStyles(props),
+            key: item.id || index
           }, h(NutSwipe, {
                 class: ['swipe'],
                 ref: refs[index],

@@ -11,7 +11,8 @@
       <ns-repeator class="demo-repeator"
         direction="column"
         :items="items"
-        fill="#fff"
+        fill="#CDDC39"
+        :r="10"
         :gap="10"
         swipable
         align="stretch">
@@ -21,8 +22,8 @@
             <div class="caption">{{ item.time }}</div>
           </div>
         </template>
-        <template #swipe>
-          <ns-button square size="sm" color="negtive">删除</ns-button>
+        <template #swipe="item">
+          <ns-button square size="sm" color="negtive" @click="() => deleteItem(item)">删除</ns-button>
         </template>
       </ns-repeator>
     </ns-page-content>
@@ -30,20 +31,31 @@
 </template>
 
 <script lang="ts" setup>
-const items = [
+import { ref } from 'vue'
+
+const items = ref<any>([
   {
+    id: '1',
     name: '居间借贷服务合同协议',
     time: '2024-10-11 15:00'
   },
   {
+    id: '2',
     name: '小贷结清证明',
     time: '2024-10-15 9:24',
     swipable: false
   },
   {
+    id: '3',
     name: '赎楼交易通用合同',
     time: '2024-10-18 10:45'
   },
-]
+])
+
+const deleteItem = (item) => {
+  const index = items.value.findIndex(i => i.id === item.id)
+  items.value.splice(index, 1)
+}
+
 </script>
 
