@@ -12,11 +12,11 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
 
   const content = () => h(slots.default!, {
     onComplete: (result: any) => {
-      console.log('===Dialog.ts content complete', result)
+      // console.log('===Dialog.ts content complete', result)
       emit('complete', result)
     },
     onCancel: () => {
-      console.log('===Dialog.ts content cancel')
+      // console.log('===Dialog.ts content cancel')
       emit('cancel')
     }
   })
@@ -51,7 +51,25 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
 
   const card = () => h(NsCard, {
       class: ['dialog-card'],
-      title: props.title
+      title: props.title,
+      /**
+       * dialog 的视觉效果由 ns-card 呈现
+       */
+      fill: props.fill,
+      gradient: props.gradient,
+      mesh: props.mesh,
+      grain: props.grain,
+      motion: props.motion,
+      texture: props.texture,
+      pattern: props.pattern,
+      r: props.r,
+      stroke: props.stroke,
+      outline: props.outline,
+      edge: props.edge,
+      thick: props.thick,
+      dotted: props.dotted,
+      foreground: props.foreground,
+      colorScheme: props.colorScheme,
     }, {
       default: content,
       footer
