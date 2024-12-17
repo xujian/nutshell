@@ -56,8 +56,10 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
   const rules = transformRules(props.rules as FullValidationRule[])
   const formItemRef = ref(null)
 
-  const hintOpen = ref(false)
+  const $n = useNutshell()
 
+  /*
+  const hintOpen = ref(false)
   const label = () => h(NutPopover, {
     customClass: 'form-item-label has-hint',
     location: 'right',
@@ -83,6 +85,25 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
           })
         ]
       })
+  })
+  */
+ const label = () => h(NsRow, {
+    class: ['form-item-label'],
+    onClick: () => {
+      $n.dialog({
+        message: props.hint,
+        cancelText: '',
+        fill: '#8BC34A',
+        okText: '我知道了'
+      })
+    }
+  }, {
+    default: () => [
+      h('label', {}, props.label),
+      h('div', {
+        class: ['icon', 'hint-icon']
+      })
+    ]
   })
 
   return h(
