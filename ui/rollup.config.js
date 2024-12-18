@@ -10,7 +10,7 @@ import vue from 'rollup-plugin-vue'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import { babel } from '@rollup/plugin-babel'
-import { visualizer } from "rollup-plugin-visualizer";
+import { visualizer } from 'rollup-plugin-visualizer'
 import packageJson from '../package.json' with { type: 'json' }
 // import alias from '@rollup/plugin-alias'
 // import NutUIResolver from '@nutui/nutui/dist/resolver'
@@ -274,6 +274,16 @@ export default [
       }),
       vue(),
       terser(),
+      // purge(),
+      {
+        transform: (source, id) => {
+          if (/src\/vendors\/index/.test(id)) {
+            return {
+              code: source.replace(/antdv\:\santdvToImport/, '')
+            }
+          }
+        }
+      },
       visualizer(),
     ],
     external: [
