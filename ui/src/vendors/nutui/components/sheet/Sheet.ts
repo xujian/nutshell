@@ -45,6 +45,7 @@ export const Sheet = defineComponent(
 
     const content = () => {
       return h('scroll-view', {
+        'scroll-y': true,
         class: [
           'sheet-content',
           'grow',

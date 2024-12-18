@@ -13,6 +13,7 @@ export const Drawer = (props: DrawerProps, { slots }: Omit<SetupContext, 'expose
 
   const scrollView = (content: any) => {
     return h('scroll-view', {
+      'scroll-y': true,
       class: [
         'full-height'
       ]
