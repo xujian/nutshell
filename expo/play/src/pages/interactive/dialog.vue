@@ -56,7 +56,15 @@ const openMessageDialog = () => {
       '该合同已过截止日期',
       '如需签署请重置截止日期'
     ],
-    cancelText: ''
+    cancelText: '',
+    onComplete: async () => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('===5s', true)
+          resolve(true)
+        }, 5000)
+      })
+    }
   })
 }
 

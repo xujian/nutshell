@@ -1,10 +1,6 @@
 import nutui from './nutui'
-// import antdv from './antdv'
 import { CoreVendor } from '../shared/models/CoreVendor'
 
-// const nutuiVendor: Promise<{default: CoreVendor}> = import(
-//   /* name: 'vendor.nutui' */
-//   './nutui')
 const antdvToImport: () => Promise<{default: CoreVendor}> = () => import(
   /* name: 'vendor.antdv' */
   './antdv')
