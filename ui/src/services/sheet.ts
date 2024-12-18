@@ -21,7 +21,7 @@ export type SheetOptions = {
   height?: number,
   mask?: boolean,
   destroyOnClose?: boolean,
-  onComplete?: (result?: any) => boolean | undefined
+  onComplete?: (result?: any) => boolean | undefined | Promise<boolean | undefined>,
   onOk?: (result?: any) => boolean | undefined
   okText: string,
   onCancel?: () => boolean | undefined

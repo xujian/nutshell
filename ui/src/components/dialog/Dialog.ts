@@ -36,6 +36,8 @@ export const dialogProps = {
   ...useDimensionProps(),
 }
 
+export type DialogCompleteCallback = (result: any) => void | Promise<void>
+
 export type DialogEmits = {
   ok: () => boolean,
   show: () => void,
@@ -49,7 +51,7 @@ export const dialogEmits: DialogEmits = {
   show: () => true,
   hide: () => true,
   close: () => true,
-  complete: (result: any) => true,
+  complete: async (result: any) => true,
 }
 
 export type DialogSlots = {

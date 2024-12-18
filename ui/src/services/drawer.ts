@@ -22,7 +22,7 @@ export type DrawerOptions = {
   mask?: boolean,
   destroyOnClose?: boolean,
   round?: boolean,
-  onComplete?: (result?: any) => boolean | undefined,
+  onComplete?: (result?: any) => boolean | undefined | Promise<boolean | undefined>,
   onCancel?: () => boolean | undefined
 }
 
