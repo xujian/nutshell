@@ -12,7 +12,6 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
 
   const content = () => h(slots.default!, {
     onComplete: (result: any) => {
-      // console.log('===Dialog.ts content complete', result)
       emit('complete', result)
     },
     onCancel: () => {

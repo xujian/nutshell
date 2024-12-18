@@ -177,9 +177,9 @@ export const Page = defineComponent({
           $bus.emit('dialog.close')
         }
       },
-      onComplete: onDialogComplete,
       onClose: onDialogCalcel,
-      ...dialogOptions.value
+      ...dialogOptions.value,
+      onComplete: onDialogComplete,
     }, {
       default: () => dialogComponent.value
         ? h(dialogComponent.value, {
@@ -217,12 +217,12 @@ export const Page = defineComponent({
       const fallback = dialogOptions.value.onComplete
         || dialogOptions.value.onOk
       if (fallback) {
-        const result = fallback()
-        if (result !== false) {
-          dialogOptions.value.onComplete?.(result)
-          dialogOpen.value = false
-          $bus.emit('dialog.close')
-        }
+        Promise.resolve(fallback()).then(result => {
+          if (result !== false) {
+            dialogOpen.value = false
+            $bus.emit('dialog.close')
+          }
+        })
       } else if (dialogComponentRef.value?.couldComplete) {
         // 询问弹出的子界面 component 是否允许关闭
         Promise.resolve(dialogComponentRef.value?.couldComplete?.()).then((could: boolean) => {

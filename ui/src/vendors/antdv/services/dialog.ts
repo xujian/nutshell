@@ -1,10 +1,8 @@
-import { defineAsyncComponent, h, ref } from 'vue'
-import { createApp } from 'vue'
-import { App } from 'vue'
+import { defineAsyncComponent, h, ref, createApp, App } from 'vue'
+import type { AsyncComponentLoader } from 'vue'
 import { DialogOptions } from '../../../services/dialog'
 import { NsDialog } from '../../../components'
 import { CoreVendor } from '../../../shared/models/CoreVendor'
-import type { AsyncComponentLoader } from 'vue'
 
 
 function createDialog (options: DialogOptions, app: App) {
@@ -39,7 +37,9 @@ function createDialog (options: DialogOptions, app: App) {
   const onOk = () => {
     const callback = options.onComplete || options.onOk
     if (callback) {
-      visible.value = callback(completeResult) === false
+      Promise.resolve(callback(completeResult)).then(result => {
+        visible.value = result === false
+      })
     } else if (options.component && typeof options.component !== 'function') {
       // 内嵌组件 可阻止弹窗关闭
       Promise.resolve(contentRef.value.couldComplete?.()).then((could: boolean) => {
