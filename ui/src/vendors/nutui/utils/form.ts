@@ -93,13 +93,14 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
       $n.dialog({
         message: props.hint,
         cancelText: '',
-        fill: '#8BC34A',
         okText: '我知道了'
       })
     }
   }, {
     default: () => [
-      h('label', {}, props.label),
+      h('label', {
+        class: 'label-text'
+      }, props.label),
       h('div', {
         class: ['icon', 'hint-icon']
       })
@@ -113,8 +114,8 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
       class: [
         'ns-form-item',
         ...props.disabled ? ['disabled'] : [],
-        ...props.label ? [] : ['no-label']
-
+        ...props.label ? [] : ['no-label'],
+        ...props.hint ? ['has-hint'] : [],
       ],
       label: props.label || '',
       // form 字段

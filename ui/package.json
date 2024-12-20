@@ -1,6 +1,6 @@
 {
   "name": "@uxda/nutshell",
-  "version": "1.6.0",
+  "version": "1.6.20",
   "description": "A Vue 3 UI library base on Nutui & ant-design-vue",
   "author": {
     "name": "UXDA team"
