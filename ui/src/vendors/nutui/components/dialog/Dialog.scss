@@ -10,6 +10,25 @@
     }
     .dialog-card {
       --foreground: var(--ns-text);
+      .card-header {
+        font-size: 16px;
+        padding-top: calc(2 * var(--ns-spacing));
+        .spacer {
+          display: none;
+        }
+      }
+      .card-body {
+        .dialog-message-content {
+          text-align: center;
+          color: #666;
+        }
+      }
+      .card-footer {
+        padding-bottom: calc(2 * var(--ns-spacing));
+        .ns-button {
+          width: 114px;
+        }
+      }
     }
   }
 }
