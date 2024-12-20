@@ -32,6 +32,7 @@
     font-size: 16px;
     display: inline-block;
     vertical-align: bottom;
+    line-height: 1em;
   }
 
   .breakout {
@@ -55,6 +56,26 @@
       width: 16px;
       height: 16px;
       background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTggMTIuMzc1QzUuNTgzNzUgMTIuMzc1IDMuNjI1IDEwLjQxNjIgMy42MjUgOEMzLjYyNSA1LjU4Mzc1IDUuNTgzNzUgMy42MjUgOCAzLjYyNUMxMC40MTYyIDMuNjI1IDEyLjM3NSA1LjU4Mzc1IDEyLjM3NSA4QzEyLjM3NSAxMC40MTYyIDEwLjQxNjIgMTIuMzc1IDggMTIuMzc1Wk04IDEzQzEwLjc2MTQgMTMgMTMgMTAuNzYxNCAxMyA4QzEzIDUuMjM4NTggMTAuNzYxNCAzIDggM0M1LjIzODU4IDMgMyA1LjIzODU4IDMgOEMzIDEwLjc2MTQgNS4yMzg1OCAxMyA4IDEzWiIgZmlsbD0iIzM1MzUzNSIgZmlsbC1vcGFjaXR5PSIwLjQiLz4KPHBhdGggZD0iTTYuMjg0NDQgNi42MTYzNEM2LjI3OTcgNi43MDE0OCA2LjM0OTk0IDYuNzcwNDUgNi40MzUyMSA2Ljc3MDQ1SDYuOTUwNTFDNy4wMzY4MSA2Ljc3MDQ1IDcuMTA1NDIgNi43MDAwOCA3LjExNzAyIDYuNjE0NTdDNy4xNzI2MSA2LjIwNDQ5IDcuNDU0MDYgNS45MDU1OCA3Ljk1NTc2IDUuOTA1NThDOC4zODQyMyA1LjkwNTU4IDguNzc2OTkgNi4xMTk4MSA4Ljc3Njk5IDYuNjM1NTZDOC43NzY5OSA3LjAzMjI5IDguNTQyOTIgNy4yMTQ3OCA4LjE3Mzk2IDcuNDkyNDlDNy43NTM0MyA3Ljc5Nzk3IDcuNDIwMTggOC4xNTUwMyA3LjQ0Mzk4IDguNzM0MjVMNy40NDU4NCA4Ljg2OTc2QzcuNDQ3MDEgOC45NTUyMSA3LjUxNjYxIDkuMDIzODYgNy42MDIwNyA5LjAyMzg2SDguMTA4OTZDOC4xOTUyNSA5LjAyMzg2IDguMjY1MjEgOC45NTM5MSA4LjI2NTIxIDguODY3NjFWOC44MDE3QzguMjY1MjEgOC4zNTMzOSA4LjQzNTggOC4yMjI0NyA4Ljg5NjAxIDcuODczMzVDOS4yNzY4NyA3LjU4Mzc0IDkuNjczNiA3LjI2MjM5IDkuNjczNiA2LjU4Nzk1QzkuNjczNiA1LjY0Mzc0IDguODc2MTcgNS4xODc1IDguMDAzMzcgNS4xODc1QzcuMjExNDUgNS4xODc1IDYuMzQzNTIgNS41NTY2MyA2LjI4NDQ0IDYuNjE2MzRaTTcuMjU3NTIgMTAuMjE4QzcuMjU3NTIgMTAuNTUxMyA3LjUyMzMzIDEwLjc5NzIgNy44ODgzMiAxMC43OTcyQzguMjY5MTggMTAuNzk3MiA4LjUzMTAyIDEwLjU1MTMgOC41MzEwMiAxMC4yMThDOC41MzEwMiA5Ljg3Mjg2IDguMjY5MTggOS42MzA4NiA3Ljg4ODMyIDkuNjMwODZDNy41MjMzMyA5LjYzMDg2IDcuMjU3NTIgOS44NzI4NiA3LjI1NzUyIDEwLjIxOFoiIGZpbGw9IiMzNTM1MzUiIGZpbGwtb3BhY2l0eT0iMC40Ii8+Cjwvc3ZnPgo=")
+    }
+  }
+  &.has-hint {
+    // 带有 hint 的 红星星
+    .nut-form-item__label.required {
+      &:after {
+        content: '';
+        display: none;
+      }
+      .label-text {
+        &:after {
+          content: "*";
+          color: var(--nut-form-item-required-color, var(--nut-required-color, #fa2c19));
+          margin-left: var(--nut-form-item-required-margin-right, 3px);
+          font-size: 16px;
+          display: inline-block;
+          vertical-align: bottom;
+          line-height: 1em;
+        }
+      }
     }
   }
 }
