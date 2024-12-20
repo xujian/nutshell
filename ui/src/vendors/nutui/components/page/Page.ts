@@ -39,7 +39,8 @@ export const Page = defineComponent({
     const sheetComponent = shallowRef<PopupChildComponent | null>(null),
       sheetProps = shallowRef<any>(),
       sheetOpen = ref(false),
-      sheetOptions = shallowRef<any>({})
+      sheetOptions = shallowRef<any>({}),
+      sheetComponentRef = ref()
     const dialogComponent = shallowRef<PopupChildComponent | null>(null),
       dialogProps = shallowRef<any>(),
       dialogOpen = ref(false),
@@ -129,6 +130,7 @@ export const Page = defineComponent({
     }, {
       default: () => sheetComponent.value
         ? h(sheetComponent.value, {
+          ref: sheetComponentRef,
           ...sheetProps.value,
           onComplete: onSheetComplete,
           onCancel: onSheetCalcel
@@ -149,6 +151,23 @@ export const Page = defineComponent({
         sheetOptions.value.onComplete?.(result)
         sheetOpen.value = false
         $bus.emit('sheet.close')
+      }
+      const fallback = sheetOptions.value.onComplete
+        || sheetOptions.value.onOk
+      if (fallback) {
+        Promise.resolve(fallback()).then(result => {
+          if (result !== false) {
+            sheetOpen.value = false
+            $bus.emit('sheet.close')
+          }
+        })
+      } else if (sheetComponentRef.value?.couldComplete) {
+        // 询问弹出的子界面 component 是否允许关闭
+        Promise.resolve(dialogComponentRef.value?.couldComplete?.()).then((could: boolean) => {
+          sheetOpen.value = !(could === true)
+        })
+      } else {
+        sheetOpen.value = false
       }
     },
     onSheetCalcel = () => {
@@ -189,7 +208,7 @@ export const Page = defineComponent({
             onCancel: onDialogCalcel,
           })
         : h('div', {
-            class: ['dialog-content']
+            class: ['dialog-message-content']
           }, message())
     })
 
