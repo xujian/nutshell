@@ -3,5 +3,14 @@
     .nut-form-item__body__slots {
       text-align: right;
     }
+    .nut-input-number {
+      border: 1px solid #dcdcdc;
+      border-radius: 3px;
+      .nut-input-number__text--input {
+        border: 1px solid #dcdcdc;
+        border-radius: 0;
+        background-color: #fff;
+      }
+    }
   }
 }
