@@ -30,11 +30,15 @@
     }
     &.has-value {
       .nut-input-box {
-        visibility: hidden;
+        display: none;
       }
       .formatter-mask {
         display: block;
       }
+    }
+    .nut-input-inner {
+      height: 22px;
+      justify-content: flex-end;
     }
   }
 }
