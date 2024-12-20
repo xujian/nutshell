@@ -40,10 +40,11 @@ export const usePaging: UsePaging = (load: UsePagingLoadFunction) => {
         data: []
       })
     }
-    return load(paging.current).then((result) => {
+    return load (paging.current).then((result) => {
       paging.loaded = true
       paging.total = result.paging.total
-      console.log('===load paging', paging)
+      paging.totalRecords = result.paging.totalRecords
+      paging.pageSize = result.paging.pageSize
       return { paging, data: result.data }
     })
   }
