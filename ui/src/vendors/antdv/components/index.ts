@@ -12,6 +12,7 @@ import { Select, CascadingSelect, MultipleSelect } from './select'
 import { Dropdown } from './dropdown'
 import { Tabs } from './tabs'
 import { Chips } from './chip'
+import { Popover } from './popover'
 import { Menu } from './menu'
 import { Stepper } from './stepper'
 import { Timeline } from './timeline'
@@ -52,6 +53,7 @@ const components = {
   Checkbox,
   CheckboxGroup,
   Chips,
+  Popover,
   Menu,
   Stepper,
   Timeline,
