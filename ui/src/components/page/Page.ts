@@ -27,6 +27,12 @@ export const pageProps = {
     type: Boolean,
     default: void 0,
   },
+  fit: {
+    type: Boolean
+  },
+  /**
+   * 没有 dialog/sheet/drawer
+   */
   minimal: {
     type: Boolean,
   },
@@ -81,6 +87,7 @@ export const NsPage = define({
       ...pageConfig.hasHeader ? ['has-header'] : [],
       ...pageConfig.contentScrollable ? ['content-scrollable'] : [],
       ...pageConfig.hasFooter ? ['has-footer'] : [],
+      ...props.fit ? ['fit'] : []
     ]})
     // 分别为 desktop/小程序 渲染页面所需要的基本组件
     // 包含
