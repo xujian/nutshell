@@ -39,6 +39,7 @@ export const MultipleSelect = defineComponent({
       sheet = () => h(NsSheet, {
         class: ['multiple-select-sheet'],
         modelValue: pickerOpen.value,
+        title: props.label,
         colorScheme: 'light',
         mask: true,
         onClose: closePicker,
@@ -53,7 +54,6 @@ export const MultipleSelect = defineComponent({
           default: () => props.options?.map(item =>
             h(NutCheckbox, {
               label: `${item.value}`,
-              textPosition: 'left',
             }, {
               default: () => item.label
             })
