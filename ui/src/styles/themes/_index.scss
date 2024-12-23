@@ -1,9 +1,10 @@
-@use './tools/mixins' as *;
-@use './themes/klein' as *;
-@use './themes/mind' as *;
-@use './themes/gunmetal' as *;
-@use './themes/present' as *;
-@use './themes/valentine' as *;
+@use './present' as *;
+@use './mind' as *;
+@use './gunmetal' as *;
+@use './valentine' as *;
+@use './klein' as *;
+
+@use '../tools/mixins' as *;
 
 [data-theme=klein], .theme-klein {
   @include build-theme($klein)

@@ -289,7 +289,7 @@ export const Page = defineComponent({
 
     useDidShow(() => {
       // console.log('===///useDidShow', props.minimal)
-      page.value?.setAttribute('data-theme', 'present')
+      // page.value?.setAttribute('data-theme', 'present')
       if (props.minimal) {
         return
       }
@@ -326,7 +326,6 @@ export const Page = defineComponent({
       ...scroll.value > 0 ? ['scrolled'] : [],
       ...props.scrollable === true ? ['scrollable'] : [],
       // ...props.classes || [],
-      'theme-present'
     ])
 
     const styles = computed(() => ({

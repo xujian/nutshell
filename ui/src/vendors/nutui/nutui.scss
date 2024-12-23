@@ -32,6 +32,7 @@
   font-size: 12px;
 }
 
-page {
+.ns-page {
+  --nut-primary-color: var(--ns-primary);
   --ns-input-height: 40px;
 }

@@ -3,7 +3,7 @@ import chroma from 'chroma-js'
 export type ThemeOptions = false | {
 }
 
-const DEFAULT_THEME = 'present'
+const DEFAULT_THEME = ''
 
 export const brands = [
   'primary',

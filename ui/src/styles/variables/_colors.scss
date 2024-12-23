@@ -8,7 +8,7 @@ $base: tools.map-deep-merge(
     brand: (
       primary: #003293,
       secondary: #b5109f,
-      neutral: #8a8080,
+      neutral: #b1b1b1,
       accent: #0057ff,
       positive: #21ba45,
       negtive: #c10015,
@@ -18,21 +18,21 @@ $base: tools.map-deep-merge(
       /**
        * 主背景色
        */
-      background: #333,
+      background: #F6F9FD,
       /**
        * 材质色
        */
-      paper: #003293,
+      paper: #fff,
       /**
        * 一般性容器背景色
        */
-      surface: #003293,
+      surface: #fff,
       /**
        * 小物体填充色
        */
-      fill: #eee,
+      fill: #f2f2f2,
       text: #333,
-      caption: #ffffff99,
+      caption: #888,
       highlight: #888,
       subtitle: #ccc,
       stroke: '#ddd',
@@ -43,12 +43,12 @@ $base: tools.map-deep-merge(
       focus: #ffffff33,
     ),
     layout: (
+      nav-background: #d1d6dd,
+      nav-text: #fff,
+      footer-background: #003293,
+      footer-text: #fff,
       header-background: transparent,
       header-text: #333,
-      nav-background: transparent,
-      nav-text: #fff,
-      footer-background: transparent,
-      footer-text: #fff,
     ),
   ), $base);
 

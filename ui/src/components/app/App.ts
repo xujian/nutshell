@@ -14,7 +14,7 @@ export const AppSymbol: InjectionKey<AppSettings | undefined> = Symbol('nutshell
 const appProps = {
   theme: {
     type: String,
-    default: 'present'
+    default: ''
   }
 }
 
