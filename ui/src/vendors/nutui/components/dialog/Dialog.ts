@@ -31,7 +31,7 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
             ? null
             : h(NsButton, {
                 variant: 'outlined',
-                color: props.okColor || '#fff',
+                color: props.cancelColor || '#fff',
                 label: props.cancelText || '取消',
                 size: 'sm',
                 onClick: () => {

@@ -22,6 +22,7 @@ export type DialogOptions = {
   okText?: string,
   cancelText?: string,
   okColor?: Color,
+  cancelColor?: Color,
   footer?: boolean,
   mask?: boolean,
   destroyOnClose?: boolean,
@@ -39,6 +40,7 @@ export type ConfirmOptions = {
   okText?: string,
   cancelText?: string,
   okColor?: Color,
+  cancelColor?: Color,
   onOk?: (result?: any) => boolean | undefined
   onCancel?: () => boolean | undefined
 }

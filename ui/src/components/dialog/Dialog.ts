@@ -16,6 +16,9 @@ export const dialogProps = {
   cancelText: {
     type: String
   },
+  cancelColor: {
+    type: String as PropType<Color>,
+  },
   footer: {
     type: Boolean,
     default: true,
