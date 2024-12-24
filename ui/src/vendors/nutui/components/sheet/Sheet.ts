@@ -1,4 +1,4 @@
-import { computed, defineComponent, h, provide, reactive, useAttrs } from 'vue'
+import { computed, defineComponent, h, provide, reactive } from 'vue'
 import { NsButton, NsRow, sheetProps } from '../../../../components'
 import { buildDesignClasses, PopupState, PopupStateSymbol } from '../../../../props'
 
