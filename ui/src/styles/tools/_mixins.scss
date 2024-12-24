@@ -125,7 +125,7 @@ $alphas: (
       &.variant-plain {
         background-color: transparent;
         border-color: transparent;
-        --foreground: color.adjust($value, $lightness: 0%);
+        --foreground: var(--ns-#{$name});
         &:hover {
           color: color.adjust($value, $alpha: -0.3);
           // background-color: #00000022;

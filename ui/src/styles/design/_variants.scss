@@ -1,7 +1,7 @@
 .variant-plain {
   background-color: transparent;
   border-color: transparent;
-  --foreground: var(--ns-text);
+  --foreground: var(--ns-primary);
 }
 
 .variant-outlined {
@@ -11,7 +11,4 @@
 }
 
 .variant-soft {
-}
-
-.variant-plain {
 }
