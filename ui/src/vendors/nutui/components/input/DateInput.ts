@@ -16,12 +16,12 @@ export const DateInput = defineComponent({
   },
   emits: dateInputEmits,
   setup: (props, { slots, emit }) => {
+    const $bus = useBus()
     const pickerOpen = ref(false)
     const openPicker = () => {
-      pickerOpen.value = true
+        pickerOpen.value = true
       },
       closePicker = () => {
-        console.log('===ddd', )
         pickerOpen.value = false
       }
 
@@ -56,8 +56,12 @@ export const DateInput = defineComponent({
             visible: pickerOpen.value,
             position: 'bottom',
             round: true,
+            onOpen: () => {
+              $bus.emit('picker.open')
+            },
             onClose: () => {
               pickerOpen.value = false
+              $bus.emit('picker.close')
             }
           }, {
           default:

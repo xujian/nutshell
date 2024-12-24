@@ -13,6 +13,7 @@ export const DateRangeInput = defineComponent({
   },
   emits: dateRangeInputEmits,
   setup: (props, { slots }) => {
+    const $bus = useBus()
 
     const pickerSeg = ref<number>(0),
       pickerValue = computed(() => props.modelValue?.[pickerSeg.value])
@@ -73,6 +74,10 @@ export const DateRangeInput = defineComponent({
             round: true,
             onClose: () => {
               pickerOpen.value = false
+              $bus.emit('picker.close')
+            },
+            onOpen: () => {
+              $bus.emit('picker.open')
             }
           }, {
           default:

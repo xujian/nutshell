@@ -19,6 +19,9 @@ export const sheetProps = {
   okColor: {
     type: String as PropType<Color>,
   },
+  cancelColor: {
+    type: String as PropType<Color>,
+  },
   okText: {
     type: String,
   },
@@ -30,7 +33,7 @@ export const sheetProps = {
   },
   footer: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   ...usePopupProps(),
   ...useModelValuePropsForBoolean(),
@@ -40,7 +43,7 @@ export const sheetProps = {
 
 export type SheetEmits = {
   ok: () => boolean,
-  show: () => void,
+  open: () => void,
   hide: () => void,
   close: () => void,
   complete: (result: any) => void,
@@ -48,7 +51,7 @@ export type SheetEmits = {
 
 export const sheetEmits: SheetEmits = {
   ok: () => true,
-  show: () => true,
+  open: () => true,
   hide: () => true,
   close: () => true,
   complete: (result: any) => true,
