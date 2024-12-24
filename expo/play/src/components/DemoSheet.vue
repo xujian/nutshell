@@ -1,12 +1,16 @@
 <template>
-  <div class="ns-row">
+  <ns-column align="stretch" justify="between" class="demo-component fit">
     <p>{{ message }}</p>
     <p>&nbsp;</p>
     <ns-facts class="demo-sheet-facts" :items="items" />
-  </div>
+    <div class="spacer"></div>
+    <ns-button color="primary" class="full-width" @click="onOk">OK</ns-button>
+  </ns-column>
 </template>
 
 <script lang="ts" setup>
+
+const emit = defineEmits(['complete'])
 
 defineProps({
   message: String
@@ -38,6 +42,12 @@ const items = [
     value: '已完结',
 	}
 ]
+
+const onOk = () => {
+  setTimeout(() => {
+    emit('complete', true)
+  }, 3000)
+}
 </script>
 
 <style lang="scss">

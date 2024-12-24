@@ -13,37 +13,48 @@
             :step="1"
             :min="90"
             :max="110"
+            :rules="['required']"
             label="最大数量" />
-      </ns-card>
-      <h3>选择框</h3>
-      <ns-card fill="#fff">
-        <ns-select
-          v-model="formData.due"
-          :options
-          :formatter
-          :rules="['required']"
-          label="截止日期" />
-      </ns-card>
-      <h3>多选框</h3>
-      <ns-card fill="#fff">
-        <ns-multiple-select
-          v-model="formData.regions"
-          :options="regions"
-          label="经营地区" />
-      </ns-card>
-      <h3>按钮组</h3>
-      <ns-card fill="#fff" color-scheme="light">
-        <ns-button-group-input label="跟进状态"
-          v-model="formData.followup"
-          :options="followupOptions" size="xs" />
-      </ns-card>
-      <h3>开关</h3>
-      <ns-card fill="#fff" color-scheme="light">
-        <ns-switch-input label="允许撤销"
-          hint="仅支持最高 720p、5 秒，限每月 50 个视频"
-          v-model="formData.allowCancel" />
-      </ns-card>
-    </ns-form>
+        </ns-card>
+        <h3>选择框</h3>
+        <ns-card fill="#fff">
+          <ns-select
+            v-model="formData.due"
+            :options
+            :formatter
+            placeholder="请输入截止日期"
+            hint="仅支持最高 720p、5 秒，限每月 50 个视频"
+            :rules="['required']"
+            label="截止日期" />
+        </ns-card>
+        <h3>多选框</h3>
+        <ns-card fill="#fff">
+          <ns-multiple-select
+            v-model="formData.regions"
+            :options="regions"
+            label="经营地区" />
+        </ns-card>
+        <h3>按钮组</h3>
+        <ns-card fill="#fff" color-scheme="light">
+          <ns-button-group-input label="跟进状态"
+            v-model="formData.followup"
+            :options="followupOptions" size="xs" />
+        </ns-card>
+        <h3>开关</h3>
+        <ns-card fill="#fff" color-scheme="light">
+          <ns-switch-input label="允许撤销"
+            hint="仅支持最高 720p、5 秒，限每月 50 个视频"
+            :rules="['required']"
+            v-model="formData.allowCancel" />
+        </ns-card>
+        <h3>单选框</h3>
+        <ns-card fill="#fff" color-scheme="light">
+          <ns-radio-group label="性别"
+            v-model="formData.allowCancel"
+            :options="[{label: '男', value: 1}, { label: '女', value: 0}]" />
+        </ns-card>
+      </ns-form>
+      <p>&nbsp;</p>
     </ns-page-content>
   </ns-page>
 </template>
@@ -51,6 +62,9 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import dayjs from 'dayjs'
+import { useBus } from '@uxda/nutshell/taro'
+
+const $bus = useBus()
 
 const options = [
   { label: '1天', value: 1 },
@@ -69,6 +83,8 @@ const regions = [
   { label: '厦门', value: 'xiamen' },
   { label: '成都', value: 'chengdu' },
   { label: '杭州', value: 'hangzhou' },
+  { label: '重庆', value: 'chongqing' },
+  { label: '武汉', value: '武汉' },
 ]
 
 const followupOptions = [
@@ -95,7 +111,8 @@ const formData = reactive({
   due: void 0,
   followup: void 0,
   allowCancel: void 0,
-  regions: []
+  regions: [],
+  gender: void 0,
 })
 const show1 = ref(false)
 
