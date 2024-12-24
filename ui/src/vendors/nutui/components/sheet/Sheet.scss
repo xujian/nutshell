@@ -1,4 +1,6 @@
 .ns-sheet {
+  position: absolute;
+  bottom: 0;
   >.nut-popup {
     background-color: var(--fill, #fff);
     bottom: 0;
@@ -6,18 +8,18 @@
     height: var(--height, fit-content);
     width: 100vw;
     transition: all .5s;
-    display: flex;
-    flex-direction: column;
+    position: fixed;
+    overflow-y: visible;
     &.open {
     }
-    scroll-view {
-      height: 100%;
-      width: 100%;
-    }
     .sheet-title {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
       padding: var(--ns-spacing);
       box-sizing: border-box;
-      position: relative;
+      position: absolute;
       h5 {
         font-size: 14px;
         font-weight: bold;
@@ -30,12 +32,48 @@
         width: 20px;
       }
     }
-    .sheet-content {
+    .sheet-footer {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      position: absolute;
+      padding: var(--ns-spacing);
+      padding-bottom: max(var(--bottom, 0px), 10px);
+      box-sizing: border-box;
+    }
+    .sheet-body {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    .sheet-scroll-view {
+      height: 100%;
+      padding: 0;
+    }
+    .sheet-scroll-view-content {
       padding: var(--ns-spacing);
       box-sizing: border-box;
     }
   }
+  &.has-title {
+    .sheet-body {
+      padding-top: 40px;
+    }
+  }
+  &.has-footer {
+    >.nut-popup {
+      .sheet-body {
+        padding-bottom: 88px;
+      }
+    }
+  }
   .sheet-overlay {
     background-color: #00000088;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    border: 0;
+    top: 0;
+    left: 0;
   }
 }

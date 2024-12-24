@@ -15,8 +15,6 @@ export const RadioGroup = defineComponent({
       // shape: 'button'
     }, () => item.label))
 
-    console.log('===NutRadioGroup', props.disabled)
-
     return () =>
       renderFormItem(
         {

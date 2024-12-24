@@ -1,11 +1,10 @@
 import { computed, defineComponent, h, provide, reactive, useAttrs } from 'vue'
-import { sheetProps } from '../../../../components'
-import { PopupState, PopupStateSymbol } from '../../../../props'
+import { NsButton, NsRow, sheetProps } from '../../../../components'
+import { buildDesignClasses, PopupState, PopupStateSymbol } from '../../../../props'
 
 export const Sheet = defineComponent(
   (props, { slots, emit }) => {
-
-    const $attrs = useAttrs()
+    const $bus = useBus()
 
     // 可关闭状态 使用 provide/inject
     // 使子组件可控制浮窗 允许/不允许 关闭
@@ -27,11 +26,11 @@ export const Sheet = defineComponent(
 
     const close = () =>
       props.closable
-      ? h('div', {
-          class: ['ns-icon-close', 'icon'],
-          onClick: () => emit('cancel')
-        })
-      : null
+        ? h('div', {
+            class: ['ns-icon-close', 'icon'],
+            onClick: () => emit('cancel')
+          })
+        : null
 
     const title = () =>
       props.title
@@ -44,16 +43,52 @@ export const Sheet = defineComponent(
         : null
 
     const content = () => {
-      return h('scroll-view', {
-        'scroll-y': true,
-        class: [
-          'sheet-content',
-          'grow',
-        ],
-      }, {
-        default: slots.default
-      })
+      return h('div', {
+          class: ['sheet-body']
+        }, h('scroll-view', {
+          'scroll-y': true,
+          class: [
+            'sheet-scroll-view',
+          ],
+        }, h('div', {
+              class: ['sheet-scroll-view-content'],
+            }, {
+              default: slots.default
+            })
+        )
+      )
     }
+
+    const footer = () => props.footer
+      ? h(NsRow, {
+          class: ['sheet-footer'],
+          justify: 'stretch',
+          gap: 10,
+        }, {
+          default: () => [
+            props.cancelText === ''
+              ? null
+              : h(NsButton, {
+                  variant: 'outlined',
+                  color: props.cancelColor || '#fff',
+                  label: props.cancelText || '取消',
+                  size: 'lg',
+                  onClick: () => {
+                    emit('close')
+                    emit('cancel')
+                  }
+                }),
+            h(NsButton, {
+              color: props.okColor || 'primary',
+              label: props.okText || '确定',
+              size: 'lg',
+              onClick: () => {
+                emit('complete')
+                emit('ok')
+              }
+            })
+          ]})
+      : null
 
     const height = props.height
       ? typeof props.height === 'number'
@@ -62,18 +97,21 @@ export const Sheet = defineComponent(
       : '50vh'
 
     return () => h(NutPopup, {
-      popClass: [
-        $attrs.class,
+      class: [
+        ...props.title ? ['has-title'] : [],
+        ...props.footer ? ['has-footer'] : [],
         ...props.modelValue ? ['open'] : []
+      ],
+      popClass: [
+        ...buildDesignClasses(props)
       ].join(' '),
       overlayClass: 'sheet-overlay',
       style: {
-        ...props.height ? {'--height': props.height} : {}
+        ...props.height ? {'--height': `${props.height || 320}px`} : {}
       },
       position: 'bottom',
       visible: visible.value,
       title: props.title,
-      catchMove: true,
       closeable: false,
       height,
       destroyOnClose: props.destroyOnClose === false ? false : true,
@@ -93,10 +131,17 @@ export const Sheet = defineComponent(
           state.couldClose = state.beforeClose()
         }
       },
+      onOpen: () => {
+        $bus.emit('picker.open')
+      },
+      onClose: () => {
+        $bus.emit('picker.close')
+      }
     }, {
         default: () => [
           title(),
-          content()
+          content(),
+          footer(),
         ]
       })
   }, {

@@ -10,11 +10,15 @@
 
     }
     .multiple-select-sheet {
+      .nut-popup {
+        max-height: 50vh;
+      }
       .sheet-content {
         padding: 10px;
       }
       .nut-checkbox-group {
         .nut-checkbox {
+          height: 40px;
           width: 100%;
         }
       }

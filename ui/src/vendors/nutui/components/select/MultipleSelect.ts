@@ -6,10 +6,12 @@ export const MultipleSelect = defineComponent({
   name: 'NutuiMultipleSelect',
   props: multipleSelectProps,
   setup (props, { emit, slots }) {
+    const $bus = useBus()
 
     const pickerOpen = ref(false),
       closePicker = () => {
         pickerOpen.value = false
+        $bus.emit('picker.close')
       },
       selected = computed<SelectOption[]>(() => {
         if (!props.modelValue) {
@@ -42,7 +44,10 @@ export const MultipleSelect = defineComponent({
         title: props.label,
         colorScheme: 'light',
         mask: true,
+        height: 320,
         onClose: closePicker,
+        onComplete: closePicker,
+        footer: true,
       }, {
         default: () => h(NutCheckboxGroup, {
           class: ['column', 'justify-stretch'],
@@ -53,6 +58,7 @@ export const MultipleSelect = defineComponent({
         }, {
           default: () => props.options?.map(item =>
             h(NutCheckbox, {
+              class: ['checkbox-item', 'row'],
               label: `${item.value}`,
             }, {
               default: () => item.label

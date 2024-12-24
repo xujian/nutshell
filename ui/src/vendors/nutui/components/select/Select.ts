@@ -4,6 +4,7 @@ import { UniDataItem } from '../../../../shared'
 import { renderFormItem } from '../../utils'
 
 export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose'>) => {
+  const $bus = useBus()
 
   const columns = props.options?.map(o => ({
       text: o.label, value: o.value
@@ -32,9 +33,11 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
       return
     }
     pickerOpen.value = true
+    $bus.emit('picker.open')
   }
   const closePicker = () => {
     pickerOpen.value = false
+    $bus.emit('picker.close')
   }
 
   const onPickerConfirm = ({selectedValue}: any) => {
@@ -77,6 +80,9 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
         position: 'bottom',
         onClose: closePicker,
         round: true,
+        onOpen: () => {
+          $bus.emit('picker.open')
+        },
       }, {
         default: () => h(NutPicker, {
           // @ts-ignore
