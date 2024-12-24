@@ -1,4 +1,5 @@
 .ns-dialog {
+  position: absolute;
   .nut-popup {
     bottom: 0;
     background-color: var(--ns-surface);
@@ -30,5 +31,11 @@
         }
       }
     }
+  }
+  .nut-overlay {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
   }
 }

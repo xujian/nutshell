@@ -12,6 +12,7 @@
     transition: background-color .5s;
     box-sizing: content-box;
     z-index: 0;
+    flex-grow: 0;
     &.sticky {
       position: sticky;
       top: 0;

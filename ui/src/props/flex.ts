@@ -2,7 +2,7 @@ import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
 
-export const justifies = ['start', 'end', 'center', 'between', 'around', 'evenly'] as const
+export const justifies = ['start', 'end', 'center', 'between', 'around', 'evenly', 'stretch'] as const
 export type Justify = typeof justifies[number]
 
 export const aligns = ['start', 'end', 'center', 'stretch'] as const

@@ -1,7 +1,7 @@
-import { defineComponent, h, inject, PropType, watch } from 'vue'
+import { defineComponent, h, onMounted, watch } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useBus } from '../../composables'
-import { PageSymbol, usePage } from './Page'
+import { usePage } from './Page'
 
 export const pageContentProps = {
   /**
@@ -43,9 +43,6 @@ export const NsPageContent = defineComponent({
 
     const $bus = useBus()
 
-    const cssVars = {
-    }
-
     const onScroll = (e: any) => {
       $bus.emit('scroll', {
         x: e.detail.scrollLeft,
@@ -55,24 +52,28 @@ export const NsPageContent = defineComponent({
 
     const renderScrollview = (content: any) => h('scroll-view', {
         class: ['page-content-scroll-view', 'scroll'],
-        style: cssVars,
         'scroll-y': true,
         onScroll,
         lowerThreshold: 50,
         onScrolltoupper () {
-          console.log('===onScrollToUpper===')
+          // console.log('===onScrollToUpper===')
         },
         onScrolltolower () {
-          console.log('===bindscrolltolower===')
-          console.log('===onScrolltolower===', props)
+          // console.log('===bindscrolltolower===')
+          // console.log('===onScrolltolower===', props)
           emit('bottomReached')
         }
-      }, h('div', {
+      },
+      h('div', {
         class: 'page-content-scroll-content'
       }, content)
     )
 
     watch(() => props.scrollable, () => {
+      page.contentScrollable = props.scrollable
+    })
+
+    onMounted(() => {
       page.contentScrollable = props.scrollable
     })
 

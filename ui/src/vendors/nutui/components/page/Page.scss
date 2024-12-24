@@ -10,10 +10,15 @@
   width: var(--width);
   border: 0;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   &.fit {
     height: 100vh;
   }
-  .scrollable {
+  &.scrollable {
+    height: 100vh;
+  }
+  &.content-scrollable {
     height: 100vh;
   }
   .page-content {
@@ -23,7 +28,7 @@
     box-sizing: border-box;
     &.scrollable {
       padding: 0;
-      height: 100px; // fix flex-grow problem
+      height: 100px; // to fit flex-grow
     }
   }
   .page-content-scroll-view {
@@ -49,9 +54,9 @@
     transition: all .5s;
   }
   &.has-header {
-    height: 100vh;
-    &.scrollable {
-      height: 100vh;
+    .page-content {
+      &.scrollable {
+      }
     }
     .page-notice {
       top: var(--header);
@@ -73,7 +78,7 @@
     left: 0;
     bottom: 0;
     padding: var(--ns-spacing);
-    padding-bottom: var(--bottom);
+    padding-bottom: max(var(--bottom), var(--ns-spacing));
     box-sizing: border-box;
     width: 100vw;
     border-radius: var(--ns-r);
