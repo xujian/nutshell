@@ -30,7 +30,7 @@ export const DateInput = defineComponent({
     }
 
     dayjs().locale('en')
-    const today = dayjs().format('YYYY-MM-DD')
+    const today = new Date()
 
     return () => renderFormItem(props, slots,
       () => h('div', {
