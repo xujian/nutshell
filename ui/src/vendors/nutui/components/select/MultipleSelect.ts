@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, ref } from 'vue'
 import { renderFormItem } from '../../utils'
-import { multipleSelectProps, NsChip, NsSheet, SelectOption } from '../../../../components'
+import { multipleSelectProps, NsChip, NsRow, NsSheet, SelectOption } from '../../../../components'
 
 export const MultipleSelect = defineComponent({
   name: 'NutuiMultipleSelect',
@@ -25,18 +25,24 @@ export const MultipleSelect = defineComponent({
         }]
         return result
       }),
-      chips = () => h('div', {
-        class: ['multiple-select-chips', 'full-height', 'row', 'align-center', 'justify-end'],
+      chips = () => h(NsRow, {
+        class: ['multiple-select-chips', 'full-height', 'chips-container'],
+        justify: 'end',
         onClick: () => {
           pickerOpen.value = true
         }
       }, {
-        default: () => selected.value?.length ? selected.value.map(s => h(NsChip, {
-          color: 'primary',
-          label: s.label
-        })) : h('span', {
-          class: ['multiple-select-placeholder']
-        }, props.placeholder || '请选择')
+        default: () => selected.value?.length
+          ? selected.value.map(s => h(NsChip, {
+              color: 'primary',
+              label: s.label
+            }))
+            : h('span', {
+              class: [
+                'placeholder',
+                'multiple-select-placeholder'
+              ]
+            }, props.placeholder || `请选择${props.label}`)
       }),
       sheet = () => h(NsSheet, {
         class: ['multiple-select-sheet'],
@@ -50,7 +56,7 @@ export const MultipleSelect = defineComponent({
         footer: true,
       }, {
         default: () => h(NutCheckboxGroup, {
-          class: ['column', 'justify-stretch'],
+          class: ['multiple-select-picker', 'column', 'justify-stretch'],
           modelValue: props.modelValue,
           'onUpdate:modelValue': (value: string[]) => {
             emit('update:modelValue', value)
