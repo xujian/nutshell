@@ -30,6 +30,7 @@
       }
       .checkbox-item {
         padding: 0 6px;
+        box-sizing: border-box;
         border-bottom: solid 1px var(--stroke, var(--ns-stroke, #f5f5f5));
         .nut-checkbox__label {
           font-size: 16px;
