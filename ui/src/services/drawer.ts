@@ -45,6 +45,8 @@ export type PreviewOptions = {
   fill?: Color,
   mode?: PreviewMode,
   button?: string,
+  hasCloseButton?: boolean,
+  hasHeader?: boolean,
   onButtonClick (this: PreviewInstance): void
 }
 

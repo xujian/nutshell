@@ -61,6 +61,8 @@ export const Upload = defineComponent({
       $n.preview(images, {
         button: props.disabled ? '' : '更换图片',
         mode: props.previewMode,
+        hasHeader: false,
+        hasCloseButton: true,
         onButtonClick () {
           reUpload((medias: Media[]) => {
             this.update(medias)

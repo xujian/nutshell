@@ -21,7 +21,11 @@ export type IconFormat =
   /**
    * 直接用普通图片
    */
-  'image'
+  'image' |
+  /**
+   * 直接用 css class 定义
+   */
+  'css'
 
 export const useIconProps = buildProps({
   name: {
@@ -29,7 +33,7 @@ export const useIconProps = buildProps({
   },
   format: {
     type: String as PropType<IconFormat>,
-    default: () => 'sprite',
+    default: () => 'css',
   },
   /**
    * SVG或图片URI
@@ -55,11 +59,9 @@ const props = {
 }
 
 export type IconEmits = {
-  click: () => void
 }
 
 const emits: IconEmits = {
-  click: () => void 0
 }
 
 export type IconProps = MakePropsType<typeof props, IconEmits>
@@ -68,6 +70,14 @@ export type IconProps = MakePropsType<typeof props, IconEmits>
  * 按照 format 输出对应的格式
  */
 const formats: Record<IconFormat, (props: IconProps) => VNode> = {
+  css: (props: IconProps) => h('i', {
+      class: [
+        'ns-icon',
+        `ns-icon-${props.name}`,
+        `font-size-${props.size}`,
+        props.clickable && 'clickable'
+      ]
+    }),
   font: (props: IconProps) => h('i', {
       class: [
         'ns-icon',
@@ -110,6 +120,7 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
  */
 export const NsIcon = defineComponent({
   name: 'NsIcon',
+  inheritAttrs: true,
   props,
   emits,
   setup (props, ctx) {

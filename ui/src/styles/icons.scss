@@ -55,6 +55,16 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 16px;
+  box-sizing: border-box;
+  &.circle {
+    border: solid 1px #333;
+  }
+}
+
+.color-scheme-dark {
+  .ns-icon {
+    filter: invert(1);
+  }
 }
 
 .ns-icon-search {

@@ -1,5 +1,6 @@
 .ns-drawer {
   position: fixed;
+  z-index: 10000;
   .nut-popup {
     border-radius: 0;
     scroll-view {

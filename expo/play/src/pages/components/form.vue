@@ -31,6 +31,7 @@
         <ns-card fill="#fff">
           <ns-multiple-select
             v-model="formData.regions"
+            placeholder="请选择经营地区"
             :options="regions"
             label="经营地区" />
         </ns-card>
@@ -52,6 +53,16 @@
           <ns-radio-group label="性别"
             v-model="formData.allowCancel"
             :options="[{label: '男', value: 1}, { label: '女', value: 0}]" />
+        </ns-card>
+        <h3>日期输入框</h3>
+        <ns-card fill="#fff" color-scheme="light">
+          <ns-date-input label="开始日期"
+            v-model="formData.date" />
+        </ns-card>
+        <h3>文件上传</h3>
+        <ns-card fill="#fff" color-scheme="light">
+          <ns-upload label="上传"
+            v-model="files" />
         </ns-card>
       </ns-form>
       <p>&nbsp;</p>
@@ -113,6 +124,7 @@ const formData = reactive({
   allowCancel: void 0,
   regions: [],
   gender: void 0,
+  date: void 0,
 })
 const show1 = ref(false)
 
@@ -125,6 +137,23 @@ const list = ref([
   },
   {
     name: 'option3'
+  }
+])
+
+const files = ref([
+  {
+    id: '65d6e705febeec0001323137',
+    name: '证件照.jpeg',
+    type: 'image',
+    url: 'https://images.unsplash.com/photo-1541182388496-ac92a3230e4c',
+    thumb: 'https://images.unsplash.com/photo-1541182388496-ac92a3230e4c?q=80&w=480&auto=format&fit=crop'
+  },
+  {
+    id: '65d6e705febeec0001323139',
+    name: '1653152566529.jpeg',
+    type: 'image',
+    url: 'https://images.unsplash.com/photo-1653152566529-c3b44fd5efea',
+    thumb: 'https://images.unsplash.com/photo-1653152566529-c3b44fd5efea?q=80&w=480&auto=format&fit=crop'
   }
 ])
 </script>

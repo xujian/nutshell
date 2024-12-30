@@ -1,10 +1,11 @@
-import { PropType, defineComponent, h, shallowRef, watch } from 'vue'
+import { PropType, defineComponent, h, shallowRef } from 'vue'
 import { MakePropsType } from '../../utils'
 import { Media } from '../../types'
 import { NsButton } from '../button'
 import { PreviewButtonClickCallback } from '../../services/drawer'
 import { NsPage, NsPageContent, NsPageHeader } from '../page'
-import { NsRow } from '../flex'
+import { NsColumn } from '../flex'
+import { NsIcon } from '../icon'
 
 /**
  * 使用场景
@@ -30,6 +31,12 @@ export const previewProps = {
   mode: {
     type: String as PropType<PreviewMode>,
     default: 'normal'
+  },
+  hasHeader: {
+    type: Boolean
+  },
+  hasCloseButton: {
+    type: Boolean
   },
   /**
    * 单击按钮的处理过程
@@ -101,6 +108,20 @@ export const NsPreview = defineComponent({
           src: medias.value?.[0]?.url
         })
 
+    const placer = () => h('div', {
+      class: ['placer']
+    })
+
+    const close = () => h(NsIcon, {
+      name: 'close',
+      size: 'lg',
+      variant: 'outlined',
+      class: ['circle'],
+      onClick: () => {
+        emit('close')
+      }
+    })
+
     // 用于更新图片 // 重新上传
     const me = {
       update (value: Media[]) {
@@ -108,68 +129,89 @@ export const NsPreview = defineComponent({
       }
     }
 
-    const pageHeader = () => h(NsPageHeader, {
-      fill: '#000',
-      hasBackButton: true,
-      onBack: () => {
-        emit('close')
-      }
+    const pageHeader = () => props.hasHeader
+      ? h(NsPageHeader, {
+          fill: '#000',
+          hasBackButton: true,
+          onBack: () => {
+            emit('close')
+          }
+        })
+      : null
+
+    const buttons = () => h(NsColumn, {
+        align: 'center',
+        class: [
+          'footer'
+        ]
+      },
+      {
+        default: () => [
+          props.button
+            ? h(NsButton, {
+              class: 'preview-button',
+              label: props.button,
+              color: '#00000000',
+              foreground: '#ddd',
+              stroke: '#ddd',
+              round: true,
+              variant: 'outlined',
+              onClick: (e: any) => {
+                props.onButtonClick?.call(me)
+                e.stopImmediatePropagation()
+                e.preventDefault()
+                props.onClose
+              }
+            })
+          : null,
+        props.hasCloseButton
+          ? close()
+          : null
+        ]
     })
+
+    const pageContent = () => h(NsPageContent, {
+      class: [
+        'column', 'align-center', 'justify-center'
+      ]
+    },
+    {
+      default: () => [
+        placer(),
+        h('div', {
+            class: [
+              'media',
+              'flex',
+              'align-center',
+              'justify-center',
+              `mode-${props.mode}`
+            ]
+          },
+          {
+            default: () => [
+              image()
+            ]
+          }
+        ),
+        buttons()
+      ]
+    }
+  )
 
     return () => h(NsPage, {
         minimal: true, // NsPage 的简化版 没有 drawer/sheet/dialog
-        dark: true,
+        colorScheme: 'dark',
         fill: '#000',
         class: [
           'ns-preview',
         ]
       },
-      [
-        pageHeader(),
-        h(NsPageContent, {
-            class: [
-              'column', 'align-center', 'justify-center'
-            ]
-          },
-          {
-            default: [
-              h('div', {
-                  class: [
-                    'media',
-                    'flex',
-                    'align-center',
-                    'justify-center',
-                    `mode-${props.mode}`
-                  ]
-                },
-                image()
-              ),
-              h(NsRow, {
-                  align: 'center',
-                  class: [
-                    'footer'
-                  ]
-                },
-                props.button ? h(NsButton, {
-                    class: 'preview-button',
-                    label: props.button,
-                    color: '#00000000',
-                    foreground: '#ddd',
-                    stroke: '#ddd',
-                    round: true,
-                    variant: 'outlined',
-                    onClick: (e: any) => {
-                      props.onButtonClick?.call(me)
-                      e.stopImmediatePropagation()
-                      e.preventDefault()
-                      props.onClose
-                    }
-                  })
-                : void 0)
-            ]
-          }
-        )
-      ]
+      {
+        default: () => [
+          pageHeader(),
+          pageContent()
+        ]
+      }
     )
   }
 })

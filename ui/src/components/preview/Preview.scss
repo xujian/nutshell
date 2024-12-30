@@ -1,6 +1,7 @@
 .ns-preview {
   --ns-background: #000000;
   .ns-page-content {
+    position: relative;
     .media {
       margin: var(--ns-spacing);
       overflow: hidden;
@@ -26,6 +27,13 @@
           border-radius: 50%;
         }
       }
+    }
+    .ns-icon-close {
+      width: 24px;
+      height: 24px;
+    }
+    .placer {
+      height: 100px;
     }
     .footer {
       padding: var(--ns-spacing);
