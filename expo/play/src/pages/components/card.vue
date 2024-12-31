@@ -6,7 +6,7 @@
       foreground="text" has-back-button></ns-page-header>
     <ns-page-content :scrollable="contentScrollable">
       <h2>卡片</h2>
-      <ns-card fill="#fff" title="卡片" class="my-md" stroke="#aaa" :thick="2">
+      <ns-card fill="#333" title="卡片" class="my-md" stroke="#aaa" :thick="2">
         <lorem />
       </ns-card>
       <ns-row :gap="10">
@@ -17,7 +17,13 @@
           <lorem />
         </ns-card>
       </ns-row>
-      <ns-card title="卡片" class="my-md" body-fill="#ffffff33" :padding="10">
+      <ns-card mesh="100" fill="#222" title="卡片" class="my-md" stroke="#aaa" :thick="2">
+        <lorem />
+      </ns-card>
+      <ns-card title="卡片" class="my-md" fill="#ffffff22"
+        stroke="#ffffff88"
+        body-fill="#ffffff33"
+        :edge="5">
         <template #titleAfter>
           <ns-chip color="primary" label="实名" />
         </template>

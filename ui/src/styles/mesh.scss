@@ -1,0 +1,10 @@
+.with-design {
+  --c1: hsla(143,100%,31%,0.77);
+  --c2: hsla(40,100%,45%,0.7);
+}
+
+.mesh-100 {
+  background-image:
+  radial-gradient(at 100% 0%, var(--c1) 0px, transparent 50%),
+  radial-gradient(at 0% 100%, var(--c2) 0px, transparent 50%);
+}
