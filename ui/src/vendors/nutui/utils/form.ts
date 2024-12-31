@@ -91,6 +91,7 @@ export const renderFormItem = (props: FormItemProps, slots: Slots, defaultSlot: 
     class: ['form-item-label'],
     onClick: () => {
       $n.dialog({
+        title: props.label,
         message: props.hint,
         cancelText: '',
         okText: '我知道了'
