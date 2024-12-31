@@ -54,7 +54,7 @@ export type TableState = {
  * 用第三方组件 (VxeTable) 绘制表格
  */
 export const Table = defineComponent({
-  name: 'NsTable',
+  name: 'AntdvTable',
   props: {
     ...tableProps,
     ...marginProps,

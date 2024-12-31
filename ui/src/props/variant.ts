@@ -1,9 +1,9 @@
 import { MakePropsType } from '../utils'
 import { buildProps } from '../utils/private/props'
-import { PropType } from 'vue'
+import type { PropType } from 'vue'
 
 
-export const variants: string[] = [
+export const variants = [
   'solid', 'outlined', 'soft', 'plain'
 ] as const
 
@@ -19,7 +19,6 @@ export type Variant = typeof variants[number]
 export const variantProps = {
     variant: {
       type: String as PropType<Variant>,
-      default: '',
     },
   }
 

@@ -4,6 +4,7 @@ import { pageProps, pageEmits, NsDrawer, NsSheet, NsDialog } from '../../../../c
 import { useBus, useSafeArea, usePlatform } from '../../../../composables'
 import type { DialogOptions, ConfirmOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType, DrawerOptions } from '../../../../services'
 import { marginProps } from '../../../../utils'
+import { ColorScheme } from '../../../../props'
 
 export type Notice = {
   options?: {
@@ -232,11 +233,11 @@ export const Page = defineComponent({
       $bus.emit('dialog.open')
     }
 
-    const onDialogComplete = () => {
+    const onDialogComplete = (payload: any) => {
       const fallback = dialogOptions.value.onComplete
         || dialogOptions.value.onOk
       if (fallback) {
-        Promise.resolve(fallback()).then(result => {
+        Promise.resolve(fallback(payload)).then(result => {
           if (result !== false) {
             dialogOpen.value = false
             $bus.emit('dialog.close')
@@ -323,6 +324,7 @@ export const Page = defineComponent({
 
     const classes = computed<string[]>(() => [
       'ns-page page column align-stretch mobile',
+      ...(props.colorScheme === 'dark' ? ['color-scheme-dark'] : ['color-scheme-light']),
       ...scroll.value > 0 ? ['scrolled'] : [],
       ...props.scrollable === true ? ['scrollable'] : [],
       // ...props.classes || [],

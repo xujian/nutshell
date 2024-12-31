@@ -23,7 +23,7 @@ export const ESSENTIALS = [
 ] as const
 
 export type BrandColor = typeof brands[number]
-export type EssentialColor = typeof brands[number]
+export type EssentialColor = typeof ESSENTIALS[number]
 
 export type HexColor = `#${string}`
 export type RgbColor = `rgb(${string})`
@@ -39,7 +39,7 @@ type BaseColors = {
 /**
  * 渐变
  */
-export type GradientString = `${Color},${Color}` | `${Color},${Color}/${number}` | `${number}${number}${number}`
+export type GradientString = `${string},${string}` | `${string},${string}/${number}` | `${number}${number}${number}`
 
 export type Theme = {
   name: string
@@ -66,6 +66,16 @@ export function isBrand (color?: Color) {
   if (!color) return false
   const result = brands.includes(color as BrandColor)
   return result
+}
+
+export function isEssential (color?: Color) {
+  if (!color) return false
+  const result = ESSENTIALS.includes(color as EssentialColor)
+  return result
+}
+
+export function getThemeColor (name: string) {
+
 }
 
 export function isGradient (color?: Color) {
