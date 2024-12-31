@@ -17,7 +17,7 @@
     // margin-bottom: calc(var(--ns-spacing) * -1/2)
   }
   .card-body {
-    margin-inline: var(--padding, 0px);
+    margin-inline: var(--edge, 0px);
     padding: var(--ns-spacing);
     background: var(--body-fill);
     border-radius: var(--ns-r);
@@ -38,7 +38,7 @@
     flex-direction: row;
     padding: var(--ns-spacing);
   }
-  h3.title-label {
+  .title-label {
     font-size: var(--ns-font-sm);
     font-weight: bold;
     position: relative;

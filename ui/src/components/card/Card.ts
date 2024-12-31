@@ -58,9 +58,6 @@ export const NsCard = defineComponent({
 
     const style = computed(() => ({
       ...buildDesignStyles(props),
-      ...props.padding !== void 0
-        ? { '--padding': `${props.padding}px` }
-        : {}
     }))
 
     const label = () => props.title
