@@ -1,10 +1,12 @@
-import { defineComponent, h, inject, PropType } from 'vue'
+import { defineComponent, h } from 'vue'
 import { MakePropsType } from '../../utils'
-import { useSafeArea } from '../../composables'
-import { buildDesignClasses, buildDesignStyles, buildDesignVariables, type TextAlign, useDesignProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, useDesignProps } from '../../props'
 import { usePage } from './Page'
 
 export const pageFooterProps = {
+  sunk: {
+    type: Boolean
+  },
   ...useDesignProps()
 }
 
@@ -17,7 +19,6 @@ export const NsPageFooter = defineComponent({
 
     const page = usePage()
     page && (page.hasFooter = true)
-    console.log('===pageFooter', page)
 
     const style = {
       ...buildDesignStyles(props),
@@ -26,9 +27,11 @@ export const NsPageFooter = defineComponent({
     return () => h('div', {
       class: [
         'page-footer',
+        ...props.sunk ? ['sunk'] : [],
         ...buildDesignClasses(props),
       ],
       style,
     }, slots)
+
   }
 })
