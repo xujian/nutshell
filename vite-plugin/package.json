@@ -20,29 +20,28 @@
   "author": "UXDA team",
   "license": "MIT",
   "dependencies": {
-    "debug": "^4.3.3",
+    "debug": "^4.4.0",
     "upath": "^2.0.1"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
     "@types/loader-utils": "^2.0.6",
-    "@types/mkdirp": "^1.0.2",
-    "@types/node": "^20.10.4",
-    "@typescript-eslint/eslint-plugin": "^6.13.2",
-    "@typescript-eslint/parser": "^6.13.2",
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
     "@uxda/nutshell": "^1.4.40",
-    "@vitejs/plugin-vue": "^4.5.2",
-    "@vue/compiler-sfc": "^3.3.11",
-    "conventional-changelog-conventionalcommits": "^4.6.1",
-    "eslint": "^8.18.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/compiler-sfc": "^3.5.13",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "eslint": "^9.16.0",
     "eslint-plugin-import": "^2.26.0",
-    "lerna": "^3.22.1",
+    "lerna": "^8.1.9",
     "picocolors": "^1.0.0",
-    "sass": "^1.69.5",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.6",
-    "vue": "^3.3.11",
-    "vue-loader": "^16.5.0"
+    "sass": "^1.82.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vue": "^3.5.13",
+    "vue-loader": "^17.4.2"
   },
   "engines": {
     "node": "^18.0.0 || >=20.0.0"
