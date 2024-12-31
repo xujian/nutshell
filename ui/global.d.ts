@@ -6,3 +6,8 @@ declare module '@tarojs/components' {
 }
 
 declare var wx: any
+
+declare module '*.module.scss' {
+  const content: Record<string, string>;
+  export default content;
+}

@@ -4,7 +4,6 @@
 $base: () !default;
 $base: tools.map-deep-merge(
   (
-    name: 'base',
     brand: (
       primary: #003293,
       secondary: #b5109f,
@@ -22,20 +21,20 @@ $base: tools.map-deep-merge(
       /**
        * 材质色
        */
-      paper: #fff,
+      paper: #ffffff,
       /**
        * 一般性容器背景色
        */
-      surface: #fff,
+      surface: #ffffff,
       /**
        * 小物体填充色
        */
       fill: #f2f2f2,
-      text: #333,
-      caption: #888,
-      highlight: #888,
-      subtitle: #ccc,
-      stroke: '#ddd',
+      text: #333333,
+      caption: #888888,
+      highlight: #888888,
+      subtitle: #cccccc,
+      stroke: #dddddd,
     ),
     states: (
       hover: #ffffff66,
@@ -51,6 +50,5 @@ $base: tools.map-deep-merge(
       header-text: #333,
     ),
   ), $base);
-
 
 // (2) Static Color Values

@@ -3,9 +3,9 @@ import chroma from 'chroma-js'
 import {
   Color,
   GradientString,
-  buildFillStyle,
   buildGradientStyle,
   isBrand,
+  isEssential,
   isGradient,
   makeColor
 } from '../composables/theme'
@@ -13,6 +13,9 @@ import { buildProps } from '../utils/private/props'
 import { MakePropsType, StyleObject } from '../utils'
 import { Dimension } from '../types'
 import { Size } from './size'
+// 从 SCSS 获取颜色变量值
+import theme from '../styles/theme.module.scss'
+
 
 export const BORDERS_VALUES = ['all', 'vertical', 'horizonal', 'inner', 'outer', 'none'] as const
 
@@ -69,7 +72,7 @@ const designProps = {
    * 颗粒
    */
   grain: {
-    type: String as PropType<GradientString>
+    type: String
   },
   /**
    * 动画填充
@@ -200,17 +203,21 @@ export function hasDesignProps (props: any): props is DesignProps {
   return props.__design === true
 }
 
-const buildDesignClasses = (props: DesignProps) => {
-  const fill = props.fill || (Reflect.get(props, 'color') as Color),
+const buildDesignClasses: (props: DesignProps) => string[]
+  = (props: DesignProps) => {
+  const fill: Color = props.fill || (Reflect.get(props, 'color') as Color),
+    colorValue: Color = isBrand(fill) || isEssential(fill)
+      ? Reflect.get(theme, fill as string) as Color
+      : fill,
+    scheme: ColorScheme | undefined =
+      fill !== undefined
+        ? chroma(colorValue).get('lab.l') > 70
+          ? 'light'
+          : 'dark'
+        : void 0,
     // 依据填色值确定 color scheme
-    colorScheme = props.colorScheme
-      || (fill
-        ? isBrand(fill)
-          ? 'dark'
-          : chroma(fill).get('lab.l') > 70
-            ? 'light'
-            : 'dark'
-        : ''),
+    colorScheme: ColorScheme | undefined = props.colorScheme
+      || scheme,
     filterClasses = (
         props.blur
         || props.brightness
@@ -218,10 +225,10 @@ const buildDesignClasses = (props: DesignProps) => {
         : []
   const result = [
     'with-design',
-    ...fill && isBrand(fill)
+    ...(fill && isBrand(fill)
       ? [`fill-${fill}`]
-      : [],
-    ...colorScheme ? [`color-scheme-${colorScheme}`] : [],
+      : []),
+    ...(colorScheme ? [`color-scheme-${colorScheme}`] : []),
     ...(props.borders ? [`borders-${props.borders}`] : []),
     ...(props.round ? ['round'] : []),
     ...(props.square ? ['square'] : []),
@@ -230,9 +237,9 @@ const buildDesignClasses = (props: DesignProps) => {
           ? ['artifact-gradient', `gradient-${props.gradient}`]
           : ['with-gradient']
         : []),
-    ...props.motion
+    ...(props.motion
         ? [`motion-${props.motion}`]
-        : [],
+        : []),
     // ...(props.gradient && /\d{3}/.test(props.gradient) ? [`gradient-${props.gradient}`] : []),
     ...(props.texture ? ['with-texture'] : []),
     ...(props.pattern
@@ -248,10 +255,10 @@ const buildDesignClasses = (props: DesignProps) => {
     ...(props.shadow || props.depth ? ['with-shadow'] : []),
     ...props.stroke ? ['has-stroke'] : [],
     ...(props.stroke && isGradient(props.stroke) ? ['with-stroke-gradient'] : []),
-    ...props.fluted ? ['fluted'] : [],
-    ...props.r && typeof props.r === 'string'
+    ...(props.fluted ? ['fluted'] : []),
+    ...(props.r && typeof props.r === 'string'
         ? [`r-${props.r}`]
-        : [],
+        : []),
     ...filterClasses
   ]
   return result
@@ -288,7 +295,6 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
         : {}
       ),
     ...(props.thick !== void 0 ? { '--thick': `${props.thick}px` } : {}),
-    ...(props.edge !== void 0 ? { '--edge': `${props.edge}px` } : {}),
     ...props.blur ? {'--blur': `${props.blur}px`} : {},
     ...props.brightness && props.brightness != 1 ? {'--brightness': props.brightness} : {},
     ...props.shadow ? {'--shadow': makeColor(props.shadow)} : {},

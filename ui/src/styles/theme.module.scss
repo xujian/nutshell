@@ -1,0 +1,11 @@
+@use "sass:map";
+@use './variables/colors';
+
+:export {
+  @each $name, $value in map.get(colors.$base, 'brand') {
+    #{$name}: $value;
+  }
+  @each $name, $value in map.get(colors.$base, 'abstract') {
+    #{$name}: $value;
+  }
+}

@@ -2,7 +2,6 @@ import path from 'upath'
 import { fileURLToPath } from 'url'
 import AutoImport from 'unplugin-auto-import/rollup'
 import copy from 'rollup-plugin-copy'
-import scss from 'rollup-plugin-scss'
 import commonjs from '@rollup/plugin-commonjs'
 import postcss from 'rollup-plugin-postcss'
 import { resolve } from 'path'
@@ -177,13 +176,8 @@ export default [
           // PsuedoTaroResolver
         ]
       }),
-      scss({
-        output (styles, styleNodes) {
-          console.log('===///===///===///===///===///===///styles', styleNodes)
-          // for (const {id, content} of styleNodes) {
-          //   console.log('===///===///===///===///===///===///styles', id)
-          // }
-        }
+      postcss({
+        modules: true
       }),
       copy({
         targets: [
@@ -194,8 +188,6 @@ export default [
         ]
       }),
       vue(),
-      // vueJsx(),
-      // json(),
       {
         async buildEnd () {
           const id = (await this.resolve('src/components/index.ts')).id
@@ -227,9 +219,9 @@ export default [
         // file: 'dist/taro/nutshell.esm.js',
         sourcemap: true,
         // banner,
-        exports: 'named',
+        // exports: 'named',
         dir: 'dist/taro',
-        // inlineDynamicImports: true,
+        inlineDynamicImports: true,
       },
     ],
     plugins: [
@@ -264,17 +256,11 @@ export default [
           TaroHookResolver,
         ]
       }),
-      scss({
-        output (styles, styleNodes) {
-          console.log('===///===///===///===///===///===///styles', styleNodes)
-          // for (const {id, content} of styleNodes) {
-          //   console.log('===///===///===///===///===///===///styles', id)
-          // }
-        }
+      postcss({
+        modules: true
       }),
       vue(),
-      terser(),
-      // purge(),
+      // terser(),
       {
         transform: (source, id) => {
           if (/src\/vendors\/index/.test(id)) {

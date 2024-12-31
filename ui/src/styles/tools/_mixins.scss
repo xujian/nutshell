@@ -74,6 +74,15 @@ $alphas: (
   @each $name, $value in map.get($theme, 'abstract') {
     .fill-#{$name} {
       background-color: var(--ns-#{$name});
+      @if color.channel($value, 'lightness', $space: hsl) > 80 {
+        color-scheme: light;
+      }
+      @else {
+        color-scheme: dark;
+        > .icon {
+          filter: invert(1);
+        }
+      }
     }
   }
 
