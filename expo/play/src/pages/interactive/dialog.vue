@@ -1,8 +1,8 @@
 <template>
-  <ns-page class="dialog-page">
+  <ns-page class="dialog-page" fill="neutral">
     <ns-page-header title="对话框" has-back-button />
     <ns-page-content>
-      <ns-card fill="#fff">
+      <ns-card>
         <ns-row justify="center">
           <ns-button @click="openMessageDialog">弹出消息对话框</ns-button>
         </ns-row>
