@@ -6,10 +6,10 @@ import { ComponentObjectPropsOptions,
   unref,
   isRef,
   computed} from 'vue'
-import { useVendor } from '../../shared/vendor'
 import { kebabCase } from '../text'
 import { buildDesignClasses, buildDesignStyles, hasDesignProps, hasVariantProps } from '../../props'
 import { MakePropsType, MarginProps } from './helpers'
+import { useVendor } from '../../shared/vendor'
 
 /**
  * Our private defineComponent

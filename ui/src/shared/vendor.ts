@@ -1,9 +1,7 @@
-import { inject, App, VNode } from 'vue'
-import { getVendor } from '../vendors'
-import { SetupContext } from 'vue'
+import { inject, App, VNode, DefineComponent, SetupContext } from 'vue'
 import { VendorSymbol } from './symbols'
-import { DefineComponent } from 'vue'
 import { CoreVendor } from './models/CoreVendor'
+// import { getVendor } from '../vendors'
 
 /**
  * Vendor 体系的设计
@@ -58,20 +56,15 @@ export type VendorRenderFunction = (props: any, ctx: Omit<SetupContext, 'expose'
 
 export type VendorComponent = VendorRenderFunction | DefineComponent
 
-export const createVendor= (name: string): CoreVendor | Promise<CoreVendor> => {
-  const vendor = getVendor(name)
-  return vendor
-}
-
 /**
  * Global Vendor
  */
-export const useVendor= (): CoreVendor | Promise<CoreVendor> => {
+export const useVendor: () => CoreVendor | Promise<CoreVendor> = () => {
   const vendor = inject(VendorSymbol) as CoreVendor | Promise<CoreVendor>
   return vendor
 }
 
-export const prepareVendor= (app: App, vendor: CoreVendor | Promise<CoreVendor>) => {
+export const prepareVendor = (app: App, vendor: CoreVendor | Promise<CoreVendor>) => {
   Promise.resolve(vendor).then(p => {
       p.prepare(app)
   })

@@ -1,8 +1,7 @@
-import { App, Component, InjectionKey, inject } from 'vue'
+import { App, InjectionKey, inject } from 'vue'
 import Toast from 'vue-toastification'
 import { createTheme } from './composables/theme'
 import { VendorSymbol } from './shared/symbols'
-import { createVendor, prepareVendor } from './shared/vendor'
 import { BusSymbol, PlatformSymbol, createBus, createPlatform } from './composables'
 import directives from './directives'
 import services from './services'
@@ -14,7 +13,9 @@ import { AppSymbol, IconFormat } from './components'
 import { DrawerOptions } from './services/drawer'
 import { SheetOptions } from './services/sheet'
 import { Media } from './types'
-
+import { prepareVendor } from './shared/vendor'
+import { getVendor } from './vendors'
+import { CoreVendor } from './shared'
 /**
  * Nulshell framework options holding by app
  */
@@ -47,6 +48,11 @@ export const NutshellSymbol: InjectionKey<DollarNutshell>
 export function useNutshell () {
   const $n = inject(NutshellSymbol)!
   return $n
+}
+
+export const createVendor = (name: string): CoreVendor | Promise<CoreVendor> => {
+  const vendor = getVendor(name)
+  return vendor
 }
 
 export function Nutshell ({
