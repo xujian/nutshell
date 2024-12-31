@@ -1,7 +1,7 @@
 .ns-page {
   --header: calc(var(--status) + var(--nav));
   --footer: 80px;
-  background-color: var(--fill, var(--ns-background));
+  --fill: var(--ns-background);
   min-height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -82,6 +82,12 @@
     box-sizing: border-box;
     width: 100vw;
     border-radius: var(--ns-r);
+    transform: translate3d(0, 0, 0);
+    transition: transform .3s;
+    &.sunk {
+      // 隐藏
+      transform: translate3d(0, 100%, 0);
+    }
   }
   .page-title {
     font-size: 24px;
