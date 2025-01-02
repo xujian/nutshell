@@ -1,17 +1,18 @@
 <template>
-  <ns-page class="home-page">
+  <ns-page class="home-page" fill="neutral">
     <ns-page-content>
       <ns-card class="hero-card breakout" mesh="100" fill="#333" :thick="0">
         <ns-row class="fit square" align="center" justify="center">
           <h2>标准组件库</h2>
         </ns-row>
       </ns-card>
-      <ns-card class="mb-md" v-for="(g, index) in groups"
+      <ns-card class="content-card mb-md" v-for="(g, index) in groups"
         :key="index"
         :title="g.title"
         :fill="g.color || '#fff'"
-        body-fill="#ffffff33">
-        <ns-list :data="g.data">
+        body-fill="#ffffff22"
+        :edge="2">
+        <ns-list :data="g.data" class="full-width">
         </ns-list>
       </ns-card>
     </ns-page-content>
@@ -24,7 +25,7 @@ import { ListItemProps, type Color } from '@uxda/nutshell/taro'
 const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   {
     title: '页面构成',
-    color: '#ffcfd2',
+    color: '#004233',
     data: [
       {
         title: '页',
@@ -64,7 +65,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   },
   {
     title: '预设交互',
-    color: '#f1c0e8',
+    color: '#20532D',
     data: [
       {
         title: '弹窗',
@@ -105,7 +106,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   },
   {
     title: '视觉效果',
-    color: '#cfbaf0',
+    color: '#406327',
     data: [
       {
         title: '总述',
@@ -130,82 +131,262 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
     ]
   },
   {
-    title: 'UI 组件',
-    color: '#a3c4f3',
+    title: '动作类组件',
+    color: '#607321',
     data: [
       {
         title: '按钮',
-        name: 'ns-button',
+        name: '<ns-button>',
         caption: '',
         link: '/pages/components/button',
         hasArrow: true,
       },
       {
-        title: '下拉菜单',
-        name: 'ns-dropdown',
+        title: '按钮组',
+        name: '<ns-button-group>',
+        caption: '',
+        link: '/pages/components/button-group',
+        hasArrow: true,
+      },
+      {
+        title: '弹出命令',
+        name: '<ns-popover>',
+        caption: '',
+        link: '/pages/components/popover',
+        hasArrow: true,
+      },
+      {
+        title: '下拉框',
+        name: '<ns-dropdown>',
         caption: '',
         link: '/pages/components/dropdown',
         hasArrow: true,
       },
       {
+        title: '弹出菜单',
+        name: '<ns-menu>',
+        caption: '',
+        link: '/pages/components/menu',
+        hasArrow: true,
+      },
+    ]
+  },
+  {
+    title: '呈现类组件',
+    color: '#80831A',
+    data: [
+      {
         title: '标签',
-        name: 'ns-chip',
+        name: '<ns-chip>',
         caption: '',
         link: '/pages/components/chip',
         hasArrow: true,
       },
       {
+        title: '步骤条',
+        name: '<ns-stepper>',
+        link: '/pages/components/stepper',
+        hasArrow: true,
+      },
+      {
+        title: '图片',
+        name: '<ns-image>',
+        link: '/pages/components/image',
+        hasArrow: true,
+      },
+      {
+        title: '图标',
+        name: '<ns-icon>',
+        link: '/pages/components/icon',
+        hasArrow: true,
+      },
+      {
+        title: '数字',
+        name: '<ns-number>',
+        link: '/pages/components/number',
+        hasArrow: true,
+      },
+      {
+        title: '星星',
+        name: '<ns-rating>',
+        link: '/pages/components/rating',
+        hasArrow: true,
+      },
+      {
+        title: '开关',
+        name: '<ns-switch>',
+        link: '/pages/components/switch',
+        hasArrow: true,
+      },
+      {
+        title: '分割线',
+        name: '<ns-divider>',
+        link: '/pages/components/divider',
+        hasArrow: true,
+      }
+    ],
+  },
+  {
+    title: '导向类组件',
+    color: '#A09314',
+    data: [
+      {
+        title: 'Tabs',
+        name: '<ns-tabs>',
+        caption: '',
+        link: '/pages/components/tabs',
+        hasArrow: true,
+      },
+      {
+        title: '主导航条',
+        name: '<ns-tabbar>',
+        caption: '',
+        link: '/pages/components/tabbar',
+        hasArrow: true,
+      },
+
+    ],
+  },
+  {
+    title: '容器类组件',
+    color: '#C0A30D',
+    data: [
+      {
         title: '卡片',
-        name: 'ns-card',
+        name: '<ns-card>',
         caption: '',
         link: '/pages/components/card',
         hasArrow: true,
       },
       {
-        title: 'Tabs',
-        name: 'ns-tabs',
+        title: '横向排列',
+        name: '<ns-row>',
         caption: '',
-        link: '/pages/components/tabs',
+        link: '/pages/components/row',
         hasArrow: true,
       },
-    ]
+      {
+        title: '纵向排列',
+        name: '<ns-column>',
+        caption: '',
+        link: '/pages/components/column',
+        hasArrow: true,
+      },
+    ],
   },
   {
-    title: '输入组件',
-    color: '#90dbf4',
+    title: '输入类组件',
+    color: '#E0B307',
     data: [
       {
         title: '表单',
-        name: 'ns-form',
+        name: '<ns-form>',
         caption: '',
         link: '/pages/components/form',
         hasArrow: true,
       },
+      {
+        title: '文本输入框',
+        name: '<ns-input>',
+        caption: '',
+        link: '/pages/components/input',
+        hasArrow: true,
+      },
+      {
+        title: '下拉选框',
+        name: '<ns-date-select>',
+        caption: '',
+        link: '/pages/components/select',
+        hasArrow: true,
+      },
+      {
+        title: '日期输入',
+        name: '<ns-date-input>',
+        caption: '',
+        link: '/pages/components/date-input',
+        hasArrow: true,
+      },
+      {
+        title: '单选框',
+        name: '<ns-radio>',
+        caption: '',
+        link: '/pages/components/radio',
+        hasArrow: true,
+      },
+      {
+        title: '复选框',
+        name: '<ns-checkbox>',
+        caption: '',
+        link: '/pages/components/checkbox',
+        hasArrow: true,
+      },
+      {
+        title: '开关',
+        name: '<ns-switch-input>',
+        caption: '',
+        link: '/pages/components/switch-input',
+        hasArrow: true,
+      },
+      {
+        title: '按钮组',
+        name: '<ns-button-group-input>',
+        caption: '',
+        link: '/pages/components/button-group-input',
+        hasArrow: true,
+      },
+      {
+        title: '星星输入框',
+        name: '<ns-rating-input>',
+        caption: '',
+        link: '/pages/components/rating-input',
+        hasArrow: true,
+      },
+      {
+        title: '文件上传',
+        name: '<ns-upload>',
+        caption: '',
+        link: '/pages/components/upload',
+        hasArrow: true,
+      },
     ]
   },
   {
-    title: '数据组件',
-    color: '#8eecf5',
+    title: '数据类组件',
+    color: '#FFC300',
     data: [
       {
+        title: '列表',
+        name: '<ns-list>',
+        caption: '',
+        link: '/pages/components/list',
+        hasArrow: true,
+      },
+      {
         title: '连续平铺',
-        name: 'ns-repeator',
+        name: '<ns-repeator>',
         caption: '',
         link: '/pages/components/repeator',
         hasArrow: true,
       },
       {
         title: '详表',
-        name: 'ns-facts',
+        name: '<ns-facts>',
         caption: '',
         link: '/pages/components/facts',
         hasArrow: true,
       },
       {
         title: '时间线',
-        name: 'ns-timeline',
+        name: '<ns-timeline>',
         caption: '',
         link: '/pages/components/timeline',
+        hasArrow: true,
+      },
+      {
+        title: '文件表',
+        name: '<ns-files>',
+        caption: '',
+        link: '/pages/components/files',
         hasArrow: true,
       },
     ]
@@ -215,11 +396,16 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
 
 <style lang="scss">
 .home-page {
-  background-color: var(--ns-neutral);
   .hero-card {
     height: 50vh;
     color: #ffffff90;
     margin-bottom: -20px;
+  }
+  .content-card {
+    .caption {
+      color: color-mix(in srgb, currentColor 70%, #fff);
+      mix-blend-mode: color-dodge;
+    }
   }
 }
 </style>

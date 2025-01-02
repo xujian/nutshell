@@ -117,40 +117,46 @@ const menuData = computed(() => [
     key: 'components',
     children: [
       {
-        label: 'UI 组件',
-        key: 'ui',
+        label: '动作类',
+        key: 'action',
         children: [
           {
             label: '按钮 button',
             key: '/components/button'
           },
           {
+            label: '按钮组',
+            key: '/components/button-group'
+          },
+          {
+            label: '弹出命令',
+            key: '/components/popover'
+          },
+          {
             label: '下拉菜单 dropdown',
             key: '/components/dropdown'
           },
+          {
+            label: '选单 menu',
+            key: '/interactive/menu'
+          },
+        ]
+      },
+      {
+        label: '呈现类',
+        key: 'presentation',
+        children: [
           {
             label: '标签 chip',
             key: '/components/chip'
           },
           {
-            label: '卡片 card',
-            key: '/components/card'
-          },
-          {
-            label: '选项卡 Tabs',
-            key: '/components/tabs'
-          },
-          {
-            label: '按钮组',
-            key: '/components/button-group'
-          },
-          {
-            label: '标签栏 Tabbar',
-            key: '/components/tabbar'
-          },
-          {
             label: '步骤条 stepper',
             key: '/components/stepper'
+          },
+          {
+            label: '图片 image',
+            key: '/components/image'
           },
           {
             label: '图标 icon',
@@ -161,13 +167,53 @@ const menuData = computed(() => [
             key: '/components/number'
           },
           {
+            label: '星星 rating',
+            key: '/components/rating'
+          },
+          {
+            label: '开关 switch',
+            key: '/components/switch'
+          },
+          {
             label: '分割线 divider',
             key: '/components/divider'
           }
         ]
       },
       {
-        label: '表单组件',
+        label: '导向类',
+        key: 'navigation',
+        children: [
+          {
+            label: '选项卡 Tabs',
+            key: '/components/tabs'
+          },
+          {
+            label: '主导航条 Tabbar',
+            key: '/components/tabbar'
+          },
+        ]
+      },
+      {
+        label: '容器类',
+        key: 'container',
+        children: [
+          {
+            label: '卡片 card',
+            key: '/components/card'
+          },
+          {
+            label: '横向排列 row',
+            key: '/layout/row'
+          },
+          {
+            label: '纵向排列 column',
+            key: '/layout/column'
+          }
+        ],
+      },
+      {
+        label: '表单输入类',
         key: 'form',
         children: [
           {
@@ -199,8 +245,8 @@ const menuData = computed(() => [
             key: '/components/checkbox'
           },
           {
-            label: '开关 switch',
-            key: '/components/switch'
+            label: '开关 switch-input',
+            key: '/components/switch-input'
           },
           {
             label: '按钮组',
@@ -217,7 +263,7 @@ const menuData = computed(() => [
         ]
       },
       {
-        label: '数据组件',
+        label: '数据类',
         key: 'data',
         children: [
           {
@@ -255,25 +301,7 @@ const menuData = computed(() => [
         ]
       },
       {
-        label: '图表',
-        key: 'plot',
-        children: [
-          {
-            label: '折线图 line-chart',
-            key: '/plot/line'
-          },
-          {
-            label: '柱状图 bar-chart',
-            key: '/plot/bar'
-          },
-          {
-            label: '饼图 pie-chart',
-            key: '/plot/pie'
-          },
-        ]
-      },
-      {
-        label: '交互组件',
+        label: '交互类',
         key: 'interactive',
         children: [
           {
@@ -296,24 +324,24 @@ const menuData = computed(() => [
             label: '气泡卡片 popover',
             key: '/components/popover'
           },
-          {
-            label: '选单 menu',
-            key: '/interactive/menu'
-          }
         ]
       },
       {
-        label: '版式组件',
-        key: 'layout',
+        label: '图表',
+        key: 'plot',
         children: [
           {
-            label: '横向排列 row',
-            key: '/layout/row'
+            label: '折线图 line-chart',
+            key: '/plot/line'
           },
           {
-            label: '纵向排列 column',
-            key: '/layout/column'
-          }
+            label: '柱状图 bar-chart',
+            key: '/plot/bar'
+          },
+          {
+            label: '饼图 pie-chart',
+            key: '/plot/pie'
+          },
         ]
       },
     ]
