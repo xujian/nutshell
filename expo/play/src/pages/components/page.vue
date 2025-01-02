@@ -1,14 +1,20 @@
 <template>
-  <ns-page class="page-page" fill="neutral">
+  <ns-page class="page-page" :fill="bodyFill">
     <ns-page-header title="页面构成" foreground="text" has-back-button></ns-page-header>
     <ns-page-content :scrollable="contentScrollable">
       <h2>页面</h2>
       <p></p>
       <code-view language="html" :code="codes[0]" />
-      <ns-row justify="between">
-        <label>Page content scrollable</label>
-        <ns-switch v-model="contentScrollable" />
-      </ns-row>
+      <ns-column :gap="10">
+        <ns-row justify="between">
+          <label>Page content scrollable</label>
+          <ns-switch v-model="contentScrollable" />
+        </ns-row>
+        <ns-row justify="between">
+          <label>Dark</label>
+          <ns-switch v-model="darkScheme" />
+        </ns-row>
+      </ns-column>
       <p>&nbsp;</p>
       <ns-button color="primary" class="full-width" @click="openSheet">打开 SHEET</ns-button>
       <ns-card fill="#fff" title="卡片" class="my-md">
@@ -26,18 +32,19 @@
         <lorem />
       </ns-card>
     </ns-page-content>
-    <ns-page-footer fill="#fff" :sunk="footerSunk">
+    <ns-page-footer :sunk="footerSunk">
       <ns-button class="full-width" color="primary" r="sm">底部按钮</ns-button>
     </ns-page-footer>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { ref, onUnmounted } from 'vue'
+import { ref, onUnmounted, computed } from 'vue'
 import { useBus, useNutshell } from '@uxda/nutshell/taro'
 import DemoSheet from '../../components/DemoSheet.vue'
 
 const contentScrollable = ref(false),
+  darkScheme = ref(false),
   footerSunk = ref(false),
   $bus = useBus(),
   $n = useNutshell()
@@ -49,6 +56,10 @@ const codes = [
   <ns-page-footer />
 </ns-page>`
 ]
+
+const bodyFill = computed(() => darkScheme.value === true
+  ? '#333'
+  : 'neutral')
 
 // setTimeout(() => {
 //   footerSunk.value = true
