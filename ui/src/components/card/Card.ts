@@ -54,6 +54,7 @@ export const NsCard = defineComponent({
       ...buildDesignClasses(props),
       ...props.bodyFill ? ['has-body-fill'] : [],
       ...slots.header ? ['has-header'] : [],
+      ...props.edge ? ['has-edge'] : [],
     ])
 
     const style = computed(() => ({

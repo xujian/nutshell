@@ -18,6 +18,7 @@
   }
   .card-body {
     margin-inline: var(--edge, 0px);
+    margin-bottom: var(--edge, 0px);
     padding: var(--ns-spacing);
     background: var(--body-fill);
     border-radius: var(--ns-r);
@@ -69,10 +70,11 @@
       padding-inline: 0;
     }
   }
-  // 无内边距
-  &.no-padding {
+  &.has-edge {
     .card-body {
-      margin: 0 calc(var(--ns-spacing) * -1);
+      // 严丝合缝的内外倒角
+      // 内倒角 = 外倒角 - edge 数值
+      border-radius: calc(var(--r, var(--ns-r)) - var(--edge));
     }
   }
 }
