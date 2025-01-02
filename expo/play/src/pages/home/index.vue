@@ -12,7 +12,7 @@
         :fill="g.color || '#fff'"
         body-fill="#ffffff22"
         :edge="2">
-        <ns-list :data="g.data" class="full-width">
+        <ns-list :data="g.data" has-arrows class="full-width">
         </ns-list>
       </ns-card>
     </ns-page-content>
@@ -32,34 +32,29 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         name: '<ns-page>',
         caption: '',
         link: '/pages/components/page',
-        hasArrow: true,
       },
       {
         title: 'Page header',
         name: '<ns-page-header>',
         caption: '',
         link: '/pages/components/page-header',
-        hasArrow: true,
       },
       {
         title: 'Page content',
         name: '<ns-page-header>',
         caption: '',
         link: '/pages/components/page-header',
-        hasArrow: true,
       },
       {
         title: 'Page footer',
         name: '<ns-page-footer>',
         caption: '',
         link: '/pages/components/page-footer',
-        hasArrow: true,
       },
       {
         title: '滚动模式',
         caption: '针对不同内容要求的滚动方式',
         link: '/pages/components/scroll',
-        hasArrow: true,
       },
     ]
   },
@@ -72,35 +67,30 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         name: '$n.dialog',
         caption: '',
         link: '/pages/interactive/dialog',
-        hasArrow: true,
       },
       {
         title: '底部滑出弹窗',
         name: '$n.sheet',
         caption: '',
         link: '/pages/interactive/sheet',
-        hasArrow: true,
       },
       {
         title: '右侧滑出浮层',
         name: '$n.drawer',
         caption: '',
         link: '/pages/interactive/drawer',
-        hasArrow: true,
       },
       {
         title: '通知消息',
         name: '$n.notice',
         caption: '',
         link: '/pages/interactive/notice',
-        hasArrow: true,
       },
       {
         title: 'Toast',
         name: '$n.toast',
         caption: '',
         link: '/pages/interactive/toast',
-        hasArrow: true,
       }
     ]
   },
@@ -112,21 +102,18 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '总述',
         caption: '视觉效果相关属性',
         link: '/pages/design/props',
-        hasArrow: true,
       },
       {
         title: '内置渐变',
         name: 'gradients',
         caption: '',
         link: '/pages/design/gradients',
-        hasArrow: true,
       },
       {
         title: '内置动画',
         name: 'motions',
         caption: '',
         link: '/pages/design/motions',
-        hasArrow: true,
       }
     ]
   },
@@ -139,35 +126,30 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         name: '<ns-button>',
         caption: '',
         link: '/pages/components/button',
-        hasArrow: true,
       },
       {
         title: '按钮组',
         name: '<ns-button-group>',
         caption: '',
         link: '/pages/components/button-group',
-        hasArrow: true,
       },
       {
         title: '弹出命令',
         name: '<ns-popover>',
         caption: '',
         link: '/pages/components/popover',
-        hasArrow: true,
       },
       {
         title: '下拉框',
         name: '<ns-dropdown>',
         caption: '',
         link: '/pages/components/dropdown',
-        hasArrow: true,
       },
       {
         title: '弹出菜单',
         name: '<ns-menu>',
         caption: '',
         link: '/pages/components/menu',
-        hasArrow: true,
       },
     ]
   },
@@ -180,49 +162,41 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         name: '<ns-chip>',
         caption: '',
         link: '/pages/components/chip',
-        hasArrow: true,
       },
       {
         title: '步骤条',
         name: '<ns-stepper>',
         link: '/pages/components/stepper',
-        hasArrow: true,
       },
       {
         title: '图片',
         name: '<ns-image>',
         link: '/pages/components/image',
-        hasArrow: true,
       },
       {
         title: '图标',
         name: '<ns-icon>',
         link: '/pages/components/icon',
-        hasArrow: true,
       },
       {
         title: '数字',
         name: '<ns-number>',
         link: '/pages/components/number',
-        hasArrow: true,
       },
       {
         title: '星星',
         name: '<ns-rating>',
         link: '/pages/components/rating',
-        hasArrow: true,
       },
       {
         title: '开关',
         name: '<ns-switch>',
         link: '/pages/components/switch',
-        hasArrow: true,
       },
       {
         title: '分割线',
         name: '<ns-divider>',
         link: '/pages/components/divider',
-        hasArrow: true,
       }
     ],
   },
@@ -235,14 +209,12 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         name: '<ns-tabs>',
         caption: '',
         link: '/pages/components/tabs',
-        hasArrow: true,
       },
       {
         title: '主导航条',
         name: '<ns-tabbar>',
         caption: '',
         link: '/pages/components/tabbar',
-        hasArrow: true,
       },
 
     ],
@@ -256,21 +228,18 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         name: '<ns-card>',
         caption: '',
         link: '/pages/components/card',
-        hasArrow: true,
       },
       {
         title: '横向排列',
         name: '<ns-row>',
         caption: '',
         link: '/pages/components/row',
-        hasArrow: true,
       },
       {
         title: '纵向排列',
         name: '<ns-column>',
         caption: '',
         link: '/pages/components/column',
-        hasArrow: true,
       },
     ],
   },
@@ -283,70 +252,60 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         name: '<ns-form>',
         caption: '',
         link: '/pages/components/form',
-        hasArrow: true,
       },
       {
         title: '文本输入框',
         name: '<ns-input>',
         caption: '',
         link: '/pages/components/input',
-        hasArrow: true,
       },
       {
         title: '下拉选框',
         name: '<ns-date-select>',
         caption: '',
         link: '/pages/components/select',
-        hasArrow: true,
       },
       {
         title: '日期输入',
         name: '<ns-date-input>',
         caption: '',
         link: '/pages/components/date-input',
-        hasArrow: true,
       },
       {
         title: '单选框',
         name: '<ns-radio>',
         caption: '',
         link: '/pages/components/radio',
-        hasArrow: true,
       },
       {
         title: '复选框',
         name: '<ns-checkbox>',
         caption: '',
         link: '/pages/components/checkbox',
-        hasArrow: true,
       },
       {
         title: '开关',
         name: '<ns-switch-input>',
         caption: '',
         link: '/pages/components/switch-input',
-        hasArrow: true,
       },
       {
         title: '按钮组',
         name: '<ns-button-group-input>',
         caption: '',
         link: '/pages/components/button-group-input',
-        hasArrow: true,
       },
       {
         title: '星星输入框',
         name: '<ns-rating-input>',
         caption: '',
         link: '/pages/components/rating-input',
-        hasArrow: true,
       },
       {
         title: '文件上传',
         name: '<ns-upload>',
         caption: '',
         link: '/pages/components/upload',
-        hasArrow: true,
       },
     ]
   },
@@ -359,35 +318,30 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         name: '<ns-list>',
         caption: '',
         link: '/pages/components/list',
-        hasArrow: true,
       },
       {
         title: '连续平铺',
         name: '<ns-repeator>',
         caption: '',
         link: '/pages/components/repeator',
-        hasArrow: true,
       },
       {
         title: '详表',
         name: '<ns-facts>',
         caption: '',
         link: '/pages/components/facts',
-        hasArrow: true,
       },
       {
         title: '时间线',
         name: '<ns-timeline>',
         caption: '',
         link: '/pages/components/timeline',
-        hasArrow: true,
       },
       {
         title: '文件表',
         name: '<ns-files>',
         caption: '',
         link: '/pages/components/files',
-        hasArrow: true,
       },
     ]
   }
@@ -402,6 +356,9 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
     margin-bottom: -20px;
   }
   .content-card {
+    .title {
+      font-weight: bold;
+    }
     .caption {
       color: color-mix(in srgb, currentColor 70%, #fff);
       mix-blend-mode: color-dodge;
