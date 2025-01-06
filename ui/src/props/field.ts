@@ -167,6 +167,12 @@ const fieldProps = {
   detatched: {
     type: Boolean,
     default: true,
+  },
+  /**
+   * 紧凑形态
+   */
+  dense: {
+    type: Boolean
   }
 }
 
