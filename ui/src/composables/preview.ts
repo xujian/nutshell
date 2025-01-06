@@ -1,4 +1,3 @@
-import Viewer from 'viewerjs'
 import { onBeforeUnmount, onMounted, Ref } from 'vue'
 
 
@@ -12,17 +11,20 @@ export const usePreview = (el: Ref<HTMLElement | undefined>) => {
   let viewer: Viewer | null = null
 
   const initViewer = () => {
-    console.log('===init◊iew', el.value)
-    viewer = new Viewer(el.value!, {
-      container: document.body,
-      navbar: false,
-      toolbar: false,
-      zoomable: false,
-      transition: false,
-      url: (img: HTMLElement) => {
-        return img.getAttribute('data-url')
-      }
-    })
+    // console.log('===init◊iew', el.value)
+    const importViewer = () => import('viewerjs')
+    importViewer().then(({ default: Viewer}) =>
+      viewer = new Viewer(el.value!, {
+        container: document.body,
+        navbar: false,
+        toolbar: false,
+        zoomable: false,
+        transition: false,
+        url: (img: HTMLElement) => {
+          return img.getAttribute('data-url')
+        }
+      })
+    )
   }
 
   // HTML 结构约定
