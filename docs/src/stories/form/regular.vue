@@ -66,7 +66,7 @@
         size="xs"
         round
         v-model="variant"
-        :options="variantOptions"/>
+        :items="variantOptions"/>
     </ns-row>
 </template>
 

@@ -41,5 +41,5 @@ const tabs = [
     round
     variant="solid"
     color="primary"
-    :options="tabs" />
+    :items="tabs" />
 </template>

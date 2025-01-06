@@ -19,33 +19,33 @@
   <p>&nbsp;</p>
   <ns-row class="design-row justify-between">
     <div class="label">填色 <span class="caption">(fill)</span></div>
-    <ns-button-group v-model="fill" color="primary" :options="fills" />
+    <ns-button-group v-model="fill" color="primary" :items="fills" />
   </ns-row>
   <p>&nbsp;</p>
   <ns-row class="design-row justify-between">
     <div class="label">模糊 <span class="caption">(blur)</span></div>
-    <ns-button-group v-model="blur" color="primary" :options="blurs" />
+    <ns-button-group v-model="blur" color="primary" :items="blurs" />
   </ns-row>
   <p>&nbsp;</p>
   <ns-row class="design-row justify-between">
     <div class="label">光照 <span class="caption">(brightness)</span></div>
     <ns-button-group v-model="brightness"
       color="primary"
-      :options="brightnesses" />
+      :items="brightnesses" />
   </ns-row>
   <p>&nbsp;</p>
   <ns-row class="design-row justify-between">
     <div class="label">投影 <span class="caption">(shadow)</span></div>
     <ns-button-group v-model="shadow"
       color="primary"
-      :options="shadows" />
+      :items="shadows" />
   </ns-row>
   <p>&nbsp;</p>
   <ns-row class="design-row justify-between">
     <div class="label">投影高度 <span class="caption">(depth)</span></div>
     <ns-button-group v-model="depth"
       color="primary"
-      :options="depthes" />
+      :items="depthes" />
   </ns-row>
 </template>
 

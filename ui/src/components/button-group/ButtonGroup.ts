@@ -13,7 +13,7 @@ export const buttonGroupProps = {
   color: {
     type: String as PropType<Color>,
   },
-  options: {
+  items: {
     type: Array as PropType<UniDataItem[]>,
     default: []
   },
@@ -76,7 +76,7 @@ export const NsButtonGroup = defineComponent({
 
     const items = () => h('div', {
       class: ['row', 'buttons']
-    }, props.options.map(i => button(i)))
+    }, props.items?.map(i => button(i)))
 
     const content = () => h('scroll-view', {
         'scroll-x': true,

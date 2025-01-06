@@ -8,7 +8,7 @@
   <ns-button-group
     label="justify"
     size="xs"
-    :options="alignOptions"
+    :items="alignOptions"
     v-model="align" />
 </template>
 

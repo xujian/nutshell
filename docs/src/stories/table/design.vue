@@ -24,7 +24,7 @@
       size="xs"
       v-model="bordersRef"
       round
-      :options="bordersValues" />
+      :items="bordersValues" />
   </ns-row>
   <ns-row align="center" justify="between">
     <h4>底色</h4>
@@ -32,7 +32,7 @@
       size="xs"
       v-model="colorRef"
       round
-      :options="colorsValues" />
+      :items="colorsValues" />
     </ns-row>
 </template>
 

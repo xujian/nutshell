@@ -15,7 +15,7 @@
     <ns-button-group
       label="justify"
       size="xs"
-      :options="justifyOptions"
+      :items="justifyOptions"
       v-model="justify" />
   </ns-row>
   <ns-row justify="between">
@@ -25,7 +25,7 @@
     <ns-button-group
       label="align"
       size="xs"
-      :options="justifyOptions"
+      :items="justifyOptions"
       v-model="align" />
   </ns-row>
 </template>

@@ -5,17 +5,17 @@
       <p class="caption">&lt;ns-button-group&gt;</p>
       <h2>Color</h2>
       <color-cases direction="column" v-slot="{color}">
-        <ns-button-group v-model="state.selected" :options size="xs" />
+        <ns-button-group v-model="state.selected" :items size="xs" />
       </color-cases>
       <p>&nbsp;</p>
       <h2>Size</h2>
       <size-cases direction="column" v-slot="{size}">
-        <ns-button-group v-model="state.selected" :size :options />
+        <ns-button-group v-model="state.selected" :size :items />
       </size-cases>
       <p>&nbsp;</p>
       <h2>Variant</h2>
       <variant-cases direction="column" v-slot="{variant}">
-        <ns-button-group v-model="state.selected" :variant :options size="xs" />
+        <ns-button-group v-model="state.selected" :variant :items size="xs" />
       </variant-cases>
       <p>&nbsp;</p>
       <h2>用法</h2>
@@ -32,7 +32,7 @@ import { reactive } from 'vue'
 const state = reactive({
   selected: 1
 })
-const options = [
+const items = [
   {
     value: '1',
     label: '已跟进'

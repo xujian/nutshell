@@ -20,7 +20,8 @@ export const ButtonGroupInput = defineComponent({
             NsButtonGroup,
             {
               ...props,
-              size: props.size || 'sm'
+              size: props.size || 'sm',
+              items: props.options
             },
           )
       )

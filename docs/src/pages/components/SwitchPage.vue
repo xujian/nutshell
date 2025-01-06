@@ -27,7 +27,7 @@ const disabledValue = ref(0),
       <p>&nbsp;</p>
       <ns-button-group size="xs"
         v-model="disabledValue"
-        :options="[
+        :items="[
           { label: '常态', value: 0 },
           { label: '禁用态', value: 1 },
         ]" />
