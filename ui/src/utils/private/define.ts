@@ -78,7 +78,11 @@ export function define<
       // 前端要求将 classes/styles 独立返回
       classes = computed(() => [
         ...hasDesignProps(props) ? buildDesignClasses(props) : [],
-        ...hasVariantProps(props) ? [`variant-${props.variant}`] : [],
+        ...hasVariantProps(props)
+          ? props.variant
+            ? [`variant-${props.variant}`]
+            : []
+          : [],
         ]),
       styles = hasDesignProps(props)
         ? computed(() => buildDesignStyles(props))
