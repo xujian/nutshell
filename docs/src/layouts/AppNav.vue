@@ -175,7 +175,7 @@ const menuData = computed(() => [
             key: '/components/switch'
           },
           {
-            label: '分割线 divider',
+            label: '分隔线 divider',
             key: '/components/divider'
           }
         ]

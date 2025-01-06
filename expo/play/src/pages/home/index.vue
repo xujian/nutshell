@@ -194,7 +194,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         link: '/pages/components/switch',
       },
       {
-        title: '分割线',
+        title: '分隔线',
         name: '<ns-divider>',
         link: '/pages/components/divider',
       }
