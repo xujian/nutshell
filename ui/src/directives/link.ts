@@ -1,4 +1,5 @@
 import { Directive, App } from 'vue'
+import { useRouter } from 'vue-router'
 
 /**
  * <ns-componnent v-link="/pages/home/index" />
@@ -7,12 +8,14 @@ import { Directive, App } from 'vue'
  */
 const Link: Directive = {
   beforeMount (el, { modifiers, value }) {
-    console.log('===Link Directive', value)
     el.addEventListener('click', function () {
-      console.log('===Link Directive click')
-      Taro.navigateTo({
+      if (window && !('WeixinJSBridge' in window)) {
+        window.location.href = value
+      } else {
+        Taro.navigateTo({
         url: value
       })
+      }
     })
   }
 }
