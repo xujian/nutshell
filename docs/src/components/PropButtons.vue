@@ -1,7 +1,7 @@
 <template>
   <ns-row class="props-buttons justify-between">
     <div class="label">填色 <span class="caption">(fill)</span></div>
-    <ns-button-group size="xs" v-model="model" color="primary" :options />
+    <ns-button-group size="xs" v-model="model" color="primary" :items />
   </ns-row>
 </template>
 
@@ -20,7 +20,7 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  options: {
+  items: {
     type: Array as PropType<Record<string, any>>,
     default: []
   }
