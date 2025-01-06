@@ -2,7 +2,7 @@
   <ns-checkbox-group color="primary"
     v-model="callResults"
     :options
-    label="受限用户" />
+    label="营养成分" />
 </template>
 
 
@@ -12,8 +12,8 @@ import { reactive, ref } from 'vue'
 const callResults = ref<string[]>([])
 
 const options = [
-  { label: '接通', value: 'connected' },
-  { label: '繁忙', value: 'busy' },
-  { label: '拒接', value: 'rejected' },
+  { label: '蛋白质', value: '1' },
+  { label: '热量', value: '2' },
+  { label: '微量元素', value: '3' },
 ]
 </script>
