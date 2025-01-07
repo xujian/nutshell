@@ -22,6 +22,7 @@ import { Timeline } from './timeline'
 import { Repeator } from './repeator'
 import { Upload } from './upload'
 import { Empty } from './empty'
+import { Popover } from './popover'
 import { VendorComponent } from '../../../shared'
 
 const components: Record<string, VendorComponent> = {
@@ -79,6 +80,8 @@ const components: Record<string, VendorComponent> = {
   Upload,
   // @ts-ignore
   Empty,
+  // @ts-ignore
+  Popover,
 }
 
 export default components

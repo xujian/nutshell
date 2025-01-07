@@ -1,22 +1,10 @@
-import { SetupContext, h } from 'vue'
+import { SetupContext, h, unref } from 'vue'
 import { type ButtonProps } from '../../../../components'
 import { MarginProps } from '../../../../utils'
-import { buildHasIcon, buildHasIconClasses } from '../../../../props'
+import { buildHasIcon } from '../../../../props'
 
 export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext) => {
 
-  const hasLabel = props.label || slots.default
-
-  const classes = [
-    ...props.size ? [`size-${props.size}`] : [],
-    ...props.icon
-      ? hasLabel
-        ? ['has-icon']
-        : ['icon']
-      : [],
-    ...props.round ? ['round'] : [],
-    ...buildHasIconClasses(props)
-  ]
 
   const style = {
     ...props.iconFill ? {'--icon-fill': props.iconFill} : {},
@@ -27,7 +15,7 @@ export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext
   return h(
     NutButton,
     {
-      class: classes,
+      class: unref(props.classes),
       disabled: props.disabled,
       loading: props.loading,
       style,

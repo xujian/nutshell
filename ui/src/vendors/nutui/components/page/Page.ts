@@ -343,10 +343,15 @@ export const Page = defineComponent({
       '--scroll': `${scroll.value}px`,
     }))
 
+    const onClick = () => {
+      $bus.emit('page.click')
+    }
+
     return () => h('div', {
         ref: page,
         class: classes.value,
         style: styles.value,
+        onClick,
       }, [
         slots.default?.(),
         h('div', {

@@ -1,6 +1,7 @@
-import { PropType } from 'vue'
+import { computed, PropType } from 'vue'
 import { useDesignProps, useSizeProps, useVariantProps,
-  useDimensionProps, useLoadingProps, useHasIconProps } from '../../props'
+  useDimensionProps, useLoadingProps, useHasIconProps,
+  buildHasIconClasses} from '../../props'
 import { type IconSlots } from '../../props'
 import { define, MakePropsType } from '../../utils'
 import { Color } from '../../composables/theme'
@@ -54,11 +55,30 @@ export const NsButton = define({
   name: 'NsButton',
   props: buttonProps,
   emits,
-  setup (props) {
+  setup (props, { slots }) {
+
+    const hasLabel = props.label || slots.default
+
+    const classes = computed(() => [
+      ...props.size ? [`size-${props.size}`] : [],
+      ...props.icon
+        ? hasLabel
+          ? ['has-icon']
+          : ['icon']
+        : [],
+      ...props.round ? ['round'] : [],
+      ...buildHasIconClasses(props),
+      ...popover.classes
+    ])
+
+    const popover = usePopover()
     // const $attrs = useAttrs()
     // console.log('===NsButton, props', props, $attrs)
     // 对参数做前期的处理
     return {
+      props: {
+        classes
+      }
     }
   }
 })
