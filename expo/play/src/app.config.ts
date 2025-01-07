@@ -8,6 +8,7 @@ const components = [
   'card',
   'timeline',
   'tabs',
+  'popover'
 ]
 
 export default defineAppConfig({

@@ -8,36 +8,38 @@
     left: 0;
     top: 0;
     z-index: 10;
-  }
-  .popup {
-    display: none;
-    position: absolute;
-    background-color: var(--fill, var(--ns-surface));
-    border-color: var(--stroke, var(--ns-stroke));
-    border-width: 1px;
-    border-style: solid;
-    border-radius: var(--r, var(--ns-r));
-    left: 50%;
-    bottom: 100%;
-    transform: translate(-50%, -12px);
-    &::before {
-      content: "";
-      position: absolute;
-      left: calc(50% - 6px);
-      bottom: calc(0% - 6px);
-      height: 12px;
-      width: 12px;
-      background-color: var(--fill, var(--ns-surface));
-      border-bottom: 1px solid var(--stroke, var(--ns-stroke));
-      border-right: 1px solid var(--stroke, var(--ns-stroke));
-      transform: rotate(45deg);
-      z-index: -1;
-      border-radius: 0px;
-    }
-  }
-  .popover-open {
     .popup {
-      display: block;
+      display: none;
+      position: absolute;
+      ---f: var(--fill);
+      ---stroke: var(--stroke);
+      background-color: var(--fill, var(--ns-surface));
+      border-color: var(--stroke, var(--ns-stroke));
+      border-width: 1px;
+      border-style: solid;
+      border-radius: var(--r, var(--ns-r));
+      left: 50%;
+      bottom: 100%;
+      transform: translate(-50%, -12px);
+      &::before {
+        content: "";
+        position: absolute;
+        left: calc(50% - 6px);
+        bottom: calc(0% - 6px);
+        height: 12px;
+        width: 12px;
+        background-color: var(---f, var(--ns-surface));
+        border-bottom: 1px solid var(---stroke, var(--ns-stroke));
+        border-right: 1px solid var(---stroke, var(--ns-stroke));
+        transform: rotate(45deg);
+        z-index: -1;
+        border-radius: 0px;
+      }
+    }
+    &.popover-open {
+      .popup {
+        display: block;
+      }
     }
   }
 }

@@ -1,13 +1,13 @@
-import { computed, defineComponent, h, onUnmounted, ref, SetupContext } from 'vue'
-import { PopoverProps } from '../../../../components'
+import { computed, defineComponent, h, onUnmounted, ref } from 'vue'
+import { popoverEmits, popoverProps } from '../../../../components'
 import { buildDesignClasses, buildDesignStyles } from '../../../../props'
 
 export const Popover = defineComponent({
-  setup: (
-    props: PopoverProps,
-    { slots, emit }: SetupContext
-  ) => {
-
+  name: 'NutuiPopover',
+  props: popoverProps,
+  emits: popoverEmits,
+  setup (props, { slots, emit }) {
+    console.log('===popover1 props', props)
     const open = ref(false)
     const parent = usePopoverHost()
     const $bus = useBus()
@@ -16,14 +16,16 @@ export const Popover = defineComponent({
 
     const classes = computed(() => [
       ...buildDesignClasses(props),
-        'ns-popover-place-holder',
-        ...open.value ? ['popover-open'] : []
       ])
 
     const popup = () => h('div', {
       class: [
-        'popup'
-      ]
+        'popup',
+        ...classes.value,
+      ],
+      style: {
+        ...buildDesignStyles(props),
+      }
     }, slots)
 
     const onPageClick = () => {
@@ -37,8 +39,9 @@ export const Popover = defineComponent({
     $bus.on('page.click', onPageClick)
 
     return () => h('div', {
-        class: classes.value,
-        style: buildDesignStyles(props),
+        class: [
+          ...open.value ? ['popover-open'] : []
+        ],
         onClick: (e) => {
           open.value = true
           e.stopImmediatePropagation()

@@ -1,6 +1,6 @@
 import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useModelValuePropsForBoolean, useTriggerProps } from '../../props'
+import { useDesignProps, useModelValuePropsForBoolean, useTriggerProps } from '../../props'
 
 
 export const popoverProps = {
@@ -22,6 +22,7 @@ export const popoverProps = {
     type: String,
     default: 'mouseenter',
   },
+  ...useDesignProps(),
 }
 
 export type PopoverEmits = {
@@ -30,7 +31,7 @@ export type PopoverEmits = {
   click (): void,
 }
 
-const popoverEmits: PopoverEmits = {
+export const popoverEmits: PopoverEmits = {
   mouseleave () {},
   mouseenter () {},
   click () {},
@@ -51,6 +52,8 @@ export const NsPopover = define({
   props: popoverProps,
   emits: popoverEmits,
   setup (props, { slots }) {
-    return {}
+    return {
+      // structured: true,
+    }
   }
 })
