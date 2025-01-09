@@ -1,14 +1,21 @@
 .ns-menu {
-  margin: var(--ns-spacing) 0;
   .nut-cell-group__wrap {
     margin: 0 0;
     box-shadow: none;
     border-radius: var(--ns-r);
+    background-color: transparent;
   }
   .nut-cell {
-    height: 46px;
+    background-color: transparent;
+    padding: 4px;
     .nut-icon {
       font-size: 9px;
+    }
+    .nut-cell__title {
+      font-size: 12px;
+    }
+    &::after {
+      display: none;
     }
   }
   .menu-item-icon {

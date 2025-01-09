@@ -1,5 +1,5 @@
 import { h, SetupContext } from 'vue'
-import { MenuProps } from '../../../../components'
+import { MenuProps } from '../../../../components/menu'
 import { UniDataItem } from '../../../../shared'
 
 export const Menu = (props: MenuProps, ctx: Omit<SetupContext, 'expose'>) => {
@@ -16,7 +16,7 @@ export const Menu = (props: MenuProps, ctx: Omit<SetupContext, 'expose'>) => {
   const items = () => {
     return props.items?.map(item => h(NutCell, {
       title: item.label,
-      isLink: true,
+      isLink: false,
       desc: item.caption,
       onClick () {
         if (item.click) {
@@ -34,5 +34,7 @@ export const Menu = (props: MenuProps, ctx: Omit<SetupContext, 'expose'>) => {
 
   return h(NutCellGroup, {
     class: 'ns-menu',
-  }, items())
+  }, {
+    default: items
+  })
 }
