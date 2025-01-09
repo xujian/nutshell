@@ -20,8 +20,8 @@ const antdvVendor: CoreVendor = {
     app.use(VXETable)
   },
   render (props: any, ctx) {
-    const { parent } = getCurrentInstance() as any
-    const name = parent.type.name.slice(2) as keyof typeof components
+    const vm = getCurrentInstance() as any
+    const name = vm.type.name.slice(2) as keyof typeof components
     let component = components[name] as FunctionalComponent
     if (!component) {
       if (this.fallback) {

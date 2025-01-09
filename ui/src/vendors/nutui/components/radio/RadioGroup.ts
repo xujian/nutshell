@@ -1,5 +1,5 @@
 import { defineComponent, h, SetupContext } from 'vue'
-import { radioGroupProps } from '../../../../components'
+import { radioGroupProps } from '../../../../components/radio'
 import { renderFormItem } from '../../utils'
 
 export const RadioGroup = defineComponent({

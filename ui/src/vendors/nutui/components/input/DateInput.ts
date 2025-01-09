@@ -1,7 +1,7 @@
 import { defineComponent, h, ref } from 'vue'
 import dayjs from 'dayjs'
 import { marginProps } from '../../../../utils'
-import { dateInputProps, dateInputEmits } from '../../../../components'
+import { dateInputProps, dateInputEmits } from '../../../../components/input'
 import { renderFormItem } from '../../utils'
 
 // import 'dayjs/locale/zh-cn'

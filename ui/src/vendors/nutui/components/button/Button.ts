@@ -5,7 +5,6 @@ import { buildHasIcon } from '../../../../props'
 
 export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext) => {
 
-
   const style = {
     ...props.iconFill ? {'--icon-fill': props.iconFill} : {},
   }

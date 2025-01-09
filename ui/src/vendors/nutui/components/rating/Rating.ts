@@ -1,5 +1,5 @@
 import { h, SetupContext } from 'vue'
-import { RatingProps } from '../../../../components'
+import { RatingProps } from '../../../../components/rating'
 
 export const Rating = (props: RatingProps, { emit }: Omit<SetupContext, 'expose'>) => {
 

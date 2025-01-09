@@ -1,5 +1,5 @@
 import { h, SetupContext, VNode } from 'vue'
-import { TimelineItem, TimelineProps } from '../../../../components'
+import { TimelineItem, TimelineProps } from '../../../../components/timeline'
 
 function transformItemsToSlots (items: TimelineItem[], slots: SetupContext['slots']): VNode[] {
 

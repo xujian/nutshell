@@ -1,7 +1,7 @@
 import { defineComponent, h, Ref, ref } from 'vue'
 import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles } from '../../../../props'
-import { NsEmpty, repeatorEmits } from '../../../../components'
-import { repeatorProps } from '../../../../components'
+import { NsEmpty } from '../../../../components/empty'
+import { repeatorEmits, repeatorProps } from '../../../../components/repeator'
 
 /**
  * 连续平铺组件 <ns-repeator>

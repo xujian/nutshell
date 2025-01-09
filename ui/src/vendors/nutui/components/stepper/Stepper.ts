@@ -1,13 +1,12 @@
 import { h, SetupContext } from 'vue'
-import { type StepsProps, type StepperStatus, NsIcon } from '../../../../components'
+import { type StepsProps, type StepperStatus } from '../../../../components/stepper'
 import type { MarginProps } from '../../../../utils'
+import { NsIcon } from '../../../../components/icon'
 
 export const Stepper = (props: StepsProps & MarginProps, ctx: Omit<SetupContext, 'expose'>) => {
 
   const buildIcon = (name: string) => `http://simple.shensi.tech/icons/${name}.svg`,
     value = +(props.modelValue || 1) - 1
-
-    console.log('===value', value)
 
   const items = () => props.items?.map((item, index) => h(NutStep, {
       title: item.title,

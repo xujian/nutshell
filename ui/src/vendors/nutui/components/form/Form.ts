@@ -1,5 +1,5 @@
 import { defineComponent, h, provide } from 'vue'
-import { formProps, formEmits } from '../../../../components'
+import { formProps, formEmits } from '../../../../components/form'
 import { marginProps } from '../../../../utils'
 import { NutuiFormSymbol } from '../../utils'
 

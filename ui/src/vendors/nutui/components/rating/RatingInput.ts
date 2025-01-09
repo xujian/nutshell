@@ -1,5 +1,5 @@
 import { h, SetupContext } from 'vue'
-import { RatingInputProps } from '../../../../components'
+import { RatingInputProps } from '../../../../components/rating'
 import { renderFormItem } from '../../utils'
 
 export const RatingInput = (props: RatingInputProps, ctx: Omit<SetupContext, 'expose'>) => {

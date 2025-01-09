@@ -1,4 +1,4 @@
-import { inject, App, VNode, DefineComponent, SetupContext } from 'vue'
+import { inject, App, VNode, DefineComponent, SetupContext, DefineSetupFnComponent } from 'vue'
 import { VendorSymbol } from './symbols'
 import { CoreVendor } from './models/CoreVendor'
 // import { getVendor } from '../vendors'
@@ -54,7 +54,9 @@ export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
  */
 export type VendorRenderFunction = (props: any, ctx: Omit<SetupContext, 'expose'>) => VNode
 
-export type VendorComponent = VendorRenderFunction | DefineComponent
+export type VendorComponent = VendorRenderFunction
+  | DefineComponent
+  | DefineSetupFnComponent<any>
 
 /**
  * Global Vendor

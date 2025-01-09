@@ -1,5 +1,5 @@
-import { defineComponent, h, ref } from 'vue'
-import { numberInputEmits, numberInputProps } from '../../../../components'
+import { defineComponent, h } from 'vue'
+import { numberInputEmits, numberInputProps } from '../../../../components/input'
 import { marginProps } from '../../../../utils'
 import { renderFormItem, useForm } from '../../utils'
 

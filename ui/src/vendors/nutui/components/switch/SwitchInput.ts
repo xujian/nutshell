@@ -1,5 +1,5 @@
 import { h, SetupContext } from 'vue'
-import { SwitchProps } from '../../../../components'
+import { SwitchProps } from '../../../../components/switch'
 import { renderFormItem } from '../../utils'
 
 export const SwitchInput = (props: SwitchProps, ctx: Omit<SetupContext, 'expose'>) => {

@@ -1,6 +1,8 @@
 import { computed, defineComponent, h, provide, reactive } from 'vue'
-import { NsButton, NsRow, sheetProps } from '../../../../components'
+import { sheetProps } from '../../../../components/sheet'
 import { buildDesignClasses, PopupState, PopupStateSymbol } from '../../../../props'
+import { NsRow } from '../../../..//components/flex'
+import { NsButton } from '../../../..//components/button'
 
 export const Sheet = defineComponent(
   (props, { slots, emit }) => {

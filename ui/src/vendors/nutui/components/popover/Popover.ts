@@ -1,13 +1,16 @@
-import { computed, defineComponent, h, onUnmounted, ref } from 'vue'
-import { popoverEmits, popoverProps } from '../../../../components'
+import { computed, defineComponent, h, onUnmounted, ref, SetupContext, useAttrs } from 'vue'
+import { popoverProps, popoverEmits, type PopoverProps } from '../../../../components/popover'
 import { buildDesignClasses, buildDesignStyles } from '../../../../props'
+import { MarginProps, marginProps } from '../../../../utils'
 
 export const Popover = defineComponent({
   name: 'NutuiPopover',
-  props: popoverProps,
+  props: {
+    ...popoverProps,
+    ...marginProps,
+  },
   emits: popoverEmits,
-  setup (props, { slots, emit }) {
-    console.log('===popover1 props', props)
+  setup (props: PopoverProps & MarginProps, { slots, emit }: SetupContext) {
     const open = ref(false)
     const parent = usePopoverHost()
     const $bus = useBus()
@@ -40,7 +43,7 @@ export const Popover = defineComponent({
 
     return () => h('div', {
         class: [
-          ...open.value ? ['popover-open'] : []
+          ...open.value ? ['popover-open'] : [],
         ],
         onClick: (e) => {
           open.value = true
@@ -48,6 +51,5 @@ export const Popover = defineComponent({
           e.preventDefault()
         }
       }, popup())
-    }
+  }
 })
-

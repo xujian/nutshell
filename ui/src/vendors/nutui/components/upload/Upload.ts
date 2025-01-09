@@ -1,8 +1,10 @@
 import { defineComponent, h } from 'vue'
-import { NsButton, uploadEmits, uploadProps } from '../../../../components'
+import { uploadEmits, uploadProps } from '../../../../components/upload'
 import { renderFormItem } from '../../utils'
 import { Media } from '../../../../types/media'
 import { PreviewMediaParam, useNutshell } from '../../../../framework'
+import { NsButton } from '../../../../components/button'
+
 
 export const Upload = defineComponent({
   name: 'NutuiUpload',

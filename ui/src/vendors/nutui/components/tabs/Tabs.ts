@@ -1,5 +1,5 @@
 import { h, SetupContext } from 'vue'
-import { TabsItem, TabsProps } from '../../../../components'
+import { TabsItem, TabsProps } from '../../../../components/tabs'
 
 export const Tabs = (props: TabsProps, { emit, slots }: Omit<SetupContext, 'expose'>) => {
 

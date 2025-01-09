@@ -1,5 +1,5 @@
 import { defineComponent, h } from 'vue'
-import type { IconProps } from '../../../../components'
+import type { IconProps } from '../../../../components/icon'
 
 export const Icon = defineComponent({
   name: 'NutuiIcon',

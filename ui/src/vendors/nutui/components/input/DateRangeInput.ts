@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, ref } from 'vue'
 import { marginProps } from '../../../../utils'
-import { dateRangeInputProps, dateRangeInputEmits } from '../../../../components'
+import { dateRangeInputProps, dateRangeInputEmits } from '../../../../components/input'
 import { DateAsStringOrNumber, DateRange } from '../../../../types'
 import { renderFormItem } from '../../utils'
 

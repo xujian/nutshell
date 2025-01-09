@@ -8,7 +8,6 @@ export const CascadingSelect = defineComponent({
   name: 'AntdvCascadingSelect',
   props: cascadingSelectProps,
   setup(props, ctx) {
-    console.log(props, 'props')
 
     const { clearable, searchable } = props
 

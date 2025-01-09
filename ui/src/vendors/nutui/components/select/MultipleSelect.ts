@@ -1,6 +1,9 @@
 import { computed, defineComponent, h, ref } from 'vue'
 import { renderFormItem } from '../../utils'
-import { multipleSelectProps, NsChip, NsRow, NsSheet, SelectOption } from '../../../../components'
+import { multipleSelectProps, SelectOption } from '../../../../components/select'
+import { NsChip } from '../../../../components/chip'
+import { NsRow } from '../../../../components/flex'
+import { NsSheet } from '../../../../components/sheet'
 
 export const MultipleSelect = defineComponent({
   name: 'NutuiMultipleSelect',

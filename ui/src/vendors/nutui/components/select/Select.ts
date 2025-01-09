@@ -1,5 +1,5 @@
 import { computed, h, ref, SetupContext } from 'vue'
-import { SelectProps } from '../../../../components'
+import type { SelectProps } from '../../../../components/select'
 import { UniDataItem } from '../../../../shared'
 import { renderFormItem } from '../../utils'
 

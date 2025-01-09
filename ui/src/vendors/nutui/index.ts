@@ -1,4 +1,4 @@
-import { getCurrentInstance, h, App, inject, SetupContext } from 'vue'
+import { getCurrentInstance, h, App, inject, FunctionalComponent } from 'vue'
 import { CoreVendor } from '../../shared/models/CoreVendor'
 import components from './components'
 import { ConfirmOptions, DialogOptions } from '../../services/dialog'
@@ -65,10 +65,10 @@ export default function getNutuiVendor (): CoreVendor {
         })
       }
     },
-    render (props: any, ctx: Omit<SetupContext, 'expose'>) {
+    render (props: any, ctx) {
       const vm = getCurrentInstance()
-      const name = vm?.parent?.type?.name?.slice(2)! //.toLowerCase() // NsButton -> Button
-      const component = components[name] || makeDummy(name)
+      const name = vm?.type?.name?.slice(2)! //.toLowerCase() // NsButton -> Button
+      const component = components[name] || makeDummy(name) as FunctionalComponent
       const { slots } = ctx
       return h(component, props, slots)
     },

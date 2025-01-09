@@ -6,8 +6,6 @@ import { MarginProps } from '../../../../utils'
 
 export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose'>) => {
 
-  console.log('===FactsItem', props)
-
   const content = ctx.slots.default ||
     (() => props.value)
 

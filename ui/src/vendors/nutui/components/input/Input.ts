@@ -1,5 +1,5 @@
 import { defineComponent, h } from 'vue'
-import { inputEmits, inputProps, inputSlots } from '../../../../components'
+import { inputEmits, inputProps, inputSlots } from '../../../../components/input'
 import { marginProps } from '../../../../utils'
 import { renderFormItem, useForm } from '../../utils'
 
@@ -35,15 +35,6 @@ export const Input = defineComponent({
           onChange: (e: any) => {
             emit('change', e.detail.value)
           },
-          // onFocus: (e: FocusEvent) => {
-          //   emit('focus')
-          // },
-          // onKeyup: (e: KeyboardEvent) => {
-          //   emit('keyup', e.key)
-          // },
-          // onPressEnter: (e: KeyboardEvent) => {
-          //   emit('enter')
-          // }
         },
         {
           ...slots.prepend ? { left: slots.prepend} : {},
