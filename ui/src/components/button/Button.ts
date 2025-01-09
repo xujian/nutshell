@@ -6,6 +6,7 @@ import { type IconSlots } from '../../props'
 import { define, MakePropsType } from '../../utils'
 import { Color } from '../../composables/theme'
 import { buildProps } from '../../utils/private/props'
+import { usePopover } from '../../composables'
 
 export const useButtonProps = buildProps({
   /**
@@ -27,7 +28,7 @@ export const useButtonProps = buildProps({
   ...useSizeProps(),
 })
 
-const buttonProps = {
+export const buttonProps = {
   ...useButtonProps(),
   ...useHasIconProps(),
   ...useDesignProps(),

@@ -28,13 +28,11 @@ export const popoverProps = {
 export type PopoverEmits = {
   mouseleave (): void,
   mouseenter (): void,
-  click (): void,
 }
 
 export const popoverEmits: PopoverEmits = {
-  mouseleave () {},
-  mouseenter () {},
-  click () {},
+  mouseleave: () => true,
+  mouseenter: () => true,
 }
 
 export type PopoverSlots = {
@@ -53,7 +51,7 @@ export const NsPopover = define({
   emits: popoverEmits,
   setup (props, { slots }) {
     return {
-      // structured: true,
+      structured: true,
     }
   }
 })
