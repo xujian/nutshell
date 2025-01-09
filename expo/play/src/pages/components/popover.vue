@@ -15,18 +15,21 @@
           <ns-menu fill="transparent" :items="commands" />
         </ns-popover>
       </ns-button>
-      <code-view :code="codes[0]" />
-      <p>&nbsp;</p>
+      <code-view language="html" :code="codes[0]" />
+      <h3>使用填色</h3>
       <ns-button color="primary" class="full-width" label="...">
         <ns-popover fill="#333333" stroke="#444" title="指令">
           <ns-menu fill="transparent" :items="commands" />
         </ns-popover>
       </ns-button>
+      <ns-form name="main" v-model="formData"></ns-form>
     </ns-page-content>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
+import { reactive } from 'vue'
+
 
 const commands = [
     { label: '撤销', name: 'cancel' },
@@ -45,4 +48,6 @@ const codes: string[] = [
   </ns-popover>
 </ns-button>`
 ]
+
+const formData = reactive({})
 </script>
