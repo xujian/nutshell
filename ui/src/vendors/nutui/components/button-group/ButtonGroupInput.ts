@@ -1,5 +1,5 @@
 import { defineComponent, h } from 'vue'
-import { buttonGroupInputProps, NsButtonGroup } from '../../../../components'
+import { buttonGroupInputProps, NsButtonGroup } from '../../../../components/button-group'
 import { renderFormItem } from '../../utils'
 
 export const ButtonGroupInput = defineComponent({
