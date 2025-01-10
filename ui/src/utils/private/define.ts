@@ -1,11 +1,11 @@
-import { ComponentObjectPropsOptions,
+import {
+  ComponentObjectPropsOptions,
   SetupContext, SlotsType, ObjectEmitsOptions,
   Ref, ref, h,
   defineComponent,
-  EmitsOptions, FunctionalComponent,
-  unref,
-  isRef,
-  computed} from 'vue'
+  EmitsOptions, FunctionalComponent, isRef,
+  computed
+} from 'vue'
 import { kebabCase } from '../text'
 import { buildDesignClasses, buildDesignStyles, hasDesignProps, hasVariantProps } from '../../props'
 import { MakePropsType, MarginProps } from './helpers'
@@ -79,8 +79,8 @@ export function define<
       classes = computed(() => [
         ...hasDesignProps(props) ? buildDesignClasses(props) : [],
         ...hasVariantProps(props)
-          ? props.variant
-            ? [`variant-${props.variant}`]
+          ? Reflect.get(props, 'variant')
+            ? [`variant-${Reflect.get(props, 'variant')}`]
             : []
           : [],
         ]),
@@ -98,7 +98,7 @@ export function define<
       ...methods
     })
 
-    return () => h(render.value, {
+    return () => render.value({
       ...props,
       ...extraProps,
       class: [
@@ -111,7 +111,7 @@ export function define<
       ...structured ? { classes: classes.value } : {},
       ...structured ? { styles: styles.value } : {},
       vendorRef,
-    }, ctx.slots)
+    }, ctx)
   }
 
   /**
