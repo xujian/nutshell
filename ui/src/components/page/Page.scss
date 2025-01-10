@@ -1,0 +1,5 @@
+.ns-page {
+  &.with-design {
+    background-color: var(--fill, var(--ns-background));
+  }
+}
