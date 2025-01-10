@@ -1,13 +1,14 @@
 .ns-radio-group {
   width: auto;
-  &.ant-radio-group {
+  .ant-radio-group {
     flex-wrap: wrap;
-    .ant-radio-wrapper {
-      height: 2em;
-      line-height: 2em;
-      color: var(--ns-text);
-      margin-right: 12px;
-    }
+    gap: 0;
+  }
+  .ant-radio-wrapper {
+    height: 32px;
+    line-height: 32px;
+    color: var(--foreground, var(--ns-text));
+    margin-right: 12px;
   }
   .ant-form-item-control {
     align-items: start;
