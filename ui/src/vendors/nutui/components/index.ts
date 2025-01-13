@@ -1,5 +1,5 @@
 import { Button } from './button'
-import { Input, NumberInput, DateInput, DateRangeInput } from './input'
+import { Input, NumberInput, DateInput, DateRangeInput, Textarea } from './input'
 import { Chip, Chips } from './chip'
 import { Icon } from './icon'
 import { Select, CascadingSelect, MultipleSelect } from './select'
@@ -36,6 +36,8 @@ const components: Record<string, VendorComponent> = {
   DateInput,
   // @ts-ignore
   DateRangeInput,
+  // @ts-ignore
+  Textarea,
   // @ts-ignore
   Chip,
   // @ts-ignore
