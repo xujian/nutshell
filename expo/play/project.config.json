@@ -1,5 +1,5 @@
 {
-  "miniprogramRoot": "dist/",
+  "miniprogramRoot": "dist/weapp/",
   "projectname": "Nutshell Expo Play",
   "description": "Nutshell components playground",
   "appid": "wxda54e5109e09a60b",

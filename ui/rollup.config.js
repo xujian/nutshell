@@ -11,6 +11,7 @@ import terser from '@rollup/plugin-terser'
 import { babel } from '@rollup/plugin-babel'
 import { visualizer } from 'rollup-plugin-visualizer'
 import packageJson from '../package.json' with { type: 'json' }
+import { log } from 'console'
 // import alias from '@rollup/plugin-alias'
 // import NutUIResolver from '@nutui/nutui/dist/resolver'
 // import path from 'path'
@@ -263,7 +264,8 @@ export default [
       // terser(),
       {
         transform: (source, id) => {
-          if (/src\/vendors\/index/.test(id)) {
+          const path = id.split('\\').join('/')
+          if (/\/src\/vendors\/index/.test(path)) {
             return {
               code: source.replace(/antdv\:\santdvToImport/, '')
             }
