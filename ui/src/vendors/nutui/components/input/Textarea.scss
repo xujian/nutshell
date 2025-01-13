@@ -1,3 +1,27 @@
 .ns-form-item {
-  .nut-textarea {}
+  .nut-textarea {
+    width: 100%;
+    height: var(--h, 40px);
+    background-color: transparent;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: var(--ns-r);
+    .input-placeholder {
+      line-height: 1.4rem;
+      color: var(--ns-neutral--50);
+    }
+  }
+  &.variant-outline {
+    .nut-textarea {
+      border-color: var(--ns-stroke);
+    }
+  }
+  &.variant-solid {
+    .nut-textarea {
+      background-color: var(--ns-fill);
+    }
+  }
+  .nut-textarea__textarea {
+    height: 100%;
+  }
 }

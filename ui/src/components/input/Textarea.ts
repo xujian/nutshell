@@ -1,5 +1,5 @@
 import { define, MakePropsType } from '../../utils'
-import { useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
+import { useDesignProps, useFieldProps, useModelValuePropsForInput, useVariantProps } from '../../props'
 import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 import { PropType } from 'vue'
 
@@ -27,7 +27,7 @@ export const textareaProps = {
   },
   ...useVariantProps(),
   ...useModelValuePropsForInput(),
-  ...useFieldProps()
+  ...useFieldProps(),
 }
 
 export type TextareaEmits = {

@@ -23,6 +23,9 @@ export const Textarea = defineComponent({
           disabled: props.disabled ?? false,
           maxLength: props.maxlength ?? 200,
           textAlignAlign: props.variant === 'solid' ? 'left' : 'right',
+          autosize: props.autoSize as boolean,
+          limitShow: props.hasCount,
+          rows: props.rows,
           placeholderClass: 'input-placeholder',
           'onUpdate:modelValue': (value: number | string) => {
             props['onUpdate:modelValue']?.(value)
@@ -32,7 +35,7 @@ export const Textarea = defineComponent({
             emit('blur')
           },
           onChange: (e: any) => {
-            emit('change', e.detail.value)
+            emit('change', e)
           },
           // onFocus: (e: FocusEvent) => {
           //   emit('focus')

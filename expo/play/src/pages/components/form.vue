@@ -5,6 +5,26 @@
       :blur="10" reveal has-back-button />
     <ns-page-content>
       <ns-form v-model="formData">
+        <h3>文本输入框</h3>
+        <ns-card fill="#fff">
+          <ns-input
+            v-model="formData.name"
+            name="name"
+            :rules="['required']"
+            label="姓名"
+            placeholder="请输入姓名" />
+        </ns-card>
+        <h3>文本域输入框</h3>
+        <ns-card fill="#fff">
+          <ns-textarea
+            style="height: 60px; --h: 60px"
+            v-model="formData.description"
+            name="description"
+            :rules="['required']"
+            label="补充信息"
+            hasCount
+            placeholder="请输入补充信息" />
+        </ns-card>
         <h3>数字输入框</h3>
         <ns-card fill="#fff">
           <ns-number-input
@@ -118,6 +138,8 @@ const formatter = (value: number | string) => {
 }
 
 const formData = reactive({
+  name: '',
+  description: '',
   count: 100,
   due: void 0,
   followup: void 0,
