@@ -15,7 +15,7 @@
     "build": "taro build --type weapp",
     "build:weapp": "taro build --type weapp",
     "build:h5": "taro build --type h5",
-    "deploy": "rsync -avz --delete dist/h5/ root@47.107.54.47:/var/docker/play/app/"
+    "deploy": "rsync -avz --delete dist/h5/ app@10.11.0.195:/app/code/expo-play/"
   },
   "browserslist": [
     "last 3 versions",
