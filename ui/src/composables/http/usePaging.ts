@@ -18,7 +18,7 @@ export const usePaging: UsePaging = (load: UsePagingLoadFunction) => {
 
   const paging = reactive<Paging>({
     current: 0,
-    totalRecords: 10,
+    totalRecords: 0,
     pageSize: 10,
     total: 0,
     loaded: false,
