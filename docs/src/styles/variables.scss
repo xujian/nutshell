@@ -1,0 +1,8 @@
+@use '@uxda/nutshell/variables' with (
+  $r-root: 4px,
+  $base: (
+    abstract: (
+      background: #eaeceb
+    )
+  )
+)
