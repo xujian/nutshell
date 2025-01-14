@@ -7,3 +7,7 @@ export * from './props'
 export * from './types'
 export * from './Resolver'
 export * from './framework'
+
+export {
+  components
+} from './components/all'
