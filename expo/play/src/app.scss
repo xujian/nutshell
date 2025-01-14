@@ -2,4 +2,5 @@
 @use '@uxda/nutshell/styles';
 @use '@uxda/nutshell/styles-nutui';
 @use './styles/page.scss';
-@use './styles/components.scss';
+@use './styles/components';
+@use './styles/overrides-nutshell';
