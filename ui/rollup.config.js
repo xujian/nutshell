@@ -157,7 +157,7 @@ export default [
       nodeResolve({ extensions }),
       babel({
         extensions,
-        babelHelpers: 'inline',
+        // babelHelpers: 'inline',
       }),
       AutoImport({
         dirs: [
