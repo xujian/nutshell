@@ -6,6 +6,7 @@
       v-for="variant in variants"
       :key="variant">
       <h6 class="title">variant="<span class="b">{{ variant }}</span>"</h6>
+      <!-- @vue-ignore -->
       <slot :variant="variant"></slot>
     </div>
   </div>

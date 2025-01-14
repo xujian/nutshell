@@ -18,6 +18,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, ref, shallowRef } from 'vue'
+// @ts-ignore
 import { getBoard } from 'virtual:boards'
 import VirtualMissing from './VirtualMissing.vue'
 
