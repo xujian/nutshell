@@ -130,6 +130,7 @@ export const Page = defineComponent({
       },
       onComplete: onSheetComplete,
       onCancel: onSheetCalcel,
+      onClose: onSheetCalcel,
       ...sheetOptions.value
     }, {
       default: () => sheetComponent.value
