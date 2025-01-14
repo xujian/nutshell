@@ -8,7 +8,7 @@ import { Nutshell } from '@uxda/nutshell'
 import plugins from './plugins'
 import '@nutui/nutui/dist/style.css';
 import '@uxda/nutshell/third.css';
-import '@uxda/icons/font.css'
+// import '@uxda/icons/font.css'
 import './styles/main.scss'
 
 const head = createHead()

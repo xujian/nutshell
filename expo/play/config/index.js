@@ -42,9 +42,9 @@ const config = {
   outputRoot: outputRoots[process.env.TARO_ENV],
   plugins: [
     '@tarojs/plugin-html',
-    ['@uxda/taro-plugin', {
-      // artifacts: true
-    }]
+    // ['@uxda/taro-plugin', {
+    //   // artifacts: true
+    // }]
   ],
   defineConstants: {
   },
