@@ -51,9 +51,9 @@ export const NsButtonGroup = defineComponent({
   props: buttonGroupProps,
   emits: buttonGroupEmits,
   setup (props, { emit }) {
-
     const button = (item: UniDataItem) => h(NsButton, {
       class: [
+        'ns-button-group-item',
         ...props.size ? [`size-${props.size}`] : [],
         ...item.value == props.modelValue ? ['active'] : [],
       ],

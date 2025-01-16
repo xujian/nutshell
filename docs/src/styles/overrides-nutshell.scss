@@ -1,3 +1,26 @@
 .ns-page {
-  background-color: #ff0;
+  // button
+  .ns-button {
+    &:not(.ns-button-group-item) {
+      --ns-r: 4px;
+    }
+    & + .ns-button:not(.ns-button-group-item) {
+      margin-left: 12px;
+    }
+    &.variant-plain:not(.ns-button-group-item) {
+      padding: 0;
+    }
+  }
+
+  // button-group
+  .ns-button-group {
+    .ns-button+.ns-button {
+      margin-left: 0;
+    }
+  }
+
+  // card
+  .ns-card {
+    --r: 10px;
+  }
 }
