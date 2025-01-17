@@ -1,7 +1,8 @@
 <template>
   <ns-page class="button-group-page">
     <ns-page-content>
-      <h1>ns-button-group 按钮组</h1>
+      <h1>按钮组</h1>
+      <p class="caption">&lt;ns-button-group&gt;</p>
       <mobile-button url="pages/components/button-group" />
       <p>&nbsp;</p>
       <note>用于将一系列按钮组合在一起,形成一个整体的视觉</note>

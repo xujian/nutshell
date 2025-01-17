@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="button-page">
+  <ns-page class="dropdown-page">
     <ns-page-content>
       <h1 class="my-lg">下拉菜单</h1>
       <div class="caption">&lt;ns-dropdown&gt;</div>

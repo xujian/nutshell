@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="button-page">
+  <ns-page class="upload-page">
     <ns-page-content>
       <h1>文件上传</h1>
       <p class="caption">&lt;ns-upload&gt;</p>

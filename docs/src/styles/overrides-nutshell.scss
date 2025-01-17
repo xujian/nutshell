@@ -27,3 +27,17 @@
     }
   }
 }
+
+// popover
+.ns-popover {
+  .ns-list {
+    width: 100%;
+    .caption, .title {
+      color: #fff;
+    }
+    .title {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+  }
+}

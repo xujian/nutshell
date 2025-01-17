@@ -1,7 +1,8 @@
 <template>
   <ns-page class="button-page">
     <ns-page-content>
-      <h1>ns-button 按钮</h1>
+      <h1>按钮</h1>
+      <p class="caption">&lt;ns-button&gt;</p>
       <mobile-button url="pages/components/button" />
       <p>&nbsp;</p>
       <note>按钮用于触发一个操作，如提交表单。</note>
@@ -65,5 +66,10 @@ import { MobileMockup } from '@/components'
 
 <style lang="scss">
 .button-page {
+  .variant-cases {
+    .ns-button {
+      width: 82px;
+    }
+  }
 }
 </style>

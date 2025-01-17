@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="button-page">
+  <ns-page class="chip-page">
     <ns-page-content>
       <h1 class="my-lg">标签</h1>
       <div class="caption">&lt;ns-chip&gt;</div>

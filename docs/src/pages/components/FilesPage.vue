@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="button-page">
+  <ns-page class="files-page">
     <ns-page-content>
       <h1>文件表</h1>
       <p class="caption">&lt;ns-files&gt;</p>

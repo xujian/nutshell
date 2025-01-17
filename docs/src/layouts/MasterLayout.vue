@@ -21,7 +21,7 @@ const toggleNav = () => {
     <section role="main" class="app-main p-lg">
       <router-view />
     </section>
-    <footer class="app-footer flex row align-end">
+    <footer class="app-footer align-end">
       <app-footer></app-footer>
     </footer>
     <aside class="app-drawer">Drawer</aside>

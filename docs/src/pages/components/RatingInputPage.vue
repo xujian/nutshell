@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="button-page">
+  <ns-page class="rating-input-page">
     <ns-page-content>
       <h1>星星输入框</h1>
       <p class="caption">&lt;ns-rating-input&gt;</p>

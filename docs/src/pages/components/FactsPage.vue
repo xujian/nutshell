@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="button-page">
+  <ns-page class="facts-page">
     <ns-page-content>
       <h1>详表</h1>
       <p class="caption">&lt;ns-facts&gt;</p>
