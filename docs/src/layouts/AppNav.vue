@@ -36,7 +36,7 @@ const menuData = computed(() => [
     key: 'theming',
     children: [
       {
-        label: '视觉风格',
+        label: '视觉风格 design',
         key: '/design'
       },
       {
@@ -48,19 +48,19 @@ const menuData = computed(() => [
         key: '/variants'
       },
       {
-        label: '磨砂玻璃效果',
+        label: '磨砂玻璃效果 glassmorphism',
         key: '/design/glassmorphism'
       },
       {
-        label: '预制渐层',
+        label: '预制渐层 gradients',
         key: '/design/gradients'
       },
       {
-        label: '预制动画填充',
+        label: '预制动画填充 motions',
         key: '/design/motions'
       },
       {
-        label: '预制图案填充',
+        label: '预制图案填充 patterns',
         key: '/design/patterns'
       },
     ]
@@ -125,11 +125,11 @@ const menuData = computed(() => [
             key: '/components/button'
           },
           {
-            label: '按钮组',
+            label: '按钮组 button-group',
             key: '/components/button-group'
           },
           {
-            label: '弹出命令',
+            label: '弹出命令 popover',
             key: '/components/popover'
           },
           {
@@ -421,7 +421,9 @@ const menuData = computed(() => [
     .ant-menu-inline .ant-menu-item,
     .ant-menu-light.ant-menu-inline .ant-menu-item {
       height: 32px;
-      font-size: 12px;
+      &.ant-menu-item-only-child {
+        font-size: 12px;
+      }
     }
     .ant-menu-item-selected {
       color: #fff;

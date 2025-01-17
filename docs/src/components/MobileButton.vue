@@ -23,7 +23,7 @@ const openMobile = () => {
     width: 480,
     fill: 'transparent',
     props: {
-      url: props.url
+      url: `http://nsm.ddjf.info/${props.url}`
     }
   })
 }

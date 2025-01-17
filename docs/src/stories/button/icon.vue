@@ -1,7 +1,7 @@
 <template>
   <ns-row class="with-icon" align="center" justify="start">
     <ns-button
-      variant="plain"
+      variant="outlined"
       icon="https://simple.shensi.tech/icons/pdf.svg"
       label="证件识别" />
     <ns-button

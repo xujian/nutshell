@@ -5,5 +5,5 @@ const text = ref('确定')
 </script>
 
 <template>
-  <ns-button variant="outlined" :label="text" />
+  <ns-button variant="outlined" color="primary" :label="text" />
 </template>

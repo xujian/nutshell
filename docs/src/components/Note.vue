@@ -11,7 +11,7 @@ export type NoteProps = {
 withDefaults(
   defineProps<NoteProps>(),
   {
-    title: '注意'
+    title: '介绍'
   }
 )
 
