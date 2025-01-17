@@ -110,11 +110,11 @@ $alphas: (
         color: var(--ns-#{$name});
         --foreground: var(--ns-#{$name});
         &:hover {
-          border-color: color.adjust($value, $alpha: -0.3);
-          color: color.adjust($value, $alpha: -0.3);
+          border-color: color.adjust($value, $blackness: 10%);
+          color: color.adjust($value, $alpha: 0.2);
         }
         &:active {
-          border-color: color.adjust($value, $lightness: +10%);
+          border-color: color.adjust($value, $blackness: 20%);
         }
         &.active {
           background-color: var(--ns-#{$name});
@@ -127,16 +127,16 @@ $alphas: (
         }
       }
       &.variant-soft {
-        background-color: color.adjust($value, $alpha: -0.25);
-        border-color: color.adjust($value, $whiteness: +50%, $alpha: -0.4);
-        color: color.adjust($value, $lightness: +40%);
+        background-color: color.adjust($value, $whiteness: +60%);
+        border-color: color.adjust($value, $whiteness: +60%);
+        color: color.mix(#666666, $value, $weight: 50%, $method: rgb);
       }
       &.variant-plain {
         background-color: transparent;
         border-color: transparent;
         --foreground: var(--ns-#{$name});
         &:hover {
-          color: color.adjust($value, $alpha: -0.3);
+          color: color.adjust($value, $alpha: 0.2);
           // background-color: #00000022;
         }
       }
