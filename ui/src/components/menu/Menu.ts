@@ -12,9 +12,15 @@ export type MenuItem = {
   children?: MenuItem[]
 } & UniDataItem
 
+export type MenuDirectionType = 'vertical' | 'horizontal' | 'inline'
+
 export const menuProps = {
   items: {
     type: Array as PropType<MenuItem[]>,
+  },
+  direction: {
+    type: String as PropType<MenuDirectionType>,
+    default: 'vertical'
   },
   ...useDesignProps()
 }

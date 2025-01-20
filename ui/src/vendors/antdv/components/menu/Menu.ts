@@ -13,7 +13,7 @@ export const Menu = (props: MenuProps, ctx: SetupContext) => {
     return {
       key: item.value,
       label: item.label,
-      popupClassName: ['ns-menu'].join(' '),
+      popupClassName: ['ns-menu-submenu'].join(' '),
       ...(item.children
         ? {
             children: item.children.map(transformItem)
@@ -26,6 +26,7 @@ export const Menu = (props: MenuProps, ctx: SetupContext) => {
 
   return h(AntdvMenu, {
     selectable: false,
+    mode: props.direction,
     items: antdvItems,
     onClick: (e: MenuInfo) => {
       ctx.emit('click', {

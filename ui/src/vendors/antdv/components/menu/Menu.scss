@@ -26,4 +26,21 @@
       }
     }
   }
+  &.ant-menu-inline {
+    .ant-menu-submenu-open {
+      height: auto !important;
+    }
+  }
+  &.ant-menu-horizontal {
+    .ant-menu-item, .ant-menu-submenu {
+      width: auto;
+    }
+  }
+  &-submenu.ant-menu {
+    .ant-menu-item {
+      height: 32px;
+      line-height: 32px;
+      font-size: 12px;
+    }
+  }
 }

@@ -1,12 +1,10 @@
 <template>
   <ns-row justify="start">
-    <ns-menu fill="primary" :items="items" />
+    <ns-menu :items="items" />
   </ns-row>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
-
 const items = [
   {
     label: '账户',
