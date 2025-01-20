@@ -1,6 +1,6 @@
 <template>
   <ns-row justify="start">
-    <ns-button label="气泡确认框">
+    <ns-button color="primary" label="气泡确认框">
       <ns-popover-confirm v-model="popoverOpen"
         title="提示"
         trigger="mouseenter"

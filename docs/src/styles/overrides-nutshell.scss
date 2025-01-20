@@ -10,6 +10,12 @@
     &.variant-plain:not(.ns-button-group-item) {
       padding: 0;
     }
+    &.fill-neutral.variant-outlined {
+      color: #000;
+      &:hover {
+        color: rgba(0, 0, 0, 0.7);
+      }
+    }
   }
 
   // button-group
@@ -35,9 +41,22 @@
     .caption, .title {
       color: #fff;
     }
-    .title {
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
   }
 }
+.ns-popover-confirm-content {
+  .buttons {
+    margin-top: 10px;
+  }
+}
+
+// list
+.ns-list {
+  .list-item .title {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .list-item .caption {
+    line-height: 20px;
+  }
+}
+

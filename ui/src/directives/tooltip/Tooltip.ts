@@ -26,7 +26,8 @@ const Tooltip: Directive = {
 
 const install = (app: App, $n: DollarNutshell) => {
   app.use(VueTippy, {
-    directive: 'tooltip'
+    directive: 'tooltip',
+    theme: 'dark',
   })
 }
 

@@ -19,7 +19,7 @@ export const Popover = defineComponent({
         delay: [200, 20_000],
         trigger: props.trigger || 'mouseenter',
         interactive: true,
-        theme: 'light',
+        theme: 'dark',
         // @ts-ignore
         placement: props.placement || 'top' as Placement,
         appendTo: document.body

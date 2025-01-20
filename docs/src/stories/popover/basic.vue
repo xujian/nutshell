@@ -1,9 +1,8 @@
 <template>
   <ns-row justify="around">
-    <ns-button label="保存草稿">
-      <ns-popover title="提示">
-        <p>1. 草稿需要发布才能生效</p>
-        <p>2. 保存草稿不影响现有流程</p>
+    <ns-button variant="outlined" color="primary" label="保存草稿">
+      <ns-popover>
+        客户标签的筛选值取自最新的建档配置，修改或删除的标签暂无法筛选
       </ns-popover>
     </ns-button>
     <ns-chip label="微信">

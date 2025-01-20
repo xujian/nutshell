@@ -95,6 +95,7 @@ export const NsPopoverConfirm = defineComponent({
           class: ['button-cancel'],
           size: 'xs',
           color: 'neutral',
+          variant: 'outlined',
           label: '取消',
           onClick: async () => {
             if (props?.onCancel) {
@@ -129,6 +130,16 @@ export const NsPopoverConfirm = defineComponent({
         default: slots.default
           ? slots.default
           : () => props.content
+      }),
+      title = () => h('div', {
+        class: [
+          'ns-popover-title',
+          'p-sm'
+        ]
+      }, {
+        default: slots.title
+          ? slots.title
+          : () => props.title
       })
 
     const confirm = () => h('div', {
@@ -136,6 +147,7 @@ export const NsPopoverConfirm = defineComponent({
         'confirm',
       ]
     }, [
+      title(),
       content(),
       buttons()
     ])
