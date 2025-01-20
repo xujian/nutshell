@@ -49,6 +49,28 @@
   }
 }
 
+// dropdown
+.ns-dropdown {
+  &:not(.square):not(.round) {
+    --r: 4px;
+  }
+  & + .ns-dropdown {
+    margin-left: 12px;
+  }
+  &-menu {
+    box-shadow: 0 4px 12px #0000001a;
+    background: #fff;
+    overflow: hidden;
+    .ant-dropdown-menu {
+      --r: 4px;
+      padding: 6px 8px;
+    }
+    .ant-dropdown-menu-item {
+      height: 40px;
+    }
+  }
+}
+
 // list
 .ns-list {
   .list-item .title {

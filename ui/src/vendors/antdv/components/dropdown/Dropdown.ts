@@ -15,6 +15,7 @@ export const Dropdown = defineComponent({
       width: props.width,
       height: props.height,
       arrow: true,
+      overlayClassName: 'ns-dropdown-menu'
     }, {
       default: () => props.label,
       overlay: () => h(NsMenu, {
@@ -23,7 +24,8 @@ export const Dropdown = defineComponent({
           emit('change', item)
         },
         items: props.items,
-      })
+      }),
+      ...slots.icon ? { icon: slots.icon} : {},
     })
   }
 })
