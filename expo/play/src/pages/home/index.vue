@@ -257,7 +257,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '文本输入框',
         name: '<ns-input>',
         caption: '',
-        link: '/pages/components/input',
+        link: '/pages/components/input/input',
       },
       {
         title: '下拉选框',
