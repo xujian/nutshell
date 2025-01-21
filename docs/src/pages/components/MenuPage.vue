@@ -22,11 +22,14 @@
           <ns-menu :items="items" :direction="direction" />
         </div>
       </div>
+      <h2>带Icon</h2>
+      <story file="menu/icon" />
     </ns-page-content>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
+
 const directions = ['inline', 'vertical', 'horizontal']
 
 const items = [
@@ -66,7 +69,8 @@ const items = [
       flex-direction: column;
       justify-content: start;
       align-items: start;
-      padding-left: 30px;
+      padding: 20px;
+      min-height: 180px;
     }
     .title {
       position: relative;
@@ -78,9 +82,10 @@ const items = [
 
   .direction-cases {
     width: 100%;
-    .item {
-      min-height: 220px;
-    }
+  }
+
+  .ns-menu {
+    min-width: 160px;
   }
 }
 </style>

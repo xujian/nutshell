@@ -13,6 +13,8 @@ export const Menu = (props: MenuProps, ctx: SetupContext) => {
     return {
       key: item.value,
       label: item.label,
+      // @ts-ignore
+      icon: item.icon,
       popupClassName: ['ns-menu-submenu'].join(' '),
       ...(item.children
         ? {

@@ -16,6 +16,9 @@
         color: rgba(0, 0, 0, 0.7);
       }
     }
+    &:not(.size-xs):not(.size-sm) {
+      // font-size: 14px;
+    }
   }
 
   // button-group
@@ -86,4 +89,3 @@
     line-height: 20px;
   }
 }
-

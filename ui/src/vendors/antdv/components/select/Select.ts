@@ -1,4 +1,4 @@
-import { selectProps, NsMenu } from '../../../../components'
+import { selectProps } from '../../../../components'
 import { defineComponent, h } from 'vue'
 import { Select as AntSelect } from 'ant-design-vue'
 import { SelectValue } from 'ant-design-vue/es/select'
