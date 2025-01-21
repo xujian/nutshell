@@ -41,7 +41,7 @@
 <script lang="ts" setup>
 import { ref, onUnmounted, computed } from 'vue'
 import { useBus, useNutshell } from '@uxda/nutshell/taro'
-import DemoSheet from '../../components/DemoSheet.vue'
+import DemoSheet from '../../../components/DemoSheet.vue'
 
 const contentScrollable = ref(false),
   darkScheme = ref(false),

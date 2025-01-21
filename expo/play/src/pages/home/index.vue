@@ -31,7 +31,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '页',
         name: '<ns-page>',
         caption: '',
-        link: '/pages/components/page',
+        link: '/pages/components/page/page',
       },
       {
         title: 'Page header',
@@ -125,7 +125,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '按钮',
         name: '<ns-button>',
         caption: '',
-        link: '/pages/components/button',
+        link: '/pages/components/button/button',
       },
       {
         title: '按钮组',
@@ -137,7 +137,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '弹出命令',
         name: '<ns-popover>',
         caption: '',
-        link: '/pages/components/popover',
+        link: '/pages/components/popover/popover',
       },
       {
         title: '下拉框',
@@ -161,7 +161,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '标签',
         name: '<ns-chip>',
         caption: '',
-        link: '/pages/components/chip',
+        link: '/pages/components/chip/chip',
       },
       {
         title: '步骤条',
@@ -208,7 +208,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: 'Tabs',
         name: '<ns-tabs>',
         caption: '',
-        link: '/pages/components/tabs',
+        link: '/pages/components/tabs/tabs',
       },
       {
         title: '主导航条',
@@ -227,7 +227,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '卡片',
         name: '<ns-card>',
         caption: '',
-        link: '/pages/components/card',
+        link: '/pages/components/card/card',
       },
       {
         title: '横向排列',
@@ -251,7 +251,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '表单',
         name: '<ns-form>',
         caption: '',
-        link: '/pages/components/form',
+        link: '/pages/components/form/form',
       },
       {
         title: '文本输入框',
@@ -323,19 +323,19 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '连续平铺',
         name: '<ns-repeator>',
         caption: '',
-        link: '/pages/components/repeator',
+        link: '/pages/components/repeator/repeator',
       },
       {
         title: '详表',
         name: '<ns-facts>',
         caption: '',
-        link: '/pages/components/facts',
+        link: '/pages/components/facts/facts',
       },
       {
         title: '时间线',
         name: '<ns-timeline>',
         caption: '',
-        link: '/pages/components/timeline',
+        link: '/pages/components/timeline/timeline',
       },
       {
         title: '文件表',

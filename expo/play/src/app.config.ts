@@ -19,7 +19,7 @@ export default defineAppConfig({
     'pages/interactive/sheet',
     'pages/guide/scroll',
     'pages/tokens/spacing',
-    ...components.map(x => `pages/components/${x}`)
+    ...components.map(x => `pages/components/${x}/${x}`)
   ],
   // tabBar: {
   //   custom: true,
