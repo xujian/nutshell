@@ -89,3 +89,13 @@
     line-height: 20px;
   }
 }
+
+// chips
+.ns-chip {
+  --r: 2px;
+  margin-inline-end: 8px;
+  &.nut-tag {
+    padding: 0 8px;
+    height: 26px;
+  }
+}

@@ -3,16 +3,21 @@
     <ns-page-content>
       <h1 class="my-lg">标签</h1>
       <div class="caption">&lt;ns-chip&gt;</div>
-      <h2>Color</h2>
+      <p>&nbsp;</p>
+      <note>进行标记和分类的小标签。</note>
+      <p>&nbsp;</p>
+      <h2>颜色 Color</h2>
       <color-cases v-slot="{color}">
         <ns-chip
           label="已批复"
           :color="color" />
       </color-cases>
       <p>&nbsp;</p>
-      <h2>图标及R角</h2>
+      <h2>图标 Icon</h2>
       <story file="chip/icon.vue" />
-      <h2>Variants</h2>
+      <h2>圆角 R</h2>
+      <story file="chip/radius.vue" />
+      <h2>变体 Variants</h2>
       <variant-cases v-slot="{variant}" class="column">
         <ns-chip
           v-for="color in brands"

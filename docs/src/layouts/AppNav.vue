@@ -320,10 +320,6 @@ const menuData = computed(() => [
             label: '侧边栏 drawer',
             key: '/interactive/drawer'
           },
-          {
-            label: '气泡卡片 popover',
-            key: '/components/popover'
-          },
         ]
       },
       {
