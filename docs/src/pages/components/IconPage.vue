@@ -3,6 +3,10 @@
     <ns-page-content>
       <h1 class="my-lg">图标</h1>
       <p class="caption">&lt;ns-icon&gt;</p>
+      <mobile-button url="pages/components/icon" />
+      <p>&nbsp;</p>
+      <note>语义化的矢量图形</note>
+      <p>&nbsp;</p>
       <ns-card fill="#e7fe55">
         <code-view :code="samples[0]"></code-view>
         <p class="caption">最简化的用法，只需要提供 name 属性</p>

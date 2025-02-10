@@ -3,7 +3,10 @@
     <ns-page-content>
       <h1>级联下拉选框</h1>
       <p class="caption">&lt;ns-cascading-select&gt;</p>
-      <h2>Variants</h2>
+      <p>&nbsp;</p>
+      <note>级联选择框，需要从一组相关联的数据集合进行选择</note>
+      <p>&nbsp;</p>
+      <h2>变体 Variants</h2>
       <variant-cases v-slot="{variant}" class="column">
         <ns-cascading-select
           :options="cities"

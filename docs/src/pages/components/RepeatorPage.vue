@@ -3,6 +3,10 @@
     <ns-page-content>
       <h1>连续平铺</h1>
       <p class="caption">&lt;ns-repeator&gt;</p>
+      <mobile-button url="pages/components/repeator/repeator" />
+      <p>&nbsp;</p>
+      <note>统一风格的列表卡片展示，v-for的简化</note>
+      <p>&nbsp;</p>
       <h2>基本特性</h2>
       <p>&nbsp;</p>
       <story file="repeator/basic" />

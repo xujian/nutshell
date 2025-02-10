@@ -2,7 +2,8 @@
   <ns-page class="chip-page">
     <ns-page-content>
       <h1 class="my-lg">标签</h1>
-      <div class="caption">&lt;ns-chip&gt;</div>
+      <p class="caption">&lt;ns-chip&gt;</p>
+      <mobile-button url="pages/components/chip/chip" />
       <p>&nbsp;</p>
       <note>进行标记和分类的小标签。</note>
       <p>&nbsp;</p>

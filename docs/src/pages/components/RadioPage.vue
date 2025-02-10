@@ -3,6 +3,9 @@
     <ns-page-content>
       <h1 class="my-lg">单选框组</h1>
       <p class="caption">&lt;ns-radio-group&gt;/&lt;ns-radio&gt;</p>
+      <mobile-button url="pages/components/button" />
+      <p>&nbsp;</p>
+      <note>用于在多个备选项中选中单个状态。</note>
       <p>&nbsp;</p>
       <h2>子组件形式</h2>
       <p class="caption">&lt;ns-radio-group&gt;/&lt;ns-radio&gt;</p>

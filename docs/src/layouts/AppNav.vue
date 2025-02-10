@@ -168,7 +168,7 @@ const menuData = computed(() => [
           },
           {
             label: '星星 rating',
-            key: '/components/rating'
+            key: '/components/rating-input'
           },
           {
             label: '开关 switch',
@@ -243,14 +243,6 @@ const menuData = computed(() => [
           {
             label: '复选框 checkbox',
             key: '/components/checkbox'
-          },
-          {
-            label: '开关 switch-input',
-            key: '/components/switch-input'
-          },
-          {
-            label: '按钮组',
-            key: '/components/button-group-input'
           },
           {
             label: '星星输入框 rating-input',

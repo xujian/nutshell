@@ -2,8 +2,12 @@
   <ns-page>
     <ns-page-content>
       <h1>列表</h1>
-      <div class="caption">&lt;ns-list&gt;</div>
-      <p>列表是单栏的数据表示组件。</p>
+      <p class="caption">&lt;ns-list&gt;</p>
+      <mobile-button url="pages/components/button" />
+      <p>&nbsp;</p>
+      <note>列表是单栏的数据表示组件。</note>
+      <p>&nbsp;</p>
+      <h2>基本用法</h2>
       <story minimal file="list/basic" />
       <p>&nbsp;</p>
       <h2>带边框、箭头</h2>

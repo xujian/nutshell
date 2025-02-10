@@ -3,6 +3,10 @@
     <ns-page-content>
       <h1>各种时间线</h1>
       <p class="caption">&lt;ns-timeline&gt;</p>
+      <mobile-button url="pages/components/button" />
+      <p>&nbsp;</p>
+      <note>垂直展示的时间流信息。</note>
+      <p>&nbsp;</p>
       <h2>基本特性</h2>
       <p>&nbsp;</p>
       <story file="timeline/basic.vue" />

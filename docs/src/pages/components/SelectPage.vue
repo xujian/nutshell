@@ -3,7 +3,11 @@
     <ns-page-content>
       <h1 class="my-lg">下拉选框</h1>
       <p class="caption">&lt;ns-select&gt;</p>
-      <h2>Variants</h2>
+      <mobile-button url="pages/components/select" />
+      <p>&nbsp;</p>
+      <note>提供多个选项集合供用户选择</note>
+      <p>&nbsp;</p>
+      <h2>变体 Variants</h2>
       <variant-cases v-slot="{variant}" class="column">
         <ns-select
           v-model="value"

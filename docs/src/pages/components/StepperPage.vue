@@ -1,19 +1,23 @@
 <template>
   <ns-page class="stepper-page">
     <ns-page-content>
-      <h1>Tabbar</h1>
+      <h1>步骤条</h1>
       <p class="caption">&lt;ns-stepper&gt;</p>
+      <mobile-button url="pages/components/stepper" />
+      <p>&nbsp;</p>
+      <note>引导用户按照流程完成任务的导航条。</note>
+      <p>&nbsp;</p>
       <h2>基本用法</h2>
       <story file="stepper/basic.vue" />
       <p>&nbsp;</p>
-      <h2>Variant</h2>
+      <h2>变体 Variant</h2>
       <variant-cases direction="column" v-slot="{variant}">
         <ns-stepper class="basic-stepper"
           status="wait"
           :items="items" />
       </variant-cases>
       <p>&nbsp;</p>
-      <h2>箭头式</h2>
+      <h2>箭头式 Arrow</h2>
       <p class="caption">variant="<span class="b">arrow</span>"</p>
       <story file="stepper/arrow.vue" />
     </ns-page-content>

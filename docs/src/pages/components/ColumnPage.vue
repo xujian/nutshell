@@ -3,6 +3,10 @@
     <ns-page-content>
       <h1>纵向排列</h1>
       <p class="caption">&lt;ns-row&gt;</p>
+      <mobile-button url="pages/components/column" />
+      <p>&nbsp;</p>
+      <note>栅格化布局系统中的列排版</note>
+      <p>&nbsp;</p>
       <h2>基本用法</h2>
       <story minimal file="column/basic" />
       <p class="caption">当需要在一个区域内排列组件时可使用 &lt;ns-column&gt;</p>

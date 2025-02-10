@@ -3,6 +3,11 @@
     <ns-page-content>
       <h1>详表</h1>
       <p class="caption">&lt;ns-facts&gt;</p>
+      <mobile-button url="pages/components/facts/facts" />
+      <p>&nbsp;</p>
+      <note>成组展示多个只读字段，常见于详情页的信息展示。</note>
+      <p>&nbsp;</p>
+      <h2>基本用法</h2>
       <story minimal file="facts/basic.vue" />
       <p>&nbsp;</p>
       <h2>排列</h2>
@@ -14,13 +19,13 @@
       <h2>使用 ns-facts-item</h2>
       <p>&nbsp;</p>
       <story minimal file="facts/items.vue" />
-      <h2>Variants</h2>
+      <h2>变体 Variants</h2>
       <p>&nbsp;</p>
       <story minimal file="facts/variants.vue" />
-      <h2>竖排</h2>
+      <h2>竖排 vertical</h2>
       <p>&nbsp;</p>
       <story minimal file="facts/vertical.vue" />
-      <h2>样式配置</h2>
+      <h2>样式配置 fill</h2>
       <p>&nbsp;</p>
       <story minimal file="facts/style.vue" />
     </ns-page-content>

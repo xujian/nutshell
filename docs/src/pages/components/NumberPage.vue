@@ -3,6 +3,10 @@
     <ns-page-content>
       <h1>数字</h1>
       <p class="caption">&lt;ns-number&gt;</p>
+      <mobile-button url="pages/components/number" />
+      <p>&nbsp;</p>
+      <note>特殊数字展示卡片</note>
+      <p>&nbsp;</p>
       <p>&nbsp;</p>
       <h2>基本用法</h2>
       <story minimal file="number/basic.vue" />

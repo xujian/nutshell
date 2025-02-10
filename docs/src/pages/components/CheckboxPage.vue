@@ -3,6 +3,11 @@
     <ns-page-content>
       <h1 class="my-lg">复选框</h1>
       <p class="caption">&lt;ns-checkbox&gt;/&lt;ns-checkbox-group&gt;</p>
+      <mobile-button url="pages/components/checkbox" />
+      <p>&nbsp;</p>
+      <note>在一组可选项中进行多项选择时</note>
+      <p>&nbsp;</p>
+      <h2>基本用法</h2>
       <ns-card fill="#fff">
         <div class="row" justify="start">
           <ns-checkbox

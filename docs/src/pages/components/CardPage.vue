@@ -3,8 +3,11 @@
     <ns-page-content>
       <h1>卡片</h1>
       <p class="caption">&lt;ns-card&gt;</p>
+      <mobile-button url="components/card/card" />
       <p>&nbsp;</p>
-      <h2>结构说明</h2>
+      <note>通用卡片容器, 可承载文字、列表、图片、段落</note>
+      <p>&nbsp;</p>
+      <h2>基本用法</h2>
       <p>&nbsp;</p>
       <story minimal file="card/anatomy" />
       <h2>橱窗</h2>
@@ -17,7 +20,7 @@
           :fill="color"
           :key="color"></ns-card>
       </ns-row>
-      <h2>Variants</h2>
+      <h2>变体 Variants</h2>
       <ns-row class="variants"
         align="center"
         :gap="10"
@@ -30,7 +33,7 @@
           :variant="variant"></ns-card>
       </ns-row>
       <p>&nbsp;</p>
-      <h2>支持渐变</h2>
+      <h2>渐变 Gradient</h2>
       <story minimal file="card/gradients" />
     </ns-page-content>
   </ns-page>

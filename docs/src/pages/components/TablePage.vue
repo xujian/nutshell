@@ -4,6 +4,9 @@
       <h1>数据表格</h1>
       <p class="caption">&lt;ns-table&gt;</p>
       <p>&nbsp;</p>
+      <note>用于展示基础表格</note>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
       <h2>缺省样式</h2>
       <story minimal file="table/basic" />
       <h2>全特性表格</h2>
