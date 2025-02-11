@@ -18,8 +18,14 @@
     }
   }
 }
-.input-placeholder{
-  color: #ccc !important;
+// ns-number-input
+.ns-number-input{
+  .nut-input{
+    height: 100%;
+    .nut-input-inner{
+      height: 100%;
+    }
+  }
 }
 
 

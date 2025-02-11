@@ -52,6 +52,13 @@
         placeholder="请输入证件号码"
         name="id"
         label="证件号码"/>
+      <h2>数字输入框</h2>
+      <ns-number-input
+        label="数字"
+        name="phone"
+        placeholder="请输入"
+        v-model="formData.val8"
+      />
     </ns-form>
   </ns-page>
 </template>
@@ -66,6 +73,7 @@ const formData = reactive({
   val5: '',
   val6: '',
   val7: '',
+  val8: ''
 })
 </script>
 
