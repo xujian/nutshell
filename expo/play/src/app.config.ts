@@ -10,7 +10,8 @@ const components = [
   'tabs',
   'popover',
   'input',
-  'date-select'
+  'date-select',
+  'date-input'
 ]
 
 export default defineAppConfig({
