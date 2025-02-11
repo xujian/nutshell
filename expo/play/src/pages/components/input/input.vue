@@ -5,17 +5,17 @@
       <ns-input
         label="文本"
         placeholder="请输入文本"
-        v-model="val" />
+        v-model="formData.val1" />
       <h2>禁用</h2>
       <ns-input
         label="文本"
         placeholder="输入框已禁用"
-        v-model="val1"
+        v-model="formData.val2"
         disabled
       />
       <h2>插槽的使用</h2>
       <ns-input
-        v-model="val1"
+        v-model="formData.val3"
         label="文本"
         placeholder="左侧label添加图标"
       >
@@ -24,7 +24,7 @@
         </template>
       </ns-input>
       <ns-input
-        v-model="val1"
+        v-model="formData.val4"
         label="文本"
         placeholder="右侧内容添加按钮"
       >
@@ -34,29 +34,39 @@
       </ns-input>
       <h2>长度限制(10)</h2>
       <ns-input
-        v-model="val2"
+        v-model="formData.val5"
         label="文本"
         maxlength="10"
         placeholder="请输入文本"
       />
       <h2>对齐方式(props.variant === 'solid' ? 'left' : 'right')</h2>
       <ns-input
-        v-model="val4"
+        v-model="formData.val6"
         label="文本"
         variant="solid"
         placeholder="输入框内容对齐方向"
       />
+      <h2>身份证输入框</h2>
+      <ns-id-input
+        v-model.value="formData.val7"
+        placeholder="请输入证件号码"
+        name="id"
+        label="证件号码"/>
     </ns-form>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-const val = ref('')
-const val1 = ref('')
-const val2 = ref('')
-const val3 = ref('')
-const val4 = ref('')
+import { reactive } from 'vue'
+const formData = reactive({
+  val1: '',
+  val2: '',
+  val3: '',
+  val4: '',
+  val5: '',
+  val6: '',
+  val7: '',
+})
 </script>
 
 <style lang="scss">
