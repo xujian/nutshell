@@ -12,6 +12,8 @@ export type CascadingSelectOption = {
   isLeaf?: boolean
 }
 
+export type CascadingSelectFormatter = (value: CascadingSelectOption[]) => string
+
 export const cascadingSelectProps = {
   /**
    * 选项组数据
@@ -60,6 +62,18 @@ export const cascadingSelectProps = {
   multiple: {
     type: Boolean,
     default: false,
+  },
+  /**
+   * 格式化显示分隔符
+   **/
+  seperator: {
+    type: String,
+  },
+  /**
+   * 自定义格式化显示方法
+   **/
+  formatter: {
+    type: Function as PropType<CascadingSelectFormatter>,
   },
   ...useVariantProps(),
 }

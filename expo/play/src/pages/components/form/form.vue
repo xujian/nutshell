@@ -47,6 +47,15 @@
             :rules="['required']"
             label="截止日期" />
         </ns-card>
+        <h3>级联选择框</h3>
+        <ns-card fill="#fff">
+          <ns-cascading-select
+            v-model="formData.cycle"
+            :options="cycles"
+            placeholder="请输入审批周期"
+            seperator=""
+            label="审批周期" />
+        </ns-card>
         <h3>多选框</h3>
         <ns-card fill="#fff">
           <ns-multiple-select
@@ -147,6 +156,7 @@ const formData = reactive({
   regions: [],
   gender: void 0,
   date: void 0,
+  cycle: [],
 })
 const show1 = ref(false)
 
@@ -178,5 +188,27 @@ const files = ref([
     thumb: 'https://images.unsplash.com/photo-1653152566529-c3b44fd5efea?q=80&w=480&auto=format&fit=crop'
   }
 ])
+
+const cycles = [
+    { label: '每日', value: 'daily'},
+    { label: '每周', value: 'weekly',
+      children: [
+        { label: '周一', value: 'weekly_1' },
+        { label: '周二', value: 'weekly_2' },
+        { label: '周三', value: 'weekly_3' },
+        { label: '周四', value: 'weekly_4' },
+        { label: '周五', value: 'weekly_5' },
+        { label: '周六', value: 'weekly_6' },
+        { label: '周日', value: 'weekly_7' },
+      ] },
+    { label: '每月', value: 'monthly',
+      children: new Array(28).fill({}).map((_, index) => {
+        return { label: `${index + 1}日`, value: `monthly_${index + 1}` }
+      }) },
+  ],
+  cycleFormatter = ([a, b]: any[]) => [
+      a.label,
+      b ? `${b.label}` : ''
+    ].join('')
 </script>
 
