@@ -1,27 +1,72 @@
 <template>
   <ns-page>
-    <ns-page-header title="客户详情"
-      color-scheme="dark"
-      fill="#000"
-      has-back-button
-      reveal>
-    </ns-page-header>
-    <ns-page-content>
-      <h2>基本用法</h2>
-      <!-- <ns-input label="姓名" v-model="val"/> -->
-      <ns-form class="login-form">
-        <ns-input variant="solid"
-          label="手机号"
-          size="md"
-          placeholder="请输入手机号"
-          name="phone" />
-      </ns-form>
-    </ns-page-content>
+    <ns-form>
+      <h2>基础用法</h2>
+      <ns-input
+        label="文本"
+        placeholder="请输入文本"
+        v-model="val" />
+      <h2>禁用</h2>
+      <ns-input
+        label="文本"
+        placeholder="输入框已禁用"
+        v-model="val1"
+        disabled
+      />
+      <h2>插槽的使用</h2>
+      <ns-input
+        v-model="val1"
+        label="文本"
+        placeholder="左侧label添加图标"
+      >
+        <template #prepend>
+          <ns-icon name="https://cdn.ddjf.com/static/images/wx-yunservice/search-icon.png" />
+        </template>
+      </ns-input>
+      <ns-input
+        v-model="val1"
+        label="文本"
+        placeholder="右侧内容添加按钮"
+      >
+        <template #append>
+          <ns-button size="sm" color="neutral" variant="outlined">按钮</ns-button>
+        </template>
+      </ns-input>
+      <h2>长度限制(10)</h2>
+      <ns-input
+        v-model="val2"
+        label="文本"
+        maxlength="10"
+        placeholder="请输入文本"
+      />
+      <h2>对齐方式(props.variant === 'solid' ? 'left' : 'right')</h2>
+      <ns-input
+        v-model="val4"
+        label="文本"
+        variant="solid"
+        placeholder="输入框内容对齐方向"
+      />
+    </ns-form>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 const val = ref('')
+const val1 = ref('')
+const val2 = ref('')
+const val3 = ref('')
+const val4 = ref('')
 </script>
+
+<style lang="scss">
+h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #909ca4;
+  padding: 0 10px;
+  font-weight: 400;
+}
+</style>
 

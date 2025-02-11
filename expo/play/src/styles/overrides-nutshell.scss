@@ -1,0 +1,25 @@
+// ns-form-item
+.ns-form-item{
+  padding: 0 12px !important;
+  background: #fff !important;
+}
+.variant-solid {
+  .nut-input{
+    background: none !important;
+  }
+}
+
+// input
+.ns-input{
+  .nut-input{
+    height: 100%;
+    .nut-input-inner{
+      height: 100%;
+    }
+  }
+}
+.input-placeholder{
+  color: #ccc !important;
+}
+
+
