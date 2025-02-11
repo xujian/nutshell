@@ -59,6 +59,13 @@
         placeholder="请输入"
         v-model="formData.val8"
       />
+      <h2>手机号输入框</h2>
+      <ns-mobile-input
+        label="手机号"
+        name="phone"
+        placeholder="请输入手机号"
+        v-model="formData.val9"
+      />
     </ns-form>
   </ns-page>
 </template>
@@ -73,7 +80,8 @@ const formData = reactive({
   val5: '',
   val6: '',
   val7: '',
-  val8: ''
+  val8: '',
+  val9: ''
 })
 </script>
 
