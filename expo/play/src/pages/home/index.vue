@@ -263,7 +263,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '下拉选框',
         name: '<ns-date-select>',
         caption: '',
-        link: '/pages/components/select',
+        link: '/pages/components/date-select/date-select',
       },
       {
         title: '日期输入',

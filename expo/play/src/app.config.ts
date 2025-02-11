@@ -9,12 +9,14 @@ const components = [
   'timeline',
   'tabs',
   'popover',
-  'input'
+  'input',
+  'date-select'
 ]
 
 export default defineAppConfig({
   pages: [
     'pages/home/index',
+    'pages/home/report',
     'pages/interactive/dialog',
     'pages/interactive/drawer',
     'pages/interactive/sheet',
