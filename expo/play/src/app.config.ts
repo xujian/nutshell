@@ -14,8 +14,6 @@ const components = [
   'timeline/timeline',
   'tabs/tabs',
   'popover/popover',
-  'date-select/date-select',
-  'date-input/date-input',
 ]
 
 export default defineAppConfig({
