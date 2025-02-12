@@ -1,6 +1,11 @@
 <template>
   <ns-page class="page-page" :fill="bodyFill">
-    <ns-page-header title="页面构成" foreground="text" has-back-button></ns-page-header>
+    <ns-page-header title="页面构成"
+      foreground="text"
+      has-back-button
+      fill="#ffffff99"
+      :blur="40"
+      :reveal="pageHeaderReveal"></ns-page-header>
     <ns-page-content :scrollable="contentScrollable">
       <h2>页面</h2>
       <p></p>
@@ -13,6 +18,10 @@
         <ns-row justify="between">
           <label>Dark</label>
           <ns-switch v-model="darkScheme" />
+        </ns-row>
+        <ns-row justify="between">
+          <label>PageHeader.reveal</label>
+          <ns-switch v-model="pageHeaderReveal" />
         </ns-row>
       </ns-column>
       <p>&nbsp;</p>
@@ -46,6 +55,7 @@ import DemoSheet from '../../../components/DemoSheet.vue'
 const contentScrollable = ref(false),
   darkScheme = ref(false),
   footerSunk = ref(false),
+  pageHeaderReveal = ref(true),
   $bus = useBus(),
   $n = useNutshell()
 
