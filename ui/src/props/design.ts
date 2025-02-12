@@ -209,11 +209,17 @@ const buildDesignClasses: (props: DesignProps) => string[]
     colorValue: Color = isBrand(fill) || isEssential(fill)
       ? Reflect.get(theme, fill as string) as Color
       : fill,
+    variant = Reflect.get(props, 'variant'),
+    // 依据 colorValue 自动计算 colorScheme
+    // 从 fill color 的亮度自动计算是 dark 还是 light
     scheme: ColorScheme | undefined =
-      fill !== undefined
-        ? chroma(colorValue).get('lab.l') > 70
-          ? 'light'
-          : 'dark'
+      fill !== void 0
+        // 在 variant=plain 时不计算 colorScheme
+        ? variant !== 'plain'
+          ? chroma(colorValue).get('lab.l') > 70
+            ? 'light'
+            : 'dark'
+          : void 0
         : void 0,
     // 依据填色值确定 color scheme
     colorScheme: ColorScheme | undefined = props.colorScheme
