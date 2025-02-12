@@ -1,17 +1,21 @@
 const components = [
-  'page',
-  'button',
-  'chip',
-  'repeator',
-  'form',
-  'facts',
-  'card',
-  'timeline',
-  'tabs',
-  'popover',
-  'input',
-  'date-select',
-  'date-input'
+  'page/page',
+  'button/button',
+  'chip/chip',
+  'repeator/repeator',
+  'form/form',
+  'input/input',
+  'input/date-input',
+  'input/time-input',
+  'select/select',
+  'select/cascading-select',
+  'facts/facts',
+  'card/card',
+  'timeline/timeline',
+  'tabs/tabs',
+  'popover/popover',
+  'date-select/date-select',
+  'date-input/date-input',
 ]
 
 export default defineAppConfig({
@@ -23,7 +27,7 @@ export default defineAppConfig({
     'pages/interactive/sheet',
     'pages/guide/scroll',
     'pages/tokens/spacing',
-    ...components.map(x => `pages/components/${x}/${x}`)
+    ...components.map(x => `pages/components/${x}`)
   ],
   // tabBar: {
   //   custom: true,

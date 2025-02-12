@@ -261,15 +261,21 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
       },
       {
         title: '下拉选框',
-        name: '<ns-date-select>',
+        name: '<ns-select>',
         caption: '',
-        link: '/pages/components/date-select/date-select',
+        link: '/pages/components/select/select',
       },
       {
         title: '日期输入',
         name: '<ns-date-input>',
         caption: '',
         link: '/pages/components/date-input/date-input',
+      },
+      {
+        title: '时间输入',
+        name: '<ns-time-input>',
+        caption: '',
+        link: '/pages/components/input/time-input',
       },
       {
         title: '单选框',
