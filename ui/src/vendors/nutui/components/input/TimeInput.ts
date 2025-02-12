@@ -1,20 +1,15 @@
 import { defineComponent, h, ref } from 'vue'
-import dayjs from 'dayjs'
 import { marginProps } from '../../../../utils'
-import { dateInputProps, dateInputEmits } from '../../../../components/input'
+import { timeInputProps, timeInputEmits } from '../../../../components/input'
 import { renderFormItem } from '../../utils'
 
-// import 'dayjs/locale/zh-cn'
-// import 'dayjs/locale/zh-hk'
-
-// 这是一个复合组件
-export const DateInput = defineComponent({
-  name: 'NutuiDateInput',
+export const TimeInput = defineComponent({
+  name: 'NutuiTimeInput',
   props: {
-    ...dateInputProps,
+    ...timeInputProps,
     ...marginProps
   },
-  emits: dateInputEmits,
+  emits: timeInputEmits,
   setup: (props, { slots, emit }) => {
     const $bus = useBus()
     const pickerOpen = ref(false)
@@ -29,13 +24,10 @@ export const DateInput = defineComponent({
       console.log('===value', value)
     }
 
-    dayjs().locale('en')
-    const today = new Date()
-
     return () => renderFormItem(props, slots,
       () => h('div', {
         class: [
-            'ns-date-input',
+            'ns-time-input',
           ].join(' '),
       }, [
         h(NutInput, {
@@ -48,7 +40,7 @@ export const DateInput = defineComponent({
         }),
         h(NutPopup, {
             class: [
-              'date-input-picker'
+              'time-input-picker'
             ],
             style: {
               height: '50vh'
@@ -65,24 +57,13 @@ export const DateInput = defineComponent({
             }
           }, {
           default:
-            () => props.hasCalendar
-              ? h(NutCalendar, {
-                  class: ['date-input-calendar'],
-                  onClose: closePicker,
-                  poppable: false,
-                  showTitle: false,
-                  showSubTitle: false,
-                  onChoose: (params) => {
-                    props['onUpdate:modelValue']?.(params[3])
-                    pickerOpen.value = false
-                  }
-                })
-              : h(NutDatePicker, {
-                  class: ['date-input-date-picker'],
-                  modelValue: props.modelValue || today,
-                  type: props.hasTime ? 'datetime' : 'date',
+            () => h(NutDatePicker, {
+                  class: ['time-input-picker'],
+                  modelValue: props.modelValue,
+                  type: props.hasSeconds ? 'time' : 'hour-minute',
+                  minuteStep: props.minuteStep,
                   onConfirm: ({selectedValue}) => {
-                    const result = selectedValue.join('-')
+                    const result = selectedValue.join(':')
                     props['onUpdate:modelValue']?.(result)
                     pickerOpen.value = false
                   },
