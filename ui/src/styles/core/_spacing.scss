@@ -60,4 +60,5 @@
 .breakout {
   margin: calc(var(--ns-spacing) * -1);
   margin-bottom: 0;
+  width: calc(100% + var(--ns-spacing) * 2) !important;
 }
