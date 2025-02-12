@@ -46,6 +46,10 @@
   flex-wrap: wrap;
 }
 
+.shrink {
+  flex-grow: 0;
+}
+
 .grow {
   flex-grow: 1;
 }
