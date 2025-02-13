@@ -25,6 +25,13 @@ export const useButtonProps = buildProps({
     type: Boolean,
     default: false
   },
+  /**
+   * 块级元素
+   */
+  block: {
+    type: Boolean,
+    default: false
+  },
   ...useSizeProps(),
 })
 

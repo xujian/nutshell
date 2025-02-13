@@ -17,6 +17,7 @@ export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext
       class: unref(props.classes),
       disabled: props.disabled,
       loading: props.loading,
+      block: props.block,
       style,
     },
     {
