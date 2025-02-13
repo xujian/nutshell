@@ -129,7 +129,8 @@ $alphas: (
       &.variant-soft {
         background-color: color.adjust($value, $whiteness: +60%);
         border-color: color.adjust($value, $whiteness: +60%);
-        color: color.mix(#666666, $value, $weight: 50%, $method: rgb);
+        color: var(--ns-#{$name});
+        // color: color.mix(#666666, $value, $weight: 50%, $method: rgb);
       }
       &.variant-plain {
         background-color: transparent;

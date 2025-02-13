@@ -16,8 +16,12 @@
         color: rgba(0, 0, 0, 0.7);
       }
     }
-    &:not(.size-xs):not(.size-sm) {
-      // font-size: 14px;
+    &.fill-primary.variant-soft {
+      background-color: #F2F3FF;
+    }
+    &.fill-neutral.variant-soft {
+      background-color: #E7E7E7;
+      color: var(--ns-text-light);
     }
   }
 
