@@ -141,6 +141,9 @@ const designProps = {
   dotted: {
     type: Boolean
   },
+  dashed: {
+    type: Boolean
+  },
   /**
    * 边框线模式
    */
@@ -294,6 +297,7 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
         '--edge': `${props.edge}px`
       }: {},
     ...(props.dotted === true ? { borderStyle: 'dotted' } : {}),
+    ...(props.dashed === true ? { borderStyle: 'dashed' } : {}),
     ...(props.r !== void 0 && typeof props.r === 'number'
         ? {
           '--r': `${props.r}px`
