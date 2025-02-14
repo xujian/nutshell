@@ -11,7 +11,12 @@ export const Chips = (props: ChipsProps & MarginProps, ctx: Omit<SetupContext, '
   }, {
     default: () => props.items?.map(item => h(NsChip, {
       color: props.color || 'primary',
-      label: item.label
+      label: item.label,
+      value: item.value as string,
+      closable: item.closable || false,
+      onClose: (e: ChipsProps) => {
+        ctx.emit('close', e)
+      }
     }))
   })
 }

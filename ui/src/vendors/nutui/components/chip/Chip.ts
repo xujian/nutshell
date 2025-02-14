@@ -9,7 +9,7 @@ export const Chip = (props: ChipProps & MarginProps, { slots, emit }: Omit<Setup
     icon = () => buildHasIcon(props, slots),
     close = () => h('div', {
       class: ['ns-icon-close', 'icon'],
-      onClick: () => emit('close')
+      onClick: () => emit('close', props)
     }),
     text = () => h('span', {
       class: ['text']

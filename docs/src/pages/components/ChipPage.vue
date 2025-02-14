@@ -27,8 +27,8 @@
           label="已批复"
           :variant="variant" />
       </variant-cases>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
+      <h2>可关闭 Closable</h2>
+      <story file="chip/closable.vue" />
       <h2>Chips</h2>
       <div class="caption">可以用 :items 输出标签</div>
       <story file="chip/basic.vue" />
@@ -40,16 +40,14 @@
 import { brands, sizes, variants } from '@uxda/nutshell'
 
 const label = '标签'
-
 </script>
 
 <style lang="scss">
-.variants, .colors, .sizes {
-  .ns-chip {
-    margin: 2px
-  }
-  .variant-label {
-    width: 100px
+.chip-page {
+  .variant-cases {
+    .ns-chip {
+      width: 54px;
+    }
   }
 }
 </style>

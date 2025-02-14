@@ -14,6 +14,7 @@ export type UniDataItem = {
   label?: string,
   id?: string,
   disabled?: boolean,
+  closable?: boolean,
   [x: string]: any
 }
 

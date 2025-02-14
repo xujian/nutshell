@@ -11,6 +11,9 @@ export const useChipProps = buildProps({
   label: {
     type: String,
   },
+  value: {
+    type: String,
+  },
   /**
    * 底色
    */

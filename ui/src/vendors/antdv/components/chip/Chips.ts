@@ -29,7 +29,12 @@ export const Chips = (props: ChipsProps, { emit, slots }: SetupContext) => {
         style: attrs.style,
         variant: props.variant,
         label: o.label,
-        onClick: () => onItemClick(o)
+        value: o.value as string,
+        closable: o.closable || false,
+        onClick: () => onItemClick(o),
+        onClose: (e: ChipsProps) => {
+          emit('close', e)
+        }
       })
     })
   })
