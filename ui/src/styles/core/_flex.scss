@@ -76,8 +76,10 @@
 .justify-stretch {
   justify-content: stretch;
   >div, >.div, >view, >button {
-    flex-grow: 1;
     margin: 0; // 消除多个连续 <ns-buton> 之间的空隙
+    &:not(.shrink) {
+      flex-grow: 1;
+    }
   }
 }
 
