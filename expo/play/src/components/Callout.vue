@@ -14,6 +14,7 @@
   color: #148430;
   font-size: 12px;
   padding: var(--ns-spacing);
+  margin: var(--ns-spacing) 0;
   background-image: url(https://simple.shensi.tech/icons/callout.svg);
   background-position: 10px 10px;
   background-repeat: no-repeat;
