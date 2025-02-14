@@ -72,7 +72,10 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
 
     const heading = () => slots.title
       ? h('div', { class: 'title-content'}, slots.title())
-      : h('div', { class: 'title-heading'}, props.title)
+      : h('div', { class: ['title-heading', 'column', 'align-center', 'justify-center']}, [
+          h('h5', { class: ['h5'] }, props.title),
+          ...props.caption ? [h('p', { class: 'caption' }, props.caption)] : []
+      ])
 
     const onBackButtonClick = () => {
       // 如果用户使用了 @back/onBack, 则执行

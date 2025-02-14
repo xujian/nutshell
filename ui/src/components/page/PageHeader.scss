@@ -24,10 +24,16 @@
       align-items: center;
       .title-heading {
         width: 100%;
-        font-size: 16px;
-        line-height: var(--capsule, 32px);
-        text-align: var(--titleAlign, center);
+        height: 100%;
         box-sizing: border-box;
+        .h5 {
+          font-size: 16px;
+          line-height: 16px;
+          text-align: var(--titleAlign, center);
+        }
+        .caption {
+          line-height: 1em;
+        }
       }
       .title-content {
         width: 100%;
