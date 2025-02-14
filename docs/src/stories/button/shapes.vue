@@ -14,6 +14,6 @@
     <ns-button round dashed color="primary" variant="outlined">圆头按钮</ns-button>
   </ns-row>
   <ns-row justify="start" style="margin-top: 15px;">
-    <ns-button block color="primary">块级按钮</ns-button>
+    <ns-button color="primary" style="width: 100%;">块级按钮</ns-button>
   </ns-row>
 </template>
