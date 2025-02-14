@@ -9,7 +9,7 @@ export const Button = (props: ButtonProps & MarginProps, { slots }: SetupContext
     ...props.iconFill ? {'--icon-fill': props.iconFill} : {},
   }
 
-  const icon = () => buildHasIcon(props, slots)
+  const icon = slots.icon || (() => buildHasIcon(props))
 
   return h(
     NutButton,

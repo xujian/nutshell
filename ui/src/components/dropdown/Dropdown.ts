@@ -1,7 +1,6 @@
-import { PropType, ObjectEmitsOptions } from 'vue'
-import { useSizeProps, useDimensionProps, useDesignProps, buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useVariantProps } from '../../props'
+import { PropType } from 'vue'
+import { useSizeProps, useDimensionProps, useDesignProps, useVariantProps } from '../../props'
 import { MakePropsType, define } from '../../utils'
-import { Color } from '../../composables/theme'
 import { UniDataItem } from '../../shared'
 
 export const dropdownProps = {
@@ -14,7 +13,6 @@ export const dropdownProps = {
   items: {
     type: Array as PropType<UniDataItem[]>,
   },
-  ...useSizeProps(),
   /**
    * 禁用
    */
@@ -30,7 +28,7 @@ export const dropdownProps = {
 export type DropdownEmits = {
 }
 
-const emits: DropdownEmits = {
+export const dropdownEmits: DropdownEmits = {
 }
 
 export type DropdownProps = MakePropsType<typeof dropdownProps, DropdownEmits>
@@ -41,7 +39,7 @@ export type DropdownProps = MakePropsType<typeof dropdownProps, DropdownEmits>
 export const NsDropdown = define({
     name: 'NsDropdown',
     props: dropdownProps,
-    emits,
+    emits: dropdownEmits,
     setup (props) {
       return {
         props: {

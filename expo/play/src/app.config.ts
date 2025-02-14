@@ -1,6 +1,8 @@
 const components = [
   'page/page',
   'button/button',
+  'dropdown/dropdown',
+  'button-group/button-group',
   'chip/chip',
   'repeator/repeator',
   'form/form',

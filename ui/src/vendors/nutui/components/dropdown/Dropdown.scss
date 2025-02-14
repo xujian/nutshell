@@ -1,0 +1,15 @@
+.ns-dropdown {
+  position: relative;
+  .menu {
+    display: none;
+    position: absolute;
+    &.open {
+      display: block;
+    }
+  }
+  &.open {
+    .menu {
+      display: block;
+    }
+  }
+}
