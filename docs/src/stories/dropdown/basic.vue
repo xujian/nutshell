@@ -1,9 +1,8 @@
 <template>
-  <ns-dropdown
-    :items="menuItems"
-    fill="primary"
-    label="排序">
-    <template #icon><DownOutlined /></template>
+  <ns-dropdown :items="menuItems" fill="primary" label="排序">
+    <template #icon>
+      <DownOutlined />
+    </template>
   </ns-dropdown>
 </template>
 
@@ -11,8 +10,14 @@
 import { DownOutlined } from '@ant-design/icons-vue';
 
 const menuItems = [
-  { label: '创建时间', value: 'created-time' },
-  { label: '修改时间', value: 'modified-time' },
-  { label: '结单时间', value: 'finished-time' },
+  { label: '一级选项', value: '1' },
+  {
+    label: '二级选项', value: '2', children: [
+      { label: '二级级选项', value: '1-1', children: [{ label: '基础选项', value: '1-1-1' },] },
+      { label: '二级级选项', value: '1-2' },
+    ]
+  },
+  { label: '一级选项', value: '3' },
+  { label: '一级选项', value: '4' },
 ]
 </script>

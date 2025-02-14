@@ -1,4 +1,31 @@
 .ns-page {
+  // 颜色
+  .fill-primary.variant-soft {
+    background-color: #F2F3FF;
+  }
+  .fill-secondary.variant-soft {
+    background-color: rgba(#004081, 0.2);
+  }
+  .fill-neutral.variant-soft {
+    background-color: #E7E7E7;
+    color: var(--ns-text-light);
+  }
+  .fill-accent.variant-soft {
+    background-color: rgba(#0C60E1, 0.2);
+  }
+  .fill-positive.variant-soft {
+    background-color: rgba(#8BBB11, 0.2);
+  }
+  .fill-negtive.variant-soft {
+    background-color: rgba(#FA541C, 0.2);
+  }
+  .fill-warning.variant-soft {
+    background-color: rgba(#FA8C16, 0.2);
+  }
+  .fill-neutral {
+    color: var(--ns-text-light) !important;
+  }
+
   // button
   .ns-button {
     &:not(.ns-button-group-item) {
@@ -15,13 +42,6 @@
       &:hover {
         color: rgba(0, 0, 0, 0.7);
       }
-    }
-    &.fill-primary.variant-soft {
-      background-color: #F2F3FF;
-    }
-    &.fill-neutral.variant-soft {
-      background-color: #E7E7E7;
-      color: var(--ns-text-light);
     }
   }
 
