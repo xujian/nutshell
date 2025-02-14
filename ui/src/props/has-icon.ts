@@ -32,7 +32,7 @@ export type IconSlots = {
 const isStaticImage = (url: string) =>
   url.endsWith('.svg') || url.endsWith('.png') || url.endsWith('.jpg') || url.endsWith('.jpeg')
 
-export const buildHasIcon = (props: HasIconProps, slots: any) => {
+export const buildHasIcon = (props: HasIconProps) => {
   return props.icon
     ? isStaticImage(props.icon)
       ? h('img', {
@@ -43,7 +43,7 @@ export const buildHasIcon = (props: HasIconProps, slots: any) => {
           name: props.icon,
           format: props.iconFormat,
         })
-    : slots.icon
+    : null
 }
 
 export const buildHasIconClasses = (props: HasIconProps) => [
