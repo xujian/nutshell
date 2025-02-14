@@ -1,17 +1,13 @@
 import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDesignProps, useDimensionProps, useFieldProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { useDesignProps, useDimensionProps, useFieldProps, useFlexProps, useModelValuePropsForString, useSizeProps, useVariantProps } from '../../props'
 import { UniDataItem } from '../../shared'
-import { Color } from '../../composables/theme'
 
 export const buttonGroupInputProps = {
-  ...useModelValuePropsForStringArray(),
+  ...useModelValuePropsForString(),
   /**
    * 按钮底色
    */
-  color: {
-    type: String as PropType<Color>,
-  },
   options: {
     type: Array as PropType<UniDataItem[]>,
     default: []
@@ -33,7 +29,7 @@ export type ButtonGroupInputEmits = {
   change: (value: string) => void
 }
 
-const buttonGroupInputEmits: ButtonGroupInputEmits = {
+export const buttonGroupInputEmits: ButtonGroupInputEmits = {
   change: (value: string) => true
 }
 
@@ -44,7 +40,7 @@ export type ButtonGroupInputSlots = {
 export type ButtonGroupInputProps = MakePropsType<typeof buttonGroupInputProps, ButtonGroupInputEmits>
 
 /**
- * 按钮组 form 组件 <ns-button-group>
+ * 按钮组输入组件 <ns-button-group-input>
  */
 export const NsButtonGroupInput = define({
   name: 'NsButtonGroupInput',

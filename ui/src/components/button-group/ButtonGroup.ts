@@ -12,6 +12,7 @@ export const buttonGroupProps = {
    */
   color: {
     type: String as PropType<Color>,
+    default: 'primary'
   },
   items: {
     type: Array as PropType<UniDataItem[]>,
@@ -65,8 +66,7 @@ export const NsButtonGroup = defineComponent({
         emit('change', `${item.value}`)
       },
       size: props.size || 'sm',
-      color: props.color,
-      fill: props.fill,
+      fill: props.fill || 'primary',
       foreground: props.foreground,
       variant: props.variant,
       round: props.round,

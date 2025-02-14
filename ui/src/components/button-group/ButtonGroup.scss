@@ -3,18 +3,17 @@
   width: fit-content;
   overflow: hidden;
   border-radius: var(--ns-r);
+  background-color: var(--fill);
   .buttons {
     width: fit-content;
   }
   .ns-button {
     margin: 0;
-    background-color: var(--fill);
     transition: backdrop-filter .5s;
     color: var(--foreground, #fff);
     &.active {
       font-weight: bold;
-      backdrop-filter: brightness(1.2);
-      background-color: var(--ns-primary);
+      background-color: #ffffff33;
       color: #fff;
     }
   }

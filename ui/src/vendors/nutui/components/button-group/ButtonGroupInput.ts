@@ -1,25 +1,23 @@
 import { defineComponent, h } from 'vue'
-import { buttonGroupInputProps, NsButtonGroup } from '../../../../components/button-group'
+import { buttonGroupInputEmits, buttonGroupInputProps, NsButtonGroup } from '../../../../components/button-group'
 import { renderFormItem } from '../../utils'
 
 export const ButtonGroupInput = defineComponent({
   name: 'NutuiButtonGroupInput',
   props: buttonGroupInputProps,
-  setup (props, ctx) {
+  emits: buttonGroupInputEmits,
+  setup (props, { emit, slots }) {
 
-    const { emit } = ctx
-
+    console.log('===ButtonGroupInput', props)
     return () =>
       renderFormItem(props,
-        ctx.slots,
+        slots,
         () =>
-          h(
-            NsButtonGroup,
-            {
+          h(NsButtonGroup, {
               ...props,
-              size: props.size || 'sm'
-            },
-          )
+              modelValue: props.modelValue,
+              items: props.options,
+            })
       )
   }
 })
