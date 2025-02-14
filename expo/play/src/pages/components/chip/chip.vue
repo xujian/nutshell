@@ -1,6 +1,6 @@
 <template>
   <ns-page>
-    <ns-page-header title="按钮"
+    <ns-page-header title="Chip"
       :blur="10" reveal has-back-button />
     <ns-page-content>
       <h2>Color</h2>

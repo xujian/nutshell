@@ -6,14 +6,12 @@
     <ns-page-content>
       <ns-form v-model="formData">
         <h3>文本输入框</h3>
-        <ns-card fill="#fff">
-          <ns-input
-            v-model="formData.name"
-            name="name"
-            :rules="['required']"
-            label="姓名"
-            placeholder="请输入姓名" />
-        </ns-card>
+        <ns-input
+          v-model="formData.name"
+          name="name"
+          :rules="['required']"
+          label="姓名"
+          placeholder="请输入姓名" />
         <h3>文本域输入框</h3>
         <ns-card fill="#fff">
           <ns-textarea
@@ -86,7 +84,8 @@
         <h3>日期输入框</h3>
         <ns-card fill="#fff" color-scheme="light">
           <ns-date-input label="开始日期"
-            v-model="formData.date" />
+            v-model="formData.date"
+            has-time />
         </ns-card>
         <h3>文件上传</h3>
         <ns-card fill="#fff" color-scheme="light">
