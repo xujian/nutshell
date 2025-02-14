@@ -5,12 +5,13 @@
       :blur="10" reveal has-back-button />
     <ns-page-content>
       <ns-form v-model="formData">
-          <ns-time-input
-            v-model="formData.time"
-            name="time"
-            :rules="['required']"
-            label="时间"
-            placeholder="请输入时间" />
+        <h2>用法</h2>
+        <ns-time-input
+          v-model="formData.time"
+          name="time"
+          :rules="['required']"
+          label="时间"
+          placeholder="请输入时间" />
         <code-view language="html" :code="codes[0]" />
         <h2>加上秒</h2>
         <ns-card fill="#fff">
@@ -26,12 +27,12 @@
         <ns-card fill="#fff">
           <ns-time-input
             v-model="formData.time2"
-            name="time2"
+            name="time3"
             :minute-step="15"
             label="时间"
             placeholder="请输入时间" />
         </ns-card>
-        <code-view language="html" :code="codes[1]" />
+        <code-view language="html" :code="codes[2]" />
       </ns-form>
     </ns-page-content>
   </ns-page>
@@ -43,6 +44,7 @@ import { reactive } from 'vue'
 const formData = reactive({
   time: void 0,
   time2: void 0,
+  time3: void 0,
 })
 
 const codes = [
@@ -53,11 +55,17 @@ const codes = [
   label="时间"
   placeholder="请输入时间" />`,
 `<ns-time-input
-  v-model="formData.time"
+  v-model="formData.time2"
   name="time"
   has-seconds
   label="时间"
   placeholder="请输入时间" />`,
+`<ns-time-input
+  v-model="formData.time3"
+  name="time2"
+  :minute-step="15"
+  label="时间"
+  placeholder="请输入时间" />`
 ]
 </script>
 
