@@ -20,9 +20,11 @@
     }
   }
   &.column {
+    width: 100%;
     align-items: start;
     .item {
       padding-inline: var(--ns-spacing-xl);
+      width: 100%;
     }
     .item + .item {
       border-block-start: 1px solid var(--ns-stroke);
