@@ -26,7 +26,8 @@ export const Input = defineComponent({
           inputAlign: props.variant === 'solid' ? 'left' : 'right',
           placeholderClass: 'input-placeholder',
           'onUpdate:modelValue': (value: number | string) => {
-            props['onUpdate:modelValue']?.(value)
+            const val = props.modelModifiers?.trim ? value.trim() : value
+            props['onUpdate:modelValue']?.(val)
           },
           onBlur: () => {
             form.validate(props.name as string)
