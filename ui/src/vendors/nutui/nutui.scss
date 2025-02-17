@@ -4,6 +4,7 @@
 @use './components/input/Textarea.scss';
 @use './components/input/NumberInput.scss';
 @use './components/input/DateInput.scss';
+@use './components/input/TimeInput.scss';
 @use './components/divider/Divider.scss';
 @use './components/menu/Menu.scss';
 @use './components/tabs/Tabs.scss';
@@ -38,4 +39,9 @@
 .ns-page {
   --nut-primary-color: var(--ns-primary);
   --ns-input-height: 40px;
+  .nut-popup {
+    &.round {
+      border-radius: var(--ns-r);
+    }
+  }
 }

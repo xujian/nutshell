@@ -1,45 +1,46 @@
 // ns-form-item
-.ns-form-item{
+.ns-form-item {
   padding: 0 12px !important;
   background: #fff !important;
 }
 .variant-solid {
-  .nut-input{
+  .nut-input {
     background: none !important;
   }
 }
 
 // input
-.ns-input{
-  .nut-input{
+.ns-input {
+  .nut-input {
     height: 100%;
-    .nut-input-inner{
+    .nut-input-inner {
       height: 100%;
     }
   }
 }
 // ns-number-input
-.ns-number-input{
-  .nut-input{
+.ns-number-input {
+  .nut-input {
     height: 100%;
-    .nut-input-inner{
+    .nut-input-inner {
       height: 100%;
     }
   }
 }
 
 // ns-date-input
-.ns-date-input{
-  .ns-date-input{
+.ns-date-input {
+  .ns-date-input {
     height: 100%;
-    .nut-input{
+    .nut-input {
       height: 100%;
-      .nut-input-inner{
+      .nut-input-inner {
         height: 100%;
       }
     }
   }
 }
+<<<<<<< HEAD
 
 // ns-radio-group
 .ns-radio-group{
@@ -51,3 +52,5 @@
   }
 
 }
+=======
+>>>>>>> 616ed2f (fix theme colors)
