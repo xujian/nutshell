@@ -41,3 +41,13 @@
   }
 }
 
+// ns-radio-group
+.ns-radio-group{
+  .flex-column{
+    align-items: end !important;
+    .nut-radio{
+      margin-right: 0px !important;
+    }
+  }
+
+}

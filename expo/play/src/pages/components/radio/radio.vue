@@ -34,6 +34,16 @@
             { label: '否', value: 0 },
           ]" />
         <code-view language="html" :code="codes[3]" />
+        <h2>垂直排列</h2>
+        <ns-radio-group
+          label="选项"
+          v-model="formData.val3"
+          direction="column"
+          :options="[
+            { label: '是', value: 1 },
+            { label: '否', value: 0 },
+          ]" />
+        <code-view language="html" :code="codes[4]" />
       </ns-form>
     </ns-page-content>
   </ns-page>
@@ -69,7 +79,15 @@ disabled>
   v-model="formData.val2"
   :options="[
   { label: '是', value: 1 },
-  { label: '否', value: 0 },]" />`
+  { label: '否', value: 0 },]" />`,
+`<ns-radio-group
+  label="选项"
+  v-model="formData.val3"
+  direction="column"
+  :options="[
+    { label: '是', value: 1 },
+    { label: '否', value: 0 },
+  ]" />`
 ]
 </script>
 
