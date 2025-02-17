@@ -16,6 +16,7 @@ const components = [
   'timeline/timeline',
   'tabs/tabs',
   'popover/popover',
+  'radio/radio'
 ]
 
 export default defineAppConfig({
