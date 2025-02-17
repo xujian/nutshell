@@ -12,7 +12,10 @@ export const TimeInput = defineComponent({
   emits: timeInputEmits,
   setup: (props, { slots, emit }) => {
     const $bus = useBus()
-    const pickerOpen = ref(false)
+    const pickerOpen = ref(false),
+      date = '2025-01-01',
+      time = ref(new Date(`${date} ${props.modelValue || '09:00'}`)
+    )
     const openPicker = () => {
         pickerOpen.value = true
       },
@@ -58,19 +61,19 @@ export const TimeInput = defineComponent({
           }, {
           default:
             () => h(NutDatePicker, {
-                  class: ['time-input-picker'],
-                  modelValue: props.modelValue,
-                  type: props.hasSeconds ? 'time' : 'hour-minute',
-                  minuteStep: props.minuteStep,
-                  onConfirm: ({selectedValue}) => {
-                    const result = selectedValue.join(':')
-                    props['onUpdate:modelValue']?.(result)
-                    pickerOpen.value = false
-                  },
-                  onCancel: () => {
-                    pickerOpen.value = false
-                  }
-                })
+              class: ['time-input-picker'],
+              modelValue: time.value,
+              type: props.hasSeconds ? 'time' : 'hour-minute',
+              minuteStep: props.minuteStep,
+              onConfirm: ({selectedValue}) => {
+                const result = selectedValue.join(':')
+                props['onUpdate:modelValue']?.(result)
+                pickerOpen.value = false
+              },
+              onCancel: () => {
+                pickerOpen.value = false
+              }
+            })
         })
       ])
     )

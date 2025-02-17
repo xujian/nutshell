@@ -26,7 +26,7 @@
         <h2>步进15分钟</h2>
         <ns-card fill="#fff">
           <ns-time-input
-            v-model="formData.time2"
+            v-model="formData.time3"
             name="time3"
             :minute-step="15"
             label="时间"
@@ -42,7 +42,7 @@
 import { reactive } from 'vue'
 
 const formData = reactive({
-  time: void 0,
+  time: '15:00',
   time2: void 0,
   time3: void 0,
 })
