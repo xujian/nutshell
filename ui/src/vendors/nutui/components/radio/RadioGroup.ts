@@ -11,7 +11,7 @@ export const RadioGroup = defineComponent({
 
     const children = () => props.options?.map(item => h(NutRadio, {
       label: item.value, // 这里没写错 傻逼的属性名
-      disabled: props.disabled,
+      disabled: props.disabled || item.disabled,
       // shape: 'button'
     }, () => item.label))
 
