@@ -10,12 +10,12 @@
       <h2>基本用法</h2>
       <story file="stepper/basic.vue" />
       <p>&nbsp;</p>
-      <h2>变体 Variant</h2>
-      <variant-cases direction="column" v-slot="{variant}">
-        <ns-stepper class="basic-stepper"
-          status="wait"
-          :items="items" />
-      </variant-cases>
+      <h2>状态 Status</h2>
+      <story file="stepper/status.vue" />
+      <h2>标签位置 LabelPlacement</h2>
+      <story file="stepper/placement.vue" />
+      <h2>带描述</h2>
+      <story file="stepper/description.vue" />
       <p>&nbsp;</p>
       <h2>箭头式 Arrow</h2>
       <p class="caption">variant="<span class="b">arrow</span>"</p>

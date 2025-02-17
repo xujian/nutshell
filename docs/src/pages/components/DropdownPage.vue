@@ -12,9 +12,11 @@
       <p>&nbsp;</p>
       <h2>颜色 Color</h2>
       <color-cases v-slot="{color}">
-        <ns-dropdown
-          :items="menuItems"
-          label="排序" :fill="color" />
+        <ns-dropdown :items="menuItems" label="排序" :fill="color">
+          <template #icon>
+            <CaretDownOutlined />
+          </template>
+        </ns-dropdown>
       </color-cases>
       <p>&nbsp;</p>
       <h2 class="my-md">变体 Variant</h2>
@@ -25,7 +27,11 @@
           :items="menuItems"
           :fill="color"
           label="排序"
-          :variant="variant" />
+          :variant="variant">
+          <template #icon>
+            <CaretDownOutlined />
+          </template>
+        </ns-dropdown>
       </variant-cases>
     </ns-page-content>
   </ns-page>
@@ -33,6 +39,7 @@
 
 <script lang="ts" setup>
 import { brands } from '@uxda/nutshell'
+import { CaretDownOutlined, DownOutlined } from '@ant-design/icons-vue';
 
 const menuItems = [
   { label: '创建时间', value: 'created-time' },

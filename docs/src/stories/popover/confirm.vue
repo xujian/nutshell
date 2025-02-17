@@ -1,6 +1,6 @@
 <template>
   <ns-row justify="start">
-    <ns-button color="primary" label="保存草稿">
+    <ns-button color="primary" label="禁用">
       <ns-popover-confirm title="提示"
         @ok="ok"
         @cancel="cancel">

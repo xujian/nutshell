@@ -21,10 +21,10 @@
       </color-cases>
       <p>&nbsp;</p>
       <h2>变体 Variant</h2>
+      <div class="caption">暂时用不上</div>
       <variant-cases v-slot="{variant}">
         <ns-button-group v-model="state.selected" color="primary" :variant :items size="xs" />
       </variant-cases>
-      <p>&nbsp;</p>
     </ns-page-content>
   </ns-page>
 </template>
