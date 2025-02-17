@@ -62,7 +62,9 @@ export const Input = defineComponent({
                 }
               : {},
             'onUpdate:value': (value: string) => {
-              const val = props.modelModifiers?.trim ? value.trim() : value
+              const val = props.modelModifiers?.trim
+                ? `${value}`.trim()
+                : value
               props['onUpdate:modelValue']?.(val)
             },
             onChange: (e: ChangeEvent) => {
