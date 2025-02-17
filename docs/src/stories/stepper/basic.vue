@@ -1,9 +1,12 @@
 <template>
   <ns-stepper
-    :modelValue="1"
-    :items="items" />
+    v-model="step"
+    :items />
 </template>
 <script lang='ts' setup>
+import { ref } from 'vue'
+
+const step = ref(2)
 const items = [
   {
     title: '已完成'

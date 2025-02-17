@@ -134,7 +134,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         link: '/pages/components/button-group/button-group',
       },
       {
-        title: '弹出命令',
+        title: '气泡',
         name: '<ns-popover>',
         caption: '',
         link: '/pages/components/popover/popover',
@@ -146,7 +146,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         link: '/pages/components/dropdown/dropdown',
       },
       {
-        title: '弹出菜单',
+        title: '菜单',
         name: '<ns-menu>',
         caption: '',
         link: '/pages/components/menu/menu',

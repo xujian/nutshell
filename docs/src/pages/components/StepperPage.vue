@@ -17,7 +17,7 @@
       <h2>带描述</h2>
       <story file="stepper/description.vue" />
       <p>&nbsp;</p>
-      <h2>箭头式 Arrow</h2>
+      <h2>箭头式</h2>
       <p class="caption">variant="<span class="b">arrow</span>"</p>
       <story file="stepper/arrow.vue" />
     </ns-page-content>

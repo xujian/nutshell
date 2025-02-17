@@ -37,5 +37,5 @@ export const Stepper = (props: StepsProps & MarginProps, ctx: Omit<SetupContext,
       },
       onChange: (value: number) => {
       }
-    }, items())
+    }, { default: items })
 }

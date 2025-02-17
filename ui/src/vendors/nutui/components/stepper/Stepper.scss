@@ -1,5 +1,6 @@
 .ns-stepper {
   &.nut-steps {
+    width: 100%;
     color: var(--ns-text);
     padding-top: calc(var(--ns-spacing) / 2);
     .nut-step {
