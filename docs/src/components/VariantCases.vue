@@ -24,7 +24,8 @@ const slots = defineSlots<{
     item: {
       label: string,
       value: any
-    }}
+    }},
+    variant: string
   ): any
 }>()
 </script>

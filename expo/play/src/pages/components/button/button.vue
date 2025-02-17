@@ -18,10 +18,12 @@
       <h2>Variants</h2>
       <p class="caption">形态</p>
       <variant-cases v-slot="{variant}" class="breakout column">
-        <ns-button v-for="(color) in colors"
-          :key="color"
-          :color
-          :variant label="创建订单"></ns-button>
+        <ns-row align="start" wrap :gap="10">
+          <ns-button v-for="(color) in colors"
+            :key="color"
+            :color
+            :variant label="创建订单"></ns-button>
+        </ns-row>
       </variant-cases>
       <p>&nbsp;</p>
       <h2>带图标</h2>
@@ -80,6 +82,6 @@
 
 <script lang="ts" setup>
 import { brands } from '@uxda/nutshell/taro'
-const colors = brands.slice(0, 3)
+const colors = brands //.slice(0, 3)
 </script>
 
