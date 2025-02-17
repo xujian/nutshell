@@ -1,7 +1,7 @@
 <template>
   <ns-page class="input-page">
-    <ns-page-header title="表单"
-      caption="<ns-form>"
+    <ns-page-header title="输入框"
+      caption="<ns-input>"
       :blur="10" reveal has-back-button />
     <ns-page-content>
       <ns-form>

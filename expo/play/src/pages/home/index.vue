@@ -266,13 +266,13 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         link: '/pages/components/select/select',
       },
       {
-        title: '日期输入',
+        title: '日期选择',
         name: '<ns-date-input>',
         caption: '',
-        link: '/pages/components/date-input/date-input',
+        link: '/pages/components/input/date-input',
       },
       {
-        title: '时间输入',
+        title: '时间选择',
         name: '<ns-time-input>',
         caption: '',
         link: '/pages/components/input/time-input',
