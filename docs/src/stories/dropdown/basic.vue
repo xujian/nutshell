@@ -1,13 +1,19 @@
 <template>
   <ns-dropdown :items="menuItems" fill="primary" label="排序">
     <template #icon>
+      <CaretDownOutlined />
+    </template>
+  </ns-dropdown>
+
+  <ns-dropdown :items="menuItems" fill="primary" label="排序">
+    <template #icon>
       <DownOutlined />
     </template>
   </ns-dropdown>
 </template>
 
 <script lang="ts" setup>
-import { DownOutlined } from '@ant-design/icons-vue';
+import { CaretDownOutlined, DownOutlined } from '@ant-design/icons-vue';
 
 const menuItems = [
   { label: '一级选项', value: '1' },

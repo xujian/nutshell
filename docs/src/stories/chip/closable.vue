@@ -1,5 +1,5 @@
 <template>
-  <ns-chips :items color="primary" justify="start" @close="onClose" />
+  <ns-chips :items color="primary" variant="outlined" justify="start" @close="onClose" />
 </template>
 
 <script lang="ts" setup>
@@ -10,7 +10,6 @@ const items = ref([
 ])
 
 function onClose(item: any) {
-  console.log('onClose', items.value.findIndex((i) => item.value === i.value))
   items.value.splice(items.value.findIndex((i) => item.value === i.value), 1)
 }
 </script>
