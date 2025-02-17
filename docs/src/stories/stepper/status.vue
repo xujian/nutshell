@@ -1,5 +1,6 @@
 <template>
   <ns-stepper
+    status="error"
     :modelValue="1"
     :items="items" />
 </template>
@@ -9,7 +10,7 @@ const items = [
     title: '已完成'
   },
   {
-    title: '进行中'
+    title: '终止'
   },
   {
     title: '未进行'

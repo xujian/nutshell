@@ -1,4 +1,7 @@
 .ns-page {
+  :focus-visible {
+    outline: none;
+  }
   // 颜色
   .fill-primary.variant-soft {
     background-color: #F2F3FF;
