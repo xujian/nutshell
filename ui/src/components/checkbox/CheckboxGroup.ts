@@ -8,6 +8,9 @@ export const checkboxGroupProps = {
   options: {
     type: Array as PropType<UniDataItem[]>,
   },
+  items: {
+    type: Array as PropType<UniDataItem[]>,
+  },
   ...useFieldProps(),
   ...useFlexProps(),
   ...useVariantProps(),
@@ -39,7 +42,7 @@ export const NsCheckboxGroup = define({
 
     return {
       props: {
-        rules
+        rules,
       }
     }
   }

@@ -9,7 +9,7 @@ import { Menu } from './menu'
 import { Tabs } from './tabs'
 import { Facts, FactsItem } from './facts'
 import { Form } from './form'
-import { Checkbox } from './checkbox'
+import { Checkbox, CheckboxGroup } from './checkbox'
 import { Page } from './page'
 import { Dialog } from './dialog'
 import { Drawer } from './drawer'
@@ -62,6 +62,7 @@ const components: Record<string, VendorComponent> = {
   // @ts-ignore
   Form,
   Checkbox,
+  CheckboxGroup,
   // @ts-ignore
   Page,
   // @ts-ignore

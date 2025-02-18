@@ -1,5 +1,5 @@
 export default definePageConfig({
   navigationBarTextStyle: 'white',
   navigationStyle: 'custom',
-  navigationBarTitleText: 'Radio'
+  navigationBarTitleText: 'Checkbox'
 })
