@@ -260,6 +260,12 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         link: '/pages/components/input/input',
       },
       {
+        title: '文本域',
+        name: '<ns-textarea>',
+        caption: '',
+        link: '/pages/components/input/textarea',
+      },
+      {
         title: '下拉选框',
         name: '<ns-select>',
         caption: '',

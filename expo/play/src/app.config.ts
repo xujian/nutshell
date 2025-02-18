@@ -9,6 +9,7 @@ const components = [
   'input/input',
   'input/date-input',
   'input/time-input',
+  'input/textarea',
   'select/select',
   'select/cascading-select',
   'facts/facts',

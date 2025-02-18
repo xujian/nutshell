@@ -1,5 +1,5 @@
-import { defineComponent, h } from 'vue'
-import { textareaEmits, textareaProps } from '../../../../components'
+import { defineComponent, h, PropType } from 'vue'
+import { AutoSizeType, textareaEmits, textareaProps } from '../../../../components'
 import { marginProps } from '../../../../utils'
 import { renderFormItem, useForm } from '../../utils'
 
@@ -25,7 +25,7 @@ export const Textarea = defineComponent({
           textAlignAlign: props.variant === 'solid' ? 'left' : 'right',
           autosize: props.autoSize as boolean,
           limitShow: props.hasCount,
-          rows: props.rows,
+          rows: props.rows,  // 仅支持H5
           placeholderClass: 'input-placeholder',
           'onUpdate:modelValue': (value: number | string) => {
             props['onUpdate:modelValue']?.(value)
