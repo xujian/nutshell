@@ -1,5 +1,17 @@
 .ns-multiple-select {
-  &.ant-select {
+  .ant-select {
+    color: var(--ns-text);
+    text-align: left;
+    border-color: transparent;
+    .ant-select-selector {
+      color: var(--ns-text);
+      border-color: var(--stroke, transparent);
+      background-color: unset;
+      border-radius: var(--ns-r-input);
+    }
+    .ant-select-clear {
+      border-radius: 6px;
+    }
     .ant-select-selection-item {
       font-size: 12px;
       background: var(--ns-primary--90);

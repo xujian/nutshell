@@ -1,8 +1,7 @@
 <template>
-  <ns-input v-model="query">
-    <template #prepend>
-      <ns-icon name="https://cdn.ddjf.com/static/images/wx-yunservice/search-icon.png" />
-    </template>
+  <ns-input v-model="query" placeholder="请输入内容">
+    <template #prepend>￥</template>
+    <template #append>RMB</template>
   </ns-input>
 </template>
 <script lang="ts" setup>
