@@ -7,33 +7,38 @@
       <p>&nbsp;</p>
       <note>提供多个选项集合供用户选择</note>
       <p>&nbsp;</p>
+      <h2>基本用法</h2>
+      <story file="select/basic.vue" />
+      <p>&nbsp;</p>
       <h2>变体 Variants</h2>
-      <variant-cases v-slot="{variant}" class="column">
+      <variant-cases v-slot="{variant}">
         <ns-select
           v-model="value"
           :options="cities"
+          placeholder="请选择"
           :name="`client-variant-${variant}`"
-          :variant="variant" label="创建订单" />
+          :variant="variant" label="城市" />
       </variant-cases>
       <p>&nbsp;</p>
-      <h2>多项选择</h2>
-      <ns-multiple-select
-        v-model="multipleValue"
-        :options="cities"
-        :key="'primary'"
-        :color="'primary'"
-        label="客户区域"></ns-multiple-select>
+      <h2>可搜索与不可清除选择</h2>
+      <div class="caption">可搜索 - searchable设为true；不可清除选择 - clearable设为false；禁用输入框 - disabled需设为true</div>
+      <story file="select/searchable.vue" />
+      <p>&nbsp;</p>
+      <h2>多项下拉选框组件</h2>
+      <div class="caption">&lt;ns-multiple-select&gt;</div>
+      <story file="select/multiple.vue" />
+      <h2>可随意输入内容</h2>
+      <div class="caption">tagsMode需设为true</div>
+      <story file="select/tags.vue" />
     </ns-page-content>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue';
 import axios from 'axios'
 
-const value = ref('')
-const multipleValue = ref([])
-
+const value = ref()
 const cities = ref<any[]>([])
 onMounted(async () => {
   axios.get('/json/cities.json')

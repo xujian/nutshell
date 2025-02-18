@@ -8,8 +8,7 @@
       <note>输入或选择日期的控件。</note>
       <p>&nbsp;</p>
       <h2>变体 Variants</h2>
-      <p class="caption">类型</p>
-      <variant-cases v-slot="{variant}" class="column">
+      <variant-cases v-slot="{variant}">
         <ns-date-input
           name="登记日期"
           label="选择日期"
@@ -18,13 +17,19 @@
           :rules="['required']" />
       </variant-cases>
       <p>&nbsp;</p>
-      <h2>带时间 HasTiem</h2>
+      <h2>带时间 HasTime</h2>
+      <p class="caption">设置时间格式 - 如time-format=HH:mm；设置展示的日期格式 - 如format=YYYY-MM-DD HH:mm；设置分钟步数 - minute-step=15</p>
       <story file="input/date" />
+      <h2>禁用时间</h2>
+      <p class="caption">禁用选择的日期 - 需传入disabledDate函数；禁用选择的时间 - 需传入disabledTime函数；禁用时间组件 - 需设置disabled为true</p>
+      <story file="input/date-disabled" />
       <p>&nbsp;</p>
-      <h2>日期区间 ns-date-range-input</h2>
+      <h2>日期区间输入组件</h2>
+      <p class="caption">&lt;ns-date-range-input&gt;</p>
       <story file="input/date-range" />
       <p>&nbsp;</p>
-      <h2>月份与年份 ns-month-input/ns-year-input</h2>
+      <h2>月份输入组件与年份输入组件</h2>
+      <p class="caption">&lt;ns-month-input&gt; 与 &lt;ns-year-input&gt;</p>
       <story file="input/month-year" />
     </ns-page-content>
   </ns-page>
