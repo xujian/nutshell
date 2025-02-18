@@ -1,4 +1,4 @@
-import { defineComponent, h, ref } from 'vue'
+import { computed, defineComponent, h, ref } from 'vue'
 import dayjs from 'dayjs'
 import { marginProps } from '../../../../utils'
 import { dateInputProps, dateInputEmits } from '../../../../components/input'
@@ -17,7 +17,9 @@ export const DateInput = defineComponent({
   emits: dateInputEmits,
   setup: (props, { slots, emit }) => {
     const $bus = useBus()
-    const pickerOpen = ref(false)
+    const today = new Date()
+    const pickerOpen = ref(false),
+      selectDate = computed(() => props.modelValue ? new Date(props.modelValue) : today)
     const openPicker = () => {
         pickerOpen.value = true
       },
@@ -30,7 +32,6 @@ export const DateInput = defineComponent({
     }
 
     dayjs().locale('en')
-    const today = new Date()
 
     return () => renderFormItem(props, slots,
       () => h('div', {
@@ -79,7 +80,7 @@ export const DateInput = defineComponent({
                 })
               : h(NutDatePicker, {
                   class: ['date-input-date-picker'],
-                  modelValue: props.modelValue || today,
+                  modelValue: selectDate.value,
                   type: props.hasTime ? 'datetime' : 'date',
                   onConfirm: ({selectedValue}) => {
                     const result = selectedValue.join('-')
