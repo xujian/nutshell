@@ -6,8 +6,10 @@
     <ns-page-content>
       <ns-form>
         <h2>基础用法</h2>
-        <ns-checkbox v-model="formData.val1" label="复选框">复选框</ns-checkbox>
-        <ns-checkbox v-model="formData.val1" text-position="left">复选框</ns-checkbox>
+        <ns-card body-fill="#ffffff">
+          <ns-checkbox v-model="formData.val1">复选框</ns-checkbox>
+          <ns-checkbox v-model="formData.val2">复选框</ns-checkbox>
+        </ns-card>
         <code-view language="html" :code="codes[0]" />
       </ns-form>
     </ns-page-content>
@@ -18,16 +20,14 @@
 import { reactive } from 'vue'
 const formData = reactive({
   val1: '',
+  val2: ''
 })
 
 const codes = [
-`<ns-checkbox-group color="primary"
-  v-model="formData.val1"
-  :options="[
-    { label: '选项一', value: 1 },
-    { label: '选项二', value: 0 },
-  ]"
-  label="选项" />`,
+`<ns-card body-fill="#ffffff">
+  <ns-checkbox v-model="formData.val1">复选框</ns-checkbox>
+  <ns-checkbox v-model="formData.val2">复选框</ns-checkbox>
+</ns-card>`,
 ]
 </script>
 
