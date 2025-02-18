@@ -16,7 +16,8 @@ const components = [
   'timeline/timeline',
   'tabs/tabs',
   'popover/popover',
-  'radio/radio'
+  'radio/radio',
+  'checkbox/checkbox'
 ]
 
 export default defineAppConfig({

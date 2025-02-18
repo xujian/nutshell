@@ -1,7 +1,7 @@
 <template>
   <ns-checkbox-group color="primary"
     v-model="callResults"
-    :options
+    :options="options"
     label="营养成分" />
 </template>
 
