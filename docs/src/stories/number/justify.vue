@@ -8,7 +8,7 @@
     :justify
     :align
     :value="净利润" />
-  <ns-row justify="between">
+  <ns-row justify="between" style="margin: 10px 0;">
     <h5>JUSTIFY</h5>
     <div class="caption">横向</div>
     <div class="spacer"></div>
