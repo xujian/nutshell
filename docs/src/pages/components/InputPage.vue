@@ -12,6 +12,7 @@
         <ns-input
           name="input"
           color="'primary'"
+          placeholder="请输入订单编号"
           :variant="variant" label="创建订单" />
       </variant-cases>
       <p>&nbsp;</p>

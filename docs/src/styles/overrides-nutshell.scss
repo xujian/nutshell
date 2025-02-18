@@ -62,6 +62,34 @@
       font-size: 16px;
     }
   }
+
+  // form
+  .ns-form {
+    .ant-form-item-label {
+      .icon-hint {
+        margin-right: -7px;
+      }
+    }
+    .ns-form-item {
+      height: auto;
+    }
+  }
+  .ns-form-item{
+    --ns-r-input: 4px;
+    --ns-fill: #f7f8fa;
+    .ant-form-item-label > label {
+      color: #35353599;
+    }
+    .ant-form-item-control-input, .ant-input-affix-wrapper {
+      border: none;
+      box-shadow: none;
+    }
+  }
+  .ns-search {
+    --ns-r: 4px;
+    --ns-fill: #f7f8fa;
+    border-radius: 4px !important;
+  }
 }
 
 // popover
