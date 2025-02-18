@@ -12,6 +12,15 @@ export const CascadingSelect = defineComponent({
   name: 'NutuiCascadingSelect',
   props: cascadingSelectProps,
   setup (props, { emit, slots }) {
+
+    const $form = useForm()
+
+    const
+      /**
+       * 用来显示的输入框
+       */
+      placeholderInput = ref<HTMLInputElement | null>(null)
+
     const pickerOpen = ref(false),
       display = ref('')
     const onChange = (value: any) => {
@@ -20,9 +29,11 @@ export const CascadingSelect = defineComponent({
 
     const onCancel = () => {
         pickerOpen.value = false
+        $form?.validate(props.name as string)
       },
       onConfirm = ({ selectedValue, selectedOptions }: any) => {
         emit('update:modelValue', [...selectedValue])
+        $form?.validate(props.name as string)
         display.value = props.formatter
           ? props.formatter([...selectedOptions])
           : selectedOptions
@@ -44,7 +55,7 @@ export const CascadingSelect = defineComponent({
     const picker = () =>
       h(NutPicker, {
         class: ['picker'],
-        modelValue: props.modelValue,
+        modelValue: props.modelValue || [],
         columns: columns.value,
         fieldNames: { text: 'label' },
         onChange,
@@ -56,7 +67,7 @@ export const CascadingSelect = defineComponent({
     const popup = () => h(NutPopup, {
         visible: pickerOpen.value,
         position: 'bottom',
-        onClickOverlay: () => pickerOpen.value = false
+        onClickOverlay: onCancel
       }, {
         default: picker
       }
@@ -69,7 +80,8 @@ export const CascadingSelect = defineComponent({
     return () => renderFormItem(props, slots,
         () => [
           h(NutInput, {
-            name: props.name,
+            ref: placeholderInput,
+            name: `${props.name}_placeholder`,
             placeholder: props.placeholder || '',
             modelValue: display.value,
             readonly: true,

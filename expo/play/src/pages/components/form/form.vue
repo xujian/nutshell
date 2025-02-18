@@ -7,7 +7,7 @@
       <ns-form v-model="formData">
         <h3>文本输入框</h3>
         <ns-input
-          v-model="formData.name"
+          v-model.trim="formData.name"
           name="name"
           :rules="['required']"
           label="姓名"
@@ -50,8 +50,10 @@
           <ns-cascading-select
             v-model="formData.cycle"
             :options="cycles"
+            name="cycle"
             placeholder="请输入审批周期"
             seperator=""
+            :rules="['required']"
             label="审批周期" />
         </ns-card>
         <h3>多选框</h3>
@@ -155,7 +157,7 @@ const formData = reactive({
   regions: [],
   gender: void 0,
   date: void 0,
-  cycle: [],
+  cycle: void 0,
 })
 const show1 = ref(false)
 
