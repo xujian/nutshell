@@ -9,6 +9,10 @@ export const checkboxProps = {
   disabled: {
     type: Boolean,
   },
+  shape: {
+    type: String as PropType<'round' | 'button'>,
+    default: 'round'
+  },
   textPosition: {
     type: String as PropType<'left' | 'right'>,
     default: 'left'

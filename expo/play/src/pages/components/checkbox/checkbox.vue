@@ -12,6 +12,12 @@
         </ns-card>
         <code-view language="html" :code="codes[0]" />
       </ns-form>
+      <h2>形状</h2>
+      <ns-card body-fill="#ffffff">
+        <ns-checkbox v-model="formData.val1" shape="button">button</ns-checkbox>
+        <ns-checkbox v-model="formData.val2" shape="round">round</ns-checkbox>
+      </ns-card>
+      <code-view language="html" :code="codes[4]" />
       <h2>禁用状态</h2>
       <ns-card body-fill="#ffffff">
         <ns-checkbox v-model="formData.val3" disabled>未选时禁用状态</ns-checkbox>
@@ -75,6 +81,10 @@ const codes = [
     <ns-checkbox label="D">D</ns-checkbox>
   </ns-checkbox-group>
   <div>已选中 {{formData.val6}}</div>
+</ns-card>`,
+`<ns-card body-fill="#ffffff">
+  <ns-checkbox v-model="formData.val1" shape="button">button</ns-checkbox>
+  <ns-checkbox v-model="formData.val2" shape="round">round</ns-checkbox>
 </ns-card>`
 ]
 </script>
