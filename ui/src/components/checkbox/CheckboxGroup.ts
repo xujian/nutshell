@@ -8,8 +8,8 @@ export const checkboxGroupProps = {
   options: {
     type: Array as PropType<UniDataItem[]>,
   },
-  items: {
-    type: Array as PropType<UniDataItem[]>,
+  max: {
+    type: Number,
   },
   ...useFieldProps(),
   ...useFlexProps(),

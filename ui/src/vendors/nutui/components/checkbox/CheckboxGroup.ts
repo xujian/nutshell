@@ -13,6 +13,7 @@ export const CheckboxGroup = defineComponent({
         name: (props.name || 'checkbox') as string,
         modelValue: props.modelValue,
         disabled: props.disabled ?? false,
+        max: props.max,
         'onUpdate:modelValue': (value: string | number) => {
           emit('update:modelValue', value)
         },
