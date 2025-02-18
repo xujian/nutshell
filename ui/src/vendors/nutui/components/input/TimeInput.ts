@@ -1,4 +1,4 @@
-import { defineComponent, h, ref } from 'vue'
+import { defineComponent, h, ref, computed } from 'vue'
 import { marginProps } from '../../../../utils'
 import { timeInputProps, timeInputEmits } from '../../../../components/input'
 import { renderFormItem } from '../../utils'
@@ -14,7 +14,7 @@ export const TimeInput = defineComponent({
     const $bus = useBus()
     const pickerOpen = ref(false),
       date = '2025-01-01',
-      time = ref(new Date(`${date} ${props.modelValue || '09:00'}`)
+      time = computed(() => new Date(`${date} ${props.modelValue || '09:00'}`)
     )
     const openPicker = () => {
         pickerOpen.value = true
