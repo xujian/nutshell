@@ -35,7 +35,7 @@
       <code-view language="html" :code="codes[2]" />
       <h2>checkboxGroup(最大可选数)</h2>
       <ns-card body-fill="#ffffff">
-        <ns-checkbox-group v-model="formData.val6" max="2">
+        <ns-checkbox-group v-model="formData.val6" :max="2">
           <ns-checkbox label="A">A</ns-checkbox>
           <ns-checkbox label="B">B</ns-checkbox>
           <ns-checkbox label="C">C</ns-checkbox>
@@ -44,21 +44,59 @@
         <div>已选中 {{formData.val6}}</div>
       </ns-card>
       <code-view language="html" :code="codes[3]" />
-      <ns-checkbox v-model="formData.val1" shape="button"> Button </ns-checkbox>
+      <h2>checkboxGroup(方法)</h2>
+      <ns-card body-fill="#ffffff">
+        <ns-checkbox-group ref="group" v-model="formData.val7" @change="change">
+          <ns-checkbox v-for="item in formData.checkboxsource" :key="item.label" :label="item.label">
+            {{
+              item.value
+            }}
+          </ns-checkbox>
+        </ns-checkbox-group>
+        <div>已选中 {{formData.val7}}</div>
+      </ns-card>
+      <ns-card body-fill="#ffffff" style="margin:20px 0 0 0">
+        <ns-button color="primary" @click="toggleAll(true)"> 全选 </ns-button>
+        <ns-button color="primary" style="margin: 0 20px" @click="toggleAll(false)"> 全不选 </ns-button>
+        <ns-button color="primary" @click="toggleReverse"> 反选 </ns-button>
+      </ns-card>
+      <code-view language="html" :code="codes[5]" />
     </ns-page-content>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 const formData = reactive({
   val1: '',
   val2: '',
   val3: false,
   val4: true,
   val5: [],
-  val6: []
+  val6: [],
+  val7: [],
+  checkboxsource: [
+    { label: '1', value: 'A' },
+    { label: '2', value: 'B' },
+    { label: '3', value: 'C' },
+    { label: '4', value: 'D' },
+    { label: '5', value: 'E' },
+    { label: '6', value: 'F' },
+    { label: '7', value: 'G' },
+    { label: '8', value: 'H' }
+  ]
 })
+
+const group = ref()
+function change(){}
+const toggleAll = (f) => {
+  group.value.toggleAll(f)
+}
+
+const toggleReverse = () => {
+  console.log(`反选`)
+  group.value?.toggleReverse()
+}
 
 const codes = [
 `<ns-card body-fill="#ffffff">
@@ -85,6 +123,26 @@ const codes = [
 `<ns-card body-fill="#ffffff">
   <ns-checkbox v-model="formData.val1" shape="button">button</ns-checkbox>
   <ns-checkbox v-model="formData.val2" shape="round">round</ns-checkbox>
+</ns-card>`,
+`const toggleAll = (f) => {
+  group.value.toggleAll(f)
+}
+const toggleReverse = () => {
+  group.value?.toggleReverse()
+}<ns-card body-fill="#ffffff">
+  <ns-checkbox-group ref="group" v-model="formData.val7" @change="change">
+    <ns-checkbox v-for="item in formData.checkboxsource" :key="item.label" :label="item.label">
+      {{
+        item.value
+      }}
+    </ns-checkbox>
+  </ns-checkbox-group>
+  <div>已选中 {{formData.val7}}</div>
+</ns-card>
+<ns-card body-fill="#ffffff" style="margin:20px 0 0 0">
+  <ns-button color="primary" @click="toggleAll(true)"> 全选 </ns-button>
+  <ns-button color="primary" style="margin: 0 20px" @click="toggleAll(false)"> 全不选 </ns-button>
+  <ns-button color="primary" @click="toggleReverse"> 反选 </ns-button>
 </ns-card>`
 ]
 </script>
