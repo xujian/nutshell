@@ -5,10 +5,10 @@
       :blur="10" reveal has-back-button />
     <ns-page-content>
       <ns-form>
-        <h2>基础用法</h2>
+        <h2>基础用法(左右)</h2>
         <ns-card body-fill="#ffffff">
           <ns-checkbox v-model="formData.val1">复选框</ns-checkbox>
-          <ns-checkbox v-model="formData.val2">复选框</ns-checkbox>
+          <ns-checkbox v-model="formData.val2" text-position="right">复选框</ns-checkbox>
         </ns-card>
         <code-view language="html" :code="codes[0]" />
       </ns-form>

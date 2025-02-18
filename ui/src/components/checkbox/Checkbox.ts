@@ -1,4 +1,4 @@
-import { ObjectEmitsOptions, SlotsType } from 'vue'
+import { ObjectEmitsOptions, PropType, SlotsType } from 'vue'
 import { MakePropsType, define } from '../../utils'
 import { useModelValuePropsForBoolean, useVariantProps } from '../../props'
 
@@ -8,6 +8,10 @@ export const checkboxProps = {
   },
   disabled: {
     type: Boolean,
+  },
+  textPosition: {
+    type: String as PropType<'left' | 'right'>,
+    default: 'left'
   },
   ...useModelValuePropsForBoolean(),
   ...useVariantProps(),

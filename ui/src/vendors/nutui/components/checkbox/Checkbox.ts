@@ -7,6 +7,7 @@ export const Checkbox = (props: CheckboxProps, { slots }: Omit<SetupContext, 'ex
     class: 'ns-checkbox',
     label: props.label,
     modelValue: props.modelValue,
+    textPosition: props.textPosition,
     'onUpdate:modelValue': props['onUpdate:modelValue'],
   }, slots)
 }
