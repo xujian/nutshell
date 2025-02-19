@@ -28,6 +28,6 @@ const formData = reactive({
 
 // 禁止选择今天往前的日期
 function disabledPrevDate(current: Dayjs) {
-    return current && dayjs().isAfter(current, 'day')
-  }
+  return current && dayjs().isAfter(current, 'day')
+}
 </script>

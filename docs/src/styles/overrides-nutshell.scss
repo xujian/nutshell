@@ -95,7 +95,7 @@
     .ant-input-affix-wrapper-focused {
       box-shadow: none !important;
     }
-    .ant-picker,.ant-select-selector {
+    .ant-picker, .ant-select-selector, .ant-input-number {
       border: none;
       box-shadow: none !important;
       outline: none;
@@ -107,6 +107,9 @@
       display: none;
     }
     .ant-select-disabled .ant-select-selector {
+      background-color: transparent;
+    }
+    .ant-input-number-handler-wrap {
       background-color: transparent;
     }
   }

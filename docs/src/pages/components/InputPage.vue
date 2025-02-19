@@ -23,6 +23,11 @@
       <div class="caption">不可清除输入 - clearable设为false；长度限制 - 如maxlength=50；展示输入字数 - hasCount需设为true；禁用输入框 - disabled需设为true</div>
       <story file="input/disable.vue" />
       <p>&nbsp;</p>
+      <h2>数字输入框</h2>
+      <div class="caption">hasDaxie - 是否显示中文金额；step - 增减的步数；maximumFractionDigits - 最多小数位；formatter - 自定义格式</div>
+      <div class="caption">数字区间组件&lt;ns-number-range-input&gt;</div>
+      <story file="input/number" />
+      <p>&nbsp;</p>
       <h2>身份证输入框</h2>
       <div class="caption">ns-id-input, 格式不对会自动检验</div>
       <story file="input/id" />

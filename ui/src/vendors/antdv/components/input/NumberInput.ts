@@ -36,9 +36,9 @@ export const NumberInput = defineComponent({
             step: props.step ?? 1,
             precision: props.maximumFractionDigits,
             // @ts-ignore
-            formatter: props.precision === 0 ? null : props.formatter ?? amountFormatter,
+            formatter: props.maximumFractionDigits === 0 ? null : props.formatter ?? amountFormatter,
             // @ts-ignore
-            parser: props.precision === 0 ? null : props.parser ?? amountParser,
+            parser: props.maximumFractionDigits === 0 ? null : props.parser ?? amountParser,
             ...props.lazy
               ? {
                   valueModifiers: {

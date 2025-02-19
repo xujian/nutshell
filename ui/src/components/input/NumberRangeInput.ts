@@ -11,6 +11,10 @@ export const numberRangeInputProps = {
   precision: {
     type: Number
   },
+   // 最多小数位
+   maximumFractionDigits: {
+    type: Number,
+  },
   amountRate: {
     type: Number,
     default: 1

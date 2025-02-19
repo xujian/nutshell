@@ -48,7 +48,7 @@
       <ns-number-input
         name="amount"
         label="金额"
-        :precision="2"
+        :maximumFractionDigits="2"
         has-daxie
         v-model="formData.amount"
         :rules="['required', {

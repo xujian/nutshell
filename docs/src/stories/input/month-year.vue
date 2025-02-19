@@ -21,8 +21,4 @@ const formData = reactive({
   月份: void 0,
   年份: void 0
 })
-
-const onRangeDateInputChange = (value?: string[]) => {
-  console.log('===onRangeDateInputChange value', value)
-}
 </script>

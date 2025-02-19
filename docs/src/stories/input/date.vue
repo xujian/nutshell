@@ -7,6 +7,9 @@
       v-model="formData.registerDateTime"
       :rules="['required']" />
     <ns-date-input name="registerDateTime1" label="选择带分钟时间"
+      has-time
+      time-format="HH:mm"
+      :minute-step="15"
       format="YYYY-MM-DD HH:mm"
       v-model="formData.registerDateTime1"
       :rules="['required']" />
@@ -24,8 +27,4 @@ const formData = reactive({
   registerYear: void 0,
   rangedDate: void 0,
 })
-
-const onRangeDateInputChange = (value?: string[]) => {
-  console.log('===onRangeDateInputChange value', value)
-}
 </script>

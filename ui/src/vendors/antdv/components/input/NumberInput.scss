@@ -25,3 +25,10 @@
     display: none;
   }
 }
+
+.ns-number-range-input {
+  .ant-form-item-control-input-content {
+    display: flex;
+    align-items: center;
+  }
+}

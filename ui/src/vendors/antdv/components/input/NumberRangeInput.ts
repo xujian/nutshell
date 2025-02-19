@@ -45,7 +45,7 @@ export const NumberRangeInput = defineComponent({
             max: Infinity,
             min: 0,
             step: 1,
-            precision: props.precision,
+            precision: props.maximumFractionDigits,
             formatter: amountFormatter,
             valueModifiers: {
               lazy: props.lazy === false ? false : true
@@ -70,7 +70,7 @@ export const NumberRangeInput = defineComponent({
               max: Infinity,
               min: 0,
               step: 1,
-              precision: props.precision,
+              precision: props.maximumFractionDigits,
               formatter: amountFormatter,
               valueModifiers: {
                 lazy: props.lazy === false ? false : true
