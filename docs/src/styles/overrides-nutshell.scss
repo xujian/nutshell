@@ -95,7 +95,7 @@
     .ant-input-affix-wrapper-focused {
       box-shadow: none !important;
     }
-    .ant-picker, .ant-select-selector, .ant-input-number {
+    .ant-input, .ant-picker, .ant-select-selector, .ant-input-number {
       border: none;
       box-shadow: none !important;
       outline: none;
@@ -140,6 +140,31 @@
   }
   .ant-checkbox-wrapper-checked {
     color: rgba(53, 53, 53, 1);
+  }
+
+  // textarea
+  .ant-input-textarea-show-count {
+    &::after {
+      color: #2626264d !important;
+    }
+    .ant-input {
+      padding-bottom: 15px;
+      &::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #fff;
+        border-radius: 2px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 7px;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: #999;
+      }
+    }
   }
 }
 

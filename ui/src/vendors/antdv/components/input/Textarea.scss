@@ -1,7 +1,21 @@
 .ns-form-item {
   &.ns-textarea {
-    .ant-form-item-control-input {
-      background-color: transparent;
+    height: auto;
+
+    .ant-input-textarea-show-count {
+      position: relative;
+      &::after {
+        position: absolute;
+        right: 10px;
+        bottom: 1px;
+        font-size: 12px;
+        color: var(--ns-text);
+        letter-spacing: -0.5px;
+        margin-bottom: 0;
+      }
+      .ant-input {
+        padding-bottom: 15px;
+      }
     }
   }
 }

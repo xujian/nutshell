@@ -25,7 +25,7 @@
       <p>&nbsp;</p>
       <h2>数字输入框</h2>
       <div class="caption">hasDaxie - 是否显示中文金额；step - 增减的步数；maximumFractionDigits - 最多小数位；formatter - 自定义格式</div>
-      <div class="caption">数字区间组件&lt;ns-number-range-input&gt;</div>
+      <div class="caption" style="margin-bottom: var(--ns-font-xl);">数字区间组件&lt;ns-number-range-input&gt;</div>
       <story file="input/number" />
       <p>&nbsp;</p>
       <h2>身份证输入框</h2>
@@ -39,6 +39,10 @@
       <h2>搜索框</h2>
       <div class="caption">ns-search</div>
       <story file="input/search" />
+      <p>&nbsp;</p>
+      <h2>多行输入框</h2>
+      <div class="caption">ns-textarea</div>
+      <story file="form/textarea" />
       <p>&nbsp;</p>
       <h2>使用 SLOTS</h2>
       <div class="caption">前缀prepend/后缀append</div>
