@@ -31,11 +31,11 @@ export const buttonGroupProps = {
 }
 
 export type ButtonGroupEmits = {
-  change: (value: string) => void
+  change: (value: UniDataItem) => void
 }
 
 const buttonGroupEmits: ButtonGroupEmits = {
-  change: (value: string) => true
+  change: (value: UniDataItem) => true
 }
 
 export type ButtonGroupSlots = {
@@ -63,7 +63,7 @@ export const NsButtonGroup = defineComponent({
           return
         }
         props['onUpdate:modelValue']?.(`${item.value}`)
-        emit('change', `${item.value}`)
+        emit('change', item)
       },
       size: props.size || 'sm',
       fill: props.fill || 'primary',
