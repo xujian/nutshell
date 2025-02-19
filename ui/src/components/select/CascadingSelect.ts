@@ -30,7 +30,6 @@ export const cascadingSelectProps = {
   },
   modelValue: {
     type: Array as PropType<string[]>,
-    default: '',
   },
   'onUpdate:modelValue': {
     type: Function as PropType<(value: string[]) => void>,
