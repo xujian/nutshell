@@ -1,6 +1,7 @@
 import { PropType, SlotsType } from 'vue'
 import { MakePropsType, define } from '../../utils'
 import { Color } from '../../composables/theme'
+import { useSizeProps } from '../../props'
 
 export const ratingProps = {
   label: {
@@ -11,7 +12,8 @@ export const ratingProps = {
   },
   color: {
     type: String as PropType<Color>,
-  }
+  },
+  ...useSizeProps(),
 }
 
 export type RatingEmits = {

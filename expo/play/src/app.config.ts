@@ -8,6 +8,8 @@ const components = [
   'chip/chip',
   'image/image',
   'number/number',
+  'rating/rating',
+  'switch/switch',
   'repeator/repeator',
   'form/form',
   'input/input',

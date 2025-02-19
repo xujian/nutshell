@@ -1,6 +1,6 @@
-import { PropType, ObjectEmitsOptions, SlotsType } from 'vue'
+import { PropType } from 'vue'
 import { MakePropsType, define } from '../../utils'
-import { useFieldProps } from '../../props'
+import { useFieldProps, useSizeProps } from '../../props'
 import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 
 export const ratingInputProps = {
@@ -10,6 +10,7 @@ export const ratingInputProps = {
   'onUpdate:modelValue': {
     type: Function as PropType<(value: number | string) => void>
   },
+  ...useSizeProps(),
   ...useFieldProps(),
 }
 

@@ -1,0 +1,9 @@
+.ns-rating-input {
+  .nut-form-item__body__slots {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  &.nut-rate {
+  }
+}
