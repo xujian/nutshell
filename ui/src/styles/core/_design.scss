@@ -95,6 +95,7 @@
     }
     &.has-stroke {
       border-width: var(--thick, 1px);
+      box-sizing: border-box;
     }
   }
 }
