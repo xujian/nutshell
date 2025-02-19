@@ -7,6 +7,7 @@ const components = [
   'button-group/button-group',
   'chip/chip',
   'image/image',
+  'number/number',
   'repeator/repeator',
   'form/form',
   'input/input',

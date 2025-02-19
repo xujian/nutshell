@@ -217,7 +217,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
       {
         title: '数字',
         name: '<ns-number>',
-        link: '/pages/components/number/member',
+        link: '/pages/components/number/number',
       },
       {
         title: '星星',
