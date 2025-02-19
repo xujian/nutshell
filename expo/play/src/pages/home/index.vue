@@ -6,10 +6,24 @@
           <h2>标准组件库</h2>
         </ns-row>
       </ns-card>
+      <ns-row class="scenes-row mb-md" justify="stretch" align="stretch" :gap="10">
+        <ns-card
+          v-for="(scene, index) in scenes"
+          class="scene-card" fill="#FF980099" :blur="40"
+          stroke="#d8870f" title="场景" v-link="'/scenes/list-01'">
+          <ns-column class="fit" align="end" justify="end" :gap="10">
+            <ns-button
+              r="sm"
+              v-for="(s, i) in scene"
+              class="link-button"
+              size="xs" color="#00000033" :label="`${s.title}`" />
+          </ns-column>
+        </ns-card>
+      </ns-row>
       <ns-card class="content-card mb-md" v-for="(g, index) in groups"
         :key="index"
         :title="g.title"
-        :fill="g.color || '#fff'"
+        :fill="fills[index] || '#fff'"
         body-fill="#ffffff22"
         :edge="2">
         <ns-list :data="g.data" has-arrows class="full-width">
@@ -20,12 +34,38 @@
 </template>
 <script lang="ts" setup>
 import { ListItemProps, type Color } from '@uxda/nutshell/taro'
+import chroma from 'chroma-js'
 
+const scenes = [
+  [
+    { title: '列表一', link: '/scenes/list-01' },
+    { title: '列表二', link: '/scenes/list-02' },
+    { title: '列表三', link: '/scenes/list-03' },
+    { title: '列表四', link: '/scenes/list-04' },
+  ],
+  [
+    { title: '表单一', link: '/scenes/form-01' },
+    { title: '表单二', link: '/scenes/form-02' },
+    { title: '表单三', link: '/scenes/form-03' },
+    { title: '表单四', link: '/scenes/form-04' },
+  ],
+  [
+    { title: '详情一', link: '/scenes/detail-01' },
+    { title: '详情二', link: '/scenes/detail-02' },
+    { title: '详情三', link: '/scenes/detail-03' },
+    { title: '详情四', link: '/scenes/detail-04' },
+  ],
+  [
+    { title: '图表一', link: '/scenes/chart-01' },
+    { title: '图表二', link: '/scenes/chart-02' },
+    { title: '图表三', link: '/scenes/chart-03' },
+    { title: '图表四', link: '/scenes/chart-04' },
+  ]
+]
 
 const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   {
     title: '页面构成',
-    color: '#004233',
     data: [
       {
         title: '页',
@@ -60,7 +100,6 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   },
   {
     title: '预设交互',
-    color: '#20532D',
     data: [
       {
         title: '弹窗',
@@ -96,7 +135,6 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   },
   {
     title: '视觉效果',
-    color: '#406327',
     data: [
       {
         title: '总述',
@@ -119,7 +157,6 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   },
   {
     title: '动作类组件',
-    color: '#607321',
     data: [
       {
         title: '按钮',
@@ -155,7 +192,6 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   },
   {
     title: '呈现类组件',
-    color: '#80831A',
     data: [
       {
         title: '标签',
@@ -202,7 +238,6 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   },
   {
     title: '导向类组件',
-    color: '#A09314',
     data: [
       {
         title: 'Tabs',
@@ -221,7 +256,6 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   },
   {
     title: '容器类组件',
-    color: '#C0A30D',
     data: [
       {
         title: '卡片',
@@ -245,7 +279,6 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   },
   {
     title: '输入类组件',
-    color: '#E0B307',
     data: [
       {
         title: '表单',
@@ -323,7 +356,6 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
   },
   {
     title: '数据类组件',
-    color: '#FFC300',
     data: [
       {
         title: '列表',
@@ -358,6 +390,8 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
     ]
   }
 ]
+
+const fills = chroma.scale(['#004233', '#C0A30D']).colors(groups.length)
 </script>
 
 <style lang="scss">
@@ -374,6 +408,12 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
     .caption {
       color: color-mix(in srgb, currentColor 70%, #fff);
       mix-blend-mode: color-dodge;
+    }
+  }
+  .scenes-row {
+    height: 240px;
+    .link-button {
+      width: 100%;
     }
   }
 }
