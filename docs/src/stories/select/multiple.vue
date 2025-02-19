@@ -3,6 +3,7 @@
     v-model="multipleValue"
     :options="cities"
     :key="'primary'"
+    :max-tags="5"
     placeholder="请选择客户区域"
     :color="'primary'"
     label="客户区域" />
