@@ -88,10 +88,18 @@
       background-repeat: no-repeat;
     }
     &.color-scheme-dark {
-      --foreground: var(--ns-text-dark, #fff);
+      &:not(.variant-outlined) {
+        &:not(.variant-plain) {
+          --foreground: var(--ns-text-dark, #fff);
+        }
+      }
     }
     &.color-scheme-light {
-      --foreground: var(--ns-text-light, var(--ns-text));
+      &:not(.variant-outlined) {
+        &:not(.variant-plain) {
+          --foreground: var(--ns-text-light, var(--ns-text));
+        }
+      }
     }
     &.has-stroke {
       border-width: var(--thick, 1px);

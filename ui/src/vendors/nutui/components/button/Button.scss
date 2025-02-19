@@ -25,12 +25,14 @@
   &.variant-plain {
     border-color: transparent;
     --foreground: var(--fill);
+    background-color: transparent;
     &:active {
       --fill: transparent;
-      background-color: transparent;
     }
   }
   &.variant-outlined {
+    background-color: transparent;
+    --foreground: var(--fill);
     &.fill-neutral {
       color: var(--ns-text);
     }
