@@ -112,6 +112,11 @@
     .ant-input-number-handler-wrap {
       background-color: transparent;
     }
+    &.ns-multiple-select {
+      .ant-form-item-row {
+        flex-wrap: nowrap;
+      }
+    }
   }
   .ns-search {
     width: 300px;
@@ -123,6 +128,18 @@
   // number
   .ns-number {
     --r: 4px;
+  }
+
+  // checkbox
+  .ant-checkbox-wrapper {
+    color: rgba(53, 53, 53, 0.6);
+    .ant-checkbox {
+      position: relative;
+      top: 1px;
+    }
+  }
+  .ant-checkbox-wrapper-checked {
+    color: rgba(53, 53, 53, 1);
   }
 }
 
@@ -304,3 +321,23 @@
     color: #017fff !important;
   }
 }
+
+// cascader
+.ant-cascader-menu {
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 2px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 7px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+}
+

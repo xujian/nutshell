@@ -2,9 +2,8 @@
   <ns-radio-group
     v-model="搜索项"
     :options
-    label="增加搜索项"
-    name="搜索项"
-    direction="column" />
+    label="选项"
+    name="搜索项" />
 </template>
 
 <script lang="ts" setup>

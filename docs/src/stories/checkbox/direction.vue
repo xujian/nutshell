@@ -2,7 +2,9 @@
   <ns-checkbox-group color="primary"
     v-model="callResults"
     :options="options"
-    label="营养成分" />
+    label="营养成分"
+    direction="column"
+    align="start" />
 </template>
 
 <script lang="ts" setup>
