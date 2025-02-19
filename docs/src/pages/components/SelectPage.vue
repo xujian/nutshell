@@ -25,7 +25,7 @@
       <story file="select/searchable.vue" />
       <p>&nbsp;</p>
       <h2>多项下拉选框组件</h2>
-      <div class="caption">&lt;ns-multiple-select&gt;</div>
+      <div class="caption">&lt;ns-multiple-select&gt; ；maxTags - 可设置最多显示多少个 tag</div>
       <story file="select/multiple.vue" />
       <h2>可随意输入内容</h2>
       <div class="caption">tagsMode需设为true</div>
