@@ -1,5 +1,4 @@
 import { defineComponent, h, onMounted, onUnmounted, ref, SetupContext } from 'vue'
-import { RectDown as RectDownIcon } from '@nutui/icons-vue-taro'
 import { dropdownEmits, dropdownProps,
     type DropdownProps
  } from '../../../../components/dropdown'
@@ -31,7 +30,7 @@ export const Dropdown = defineComponent({
         iconPosition: 'end',
         onClick: open
       }, {
-        icon: () => h(RectDownIcon, {
+        icon: () => h('div', {
           class: ['icon', 'nutui-icon'],
         }),
       })
