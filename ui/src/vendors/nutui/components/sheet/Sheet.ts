@@ -1,11 +1,12 @@
 import { computed, defineComponent, h, provide, reactive } from 'vue'
-import { sheetProps } from '../../../../components/sheet'
+import { sheetEmits, sheetProps } from '../../../../components/sheet'
 import { buildDesignClasses, PopupState, PopupStateSymbol } from '../../../../props'
 import { NsRow } from '../../../..//components/flex'
 import { NsButton } from '../../../..//components/button'
 
 export const Sheet = defineComponent(
   (props, { slots, emit }) => {
+
     const $bus = useBus()
 
     // 可关闭状态 使用 provide/inject
@@ -30,7 +31,7 @@ export const Sheet = defineComponent(
       props.closable
         ? h('div', {
             class: ['ns-icon-close', 'icon'],
-            onClick: () => emit('cancel')
+            onClick: () => emit('close')
           })
         : null
 
@@ -77,7 +78,6 @@ export const Sheet = defineComponent(
                   size: 'lg',
                   onClick: () => {
                     emit('close')
-                    emit('cancel')
                   }
                 }),
             h(NsButton, {
@@ -85,7 +85,7 @@ export const Sheet = defineComponent(
               label: props.okText || '确定',
               size: 'lg',
               onClick: () => {
-                emit('complete')
+                emit('complete', true)
                 emit('ok')
               }
             })
@@ -148,7 +148,8 @@ export const Sheet = defineComponent(
       })
   }, {
     name: 'NutuiSheet',
-    props: sheetProps
+    props: sheetProps,
+    emits: sheetEmits,
   }
 )
 
