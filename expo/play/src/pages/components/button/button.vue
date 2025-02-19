@@ -1,5 +1,5 @@
 <template>
-  <ns-page>
+  <ns-page fill="neutral">
     <ns-page-header title="按钮"
       :blur="10" reveal has-back-button />
     <ns-page-content>
@@ -37,6 +37,7 @@
           icon="https://cdn.ddjf.com/static/images/ai-approve-mini/scan.png"
           label="证件识别" />
       </ns-row>
+      <code-view language="html" :code="codes[0]" />
       <h2>按钮的排列</h2>
       <ns-card class="sample-card" title="卡片" fill="#fff" stroke="neutral">
         <template #footer>
@@ -70,7 +71,17 @@
       <ns-card class="sample-card" title="卡片" fill="#fff" stroke="neutral">
         <template #footer>
           <ns-row justify="stretch">
-            <ns-button variant="outlined shrink">取消</ns-button>
+            <ns-button variant="outlined" class="shrink">取消</ns-button>
+            <ns-button color="primary">申请</ns-button>
+          </ns-row>
+        </template>
+      </ns-card>
+      <p class="caption">控制空间占用</p>
+      <p>&nbsp;</p>
+      <ns-card class="sample-card" r="lg" title="卡片" fill="black" stroke="neutral">
+        <template #footer>
+          <ns-row justify="stretch">
+            <ns-button variant="outlined" color="#fff" class="shrink">取消</ns-button>
             <ns-button color="primary">申请</ns-button>
           </ns-row>
         </template>
@@ -83,5 +94,16 @@
 <script lang="ts" setup>
 import { brands } from '@uxda/nutshell/taro'
 const colors = brands //.slice(0, 3)
+
+const codes = [
+`<ns-button
+  variant="plain"
+  icon="https://simple.shensi.tech/icons/pdf.svg"
+  label="证件识别" />
+<ns-button
+  color="primary"
+  icon="https://cdn.ddjf.com/static/images/ai-approve-mini/scan.png"
+  label="证件识别" />`
+]
 </script>
 
