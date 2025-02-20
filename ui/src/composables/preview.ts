@@ -8,10 +8,10 @@ import { onBeforeUnmount, onMounted, Ref } from 'vue'
  */
 export const usePreview = (el: Ref<HTMLElement | undefined>) => {
 
-  let viewer: Viewer | null = null
+  let viewer: any = null
 
-  const initViewer = () => {
-    // console.log('===init◊iew', el.value)
+  const initViewer: () => void = () => {
+    // @ts-ignore
     const importViewer = () => import('viewerjs')
     importViewer().then(({ default: Viewer}) =>
       viewer = new Viewer(el.value!, {
