@@ -1,13 +1,14 @@
 .ns-menu {
+  width: fit-content;
   .nut-cell-group__wrap {
+    padding: 4px 0;
     margin: 0 0;
     box-shadow: none;
-    border-radius: var(--ns-r);
-    background-color: transparent;
+    background-color: var(--fill, var(--ns-primary));
   }
   .nut-cell {
     background-color: transparent;
-    padding: 4px;
+    padding: 4px 10px;
     .nut-icon {
       font-size: 9px;
     }
