@@ -6,7 +6,7 @@ import fs from 'fs/promises'
 import { rimraf } from 'rimraf'
 import { mkdirp } from 'mkdirp'
 import { fileURLToPath } from 'url'
-import { components } from '@uxda/nutshell/api/components'
+// import { components } from '@uxda/nutshell/components'
 import { kebabCase } from './helpers/text.ts'
 import { createVeturApi } from './vetur.ts'
 import { addDescriptions, addDirectiveDescriptions, addPropData, stringifyProps } from './utils'
@@ -49,6 +49,10 @@ const run = async () => {
   await mkdirp('./templates/tmp')
   const template = await fs.readFile('./templates/component.d.ts', 'utf-8')
 
+  const components = [
+    { name: 'Button' },
+    { name: 'Input' },
+  ]
   components.forEach(async component => {
     await fs.writeFile(`./templates/tmp/${component.name}.d.ts`,
       template.replaceAll('__component__', component.name)

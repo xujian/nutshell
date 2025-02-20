@@ -200,7 +200,6 @@ function generateDefinition (
     project: Project,
     type?: Type<ts.Type>
   ): Definition {
-    console.log('===|||===999===888===generateDefinition===recursed===:', recursed)
     const tc = project.getTypeChecker()
     type = type ?? node.getType()
     if (type.getAliasSymbol()?.getName() === 'NonNullable') {
@@ -210,16 +209,19 @@ function generateDefinition (
       }
     }
     const symbol = type.getAliasSymbol() ?? type.getSymbol()
+    console.log('===|||===999===888===generateDefinition===symbol===:', type.getText())
     const declaration = symbol?.getDeclarations()?.[0]
     const targetType = type.getTargetType()
     let definition: Definition = {
       text: getCleanText(type.getText()),
       source: getSource(declaration)
     } as Definition
+    console.log('===|||===999===888===generateDefinition===declaration===:', declaration?.getText())
+    console.log('===|||===999===888===generateDefinition===definition===:', definition)
     // @ts-ignore
     const comment = ts.getJSDocCommentsAndTags(node)[0]
+    console.log('===|||===999===888===generateDefinition===comment===:', comment)
     if (comment) {
-      console.log('===|||===999===888===generateDefinition===comment===:', comment)
       definition.description = {
         zh: comment.getText()
       }
@@ -322,6 +324,7 @@ function generateDefinition (
       definition = definition as ObjectDefinition
       definition.type = 'object'
       definition.properties = {}
+      console.log('======|||===999===888===generateDefinition===properties', type.getProperties())
       for (const property of type.getProperties()) {
         const propertyName = property.getEscapedName()
         console.log('===|||===999===888===generateDefinition===property:', propertyName)
@@ -367,9 +370,11 @@ function generateDefinition (
 async function inspect (project: Project, node?: Node<ts.Node>) {
   if (!node) throw new Error('No node provided')
   const kind = node.getKind()
+  console.log('->->->->->inspect===->->->->->[[[node]]]:', node.getSourceFile().getFilePath())
   if (kind == ts.SyntaxKind.TypeAliasDeclaration) {
     const definition = generateDefinition(node, [], project) as ObjectDefinition
     if (definition.properties) {
+      console.log('->->->->->inspect===definition.properties:', definition.properties)
       definition.properties = Object.fromEntries(
         await Promise.all(
           Object.entries(definition.properties)

@@ -1,5 +1,5 @@
 import type { AllowedComponentProps, ComponentPublicInstance, FunctionalComponent, RenderFunction, VNodeChild, VNodeProps } from 'vue'
-import type { __component__ } from '@uxda/nutshell'
+import type { Ns__component__ } from '@uxda/nutshell'
 
 type StripProps = keyof VNodeProps | keyof AllowedComponentProps | 'v-slots' | '$children' | `v-slot:${string}`
 type Event = `on${string}`
@@ -23,8 +23,8 @@ type Events<T> = T extends { $props: infer P extends object }
   }
   : never
 
-export type ComponentProps = Props<__component__>
-export type ComponentEvents = Events<__component__>
+export type ComponentProps = Props<Ns__component__>
+export type ComponentEvents = Events<Ns__component__>
 
 type RemoveIndex<T> = {
   [K in keyof T as string extends K
@@ -48,7 +48,7 @@ type Slots<
 type AtLeastOne<T, U = {[K in keyof T]: Pick<T, K> }> = Partial<T> & U[keyof U]
 type ExcludeEmpty<T> = T extends AtLeastOne<T> ? T : never
 
-export type ComponentSlots = Slots<__component__>
+export type ComponentSlots = Slots<Ns__component__>
 
 type ExtractExposed<T> = T extends (...args: any[]) => infer R
   ? R extends Promise<any>
@@ -64,4 +64,4 @@ type ExtractExposed<T> = T extends (...args: any[]) => infer R
             : never
   : never
 
-export type ComponentExposed = ExtractExposed<__component__['$options']['setup']>
+export type ComponentExposed = ExtractExposed<Ns__component__['$options']['setup']>
