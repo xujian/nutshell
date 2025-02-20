@@ -1,5 +1,5 @@
 export default definePageConfig({
   navigationBarTextStyle: 'white',
   navigationStyle: 'custom',
-  navigationBarTitleText: 'Button'
+  navigationBarTitleText: 'Form'
 })
