@@ -16,6 +16,7 @@ const components = [
   'input/date-input',
   'input/time-input',
   'input/textarea',
+  'input/switch-input',
   'select/select',
   'select/cascading-select',
   'facts/facts',
