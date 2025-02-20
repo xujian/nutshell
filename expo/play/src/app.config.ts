@@ -25,8 +25,7 @@ const components = [
   'tabs/tabs',
   'popover/popover',
   'radio/radio',
-  'checkbox/checkbox',
-  'switch/switch'
+  'checkbox/checkbox'
 ]
 
 export default defineAppConfig({

@@ -78,10 +78,17 @@ export const NsForm = define({
       })
     }
 
-    // 表单重置
+    // 表单重置某个字段
     function resetFields (nameList?: NamePath[]) {
       vendorRef.value.resetFields(nameList)
     }
+
+    // 表单重置
+    function reset (){
+      console.log('是我')
+      vendorRef.value.reset()
+    }
+
 
     // 移除表单校验结果
     function clearValidate (nameList?: NamePath[]) {
@@ -92,7 +99,8 @@ export const NsForm = define({
       methods: {
         validate,
         resetFields,
-        clearValidate
+        clearValidate,
+        reset
       },
       props: {
       },

@@ -4,7 +4,7 @@
       caption="<ns-form>"
       :blur="10" reveal has-back-button />
     <ns-page-content>
-      <ns-form v-model="formData">
+      <ns-form v-model="formData" ref="form">
         <ns-input
           v-model.trim="formData.name"
           name="name"
@@ -60,6 +60,10 @@
         <ns-upload label="上传"
           v-model="files" />
       </ns-form>
+      <ns-card style=" text-align: right;">
+        <ns-button color="primary" @click="reset">重置</ns-button>
+        <ns-button color="primary" @click="save">保存</ns-button>
+      </ns-card>
     </ns-page-content>
   </ns-page>
 </template>
@@ -79,17 +83,6 @@ const regions = [
   { label: '杭州', value: 'hangzhou' },
   { label: '重庆', value: 'chongqing' },
   { label: '武汉', value: '武汉' },
-]
-
-const followupOptions = [
-  {
-    value: '1',
-    label: '已跟进'
-  },
-  {
-    value: '2',
-    label: '未跟进'
-  },
 ]
 
 const formatter = (value: number | string) => {
@@ -153,5 +146,12 @@ const files = ref([
   }
 ])
 
+const form = ref()
+function reset(){
+  form.value.reset()
+}
+function save(){
+  form.value.validate()
+}
 </script>
 
