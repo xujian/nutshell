@@ -12,7 +12,7 @@
     <p>&nbsp;</p>
     <h3>动作类</h3>
     <ns-row class="catelog" justify="start" :gap="10" wrap>
-      <ns-card gradient="101" title="按钮" v-link="'/componentss/button'">
+      <ns-card gradient="101" title="按钮" v-link="'/components/button'">
         <ns-button color="primary">保存</ns-button>
       </ns-card>
       <ns-card gradient="101" title="按钮组">
@@ -393,7 +393,7 @@ const onOpenDialog = () => {
   $n.dialog({
     title: '客户',
     message: '消息内容',
-    cancelText: '',
+    cancelText: '取消',
     centered: true,
     onOk: () => {
       return true
