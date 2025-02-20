@@ -1,6 +1,6 @@
 <template>
   <ns-page class="facts-page">
-    <ns-page-header title="详表" />
+    <ns-page-header title="详表" has-back-button />
     <ns-page-content>
       <h2>王长城</h2>
       <p class="caption">一般客户</p>

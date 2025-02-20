@@ -9,6 +9,10 @@
           :items
           label="排序" />
       </ns-row>
+      <p>&nbsp;</p>
+      <ns-menu
+        fill="#fff"
+        :items />
     </ns-page-content>
   </ns-page>
 </template>

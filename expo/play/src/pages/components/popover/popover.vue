@@ -1,6 +1,6 @@
 <template>
   <ns-page class="popover-page">
-    <ns-page-header title="弹出气泡" has-back-button />
+    <ns-page-header title="气泡" has-back-button />
     <ns-page-content>
       <callout>
         <p>弹出气泡内嵌于可点击组件(&lt;ns-button&gt;)之上</p>
