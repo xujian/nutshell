@@ -30,4 +30,4 @@ app.post('/write-json', async (req, res) => {
 app.listen(2025)
 console.log('listening on http://localhost:2205/')
 
-export const viteNodeApp = app
+// export const viteNodeApp = app
