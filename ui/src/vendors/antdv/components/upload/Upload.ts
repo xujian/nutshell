@@ -86,6 +86,7 @@ export const Upload = defineComponent({
         return h(NsFile, {
           ...item,
           deletable: true,
+          downloadable: true,
           onPreview (id: string) {
             preview(id)
           },
@@ -96,7 +97,11 @@ export const Upload = defineComponent({
               if (index !== -1) {
                 value.splice(index, 1)
                 props['onUpdate:modelValue']?.(value)
+                emit('delete', id)
               }
+            }, {
+              centered: true,
+              classes: ['nut-dialog-confirm']
             })
           }
         })

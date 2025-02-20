@@ -249,6 +249,10 @@ const menuData = computed(() => [
             key: '/components/rating-input'
           },
           {
+            label: '开关输入框 switch-input',
+            key: '/components/switch'
+          },
+          {
             label: '文件上传 upload',
             key: '/components/upload'
           },

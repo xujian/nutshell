@@ -16,10 +16,10 @@ export const usePreview = (el: Ref<HTMLElement | undefined>) => {
     importViewer().then(({ default: Viewer}) =>
       viewer = new Viewer(el.value!, {
         container: document.body,
-        navbar: false,
-        toolbar: false,
-        zoomable: false,
-        transition: false,
+        // navbar: false,
+        // toolbar: false,
+        // zoomable: false,
+        // transition: false,
         url: (img: HTMLElement) => {
           return img.getAttribute('data-url')
         }

@@ -5,7 +5,7 @@
     background-size: 32px;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: var(--ns-surface);
+    background-color: var(--ns-fill);
   }
   .thumb-item {
     .image {
@@ -16,7 +16,7 @@
     }
   }
   .toolbar {
-    height: 32px;
+    height: 20px;
     padding: 0 8px;
     width: 100%;
     background-color: #00000088;
@@ -25,17 +25,19 @@
     bottom: 0;
     transition: transform .33s;
     border-radius: var(--ns-r);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     cursor: default;
     .icon {
-      height: 24px;
-      width: 24px;
-      background-size: 16px;
+      height: 14px;
+      width: 14px;
+      background-size: 14px;
       background-position: center;
       background-repeat: no-repeat;
       cursor: pointer;
       border-radius: 8px;
       &:hover {
-        background-color: #00000088;
+        filter: brightness(0.9);
       }
     }
     .icon-preview {

@@ -1,5 +1,7 @@
 .ns-dialog {
-  position: absolute;
+  &:not(.ant-modal) {
+    position: absolute;
+  }
   .nut-popup {
     bottom: 0;
     background-color: var(--ns-surface);

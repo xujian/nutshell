@@ -46,6 +46,10 @@ export const uploadProps = {
     type: Boolean,
     default: false
   },
+  downloadable: {
+    type: Boolean,
+    default: false
+  },
   beforeUpload: {
     type: Function as PropType<BeforeUploadMethod>
   },

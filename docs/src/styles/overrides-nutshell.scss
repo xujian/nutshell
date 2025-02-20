@@ -180,6 +180,27 @@
   .ns-switch-input .ant-form-item-control-input {
     background: transparent;
   }
+
+  // 上传
+  .ns-upload {
+    --r: 4px;
+    --ns-r: 4px;
+    --ns-fill: #f7f8fa;
+    .icon-item, .thumb-item {
+      border: 1px solid #efefef;
+    }
+    .ant-upload-select-picture-card {
+      border: 1px solid #efefef !important;
+      background: #f7f8fa !important;
+    }
+  }
+  .ns-file {
+    --ns-r: 4px;
+    --ns-fill: #f7f8fa;
+    .icon-item, .thumb-item {
+      border: 1px solid #efefef;
+    }
+  }
 }
 
 // popover

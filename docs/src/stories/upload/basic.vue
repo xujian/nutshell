@@ -1,10 +1,12 @@
 <template>
-  <ns-upload v-model="files" caption="支持格式 png/jpg/jpeg/pdf" @complete="onUploadComplete" />
+  <ns-upload v-model="files" caption="支持格式 png/jpg/jpeg/pdf" @complete="onUploadComplete" @delete="onUploadDelete" />
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useNutshell } from '@uxda/nutshell'
 
+const $n = useNutshell()
 const files = ref([
   {
     id: '65d6e700febeec0001323135',
@@ -34,6 +36,10 @@ const files = ref([
   }
 ])
 const onUploadComplete = () => {
+  console.log('upload complete')
+}
 
+const onUploadDelete = () => {
+  $n.toast('删除成功，这里写删除请求', {})
 }
 </script>

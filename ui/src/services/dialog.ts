@@ -42,7 +42,9 @@ export type ConfirmOptions = {
   okColor?: Color,
   cancelColor?: Color,
   onOk?: (result?: any) => boolean | undefined
-  onCancel?: () => boolean | undefined
+  onCancel?: () => boolean | undefined,
+  classes?: string[],
+  centered?: boolean,
 }
 
 export type DialogInstance = {
