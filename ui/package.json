@@ -1,6 +1,6 @@
 {
   "name": "@uxda/nutshell",
-  "version": "1.6.38",
+  "version": "1.6.50",
   "description": "A Vue 3 UI library base on Nutui & ant-design-vue",
   "author": {
     "name": "UXDA team"
@@ -32,7 +32,7 @@
     ".": "./dist/nutshell.js",
     "./dist/*": "./dist/*",
     "./taro": "./dist/taro/index.js",
-    "./api/components": "./dist/api/components.js",
+    "./components": "./dist/components/all.mjs",
     "./nutshell.css": "./dist/nutshell.css",
     "./nutui.css": "./dist/nutui.css",
     "./antdv.css": "./dist/antdv.css",
@@ -49,6 +49,7 @@
     "build:dist": "rollup --config rollup.config.js",
     "build:types": "tsc --pretty --emitDeclarationOnly",
     "build:lib": "NODE_ENV=lib babel src --out-dir dist --source-maps --extensions \".ts\" --copy-files --no-copy-ignored --out-file-extension .mjs",
+    "build:portal": "yarn build && rm -rf ../../portal-weapp/node_modules/@uxda/nutshell/dist && cp -R dist ../../portal-weapp/node_modules/@uxda/nutshell/",
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview"
