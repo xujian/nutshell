@@ -4,7 +4,7 @@
       caption="<ns-form>"
       :blur="10" reveal has-back-button />
     <ns-page-content>
-      <ns-form v-model="formData" ref="form">
+      <ns-form v-model="formData" ref="form" failed="notice">
         <ns-input
           v-model.trim="formData.name"
           name="name"
