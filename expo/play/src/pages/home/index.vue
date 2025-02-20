@@ -332,7 +332,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '开关',
         name: '<ns-switch-input>',
         caption: '',
-        link: '/pages/components/input/switch-input',
+        link: '/pages/components/awitch/switch',
       },
       {
         title: '按钮组',
