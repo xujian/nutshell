@@ -35,6 +35,13 @@
       <p>&nbsp;</p>
       <h2>渐变 Gradient</h2>
       <story minimal file="card/gradients" />
+      <p>&nbsp;</p>
+      <h2>视觉效果</h2>
+      <designer v-slot="{props}">
+        <ns-card v-bind="props" title="卡片">
+          <lorem />
+        </ns-card>
+      </designer>
     </ns-page-content>
   </ns-page>
 </template>
