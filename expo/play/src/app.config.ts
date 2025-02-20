@@ -19,6 +19,7 @@ const components = [
   'input/switch-input',
   'select/select',
   'select/cascading-select',
+  'upload/upload',
   'facts/facts',
   'card/card',
   'timeline/timeline',
