@@ -5,6 +5,7 @@ import copy from 'rollup-plugin-copy'
 import commonjs from '@rollup/plugin-commonjs'
 import postcss from 'rollup-plugin-postcss'
 import { resolve } from 'path'
+import { dts } from 'rollup-plugin-dts'
 import vue from 'rollup-plugin-vue'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
@@ -257,6 +258,7 @@ export default [
           TaroHookResolver,
         ]
       }),
+      // dts(),
       postcss({
         modules: true
       }),
