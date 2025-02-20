@@ -3,6 +3,9 @@
   padding: 0 12px !important;
   background: #fff !important;
 }
+.nut-form-item.error .nut-form-item__label {
+  color: #fa2c19;
+}
 .variant-solid {
   .nut-input {
     background: none !important;
@@ -72,3 +75,6 @@
     }
   }
 }
+
+
+

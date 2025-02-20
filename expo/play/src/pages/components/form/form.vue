@@ -12,7 +12,6 @@
           label="姓名"
           placeholder="请输入姓名" />
         <ns-textarea
-          style="height: 60px; --h: 60px"
           v-model="formData.description"
           name="description"
           :rules="['required']"
@@ -30,6 +29,7 @@
         <ns-select
           v-model="formData.due"
           :options="regions"
+          name="due"
           placeholder="请输入城市"
           hint="仅支持最高 720p、5 秒，限每月 50 个视频"
           :rules="['required']"
