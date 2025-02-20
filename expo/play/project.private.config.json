@@ -3,5 +3,18 @@
   "projectname": "Nutshell%20Expo%20Play",
   "setting": {
     "compileHotReLoad": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "文本域",
+          "pathName": "pages/components/input/textarea",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }
