@@ -13,6 +13,9 @@ export const ratingProps = {
   color: {
     type: String as PropType<Color>,
   },
+  disabled: {
+    type: Boolean,
+  },
   ...useSizeProps(),
 }
 

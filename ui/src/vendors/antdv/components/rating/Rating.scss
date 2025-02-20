@@ -3,11 +3,14 @@
     background-color: transparent;
     border-color: transparent !important;
   }
+  .ant-rate {
+    font-size: 14px;
+  }
 }
 
 .ns-rating {
   &.ant-rate {
-    font-size: 12px;
+    font-size: 14px;
     display: inline-flex;
     align-items: center;
     .ant-rate-star {
@@ -17,7 +20,7 @@
       .ant-rate-star-second {
         color: inherit;
       }
-      &.ant-rate-star-full {
+      &.ant-rate-star-zero {
         .anticon {
           color: var(--ns-neutral)
         }
@@ -31,8 +34,8 @@
     .anticon {
       line-height: inherit;
       svg {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
       }
     }
   }

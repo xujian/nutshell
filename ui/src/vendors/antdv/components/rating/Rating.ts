@@ -14,6 +14,7 @@ export const Rating = (props: RatingProps, { emit }: SetupContext) => {
 
   return h(AntdvRating, {
     value: props.value,
+    disabled: props.disabled,
     onChange: props.onChange,
     style,
   })
