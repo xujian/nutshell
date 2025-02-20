@@ -36,7 +36,7 @@ export const Input = defineComponent({
             emit('blur')
           },
           onChange: (e: any) => {
-            emit('change', e.detail.value)
+            emit('change', e.detail ? e.detail.value : e.target._value)
           },
         },
         {
