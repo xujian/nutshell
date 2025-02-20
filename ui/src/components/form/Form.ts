@@ -85,7 +85,6 @@ export const NsForm = define({
 
     // 表单重置
     function reset (){
-      console.log('是我')
       vendorRef.value.reset()
     }
 
