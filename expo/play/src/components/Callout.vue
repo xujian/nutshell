@@ -20,5 +20,12 @@
   background-repeat: no-repeat;
   padding: 8px;
   padding-left: 36px;
+  .b {
+    font-weight: bold;
+  }
+  code {
+    font-weight: bold;
+    color: #7a6e0c;
+  }
 }
 </style>
