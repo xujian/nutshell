@@ -66,9 +66,10 @@ export const NsForm = define({
             resolve(true)
           } else {
             if (result.valid === false) {
-              result.errors.forEach((e: any) => {
-                $n.toast(e.message, {})
-              })
+              // result.errors.forEach((e: any) => {
+              //   $n.toast(e.message, {})
+              // })
+              $n.toast(result.errors[0].message, {})
             }
             resolve(result)
           }
