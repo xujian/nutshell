@@ -1,7 +1,7 @@
 import { Form, Display } from './form'
 import { Input, DateInput, DateRangeInput, MonthRangeInput, Textarea,
   NumberInput, NumberRangeInput, MonthInput, YearInput, InputGroup, ChipsInput } from './input'
-import { Switch } from './switch'
+import { Switch, SwitchInput } from './switch'
 import { Empty } from './empty'
 import { Checkbox, CheckboxGroup } from './checkbox'
 import { Rating, RatingInput } from './rating'
@@ -39,6 +39,7 @@ const components = {
   NumberInput,
   InputGroup,
   Switch,
+  SwitchInput,
   Table,
   Dialog,
   Sheet,

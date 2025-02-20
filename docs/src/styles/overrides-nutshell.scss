@@ -69,7 +69,7 @@
       height: auto;
     }
   }
-  .ns-form-item{
+  .ns-form-item {
     --ns-r-input: 4px;
     --ns-fill: #f7f8fa;
     --ns-input-height: 32px;
@@ -85,8 +85,7 @@
       &::after {
         display: none;
       }
-    }
-    .ant-form-item-control-input, .ant-input-affix-wrapper {
+    }.ant-form-item-control-input, .ant-input-affix-wrapper {
       border: none;
       box-shadow: none;
       outline: none;
@@ -165,6 +164,21 @@
         background: #999;
       }
     }
+  }
+
+  // rating
+  .ns-rating, .ns-rating-input {
+    .ant-rate-star-zero .anticon {
+      color: rgba(0, 0, 0, 0.06) !important;
+    }
+    .ant-rate-star-full .anticon {
+      color: #fa8c16 !important;
+    }
+  }
+
+  // switch
+  .ns-switch-input .ant-form-item-control-input {
+    background: transparent;
   }
 }
 
