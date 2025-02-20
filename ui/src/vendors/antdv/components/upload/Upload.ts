@@ -103,6 +103,9 @@ export const Upload = defineComponent({
               centered: true,
               classes: ['nut-dialog-confirm']
             })
+          },
+          onDownload (id: string) {
+            emit('download', id)
           }
         })
       }

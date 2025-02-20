@@ -74,6 +74,7 @@ export const uploadProps = {
 export type UploadEmits = {
   complete: (file: Media) => boolean
   delete: (id: string) => boolean
+  download: (id: string) => boolean
 }
 
 export const uploadEmits: UploadEmits = {
@@ -81,6 +82,9 @@ export const uploadEmits: UploadEmits = {
     return true
   },
   delete: (id: string) => {
+    return true
+  },
+  download: (id: string) => {
     return true
   }
 }

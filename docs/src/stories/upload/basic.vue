@@ -1,5 +1,5 @@
 <template>
-  <ns-upload v-model="files" caption="支持格式 png/jpg/jpeg/pdf" @complete="onUploadComplete" @delete="onUploadDelete" />
+  <ns-upload v-model="files" caption="支持格式 png/jpg/jpeg/pdf" @complete="onUploadComplete" @delete="onUploadDelete"  @download="onUploadDownload" />
 </template>
 
 <script lang="ts" setup>
@@ -41,5 +41,9 @@ const onUploadComplete = () => {
 
 const onUploadDelete = () => {
   $n.toast('删除成功，这里写删除请求', {})
+}
+
+const onUploadDownload = () => {
+  $n.toast('下载成功，这里写下载请求', {})
 }
 </script>
