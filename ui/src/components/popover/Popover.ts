@@ -2,7 +2,6 @@ import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDesignProps, useModelValuePropsForBoolean, useTriggerProps } from '../../props'
 
-
 export const popoverProps = {
   ...useModelValuePropsForBoolean(),
   ...useTriggerProps(),
@@ -21,6 +20,10 @@ export const popoverProps = {
   trigger: {
     type: String,
     default: 'mouseenter',
+  },
+  light: {
+    type: Boolean,
+    default: false,
   },
   ...useDesignProps(),
 }

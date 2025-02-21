@@ -8,22 +8,14 @@
       <note>区隔内容的分割线。</note>
       <p>&nbsp;</p>
       <h2>基本用法</h2>
-      <ns-divider> text </ns-divider>
+      <story file="divider/basic" />
       <h2>虚线 dashed</h2>
-      <ns-divider dashed> text </ns-divider>
-      <h2>垂直分隔线 direction</h2>
-      <ns-divider dashed direction="vertical" />
-      text1
-      <ns-divider dashed direction="vertical" />
-      text2
+      <story file="divider/dashed" />
+      <h2>垂直分隔线 direction="vertical"</h2>
+      <story file="divider/direction" />
     </ns-page-content>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
-
 </script>
-
-<style lang="scss">
-</style>

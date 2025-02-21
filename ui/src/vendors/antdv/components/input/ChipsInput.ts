@@ -57,10 +57,11 @@ export const ChipsInput = (props: ChipsInputProps, { emit, slots }: SetupContext
             h(NsCheckboxGroup, {
               modelValue: props.modelValue || [],
               options: options || [],
-              label: props.label,
+              light: true,
+              // label: props.label,
               // @ts-ignore
               onChange: (value: string[]) => {
-                emit('update:modelValue', value)
+                Array.isArray(value) && emit('update:modelValue', value)
               }
             })
           ]
@@ -74,7 +75,7 @@ export const ChipsInput = (props: ChipsInputProps, { emit, slots }: SetupContext
       return h(NsChip, {
         class: on ? ['active'] : [],
         color: props.color || 'primary',
-        variant: props.variant,
+        variant: props.variant || 'outlined',
         label: o.label,
         onClick: () => onItemClick(o)
       })

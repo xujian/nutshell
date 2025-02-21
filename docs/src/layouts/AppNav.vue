@@ -253,6 +253,10 @@ const menuData = computed(() => [
             key: '/components/switch'
           },
           {
+            label: '标签输入框 chips-input',
+            key: '/components/chips-input'
+          },
+          {
             label: '文件上传 upload',
             key: '/components/upload'
           },

@@ -22,6 +22,7 @@ const CheckboxPage = () => import('../pages/components/CheckboxPage.vue')
 const DateInputPage = () => import('../pages/components/DateInputPage.vue')
 const RatingInputPage = () => import('../pages/components/RatingInputPage.vue')
 const SwitchPage = () => import('../pages/components/SwitchPage.vue')
+const ChipsInputPage = () => import('../pages/components/ChipsInputPage.vue')
 const PopoverPage = () => import('../pages/components/PopoverPage.vue')
 const FactsPage = () => import('../pages/components/FactsPage.vue')
 const FilesPage = () => import('../pages/components/FilesPage.vue')
@@ -182,6 +183,11 @@ const router = createRouter({
           path: '/components/switch',
           name: 'components-switch',
           component: SwitchPage
+        },
+        {
+          path: '/components/chips-input',
+          name: 'components-chips-input',
+          component: ChipsInputPage
         },
         {
           path: '/components/button-group',

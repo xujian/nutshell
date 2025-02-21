@@ -181,7 +181,7 @@
     background: transparent;
   }
 
-  // 上传
+  // upload
   .ns-upload {
     --r: 4px;
     --ns-r: 4px;
@@ -194,12 +194,18 @@
       background: #f7f8fa !important;
     }
   }
+  // file
   .ns-file {
     --ns-r: 4px;
     --ns-fill: #f7f8fa;
     .icon-item, .thumb-item {
       border: 1px solid #efefef;
     }
+  }
+
+  // divider
+  .ns-divider {
+    --fill: rgba(53, 53, 53, 0.6);
   }
 }
 
@@ -261,8 +267,11 @@
   --r: 2px;
   margin-inline-end: 8px;
   &.nut-tag {
+    cursor: pointer;
     padding: 0 8px;
     height: 26px;
+    margin-top: 3px;
+    margin-bottom: 3px;
   }
   .ns-icon-close.icon {
     width: 10px;
@@ -401,3 +410,12 @@
   }
 }
 
+// tippy时
+.tippy-box[data-theme=dark] {
+  .ns-checkbox-group .ant-checkbox-wrapper {
+    color: #fff;
+  }
+  .ns-form-item {
+    width: 100%;
+  }
+}

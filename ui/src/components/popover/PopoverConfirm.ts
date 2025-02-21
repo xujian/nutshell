@@ -64,6 +64,7 @@ export const NsPopoverConfirm = defineComponent({
         delay: [200, 20_000],
         trigger: props.trigger || 'click',
         interactive: true,
+        offset: [0, 15],
         theme: 'light',
         placement: props.placement || 'top',
         onShow: () => {

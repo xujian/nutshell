@@ -28,6 +28,7 @@ export const CheckboxGroup = defineComponent({
               value: props.modelValue as CheckboxValueType[],
               disabled: props.disabled ?? false,
               'onUpdate:value': (value: CheckboxValueType[]) => {
+                emit('change', value)
                 props['onUpdate:modelValue']?.(value as string[])
               },
             },
