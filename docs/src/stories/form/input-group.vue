@@ -27,6 +27,4 @@ const marrageOptions = [
   { label: '离异', value: 'divorced' },
   { label: '丧偶', value: 'widowed' },
 ]
-
-
 </script>

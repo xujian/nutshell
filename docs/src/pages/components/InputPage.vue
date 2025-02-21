@@ -43,6 +43,9 @@
       <h2>多行输入框</h2>
       <div class="caption">ns-textarea</div>
       <story file="form/textarea" />
+      <h2>展示框</h2>
+      <div class="caption">ns-display，用于展示不可操作，</div>
+      <story file="input/display" />
       <p>&nbsp;</p>
       <h2>使用 SLOTS</h2>
       <div class="caption">前缀prepend/后缀append</div>
