@@ -3,11 +3,15 @@
     <ns-input name="clientName"
       :model-value="validationFormDate.clientName"
       label="客户名称"
+      placeholder="请输入客户名称"
       :rules="['required']"
       @change="onNameChange" />
-    <ns-select name="clientLocation" v-model="validationFormDate.clientLocation"
+    <ns-select name="clientLocation"
+      v-model="validationFormDate.clientLocation"
       :options="cities"
-      label="区域" :rules="['required']" />
+      placeholder="请选择区域"
+      label="区域"
+      :rules="['required']" />
     <ns-radio-group v-model="validationFormDate.param" label="自定义参数" name="param" :rules="['required']">
       <ns-radio value="1" label="客户姓名"></ns-radio>
       <ns-radio value="2" label="手机号码"></ns-radio>
@@ -16,7 +20,7 @@
     </ns-radio-group>
   </ns-form>
   <ns-row justify="end">
-    <ns-button label="重置" @click="onFormReset"></ns-button>
+    <ns-button variant="outlined" label="重置" @click="onFormReset"></ns-button>
     <ns-button color="primary" label="提交" @click="onFormSubmit"></ns-button>
   </ns-row>
 </template>
@@ -31,7 +35,7 @@ const cities = ref<any[]>([])
 
 const validationFormDate = reactive({
   clientName: '',
-  clientLocation: '',
+  clientLocation: null,
   param: ''
 })
 

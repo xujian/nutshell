@@ -1,11 +1,11 @@
 <template>
     <ns-form
       :variant="variant"
-      name="client" autocomplete="off"
+      autocomplete="off"
       v-model="formData">
       <h3>基础信息</h3>
       <ns-display label="金额">
-        <ns-number :model-value="1024"
+        <ns-number :value="1024"
           size="xs"
           :minimumFractionDigits="2"
           hasDaxie />
@@ -13,6 +13,7 @@
       <ns-input
         label="申请人姓名"
         name="name"
+        placeholder="请输入姓名"
         v-model="formData.name"
         @change="onNameChange"
         :rules="['required', {
@@ -28,15 +29,18 @@
         :disabled-date="disabledDateOfPicker" />
       <ns-id-input name="id"
         label="证件号码"
+        placeholder="请输入证件号码"
         v-model="formData.id" />
       <ns-select name="marrage"
         label="婚姻状态"
+        placeholder="请选择婚姻状态"
         v-model="formData.marrage"
         :options="marrageOptions" />
       <ns-mobile-input name="mobile"
         label="手机号"
+        placeholder="请输入手机号"
         v-model="formData.mobile" />
-      <h3>基础信息</h3>
+      <h3>意向信息</h3>
       <ns-rating-input label="意向等级"
         name="intention"
         v-model="formData.intention" />
@@ -48,6 +52,7 @@
       <ns-number-input
         name="amount"
         label="金额"
+        placeholder="请输入金额"
         :maximumFractionDigits="2"
         has-daxie
         v-model="formData.amount"
@@ -71,14 +76,14 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive, ref } from 'vue'
+import { reactive, ref } from 'vue'
 import dayjs from "dayjs";
 
 const formData = reactive({
   name: '',
   id: '',
-  marrage: '',
-  mobile: '18676768200',
+  marrage: null,
+  mobile: '',
   intention: 2,
   tags: [],
   divorceDate: null,
@@ -119,13 +124,4 @@ function disabledDateOfPicker(current: any) {
 function onNameChange (value: string) {
   console.log('===onNameChange, value=', value)
 }
-
-onMounted(() => {
-  setTimeout(() => {
-    formData.id = '132'
-    formData.mobile = '189'
-    console.log('+++')
-  }, 2000)
-})
-
 </script>

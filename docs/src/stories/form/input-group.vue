@@ -2,9 +2,11 @@
   <ns-input-group variant="soft">
     <ns-select
       v-model="formData.marrage"
+      placeholder="请选择婚姻状态"
       :options="marrageOptions" />
     <ns-input
       name="name"
+      placeholder="请输入姓名"
       v-model="formData.name"
       :rules="['required']">
     </ns-input>
