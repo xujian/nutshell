@@ -8,33 +8,19 @@
       <note>通用卡片容器, 可承载文字、列表、图片、段落</note>
       <p>&nbsp;</p>
       <h2>基本用法</h2>
-      <p>&nbsp;</p>
+      <div class="caption">卡片分为header、body、footer、bottom四部分组成；支持使用插槽；支持通过变量控制样式</div>
       <story minimal file="card/anatomy" />
       <h2>橱窗</h2>
-      <p>&nbsp;</p>
+      <div class="caption">支持下面插槽：corner-标题右侧角标位，header-头部区域，title-标题区域，titleAfter-标题右侧区域，footer-底部区域，bottom-底部说明区域</div>
+      <div class="caption" style="margin-top: -10px; margin-bottom: 15px;">padding-控制body区域内边距；foreground-控制文字颜色；stroke：控制边框颜色；tick-控制边框宽度</div>
       <story minimal file="card/showcase" />
-      <h2 class="my-md">Colors</h2>
-      <ns-row class="colors" :gap="10">
-        <ns-card v-for="color in brands"
-          title="卡片"
-          :fill="color"
-          :key="color"></ns-card>
-      </ns-row>
-      <h2>变体 Variants</h2>
-      <ns-row class="variants"
-        align="center"
-        :gap="10"
-        justify="start">
-        <ns-card class="my-xs"
-          v-for="(variant) in variants"
-          :key="variant"
-          :title="variant"
-          :color="'#999'"
-          :variant="variant"></ns-card>
-      </ns-row>
+      <h2>颜色 Colors</h2>
+      <div class="caption">fill属性控制卡片背景色</div>
+      <story file="card/colors" />
       <p>&nbsp;</p>
       <h2>渐变 Gradient</h2>
-      <story minimal file="card/gradients" />
+      <div class="caption">gradient属性控制卡片渐变背景色</div>
+      <story file="card/gradients" />
       <p>&nbsp;</p>
       <h2>视觉效果</h2>
       <designer v-slot="{props}">
