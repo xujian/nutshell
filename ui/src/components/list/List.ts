@@ -1,8 +1,9 @@
 import { h, defineComponent } from 'vue'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { Color } from '../../composables'
-import { buildDesignClasses, buildDesignStyles, useDesignProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, useDesignProps, useGapProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
+import { NsColumn } from '../flex'
 
 export type ListItemData = {
   number?: number,
@@ -22,7 +23,10 @@ export const listItemProps = {
   hasArrow: {
     type: Boolean,
   },
-  color: {
+  /**
+   * 行底色
+   */
+  fill: {
     type: String as PropType<Color>
   },
   data: Object as PropType<ListItemData>
@@ -63,6 +67,10 @@ export const listProps = {
   dense: {
     type: Boolean,
   },
+  itemFill: {
+    type: String as PropType<Color>,
+  },
+  ...useGapProps(),
   ...useVariantProps(),
   ...useDesignProps(),
 }
@@ -94,8 +102,6 @@ export const NsListItem = defineComponent({
   props: listItemProps,
   slots: listItemSlots,
   setup (props, { slots, emit }) {
-
-    console.log('===hasArrow', props.hasArrow)
 
     const main = ({ data }: ListItemProps) => {
       return h('div', {
@@ -131,7 +137,15 @@ export const NsListItem = defineComponent({
         class: [
           'list-item',
           ...props.data?.link ? ['has-link'] : [],
+          ...buildDesignClasses({
+            fill: props.fill,
+          }),
         ],
+        style: {
+          ...buildDesignStyles({
+            fill: props.fill,
+          }),
+        },
         ...props.data?.link
           ? { onClick: () => { Taro.navigateTo({url: props.data?.link}) } }
           : {}
@@ -141,9 +155,9 @@ export const NsListItem = defineComponent({
         props.number !== void 0
           ? no(props.data?.number || props.number)
           : null,
-        slots.append?.(),
-        main(props),
         slots.prepend?.(),
+        main(props),
+        slots.append?.(),
         props.hasArrow ? arrow() : null,
       ]
     )
@@ -171,6 +185,7 @@ export const NsList = defineComponent({
           return h(NsListItem, {
             key: d.id || index,
             ...props,
+            fill: props.itemFill,
             ...props.hasNumbers
               ? { number: index + 1 }
               : {},
@@ -190,7 +205,7 @@ export const NsList = defineComponent({
               : {},
             ...slots.append
               ? {
-                prepend: () => h('div', {
+                append: () => h('div', {
                     class: 'append'
                   }, slots.append?.(d))
                 }
@@ -201,16 +216,18 @@ export const NsList = defineComponent({
         class: ['ns-empty']
       })
 
-    return () => h('div', {
+    return () => h(NsColumn, {
       class: [
         'ns-list',
+        'column',
         ...props.variant ? [`variant-${props.variant}`] : [],
         ...props.dense ? ['dense'] : [],
         ...buildDesignClasses(props),
       ],
       style: {
         ...buildDesignStyles(props),
-      }
+      },
+      gap: props.gap,
     }, [
       header,
       body,
