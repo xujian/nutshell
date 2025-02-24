@@ -1,4 +1,5 @@
 export default definePageConfig({
-  navigationBarTextStyle: 'black',
-  navigationStyle: 'custom'
+  navigationBarTextStyle: 'white',
+  navigationStyle: 'custom',
+  navigationBarTitleText: '卡片'
 })
