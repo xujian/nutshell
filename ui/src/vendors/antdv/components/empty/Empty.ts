@@ -32,7 +32,7 @@ const modeMap = {
     image: 'https://cdn.ddjf.com/static/images/nutshell/empty-permission.png'
   },
   404: {
-    description: '',
+    description: '404',
     image: 'https://cdn.ddjf.com/static/images/nutshell/empty-404.png'
   }
 }

@@ -32,6 +32,7 @@
 @use './services/services.scss';
 @use './components/drawer/Drawer.scss';
 @use './components/page/Page.scss';
+@use './components/empty/Empty.scss';
 
 .ns-component {
   font-size: 12px;
