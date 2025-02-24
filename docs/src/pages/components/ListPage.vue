@@ -8,7 +8,7 @@
       <note>列表是单栏的数据表示组件。</note>
       <p>&nbsp;</p>
       <h2>基本用法</h2>
-      <div class="caption">data - 列表项，格式为[{title: string, caption: string}]；hasNumbers - 是否有数字排序；title - 列表的标题hover时显示</div>
+      <div class="caption">data - 列表项，格式为[{title: string, caption: string}]；hasNumbers - 是否有数字排序；title - 列表的标题</div>
       <story file="list/basic" />
       <p>&nbsp;</p>
       <h2>带边框、箭头</h2>
