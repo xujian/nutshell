@@ -24,7 +24,6 @@
         label="证件号码"/>
       <ns-select
         v-model="formData.marrage"
-
         name="marrage"
         label="婚姻状态"
         :options="marrageOptions" />

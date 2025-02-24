@@ -1,14 +1,20 @@
 <template lang="">
-  <ns-list title="九月第(3)周"
+  <ns-list
     variant="outlined"
     :has-numbers="true"
     :data>
     <template #prepend="item">
       <ns-image v-if="item.image" :src="item.image" />
     </template>
+    <template #append="item">
+      <ArrowRightOutlined />
+    </template>
   </ns-list>
 </template>
+
 <script lang="ts" setup>
+import { ArrowRightOutlined} from '@ant-design/icons-vue'
+
 const json = [
   {
     title: 'Color tints/shades/alphas',

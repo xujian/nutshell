@@ -177,7 +177,7 @@ export const NsList = defineComponent({
     const header = props.title
       ? h('div', {
           class: ['list-title'],
-        }, () => props.title)
+        }, props.title)
       : null
 
     const body = props.data

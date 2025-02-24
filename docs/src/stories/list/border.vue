@@ -1,5 +1,5 @@
 <template lang="">
-  <ns-list title="九月第(3)周"
+  <ns-list
     variant="outlined"
     :has-numbers="true"
     :has-arrows="true"

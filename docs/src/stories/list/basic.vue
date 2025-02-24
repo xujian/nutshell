@@ -1,15 +1,11 @@
 <template lang="">
-  <ns-list colorScheme="dark" title="九月第(3)周"
+  <ns-list title="本周任务"
     :has-numbers="true"
     :data>
   </ns-list>
 </template>
 <script lang="ts" setup>
 const data = [
-  {
-    title: 'Color tints/shades/alphas',
-    caption: ''
-  },
   {
     title: '列表组件',
     caption: '<ns-list>'
@@ -43,20 +39,12 @@ const data = [
     caption: '<ns-cascading-select>'
   },
   {
-    title: '+ Histoire (失败)',
-    caption: '出现 import @nuiui/nutui 错误'
-  },
-  {
     title: '代码框及代码编辑器',
     caption: '<ns-code>/<ns-code-editor>'
   },
   {
     title: '星星框',
     caption: '<ns-rating>'
-  },
-  {
-    title: '优化表单及输入框样式',
-    caption: ''
   },
   {
     title: '复选框及复选框组',

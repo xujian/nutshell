@@ -7,15 +7,14 @@
       <p>&nbsp;</p>
       <note>底部导航常用场景</note>
       <p>&nbsp;</p>
-      <h3>基本特性</h3>
-      <p>&nbsp;</p>
+      <h2>基本用法</h2>
+      <div class="caption">v-model绑定当前激活的tabbar，items数组格式为[{name: string, label: string}]</div>
       <story file="tabbar/basic.vue" />
     </ns-page-content>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
 </script>
 
 <style lang="scss">

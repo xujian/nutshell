@@ -8,12 +8,15 @@
       <note>列表是单栏的数据表示组件。</note>
       <p>&nbsp;</p>
       <h2>基本用法</h2>
-      <story minimal file="list/basic" />
+      <div class="caption">data - 列表项，格式为[{title: string, caption: string}]；hasNumbers - 是否有数字排序；title - 列表的标题hover时显示</div>
+      <story file="list/basic" />
       <p>&nbsp;</p>
       <h2>带边框、箭头</h2>
-      <story minimal file="list/border" />
+      <div class="caption">hasArrows - 是否带箭头；variant=outlined出现边框</div>
+      <story file="list/border" />
       <h2>使用 SLOTS</h2>
-      <story minimal file="list/slots" />
+      <div class="caption">prepend - 前缀插槽，可自定义图片；append - 后缀插槽</div>
+      <story file="list/slots" />
     </ns-page-content>
   </ns-page>
 </template>
