@@ -8,19 +8,17 @@
       <note>统一风格的列表卡片展示，v-for的简化</note>
       <p>&nbsp;</p>
       <h2>基本特性</h2>
-      <p>&nbsp;</p>
+      <div class="caption">items - 平铺项的数据(数组)；gap - 控制间隙；wrap - 是否可换行</div>
       <story file="repeator/basic" />
       <p>&nbsp;</p>
-      <p>&nbsp;</p>
       <h2>使用 devides 控制网格</h2>
-      <p>&nbsp;</p>
+      <div class="caption">divides - 控制每行的数量，最后一行铺满</div>
       <story file="repeator/basic-devides" />
     </ns-page-content>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
 
 </script>
 
