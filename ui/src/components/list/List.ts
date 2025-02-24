@@ -149,17 +149,19 @@ export const NsListItem = defineComponent({
         ...props.data?.link
           ? { onClick: () => { Taro.navigateTo({url: props.data?.link}) } }
           : {}
-      }, [
-        // 输出 数字栏
-        // 由 <ns-list> 属性控制
-        props.number !== void 0
-          ? no(props.data?.number || props.number)
-          : null,
-        slots.prepend?.(),
-        main(props),
-        slots.append?.(),
-        props.hasArrow ? arrow() : null,
-      ]
+      }, {
+        default: () => [
+          // 输出 数字栏
+          // 由 <ns-list> 属性控制
+          props.number !== void 0
+            ? no(props.data?.number || props.number)
+            : null,
+          slots.prepend?.(),
+          main(props),
+          slots.append?.(),
+          props.hasArrow ? arrow() : null,
+        ]
+      }
     )
   }
 })
@@ -174,13 +176,13 @@ export const NsList = defineComponent({
   emits,
   setup (props, { slots }) {
 
-    const header = props.title
+    const header = () => props.title
       ? h('div', {
           class: ['list-title'],
         }, props.title)
       : null
 
-    const body = props.data
+    const body = () => props.data
       ? props.data.map((d: Record<string, any>, index: number) => {
           return h(NsListItem, {
             key: d.id || index,
@@ -228,11 +230,13 @@ export const NsList = defineComponent({
         ...buildDesignStyles(props),
       },
       gap: props.gap,
-    }, [
-      header,
-      body,
-      slots.default?.()
-    ])
+    }, {
+        default: () => [
+          header(),
+          body(),
+          slots.default?.()
+      ]
+    })
   }
 })
 // 需要增加 import 到 ./index.ts, ../components.ts
