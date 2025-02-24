@@ -17,6 +17,7 @@ const components = [
   'input/time-input',
   'input/textarea',
   'input/switch-input',
+  'input/rating-input',
   'select/select',
   'select/cascading-select',
   'upload/upload',

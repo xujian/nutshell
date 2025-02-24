@@ -344,7 +344,7 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
         title: '星星输入框',
         name: '<ns-rating-input>',
         caption: '',
-        link: '/pages/components/intpu/rating-input',
+        link: '/pages/components/input/rating-input',
       },
       {
         title: '文件上传',
