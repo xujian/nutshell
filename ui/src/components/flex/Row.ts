@@ -1,5 +1,5 @@
 import {ExtractPropTypes, PropType, defineComponent, h } from 'vue'
-import type { Align, Justify } from '../../props'
+import { buildGapClasses, buildGapStyles, useGapProps, type Align, type Justify } from '../../props'
 
 export const rowProps = {
   justify: {
@@ -10,10 +10,7 @@ export const rowProps = {
     type: String as PropType<Align>,
     default: 'center'
   },
-  gap: {
-    type: Number,
-    default: 0,
-  },
+  ...useGapProps(),
   wrap: {
     type: Boolean,
   },
@@ -42,10 +39,10 @@ export const NsRow = defineComponent({
         ...props.wrap ? ['wrap'] : [],
         ...(props.gap && typeof props.gap === 'string') ? [`gap-${props.gap}`] : [],
         ...props.grow !== void 0 ? ['grow'] : [],
-        ...props.gap ? ['has-gap'] : []
+        ...buildGapClasses(props),
       ],
       style: {
-        ...props.gap !== void 0 ? {'--gap': `${props.gap}px`} : {}
+        ...buildGapStyles(props),
       }
     }, slots)
   }

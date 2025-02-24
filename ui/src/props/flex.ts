@@ -1,6 +1,7 @@
 import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
+import { buildGapClasses, buildGapStyles, useGapProps } from './gap'
 
 export const justifies = ['start', 'end', 'center', 'between', 'around', 'evenly', 'stretch'] as const
 export type Justify = typeof justifies[number]
@@ -19,13 +20,7 @@ const flexProps = {
     type: String as PropType<FlexDirection>,
     default: () => 'row'
   },
-  /**
-   * 间隙
-   */
-  gap: {
-    type: Number,
-    default: () => 0
-  },
+  ...useGapProps(),
   /**
    * 自动折行
    */
@@ -52,16 +47,14 @@ export const buildFlexClasses = (props: FlexProps) => {
     ...props.align ? [`align-${props.align}`] : [],
     ...props.justify ? [`justify-${props.justify}`] : [],
     ...props.wrap ? ['wrap'] : [],
-    ...props.gap ? ['has-gap'] : [],
+    ...buildGapClasses(props),
   ]
 }
 
 export const buildFlexStyles: (props: FlexProps) => Record<string, string>
   = (props: FlexProps) => {
   return {
-    ...props.gap !== void 0 && {
-      '--gap': `${props.gap}px`,
-    },
+    ...buildGapStyles(props),
     ...props.justify && {
       '--justify': `${props.justify}`,
     },

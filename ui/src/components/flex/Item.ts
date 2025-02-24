@@ -1,12 +1,10 @@
 import { PropType, h } from 'vue'
 import { defineComponent } from 'vue'
 import { MakePropsType } from '../../utils/private/helpers'
+import { buildGapStyles, useGapProps } from '../../props'
 
-const props = {
-  gap: {
-    type: [Number, String],
-    default: 10,
-  },
+const flexItemProps = {
+  ...useGapProps(),
   span: {
     type: [Number, String],
     default: 12
@@ -20,14 +18,14 @@ const props = {
   }
 }
 
-export type FlexItemProps = MakePropsType<typeof props>
+export type FlexItemProps = MakePropsType<typeof flexItemProps>
 
 /**
  * Flex item <ns-flex-item>
  */
 export const NsFlexItem = defineComponent({
   name: 'NsFlexItem',
-  props,
+  props: flexItemProps,
   setup (props, { slots }) {
     return () => h('div', {
       class: [
@@ -35,9 +33,7 @@ export const NsFlexItem = defineComponent({
         ...props.grow ? ['flex-grow'] : [],
       ],
       style: {
-        '--gap': typeof props.gap === 'number'
-          ? `${props.gap}px`
-          : props.gap
+        ...buildGapStyles(props)
       }
     }, slots)
   }

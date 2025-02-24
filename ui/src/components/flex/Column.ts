@@ -1,13 +1,9 @@
 import { PropType, h } from 'vue'
 import { defineComponent } from 'vue'
-import type { Justify, Align } from '../../props'
+import { type Justify, type Align, type Size, useGapProps, buildGapStyles, buildGapClasses } from '../../props'
 import { MakePropsType } from '../../utils/private/helpers'
 
-const props = {
-  gap: {
-    type: Number,
-    default: 10,
-  },
+const columnProps = {
   justify: {
     type: String as PropType<Justify>,
     default: 'center'
@@ -16,6 +12,7 @@ const props = {
     type: String as PropType<Align>,
     default: 'center'
   },
+  ...useGapProps(),
   span: {
     type: [Number, String],
     default: 12
@@ -29,14 +26,14 @@ const props = {
   }
 }
 
-export type ColumnProps = MakePropsType<typeof props>
+export type ColumnProps = MakePropsType<typeof columnProps>
 
 /**
  * Flex column <ns-column>
  */
 export const NsColumn = defineComponent({
   name: 'NsColumn',
-  props,
+  props: columnProps,
   setup (props, { slots }) {
     return () => h('div', {
       class: [
@@ -47,16 +44,10 @@ export const NsColumn = defineComponent({
         ...props.grow === 0  ? ['flex-fixed'] : [],
         ...props.justify ? [`justify-${props.justify}`] : [],
         ...props.align ? [`align-${props.align}`] : [],
-        ...props.gap > 0 ? ['has-gap'] : []
+        ...buildGapClasses(props)
       ],
       style: {
-        ...props.gap !== void 0
-          ? {
-              '--gap': typeof props.gap === 'number'
-                ? `${props.gap}px`
-                : props.gap
-            }
-          : {},
+        ...buildGapStyles(props)
       }
     }, slots)
   }
