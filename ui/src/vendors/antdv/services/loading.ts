@@ -1,4 +1,4 @@
-import { LoadingOptions } from '../../../services/loading'
+import { LoadingOptions } from '../../../types'
 
 function loading (options: LoadingOptions) {
 

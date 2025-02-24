@@ -1,7 +1,6 @@
 import { h, ref } from 'vue'
 import { createApp } from 'vue'
-import { App } from 'vue'
-import { ConfirmOptions, DialogOptions } from '../../../services/dialog'
+import { ConfirmOptions } from '../../../types'
 import { NsDialog } from '../../../components'
 import { CoreVendor } from '../../../shared/models/CoreVendor'
 

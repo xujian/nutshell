@@ -5,17 +5,11 @@ import { NsDrawer } from '../../../../components/drawer'
 import { NsSheet } from '../../../../components/sheet'
 import { NsDialog } from '../../../../components/dialog'
 import { useBus, useSafeArea, usePlatform } from '../../../../composables'
-import type { DialogOptions, ConfirmOptions, PopupChildComponent, SheetOptions, ToastOptions, NoticeType, DrawerOptions } from '../../../../services'
+import type { SheetOptions, ToastOptions, DrawerOptions, NoticeType } from '../../../../types'
+import type { DialogOptions, ConfirmOptions, PopupChildComponent } from '../../../../types'
 import { marginProps } from '../../../../utils'
 import { ColorScheme } from '../../../../props'
-
-export type Notice = {
-  options?: {
-    type?: NoticeType,
-    duration?: number,
-  }
-  message: string
-}
+import { Notice } from '../../../../services/notice'
 
 export const Page = defineComponent({
   name: 'NutuiPage',

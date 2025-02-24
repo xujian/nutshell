@@ -1,7 +1,7 @@
 import { PropType, ref } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useVariantProps } from '../../props'
-import { useNutshell } from '../../framework'
+import { useNutshell } from '../../types'
 
 export type NamePath = string | number | (string | number)[]
 

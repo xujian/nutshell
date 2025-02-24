@@ -3,8 +3,7 @@ import { CoreVendor } from '../../shared'
 import components from './components'
 import { dialog, confirm, toast, loading, drawer, sheet } from './services'
 import VXETable from 'vxe-table'
-import { PreviewOptions } from '../../services/drawer'
-import { PreviewMediaParam } from '../../framework'
+import { PreviewMediaParam, PreviewOptions } from '../../types'
 
 // fallback for component not implemented
 const dummy = (name: string) => {

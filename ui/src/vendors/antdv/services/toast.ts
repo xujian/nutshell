@@ -1,6 +1,6 @@
 import { message as antdvMessage } from 'ant-design-vue'
-import { DEAULT_TOAST_DURATION, ToastOptions } from '../../../services/toast'
-import { MessageApi } from 'ant-design-vue/es/message'
+import { DEAULT_TOAST_DURATION } from '../../../services/toast'
+import { ToastOptions } from '../../../types'
 
 type MesageType = 'info' | 'success'
 

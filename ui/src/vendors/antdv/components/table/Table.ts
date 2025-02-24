@@ -13,7 +13,7 @@ import {
 } from '../../../../components'
 import columnCustomRenders from './columns'
 import { MarginProps, marginProps } from '../../../../utils'
-import { useNutshell } from '../../../../framework'
+import { useNutshell } from '../../../../types'
 import { Borders } from '../../../../props'
 
 type ColumnConfig = {

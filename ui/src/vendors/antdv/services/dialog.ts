@@ -1,6 +1,6 @@
 import { defineAsyncComponent, h, ref, createApp, App } from 'vue'
 import type { AsyncComponentLoader } from 'vue'
-import { DialogOptions } from '../../../services/dialog'
+import { DialogOptions } from '../../../types'
 import { NsDialog } from '../../../components'
 import { CoreVendor } from '../../../shared/models/CoreVendor'
 

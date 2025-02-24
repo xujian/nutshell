@@ -1,6 +1,6 @@
 import { FunctionalComponent, InjectionKey, Slots, h, inject, ref } from 'vue'
 import { DesignProps, FieldProps, FullValidationRule, VariantProps } from '../../../props'
-import { useNutshell } from '../../../framework'
+import { useNutshell } from '../../../types'
 import { FormItemRule } from '@nutui/nutui-taro/dist/types/__VUE/form/types'
 import { FormProvided } from '../../../utils'
 import { NsRow } from '../../../components'
@@ -43,6 +43,7 @@ export const transformRules = (rules: FullValidationRule[]) => {
 
 export type FormItemProps = FieldProps & VariantProps & DesignProps
 
+// TODO: 解决 <ns-xxx-input> 必须放在 <ns-form> 中使用的问题 (不放会报错)
 /**
  * 输出 <NutFormItem>
  * 统一处理 Label slot 的逻辑

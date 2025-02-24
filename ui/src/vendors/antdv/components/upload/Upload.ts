@@ -1,7 +1,7 @@
 import { computed, defineComponent, getCurrentInstance, h, nextTick, ref } from 'vue'
 import { Upload as AntdvUpload, UploadChangeParam, UploadFile } from 'ant-design-vue'
 import { NsButton, NsFile, uploadEmits, uploadProps } from '../../../../components'
-import { useNutshell } from '../../../../framework'
+import { useNutshell } from '../../../../types'
 import { compressImage } from '../../../../utils'
 import { getMediaType, Media } from '../../../../types'
 import { usePreview } from '../../../../composables'

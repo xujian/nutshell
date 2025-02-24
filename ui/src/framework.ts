@@ -1,54 +1,16 @@
-import { App, InjectionKey, inject } from 'vue'
+import { App } from 'vue'
 import Toast from 'vue-toastification'
 import { createTheme } from './composables/theme'
 import { VendorSymbol } from './shared/symbols'
 import { BusSymbol, PlatformSymbol, createBus, createPlatform } from './composables'
 import directives from './directives'
 import services from './services'
-import { ConfirmOptions, DialogOptions } from './services/dialog'
-import { PreviewOptions } from './services/drawer'
-import { ToastOptions } from './services/toast'
-import { LoadingOptions } from './services/loading'
-import { AppSymbol, IconFormat } from './components'
-import { DrawerOptions } from './services/drawer'
-import { SheetOptions } from './services/sheet'
-import { Media } from './types'
+import { ConfirmOptions, DialogOptions, DollarNutshell, DrawerOptions, LoadingOptions, NutshellOptions, NutshellSymbol, PreviewMediaParam, PreviewOptions, SheetOptions, ToastOptions } from './types'
+import { AppSymbol } from './components'
 import { prepareVendor } from './shared/vendor'
 import { getVendor } from './vendors'
 import { CoreVendor } from './shared'
-/**
- * Nulshell framework options holding by app
- */
-export interface NutshellOptions {
-  theme?: string,
-  vendor?: string,
-  icon?: IconFormat
-}
 
-export type PreviewMediaParam = string | Media | string[] | Media[]
-
-export type DollarNutshell = {
-  dialog: (options: DialogOptions) => void,
-  confirm: (message: string, onOk: () => void, options?: ConfirmOptions) => void,
-  preview: (media: PreviewMediaParam, options?: PreviewOptions) => void,
-  toast: (message: string, options?: ToastOptions) => void,
-  notice: (message: string, options?: ToastOptions) => void,
-  sheet: (options: SheetOptions) => void,
-  drawer: (options: DrawerOptions) => void,
-  loading: (options?: LoadingOptions) => void,
-  options: NutshellOptions
-}
-
-export const NutshellSymbol: InjectionKey<DollarNutshell>
-  = Symbol.for('nutshell:nutshell')
-
-/**
- * 返回 $n 供应用程序使用
- */
-export function useNutshell () {
-  const $n = inject(NutshellSymbol)!
-  return $n
-}
 
 export const createVendor = (name: string): CoreVendor | Promise<CoreVendor> => {
   const vendor = getVendor(name)

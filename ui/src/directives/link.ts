@@ -1,5 +1,4 @@
 import { Directive, App } from 'vue'
-import { useRouter } from 'vue-router'
 
 /**
  * <ns-componnent v-link="/pages/home/index" />

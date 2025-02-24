@@ -3,7 +3,7 @@ import { MakePropsType } from '../../utils'
 import { Color } from '../../composables'
 import { useSizeProps } from '../../props/size'
 import { buildProps } from '../../utils/private/props'
-import { useNutshell } from '../../framework'
+import { useNutshell } from '../../types'
 
 export type IconFormat =
   /**

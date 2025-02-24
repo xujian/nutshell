@@ -1,7 +1,7 @@
 import { computed, PropType } from 'vue'
 import { useDesignProps, useSizeProps, useVariantProps,
   useDimensionProps, useLoadingProps, useHasIconProps,
-  buildHasIconClasses} from '../../props'
+  buildHasIconClasses } from '../../props'
 import { type IconSlots } from '../../props'
 import { define, MakePropsType } from '../../utils'
 import { Color } from '../../composables/theme'
@@ -83,3 +83,5 @@ export const NsButton = define({
     }
   }
 })
+
+export type NsButton = InstanceType<typeof NsButton>

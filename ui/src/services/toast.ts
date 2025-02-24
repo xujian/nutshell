@@ -1,20 +1,9 @@
 import { App } from 'vue'
 import { VendorSymbol } from '../shared/symbols'
-import { DollarNutshell } from '../framework'
+import { DollarNutshell, ToastOptions } from '../types'
 
 export const DEAULT_TOAST_DURATION: number = 4
 export type ToastType = 'info' | 'success' | 'error' | 'warning'
-
-export type ToastOptions = {
-  /**
-   * Toast 形式 'success' | 'error' | 'warning'
-   */
-  type?: string,
-  /**
-   * 停留时间
-   */
-  duration?: number,
-}
 
 /**
  * Toast Service

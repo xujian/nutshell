@@ -1,6 +1,6 @@
 import { Directive, App } from 'vue'
-import { directive, plugin as VueTippy } from 'vue-tippy'
-import { DollarNutshell } from '../../framework'
+import { plugin as VueTippy } from 'vue-tippy'
+import { DollarNutshell } from '../../types'
 
 function getPositionClass(modifiers: any) {
   if (modifiers.top) {

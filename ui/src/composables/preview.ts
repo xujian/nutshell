@@ -1,5 +1,14 @@
 import { onBeforeUnmount, onMounted, Ref } from 'vue'
+import { Media } from '../types'
 
+export type PreviewInstance = {
+  update (value: Media[]): void
+}
+
+export type PreviewButtonClickCallback = {
+  description: string;
+  (this: PreviewInstance): void;
+}
 
 /**
  * 图片或PDF预览器

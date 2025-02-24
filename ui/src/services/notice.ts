@@ -1,19 +1,16 @@
 import { App } from 'vue'
 import { VendorSymbol } from '../shared/symbols'
-import { DollarNutshell } from '../framework'
+import { DollarNutshell, NoticeOptions, NoticeType } from '../types'
 
 export const DEAULT_NOTICE_DURATION: number = 4
-export type NoticeType = 'info' | 'success' | 'error' | 'warning'
 
-export type NoticeOptions = {
-  /**
-   * Notice 形式 'success' | 'error' | 'warning'
-   */
-  type?: string,
-  /**
-   * 停留时间
-   */
-  duration?: number,
+
+export type Notice = {
+  options?: {
+    type?: NoticeType,
+    duration?: number,
+  }
+  message: string
 }
 
 /**

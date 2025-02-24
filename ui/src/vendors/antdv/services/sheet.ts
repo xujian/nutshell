@@ -1,10 +1,7 @@
-import { defineAsyncComponent, h, ref } from 'vue'
-import { createApp } from 'vue'
-import { App } from 'vue'
-import { SheetOptions } from '../../../services/sheet'
+import { defineAsyncComponent, h, ref, createApp, App, AsyncComponentLoader } from 'vue'
+import { SheetOptions } from '../../../types'
 import { NsSheet } from '../../../components'
 import { CoreVendor } from '../../../shared/models/CoreVendor'
-import type { AsyncComponentLoader } from 'vue'
 
 
 function createSheet (options: SheetOptions, app: App) {

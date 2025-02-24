@@ -1,53 +1,11 @@
 import { App } from 'vue'
 import { VendorSymbol } from '../shared/symbols'
-import { DollarNutshell, PreviewMediaParam } from '../framework'
-import { Color } from '../composables'
+import { DollarNutshell, DrawerOptions, PreviewMediaParam, PreviewOptions } from '../types'
 import { Media } from '../types'
-import { PopupChildComponent } from './types'
-import { PreviewMode } from '../components'
-
-export type DrawerOptions = {
-  title?: string,
-  /**
-   * 嵌入子组件
-   */
-  component: PopupChildComponent,
-  /**
-   * 透传给子组件的属性
-   */
-  props?: any,
-  closable?: boolean,
-  width?: number,
-  fill?: Color,
-  mask?: boolean,
-  destroyOnClose?: boolean,
-  round?: boolean,
-  onComplete?: (result?: any) => boolean | undefined | Promise<boolean | undefined>,
-  onCancel?: () => boolean | undefined
-}
 
 export type DrawerInstance = {
   hide: () => void,
   destory: () => void
-}
-
-export type PreviewInstance = {
-  update (value: Media[]): void
-}
-
-export type PreviewButtonClickCallback = {
-  description: string;
-  (this: PreviewInstance): void;
-}
-
-
-export type PreviewOptions = {
-  fill?: Color,
-  mode?: PreviewMode,
-  button?: string,
-  hasCloseButton?: boolean,
-  hasHeader?: boolean,
-  onButtonClick (this: PreviewInstance): void
 }
 
 /**

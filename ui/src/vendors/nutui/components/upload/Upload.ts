@@ -2,7 +2,7 @@ import { defineComponent, h } from 'vue'
 import { uploadEmits, uploadProps } from '../../../../components/upload'
 import { renderFormItem } from '../../utils'
 import { Media } from '../../../../types/media'
-import { PreviewMediaParam, useNutshell } from '../../../../framework'
+import { PreviewMediaParam, useNutshell } from '../../../../types'
 import { NsButton } from '../../../../components/button'
 
 

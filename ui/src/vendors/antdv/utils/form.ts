@@ -3,7 +3,7 @@ import { FormItem as AntFormItem, Form } from 'ant-design-vue'
 import { DesignProps, FieldProps, FullValidationRule, VariantProps, buildDesignVariables, buildFieldHint } from '../../../props'
 import { transformRules } from '../components/input/rules'
 import { FormProvided } from '../../../utils'
-import { useNutshell } from '../../../framework'
+import { useNutshell } from '../../../types'
 
 export const AntdvFormSymbol: InjectionKey<FormProvided | undefined> = Symbol('antdv-form')
 

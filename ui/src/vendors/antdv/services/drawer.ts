@@ -1,7 +1,7 @@
 import { defineAsyncComponent, h, ref } from 'vue'
 import { createApp } from 'vue'
 import { App } from 'vue'
-import { DrawerOptions } from '../../../services/drawer'
+import { DrawerOptions } from '../../../types'
 import { NsDrawer } from '../../../components'
 import { CoreVendor } from '../../../shared/models/CoreVendor'
 import type { AsyncComponentLoader } from 'vue'

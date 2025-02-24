@@ -1,56 +1,7 @@
 import { App } from 'vue'
 import { VendorSymbol } from '../shared/symbols'
-import { DollarNutshell } from '../framework'
-import { Color } from '../composables'
-import { PopupChildComponent } from './types'
-
-export type DialogOptions = {
-  title?: string,
-  message?: string | string[],
-  /**
-   * 嵌入子组件
-   */
-  component?: PopupChildComponent,
-  /**
-   * 透传给子组件的属性
-   */
-  props?: any,
-  closable?: boolean,
-  width?: number,
-  height?: number,
-  fill?: Color,
-  okText?: string,
-  cancelText?: string,
-  okColor?: Color,
-  cancelColor?: Color,
-  footer?: boolean,
-  mask?: boolean,
-  destroyOnClose?: boolean,
-  classes?: string[],
-  onOk?: (result?: any) => boolean | undefined,
-  onComplete?: (result?: any) => boolean | undefined | Promise<boolean | undefined>,
-  onCancel?: () => boolean | undefined,
-  centered?: boolean,
-  fullScreen?: boolean,
-}
-
-export type ConfirmOptions = {
-  title?: string,
-  message?: string | string[],
-  okText?: string,
-  cancelText?: string,
-  okColor?: Color,
-  cancelColor?: Color,
-  onOk?: (result?: any) => boolean | undefined
-  onCancel?: () => boolean | undefined,
-  classes?: string[],
-  centered?: boolean,
-}
-
-export type DialogInstance = {
-  hide: () => void,
-  destory: () => void
-}
+import { DollarNutshell } from '../types'
+import type { DialogOptions, ConfirmOptions } from '../types'
 
 /**
  * Dialog Service
