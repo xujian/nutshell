@@ -6,7 +6,8 @@
       <p>&nbsp;</p>
       <note>栅格化布局系统中的行排版</note>
       <p>&nbsp;</p>
-      <story minimal file="row/basic" />
+      <h2>基本用法</h2>
+      <story file="row/basic" />
       <p class="caption">当需要在一个区域内排列组件时可使用 &lt;ns-row&gt;</p>
       <h2>关键属性</h2>
       <ns-facts direction="column">

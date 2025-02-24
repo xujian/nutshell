@@ -1,12 +1,16 @@
 <template>
   <ns-tabs v-model="tab">
     <ns-tabs-item key="1" tab="线索客户">
-      <h3>AAA</h3>
     </ns-tabs-item>
     <ns-tabs-item key="2" tab="意向客户">
-      <h3>BBB</h3>
     </ns-tabs-item>
   </ns-tabs>
+  <template v-if="tab === '1'">
+    线索客户
+  </template>
+  <template v-if="tab === '2'">
+    意向客户
+  </template>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'

@@ -207,6 +207,38 @@
   .ns-divider {
     --fill: rgba(53, 53, 53, 0.6);
   }
+
+  // tabs
+  .ns-tabs {
+    --ns-stroke: #FAF9FE;
+    margin-bottom: 16px;
+    .ant-tabs-tab {
+      margin: 0;
+      padding: 8px 18px;
+      font-weight: 400;
+    }
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+    .ant-tabs-tab-btn {
+      color: rgba(32, 37, 58, 0.6);
+      font-size: 16px;
+    }
+    .ant-tabs-tab-active::before{
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: 50%;
+      margin-left: -15px;
+      width: 30px;
+      height:2px;
+      background: var(--ns-primary);
+      border-radius: 1px;
+    }
+    .ant-tabs-nav::before{
+      border: none;
+    }
+  }
 }
 
 // popover
