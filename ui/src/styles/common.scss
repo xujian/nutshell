@@ -1,12 +1,13 @@
 .title {
   display: flex;
+  --gap: 0;
   .h5 {
     font-weight: bold;
     line-height: 1em;
     font-size: 14px;
   }
   .caption {
-    line-height: 1em;
+    line-height: 1.2em;
     font-size: 12px;
     font-weight: normal;
   }

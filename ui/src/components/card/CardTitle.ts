@@ -1,6 +1,6 @@
-import { ObjectEmitsOptions, SlotsType, defineComponent, h } from 'vue'
+import { defineComponent, h } from 'vue'
 import { MakePropsType } from '../../utils'
-import { useTitle } from 'src/props'
+import { useTitle } from '../../props'
 
 export const cardTitleProps = {
   label: {
