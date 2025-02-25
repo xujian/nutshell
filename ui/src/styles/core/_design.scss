@@ -207,10 +207,10 @@
   backdrop-filter: brightness(var(--brightness, 1)) blur(var(--blur, 0px));
 }
 
-.with-shadow {
+.has-shadow {
   box-shadow:
-    0 1px 0 0 #ffffff66 inset,
-    0 0 var(--depth, 5px) var(--depth, 5px) var(--shadow, #00000011);
+    #00000022 0px 0px var(--shadow) 0px,
+    #00000022 0px 0px var(--shadow) 0px;
 }
 
 .cover {

@@ -38,6 +38,7 @@ export const Dropdown = defineComponent({
         class: [
           'menu',
         ],
+        shadow: true,
         onClick: () => {
         }
       })

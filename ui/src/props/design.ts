@@ -169,7 +169,7 @@ const designProps = {
    * 投影色
    */
   shadow: {
-    type: String as PropType<Color>,
+    type: [Boolean, Number, String] as PropType<boolean | number | Size>,
   },
   /**
    * 投影深度
@@ -261,7 +261,7 @@ const buildDesignClasses: (props: DesignProps) => string[]
           : []),
     ...(props.gradient && props.texture ? ['with-texture-gradient'] : []),
     ...(props.gradient && props.pattern ? ['with-pattern-gradient'] : []),
-    ...(props.shadow || props.depth ? ['with-shadow'] : []),
+    ...(props.shadow || props.depth ? ['has-shadow'] : []),
     ...props.stroke ? ['has-stroke'] : [],
     ...(props.stroke && isGradient(props.stroke) ? ['with-stroke-gradient'] : []),
     ...(props.fluted ? ['fluted'] : []),
@@ -307,7 +307,12 @@ const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignPro
     ...(props.thick !== void 0 ? { '--thick': `${props.thick}px` } : {}),
     ...props.blur ? {'--blur': `${props.blur}px`} : {},
     ...props.brightness && props.brightness != 1 ? {'--brightness': props.brightness} : {},
-    ...props.shadow ? {'--shadow': makeColor(props.shadow)} : {},
+    ...props.shadow
+        ? {'--shadow': typeof props.shadow === 'number'
+            ? `${props.shadow}px`
+            : `var(--ns-spacing-${typeof props.shadow === 'boolean' ? 'md' : props.shadow})`
+        }
+        : {},
     ...props.depth ? {'--depth': `${props.depth}px`} : {},
     ...props.fluted ? { '--fluted': `${props.fluted}px` } : {},
     ...buildGradientStyle(props.gradient),
