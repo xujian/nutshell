@@ -1,17 +1,19 @@
 <template>
   <ns-timeline :items="items" />
 </template>
+
 <script lang="ts" setup>
+
 const items = [
   {
     title: '方案',
     time: '2023-08-17 11:28:54',
-    caption: '通过'
+    caption: '可操作人：张小一,王小一,liuzhi'
   },
   {
     title: '初审',
     time: '2023-08-17 19:43:09',
-    caption: '未通过'
+    caption: '可操作人：张小一,王小一,liuzhi'
   },
   {
     title: '终止',

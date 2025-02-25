@@ -254,6 +254,27 @@
       }
     }
   }
+
+  // timeline
+  .ns-timeline {
+    .title {
+      font-weight: bold;
+    }
+    .time {
+      font-size: 12px;
+      opacity: 0.5;
+      margin: 4px 0;
+    }
+    .caption {
+      color: #7E7E7E;
+      font-size: 14px;
+    }
+    .status-off {
+      .title {
+        font-weight: normal;
+      }
+    }
+  }
 }
 
 // popover

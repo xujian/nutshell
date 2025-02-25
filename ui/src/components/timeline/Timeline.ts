@@ -8,7 +8,6 @@ export type TimelineItem = {
   title: string,
   caption: string,
   time: string | number,
-  description: string,
   status: TimelineStatus,
 }
 

@@ -27,9 +27,6 @@
     }
   }
   &:not(.variant-outlined):not(.vertical) {
-    // .ant-descriptions-view {
-    //   border-color: transparent;
-    // }
     .ant-descriptions-item-label, .ant-descriptions-item-content {
       border-inline-end: none;
     }
@@ -45,15 +42,9 @@
   &.vertical {
     .ant-descriptions-item-label {
       text-align: center;
-      // + .ant-descriptions-item-label {
-      //   border-inline-start: 1.5px solid var(--ns-stroke);
-      // }
     }
     .ant-descriptions-item-content {
       text-align: center;
-      // + .ant-descriptions-item-content {
-      //   border-inline-start: 1.5px solid var(--ns-stroke);
-      // }
     }
     .ant-descriptions-row {
       border-bottom-color: transparent;

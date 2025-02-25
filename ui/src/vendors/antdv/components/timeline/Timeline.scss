@@ -2,7 +2,32 @@
   &.ant-timeline {
     .ant-timeline-item {
       .ant-timeline-item-head {
-        background-color: transparent;
+        border-width: 2px;
+      }
+      .ant-timeline-item-head:not(.ant-timeline-item-head-gray) {
+        &:not(.ant-timeline-item-head-custom) {
+          background-color: var(--ns-primary) !important;
+        }
+        border-color: var(--ns-primary) !important;
+      }
+      .ant-timeline-item-head-gray {
+        border-color: var(--ns-neutral) !important;
+      }
+      .ant-timeline-item-tail {
+        border-style: dotted;
+        border-left: none;
+        border-color: var(--ns-neutral);
+      }
+      &.status-normal {
+        .ant-timeline-item-tail {
+          border-left: none;
+          border-color: var(--ns-primary);
+        }
+      }
+    }
+    .timeline-item-content {
+      .title {
+        color: var(--ns-text);
       }
     }
   }

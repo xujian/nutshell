@@ -1,44 +1,71 @@
 <template>
-  <ns-timeline :items="items">
+  <ns-timeline class="slot-content-timeline" :items="items">
     <template #content="{item}">
-      <div class="content">
-        <div class="caption" v-if="item.caption">节点状态: {{ item.caption }}</div>
-        <div class="datetime text-neutral" v-if="item.itme">操作时间: {{ item.time }}</div>
-      </div>
+      <div class="datetime text-neutral">处理时间: {{ item.time }}</div>
+      <ns-card fill="#F7F8FA" foreground="#7E7E7E" style="margin-top: 10px;">
+        <div><UserOutlined /> {{ item.user }}</div>
+        <div style="padding-left: 18px">{{ item.caption }}</div>
+      </ns-card>
     </template>
   </ns-timeline>
 </template>
+
 <script lang="ts" setup>
+import { UserOutlined } from '@ant-design/icons-vue';
+
 const items = [
   {
-    title: '方案',
+    title: '初审',
     time: '2023-08-17 11:28:54',
-    caption: '通过'
+    caption: '这是一条处理描述这是一条处理描述这是一条处理描述这是一条处理描述',
+    user: '黄炳宏'
   },
   {
     title: '初审',
     time: '2023-08-17 19:43:09',
-    caption: '未通过'
+    caption: '这是一条处理描述这是一条处理描述这是一条处理描述这是一条处理描述',
+    user: '黄炳宏'
   },
   {
     title: '终止',
-    status: 'off',
+    time: '2023-08-19 19:43:09',
+    caption: '这是一条处理描述这是一条处理描述这是一条处理描述这是一条处理描述',
+    user: '黄炳宏'
   },
   {
     title: '面签',
-    status: 'off',
+    time: '2023-08-21 19:43:09',
+    caption: '这是一条处理描述这是一条处理描述这是一条处理描述这是一条处理描述',
+    user: '黄炳宏'
   },
   {
     title: '终审',
-    status: 'off',
+    time: '2023-08-23 19:43:09',
+    caption: '这是一条处理描述这是一条处理描述这是一条处理描述这是一条处理描述',
+    user: '黄炳宏'
   },
   {
     title: '抵押',
-    status: 'off',
+    time: '2023-08-24 19:43:09',
+    caption: '这是一条处理描述这是一条处理描述这是一条处理描述这是一条处理描述',
+    user: '黄炳宏'
   },
   {
     title: '放款',
-    status: 'off',
+    time: '2023-08-25 19:43:09',
+    caption: '这是一条处理描述这是一条处理描述这是一条处理描述这是一条处理描述',
+    user: '黄炳宏'
   }
 ]
 </script>
+
+<style lang="scss">
+.slot-content-timeline {
+  width: 500px;
+  .datetime {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+</style>
