@@ -1,8 +1,10 @@
 <template>
-  <ns-page class="form-page" fill="neutral">
-    <ns-page-header title="菜单"
+  <ns-page class="menu-page" fill="neutral">
+    <ns-page-header
+      title="菜单"
+      fill="#ffffff88"
       caption="<ns-menu>"
-      :blur="10" reveal has-back-button />
+      :blur="40" reveal has-back-button />
     <ns-page-content>
       <ns-row justify="center">
         <ns-menu

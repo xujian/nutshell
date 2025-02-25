@@ -1,0 +1,160 @@
+<template>
+  <ns-page class="list-messages-page panel-page" fill="neutral">
+    <ns-page-header title="订单" fill="#ffffff"
+      :blur="40" has-back-button>
+      <ns-row justify="stretch" gap>
+        <ns-dropdown label="筛选" :items="filters"
+          variant="plain"
+          fill="#fff" v-model="filter" class="shrink" />
+        <ns-search placeholder="搜索订单" color="#fff" variant="outlined" />
+      </ns-row>
+      <ns-tabs :items="tabs"
+        :r="0"
+        fill="#ffffff88"
+        v-model="tab" />
+      </ns-page-header>
+    <ns-page-content>
+      <ns-repeator class="demo-repeator"
+        direction="column"
+        :items="data"
+        align="stretch"
+        gap>
+        <template #default="item">
+          <ns-card :title="item.type"
+            :caption="`进件时间: ${item.进件时间}`"
+            fill="#ffffff" shadow>
+            <ns-facts :items="toFact(item)" />
+            <template #corner>
+              <h6>{{ item.status }}</h6>
+            </template>
+          </ns-card>
+        </template>
+      </ns-repeator>
+    </ns-page-content>
+  </ns-page>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const tabs = ref([
+    { label: '待审核', value: '1', },
+    { label: '待放款', value: '2', },
+    { label: '已放款', value: '3', },
+    { label: '已完结', value: '4', },
+  ]),
+  tab = ref('1')
+
+const filters = ref([
+    { label: '交易周转', value: '1', },
+    { label: '房产抵押', value: '2', },
+    { label: '车辆抵押', value: '3', },
+    { label: '企业贷款', value: '4', },
+  ]),
+  filter = ref('1')
+
+const data = ref([
+  {
+    type: '交易周转',
+    进件时间: '2022/10/08 10:32',
+    客户姓名: '李华',
+    渠道经理: '王伟',
+    放款机构: '联银小贷',
+    订单编号: 'SZS0420230220001',
+    status: '待审核'
+  },
+  {
+    type: '交易周转',
+    进件时间: '2022/10/09 11:45',
+    客户姓名: '张敏',
+    渠道经理: '李娜',
+    放款机构: '中信银行',
+    订单编号: 'SZS0420230220002',
+    status: '待审核'
+  },
+  {
+    type: '交易周转',
+    进件时间: '2022/10/10 12:50',
+    客户姓名: '王强',
+    渠道经理: '刘洋',
+    放款机构: '招商银行',
+    订单编号: 'SZS0420230220003',
+    status: '待审核'
+  },
+  {
+    type: '房产抵押',
+    进件时间: '2022/10/11 09:20',
+    客户姓名: '赵敏',
+    渠道经理: '陈刚',
+    放款机构: '建设银行',
+    订单编号: 'SZS0420230220004',
+    status: '待放款'
+  },
+  {
+    type: '房产抵押',
+    进件时间: '2022/10/12 14:30',
+    客户姓名: '孙丽',
+    渠道经理: '王磊',
+    放款机构: '农业银行',
+    订单编号: 'SZS0420230220005',
+    status: '待放款'
+  },
+  {
+    type: '车辆抵押',
+    进件时间: '2022/10/13 15:45',
+    客户姓名: '周杰',
+    渠道经理: '李强',
+    放款机构: '工商银行',
+    订单编号: 'SZS0420230220006',
+    status: '已放款'
+  },
+  {
+    type: '车辆抵押',
+    进件时间: '2022/10/14 16:50',
+    客户姓名: '吴敏',
+    渠道经理: '张伟',
+    放款机构: '平安银行',
+    订单编号: 'SZS0420230220007',
+    status: '已放款'
+  },
+  {
+    type: '企业贷款',
+    进件时间: '2022/10/15 17:55',
+    客户姓名: '郑伟',
+    渠道经理: '刘强',
+    放款机构: '光大银行',
+    订单编号: 'SZS0420230220008',
+    status: '已完结'
+  },
+  {
+    type: '企业贷款',
+    进件时间: '2022/10/16 18:00',
+    客户姓名: '冯丽',
+    渠道经理: '王敏',
+    放款机构: '华夏银行',
+    订单编号: 'SZS0420230220009',
+    status: '已完结'
+  },
+  {
+    type: '企业贷款',
+    进件时间: '2022/10/17 19:10',
+    客户姓名: '陈伟',
+    渠道经理: '李磊',
+    放款机构: '民生银行',
+    订单编号: 'SZS0420230220010',
+    status: '已完结'
+  }
+])
+
+const toFact = (item) => {
+  return Object.keys(item).map(key => {
+    return {
+      label: key,
+      value: item[key]
+    }
+  }).filter(f => !['type', 'status'].includes(f.label))
+}
+</script>
+
+<style scoped>
+</style>

@@ -33,6 +33,10 @@ const components = [
   'list/list',
 ]
 
+const scenarios = [
+  'list/orders'
+]
+
 export default defineAppConfig({
   pages: [
     'pages/home/index',
@@ -42,7 +46,8 @@ export default defineAppConfig({
     'pages/interactive/sheet',
     'pages/guide/scroll',
     'pages/tokens/spacing',
-    ...components.map(x => `pages/components/${x}`)
+    ...components.map(x => `pages/components/${x}`),
+    ...scenarios.map(x => `pages/scenarios/${x}`),
   ],
   // tabBar: {
   //   custom: true,
