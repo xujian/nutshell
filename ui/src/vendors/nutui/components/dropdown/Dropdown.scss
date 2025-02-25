@@ -3,6 +3,7 @@
   .menu {
     display: none;
     position: absolute;
+    z-index: 101;
     &.open {
       display: block;
     }
