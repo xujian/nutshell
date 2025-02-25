@@ -39,9 +39,9 @@ export const buildHasIcon = (props: HasIconProps) => {
           src: props.icon,
           class: 'icon'
         })
-      : h('ns-icon', {
+      : h(NsIcon, {
           name: props.icon,
-          format: props.iconFormat,
+          format: props.iconFormat || 'css',
         })
     : null
 }

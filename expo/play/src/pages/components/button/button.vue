@@ -36,6 +36,11 @@
           color="primary"
           icon="https://cdn.ddjf.com/static/images/ai-approve-mini/scan.png"
           label="证件识别" />
+        <ns-button
+          color="primary"
+          icon-position="end"
+          icon="https://cdn.ddjf.com/static/images/ai-approve-mini/scan.png"
+          label="证件识别" />
       </ns-row>
       <code-view language="html" :code="codes[0]" />
       <h2>按钮的排列</h2>
@@ -102,6 +107,11 @@ const codes = [
   label="证件识别" />
 <ns-button
   color="primary"
+  icon="https://cdn.ddjf.com/static/images/ai-approve-mini/scan.png"
+  label="证件识别" />
+<ns-button
+  color="primary"
+  icon-position="end"
   icon="https://cdn.ddjf.com/static/images/ai-approve-mini/scan.png"
   label="证件识别" />`
 ]

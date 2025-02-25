@@ -73,6 +73,7 @@ const formats: Record<IconFormat, (props: IconProps) => VNode> = {
   css: (props: IconProps) => h('i', {
       class: [
         'ns-icon',
+        'icon',
         `ns-icon-${props.name}`,
         `font-size-${props.size}`,
         props.clickable && 'clickable'
