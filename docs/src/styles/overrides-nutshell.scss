@@ -239,6 +239,21 @@
       border: none;
     }
   }
+
+  // faces
+  .ns-facts {
+    --ns-spacing: 12px;
+    --ns-fill: rgba(247, 247, 247, 1);
+    &.ant-descriptions {
+      .ant-descriptions-item-label{
+        color: rgba(53, 53, 53, 0.6);
+        padding: 12px 24px;
+      }
+      .ant-descriptions-item-content {
+        padding: 12px 24px;
+      }
+    }
+  }
 }
 
 // popover

@@ -1,5 +1,5 @@
 <template>
-  <ns-facts square variant="plain" fill="#fff" vertical>
+  <ns-facts square variant="plain" fill="#efefef" vertical>
     <ns-facts-item label="账户类型">
       监管户
     </ns-facts-item>
