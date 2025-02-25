@@ -1,6 +1,6 @@
 import { computed, defineComponent, h, provide, reactive } from 'vue'
 import { sheetEmits, sheetProps } from '../../../../components/sheet'
-import { buildDesignClasses, PopupState, PopupStateSymbol } from '../../../../props'
+import { buildDesignClasses, PopupState, PopupStateSymbol, useTitle } from '../../../../props'
 import { NsRow } from '../../../..//components/flex'
 import { NsButton } from '../../../..//components/button'
 
@@ -35,15 +35,7 @@ export const Sheet = defineComponent(
           })
         : null
 
-    const title = () =>
-      props.title
-        ? h('div', {
-            class: ['sheet-title', 'row', 'justify-center'],
-          }, [
-            h('h5', {}, props.title),
-            close(),
-          ])
-        : null
+    const title = useTitle(props)
 
     const content = () => {
       return h('div', {

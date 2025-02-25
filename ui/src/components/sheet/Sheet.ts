@@ -1,15 +1,13 @@
 import { PropType, SlotsType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDesignProps, useModelValuePropsForBoolean, usePopupProps, useSizeProps } from '../../props'
+import { useDesignProps, useModelValuePropsForBoolean, usePopupProps, useSizeProps, useTitleProps } from '../../props'
 import { Dimension } from '../../types'
 import { Color } from '../../composables'
 
 export type SheetAnchor = 'top' | 'right' | 'bottom' | 'left'
 
 export const sheetProps = {
-  title: {
-    type: String,
-  },
+  ...useTitleProps(),
   width: {
     type: [Number, String] as PropType<Dimension>,
   },

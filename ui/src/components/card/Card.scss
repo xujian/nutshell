@@ -10,7 +10,7 @@
     padding-bottom: calc(var(--ns-spacing) / 2);
     .title {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
     }
   }
   .card-header {

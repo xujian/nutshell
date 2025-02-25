@@ -1,7 +1,7 @@
 import { h, defineComponent } from 'vue'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { Color } from '../../composables'
-import { buildDesignClasses, buildDesignStyles, useDesignProps, useGapProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, TitleProps, useDesignProps, useGapProps, useTitle, useTitleProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
 import { NsColumn } from '../flex'
 
@@ -49,9 +49,7 @@ const listItemSlots: SlotsType<ListItemSlots> = {}
 export type ListItemProps = MakePropsType<typeof listItemProps>
 
 export const listProps = {
-  title: {
-    type: String,
-  },
+  ...useTitleProps(),
   footnote: {
     type: String,
   },
@@ -103,6 +101,8 @@ export const NsListItem = defineComponent({
   slots: listItemSlots,
   setup (props, { slots, emit }) {
 
+    const title = useTitle(props.data as TitleProps)
+
     const main = ({ data }: ListItemProps) => {
       return h('div', {
         class: [
@@ -110,17 +110,7 @@ export const NsListItem = defineComponent({
           'list-item-section-main',
         ],
       }, [
-        data?.title
-          ? h('h5', {
-              class: 'title'
-            }, data.title)
-          : null,
-        data?.name
-          ? h('p', { class: ['list-item-caption', 'caption']}, data.name)
-          : null,
-        data?.caption
-          ? h('p', { class: ['list-item-caption', 'caption']}, data.caption)
-          : null,
+        title()
       ])
     }
     const no = (n: number) => {
@@ -187,6 +177,7 @@ export const NsList = defineComponent({
           return h(NsListItem, {
             key: d.id || index,
             ...props,
+            data: d,
             fill: props.itemFill,
             ...props.hasNumbers
               ? { number: index + 1 }
@@ -196,7 +187,6 @@ export const NsList = defineComponent({
                   hasArrow: true
                 }
               : {},
-            data: d
           }, {
             ...slots.prepend
               ? {

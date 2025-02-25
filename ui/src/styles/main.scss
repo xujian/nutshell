@@ -2,6 +2,7 @@
 @forward './variables';
 
 @use './core';
+@use './common';
 @use './components';
 @use './directives';
 @use './themes';

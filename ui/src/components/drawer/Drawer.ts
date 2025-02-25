@@ -1,13 +1,11 @@
 import { PropType, ObjectEmitsOptions, SlotsType, Prop } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useModelValuePropsForBoolean, usePopupProps, useSizeProps } from '../../props'
+import { useModelValuePropsForBoolean, usePopupProps, useSizeProps, useTitleProps } from '../../props'
 import { Dimension } from '../../types'
 import { Color } from '../../composables'
 
 export const drawerProps = {
-  title: {
-    type: String,
-  },
+  ...useTitleProps(),
   width: {
     type: [String, Number] as PropType<Dimension>,
   },

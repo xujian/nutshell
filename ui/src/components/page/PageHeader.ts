@@ -1,17 +1,12 @@
 import { defineComponent, getCurrentInstance, h, PropType, SlotsType, VNode } from 'vue'
 import { MakePropsType } from '../../utils'
-import { buildDesignClasses, buildDesignStyles, type TextAlign, useDesignProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, type TextAlign, useDesignProps, useTitle, useTitleProps } from '../../props'
 import { usePage } from './Page'
 
 export const pageHeaderProps = {
-  title: {
-    type: String,
-  },
+  ...useTitleProps(),
   titleAlign: {
     type: String as PropType<TextAlign>,
-  },
-  caption: {
-    type: String
   },
   sticky: {
     type: Boolean,
@@ -62,7 +57,8 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
   (props, { slots, emit }) => {
 
     const page = usePage(),
-      $props = getCurrentInstance()?.vnode.props
+      $props = getCurrentInstance()?.vnode.props,
+      title = useTitle(props)
 
     page && (page.hasHeader = true)
 
@@ -72,10 +68,7 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
 
     const heading = () => slots.title
       ? h('div', { class: 'title-content'}, slots.title())
-      : h('div', { class: ['title-heading', 'column', 'align-center', 'justify-center']}, [
-          h('h5', { class: ['h5'] }, props.title),
-          ...props.caption ? [h('p', { class: 'caption' }, props.caption)] : []
-      ])
+      : title()
 
     const onBackButtonClick = () => {
       // 如果用户使用了 @back/onBack, 则执行
@@ -90,8 +83,9 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
       }
     }
 
-    const title = () => h('div', {
-        class: ['title']
+    // 标题条部分
+    const bar = () => h('div', {
+        class: ['bar']
       }, [
         heading(),
         props.hasBackButton
@@ -133,7 +127,7 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
         ...buildDesignStyles  (props),
       }
     }, [
-      title(),
+      bar(),
       content(),
     ])
   },

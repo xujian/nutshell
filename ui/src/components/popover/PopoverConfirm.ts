@@ -1,15 +1,12 @@
 import { ExtractPublicPropTypes, PropType, defineComponent, getCurrentInstance, h, onMounted, ref, watch } from 'vue'
 import tippy, { type Placement } from 'tippy.js'
 import { MakePropsType } from '../../utils'
-import { useModelValuePropsForBoolean } from '../../props'
+import { useModelValuePropsForBoolean, useTitleProps } from '../../props'
 import { NsButton } from '../button'
 
 export const popoverConfirmProps = {
   ...useModelValuePropsForBoolean(),
-  title: {
-    type: String,
-    require: false
-  },
+  ...useTitleProps(),
   content: {
     type: String,
     require: false

@@ -6,26 +6,17 @@
           <h2>标准组件库</h2>
         </ns-row>
       </ns-card>
-      <ns-row class="scenes-row mb-md" justify="stretch" align="stretch" :gap="10">
-        <ns-card
-          v-for="(scene, index) in scenes"
-          class="scene-card" fill="#FF980099" :blur="40"
-          stroke="#d8870f" title="场景" v-link="'/scenes/list-01'">
+      <ns-row class="scenarios-row mb-md" justify="stretch" align="stretch" :gap="10">
+        <ns-card v-for="(group, index) in scenarios" :key="index" class="scene-card" fill="#FF980099" :blur="40"
+          stroke="#d8870f" title="场景">
           <ns-column class="fit" align="end" justify="end" :gap="10">
-            <ns-button
-              r="sm"
-              v-for="(s, i) in scene"
-              class="link-button"
+            <ns-button r="sm" v-for="(s, i) in group" class="link-button" v-link="`/pages/scenarios/${s.link}`"
               size="xs" color="#00000033" :label="`${s.title}`" />
           </ns-column>
         </ns-card>
       </ns-row>
-      <ns-card class="content-card mb-md" v-for="(g, index) in groups"
-        :key="index"
-        :title="g.title"
-        :fill="fills[index] || '#fff'"
-        body-fill="#ffffff22"
-        :edge="2">
+      <ns-card class="content-card mb-md" v-for="(g, index) in groups" :key="index" :title="g.title"
+        :fill="fills[index] || '#fff'" body-fill="#ffffff22" :edge="2">
         <ns-list :data="g.data" has-arrows class="full-width">
         </ns-list>
       </ns-card>
@@ -36,66 +27,62 @@
 import { ListItemProps, type Color } from '@uxda/nutshell/taro'
 import chroma from 'chroma-js'
 
-const scenes = [
+const scenarios = [
   [
-    { title: '列表一', link: '/scenes/list-01' },
-    { title: '列表二', link: '/scenes/list-02' },
-    { title: '列表三', link: '/scenes/list-03' },
-    { title: '列表四', link: '/scenes/list-04' },
+    { title: '订单表', link: 'list/orders' },
+    { title: '列表二', link: 'list/02' },
+    { title: '列表三', link: 'list/03' },
+    { title: '列表四', link: 'list/04' },
   ],
   [
-    { title: '表单一', link: '/scenes/form-01' },
-    { title: '表单二', link: '/scenes/form-02' },
-    { title: '表单三', link: '/scenes/form-03' },
-    { title: '表单四', link: '/scenes/form-04' },
+    { title: '表单一', link: '/form-01' },
+    { title: '表单二', link: '/form-02' },
+    { title: '表单三', link: '/form-03' },
+    { title: '表单四', link: '/form-04' },
   ],
   [
-    { title: '详情一', link: '/scenes/detail-01' },
-    { title: '详情二', link: '/scenes/detail-02' },
-    { title: '详情三', link: '/scenes/detail-03' },
-    { title: '详情四', link: '/scenes/detail-04' },
+    { title: '详情一', link: '/detail-01' },
+    { title: '详情二', link: '/detail-02' },
+    { title: '详情三', link: '/detail-03' },
+    { title: '详情四', link: '/detail-04' },
   ],
   [
-    { title: '图表一', link: '/scenes/chart-01' },
-    { title: '图表二', link: '/scenes/chart-02' },
-    { title: '图表三', link: '/scenes/chart-03' },
-    { title: '图表四', link: '/scenes/chart-04' },
+    { title: '图表一', link: '/chart-01' },
+    { title: '图表二', link: '/chart-02' },
+    { title: '图表三', link: '/chart-03' },
+    { title: '图表四', link: '/chart-04' },
   ]
 ]
 
-const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
+const groups: { title: string, color?: Color, data: ListItemProps[] }[] = [
   {
     title: '页面构成',
     data: [
       {
         title: '页',
-        name: '<ns-page>',
-        caption: '',
+        caption: '<ns-page>',
         link: '/pages/components/page/page',
       },
       {
         title: 'Page header',
-        name: '<ns-page-header>',
-        caption: '',
+        caption: '<ns-page-header>',
         link: '/pages/components/page-header',
       },
       {
         title: 'Page content',
-        name: '<ns-page-header>',
-        caption: '',
+        caption: '<ns-page-header>',
         link: '/pages/components/page-header',
       },
       {
         title: 'Page footer',
-        name: '<ns-page-footer>',
-        caption: '',
+        caption: '<ns-page-footer>',
         link: '/pages/components/page-footer',
       },
       {
         title: '滚动模式',
         caption: '针对不同内容要求的滚动方式',
         link: '/pages/components/scroll',
-      },
+      }
     ]
   },
   {
@@ -103,32 +90,27 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
     data: [
       {
         title: '弹窗',
-        name: '$n.dialog',
-        caption: '',
+        caption: '$n.dialog',
         link: '/pages/interactive/dialog',
       },
       {
         title: '底部滑出弹窗',
-        name: '$n.sheet',
-        caption: '',
+        caption: '$n.sheet',
         link: '/pages/interactive/sheet',
       },
       {
         title: '右侧滑出浮层',
-        name: '$n.drawer',
-        caption: '',
+        caption: '$n.drawer',
         link: '/pages/interactive/drawer',
       },
       {
         title: '通知消息',
-        name: '$n.notice',
-        caption: '',
+        caption: '$n.notice',
         link: '/pages/interactive/notice',
       },
       {
         title: 'Toast',
-        name: '$n.toast',
-        caption: '',
+        caption: '$n.toast',
         link: '/pages/interactive/toast',
       }
     ]
@@ -143,14 +125,12 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
       },
       {
         title: '内置渐变',
-        name: 'gradients',
-        caption: '',
+        caption: 'gradients',
         link: '/pages/design/gradients',
       },
       {
         title: '内置动画',
-        name: 'motions',
-        caption: '',
+        caption: 'motions',
         link: '/pages/design/motions',
       }
     ]
@@ -160,34 +140,29 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
     data: [
       {
         title: '按钮',
-        name: '<ns-button>',
-        caption: '',
+        caption: '<ns-button>',
         link: '/pages/components/button/button',
       },
       {
         title: '按钮组',
-        name: '<ns-button-group>',
-        caption: '',
+        caption: '<ns-button-group>',
         link: '/pages/components/button-group/button-group',
       },
       {
         title: '气泡',
-        name: '<ns-popover>',
-        caption: '',
+        caption: '<ns-popover>',
         link: '/pages/components/popover/popover',
       },
       {
         title: '下拉框',
-        name: '<ns-dropdown>',
-        caption: '',
+        caption: '<ns-dropdown>',
         link: '/pages/components/dropdown/dropdown',
       },
       {
         title: '菜单',
-        name: '<ns-menu>',
-        caption: '',
+        caption: '<ns-menu>',
         link: '/pages/components/menu/menu',
-      },
+      }
     ]
   },
   {
@@ -195,163 +170,144 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
     data: [
       {
         title: '标签',
-        name: '<ns-chip>',
-        caption: '',
+        caption: '<ns-chip>',
         link: '/pages/components/chip/chip',
       },
       {
         title: '步骤条',
-        name: '<ns-stepper>',
+        caption: '<ns-stepper>',
         link: '/pages/components/stepper/stepper',
       },
       {
         title: '图片',
-        name: '<ns-image>',
+        caption: '<ns-image>',
         link: '/pages/components/image/image',
       },
       {
         title: '图标',
-        name: '<ns-icon>',
+        caption: '<ns-icon>',
         link: '/pages/components/icon/icon',
       },
       {
         title: '数字',
-        name: '<ns-number>',
+        caption: '<ns-number>',
         link: '/pages/components/number/number',
       },
       {
         title: '星星',
-        name: '<ns-rating>',
+        caption: '<ns-rating>',
         link: '/pages/components/rating/rating',
       },
       {
         title: '开关',
-        name: '<ns-switch>',
+        caption: '<ns-switch>',
         link: '/pages/components/switch/switch',
       },
       {
         title: '分隔线',
-        name: '<ns-divider>',
+        caption: '<ns-divider>',
         link: '/pages/components/divider/divider',
       }
-    ],
+    ]
   },
   {
     title: '导向类组件',
     data: [
       {
         title: 'Tabs',
-        name: '<ns-tabs>',
-        caption: '',
+        caption: '<ns-tabs>',
         link: '/pages/components/tabs/tabs',
       },
       {
         title: '主导航条',
-        name: '<ns-tabbar>',
-        caption: '',
+        caption: '<ns-tabbar>',
         link: '/pages/components/tabbar/tabbbar',
-      },
-
-    ],
+      }
+    ]
   },
   {
     title: '容器类组件',
     data: [
       {
         title: '卡片',
-        name: '<ns-card>',
-        caption: '',
+        caption: '<ns-card>',
         link: '/pages/components/card/card',
       },
       {
         title: '横向排列',
-        name: '<ns-row>',
-        caption: '',
+        caption: '<ns-row>',
         link: '/pages/components/row/row',
       },
       {
         title: '纵向排列',
-        name: '<ns-column>',
-        caption: '',
+        caption: '<ns-column>',
         link: '/pages/components/column/column',
-      },
-    ],
+      }
+    ]
   },
   {
     title: '输入类组件',
     data: [
       {
         title: '表单',
-        name: '<ns-form>',
-        caption: '',
+        caption: '<ns-form>',
         link: '/pages/components/form/form',
       },
       {
         title: '文本输入框',
-        name: '<ns-input>',
-        caption: '',
+        caption: '<ns-input>',
         link: '/pages/components/input/input',
       },
       {
         title: '文本域',
-        name: '<ns-textarea>',
-        caption: '',
+        caption: '<ns-textarea>',
         link: '/pages/components/input/textarea',
       },
       {
         title: '下拉选框',
-        name: '<ns-select>',
-        caption: '',
+        caption: '<ns-select>',
         link: '/pages/components/select/select',
       },
       {
         title: '日期选择',
-        name: '<ns-date-input>',
-        caption: '',
+        caption: '<ns-date-input>',
         link: '/pages/components/input/date-input',
       },
       {
         title: '时间选择',
-        name: '<ns-time-input>',
-        caption: '',
+        caption: '<ns-time-input>',
         link: '/pages/components/input/time-input',
       },
       {
         title: '单选框',
-        name: '<ns-radio>',
-        caption: '',
+        caption: '<ns-radio>',
         link: '/pages/components/radio/radio',
       },
       {
         title: '复选框',
-        name: '<ns-checkbox>',
-        caption: '',
+        caption: '<ns-checkbox>',
         link: '/pages/components/checkbox/checkbox',
       },
       {
         title: '开关',
-        name: '<ns-switch-input>',
-        caption: '',
+        caption: '<ns-switch-input>',
         link: '/pages/components/input/switch-input'
       },
       {
         title: '按钮组',
-        name: '<ns-button-group-input>',
-        caption: '',
+        caption: '<ns-button-group-input>',
         link: '/pages/components/input/button-group-input',
       },
       {
         title: '星星输入框',
-        name: '<ns-rating-input>',
-        caption: '',
+        caption: '<ns-rating-input>',
         link: '/pages/components/input/rating-input',
       },
       {
         title: '文件上传',
-        name: '<ns-upload>',
-        caption: '',
+        caption: '<ns-upload>',
         link: '/pages/components/upload/upload',
-      },
+      }
     ]
   },
   {
@@ -359,34 +315,29 @@ const groups: {title: string, color?: Color, data: ListItemProps[]}[] = [
     data: [
       {
         title: '列表',
-        name: '<ns-list>',
-        caption: '',
-        link: '/pages/components/list/list',
+        caption: '<ns-list>',
+        link: '/pages/componentslist/list',
       },
       {
         title: '连续平铺',
-        name: '<ns-repeator>',
-        caption: '',
+        caption: '<ns-repeator>',
         link: '/pages/components/repeator/repeator',
       },
       {
         title: '详表',
-        name: '<ns-facts>',
-        caption: '',
+        caption: '<ns-facts>',
         link: '/pages/components/facts/facts',
       },
       {
         title: '时间线',
-        name: '<ns-timeline>',
-        caption: '',
+        caption: '<ns-timeline>',
         link: '/pages/components/timeline/timeline',
       },
       {
         title: '文件表',
-        name: '<ns-files>',
-        caption: '',
+        caption: '<ns-files>',
         link: '/pages/components/files/files',
-      },
+      }
     ]
   }
 ]
@@ -401,17 +352,21 @@ const fills = chroma.scale(['#004233', '#C0A30D']).colors(groups.length)
     color: #ffffff90;
     margin-bottom: -20px;
   }
+
   .content-card {
     .title {
       font-weight: bold;
     }
+
     .caption {
       color: color-mix(in srgb, currentColor 70%, #fff);
       mix-blend-mode: color-dodge;
     }
   }
-  .scenes-row {
+
+  .scenarios-row {
     height: 240px;
+
     .link-button {
       width: 100%;
     }

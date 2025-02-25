@@ -1,14 +1,11 @@
 import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDesignProps, useModelValuePropsForBoolean, useTriggerProps } from '../../props'
+import { useDesignProps, useModelValuePropsForBoolean, useTitleProps, useTriggerProps } from '../../props'
 
 export const popoverProps = {
   ...useModelValuePropsForBoolean(),
   ...useTriggerProps(),
-  title: {
-    type: String,
-    require: false
-  },
+  ...useTitleProps(),
   content: {
     type: String,
     require: false

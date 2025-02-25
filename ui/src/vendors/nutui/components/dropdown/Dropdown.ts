@@ -2,7 +2,7 @@ import { defineComponent, h, onMounted, onUnmounted, ref, SetupContext } from 'v
 import { dropdownEmits, dropdownProps,
     type DropdownProps
  } from '../../../../components/dropdown'
-import { NsButton, NsMenu } from '../../../../components'
+import { NsButton, NsIcon, NsMenu } from '../../../../components'
 import { marginProps } from '../../../../utils'
 
 export const Dropdown = defineComponent({
@@ -28,11 +28,8 @@ export const Dropdown = defineComponent({
         label: props.label,
         color: props.fill || 'primary',
         iconPosition: 'end',
-        onClick: open
-      }, {
-        icon: () => h('div', {
-          class: ['icon', 'nutui-icon'],
-        }),
+        onClick: open,
+        icon: 'dropdown'
       })
 
     const menu = () => h(NsMenu, {

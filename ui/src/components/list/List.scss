@@ -27,12 +27,8 @@
       flex-grow: 1;
       padding-inline-end: var(--ns-spacing);
     }
-    .caption {
-      color: var(--ns-caption);
-      line-height: 1em;
-      min-height: 1em;
-    }
     .title {
+      align-items: flex-start;
       font-weight: normal;
       line-height: 1.1em;
       margin: 0;

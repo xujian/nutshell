@@ -1,13 +1,11 @@
 import { PropType, SlotsType, defineComponent, h, computed } from 'vue'
 import { Color } from '../../composables/theme'
-import { buildBoxClasses, buildBoxStyles, buildDesignClasses, buildDesignStyles, Size, useBoxProps, useDesignProps, useVariantProps } from '../../props'
+import { buildBoxClasses, buildBoxStyles, buildDesignClasses, buildDesignStyles, Size, useBoxProps, useDesignProps, useTitle, useTitleProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
 import { Dimension } from '../../types'
 
 export const cardProps = {
-  title: {
-    type: String
-  },
+  ...useTitleProps(),
   bodyFill: {
     type: String as PropType<Color>,
   },
@@ -61,15 +59,7 @@ export const NsCard = defineComponent({
       ...buildDesignStyles(props),
     }))
 
-    const label = () => props.title
-      ? h('div', {
-          class: 'title'
-        },
-        h('h5', {
-            class: 'title-label'
-          }, props.title)
-        )
-      : null
+    const title = useTitle(props)
 
     const titleAfter = () => slots.titleAfter
       ? h('div', {
@@ -92,7 +82,7 @@ export const NsCard = defineComponent({
         }, slots.header
           ? slots.header?.()
           : [
-              label(),
+              title(),
               titleAfter(),
               h('div', {class: ['spacer']}),
               corner(),

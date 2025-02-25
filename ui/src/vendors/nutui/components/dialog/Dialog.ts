@@ -54,6 +54,7 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
   const card = () => h(NsCard, {
       class: ['dialog-card'],
       title: props.title,
+      caption: props.caption,
       /**
        * dialog 的视觉效果由 ns-card 呈现
        */

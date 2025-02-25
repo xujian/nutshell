@@ -1,12 +1,10 @@
 import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDesignProps, useDimensionProps, useModelValuePropsForBoolean, usePopupProps } from '../../props'
+import { useDesignProps, useDimensionProps, useModelValuePropsForBoolean, usePopupProps, useTitleProps } from '../../props'
 import { Color } from '../../composables/theme'
 
 export const dialogProps = {
-  title: {
-    type: String,
-  },
+  ...useTitleProps(),
   okText: {
     type: String,
   },

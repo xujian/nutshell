@@ -26,7 +26,7 @@
       </ns-column>
       <p>&nbsp;</p>
       <ns-button color="primary" class="full-width" @click="openSheet">打开 SHEET</ns-button>
-      <ns-card fill="#fff" title="卡片" class="my-md">
+      <ns-card fill="#fff" title="卡片" caption="副标题" class="my-md">
         <lorem />
       </ns-card>
       <ns-row :gap="10">
