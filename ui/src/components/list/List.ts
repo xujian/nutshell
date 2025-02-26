@@ -13,6 +13,7 @@ export type ListItemData = {
   link?: string,
   icon?: string,
   arrow?: boolean,
+  value?: number,
   [key: string]: any,
 }
 
@@ -113,6 +114,11 @@ export const NsListItem = defineComponent({
         title()
       ])
     }
+    const value = (item: ListItemProps) => {
+      return h('div', {
+        class: ['list-item-section list-item-section-value number'],
+      }, item.data?.value ?? '')
+    }
     const no = (n: number) => {
       return h('div', {
         class: ['list-item-section list-item-section-no number'],
@@ -148,6 +154,7 @@ export const NsListItem = defineComponent({
             : null,
           slots.prepend?.(),
           main(props),
+          props.data?.value !== void 0 ? value(props) : null,
           slots.append?.(),
           props.hasArrow ? arrow() : null,
         ]
