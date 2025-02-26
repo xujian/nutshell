@@ -30,7 +30,7 @@ import chroma from 'chroma-js'
 const scenarios = [
   [
     { title: '订单表', link: 'list/orders' },
-    { title: '列表二', link: 'list/02' },
+    { title: '消费记录', link: 'list/transactions' },
     { title: '列表三', link: 'list/03' },
     { title: '列表四', link: 'list/04' },
   ],

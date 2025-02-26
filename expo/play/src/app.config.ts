@@ -34,7 +34,8 @@ const components = [
 ]
 
 const scenarios = [
-  'list/orders'
+  'list/orders',
+  'list/transactions',
 ]
 
 export default defineAppConfig({
