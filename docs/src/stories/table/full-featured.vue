@@ -240,12 +240,12 @@ onMounted(() => {
 </script>
 <template>
   <ns-table :rows="tableData" class="no-border"
-    :row-height="32"
+    :row-height="40"
     cache-columns="1"
     has-column-control
     :filter-handler="filterHandler">
     <ns-table-column-checkbox width="48" @change="onTableRowSelected" field="id" fixed="left" />
-    <ns-table-column-number label="序号" width="50" align="center" fixed="left" />
+    <ns-table-column-number label="序号" width="55" align="center" fixed="left" />
     <ns-table-column field="name" label="姓名" align="left" sortable width="110" fixed="left" />
     <ns-table-column-crypto
       fill="#cddc39"
@@ -262,8 +262,7 @@ onMounted(() => {
       label="跟进"
       color="accent"
       size="xs"
-      @click="onTableColumnButtonClick"
-    />
+      @click="onTableColumnButtonClick" />
     <ns-table-column-rating field="grade"
       editable
       @change="onRatingColumnChange"

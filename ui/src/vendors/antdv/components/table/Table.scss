@@ -1,7 +1,10 @@
 
 .ns-table {
   --vxe-table-column-padding-default: var(--table-cell-padding);
-  --vxe-table-row-height-default: 40px;
+  --vxe-table-cell-padding-left: 12px;
+  --vxe-table-cell-padding-right: 12px;
+  --vxe-table-row-height-default: 50px;
+  --vxe-table-row-line-height: 20px;
   --vxe-primary-color: var(--ns-primary);
   width: 100%;
   .round {
@@ -221,5 +224,24 @@
   }
   .ns-pagination {
     text-align: right;
+  }
+
+  .vxe-table--body-wrapper {
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 7px;
+      height: 9px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #fff;
+      border-radius: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #D8D8D8;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgb(153, 153, 153, 0.9);
+    }
   }
 }

@@ -25,6 +25,9 @@
     z-index: 1000;
     box-shadow: -5px 0px 12px rgba(53, 53, 53, 0.1);
     padding-bottom: 0;
+    & > .div {
+      height: 100%;
+    }
     .ant-modal-content {
       --ns-fill: #fff;
 

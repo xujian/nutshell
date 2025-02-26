@@ -1,6 +1,6 @@
 <template>
   <ns-table :rows="records"
-    :row-height="28"
+    :row-height="38"
     borders="all"
     :merging="merging"
     :mergingMaster="mergingMaster"
