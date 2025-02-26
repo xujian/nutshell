@@ -1,0 +1,41 @@
+.ns-avatar {
+  --h: 40px;
+  --color: var(--ns-neutral);
+  --r: 50%;
+  width: var(--h);
+  height: var(--h);
+
+  &.size-xs,
+  &.size-sm,
+  &.size-md,
+  &.size-lg,
+  &.size-xl {
+    padding: 0;
+  }
+
+  &.size-xs {
+    --h: 20px;
+  }
+
+  &.size-sm {
+    --h: 24px;
+  }
+
+  &.size-md {
+    --h: 32px;
+  }
+
+  &.size-lg {
+    --sizhe: 40px;
+  }
+
+  &.size-xl {
+    --h: 64px;
+  }
+
+  // For text avatar
+  &.text-format {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+}

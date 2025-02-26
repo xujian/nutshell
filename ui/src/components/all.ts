@@ -40,6 +40,7 @@ import { NsPage, NsPageHeader, NsPageContent, NsPageFooter } from './page'
 import { NsSearch } from './search'
 import { NsImage } from './image'
 import { NsPreview } from './preview'
+import { NsAvatar } from './avatar'
 
 const components = {
   NsApp,
@@ -114,6 +115,7 @@ const components = {
   NsPageFooter,
   NsSearch,
   NsPreview,
+  NsAvatar,
 }
 
 const properties = Object.fromEntries(
