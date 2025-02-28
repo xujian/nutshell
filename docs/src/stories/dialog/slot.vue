@@ -1,14 +1,14 @@
 <template>
   <ns-row justify="start">
     <ns-button
-      size="sm"
-      width="100"
-      color="negtive"
+      color="primary"
       label="弹出对话框" @click="onOpenDialogButtonClick" />
   </ns-row>
+
   <ns-dialog v-model="dialogOpen"
     title="跟进客户"
     @ok="onDialogOk"
+    closable
     :top="400"
     :left="20">
     <ns-form v-model="formData"
@@ -17,15 +17,18 @@
       <ns-input
         v-model="formData.name"
         label="姓名"
+        placeholder="请输入姓名"
         name="name" />
       <ns-id-input
         v-model="formData.id"
         name="id"
+        placeholder="请输入证件号码"
         label="证件号码"/>
       <ns-select
         v-model="formData.marrage"
         name="marrage"
         label="婚姻状态"
+        placeholder="请选择婚姻状态"
         :options="marrageOptions" />
     </ns-form>
     <template #footer>

@@ -1,9 +1,7 @@
 <template>
   <ns-row justify="start">
     <ns-button
-      size="sm"
-      width="100"
-      color="negtive"
+      color="primary"
       label="弹出对话框" @click="onOpenDialogButtonClick" />
   </ns-row>
 </template>
@@ -51,6 +49,7 @@ const ExcampleComponent: PopupChildComponent = defineComponent({
         h(NsInput, {
           name: 'name',
           label: props.label,
+          placeholder: '请输入姓名',
           modelValue: formData.name,
           'onUpdate:modelValue': (v: string) => { formData.name = v },
           rules: ['required']
@@ -69,6 +68,7 @@ const onOpenDialogButtonClick = () => {
   $n.dialog({
     title: '客户',
     component: ExcampleComponent,
+    centered: true,
     props: {
       label: '姓名'
     },

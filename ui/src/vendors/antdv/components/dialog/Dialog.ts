@@ -61,6 +61,8 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
        ? null
        : h(NsButton, {
             class: ['cancel-button'],
+            color: 'neutral',
+            variant: 'outlined',
             label: props.cancelText || '取消',
             onClick: onCancel,
           }),

@@ -1,31 +1,38 @@
 <template>
   <ns-row justify="start">
     <ns-button
-      size="sm"
-      color="negtive"
+      color="primary"
       label="弹出对话框" @click="onOpenDialogButtonClick" />
   </ns-row>
+
   <ns-dialog
     v-model="dialogOpen"
     title="新建客户"
-    :top="20"
-    :left="20"
-    @hide="onDialogHide">
+    centered
+    closable
+    @hide="onDialogHide"
+    @ok="onDialogOk">
     <ns-form v-model="formData"
       name="client"
       ref="formRef">
       <ns-input
         v-model="formData.name"
         label="姓名"
+        placeholder="请输入姓名"
+        :rules="['required']"
         name="name" />
       <ns-id-input
         v-model="formData.id"
         name="id"
+        placeholder="请输入证件号码"
+        :rules="['required']"
         label="证件号码"/>
       <ns-select
         v-model="formData.marrage"
         name="marrage"
         label="婚姻状态"
+        placeholder="请选择婚姻状态"
+        :rules="['required']"
         :options="marrageOptions" />
     </ns-form>
   </ns-dialog>
@@ -60,7 +67,8 @@ function onDialogHide () {
   console.log('===onDialogHide')
 }
 
-function onDialogAch () {
-  console.log('===onDialogAch')
+function onDialogOk () {
+  console.log('===onDialogOk')
+  formRef.value.validate()
 }
 </script>
