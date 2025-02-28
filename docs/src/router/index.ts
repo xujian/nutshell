@@ -59,6 +59,7 @@ const TooltipPage = () => import('../pages/directives/TooltipPage.vue')
 const LoadingPage = () => import('../pages/directives/LoadingPage.vue')
 const RowPage = () => import('../pages/components/RowPage.vue')
 const ColumnPage = () => import('../pages/components/ColumnPage.vue')
+const AvatarPage = () => import('../pages/components/AvatarPage.vue')
 const NotFoundPage = () => import('../pages/NotFoundPage.vue')
 
 const router = createRouter({
@@ -268,6 +269,11 @@ const router = createRouter({
           path: '/components/divider',
           name: 'components-divider',
           component: DividerPage
+        },
+        {
+          path: '/components/avatar',
+          name: 'components-avatar',
+          component: AvatarPage
         },
         {
           path: '/plot/line',

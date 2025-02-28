@@ -153,6 +153,10 @@ const menuData = computed(() => [
           {
             label: '步骤条 stepper',
             key: '/components/stepper'
+          },,
+          {
+            label: '头像 avatar',
+            key: '/components/avatar'
           },
           {
             label: '图片 image',
