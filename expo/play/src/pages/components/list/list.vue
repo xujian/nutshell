@@ -16,20 +16,19 @@
       <div class="pane-1" v-if="tab === '1'">
         <h2>账户消费明细表</h2>
         <p class="caption">范例之一</p>
-        <template v-for="list in groups">
-          <h5 class="group-title my-md">{{ list.date }}</h5>
-          <ns-list class="expense-list full-width"
-            item-fill="#ffffff88"
-            :data="list.items"
-            gap>
-            <template #prepend="item">
-              <div class="text-icon">{{ item.type }}</div>
-            </template>
-            <template #append="item">
-              <div class="amount">{{ item.value }}</div>
-            </template>
-          </ns-list>
-        </template>
+        <ns-list class="expense-list full-width"
+          item-fill="#ffffff88"
+          :data="items"
+          :group-by
+          gap>
+          <template #prepend="item">
+            <div class="text-icon">{{ item.type }}</div>
+          </template>
+          <template #append="item">
+            <div class="amount">{{ item.value }}</div>
+          </template>
+        </ns-list>
+        <p>&nbsp;</p>
         <callout title="说明">
           <p>以上范例使用了 &lt;template #append&gt;/&lt;template #prepend&gt; 来自订 list item 里的一格内容, 而 title/caption 是缺省样式</p>
         </callout>
@@ -44,7 +43,7 @@
         <p class="caption">范例之二</p>
         <ns-list class="expense-list full-width"
           item-fill="#ffffff88"
-          :data="groups[0].items"
+          :data="items"
           gap>
           <template #prepend="item">
             <div class="text-icon">{{ item.type }}</div>
@@ -63,77 +62,73 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const groups = [
+const items = [
   {
     date: '2025-02-12',
-    items: [
-      {
-        title: '权益',
-        caption: '风险查询-初审',
-        value: -1,
-        type: '消耗'
-      },
-      {
-        title: '权益',
-        caption: '企业风险查询报告',
-        value: -1,
-        type: '消耗'
-      },
-      {
-        title: '权益',
-        caption: '企业风险查询报告',
-        value: -1,
-        type: '消耗'
-      },
-      {
-        title: '权益',
-        caption: '企业风险查询报告',
-        value: -1,
-        type: '消耗'
-      }
-    ]
+    title: '权益',
+    caption: '风险查询-初审',
+    value: -1,
+    type: '消耗'
+  },
+  {
+    date: '2025-02-12',
+    title: '权益',
+    caption: '企业风险查询报告',
+    value: -1,
+    type: '消耗'
+  },
+  {
+    date: '2025-02-12',
+    title: '权益',
+    caption: '企业风险查询报告',
+    value: -1,
+    type: '消耗'
+  },
+  {
+    date: '2025-02-12',
+    title: '权益',
+    caption: '企业风险查询报告',
+    value: -1,
+    type: '消耗'
   },
   {
     date: '2025-02-11',
-    items: [
-      {
-        title: '权益',
-        caption: '企业风险查询报告',
-        value: -1,
-        type: '消耗'
-      },
-      {
-        title: '权益',
-        caption: '风险查询-初审',
-        value: -1,
-        type: '消耗'
-      },
-      {
-        title: '权益',
-        caption: '风险查询-终审',
-        value: -1,
-        type: '消耗'
-      },
-      {
-        title: '权益',
-        caption: '风险查询-初审',
-        value: -1,
-        type: '消耗'
-      }
-    ]
+    title: '权益',
+    caption: '企业风险查询报告',
+    value: -1,
+    type: '消耗'
+  },
+  {
+    date: '2025-02-11',
+    title: '权益',
+    caption: '风险查询-初审',
+    value: -1,
+    type: '消耗'
+  },
+  {
+    date: '2025-02-11',
+    title: '权益',
+    caption: '风险查询-终审',
+    value: -1,
+    type: '消耗'
+  },
+  {
+    date: '2025-02-11',
+    title: '权益',
+    caption: '风险查询-初审',
+    value: -1,
+    type: '消耗'
   },
   {
     date: '2025-02-10',
-    items: [
-      {
-        title: '权益',
-        caption: '风险查询-初审',
-        value: -1,
-        type: '消耗'
-      }
-    ]
+    title: '权益',
+    caption: '风险查询-初审',
+    value: -1,
+    type: '消耗'
   }
 ]
+
+const groupBy = (item: any) => item.date
 
 const tab = ref('1'),
   tabs = [

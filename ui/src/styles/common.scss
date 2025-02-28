@@ -1,3 +1,6 @@
+/**
+ * useTitle() 给多个组件加入一致的 .title/.caption 结构
+ */
 .title {
   display: flex;
   --gap: 0;
@@ -12,3 +15,13 @@
     font-weight: normal;
   }
 }
+
+/**
+ * useGrouping() 给多个组件加入一致的 .group-header 结构
+ */
+.group-header {
+  font-weight: bold;
+  font-size: 14px;
+  padding: var(--ns-spacing) 0;
+}
+

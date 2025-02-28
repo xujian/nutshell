@@ -1,7 +1,7 @@
 import { h, defineComponent } from 'vue'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { Color } from '../../composables'
-import { buildDesignClasses, buildDesignStyles, TitleProps, useDesignProps, useGapProps, useTitle, useTitleProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, TitleProps, useDesignProps, useGapProps, useGrouping, useGroupingProps, useTitle, useTitleProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
 import { NsColumn } from '../flex'
 
@@ -30,7 +30,9 @@ export const listItemProps = {
   fill: {
     type: String as PropType<Color>
   },
-  data: Object as PropType<ListItemData>
+  data: {
+    type: Object as PropType<ListItemData>
+  }
 }
 
 export interface ListItemSlots extends SlotsType {
@@ -55,7 +57,7 @@ export const listProps = {
     type: String,
   },
   data: {
-    type: Array as PropType<ListItemProps[]>
+    type: Array as PropType<ListItemData[]>
   },
   hasNumbers: {
     type: Boolean
@@ -70,6 +72,7 @@ export const listProps = {
     type: String as PropType<Color>,
   },
   ...useGapProps(),
+  ...useGroupingProps(),
   ...useVariantProps(),
   ...useDesignProps(),
 }
@@ -173,44 +176,54 @@ export const NsList = defineComponent({
   emits,
   setup (props, { slots }) {
 
+    const { groups, hasGroups } = useGrouping<ListItemData>(props.data, props.groupBy)
+
     const header = () => props.title
       ? h('div', {
           class: ['list-title'],
         }, props.title)
       : null
 
+    const row = (d: ListItemData, index: number) => h(NsListItem, {
+      key: d.id || index,
+      ...props,
+      data: d,
+      fill: props.itemFill,
+      ...props.hasNumbers
+        ? { number: index + 1 }
+        : {},
+      ...props.hasArrows
+        ? {
+            hasArrow: true
+          }
+        : {},
+    }, {
+      ...slots.prepend
+        ? {
+          prepend: () => h('div', {
+              class: 'prepend'
+            }, slots.prepend?.(d))
+          }
+        : {},
+      ...slots.append
+        ? {
+          append: () => h('div', {
+              class: 'append'
+            }, slots.append?.(d))
+          }
+        : {}
+    })
+
     const body = () => props.data
-      ? props.data.map((d: Record<string, any>, index: number) => {
-          return h(NsListItem, {
-            key: d.id || index,
-            ...props,
-            data: d,
-            fill: props.itemFill,
-            ...props.hasNumbers
-              ? { number: index + 1 }
-              : {},
-            ...props.hasArrows
-              ? {
-                  hasArrow: true
-                }
-              : {},
-          }, {
-            ...slots.prepend
-              ? {
-                prepend: () => h('div', {
-                    class: 'prepend'
-                  }, slots.prepend?.(d))
-                }
-              : {},
-            ...slots.append
-              ? {
-                append: () => h('div', {
-                    class: 'append'
-                  }, slots.append?.(d))
-                }
-              : {}
-          })
-        })
+      ? hasGroups.value
+        ? groups?.value?.map(({ name, items }, index: number) => [
+            // 平行输出 group-header 和 items
+            h('div', {
+              class: ['group-header'],
+            }, name),
+            ...items.map((d: ListItemData, index: number) => row(d, index))
+          ])
+        : props.data.map((d, index) => row(d, index))
       : h('div', {
         class: ['ns-empty']
       })
@@ -226,6 +239,7 @@ export const NsList = defineComponent({
       style: {
         ...buildDesignStyles(props),
       },
+      align: 'stretch',
       gap: props.gap,
     }, {
         default: () => [

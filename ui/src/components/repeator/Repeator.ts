@@ -1,6 +1,6 @@
 import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useDesignProps, useFlexProps } from '../../props'
+import { useDesignProps, useFlexProps, useGroupingProps } from '../../props'
 
 export type Swipable = {
     label: string,
@@ -27,6 +27,7 @@ export const repeatorProps = {
   swipable: {
     type: [Boolean, Array] as PropType<boolean | Swipable[]>
   },
+  ...useGroupingProps(),
   ...useDesignProps(),
   ...useFlexProps()
 }
