@@ -215,6 +215,14 @@ export default [
   },
   {
     input: 'src/index.ts',
+    output: {
+      file: 'dist/nutshell.d.ts',
+      format: 'es'
+    },
+    plugins: [dts()]
+  },
+  {
+    input: 'src/index.ts',
     output: [
       {
         format: 'es',
@@ -296,24 +304,14 @@ export default [
       'lodash-es'
     ]
   },
-  // {
-  //   input: './dist/index.d.ts',
-  //   output: {
-  //     file: 'dist/nutshell.d.ts',
-  //     exports: 'named',
-  //     format: 'es',
-  //   },
-  //   plugins: [dts()]
-  // },
-  // {
-  //   input: './dist/index.d.ts',
-  //   output: {
-  //     file: 'dist/taro/nutshell.d.ts',
-  //     exports: 'named',
-  //     format: 'es',
-  //   },
-  //   plugins: [dts()]
-  // },
+  {
+    input: 'src/index.ts',
+    output: {
+      file: 'dist/taro/index.d.ts',
+      format: 'es'
+    },
+    plugins: [dts()]
+  },
   {
     input: './src/styles/main.scss',
     output: {
