@@ -343,6 +343,16 @@ const menuData = computed(() => [
     ]
   },
   {
+    label: '模板',
+    key: 'templates',
+    children: [
+      {
+        label: '带搜索表格页',
+        key: '/',
+      },
+    ]
+  },
+  {
     label: 'Directives',
     key: 'directives',
     children: [

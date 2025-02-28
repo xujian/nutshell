@@ -1,27 +1,18 @@
 <template>
-  <div class="page card-page">
-    <h1 class="my-lg">区域加载 v-loading</h1>
-    <div class="loading-dom" v-loading="true">加载区域</div>
-
-    <h1 class="my-lg">可动态开启/关闭</h1>
-    <div class="loading-dom" v-loading="loading">动态开启/关闭</div>
-    <div style="margin-top: 5px;">开关：<ns-switch v-model="loading" /></div>
-  </div>
+  <ns-page class="loading-page">
+    <h1>区域加载 v-loading</h1>
+    <p class="caption">v-loading</p>
+    <p>&nbsp;</p>
+    <h2>基本用法</h2>
+    <div class="caption">v-loading="true"</div>
+    <story file="loading/basic" />
+    <p>&nbsp;</p>
+    <h2>可动态开启/关闭</h2>
+    <story file="loading/switch" />
+  </ns-page>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const loading = ref(false)
 </script>
 
-<style scoped lang="scss">
-.loading-dom {
-  width: 200px;
-  height: 100px;
-  background: var(--ns-primary--90);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-</style>
+<style scoped lang="scss"></style>
