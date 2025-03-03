@@ -1,7 +1,7 @@
 <template>
   <ns-page class="popover-page">
     <ns-page-content>
-      <h1>气泡卡片</h1>
+      <h1>气泡</h1>
       <p class="caption">&lt;ns-popover&gt;</p>
       <mobile-button url="pages/components/popover" />
       <p>&nbsp;</p>

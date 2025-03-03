@@ -129,7 +129,7 @@ const menuData = computed(() => [
             key: '/components/button-group'
           },
           {
-            label: '弹出命令 popover',
+            label: '气泡 popover',
             key: '/components/popover'
           },
           {
