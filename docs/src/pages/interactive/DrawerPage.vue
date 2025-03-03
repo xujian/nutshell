@@ -10,6 +10,10 @@
       <h2>使用 SERVICE</h2>
       <p class="caption">$n.drawer(), component属性接收一个子组件，couldClose方法为true时可以关闭弹框，couldComplete方法为true点击确定按钮可关闭弹框</p>
       <story file="drawer/service.vue" />
+      <p>&nbsp;</p>
+      <h2>使用插槽</h2>
+      <p class="caption">可使用footer、title插槽</p>
+      <story file="drawer/slot.vue" />
     </ns-page-content>
   </ns-page>
 </template>
