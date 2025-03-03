@@ -58,6 +58,7 @@ export const dialogEmits: DialogEmits = {
 export type DialogSlots = {
   default: never,
   footer: never
+  title: never
 }
 
 export type DialogProps = MakePropsType<typeof dialogProps, DialogEmits>

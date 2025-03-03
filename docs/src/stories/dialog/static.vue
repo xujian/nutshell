@@ -12,6 +12,9 @@
     closable
     @hide="onDialogHide"
     @ok="onDialogOk">
+    <template #title>
+      自定义标题
+    </template>
     <ns-form v-model="formData"
       name="client"
       ref="formRef">
