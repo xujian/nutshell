@@ -10,7 +10,6 @@ const buttonTypesMap: Record<string, LegacyButtonType> = {
 
 export const Dialog = defineComponent<DialogProps, DialogEmits>(
   (props, ctx) => {
-    console.log(111111111)
     const { slots, emit } = ctx
 
     const styleFromProps = {
@@ -75,7 +74,6 @@ export const Dialog = defineComponent<DialogProps, DialogEmits>(
       }),
     ])
 
-    console.log(slots, 'slots')
     return () => h(AntdvModal, {
       style: {
         ...styleFromProps

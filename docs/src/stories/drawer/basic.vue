@@ -1,9 +1,10 @@
 <template>
   <ns-row justify="start">
-    <ns-button label="打开右侧侧边栏" @click="openDrawer" />
+    <ns-button color="primary" label="打开右侧侧边栏" @click="openDrawer" />
   </ns-row>
-  <ns-drawer v-model="drawOpen">
-    <h3>侧边栏</h3>
+
+  <ns-drawer width="1000" v-model="drawOpen" title="侧边栏">
+    内容区域
   </ns-drawer>
 </template>
 

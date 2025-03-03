@@ -1,6 +1,6 @@
-import { PropType, ObjectEmitsOptions, SlotsType, Prop } from 'vue'
+import { PropType, SlotsType, Prop } from 'vue'
 import { define, MakePropsType } from '../../utils'
-import { useModelValuePropsForBoolean, usePopupProps, useSizeProps, useTitleProps } from '../../props'
+import { useModelValuePropsForBoolean, usePopupProps, useTitleProps } from '../../props'
 import { Dimension } from '../../types'
 import { Color } from '../../composables'
 
@@ -30,6 +30,7 @@ const drawerEmits: DrawerEmits = {
 
 export interface DrawerSlots extends SlotsType {
   default: never,
+  title: never
 }
 
 export type DrawerProps = MakePropsType<typeof drawerProps, DrawerEmits>

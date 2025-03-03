@@ -1,4 +1,4 @@
-.ns-page, .ns-dialog {
+.ns-page, .ns-dialog, .ns-drawer {
   :focus-visible {
     outline: none;
   }
@@ -537,7 +537,7 @@
 }
 
 // cascader
-.ant-cascader-menu {
+.ant-cascader-menu, .ant-drawer-body {
   &::-webkit-scrollbar {
     width: 7px;
     height: 7px;
