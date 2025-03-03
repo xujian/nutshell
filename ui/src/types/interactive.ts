@@ -117,11 +117,11 @@ export type SheetOptions = {
    * 嵌入子组件
    */
   component: PopupChildComponent,
-  width: Dimension,
+  width?: Dimension,
   /**
    * 透传给子组件的属性
    */
-  fill: Color,
+  fill?: Color,
   props?: any,
   closable?: boolean,
   height?: number,
@@ -129,9 +129,9 @@ export type SheetOptions = {
   destroyOnClose?: boolean,
   onComplete?: (result?: any) => boolean | undefined | Promise<boolean | undefined>,
   onOk?: (result?: any) => boolean | undefined
-  okText: string,
+  okText?: string,
   onCancel?: () => boolean | undefined
-  footer: boolean,
+  footer?: boolean,
 }
 
 export type PreviewOptions = {

@@ -402,10 +402,8 @@ const onOpenDialog = () => {
 }
 
 const onOpenConfirm = () => {
-  $n.confirm('确定要删除吗?', {
-    onOk: () => {
-      console.log('===delete')
-    }
+  $n.confirm('确定要删除吗?', () => {
+    console.log('===delete')
   })
 }
 
