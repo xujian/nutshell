@@ -53,6 +53,8 @@ export const Sheet = defineComponent<SheetProps, SheetEmits>(
     }, [
       h(NsButton, {
         class: ['cancel-button'],
+        color: 'neutral',
+        variant: 'outlined',
         label: props.cancelText || '取消',
         onClick: onCancel,
       }),
@@ -66,7 +68,7 @@ export const Sheet = defineComponent<SheetProps, SheetEmits>(
 
     return () => h(AntdvDrawer, {
       placement: 'bottom',
-      class: 'xxx',
+      class: 'ns-sheet',
       open: props.modelValue,
       closable: props.closable === false ? false : true,
       title: props.title,

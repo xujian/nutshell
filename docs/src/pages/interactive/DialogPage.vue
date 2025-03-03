@@ -5,6 +5,8 @@
       <p class="caption">&lt;ns-dialog&gt;</p>
       <mobile-button url="pages/interactive/dialog" />
       <p>&nbsp;</p>
+      <note>模态对话框，在浮层中显示，引导用户进行相关操作</note>
+      <p>&nbsp;</p>
       <h2>基本用法</h2>
       <p class="caption">&lt;ns-dialog&gt;</p>
       <p class="caption" style="margin-top: -15px; margin-bottom: 10px;">title - 标题；centerd - 弹框是否屏幕中央显示；closable - 是否有关闭按钮；@ok - 成功事件；@hide - 取消事件</p>

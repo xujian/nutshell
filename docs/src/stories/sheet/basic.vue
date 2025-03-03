@@ -1,9 +1,8 @@
 <template>
   <ns-row justify="start">
     <ns-button
-      size="sm"
       width="100"
-      color="negtive"
+      color="primary"
       label="底部弹窗" @click="openSheet" />
   </ns-row>
 </template>
