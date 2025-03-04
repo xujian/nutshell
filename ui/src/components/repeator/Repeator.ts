@@ -1,6 +1,7 @@
 import { PropType } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDesignProps, useFlexProps, useGroupingProps } from '../../props'
+import { useSelectable, useSelectableProps, selectableEmits, SelectableEmits } from '../../props/selectable'
 
 export type Swipable = {
     label: string,
@@ -11,7 +12,7 @@ export const repeatorProps = {
   /**
    * 平铺数据
    */
-  items: {
+  data: {
     type: Array as PropType<any[]>,
     default: () => []
   },
@@ -29,13 +30,16 @@ export const repeatorProps = {
   },
   ...useGroupingProps(),
   ...useDesignProps(),
-  ...useFlexProps()
+  ...useFlexProps(),
+  ...useSelectableProps(),
 }
 
 export type RepeatorEmits = {
-}
+  
+} & SelectableEmits
 
 export const repeatorEmits: RepeatorEmits = {
+  ...selectableEmits,
 }
 
 export type RepeatorSlots = {
@@ -56,7 +60,8 @@ export const NsRepeator = define({
   name: 'NsRepeator',
   props: repeatorProps,
   emits: repeatorEmits,
-  setup (props, { slots }) {
+  setup (props, { slots, emit }) {
+
     return {}
   }
 })

@@ -1,6 +1,6 @@
 <template>
   <ns-page>
-    <ns-page-header title="连续平铺" has-back-button>
+    <ns-page-header title="连续平铺" caption="<ns-repeator>" has-back-button>
       <template #prepend>
         <ns-icon name="http://simple.shensi.tech/icons/camera.svg" />
       </template>
@@ -10,11 +10,31 @@
       <div class="caption">可右滑删除</div>
       <ns-repeator class="demo-repeator"
         direction="column"
-        :items="items"
+        :data
         fill="#CDDC39"
         :r="10"
         :gap="10"
         swipable
+        align="stretch">
+        <template #default="item">
+          <div class="padding" justify="between">
+            <h5 class="b">{{ item.name }}</h5>
+            <div class="caption">{{ item.time }}</div>
+          </div>
+        </template>
+        <template #swipe="item">
+          <ns-button square size="sm" color="negtive" @click="() => deleteItem(item)">删除</ns-button>
+        </template>
+      </ns-repeator>
+      <h2>草稿箱</h2>
+      <div class="caption">可批量选择</div>
+      <ns-repeator class="demo-repeator"
+        direction="column"
+        :data
+        fill="#CDDC39"
+        :r="10"
+        :gap="10"
+        selectable
         align="stretch">
         <template #default="item">
           <div class="padding" justify="between">
@@ -33,7 +53,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const items = ref<any>([
+const data = ref<any>([
   {
     id: '1',
     name: '居间借贷服务合同协议',
@@ -53,8 +73,8 @@ const items = ref<any>([
 ])
 
 const deleteItem = (item) => {
-  const index = items.value.findIndex(i => i.id === item.id)
-  items.value.splice(index, 1)
+  const index = data.value.findIndex(i => i.id === item.id)
+  data.value.splice(index, 1)
 }
 
 </script>

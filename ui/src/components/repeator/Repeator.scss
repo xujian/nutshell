@@ -10,7 +10,18 @@
     .ns-repeator-item {
       border-width: 0;
       overflow: hidden;
-      overflow: hidden;
+      .swipe {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.ns-repeator-item {
+  &.selectable {
+    --gap: 0;
+    &::before {
+      margin-left: 10px;
     }
   }
 }

@@ -16,10 +16,15 @@
       <div class="pane-1" v-if="tab === '1'">
         <h2>账户消费明细表</h2>
         <p class="caption">范例之一</p>
+        <ns-row justify="between">
+          <h5>批量操作</h5>
+          <ns-switch v-model="selectable"></ns-switch>
+        </ns-row>
         <ns-list class="expense-list full-width"
           item-fill="#ffffff88"
           :data="items"
           :group-by
+          :selectable
           gap>
           <template #prepend="item">
             <div class="text-icon">{{ item.type }}</div>
@@ -62,8 +67,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
+const selectable = ref(false)
+
 const items = [
   {
+    id: '123e4567-e89b-12d3-a456-426614174001',
     date: '2025-02-12',
     title: '权益',
     caption: '风险查询-初审',
@@ -71,6 +79,7 @@ const items = [
     type: '消耗'
   },
   {
+    id: '123e4567-e89b-12d3-a456-426614174002',
     date: '2025-02-12',
     title: '权益',
     caption: '企业风险查询报告',
@@ -78,6 +87,7 @@ const items = [
     type: '消耗'
   },
   {
+    id: '123e4567-e89b-12d3-a456-426614174003',
     date: '2025-02-12',
     title: '权益',
     caption: '企业风险查询报告',
@@ -85,6 +95,7 @@ const items = [
     type: '消耗'
   },
   {
+    id: '123e4567-e89b-12d3-a456-426614174004',
     date: '2025-02-12',
     title: '权益',
     caption: '企业风险查询报告',
@@ -92,6 +103,7 @@ const items = [
     type: '消耗'
   },
   {
+    id: '123e4567-e89b-12d3-a456-426614174005',
     date: '2025-02-11',
     title: '权益',
     caption: '企业风险查询报告',
@@ -99,6 +111,7 @@ const items = [
     type: '消耗'
   },
   {
+    id: '123e4567-e89b-12d3-a456-426614174006',
     date: '2025-02-11',
     title: '权益',
     caption: '风险查询-初审',
@@ -106,6 +119,7 @@ const items = [
     type: '消耗'
   },
   {
+    id: '123e4567-e89b-12d3-a456-426614174007',
     date: '2025-02-11',
     title: '权益',
     caption: '风险查询-终审',
@@ -113,6 +127,7 @@ const items = [
     type: '消耗'
   },
   {
+    id: '123e4567-e89b-12d3-a456-426614174008',
     date: '2025-02-11',
     title: '权益',
     caption: '风险查询-初审',
@@ -120,6 +135,7 @@ const items = [
     type: '消耗'
   },
   {
+    id: '123e4567-e89b-12d3-a456-426614174009',
     date: '2025-02-10',
     title: '权益',
     caption: '风险查询-初审',
@@ -127,6 +143,7 @@ const items = [
     type: '消耗'
   }
 ]
+
 
 const groupBy = (item: any) => item.date
 

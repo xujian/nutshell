@@ -18,7 +18,7 @@ export const Repeator = defineComponent({
       ...buildDesignClasses(props),
     ]
 
-    const item = () => props.items.map(
+    const item = () => props.data.map(
       (item, index) => h('div', {
             class: classes,
             style: buildDesignStyles(props),
@@ -43,6 +43,6 @@ export const Repeator = defineComponent({
         ...props.swipable ? ['swipable'] : []
       ],
       style
-    }, props?.items?.length ? item() : h(NsEmpty))
+    }, props?.data?.length ? item() : h(NsEmpty))
   }
 })

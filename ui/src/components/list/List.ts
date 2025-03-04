@@ -4,6 +4,7 @@ import { Color } from '../../composables'
 import { buildDesignClasses, buildDesignStyles, TitleProps, useDesignProps, useGapProps, useGrouping, useGroupingProps, useTitle, useTitleProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
 import { NsColumn } from '../flex'
+import { useSelectable, useSelectableProps, selectableEmits, SelectableEmits } from '../../props'
 
 export type ListItemData = {
   number?: number,
@@ -75,12 +76,14 @@ export const listProps = {
   ...useGroupingProps(),
   ...useVariantProps(),
   ...useDesignProps(),
+  ...useSelectableProps(),
 }
 
-export type ListEmits = {
+export interface ListEmits extends SelectableEmits {
 }
 
 const emits: ListEmits = {
+  ...selectableEmits,
 }
 
 export interface ListSlots extends SlotsType {
@@ -147,7 +150,7 @@ export const NsListItem = defineComponent({
         },
         ...props.data?.link
           ? { onClick: () => { Taro.navigateTo({url: props.data?.link}) } }
-          : {}
+          : {},
       }, {
         default: () => [
           // 输出 数字栏
@@ -174,7 +177,9 @@ export const NsList = defineComponent({
   props: listProps,
   sltos: listSlots,
   emits,
-  setup (props, { slots }) {
+  setup (props, { slots, emit }) {
+    const { isSelecting, selected, toggleSelected, isSelected }
+      = useSelectable(props, emit)
 
     const { groups, hasGroups } = useGrouping<ListItemData>(props.data, props.groupBy)
 
@@ -186,6 +191,10 @@ export const NsList = defineComponent({
 
     const row = (d: ListItemData, index: number) => h(NsListItem, {
       key: d.id || index,
+      class: [
+        ...isSelecting.value ? ['selectable'] : [],
+        ...isSelected(d) ? ['selected'] : [],
+      ],
       ...props,
       data: d,
       fill: props.itemFill,
@@ -197,6 +206,11 @@ export const NsList = defineComponent({
             hasArrow: true
           }
         : {},
+      onClick: () => {
+        if (props.selectable) {
+          toggleSelected(d)
+        }
+      }
     }, {
       ...slots.prepend
         ? {
@@ -231,6 +245,7 @@ export const NsList = defineComponent({
     return () => h(NsColumn, {
       class: [
         'ns-list',
+        'ns-selectable',
         'column',
         ...props.variant ? [`variant-${props.variant}`] : [],
         ...props.dense ? ['dense'] : [],
@@ -250,4 +265,3 @@ export const NsList = defineComponent({
     })
   }
 })
-// 需要增加 import 到 ./index.ts, ../components.ts

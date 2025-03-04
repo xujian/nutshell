@@ -54,6 +54,11 @@
     .prepend, .append {
       padding: 0 var(--ns-spacing);
     }
+    &.selectable::before {
+      margin-left: var(--ns-spacing);
+      margin-right: 0;
+      flex-shrink: 0;
+    }
   }
   &.variant-outlined {
     border-color: var(--stroke, var(--ns-stroke));

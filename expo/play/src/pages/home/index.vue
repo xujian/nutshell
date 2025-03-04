@@ -7,10 +7,14 @@
         </ns-row>
       </ns-card>
       <ns-row class="scenarios-row mb-md" justify="stretch" align="stretch" :gap="10">
-        <ns-card v-for="(group, index) in scenarios" :key="index" class="scene-card" fill="#FF980099" :blur="40"
-          stroke="#d8870f" title="场景">
+        <ns-card v-for="(group, index) in scenarios"
+          :key="index" class="scene-card" fill="#FF980099"
+          :blur="40"
+          stroke="#d8870f" :title="group.title">
           <ns-column class="fit" align="end" justify="end" :gap="10">
-            <ns-button r="sm" v-for="(s, i) in group" class="link-button" v-link="`/pages/scenarios/${s.link}`"
+            <ns-button r="sm" v-for="(s) in group.items"
+              class="link-button"
+              v-link="`/pages/scenarios/${s.link}`"
               size="xs" color="#00000033" :label="`${s.title}`" />
           </ns-column>
         </ns-card>
@@ -28,33 +32,50 @@ import { ListItemProps, type Color } from '@uxda/nutshell/taro'
 import chroma from 'chroma-js'
 
 const scenarios = [
-  [
-    { title: '订单表', link: 'list/orders' },
-    { title: '消费记录', link: 'list/transactions' },
-    { title: '列表三', link: 'list/03' },
-    { title: '列表四', link: 'list/04' },
-  ],
-  [
-    { title: '表单一', link: '/form-01' },
-    { title: '表单二', link: '/form-02' },
-    { title: '表单三', link: '/form-03' },
-    { title: '表单四', link: '/form-04' },
-  ],
-  [
-    { title: '详情一', link: '/detail-01' },
-    { title: '详情二', link: '/detail-02' },
-    { title: '详情三', link: '/detail-03' },
-    { title: '详情四', link: '/detail-04' },
-  ],
-  [
-    { title: '图表一', link: '/chart-01' },
-    { title: '图表二', link: '/chart-02' },
-    { title: '图表三', link: '/chart-03' },
-    { title: '图表四', link: '/chart-04' },
-  ]
+  {
+    title: '数据类',
+    items: [
+      { title: '订单表', link: 'list/orders' },
+      { title: '消费记录', link: 'list/transactions' },
+      { title: '客户表', link: 'list/03' },
+      { title: '合同表', link: 'list/03' },
+      { title: '跟进记录', link: 'list/04' },
+      { title: '系统消息', link: 'list/04' },
+    ],
+  },
+  {
+    title: '表单类',
+    items: [
+      { title: '客户资料', link: '/form-01' },
+      { title: '企业资料', link: '/form-02' },
+      { title: '发起合同', link: '/form-03' },
+      { title: '房产信息', link: '/form-03' },
+      { title: '影像资料', link: '/form-04' },
+    ],
+  },
+  {
+
+    title: '呈现类',
+    items: [
+      { title: '客户资料', link: '/detail-01' },
+      { title: '合同', link: '/detail-02' },
+      { title: '贷款', link: '/detail-03' },
+      { title: '影像资料', link: '/detail-04' },
+    ],
+  },
+  {
+
+    title: '交互类',
+    items: [
+      { title: '批量操作', link: '/chart-01' },
+      { title: '数据筛选', link: '/chart-02' },
+      { title: '分享', link: '/chart-03' },
+      { title: '上传', link: '/chart-03' },
+    ]
+  }
 ]
 
-const groups: { title: string, color?: Color, data: ListItemProps[] }[] = [
+const groups: { title: string, data: ListItemProps[] }[] = [
   {
     title: '页面构成',
     data: [
@@ -316,7 +337,7 @@ const groups: { title: string, color?: Color, data: ListItemProps[] }[] = [
       {
         title: '列表',
         caption: '<ns-list>',
-        link: '/pages/componentslist/list',
+        link: '/pages/components/list/list',
       },
       {
         title: '连续平铺',

@@ -1,5 +1,5 @@
 import { defineComponent, h, Ref, ref } from 'vue'
-import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles } from '../../../../props'
+import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useSelectable } from '../../../../props'
 import { NsEmpty } from '../../../../components/empty'
 import { repeatorEmits, repeatorProps } from '../../../../components/repeator'
 import { useGrouping } from '../../../../props'
@@ -11,15 +11,21 @@ export const Repeator = defineComponent({
   props: repeatorProps,
   emits: repeatorEmits,
   inheritAttrs: false,
-  setup (props, { slots }) {
+  setup (props, { slots, emit }) {
 
-    const { groups, hasGroups } = useGrouping(props.items, props.groupBy)
+    const { groups, hasGroups } = useGrouping(props.data, props.groupBy)
+    console.log('groups', groups.value, props.groupBy, props.data)
+    const { isSelecting, selected, toggleSelected, isSelected } = 
+      useSelectable(props, emit)
 
-    const refs: Ref<any>[] = props.items.map((item) => ref())
+
+    const refs: Ref[] = props.data.map((item) => ref())
 
     const classes = [
       'ns-repeator-item',
       'flex-item',
+      'row',
+      'align-center',
       ...buildDesignClasses(props),
     ]
 
@@ -31,41 +37,58 @@ export const Repeator = defineComponent({
       })
     }
 
-    const swipe = (item: any, index: number) => h('div', {
-        class: classes,
+    const swipe = (data: any, index: number) => h('div', {
+        class: [
+          classes
+        ],
         style: buildDesignStyles(props),
-        key: item.id || index
+        key: data.id || index
       }, h(NutSwipe, {
             class: ['swipe'],
             ref: refs[index],
-            disabled: item.swipable === false,
+            disabled: data.swipable === false,
             onOpen: () => {
               onOpen(index)
             }
           }, {
-            default: () => slots.default?.(item),
-            right: () => slots.swipe?.(item)
+            default: () => slots.default?.(data),
+            right: () => slots.swipe?.(data)
           })
       )
     
-    const row = (item: any, index: number) => props.swipable !== false
-      ? swipe(item, index)
-      : slots.default?.(item)
+    const item = (data: any, key: string, index: number) => h('div', {
+      class: [
+        ...classes,
+        ...isSelecting.value ? ['selectable'] : [],
+        ...isSelected(data) ? ['selected'] : [],
+      ],
+      style: buildDesignStyles(props),
+      key: data.id || index,
+      onClick: () => {
+        toggleSelected(data)
+      }
+    }, slots.default?.(data))
+    
+    const row = (data: any, key: string, index: number) => 
+      props.swipable !== false
+        ? swipe(data, index)
+        : item(data, key, index)
 
-    const content = () => hasGroups
+    const content = () => hasGroups.value
       ? groups?.value?.map(
         ({ name, items }, index: number) => [
           h('div', { 
             class: ['group-header'],
           }, name),
-          ...items.map((item, index) => row(item, index))
+          ...items.map((item, i) => row(item, `${index}-${i}`, index))
         ])
-      : props.items.map((item, index) => row(item, index))
+      : props.data.map((item, index) => row(item, `${index}`, index))
 
 
     return () => h('div', {
       class: [
         'ns-repeator',
+        'ns-selectable',
         ...props.divides ? ['has-divides'] : [],
         ...buildFlexClasses(props),
         ...props.swipable ? ['swipable'] : [],
@@ -75,7 +98,7 @@ export const Repeator = defineComponent({
         '--divides': props.divides,
       }
     }, {
-      default: () => props?.items?.length
+      default: () => props?.data?.length
         ? content()
         : h(NsEmpty)
     })
