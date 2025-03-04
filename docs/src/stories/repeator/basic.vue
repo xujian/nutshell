@@ -1,6 +1,6 @@
 <template>
   <ns-repeator class="demo-repeator"
-    :items="items"
+    :data="data"
     :gap="10"
     align="stretch"
     wrap
@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-const items = [
+const data = [
   {
     name: '总计客户',
     count: 64027
