@@ -344,6 +344,9 @@
       color: #fff;
     }
   }
+  .ns-form-item {
+    width: 100%;
+  }
 }
 .ns-popover-confirm-content {
   .buttons {
@@ -414,7 +417,7 @@
 
 // chips
 .ns-chip {
-  --r: 2px;
+  --r: 4px;
   margin-inline-end: 8px;
   &.nut-tag {
     cursor: pointer;

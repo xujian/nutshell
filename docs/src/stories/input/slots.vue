@@ -1,11 +1,18 @@
 <template>
-  <ns-input v-model="query" placeholder="请输入内容">
-    <template #prepend>￥</template>
-    <template #append>RMB</template>
-  </ns-input>
+  <ns-form v-model="form" >
+    <ns-input v-model="form.num" name="num" placeholder="请输入内容" :rules="[checkNumber]">
+      <template #prepend>￥</template>
+      <template #append>RMB</template>
+    </ns-input>
+  </ns-form>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { reactive } from 'vue'
 
-const query = ref('')
+const form = reactive({
+  num: '',
+})
+const checkNumber = (value: string) => {
+  return !!Number(value)
+}
 </script>

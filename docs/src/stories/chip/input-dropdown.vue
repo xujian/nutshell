@@ -2,6 +2,7 @@
   <ns-chips-input label="客户标签"
     name="tags"
     dropdown
+    trigger="click"
     :options="chipsOptions"
     v-model="formData.tags" />
 </template>
