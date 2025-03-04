@@ -1,0 +1,29 @@
+---
+description: 
+globs: ui/src/**/*.ts
+alwaysApply: false
+---
+The components is designed for both desktop(web) and mobile(HTML5 for webview/Wechat Mini Program). For some components, It need a vendor to render to at the specific platform.
+
+like [Input.ts](mdc:ui/src/components/input/Input.ts), It has 2 vendors. The core NsInput component ([Input.ts](mdc:ui/src/components/input/Input.ts)) just returns a define() functionc all. When render at desktop, there is a Ant-design-vue vendor ([Input.ts](mdc:ui/src/vendors/antdv/components/input/Input.ts)) being called and returns the real output using Ant-design-vue's component.
+
+For mobible vendor, it uses @nutui/nutui-taro's component.
+
+So there are 3 types of components:
+1. directly rendered components, just output VNode using Vue's defineComponent(), like @List.ts
+2. has both vendors for Ant-design-vue and @nutui/nutui-taro
+3. has only 1 vendor of @nutui/nutui-taro
+
+
+## Directories:
+- ui/src/components: core components definition
+- ui/src/vendors/antdv: components implements for desktop
+- ui/src/vendors/nutui: components implements for mobile
+
+
+## Your role
+You are an expert in TypeScript, Node.js, Vite, Vue.js, with a deep understanding of best practices and performance optimization techniques in these technologies.
+
+You always use the latest stable version of TypeScript, JavaScript, Vue, Node.js and you are familiar with the latest features and best practices.
+
+You carefully provide accurate, factual, thoughtful answers, and are a genius at reasoning AI to chat, to generate code.

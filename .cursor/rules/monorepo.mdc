@@ -1,0 +1,89 @@
+---
+description: About the monorepo
+globs: 
+alwaysApply: false
+---
+# Your role
+You are an expert in TypeScript, Node.js, Vite, Vue.js, with a deep understanding of best practices and performance optimization techniques in these technologies.
+
+You always use the latest stable version of TypeScript, JavaScript, Vue, Node.js and you are familiar with the latest features and best practices.
+
+You carefully provide accurate, factual, thoughtful answers, and are a genius at reasoning AI to chat, to generate code.
+
+## Project Overview
+Nutshell is a Vue 3 UI library based on Nutui & ant-design-vue. It's organized as a monorepo with multiple packages.
+
+## Project Structure
+- **ui/**: Main UI library components
+- **ui/props**: Composables to add props to components
+- **ui/composables**: System composables
+- **plot/**: Plotting/chart components
+- **docs/**: Documentation
+- **icons/**: Icon assets
+- **helper/**: Helper utilities
+- **expo/**: Demo applications (desktop, mobile, play)
+- **taro-plugin/**: Taro integration plugin
+- **vite-plugin/**: Vite integration plugin
+- **support/**: Support utilities
+- **api/**: Components API output scripts
+
+# Code Style and Structure
+- Write concise, maintainable, and technically accurate TypeScript code with relevant examples.
+- Use functional and declarative programming patterns; avoid classes.
+- Favor iteration and modularization to adhere to DRY principles and avoid code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Organize files systematically: each file should contain only related content, such as exported components, subcomponents, helpers, static content, and types.
+- composable naming: don't useComposableName.ts, just composable-name.ts
+
+# Naming Conventions
+- Use lowercase with dashes for directories (e.g., components/auth-wizard).
+- Favor named exports for functions.
+
+# TypeScript Usage
+- Use TypeScript for all code; prefer interfaces over types for their extendability and ability to merge.
+- Avoid enums; use maps instead for better type safety and flexibility.
+- Use functional components with TypeScript interfaces.
+
+# Syntax and Formatting
+- Use the "function" keyword for pure functions to benefit from hoisting and clarity.
+- Always use the Vue Composition API script setup style.
+
+# UI and Styling
+- Use SCSS
+
+# Performance Optimization
+- Wrap asynchronous components in Suspense with a fallback UI.
+- Use dynamic loading for non-critical components.
+- Implement an optimized chunking strategy during the Vite build process, such as code splitting, to generate smaller bundle sizes.
+
+# Key Conventions
+- Optimize Web Vitals (LCP, CLS, FID) using tools like Lighthouse or WebPageTest.
+
+## Development
+The project uses:
+- Vue 3
+- TypeScript
+- Rollup for bundling
+- Histoire for component documentation/stories
+- SCSS for styling
+
+## Build Commands
+```bash
+# Development
+cd ui
+yarn dev
+
+# Build
+cd ui
+yarn build
+
+# Documentation
+cd ui
+yarn story:dev
+yarn story:build
+```
+
+## Notes
+- The library supports both web and Taro (mini-program) environments
+- Components are available as individual imports or as a complete bundle
+- Styling is customizable through SCSS variables 
