@@ -43,7 +43,7 @@ export const ChipsInput = (props: ChipsInputProps, { emit, slots }: SetupContext
           label: '+ 添加',
           variant: 'outlined',
           color: 'primary',
-          size: 'xs',
+          size: 'sm',
           style: {
             'margin-left': '5px'
           }
@@ -51,6 +51,8 @@ export const ChipsInput = (props: ChipsInputProps, { emit, slots }: SetupContext
           NsPopover,
           {
             'overlay-class-name': 'ns-chips-popover',
+            trigger: 'click',
+            light: true,
           },
           [
             h('h3', {}, `${props.label}选择`),
