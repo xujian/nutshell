@@ -16,9 +16,9 @@ export const transformRules = (rules: FullValidationRule[]) => {
       })
     } else {
       result.push({
-        validator (rule: any, value: string | string[]) {
+        validator (rule: any, value: string | string[] | number) {
           // 未填写 不继续校验
-          if (!value) {
+          if (!value && value !== 0) {
             return Promise.resolve()
           }
           if (!r.method?.(value as string)) {

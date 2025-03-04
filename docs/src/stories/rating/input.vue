@@ -1,7 +1,7 @@
 <template>
   <ns-form v-model="formData">
     <ns-row justify="start">
-      <ns-rating-input name="rating" label="意向等级" v-model="formData.rating" ruleTrigger="change" :rules="['required', checkNumber]" />
+      <ns-rating-input name="rating" label="意向等级" v-model="formData.rating" ruleTrigger="change" :rules="['required', {method: checkNumber, message: '请选择意向等级'}]" />
     </ns-row>
     <ns-row justify="start">
       <ns-rating-input disabled name="rating1" label="意向等级" v-model="formData.rating1"/>
