@@ -60,7 +60,11 @@ export const Repeator = defineComponent({
       class: [
         ...classes,
         ...isSelecting.value ? ['selectable'] : [],
-        ...isSelected(data) ? ['selected'] : [],
+        ...props.selectable
+          ? isSelected(data)
+            ? ['selected']
+            : []
+          : [],
       ],
       style: buildDesignStyles(props),
       key: data.id || index,

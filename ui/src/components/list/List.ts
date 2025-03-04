@@ -193,7 +193,11 @@ export const NsList = defineComponent({
       key: d.id || index,
       class: [
         ...isSelecting.value ? ['selectable'] : [],
-        ...isSelected(d) ? ['selected'] : [],
+        ...props.selectable
+          ? isSelected(d)
+            ? ['selected']
+            : []
+          : [],
       ],
       ...props,
       data: d,
