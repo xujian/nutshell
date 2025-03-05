@@ -87,6 +87,8 @@ export const CascadingSelect = defineComponent({
             readonly: true,
             onClick: openPicker,
             inputAlign: props.variant === 'solid' ? 'left' : 'right',
+          }, {
+            right: () => h('i', { class: ['icon', 'arrow'] })
           }),
           popup(),
         ]
