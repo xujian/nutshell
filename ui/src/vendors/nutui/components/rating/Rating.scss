@@ -1,7 +1,6 @@
-.ns-rating-input {
+.nut-rate-item__icon {
+  color: #FA8C16;
 }
-
-.ns-rating {
-  &.nut-rate {
-  }
+.nut-rate-item__icon--disabled {
+  color: var(--nut-rate-icon-void-color, var(--nut-disable-color, #cccccc));
 }
