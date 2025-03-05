@@ -23,7 +23,7 @@ export const Input = defineComponent({
           modelValue: props.modelValue,
           disabled: props.disabled ?? false,
           maxLength: props.maxlength ?? 50,
-          inputAlign: props.variant === 'solid' ? 'left' : 'right',
+          inputAlign: props.textAlign ?? 'right',
           placeholderClass: 'input-placeholder',
           'onUpdate:modelValue': (value: number | string) => {
             const val = props.modelModifiers?.trim ?

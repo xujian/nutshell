@@ -136,6 +136,7 @@ const fieldProps = {
   },
   name: {
     type: [String, Array] as PropType<FormItemName>,
+    required: true,
   },
   /**
    * 输入校验规则
@@ -173,7 +174,14 @@ const fieldProps = {
    */
   dense: {
     type: Boolean
-  }
+  },
+  /**
+   * 输入框文字对齐方向
+   * default: right
+   */
+  textAlign: {
+    type: String as PropType<'left' | 'right' | 'center'>,
+  },
 }
 
 /**

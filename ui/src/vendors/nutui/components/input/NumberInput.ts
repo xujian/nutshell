@@ -39,7 +39,7 @@ export const NumberInput = defineComponent({
           formatter: formatter,
           min: props.min,
           max: props.max,
-          inputAlign: props.variant === 'solid' ? 'left' : 'right',
+          inputAlign: props.textAlign ?? 'right',
           placeholderClass: 'input-placeholder',
           'onUpdate:modelValue': (value: number | string) => {
             props['onUpdate:modelValue']?.(value)
