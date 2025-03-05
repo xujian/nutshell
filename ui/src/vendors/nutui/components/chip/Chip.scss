@@ -1,16 +1,20 @@
 .ns-chip {
+  --r: var(--ns-r-sm, 4px);
   &.nut-tag {
-    height: 17px;
-    padding: 0px 6px;
+    height: 16px;
     .icon {
       height: 12px;
       width: 12px;
       margin-inline-end: 2px;
     }
     .text {
-      line-height: 1em;
+      line-height: 16px;
       display: inline-block;
     }
+  }
+  .round {
+    --r: 8px;
+    padding: 0 8px;
   }
   &.icon-position-end {
     .icon {
