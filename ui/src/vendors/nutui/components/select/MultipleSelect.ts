@@ -52,6 +52,7 @@ export const MultipleSelect = defineComponent({
         modelValue: pickerOpen.value,
         title: props.label,
         colorScheme: 'light',
+        cancelColor: '#1d1e1e',
         mask: true,
         height: 320,
         onClose: closePicker,

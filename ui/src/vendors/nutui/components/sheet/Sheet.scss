@@ -42,6 +42,9 @@
       padding: var(--ns-spacing);
       padding-bottom: max(var(--bottom, 0px), 10px);
       box-sizing: border-box;
+      .ns-button {
+        flex: 1 1 auto;
+      }
     }
     .sheet-body {
       width: 100%;
