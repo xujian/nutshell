@@ -23,6 +23,7 @@
     height: 100vh;
   }
   .page-content {
+    z-index: 1;
     padding: var(--ns-spacing);
     padding-bottom: var(--bottom);
     // top: calc(var(--status) + var(--nav));
@@ -76,6 +77,7 @@
   }
   .page-footer {
     position: fixed;
+    z-index: 10;
     left: 0;
     bottom: 0;
     background-color: var(--fill, #ffffffbb);
