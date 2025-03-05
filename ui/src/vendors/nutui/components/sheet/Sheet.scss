@@ -54,6 +54,8 @@
     }
     .sheet-scroll-view-content {
       padding: var(--ns-spacing);
+      height: 190px;
+      overflow: auto;
       box-sizing: border-box;
     }
   }
