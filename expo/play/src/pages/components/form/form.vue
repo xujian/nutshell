@@ -60,11 +60,14 @@
         <ns-upload label="上传"
           v-model="files" />
       </ns-form>
-      <ns-card style=" text-align: right;">
-        <ns-button color="primary" @click="reset">重置</ns-button>
-        <ns-button color="primary" @click="save">保存</ns-button>
-      </ns-card>
     </ns-page-content>
+    <ns-page-footer fill="#ffffff33"
+      :blur="10" :brightness="1.2">
+      <div class="row">
+        <ns-button style="flex: 1" variant="outlined" @click="reset">重置</ns-button>
+        <ns-button style="flex: 1" color="primary" @click="save">保存</ns-button>
+      </div>
+    </ns-page-footer>
   </ns-page>
 </template>
 
