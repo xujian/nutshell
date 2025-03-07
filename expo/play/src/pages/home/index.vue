@@ -6,12 +6,12 @@
           <h2>标准组件库</h2>
         </ns-row>
       </ns-card>
-      <ns-row class="scenarios-row mb-md" justify="stretch" align="stretch" :gap="10">
+      <ns-row class="scenarios-row mb-md" justify="stretch" align="stretch" gap>
         <ns-card v-for="(group, index) in scenarios"
           :key="index" class="scene-card" fill="#FF980099"
           :blur="40"
           stroke="#d8870f" :title="group.title">
-          <ns-column class="fit" align="end" justify="end" :gap="10">
+          <ns-column class="fit" align="end" justify="end" gap>
             <ns-button r="sm" v-for="(s) in group.items"
               class="link-button"
               v-link="`/pages/scenarios/${s.link}`"
@@ -19,7 +19,8 @@
           </ns-column>
         </ns-card>
       </ns-row>
-      <ns-card class="content-card mb-md" v-for="(g, index) in groups" :key="index" :title="g.title"
+      <ns-card class="content-card mb-md"
+        v-for="(g, index) in groups" :key="index" :title="g.title"
         :fill="fills[index] || '#fff'" body-fill="#ffffff22" :edge="2">
         <ns-list :data="g.data" has-arrows class="full-width">
         </ns-list>
@@ -41,6 +42,7 @@ const scenarios = [
       { title: '合同表', link: 'list/03' },
       { title: '跟进记录', link: 'list/04' },
       { title: '系统消息', link: 'list/04' },
+      { title: '余额', link: 'list/balance' },
     ],
   },
   {
@@ -48,9 +50,10 @@ const scenarios = [
     items: [
       { title: '客户资料', link: '/form-01' },
       { title: '企业资料', link: '/form-02' },
-      { title: '发起合同', link: '/form-03' },
+      { title: '发起合同', link: 'form/contact' },
       { title: '房产信息', link: '/form-03' },
       { title: '影像资料', link: '/form-04' },
+      { title: '提现', link: 'form/withdraw' },
     ],
   },
   {
@@ -386,7 +389,7 @@ const fills = chroma.scale(['#004233', '#C0A30D']).colors(groups.length)
   }
 
   .scenarios-row {
-    height: 240px;
+    height: 260px;
 
     .link-button {
       width: 100%;

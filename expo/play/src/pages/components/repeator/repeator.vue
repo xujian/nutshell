@@ -35,16 +35,11 @@
         :r="10"
         :gap="10"
         selectable
-        align="stretch">
-        <template #default="item">
+        align="stretch" v-slot="item">
           <div class="padding" justify="between">
             <h5 class="b">{{ item.name }}</h5>
             <div class="caption">{{ item.time }}</div>
           </div>
-        </template>
-        <template #swipe="item">
-          <ns-button square size="sm" color="negtive" @click="() => deleteItem(item)">删除</ns-button>
-        </template>
       </ns-repeator>
     </ns-page-content>
   </ns-page>

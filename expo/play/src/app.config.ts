@@ -34,8 +34,11 @@ const components = [
 ]
 
 const scenarios = [
-  'list/orders',
-  'list/transactions',
+  'list/orders', // 订单表
+  'list/transactions', // 交易记录
+  'form/contract', // 发起合同
+  'list/balance', // 余额
+  'form/withdraw', // 提现
 ]
 
 export default defineAppConfig({
