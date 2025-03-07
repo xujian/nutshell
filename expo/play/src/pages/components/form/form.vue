@@ -4,62 +4,64 @@
       caption="<ns-form>"
       :blur="10" reveal has-back-button />
     <ns-page-content>
-      <ns-form v-model="formData" ref="form" failed="notice">
-        <ns-input
-          v-model.trim="formData.name"
-          name="name"
-          :rules="['required']"
-          label="姓名"
+      <ns-card fill="#fff">
+        <ns-form v-model="formData" ref="form" failed="notice">
+          <ns-input
+            v-model.trim="formData.name"
+            name="name"
+            :rules="['required']"
+            label="姓名"
           placeholder="请输入姓名" />
-        <ns-textarea
-          v-model="formData.description"
-          name="description"
-          :rules="['required']"
-          label="补充信息"
-          hasCount
-          placeholder="请输入补充信息" />
-        <ns-number-input
-          v-model="formData.count"
-          name="count"
-          :step="1"
-          :min="90"
-          :max="110"
-          :rules="['required']"
-          label="最大数量" />
-        <ns-select
-          v-model="formData.due"
-          :options="regions"
-          name="due"
-          placeholder="请输入城市"
-          hint="仅支持最高 720p、5 秒，限每月 50 个视频"
-          :rules="['required']"
-          label="城市" />
-        <ns-cascading-select
-          v-model="formData.cycle"
-          :options="cycles"
-          name="cycle"
-          placeholder="请输入审批周期"
-          seperator=""
-          :rules="['required']"
-          label="审批周期" />
-        <ns-multiple-select
-          v-model="formData.regions"
-          placeholder="请选择经营地区"
-          :options="regions"
-          label="经营地区" />
-        <ns-switch-input label="允许撤销"
-          hint="仅支持最高 720p、5 秒，限每月 50 个视频"
-          :rules="['required']"
-          v-model="formData.allowCancel" />
-        <ns-radio-group label="性别"
-          v-model="formData.allowCancel"
-          :options="[{label: '男', value: 1}, { label: '女', value: 0}]" />
-        <ns-date-input label="开始日期"
-          v-model="formData.date"
-          has-time />
-        <ns-upload label="上传"
-          v-model="files" />
-      </ns-form>
+          <ns-textarea
+            v-model="formData.description"
+            name="description"
+            :rules="['required']"
+            label="补充信息"
+            hasCount
+            placeholder="请输入补充信息" />
+          <ns-number-input
+            v-model="formData.count"
+            name="count"
+            :step="1"
+            :min="90"
+            :max="110"
+            :rules="['required']"
+            label="最大数量" />
+          <ns-select
+            v-model="formData.due"
+            :options="regions"
+            name="due"
+            placeholder="请输入城市"
+            hint="仅支持最高 720p、5 秒，限每月 50 个视频"
+            :rules="['required']"
+            label="城市" />
+          <ns-cascading-select
+            v-model="formData.cycle"
+            :options="cycles"
+            name="cycle"
+            placeholder="请输入审批周期"
+            seperator=""
+            :rules="['required']"
+            label="审批周期" />
+          <ns-multiple-select
+            v-model="formData.regions"
+            placeholder="请选择经营地区"
+            :options="regions"
+            label="经营地区" />
+          <ns-switch-input label="允许撤销"
+            hint="仅支持最高 720p、5 秒，限每月 50 个视频"
+            :rules="['required']"
+            v-model="formData.allowCancel" />
+          <ns-radio-group label="性别"
+            v-model="formData.allowCancel"
+            :options="[{label: '男', value: 1}, { label: '女', value: 0}]" />
+          <ns-date-input label="开始日期"
+            v-model="formData.date"
+            has-time />
+          <ns-upload label="上传"
+            v-model="files" />
+        </ns-form>
+      </ns-card>
     </ns-page-content>
     <ns-page-footer fill="#ffffff33"
       :blur="10" :brightness="1.2">

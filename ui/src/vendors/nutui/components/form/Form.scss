@@ -5,12 +5,13 @@
       box-shadow: none;
       background: transparent;
       margin: 0;
+      border-radius: 0;
     }
     .nut-cell {
       padding-block: calc(var(--ns-spacing) * 1/2);
+      background-color: transparent;
       padding-inline: 0;
       align-items: center;
-      border-bottom: solid 1px var(--ns-stroke);
       &:last-child {
         border-bottom: none;
       }
