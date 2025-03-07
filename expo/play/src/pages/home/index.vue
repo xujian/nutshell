@@ -283,7 +283,7 @@ const groups: { title: string, data: ListItemProps[] }[] = [
         link: '/pages/components/input/input',
       },
       {
-        title: '文本域',
+        title: '多行输入框',
         caption: '<ns-textarea>',
         link: '/pages/components/input/textarea',
       },
@@ -291,6 +291,11 @@ const groups: { title: string, data: ListItemProps[] }[] = [
         title: '下拉输入框',
         caption: '<ns-select>',
         link: '/pages/components/select/select',
+      },
+      {
+        title: '级联输入框',
+        caption: '<ns-cascading-select>',
+        link: '/pages/components/select/cascading-select',
       },
       {
         title: '日期选择',
