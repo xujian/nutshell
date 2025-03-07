@@ -1,6 +1,6 @@
 <template>
   <ns-page class="input-page">
-    <ns-page-header title="下拉选择"
+    <ns-page-header title="下拉输入框"
       caption="<ns-select>"
       :blur="10" reveal has-back-button />
     <ns-page-content>

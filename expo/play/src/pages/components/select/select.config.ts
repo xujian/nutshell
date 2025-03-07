@@ -1,5 +1,4 @@
 export default definePageConfig({
-  navigationBarTextStyle: 'white',
+  navigationBarTextStyle: 'black',
   navigationStyle: 'custom',
-  navigationBarTitleText: 'Input'
 })

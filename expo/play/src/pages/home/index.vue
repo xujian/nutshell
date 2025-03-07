@@ -288,7 +288,7 @@ const groups: { title: string, data: ListItemProps[] }[] = [
         link: '/pages/components/input/textarea',
       },
       {
-        title: '下拉选框',
+        title: '下拉输入框',
         caption: '<ns-select>',
         link: '/pages/components/select/select',
       },
