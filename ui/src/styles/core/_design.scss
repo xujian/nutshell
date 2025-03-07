@@ -90,6 +90,7 @@
     &.color-scheme-dark {
       &:not(.variant-outlined) {
         &:not(.variant-plain) {
+          --ns-text: var(--ns-text-dark, #fff);
           --foreground: var(--ns-text-dark, #fff);
         }
       }

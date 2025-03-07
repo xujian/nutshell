@@ -2,6 +2,7 @@ import { defineComponent, h, onMounted, watch } from 'vue'
 import { MakePropsType } from '../../utils'
 import { useBus } from '../../composables'
 import { usePage } from './Page'
+import { buildDesignClasses, buildDesignStyles, useDesignProps } from '../../props'
 
 export const pageContentProps = {
   /**
@@ -17,7 +18,8 @@ export const pageContentProps = {
   bottom: {
     type: Number,
     default: 0
-  }
+  },
+  ...useDesignProps(),
 }
 
 export type PageContentEmits = {
@@ -84,9 +86,11 @@ export const NsPageContent = defineComponent({
           'grow',
           'align-start',
           ...props.scrollable ? ['scrollable'] : [],
+          ...buildDesignClasses(props),
         ],
         style: {
-          ...props.bottom ? { '--bottom': `${props.bottom}px` } : {}
+          ...props.bottom ? { '--bottom': `${props.bottom}px` } : {},
+          ...buildDesignStyles(props),
         }
       },
       props.scrollable

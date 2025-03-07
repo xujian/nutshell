@@ -100,9 +100,28 @@
     font-weight: bold;
   }
   &.color-scheme-dark {
-    color: #fff;
     .page-footer {
       background-color: var(--fill, #000000bb);
+    }
+  }
+}
+
+/**
+ * 实现 page-header 的曲线结构
+ */
+.ns-page.header-curved  {
+  .ns-page-content {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--header-fill);
+      display: block;
+      height: 40px;
+      width: 100%;
+      clip-path: ellipse(88% 100% at 50% 0%);
     }
   }
 }

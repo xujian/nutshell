@@ -322,7 +322,6 @@ export const Page = defineComponent({
 
     const classes = computed<string[]>(() => [
       'ns-page page column align-stretch mobile',
-      ...(props.colorScheme === 'dark' ? ['color-scheme-dark'] : ['color-scheme-light']),
       ...scroll.value > 0 ? ['scrolled'] : [],
       ...props.scrollable === true ? ['scrollable'] : [],
       // ...props.classes || [],

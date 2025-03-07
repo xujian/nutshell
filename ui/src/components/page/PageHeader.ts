@@ -28,6 +28,12 @@ export const pageHeaderProps = {
   reveal: {
     type: Boolean,
   },
+  /**
+   * 曲线结构
+   */
+  curved: {
+    type: Boolean,
+  },
   ...useDesignProps(),
 }
 
@@ -60,7 +66,11 @@ export const NsPageHeader = defineComponent<PageHeaderProps, PageHeaderEmits>(
       $props = getCurrentInstance()?.vnode.props,
       title = useTitle(props)
 
-    page && (page.hasHeader = true)
+    if (page && props.curved) {
+      page.hasHeader = true
+      page.header.curved = !!props.curved
+      page.header.fill = props.fill
+    }
 
     const cssVars = {
       ...props.titleAlign ? { '--titleAlign': props.titleAlign } : {},

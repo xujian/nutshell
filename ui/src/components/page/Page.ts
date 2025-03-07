@@ -1,6 +1,7 @@
-import { reactive, InjectionKey, Reactive, inject, provide, computed } from 'vue'
-import { define, MakePropsType } from '../../utils'
+import { reactive, InjectionKey, Reactive, inject, provide, computed, CSSProperties } from 'vue'
+import { define, MakePropsType, StyleObject } from '../../utils'
 import { useDesignProps } from '../../props'
+import type { Color } from '../../composables'
 
 /**
  * page scroll
@@ -53,11 +54,24 @@ export type PageSlots = {
 
 export type PageProps = MakePropsType<typeof pageProps, PageEmits>
 
+/**
+ * NsPageHeader 带有 curve 时, 需要让 NsPage 知道
+ * 以便控制 NsPageContent 的样式
+ * (曲线结构需要让 NsPageContent 实现)
+ * (为什么不能 NsPageHeader 实现? 是因为 NsPageContent要遮住圆形结构)
+ * 样式见 @Page.scss
+ */
+export type PageHeaderConfig = {
+  curved?: boolean,
+  fill?: Color,
+}
+
 export type PageConfig = {
   contentScrollable?: boolean,
   hasHeader?: boolean,
   hasFooter?: boolean,
   minimal?: boolean,
+  header: PageHeaderConfig,
   back?: () => void
 }
 
@@ -77,6 +91,10 @@ export const NsPage = define({
       hasHeader: false,
       hasFooter: false,
       minimal: props.minimal,
+      header: {
+        curved: false,
+        fill: void 0,
+      },
       back: () => emit('back')
     })
 
@@ -87,8 +105,18 @@ export const NsPage = define({
       ...pageConfig.hasHeader ? ['has-header'] : [],
       ...pageConfig.contentScrollable ? ['content-scrollable'] : [],
       ...pageConfig.hasFooter ? ['has-footer'] : [],
+      ...pageConfig.header?.curved ? ['header-curved'] : [],
       ...props.fit ? ['fit'] : []
     ]})
+
+    const styles = computed<StyleObject>(() => {
+      console.log('===Page styles', pageConfig.header?.fill)
+      return {
+        ...pageConfig.header?.fill
+          ? { '--header-fill': pageConfig.header.fill }
+          : {}
+      }
+    })
     // 分别为 desktop/小程序 渲染页面所需要的基本组件
     // 包含
     // 1. 页头 page-header
@@ -96,7 +124,8 @@ export const NsPage = define({
     // 3. 侧栏 drawer
     return {
       props: {
-        classes
+        classes,
+        styles,
       }
     }
   }

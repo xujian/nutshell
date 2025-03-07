@@ -8,7 +8,7 @@ export type StyleObject = Record<string, string | number>
  */
 export type MarginProps = {
   classes?: string[] | Ref<string[]>,
-  styles?: StyleObject,
+  styles?: StyleObject | Ref<StyleObject>,
   structured?: boolean,
   vendorRef?: Ref,
 }

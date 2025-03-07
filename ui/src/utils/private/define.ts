@@ -8,7 +8,7 @@ import {
 } from 'vue'
 import { kebabCase } from '../text'
 import { buildDesignClasses, buildDesignStyles, hasDesignProps, hasVariantProps } from '../../props'
-import { MakePropsType, MarginProps } from './helpers'
+import { MakePropsType, MarginProps, StyleObject } from './helpers'
 import { useVendor } from '../../shared/vendor'
 
 /**
@@ -59,7 +59,7 @@ export function define<
     // the real setup
     // const { setup: setupOriginal } = options
     const v = useVendor()
-    const { props: extraProps, methods, vendorRef, structured} = options.setup(props, ctx)
+    const { props: extraProps, methods, vendorRef, structured } = options.setup(props, ctx)
     // console.log('===define===classes', extraProps?.classes)
     const render: Ref<FunctionalComponent<Props, EmitsOptions, any>>
       = ref((props: Props, ctx: Omit<SetupContext, 'expose'>) => h('div'))
@@ -83,15 +83,23 @@ export function define<
             ? [`variant-${Reflect.get(props, 'variant')}`]
             : []
           : [],
-        ]),
-      styles = hasDesignProps(props)
-        ? computed(() => buildDesignStyles(props))
-        : computed(() => ({}))
+        ])
       const getExtraClasses: () => string[] = () => extraProps?.classes
-        ? isRef<string[]>(extraProps?.classes)
+        ? isRef(extraProps?.classes)
           ? extraProps?.classes.value
           : extraProps?.classes
         : []
+      const getExtraStyles: () => StyleObject = () => extraProps?.styles
+        ? isRef(extraProps?.styles)
+          ? extraProps?.styles.value
+          : extraProps?.styles
+        : {},
+      styles = hasDesignProps(props)
+        ? computed(() => ({
+          ...buildDesignStyles(props),
+          ...getExtraStyles(),
+        }))
+        : computed(() => ({}))
     // @ts-ignore
     // console.log('===extraClasses', extraProps?.classes?.value, extraClasses)
     ctx.expose({
@@ -106,6 +114,9 @@ export function define<
         ...getExtraClasses(),
         ...structured ? [] : classes.value,
       ],
+      style: {
+        ...getExtraStyles(),
+      },
       ...structured ? {} : { style: styles.value },
       // 用特定的名称返回计算好的 classes/styles
       ...structured ? { classes: classes.value } : {},
