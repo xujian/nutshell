@@ -5,10 +5,12 @@
       :blur="10" reveal has-back-button />
     <ns-page-content>
       <ns-form v-model="formData">
-        <h2>基础用法</h2>
-        <ns-switch-input
-          label="开关"
-          v-model="formData.val1" />
+        <h2>用法</h2>
+        <ns-card fill="#fff">
+          <ns-switch-input
+            label="开关"
+            v-model="formData.val1" />
+        </ns-card>
         <code-view language="html" :code="codes[0]" />
       </ns-form>
     </ns-page-content>

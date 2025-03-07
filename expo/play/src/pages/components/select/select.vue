@@ -5,28 +5,34 @@
       :blur="10" reveal has-back-button />
     <ns-page-content>
       <ns-form>
-        <h2>基础用法</h2>
-        <ns-select
-          v-model="formData.val1"
-          :options="cities"
-          placeholder="请选择" label="城市" />
+        <h2>用法</h2>
+        <ns-card fill="#fff">
+          <ns-select
+            v-model="formData.val1"
+            :options="cities"
+            placeholder="请选择" label="城市" />
+        </ns-card>
         <code-view language="html" :code="codes[0]" />
         <h2>支持对展示结果格式化</h2>
-        <ns-select
-          v-model="formData.val2"
-          :options="cities"
-          :formatter="formatter"
-          placeholder="请选择" label="城市" />
+        <ns-card fill="#fff">
+          <ns-select
+            v-model="formData.val2"
+            :options="cities"
+            :formatter="formatter"
+            placeholder="请选择" label="城市" />
+        </ns-card>
         <code-view language="html" :code="codes[1]" />
         <h2>对齐方式(props.variant === 'solid' ? 'left' : 'right')</h2>
-        <ns-select
-          v-model="formData.val1"
-          :options="cities"
-          variant="solid"
-          placeholder="请选择" label="城市" />
+        <ns-card fill="#fff">
+          <ns-select
+            v-model="formData.val1"
+            :options="cities"
+            variant="solid"
+            placeholder="请选择" label="城市" />
+        </ns-card>
         <code-view language="html" :code="codes[2]" />
       </ns-form>
-  </ns-page-content>
+    </ns-page-content>
   </ns-page>
 </template>
 

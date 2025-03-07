@@ -5,44 +5,55 @@
       :blur="10" reveal has-back-button />
     <ns-page-content>
       <ns-form>
-        <h2>基础用法</h2>
-        <ns-radio-group v-model="formData.val1" label="选项">
-          <ns-radio value="1" label="选项1"></ns-radio>
-          <ns-radio value="2" label="选项2"></ns-radio>
-        </ns-radio-group>
+        <h2>用法</h2>
+        <ns-card fill="#fff">
+          <ns-radio-group v-model="formData.val1" label="选项">
+            <ns-radio value="1" label="选项1"></ns-radio>
+            <ns-radio value="2" label="选项2"></ns-radio>
+          </ns-radio-group>
+        </ns-card>
         <code-view language="html" :code="codes[0]" />
         <h2>禁用用法</h2>
-        <ns-radio-group v-model="formData.val2" label="选项" disabled>
+        <ns-card fill="#fff">
+          <ns-radio-group v-model="formData.val2" label="选项" disabled>
           <ns-radio value="1" label="选项1"></ns-radio>
-          <ns-radio value="2" label="选项2"></ns-radio>
-        </ns-radio-group>
+            <ns-radio value="2" label="选项2"></ns-radio>
+          </ns-radio-group>
+        </ns-card>
         <code-view language="html" :code="codes[1]" />
-        <ns-radio-group
-          label="选项(禁用个别项)"
-          v-model="formData.val2"
-          :options="[
-            { label: '是', value: 1, disabled: true },
-            { label: '否', value: 0 },
-          ]" />
+        <h2>禁用个别项</h2>
+        <ns-card fill="#fff">
+          <ns-radio-group
+            label="选项(禁用个别项)"
+            v-model="formData.val2"
+            :options="[
+              { label: '是', value: 1, disabled: true },
+              { label: '否', value: 0 },
+            ]" />
+        </ns-card>
         <code-view language="html" :code="codes[2]" />
         <h2>options用法(不需要ns-radio)</h2>
-        <ns-radio-group
-          label="选项"
-          v-model="formData.val3"
+        <ns-card fill="#fff">
+          <ns-radio-group
+            label="选项"
+            v-model="formData.val3"
           :options="[
             { label: '是', value: 1 },
             { label: '否', value: 0 },
           ]" />
+        </ns-card>
         <code-view language="html" :code="codes[3]" />
         <h2>垂直排列</h2>
-        <ns-radio-group
-          label="选项"
+        <ns-card fill="#fff">
+          <ns-radio-group
+            label="选项"
           v-model="formData.val3"
           direction="column"
           :options="[
             { label: '是', value: 1 },
             { label: '否', value: 0 },
           ]" />
+        </ns-card>
         <code-view language="html" :code="codes[4]" />
       </ns-form>
     </ns-page-content>

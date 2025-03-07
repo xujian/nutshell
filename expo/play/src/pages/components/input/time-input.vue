@@ -6,27 +6,33 @@
     <ns-page-content>
       <ns-form v-model="formData">
         <h2>用法</h2>
-        <ns-time-input
-          v-model="formData.time"
-          name="time"
-          label="时间"
-          placeholder="请选择时间" />
+        <ns-card fill="#fff">
+          <ns-time-input
+            v-model="formData.time"
+            name="time"
+            label="时间"
+            placeholder="请选择时间" />
+        </ns-card>
         <code-view language="html" :code="codes[0]" />
         <h2>加上秒</h2>
+        <ns-card fill="#fff">
           <ns-time-input
             v-model="formData.time2"
             name="time2"
             has-seconds
             label="时间"
             placeholder="请选择时间" />
+        </ns-card>
         <code-view language="html" :code="codes[1]" />
         <h2>步进15分钟</h2>
+        <ns-card fill="#fff">
           <ns-time-input
             v-model="formData.time3"
             name="time3"
             :minute-step="15"
             label="时间"
             placeholder="请选择时间" />
+        </ns-card>
         <code-view language="html" :code="codes[2]" />
       </ns-form>
     </ns-page-content>
