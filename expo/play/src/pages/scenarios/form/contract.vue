@@ -1,6 +1,6 @@
 <template>
   <ns-page class="create-contact-page">
-    <ns-page-header title="发起合同" has-back-button />
+    <ns-page-header title="发起合同" has-back-button reveal :blur="10" />
     <ns-page-content>
       <ns-form class="contract-form">
         <ns-card fill="#fff" class="mb-md">
@@ -47,14 +47,16 @@
           <h3 class="mb-sm">备注信息</h3>
           <ns-textarea label="备注" placeholder="请输入备注信息" />
         </ns-card>
-
-        <ns-row justify="center" class="mt-lg">
-          <ns-button label="保存草稿" color="neutral" class="mr-md" />
-          <ns-button label="提交合同" color="primary" />
-        </ns-row>
       </ns-form>
-
     </ns-page-content>
+
+    <ns-page-footer fill="#ffffff33"
+      :blur="10" :brightness="1.2">
+      <div class="row">
+        <ns-button style="flex: 1; background: #fff" size="lg" variant="outlined" >保存草稿</ns-button>
+        <ns-button style="flex: 1" size="lg" color="primary">提交合同</ns-button>
+      </div>
+    </ns-page-footer>
   </ns-page>
 </template>
 

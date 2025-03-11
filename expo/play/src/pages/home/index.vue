@@ -50,7 +50,7 @@ const scenarios = [
     items: [
       { title: '客户资料', link: 'form/customer-information' },
       { title: '企业资料', link: 'form/enterprise-information' },
-      { title: '发起合同', link: 'form/contact' },
+      { title: '发起合同', link: 'form/contract' },
       { title: '房产信息', link: '/form-03' },
       { title: '影像资料', link: '/form-04' },
       { title: '提现', link: 'form/withdraw' },
