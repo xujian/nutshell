@@ -48,7 +48,7 @@ const scenarios = [
   {
     title: '表单类',
     items: [
-      { title: '客户资料', link: '/form-01' },
+      { title: '客户资料', link: 'form/customer-information' },
       { title: '企业资料', link: '/form-02' },
       { title: '发起合同', link: 'form/contact' },
       { title: '房产信息', link: '/form-03' },
