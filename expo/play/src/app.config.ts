@@ -41,6 +41,7 @@ const scenarios = [
   'form/withdraw', // 提现
   'form/customer-information', // 客户资料
   'form/enterprise-information', // 企业资料
+  'form/house-information', // 房产信息
 ]
 
 export default defineAppConfig({
