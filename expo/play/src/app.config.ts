@@ -40,6 +40,7 @@ const scenarios = [
   'list/balance', // 余额
   'form/withdraw', // 提现
   'form/customer-information', // 客户资料
+  'form/enterprise-information', // 企业资料
 ]
 
 export default defineAppConfig({
