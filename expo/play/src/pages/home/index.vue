@@ -52,7 +52,7 @@ const scenarios = [
       { title: '企业资料', link: 'form/enterprise-information' },
       { title: '发起合同', link: 'form/contract' },
       { title: '房产信息', link: 'form/house-information' },
-      { title: '影像资料', link: '/form-04' },
+      { title: '影像资料', link: 'form/material' },
       { title: '提现', link: 'form/withdraw' },
     ],
   },
