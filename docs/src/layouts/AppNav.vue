@@ -347,12 +347,80 @@ const menuData = computed(() => [
     ]
   },
   {
-    label: '模板',
-    key: 'templates',
+    label: '场景',
+    key: 'scenarios',
     children: [
       {
-        label: '带搜索表格页',
-        key: '/',
+        label: '数据类',
+        key: 'data',
+        children: [
+          {
+            label: '客户列表',
+            key: '/scenarios/customer-list',
+          },
+          {
+            label: '合同列表',
+            key: '/scenarios/contract-list',
+          },
+          {
+            label: '资料列表',
+            key: '/scenarios/file-list',
+          },
+        ]
+      },
+      {
+        label: '表单类',
+        key: 'form',
+        children: [
+          {
+            label: '客户信息',
+            key: '/scenarios/customer-form',
+          },
+          {
+            label: '合同信息',
+            key: '/scenarios/contract-form',
+          },
+          {
+            label: '影像资料',
+            key: '/scenarios/image-form',
+          },
+        ]
+      },
+      {
+        label: '呈现类',
+        key: 'presentation',
+        children: [
+          {
+            label: '工作台统计',
+            key: '/scenarios/business-info',
+          },
+          {
+            label: '订单信息',
+            key: '/scenarios/order-info',
+          },
+          {
+            label: '账户中心',
+            key: '/scenarios/account-info',
+          },
+          {
+            label: '跟进记录',
+            key: '/scenarios/follow-info',
+          },
+        ]
+      },
+      {
+        label: '交互类',
+        key: 'interactive',
+        children: [
+          {
+            label: '多级标签栏',
+            key: '/scenarios/tabs',
+          },
+          {
+            label: '上传',
+            key: '/scenarios/upload',
+          },
+        ]
       },
     ]
   },

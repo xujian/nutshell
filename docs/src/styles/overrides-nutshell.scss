@@ -572,3 +572,27 @@
     width: 100%;
   }
 }
+
+.ns-page {
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.search-bar {
+  --ns-spacing: 12px 20px;
+  margin-bottom: 20px;
+  .ns-form-item {
+    margin-bottom: 0;
+  }
+}
+.table-bar {
+  --ns-spacing: 12px 20px;
+  flex: 1;
+  & > .card-body {
+    display: flex;
+    flex-direction: column;
+    & > .ns-table {
+      flex: 1;
+    }
+  }
+}

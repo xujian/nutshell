@@ -60,6 +60,11 @@ const toggleNav = () => {
     will-change: margin-left;
     transition: margin-left .5s;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    & > .ns-page {
+      flex-grow: 1;
+    }
   }
   .app-footer {
     height: 80px;

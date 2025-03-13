@@ -61,6 +61,18 @@ const RowPage = () => import('../pages/components/RowPage.vue')
 const ColumnPage = () => import('../pages/components/ColumnPage.vue')
 const AvatarPage = () => import('../pages/components/AvatarPage.vue')
 const NotFoundPage = () => import('../pages/NotFoundPage.vue')
+const CustomerListPage = () => import('../pages/scenarios/data/customer-list.vue')
+const ContractListPage = () => import('../pages/scenarios/data/contract-list.vue')
+const FileListPage = () => import('../pages/scenarios/data/file-list.vue')
+const ContractFormPage = () => import('../pages/scenarios/form/contract-form.vue')
+const CustomerFormPage = () => import('../pages/scenarios/form/customer-form.vue')
+const ImageFormPage = () => import('../pages/scenarios/form/image-form.vue')
+const AccountInfoPage = () => import('../pages/scenarios/presentation/account-info.vue')
+const BusinessInfoPage = () => import('../pages/scenarios/presentation/business-info.vue')
+const FollowInfoPage = () => import('../pages/scenarios/presentation/follow-info.vue')
+const OrderInfoPage = () => import('../pages/scenarios/presentation/order-info.vue')
+const ScenariosTabsPage = () => import('../pages/scenarios/interactive/tabs.vue')
+const ScenariosUploadPage = () => import('../pages/scenarios/interactive/upload.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -364,6 +376,66 @@ const router = createRouter({
           path: '/directives/loading',
           name: 'directives-loading',
           component: LoadingPage
+        },
+        {
+          path: '/scenarios/customer-list',
+          name: 'scenarios-customer-list',
+          component: CustomerListPage
+        },
+        {
+          path: '/scenarios/contract-list',
+          name: 'scenarios-contract-list',
+          component: ContractListPage
+        },
+        {
+          path: '/scenarios/file-list',
+          name: 'scenarios-file-list',
+          component: FileListPage
+        },
+        {
+          path: '/scenarios/contract-form',
+          name: 'scenarios-contract-form',
+          component: ContractFormPage
+        },
+        {
+          path: '/scenarios/customer-form',
+          name: 'scenarios-customer-form',
+          component: CustomerFormPage
+        },
+        {
+          path: '/scenarios/image-form',
+          name: 'scenarios-image-form',
+          component: ImageFormPage
+        },
+        {
+          path: '/scenarios/account-info',
+          name: 'scenarios-account-info',
+          component: AccountInfoPage
+        },
+        {
+          path: '/scenarios/business-info',
+          name: 'scenarios-business-info',
+          component: BusinessInfoPage
+        },
+        {
+          path: '/scenarios/follow-info',
+          name: 'scenarios-follow-info',
+          component: FollowInfoPage
+        },
+        {
+          path: '/scenarios/order-info',
+          name: 'scenarios-order-info',
+          component: OrderInfoPage
+        },
+        {
+          path: '/scenarios/tabs',
+          name: 'scenarios-tabs',
+          component: ScenariosTabsPage
+        },
+        {
+          path: '/scenarios/upload',
+          name: 'scenarios-upload',
+          component: ScenariosUploadPage
         },
         {
           path: '/404',
