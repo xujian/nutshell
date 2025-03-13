@@ -84,8 +84,7 @@ export const NsTableColumnSelector = defineComponent({
         return
       }
       const item = sortableItems.value.find(i => i.label === label)!
-      const newValue = sortableItems.value.filter(item => item.label !== label)
-      sortableItems.value = newValue
+      sortableItems.value = sortableItems.value.filter(item => item.label !== label)
       hiddenItems.value = [
         ...hiddenItems.value,
         item
@@ -191,7 +190,7 @@ export const NsTableColumnSelector = defineComponent({
         },
         fixedItems.value.filter((i) => i.fixed === 'right').map(renderFixedItem)
       ),
-      hiddenList = h(
+      hiddenList = () => h(
         'div',
         {
           class: ['hidden-list']
@@ -264,7 +263,7 @@ export const NsTableColumnSelector = defineComponent({
                 '隐藏字段'
               )
             : null,
-          hiddenList
+          hiddenList()
         ]),
         // footer
       ]
