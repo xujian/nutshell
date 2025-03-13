@@ -10,7 +10,6 @@ export const Repeator = defineComponent({
   name: 'NutuiRepeator',
   props: repeatorProps,
   emits: repeatorEmits,
-  inheritAttrs: false,
   setup (props, { slots, emit }) {
 
     const { groups, hasGroups } = useGrouping(props.data, props.groupBy)
