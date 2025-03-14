@@ -85,11 +85,13 @@ export const NsTableColumnSelector = defineComponent({
       }
       const item = sortableItems.value.find(i => i.label === label)!
       sortableItems.value = sortableItems.value.filter(item => item.label !== label)
-      可见字段缓存.value = 可见字段缓存.value.filter(item => item.label !== label)
       hiddenItems.value = [
         ...hiddenItems.value,
         item
       ].sort((a, b) => a.order - b.order)
+      if (可见字段缓存.value?.length) {
+        可见字段缓存.value = 可见字段缓存.value.filter(item => item.label !== label)
+      }
       console.log('===hiddenItems.value', item, hiddenItems.value)
     }
 
@@ -106,10 +108,12 @@ export const NsTableColumnSelector = defineComponent({
           ...sortableItems.value,
           item
         ].sort((a, b) => a.order - b.order)
-        可见字段缓存.value = [
-          ...可见字段缓存.value,
-          item
-        ].sort((a, b) => a.order - b.order)
+        if (可见字段缓存.value?.length) {
+          可见字段缓存.value = [
+            ...可见字段缓存.value,
+            item
+          ].sort((a, b) => a.order - b.order)
+        }
       }
       hiddenItems.value = hiddenItems.value.filter(i => i !== item)
     }
