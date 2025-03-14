@@ -1,4 +1,9 @@
 .ns-chip {
   cursor: default;
   margin-inline-end: 2px;
+  &.size-xs {
+    font-size: 10px;
+    padding: 0 2px;
+    height: 1.3em;
+  }
 }
