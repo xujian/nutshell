@@ -38,6 +38,8 @@ const scenarios = [
   'list/transactions', // 交易记录
   'form/contract', // 发起合同
   'list/balance', // 余额
+  'list/contracts', // 合同
+  'list/clients', // 客户
   'form/withdraw', // 提现
   'form/customer-information', // 客户资料
   'form/enterprise-information', // 企业资料
