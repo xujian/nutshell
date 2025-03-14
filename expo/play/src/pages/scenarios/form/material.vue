@@ -13,7 +13,7 @@
     </ns-page-header>
     <ns-page-content>
       <template v-if="activeTab==='file'">
-        <ns-card fill="#fff" class="mb-md" v-for="item in files" :key="item">
+        <ns-card fill="#fff" class="mb-md material-box" v-for="item in files" :key="item">
           <h4>{{item.name}}</h4>
           <ns-plank :key="it" v-for="it in item.children" :title="`${it.name}(${it.count})`">
             <template #content>
@@ -94,11 +94,18 @@ function tabChange({paneKey}){
     }
   }
 }
-.icon-list{
+.material-box{
+  .ns-plank:last-child{
+    border-bottom: none;
+  }
+  .icon-list{
   display: flex;
   justify-content: right;
   .ns-icon{
     margin-left: 8px;
   }
 }
+}
+
+
 </style>
