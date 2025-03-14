@@ -22,7 +22,10 @@ export const Popover = defineComponent({
         theme: props.light ? 'light' : 'dark',
         // @ts-ignore
         placement: props.placement || 'top' as Placement,
-        appendTo: document.body
+        appendTo: document.body,
+        popperOptions: {
+          strategy: 'fixed'
+        }
       })
     })
 
