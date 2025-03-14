@@ -88,7 +88,13 @@
         <ns-table-column-datetime field="confirmDate" label="确定提交时间" width="170" />
         <ns-table-column-custom field="id" width="68" align="left" fixed="right" label="操作">
           <template #content="{ row }">
-            <a href="javascript:void(0);" class="font-xs" v-if="row.stage === '线索'">删除</a>
+            <ns-button variant="plain" color="negtive" label="删除" v-if="row.stage === '线索'">
+              <ns-popover-confirm v-model="row.popoverOpen"
+                title="提示"
+                trigger="click"
+                @ok="handleDelete(row)">是否禁用?
+                </ns-popover-confirm>
+            </ns-button>
           </template>
         </ns-table-column-custom>
       </ns-table>
@@ -368,6 +374,11 @@ const handleReset = () => {
 // 导出按钮触发的方法
 const handleExport = () => {
   console.log('导出数据')
+}
+
+// 删除
+const handleDelete = (row) => {
+  console.log(row)
 }
 </script>
 

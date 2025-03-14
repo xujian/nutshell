@@ -352,7 +352,7 @@ const menuData = computed(() => [
     children: [
       {
         label: '数据类',
-        key: 'data',
+        key: '/scenarios/data',
         children: [
           {
             label: '客户列表',
@@ -370,7 +370,7 @@ const menuData = computed(() => [
       },
       {
         label: '表单类',
-        key: 'form',
+        key: '/scenarios/form',
         children: [
           {
             label: '客户信息',
@@ -388,7 +388,7 @@ const menuData = computed(() => [
       },
       {
         label: '呈现类',
-        key: 'presentation',
+        key: '/scenarios/presentation',
         children: [
           {
             label: '工作台统计',
@@ -410,7 +410,7 @@ const menuData = computed(() => [
       },
       {
         label: '交互类',
-        key: 'interactive',
+        key: '/scenarios/interactive',
         children: [
           {
             label: '多级标签栏',

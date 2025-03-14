@@ -64,6 +64,9 @@ export const NsPopoverConfirm = defineComponent({
         offset: [0, 15],
         theme: 'light',
         placement: props.placement || 'top',
+        popperOptions: {
+          strategy: 'fixed'
+        },
         onShow: () => {
           props['onUpdate:modelValue']?.(true)
         },
