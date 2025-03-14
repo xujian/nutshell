@@ -211,6 +211,7 @@ const onColumnEditComplete = ({field, value})=> {
 }
 
 const onRatingColumnChange = (value: number, row) => {
+  row.grade = value
   console.log('===ComplexTable.vue onRatingColumnChange', value, row)
 }
 
@@ -264,7 +265,6 @@ onMounted(() => {
       size="xs"
       @click="onTableColumnButtonClick" />
     <ns-table-column-rating field="grade"
-      editable
       @change="onRatingColumnChange"
       :filterable="gradeFilterableOptions"
       color="#ff8400" label="客户等级" width="150" />

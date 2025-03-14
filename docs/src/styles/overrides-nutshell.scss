@@ -577,6 +577,7 @@
   min-height: inherit;
   display: flex;
   flex-direction: column;
+  background: transparent !important;
 }
 .search-bar {
   --ns-spacing: 12px 20px;
