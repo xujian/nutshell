@@ -13,7 +13,6 @@ export const Repeator = defineComponent({
   setup (props, { slots, emit }) {
 
     const { groups, hasGroups } = useGrouping(props.data, props.groupBy)
-    console.log('groups', groups.value, props.groupBy, props.data)
     const { isSelecting, selected, toggleSelected, isSelected } = 
       useSelectable(props, emit)
 
@@ -65,7 +64,9 @@ export const Repeator = defineComponent({
             : []
           : [],
       ],
-      style: buildDesignStyles(props),
+      style: {
+        ...buildDesignStyles(props),
+      },
       key: data.id || index,
       onClick: () => {
         toggleSelected(data)
@@ -95,10 +96,20 @@ export const Repeator = defineComponent({
         ...props.divides ? ['has-divides'] : [],
         ...buildFlexClasses(props),
         ...props.swipable ? ['swipable'] : [],
+        ...props.seperator
+          ? ['has-seperator']
+          : [],
       ],
       style: {
         ...buildFlexStyles(props),
         '--divides': props.divides,
+        ...props.seperator
+          ? {
+            '--seperator': typeof props.seperator === 'boolean'
+              ? 'var(--ns-stroke)'
+              : makeColor(props.seperator)
+          }
+          : {},
       }
     }, {
       default: () => props?.data?.length

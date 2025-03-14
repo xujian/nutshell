@@ -28,6 +28,14 @@ export const repeatorProps = {
   swipable: {
     type: [Boolean, Array] as PropType<boolean | Swipable[]>
   },
+  /**
+   * 显示分隔线
+   * @values true, false, @Color
+   */
+  seperator: {
+    type: [Boolean, String] as PropType<boolean | Color>,
+    default: false
+  },
   ...useGroupingProps(),
   ...useDesignProps(),
   ...useFlexProps(),
@@ -48,10 +56,6 @@ export type RepeatorSlots = {
 }
 
 export type RepeatorProps = MakePropsType<typeof repeatorProps, RepeatorEmits>
-
-
-// 直接渲染组件
-// 不使用 vendor
 
 /**
  * 连续平铺组件 <ns-repeator>
