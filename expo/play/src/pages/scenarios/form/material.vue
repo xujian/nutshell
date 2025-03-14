@@ -15,6 +15,15 @@
       <template v-if="activeTab==='file'">
         <ns-card fill="#fff" class="mb-md" v-for="item in files" :key="item">
           <h4>{{item.name}}</h4>
+          <ns-plank :key="it" v-for="it in item.children" :title="`${it.name}(${it.count})`">
+            <template #content>
+              <div class="icon-list">
+                <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/camera_m.png"></ns-icon>
+                <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/files.png"></ns-icon>
+                <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/photo_m.png"></ns-icon>
+              </div>
+            </template>
+          </ns-plank>
         </ns-card>
     </template>
     </ns-page-content>
@@ -83,6 +92,13 @@ function tabChange({paneKey}){
     .nut-tabs__titles-placeholder{
       min-width: 0 !important;
     }
+  }
+}
+.icon-list{
+  display: flex;
+  justify-content: right;
+  .ns-icon{
+    margin-left: 8px;
   }
 }
 </style>
