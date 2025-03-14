@@ -21,6 +21,7 @@
 .ns-table-column-selector-item {
   margin: 4px;
   &.has-handler {
+    cursor: move;
     .label {
       padding: 0 4px;
     }
