@@ -62,3 +62,8 @@
   margin-bottom: 0;
   width: calc(100% + var(--ns-spacing) * 2) !important;
 }
+
+.breakout-x {
+  margin: 0 calc(var(--ns-spacing) * -1);
+  width: calc(100% + var(--ns-spacing) * 2) !important;
+}
