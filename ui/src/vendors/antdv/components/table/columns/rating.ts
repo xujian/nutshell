@@ -10,7 +10,7 @@ export default function rating (props: TableColumnRatingProps) {
   const color = props.color || 'primary'
   return ({value, row, rowIndex}: TableColumnData<number>) => h(NsRating, {
     color: color,
-    modelValue: value,
+    value: value,
     onChange: (value) => {
       console.log('===rating in table column change: value', value, row)
       // @ts-ignore
