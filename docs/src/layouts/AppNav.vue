@@ -363,8 +363,8 @@ const menuData = computed(() => [
             key: '/scenarios/contract-list',
           },
           {
-            label: '资料列表',
-            key: '/scenarios/file-list',
+            label: '用户列表',
+            key: '/scenarios/user-list',
           },
         ]
       },

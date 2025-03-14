@@ -63,7 +63,7 @@ const AvatarPage = () => import('../pages/components/AvatarPage.vue')
 const NotFoundPage = () => import('../pages/NotFoundPage.vue')
 const CustomerListPage = () => import('../pages/scenarios/data/customer-list.vue')
 const ContractListPage = () => import('../pages/scenarios/data/contract-list.vue')
-const FileListPage = () => import('../pages/scenarios/data/file-list.vue')
+const FileListPage = () => import('../pages/scenarios/data/user-list.vue')
 const ContractFormPage = () => import('../pages/scenarios/form/contract-form.vue')
 const CustomerFormPage = () => import('../pages/scenarios/form/customer-form.vue')
 const ImageFormPage = () => import('../pages/scenarios/form/image-form.vue')
@@ -388,8 +388,8 @@ const router = createRouter({
           component: ContractListPage
         },
         {
-          path: '/scenarios/file-list',
-          name: 'scenarios-file-list',
+          path: '/scenarios/user-list',
+          name: 'scenarios-user-list',
           component: FileListPage
         },
         {
