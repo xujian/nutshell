@@ -23,7 +23,8 @@ export const Chip = (props: ChipProps & MarginProps, { slots, emit }: Omit<Setup
   return h(NutTag, {
     class: [
       ...buildHasIconClasses(props),
-      ...props.closable ? ['closable'] : []
+      ...props.closable ? ['closable'] : [],
+      ...props.size ? [`size-${props.size}`] : [],
     ],
     round: props.round ?? true,
   }, {

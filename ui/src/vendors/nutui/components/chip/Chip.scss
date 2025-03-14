@@ -1,14 +1,13 @@
 .ns-chip {
   --r: var(--ns-r-sm, 4px);
   &.nut-tag {
-    height: 16px;
     .icon {
       height: 12px;
       width: 12px;
       margin-inline-end: 2px;
     }
     .text {
-      line-height: 16px;
+      line-height: 1.3em;
       display: inline-block;
     }
   }
