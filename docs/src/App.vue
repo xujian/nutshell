@@ -41,5 +41,6 @@ useHead({
 
 <style scoped>
 .ns-app {
+  --ns-background: #f6f9fd;
 }
 </style>

@@ -84,14 +84,12 @@ export const NsTableColumnSelector = defineComponent({
         return
       }
       const item = sortableItems.value.find(i => i.label === label)!
-      sortableItems.value = sortableItems.value.filter(item => item.label !== label)
+      const newValue = sortableItems.value.filter(item => item.label !== label)
+      sortableItems.value = newValue
       hiddenItems.value = [
         ...hiddenItems.value,
         item
       ].sort((a, b) => a.order - b.order)
-      if (可见字段缓存.value?.length) {
-        可见字段缓存.value = 可见字段缓存.value.filter(item => item.label !== label)
-      }
       console.log('===hiddenItems.value', item, hiddenItems.value)
     }
 
@@ -108,12 +106,6 @@ export const NsTableColumnSelector = defineComponent({
           ...sortableItems.value,
           item
         ].sort((a, b) => a.order - b.order)
-        if (可见字段缓存.value?.length) {
-          可见字段缓存.value = [
-            ...可见字段缓存.value,
-            item
-          ].sort((a, b) => a.order - b.order)
-        }
       }
       hiddenItems.value = hiddenItems.value.filter(i => i !== item)
     }
@@ -142,14 +134,17 @@ export const NsTableColumnSelector = defineComponent({
 
     // 排序、字段显示隐藏后均应该触发
     function commit () {
-      if (可见字段缓存.value?.length) {
-        sortableItems.value = 可见字段缓存.value
-      }
       const value = [
         ...fixedItems.value.filter((i) => i.fixed == 'left'),
         ...sortableItems.value,
         ...fixedItems.value.filter((i) => i.fixed == 'right')
       ].map((item) => item.label)
+      // 确保按钮列始终在最后
+      const btnColumnIndex = value.indexOf('ns-table-column-btn')
+      if (btnColumnIndex !== -1) {
+        value.splice(btnColumnIndex, 1)
+        value.push('ns-table-column-btn')
+      }
       props['onUpdate:modelValue']?.(value)
     }
 
@@ -238,16 +233,6 @@ export const NsTableColumnSelector = defineComponent({
       return true
     }
 
-    const searchValue = ref<string>('')
-    const 可见字段缓存 = ref<TableColumnSelectorItem[]>([])
-
-    const onSearch = () => {
-      if (searchValue.value) {
-        可见字段缓存.value = [...sortableItems.value]
-        sortableItems.value = 可见字段缓存.value.filter(item => item.label.includes(searchValue.value))
-      }
-    }
-
     vm.render= () => h(
       'div',
       {
@@ -265,13 +250,7 @@ export const NsTableColumnSelector = defineComponent({
         ]),
         h(
           NsInput,
-          {
-            modelValue: searchValue.value,
-            'onUpdate:modelValue': (v) => searchValue.value = v as string,
-            placeholder: '搜索',
-            fill: '#fff',
-            onEnter: onSearch
-          },
+          { placeholder: '搜索', fill: '#fff' },
           {
             prepend: () =>
               h('i', {

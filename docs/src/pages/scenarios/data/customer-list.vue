@@ -382,7 +382,7 @@ const handleDelete = (row) => {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .customer-list {
 }
 </style>
