@@ -1,5 +1,5 @@
 <template>
-  <ns-timeline class="slot-content-timeline" :items="items">
+  <ns-timeline class="slot-content-timeline" :data>
     <template #content="{item}">
       <div class="datetime text-neutral">处理时间: {{ item.time }}</div>
       <ns-card fill="#F7F8FA" foreground="#7E7E7E" style="margin-top: 10px;">
@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 import { UserOutlined } from '@ant-design/icons-vue';
 
-const items = [
+const data = [
   {
     title: '初审',
     time: '2023-08-17 11:28:54',

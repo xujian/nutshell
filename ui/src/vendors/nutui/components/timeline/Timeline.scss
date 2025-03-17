@@ -1,28 +1,67 @@
 .ns-timeline {
-  --nut-steps-process-title-color: var(--text, var(--ns-text));
-  &.nut-steps-vertical {
-    padding: 0 var(--ns-spacing);
-    box-sizing: border-box;
-    .nut-step-finish {
-      .nut-step-icon, .nut-step-line {
-        background-color: var(--ns-primary);
+  &.nut-steps {
+    --nut-steps-process-title-color: var(--text, var(--ns-text));
+    .timeline-item {
+      .nut-step-head {
+        width: 24px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: stretch;
+        margin-bottom: 0;
       }
-    }
-    .nut-step-process {
+      .nut-step-line {
+        position: unset;
+        width: 0;
+        flex-grow: 1;
+        background-color: transparent;
+        border-left-color: var(--ns-stroke);
+        border-left-style: solid;
+        border-left-width: 2px;
+      }
       .nut-step-icon {
-        background-color: var(--ns-primary);
-        &::before {
-          background-color: var(--ns-primary);
+        position: unset;
+        flex-grow: 0;
+        width: 24px;
+        height: 24px;
+        border-width: 0;
+        &.is-icon {
+          background-color: transparent;
+          .ns-icon {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+      &:last-child {
+        .nut-step-head {
+          flex-direction: column;
         }
       }
     }
-    .nut-step-main {
-      flex-grow: 1;
-      padding-left: 15px;
-      padding-right: 1em;
+    &.nut-steps-vertical {
+      padding: 0 0;
+      box-sizing: border-box;
+      .nut-step-finish {
+        .nut-step-line {
+          background-color: var(--ns-primary);
+        }
+      }
+      .nut-step-process {
+      }
+      .nut-step-main {
+        flex-grow: 1;
+        padding-left: calc(var(--ns-spacing) - 6px);
+        padding-right: 1em;
+      }
     }
-  }
-  .nut-step-title {
-    margin: 0;
+    .nut-step-title {
+      margin: 0;
+    }
+    &.dotted {
+      .nut-step-line {
+        border-left-style: dotted;
+      }
+    }
   }
 }

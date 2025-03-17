@@ -2,7 +2,7 @@ import { h, SetupContext, VNode } from 'vue'
 import { Timeline as AntdvTimeline, TimelineItem as AntdvTimelineItem } from 'ant-design-vue'
 import { TimelineItem, TimelineProps } from '../../../../components'
 
-function transformItemsToSlots (items: TimelineItem[], slots: SetupContext['slots']): VNode[] {
+function transformItemsToSlots (data: TimelineItem[], slots: SetupContext['slots']): VNode[] {
 
   const title = (item: TimelineItem) => h('div', {
     class: ['title'],
@@ -17,7 +17,7 @@ function transformItemsToSlots (items: TimelineItem[], slots: SetupContext['slot
       ? slots.content({item})
       : null
 
-  return items.map(item => {
+  return data.map(item => {
 
     // 把 <ns-timeline><#dot> 提供给 AntdvTimeline 的 #dot slot
     const dot = slots.dot
@@ -58,7 +58,7 @@ function transformItemsToSlots (items: TimelineItem[], slots: SetupContext['slot
 
 export const Timeline = (props: TimelineProps, { slots, emit }: SetupContext) => {
 
-  const items = transformItemsToSlots(props.items || [], slots)
+  const items = transformItemsToSlots(props.data || [], slots)
 
   return h(AntdvTimeline, {
   }, {

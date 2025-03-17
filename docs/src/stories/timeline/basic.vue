@@ -1,10 +1,10 @@
 <template>
-  <ns-timeline :items="items" />
+  <ns-timeline :data />
 </template>
 
 <script lang="ts" setup>
 
-const items = [
+const data = [
   {
     title: '方案',
     time: '2023-08-17 11:28:54',

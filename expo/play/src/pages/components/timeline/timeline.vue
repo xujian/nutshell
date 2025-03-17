@@ -3,9 +3,9 @@
     <ns-page-header title="时间线" has-back-button />
     <ns-page-content>
       <h2>使用 items</h2>
-      <ns-timeline :items="items" v-model="current" />
+      <ns-timeline :data v-model="current" />
       <h2>使用 slots</h2>
-      <ns-timeline :items="items" v-model="current">
+      <ns-timeline :data v-model="current">
         <template #content="{item}">
           <div class="content">
             <div class="caption" v-if="item.caption">节点状态: {{ item.caption }}</div>
@@ -22,7 +22,7 @@ import { ref } from 'vue'
 
 const current = ref(2)
 
-const items = [
+const data = [
   {
     title: '方案',
     time: '2023-08-17 11:28:54',
