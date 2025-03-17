@@ -64,7 +64,7 @@ export const useForm = () => {
     const result = await f?.validate(name) as any
     // 校验失败时报告错误
     // 基于 form 的属性 failed (报错方式)
-    if (!result.valid) {
+    if (result && !result.valid) {
       const [error] = result.errors
       const failed = form?.props.failed || 'toast'
       if (failed === 'toast') {

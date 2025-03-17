@@ -1,3 +1,21 @@
+.scrollbar {
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 2px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 7px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+}
+
 .ns-page, .ns-dialog, .ns-drawer, .ns-sheet {
   :focus-visible {
     outline: none;
@@ -148,21 +166,7 @@
     }
     .ant-input {
       padding-bottom: 15px;
-      &::-webkit-scrollbar {
-        width: 7px;
-        height: 7px;
-      }
-      &::-webkit-scrollbar-track {
-        background: #fff;
-        border-radius: 2px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: #c1c1c1;
-        border-radius: 7px;
-      }
-      &::-webkit-scrollbar-thumb:hover {
-        background: #999;
-      }
+      @extend .scrollbar;
     }
   }
 
@@ -484,44 +488,10 @@
 }
 .ant-picker-presets ul {
   padding-right: 4px !important;
-  &::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #fff;
-    border-radius: 2px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 7px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #999;
-  }
+  @extend .scrollbar;
 }
 .ant-picker-time-panel-column {
-  &::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #fff;
-    border-radius: 2px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 7px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #999;
-  }
+  @extend .scrollbar;
 }
 
 // button
@@ -546,21 +516,7 @@
 
 // cascader
 .ant-cascader-menu, .ant-drawer-body {
-  &::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-  }
-  &::-webkit-scrollbar-track {
-    background: #fff;
-    border-radius: 2px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 7px;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background: #999;
-  }
+  @extend .scrollbar;
 }
 
 // tippy时
@@ -570,6 +526,13 @@
   }
   .ns-form-item {
     width: 100%;
+  }
+}
+
+// dialog
+.ns-dialog {
+  .ant-modal-body {
+    @extend .scrollbar;
   }
 }
 

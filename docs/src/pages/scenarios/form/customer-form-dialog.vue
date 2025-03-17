@@ -1,60 +1,158 @@
 <template>
-  <ns-form class="customer-form" v-model="formData" ref="form" failed="notice">
-    <ns-card fill="#fff" class="mb-md">
-      <h3 class="mb-sm">基本信息</h3>
-      <ns-input label="客户姓名" placeholder="请输入客户姓名" required name="客户姓名" v-model="formData.客户姓名" />
-      <ns-mobile-input name="手机号码" label="手机号码" placeholder="请输入手机号码" v-model="formData.手机号码" required />
-      <ns-id-input v-model="formData.证件号码" placeholder="请输入证件号码" name="证件号码" label="证件号码" />
-      <ns-cascading-select v-model="formData.证件地址" name="证件地址" :options="regions" placeholder="请选择证件地址" label="证件地址" />
-      <ns-select v-model="formData.婚姻状态" name="婚姻状态" label="婚姻状态" placeholder="请选择婚姻状态"
-        :rules="['required']"
-        :options="marrageOptions" />
-      <ns-textarea name="备注" label="备注" placeholder="请输入备注" v-model="formData.备注" :maxlength="200" hasCount />
-    </ns-card>
-    <ns-card fill="#fff" class="mb-md">
-      <h3 class="mb-sm">意向标签</h3>
-      <ns-rating-input label="意向等级" v-model="formData.意向等级" name="意向等级" required />
-      <ns-chips-input v-model="formData.客户标签" name="客户标签" label="客户标签" :options="customerTagOptions" />
-      <ns-select v-model="formData.客户来源" name="客户来源" label="客户来源" placeholder="请选择客户来源"
-        :options="customerSourceOptions" />
-      <ns-select v-model="formData.业务意向" name="业务意向" label="业务意向" placeholder="请选择业务意向"
-        :options="businessTypeOptions" />
-    </ns-card>
-    <ns-card fill="#fff" class="mb-md">
-      <h3 class="mb-sm">财产信息</h3>
-      <ns-input label="月收入" placeholder="请输入月收入" name="月收入" v-model="formData.月收入" />
-      <ns-input label="固定资产" placeholder="请输入固定资产" name="固定资产" v-model="formData.固定资产" />
-      <ns-input label="负债情况" placeholder="请输入负债情况" name="负债情况" v-model="formData.负债情况" />
-      <ns-textarea name="财产备注" label="财产备注" placeholder="请输入财产备注" v-model="formData.财产备注" :maxlength="200" hasCount />
-    </ns-card>
-    <ns-card fill="#fff" class="mb-md">
-      <h3 class="mb-sm">跟进记录</h3>
-      <ns-select v-model="formData.跟进状态" name="跟进状态" label="跟进状态" placeholder="请选择跟进状态"
-        :options="followUpStatusOptions" />
-      <ns-date-picker v-model="formData.下次跟进时间" name="下次跟进时间" label="下次跟进时间" placeholder="请选择下次跟进时间" />
-      <ns-textarea name="跟进内容" label="跟进内容" placeholder="请输入跟进内容" v-model="formData.跟进内容" :maxlength="500" hasCount />
-    </ns-card>
-    <div class="mt-md flex gap-md">
-      <ns-button variant="outlined">影像资料</ns-button>
-      <ns-button color="primary" @click="handleSubmit">保存</ns-button>
+  <ns-dialog v-model="visible" centered title="新建意向客户" width="1080px">
+    <ns-form class="customer-form" v-model="formData" ref="form" failed="notice">
+      <ns-card fill="#fff" class="mb-md">
+        <h3 class="mb-sm">基本信息</h3>
+        <ns-input label="客户姓名" placeholder="请输入客户姓名" required name="客户姓名" v-model="formData.客户姓名" :rules="['required']" />
+        <ns-mobile-input name="手机号码" label="手机号码" placeholder="请输入手机号码" v-model="formData.手机号码" />
+        <ns-id-input v-model="formData.证件号码" placeholder="请输入证件号码" name="证件号码" label="证件号码" />
+        <ns-cascading-select v-model="formData.证件地址" name="证件地址" :options="regions" placeholder="请选择证件地址" label="证件地址" />
+        <ns-select v-model="formData.婚姻状态" name="婚姻状态" label="婚姻状态" placeholder="请选择婚姻状态"
+          :rules="['required']"
+          :options="marrageOptions" />
+        <ns-textarea name="备注" label="备注" placeholder="请输入备注" v-model="formData.备注" :maxlength="200" hasCount />
+      </ns-card>
+      <ns-card fill="#fff" class="mb-md">
+        <h3 class="mb-sm">意向标签</h3>
+        <ns-rating-input label="意向等级" v-model="formData.意向等级" name="意向等级" required />
+        <ns-chips-input v-model="formData.客户标签" name="客户标签" label="客户标签" :options="customerTagOptions" />
+        <ns-select v-model="formData.客户来源" name="客户来源" label="客户来源" placeholder="请选择客户来源"
+          :options="customerSourceOptions" />
+        <ns-select v-model="formData.业务意向" name="业务意向" label="业务意向" placeholder="请选择业务意向"
+          :options="businessTypeOptions" />
+      </ns-card>
+      <template v-for="(item, index) in formData.财产信息" :key="index">
+        <ns-card fill="#fff" class="mb-md" >
+          <h3 class="mb-sm">
+            财产信息<span v-if="formData.财产信息?.length > 1"> {{ index + 1 }}</span>
+            <img class="icon" src="https://cdn.ddjf.com/static/images/loan-manage/icon-delete@4x.png" alt="" @click="formData.财产信息.splice(index, 1)" />
+          </h3>
+          <ns-select v-model="item.财产类别" :name="['财产信息', index, '财产类别']" label="财产类别" placeholder="请选择财产类别"
+            :options="propertyTypeOptions" :rules="['required']" />
+          <template v-if="item.财产类别 === '房产'">
+            <ns-number-input v-model="item.房产面积" :name="['财产信息', index, '房产面积']" label="房产面积(m²)" placeholder="请输入房产面积" :min="0" :max="99999" :precision="2" :rules="['required']" />
+            <ns-cascading-select v-model="item.房产区域" :name="['财产信息', index, '房产区域']" :options="regions" placeholder="请选择房产区域" label="房产区域" />
+            <ns-input v-model="item.房产详情地址" :name="['财产信息', index, '房产详情地址']" label="房产详情地址" placeholder="请输入房产详情地址" />
+            <ns-select v-model="item.房产类型" :name="['财产信息', index, '房产类型']" label="房产类型" placeholder="请选择房产类型"
+              :options="houseTypeOptions" />
+            <ns-date-input v-model="item.建成日期" :name="['财产信息', index, '建成日期']" label="建成日期" placeholder="请选择建成日期" />
+            <ns-select v-model="item.共有情况" :name="['财产信息', index, '共有情况']" label="共有情况" placeholder="请选择共有情况"
+              :options="ownershipOptions" />
+          </template>
+          <template v-if="item.财产类别 === '车辆'">
+            <ns-input v-model="item.车辆品牌及型号" :name="['财产信息', index, '车辆品牌及型号']" label="车辆品牌及型号" placeholder="请输入车辆品牌及型号" />
+            <ns-number-input v-model="item.车辆购置价格" :name="['财产信息', index, '车辆购置价格']" label="车辆购置价格(元)" placeholder="请输入车辆购置价格" :min="0" :max="99999999" :precision="2" :rules="['required']" />
+            <ns-year-input v-model="item.车辆购置年份" :name="['财产信息', index, '车辆购置年份']" label="车辆购置年份" placeholder="请选择车辆购置年份" />
+          </template>
+          <template v-if="item.财产类别 === '其他'">
+            <ns-input v-model="item.财产名称" :name="['财产信息', index, '财产名称']" label="财产名称" placeholder="请输入财产名称" :rules="['required']" />
+            <ns-number-input v-model="item.财产价值" :name="['财产信息', index, '财产价值']" label="财产价值(元)" placeholder="请输入财产价值" :min="0" :max="999999999" :precision="2" />
+          </template>
+        </ns-card>
+      </template>
+      <template v-for="(item, index) in formData.跟进记录" :key="index">
+        <ns-card fill="#fff" class="mb-md">
+          <h3 class="mb-sm">
+            跟进记录<span v-if="formData.跟进记录?.length > 1"> {{ index + 1 }}</span>
+            <img class="icon" src="https://cdn.ddjf.com/static/images/loan-manage/icon-delete@4x.png" alt="" @click="formData.跟进记录.splice(index, 1)" />
+          </h3>
+          <ns-select v-model="item.跟进方式" :name="['跟进记录', index, '跟进方式']" label="跟进方式" placeholder="请选择跟进方式"
+            :options="followUpTypeOptions" :rules="['required']" />
+          <ns-select v-if="item.跟进方式 === '电话'" v-model="item.通话状态" :name="['跟进记录', index, '通话状态']" label="通话状态" placeholder="请选择通话状态"
+            :options="callStatusOptions" :rules="['required']" />
+          <ns-date-input v-model="item.跟进时间" :name="['跟进记录', index, '跟进时间']" label="跟进时间" placeholder="请选择跟进时间" :rules="['required']" />
+          <ns-textarea v-model="item.跟进内容" :name="['跟进记录', index, '跟进内容']" label="跟进内容" placeholder="请输入跟进内容" :maxlength="500" hasCount :rules="['required']" />
+        </ns-card>
+      </template>
+      <ns-card fill="#fff" class="mb-md" v-if="imageVisible">
+        <h3 class="mb-sm">影像资料</h3>
+        <div class="image-btns">
+          <ns-select v-model="imageForm.category" placeholder="请选择资料类别" :options="topLevelCategories" @change="handleCategoryChange" />
+          <ns-select v-model="imageForm.subCategory" placeholder="请选择资料名称" :options="subCategories" />
+          <ns-button color="primary">上传</ns-button>
+          <ns-button color="primary">批量下载</ns-button>
+          <ns-button color="negtive">批量删除</ns-button>
+        </div>
+      </ns-card>
+    </ns-form>
+    <div style="margin-top: 15px; margin-left: 480px;">
+      <ns-button color="primary" variant="outlined" @click="formData.财产信息.push({})">财产信息</ns-button>
+      <ns-button color="primary" variant="outlined" @click="formData.跟进记录.push({})">跟进记录</ns-button>
+      <ns-button color="primary" variant="outlined" v-if="!imageVisible" @click="handleImageClick">影像资料</ns-button>
     </div>
-  </ns-form>
+    <template #footer>
+      <ns-button variant="outlined" @click="visible = false">取消</ns-button>
+      <ns-button color="primary" @click="handleSubmit">确定</ns-button>
+    </template>
+  </ns-dialog>
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, watch } from 'vue';
 
 const visible = ref(false);
+const imageVisible = ref(false);
 const form = ref();
 
-// 业务意向选项
-const businessTypeOptions = [
-  { label: '贷款类', value: '贷款类' },
-  { label: '理财类', value: '理财类' },
-  { label: '保险类', value: '保险类' },
-  { label: '信用卡类', value: '信用卡类' },
-  { label: '其他', value: '其他' }
+const imageForm = reactive({
+  category: null,
+  subCategory: null
+});
+
+// 处理一级分类变化
+const handleCategoryChange = (value: string) => {
+  const category = imageCategories.find(item => item.value === value);
+  subCategories.value = category?.children || [];
+  imageForm.subCategory = null;
+};
+const imageCategories = [
+  {
+    label: '客户基础资料',
+    value: 'basic',
+    children: [
+      { label: '身份证正面', value: 'id_front' },
+      { label: '身份证反面', value: 'id_back' },
+      { label: '银行卡', value: 'bank_card' }
+    ]
+  },
+  {
+    label: '财产信息',
+    value: 'property',
+    children: [
+      { label: '房产证', value: 'house_cert' },
+      { label: '车辆登记证', value: 'vehicle_cert' },
+      { label: '其他财产证明', value: 'other_property' }
+    ]
+  },
+  {
+    label: '合同信息',
+    value: 'contract',
+    children: [
+      { label: '贷款合同', value: 'loan_contract' },
+      { label: '担保合同', value: 'guarantee_contract' },
+      { label: '其他合同', value: 'other_contract' }
+    ]
+  },
+  {
+    label: '其他资料',
+    value: 'other',
+    children: [
+      { label: '其他证明材料', value: 'other_cert' }
+    ]
+  }
 ];
+// 一级分类选项
+const topLevelCategories = imageCategories.map(item => ({
+  label: item.label,
+  value: item.value
+}));
+
+// 二级分类选项
+const subCategories = ref([]);
+
+const handleImageClick = () => {
+  imageVisible.value = true;
+};
 
 const formData = reactive({
   客户姓名: '',
@@ -66,8 +164,35 @@ const formData = reactive({
   客户来源: null,
   业务意向: null,
   客户标签: [],
-  意向等级: null
+  意向等级: null,
+  财产信息: [],
+  跟进记录: []
 });
+
+// 房产类型选项
+const houseTypeOptions = [
+  { label: '住宅', value: '住宅' },
+  { label: '商铺', value: '商铺' },
+  { label: '办公', value: '办公' },
+  { label: '厂房', value: '厂房' },
+  { label: '其他', value: '其他' }
+];
+
+// 共有情况选项
+const ownershipOptions = [
+  { label: '单独所有', value: '单独所有' },
+  { label: '共同共有', value: '共同共有' },
+  { label: '按份共有', value: '按份共有' }
+];
+
+// 业务意向选项
+const businessTypeOptions = [
+  { label: '贷款类', value: '贷款类' },
+  { label: '理财类', value: '理财类' },
+  { label: '保险类', value: '保险类' },
+  { label: '信用卡类', value: '信用卡类' },
+  { label: '其他', value: '其他' }
+];
 
 // 婚姻状态选项
 const marrageOptions = [
@@ -76,7 +201,6 @@ const marrageOptions = [
   { label: '离异', value: '离异' },
   { label: '丧偶', value: '丧偶' }
 ];
-
 
 // 客户来源选项
 const customerSourceOptions = [
@@ -92,6 +216,26 @@ const customerTagOptions = [
   { label: '优质', value: '优质' },
   { label: '普通', value: '普通' },
   { label: '重点跟进', value: '重点跟进' }
+];
+
+// 财产类别选项
+const propertyTypeOptions = [
+  { label: '房产', value: '房产' },
+  { label: '车辆', value: '车辆' },
+  { label: '其他', value: '其他' }
+];
+
+// 跟进方式选项
+const followUpTypeOptions = [
+  { label: '电话', value: '电话' },
+  { label: '其他', value: '其他' }
+];
+
+// 通话状态选项
+const callStatusOptions = [
+  { label: '已接通', value: '已接通' },
+  { label: '未接通', value: '未接通' },
+  { label: '无人接听', value: '无人接听' }
 ];
 
 // 地区数据
@@ -121,7 +265,6 @@ const regions = [
     ]
   }
 ];
-
 // 提交表单
 const handleSubmit = async () => {
   const valid = await form.value?.validate();
@@ -136,12 +279,56 @@ const handleSubmit = async () => {
 defineExpose({
   open: () => visible.value = true
 });
+
+const handleReset = () => {
+  // 重置表单校验状态
+  form.value?.resetFields();
+
+  // 重置表单数据到初始状态
+  Object.assign(formData, {
+    客户姓名: '',
+    手机号码: '',
+    证件号码: '',
+    证件地址: [],
+    婚姻状态: null,
+    备注: '',
+    客户来源: null,
+    业务意向: null,
+    客户标签: [],
+    意向等级: null,
+    财产信息: [],
+    跟进记录: []
+  });
+};
+
+// 监听弹框关闭事件
+watch(() => visible.value, (newVal) => {
+  if (!newVal) {
+    handleReset();
+  }
+});
 </script>
 
 <style scoped lang="scss">
+.image-btns {
+  display: flex;
+  align-items: center;
+  .ns-form-item {
+    width: 160px;
+    margin-bottom: 0;
+  }
+}
+
 .customer-form {
-  max-height: 60vh;
-  overflow-y: auto;
-  padding-right: 16px;
+  h3 {
+    display: flex;
+    align-items: center;
+  }
+  .icon {
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    margin-left: 2px;
+  }
 }
 </style>

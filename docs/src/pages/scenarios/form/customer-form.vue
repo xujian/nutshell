@@ -1,7 +1,7 @@
 <template>
   <ns-page class="customer-list">
     <ns-card fill="#fff" r="10px" class="search-bar">
-      <ns-input v-model="searchQuery" placeholder="请输入客户名称进行搜索" clearable />
+      <ns-input v-model="searchQuery" placeholder="请输入客户名称进行搜索" name="searchQuery" clearable />
       <ns-button style="margin-left: 12px" color="primary" @click="handleSearch">搜索</ns-button>
       <ns-button variant="outlined" @click="handleReset">重置</ns-button>
       <ns-button color="primary" variant="outlined" @click="handleExport">导出</ns-button>
