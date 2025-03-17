@@ -69,7 +69,7 @@
       </ns-row>
       <h2 class="h2">消息</h2>
       <ns-card class="messages full-width" fill="#000000" foreground="#fff">
-        <ns-timeline :items="messages">
+        <ns-timeline :data="messages">
           <template #title="{item}">
             <ns-row align="center" justify="between">
               <h5 class="h5">{{ item.title }}</h5>
