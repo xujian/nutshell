@@ -41,7 +41,7 @@ const scenarios = [
       { title: '客户表', link: 'list/clients' },
       { title: '合同表', link: 'list/contracts' },
       { title: '跟进记录', link: 'list/followups' },
-      { title: '系统消息', link: 'list/04' },
+      { title: '系统消息', link: 'list/messages' },
       { title: '余额', link: 'list/balance' },
     ],
   },
