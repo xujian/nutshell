@@ -41,8 +41,8 @@ export const Tabs = defineComponent({
         ? true
         : false,
       modelValue: props.modelValue,
-      tabChange: (item: any) => {
-        emit('update:modalValue', item.paneKey)
+      onChange: (item: any) => {
+        emit('update:modelValue', item.paneKey)
       }
     }, {
       default: defaultSlot,
