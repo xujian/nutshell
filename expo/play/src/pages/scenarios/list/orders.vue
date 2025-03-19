@@ -16,21 +16,25 @@
     <ns-page-content>
       <ns-repeator class="demo-repeator"
         direction="column"
-        :items="data"
+        :data
         :group-by
         align="stretch"
-        gap>
-        <template #default="item">
+        gap
+        v-slot="item">
           <ns-card :title="item.type"
             :caption="`进件时间: ${item.进件时间}`"
-            fill="#ffffff" shadow>
+            fill="#ffffff"
+            body-fill="#00000022"
+            shadow>
             <ns-facts :items="toFact(item)" />
+            <template #icon>
+              <ns-avatar :fill="colors[item.type]" :edge="10" :src="images[item.type]" />
+            </template>
             <template #corner>
               <h6>{{ item.status }}</h6>
             </template>
           </ns-card>
-        </template>
-      </ns-repeator>
+        </ns-repeator>
     </ns-page-content>
   </ns-page>
 </template>
@@ -62,6 +66,16 @@ const groupBy = (item) => {
   return `${year}-${month}-${day}`
 }
 
+const colors = {
+  交易周转: 'primary',
+  非交易周转: 'positive'
+}
+
+const images: Record<string, string> = {
+  交易周转: 'https://cdn.ddjf.com/static/images/fnfundkit/icon-JYZZ.png',
+  非交易周转: 'https://cdn.ddjf.com/static/images/fnfundkit/icon-FJYZZ.png'
+}
+
 const data = ref([
   {
     type: '交易周转',
@@ -82,7 +96,7 @@ const data = ref([
     status: '待审核'
   },
   {
-    type: '交易周转',
+    type: '非交易周转',
     进件时间: '2025/10/08 12:50',
     客户姓名: '王强军',
     渠道经理: '刘洋明',
@@ -91,7 +105,7 @@ const data = ref([
     status: '待审核'
   },
   {
-    type: '房产抵押',
+    type: '交易周转',
     进件时间: '2025/10/11 09:20',
     客户姓名: '赵敏华',
     渠道经理: '陈刚强',
@@ -100,7 +114,7 @@ const data = ref([
     status: '待放款'
   },
   {
-    type: '房产抵押',
+    type: '交易周转',
     进件时间: '2025/10/11 14:30',
     客户姓名: '孙丽华',
     渠道经理: '王磊明',
@@ -109,7 +123,7 @@ const data = ref([
     status: '待放款'
   },
   {
-    type: '车辆抵押',
+    type: '非交易周转',
     进件时间: '2025/10/13 15:45',
     客户姓名: '周杰明',
     渠道经理: '李强军',
@@ -118,7 +132,7 @@ const data = ref([
     status: '已放款'
   },
   {
-    type: '车辆抵押',
+    type: '非交易周转',
     进件时间: '2025/10/13 16:50',
     客户姓名: '吴敏杰',
     渠道经理: '张伟强',
@@ -127,7 +141,7 @@ const data = ref([
     status: '已放款'
   },
   {
-    type: '企业贷款',
+    type: '非交易周转',
     进件时间: '2025/10/15 17:55',
     客户姓名: '郑伟强',
     渠道经理: '刘强军',
@@ -136,7 +150,7 @@ const data = ref([
     status: '已完结'
   },
   {
-    type: '企业贷款',
+    type: '交易周转',
     进件时间: '2025/10/15 18:00',
     客户姓名: '冯丽华',
     渠道经理: '王敏杰',
@@ -145,7 +159,7 @@ const data = ref([
     status: '已完结'
   },
   {
-    type: '企业贷款',
+    type: '交易周转',
     进件时间: '2025/10/15 19:10',
     客户姓名: '陈伟明',
     渠道经理: '李磊明',

@@ -60,20 +60,20 @@ const scenarios = [
 
     title: '呈现类',
     items: [
-      { title: '客户资料', link: '/detail-01' },
-      { title: '合同', link: '/detail-02' },
-      { title: '贷款', link: '/detail-03' },
-      { title: '影像资料', link: '/detail-04' },
+      { title: '客户详情', link: 'presentation/client' },
+      { title: '合同详情', link: 'presentation/contract' },
+      { title: '贷款详情', link: 'presentation/loan' },
+      { title: '影像资料', link: 'presentation/material' },
     ],
   },
   {
 
     title: '交互类',
     items: [
-      { title: '批量操作', link: '/chart-01' },
-      { title: '数据筛选', link: '/chart-02' },
-      { title: '分享', link: '/chart-03' },
-      { title: '上传', link: '/chart-03' },
+      { title: '批量操作', link: 'interaction/batch' },
+      { title: '数据筛选', link: 'interaction/filter' },
+      { title: '分享', link: 'interaction/share' },
+      { title: '上传', link: 'interaction/upload' },
     ]
   }
 ]
