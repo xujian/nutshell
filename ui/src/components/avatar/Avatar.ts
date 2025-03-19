@@ -22,12 +22,12 @@ const avatarProps = {
   src: {
     type: String,
   },
-  color: {
-    type: String as PropType<Color>,
-  },
   clickable: {
     type: Boolean,
     default: false,
+  },
+  circle: {
+    type: Boolean
   },
   ...useSizeProps(),
   ...useDesignProps(),
@@ -47,37 +47,33 @@ const render: (props: AvatarProps) => VNode = (props: AvatarProps) => {
 
   const classes = buildDesignClasses(props),
     styles = buildDesignStyles(props)
-  return isImage(props.src)
-    ? h('img', {
-        class: [
-          'ns-avatar',
-          'image-format',
-          props.size && `size-${props.size}`,
-          props.clickable && 'clickable',
-          ...classes,
-        ],
-        src: props.src,
-        style: {
-          '--size': props.size,
-          ...styles,
-        }
-      })
-    : h('div', {
-        class: [
-          'ns-avatar',
-          'text-format',
-          'row',
-          'justify-center',
-          'align-center',
-          props.size && `size-${props.size}`,
-          props.clickable && 'clickable',
-          ...classes,
-        ],
-        style: {
-          '--size': props.size,
-          ...styles,
-        }
-      }, props.src)
+  return h('div', {
+      class: [
+        'ns-avatar',
+        `text-${isImage(props.src) ? 'image' : 'text'}`,
+        'row',
+        'justify-center',
+        'align-center',
+        ...props.circle ? ['circle'] : [],
+        props.size && `size-${props.size}`,
+        props.clickable && 'clickable',
+        ...classes,
+      ],
+      style: {
+        '--size': props.size,
+        ...styles,
+        ...isImage(props.src)
+          ? {
+              backgroundImage: `url(${props.src})`
+            }
+          : {}
+      }
+    }, {
+      default: isImage(props.src)
+        ? ''
+        : props.src
+    }
+  )
 }
 
 /**

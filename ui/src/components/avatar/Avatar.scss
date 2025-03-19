@@ -1,10 +1,13 @@
 .ns-avatar {
   --h: 40px;
   --color: var(--ns-neutral);
-  --r: 50%;
   width: var(--h);
   height: var(--h);
-
+  padding: var(--edge);
+  box-sizing: border-box;
+  box-sizing: border-box;
+  background-size: calc(var(--h) - var(--edge));
+  background-position: center;
   &.size-xs,
   &.size-sm,
   &.size-md,
@@ -31,6 +34,9 @@
 
   &.size-xl {
     --h: 64px;
+  }
+  &.circle {
+   --r: 50%;
   }
 
   // For text avatar

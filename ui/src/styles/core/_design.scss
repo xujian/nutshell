@@ -220,6 +220,10 @@
   background-position: center;
 }
 
+.round {
+  border-radius: 1000px !important;
+}
+
 .with-design {
   &.ignores-design {
     background-color: transparent !important;

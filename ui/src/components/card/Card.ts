@@ -1,8 +1,9 @@
-import { PropType, SlotsType, defineComponent, h, computed } from 'vue'
+import { PropType, SlotsType, defineComponent, h, computed, VNode } from 'vue'
 import { Color } from '../../composables/theme'
 import { buildBoxClasses, buildBoxStyles, buildDesignClasses, buildDesignStyles, Size, useBoxProps, useDesignProps, useTitle, useTitleProps, useVariantProps } from '../../props'
 import { MakePropsType } from '../../utils'
 import { Dimension } from '../../types'
+import { NsIcon } from '../icon'
 
 export const cardProps = {
   ...useTitleProps(),
@@ -21,16 +22,14 @@ const emits: CardEmits = {
 }
 
 export type CardSlots = {
-  default: () => any,
-  corner?: () => any,
-  header?: () => any,
-  title?: () => any,
-  titleAfter?: () => any,
-  footer?: () => any,
-  bottom?: () => any,
-}
-
-const cardSlots: SlotsType<CardSlots> = {
+  default: () => VNode[],
+  icon?: () => VNode[],
+  corner?: () => VNode[],
+  header?: () => VNode[],
+  title?: () => VNode[],
+  titleAfter?: () => VNode[],
+  footer?: () => VNode[],
+  bottom?: () => VNode[],
 }
 
 export type CardProps = MakePropsType<typeof cardProps, CardEmits>
@@ -41,7 +40,7 @@ export type CardProps = MakePropsType<typeof cardProps, CardEmits>
 export const NsCard = defineComponent({
   name: 'NsCard',
   props: cardProps,
-  slots: cardSlots,
+  slots: Object as SlotsType<CardSlots>,
   setup (props, { slots }) {
 
     const classes = computed(() => [
@@ -58,6 +57,14 @@ export const NsCard = defineComponent({
     const style = computed(() => ({
       ...buildDesignStyles(props),
     }))
+
+    const icon = () => slots.icon
+      ? h('div', {
+          class: [
+            'card-icon'
+          ]
+        }, slots.icon())
+      : null
 
     const title = useTitle(props)
 
@@ -82,6 +89,7 @@ export const NsCard = defineComponent({
         }, slots.header
           ? slots.header?.()
           : [
+              icon(),
               title(),
               titleAfter(),
               h('div', {class: ['spacer']}),
