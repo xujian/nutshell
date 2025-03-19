@@ -46,15 +46,15 @@ export const Page = defineComponent({
       dialogComponentRef = ref()
 
     const showToast = ({message, options}: {message: string, options: ToastOptions}) => {
-      if (platform?.weixin) {
-        Taro.showToast({
-          title: message,
-          duration: options.duration || 2000,
-          icon: options.type || 'none'
-        })
-      } else {
-        $toast.info(message)
-      }
+      // if (platform?.weixin) {
+      Taro.showToast({
+        title: message,
+        duration: options.duration || 2000,
+        icon: options.type || 'none'
+      })
+      // } else {
+      //   $toast.info(message)
+      // }
     }
 
     const showNotice = (payload: Notice) => {
