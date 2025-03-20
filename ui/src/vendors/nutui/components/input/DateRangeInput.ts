@@ -63,15 +63,12 @@ export const DateRangeInput = defineComponent({
           ]
         ),
         h(NutPopup, {
-            class: [
-              'date-input-picker'
-            ],
+            popClass: 'input-picker',
             style: {
               height: '50vh'
             },
             visible: pickerOpen.value,
             position: 'bottom',
-            round: true,
             onClose: () => {
               pickerOpen.value = false
               $bus.emit('picker.close')

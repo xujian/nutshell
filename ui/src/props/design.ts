@@ -97,7 +97,7 @@ const designProps = {
     default: true
   },
   /**
-   * 使用圆角
+   * 两头是圆形
    */
   round: {
     type: Boolean

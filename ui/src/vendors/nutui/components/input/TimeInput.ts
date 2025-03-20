@@ -42,15 +42,12 @@ export const TimeInput = defineComponent({
           inputAlign: props.variant === 'solid' ? 'left' : 'right',
         }),
         h(NutPopup, {
-            class: [
-              'time-input-picker'
-            ],
-            style: {
+          popClass: 'input-picker',
+          style: {
               height: '50vh'
             },
             visible: pickerOpen.value,
             position: 'bottom',
-            round: true,
             onOpen: () => {
               $bus.emit('picker.open')
             },

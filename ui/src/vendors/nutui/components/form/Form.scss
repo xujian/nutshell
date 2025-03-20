@@ -16,6 +16,9 @@
         border-bottom: none;
       }
     }
+    .input-picker {
+      border-radius: var(--r, var(--ns-r));
+    }
   }
 
   .nut-form-item__label {

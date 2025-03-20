@@ -76,10 +76,10 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
           })
         : null,
       h(NutPopup, {
+        popClass: 'input-picker',
         visible: pickerOpen.value,
         position: 'bottom',
         onClose: closePicker,
-        round: true,
         onOpen: () => {
           $bus.emit('picker.open')
         },

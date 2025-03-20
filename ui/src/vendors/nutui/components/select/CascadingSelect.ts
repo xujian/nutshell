@@ -65,6 +65,7 @@ export const CascadingSelect = defineComponent({
     )
 
     const popup = () => h(NutPopup, {
+        popClass: 'input-picker',
         visible: pickerOpen.value,
         position: 'bottom',
         onClickOverlay: onCancel

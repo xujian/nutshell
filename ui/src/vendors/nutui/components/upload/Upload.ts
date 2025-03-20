@@ -97,7 +97,6 @@ export const Upload = defineComponent({
             icon: 'delete',
             class: 'delete-button',
             fill: 'negtive',
-            round: true,
             size: 'xs',
             onClick: onDeleteClick
           }) : void 0

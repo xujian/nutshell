@@ -1,5 +1,6 @@
 import { computed, SetupContext, h } from 'vue'
 import { DialogProps, NsRow, NsButton, NsCard } from '../../../../components'
+import { buildDesignClasses } from '../../../../props'
 
 export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, 'expose'>) => {
 
@@ -96,7 +97,8 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
 
   return h(NutPopup, {
     popClass: [
-      ...props.modelValue ? ['open'] : []
+      ...props.modelValue ? ['open'] : [],
+      ...buildDesignClasses(props)
     ].join(' '),
     overlayClass: 'dialog-overlay',
     style: {
@@ -112,7 +114,6 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
     closeable: props.closable === false ? false : true,
     destroyOnClose: props.destroyOnClose,
     closeOnClickOverlay: props.modal === false,
-    round: true,
     'onUpdate:visible': (value: boolean) => {
       props['onUpdate:modelValue']?.(value)
     },

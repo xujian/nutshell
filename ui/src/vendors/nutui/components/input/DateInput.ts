@@ -48,15 +48,12 @@ export const DateInput = defineComponent({
           inputAlign: props.variant === 'solid' ? 'left' : 'right',
         }),
         h(NutPopup, {
-            class: [
-              'date-input-picker'
-            ],
+            popClass: 'input-picker',
             style: {
-              height: '50vh'
+              height: '50vh',
             },
             visible: pickerOpen.value,
             position: 'bottom',
-            round: true,
             onOpen: () => {
               $bus.emit('picker.open')
             },
@@ -64,7 +61,8 @@ export const DateInput = defineComponent({
               pickerOpen.value = false
               $bus.emit('picker.close')
             }
-          }, {
+          },
+          {
           default:
             () => props.hasCalendar
               ? h(NutCalendar, {
