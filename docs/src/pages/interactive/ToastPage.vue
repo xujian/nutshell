@@ -10,6 +10,10 @@
       <h2>基本用法</h2>
       <p class="caption">toast(string, options), 第一个参数即为提示的内容，options.duration为消息延迟关闭时间</p>
       <story file="toast/basic.vue" />
+      <p>&nbsp;</p>
+      <h2>消息类型</h2>
+      <p class="caption">options.type</p>
+      <story file="toast/type.vue" />
     </ns-page-content>
   </ns-page>
 </template>

@@ -317,7 +317,7 @@ const menuData = computed(() => [
             key: '/interactive/sheet'
           },
           {
-            label: '消息 toast',
+            label: '全局提示 toast',
             key: '/interactive/toast'
           },
           {
