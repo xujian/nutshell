@@ -1,6 +1,7 @@
 import { computed, h, ref, SetupContext } from 'vue'
 // import { Popup as NutPopup } from '@nutui/nutui-taro'
 import { DrawerProps } from '../../../../components'
+import { ScrollView } from '@tarojs/components'
 
 export const Drawer = (props: DrawerProps, { slots }: Omit<SetupContext, 'expose'>) => {
 
@@ -12,7 +13,7 @@ export const Drawer = (props: DrawerProps, { slots }: Omit<SetupContext, 'expose
   })
 
   const scrollView = (content: any) => {
-    return h('scroll-view', {
+    return h(ScrollView, {
       'scroll-y': true,
       class: [
         'full-height'
