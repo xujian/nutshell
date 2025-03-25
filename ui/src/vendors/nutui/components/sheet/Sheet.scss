@@ -12,7 +12,8 @@
     overflow: hidden;
     &.open {
     }
-    .title {
+    // avoid using title class, use use-title instead
+    .title.use-title {
       top: 0;
       left: 0;
       width: 100%;

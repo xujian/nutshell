@@ -38,7 +38,7 @@ export type UseTitleFunction = (props: TitleProps) => () => VNode
 export const useTitle: UseTitleFunction = (props: TitleProps) => {
   return () => {
     return h('div', {
-        class: ['title', 'column'],
+        class: ['title', 'use-title', 'column'],
       }, [
         props.title
           ? h('h5', {
