@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/scenarios/presentation/order",
+          "pathName": "pages/scenarios/presentation/order",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "文本域",
           "pathName": "pages/components/input/textarea",
           "query": "",

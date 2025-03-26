@@ -62,7 +62,7 @@ const scenarios = [
     items: [
       { title: '客户详情', link: 'presentation/client' },
       { title: '合同详情', link: 'presentation/contract' },
-      { title: '贷款详情', link: 'presentation/loan' },
+      { title: '订单详情', link: 'presentation/order' },
       { title: '影像资料', link: 'presentation/material' },
     ],
   },

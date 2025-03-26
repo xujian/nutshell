@@ -48,6 +48,7 @@ const scenarios = [
   'form/house-information', // 房产信息
   'form/material', // 影像资料
   'presentation/client', // 客户详情
+  'presentation/order',   // 订单详情
 ]
 
 export default defineAppConfig({
