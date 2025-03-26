@@ -67,6 +67,11 @@ export const NsFiles = defineComponent({
       downloadable: props.downloadable,
       onDelete (id: string) {
         console.log('===NsFile onDelete id', id)
+        ctx.emit('delete', id)
+      },
+      onDownload (id: string) {
+        console.log('===NsFile onDownload id', id)
+        ctx.emit('download', id)
       },
       onPreview (id: string) {
         preview(id)

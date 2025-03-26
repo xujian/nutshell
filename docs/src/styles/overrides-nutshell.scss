@@ -291,19 +291,6 @@
         background-color: #F2F5FF;
       }
     }
-    .vxe-body--column:not(:last-child) {
-      &::after {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 1px;
-        height: 16px;
-        background-color: #d8d8d8;
-        transform: translateY(-50%);
-        transition: background-color 0.3s;
-        content: '';
-      }
-    }
     .vxe-header--column {
       overflow: hidden;
     }
@@ -311,19 +298,6 @@
       .vxe-cell {
         height: 42px;
         line-height: 42px;
-      }
-      &:not(.resizable):not(:last-child) {
-        .vxe-cell {
-          &::after {
-            position: absolute;
-            content: '';
-            right: 0;
-            top: 25%;
-            width: 1px;
-            height: 50%;
-            background-color: var(--vxe-table-resizable-line-color);
-          }
-        }
       }
     }
 
@@ -421,7 +395,7 @@
   &.nut-tag {
     cursor: pointer;
     padding: 0 8px;
-    height: 26px;
+    height: 22px;
     margin-top: 3px;
     margin-bottom: 3px;
   }

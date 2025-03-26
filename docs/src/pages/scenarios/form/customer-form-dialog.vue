@@ -73,6 +73,7 @@
           <ns-button color="primary">批量下载</ns-button>
           <ns-button color="negtive">批量删除</ns-button>
         </div>
+        <ns-files style="margin-top: 15px;" :items="fileItems" downloadable deletable @delete="onUploadDelete"  @download="onUploadDownload" />
       </ns-card>
     </ns-form>
     <div style="margin-top: 15px; margin-left: 480px;">
@@ -89,8 +90,10 @@
 
 <script lang="ts" setup>
 import { ref, reactive, watch } from 'vue';
+import { useNutshell } from '@uxda/nutshell'
 
-const visible = ref(false);
+const $n = useNutshell()
+const visible = ref(true);
 const imageVisible = ref(false);
 const form = ref();
 
@@ -238,6 +241,43 @@ const callStatusOptions = [
   { label: '无人接听', value: '无人接听' }
 ];
 
+// 上传后的文件列表
+const fileItems = [
+  {
+    id: '65d6e700febeec0001323135',
+    name: '方案.pdf',
+    type: 'pdf',
+    url: 'https://images-test-oss.ddjf.info/loankit/document/2024/0222/65d6e700febeec0001323135.pdf?Expires=1711123199&OSSAccessKeyId=LTAI5tRQ5chXmPpX4szHdiG2&Signature=%2FHcsmP4u5Q77DGv2t%2B9EvBxrqIg%3D',
+  },
+  {
+    id: '65d6e705febeec0001323136',
+    name: 'cab367f61edfee609b0e2b2a1dddfdb4.pdf',
+    type: 'pdf',
+    url: 'https://images-test-oss.ddjf.info/loankit/document/2024/0222/65d6e705febeec0001323136.pdf?Expires=1711123199&OSSAccessKeyId=LTAI5tRQ5chXmPpX4szHdiG2&Signature=JHvj12S9%2FpXwsfPDMHsW6T5G%2FDY%3D',
+  },
+  {
+    id: '65d6e705febeec0001323137',
+    name: '证件照.jpeg',
+    type: 'image',
+    url: 'https://images.unsplash.com/photo-1541182388496-ac92a3230e4c',
+    thumb: 'https://images.unsplash.com/photo-1541182388496-ac92a3230e4c?q=80&w=480&auto=format&fit=crop'
+  },
+  {
+    id: '65d6e705febeec0001323139',
+    name: '1653152566529.jpeg',
+    type: 'image',
+    url: 'https://images.unsplash.com/photo-1653152566529-c3b44fd5efea',
+    thumb: 'https://images.unsplash.com/photo-1653152566529-c3b44fd5efea?q=80&w=480&auto=format&fit=crop'
+  }
+]
+const onUploadDelete = () => {
+  $n.toast('删除成功，这里写删除请求', {})
+}
+
+const onUploadDownload = () => {
+  $n.toast('下载成功，这里写下载请求', {})
+}
+
 // 地区数据
 const regions = [
   {
@@ -313,6 +353,7 @@ watch(() => visible.value, (newVal) => {
 .image-btns {
   display: flex;
   align-items: center;
+  margin-top: 10px;
   .ns-form-item {
     width: 160px;
     margin-bottom: 0;

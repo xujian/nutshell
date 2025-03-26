@@ -15,6 +15,7 @@
       <ns-table
         :rows="tableData"
         class="no-border"
+        borders="all"
         cache-columns="1"
         :hasPagination="false"
         has-column-control
