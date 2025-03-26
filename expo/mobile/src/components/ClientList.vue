@@ -1,7 +1,7 @@
 <template>
   <ns-repeator
     class="client-list my-md"
-    :items="items" v-slot="item"
+    :data="items" v-slot="item"
     direction="column"
     justify="stretch"
     align="stretch"

@@ -183,7 +183,7 @@
       </ns-card>
       <ns-card gradient="101" title="连续平铺">
           <ns-repeator class="demo-repeator"
-            :items="repeatorItems"
+            :data="repeatorItems"
             :gap="10"
             align="stretch"
             wrap

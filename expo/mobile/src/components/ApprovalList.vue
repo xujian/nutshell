@@ -1,5 +1,5 @@
 <template>
-  <ns-repeator :items="data" v-slot="item"
+  <ns-repeator :data="data" v-slot="item"
     class="approval-list"
     direction="column"
     justify="stretch"

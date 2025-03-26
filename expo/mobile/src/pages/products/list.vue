@@ -4,7 +4,7 @@
     <ns-page-content>
       <ns-search placeholder="产品名称" fill="#fff" />
       <ns-tabs :items="tabs" fill="#ffffff33" :blur="10" class="my-md" />
-      <ns-repeator :items="products"
+      <ns-repeator :data="products"
         align="stretch"
         direction="column"
         v-slot="item"

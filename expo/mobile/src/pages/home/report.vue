@@ -13,7 +13,7 @@
         variant="outlined" />
       <h2 class="h2">客户数据</h2>
       <ns-repeator class="numbers"
-        :items="clientData"
+        :data="clientData"
         :divides="3"
         wrap
         v-slot="item"
@@ -28,7 +28,7 @@
       </ns-repeator>
       <h2 class="h2">通话数据</h2>
       <ns-repeator class="numbers"
-        :items="callData"
+        :data="callData"
         wrap
         v-slot="item"
         :gap="10">
@@ -45,7 +45,7 @@
       </ns-repeator>
       <h2 class="h2">签单数据</h2>
       <ns-repeator class="numbers"
-        :items="salesData"
+        :data="salesData"
         wrap
         v-slot="item"
         :gap="10">

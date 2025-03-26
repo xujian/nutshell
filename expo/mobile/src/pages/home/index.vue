@@ -8,7 +8,7 @@
     <ns-page-content>
       <scroll-view scroll-x="true">
         <ns-repeator class="numbers"
-          :items="numbers"
+          :data="numbers"
           v-slot="item"
           :divides="3.15"
           :gap="10">
