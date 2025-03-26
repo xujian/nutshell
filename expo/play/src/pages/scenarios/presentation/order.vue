@@ -20,10 +20,9 @@
           <h4>{{item.name}}</h4>
           <ns-plank :key="it" v-for="it in item.children" :title="`${it.name}(${it.count})`">
             <template #content>
-              <div class="icon-list">
-                <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/camera_m.png"></ns-icon>
-                <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/files.png"></ns-icon>
-                <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/photo_m.png"></ns-icon>
+              <div style="display: flex; align-items: center;justify-content: right;">
+                <span>上传资料</span>
+                <ns-icon name="https://cdn.ddjf.com/static/images/fnfundkit/m-arrow.png"></ns-icon>
               </div>
             </template>
           </ns-plank>
@@ -151,14 +150,27 @@ const buttons = computed(()=>{
 </script>
 
 <style lang="scss">
-.tab-header{
-  .nut-tabs__list{
+.tab-header {
+  .nut-tabs__list {
     display: flex;
-    .nut-tabs__titles-item{
+    .nut-tabs__titles-item {
       flex: 1 !important;
     }
-    .nut-tabs__titles-placeholder{
+    .nut-tabs__titles-placeholder {
       min-width: 0 !important;
+    }
+  }
+}
+.material-box {
+  .ns-plank:last-child {
+    border-bottom: none;
+  }
+  .icon-list {
+    display: flex;
+    justify-content: end;
+    text-align: right;
+    .ns-icon {
+      margin-left: 8px;
     }
   }
 }

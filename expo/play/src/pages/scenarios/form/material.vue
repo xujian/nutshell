@@ -99,13 +99,11 @@ function tabChange({paneKey}){
     border-bottom: none;
   }
   .icon-list{
-  display: flex;
-  justify-content: right;
-  .ns-icon{
-    margin-left: 8px;
+    display: flex;
+    justify-content: right;
+    .ns-icon{
+      margin-left: 8px;
+    }
   }
 }
-}
-
-
 </style>
