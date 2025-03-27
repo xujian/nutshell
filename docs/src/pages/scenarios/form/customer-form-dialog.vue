@@ -23,8 +23,8 @@
       </ns-card>
       <template v-for="(item, index) in formData.财产信息" :key="index">
         <ns-card fill="#fff" class="mb-md" >
-          <h3 class="mb-sm">
-            财产信息<span v-if="formData.财产信息?.length > 1"> {{ index + 1 }}</span>
+          <h3 class="mb-sm d-flex align-items-center justify-content-between">
+            财产信息<span v-if="index !== 0"> {{ index + 1 }}</span>
             <img class="icon" src="https://cdn.ddjf.com/static/images/loan-manage/icon-delete@4x.png" alt="" @click="formData.财产信息.splice(index, 1)" />
           </h3>
           <ns-select v-model="item.财产类别" :name="['财产信息', index, '财产类别']" label="财产类别" placeholder="请选择财产类别"
@@ -52,34 +52,21 @@
       </template>
       <template v-for="(item, index) in formData.跟进记录" :key="index">
         <ns-card fill="#fff" class="mb-md">
-          <h3 class="mb-sm">
-            跟进记录<span v-if="formData.跟进记录?.length > 1"> {{ index + 1 }}</span>
+          <h3 class="mb-sm d-flex align-items-center justify-content-between">
+            跟进记录<span v-if="index !== 0"> {{ index + 1 }}</span>
             <img class="icon" src="https://cdn.ddjf.com/static/images/loan-manage/icon-delete@4x.png" alt="" @click="formData.跟进记录.splice(index, 1)" />
           </h3>
           <ns-select v-model="item.跟进方式" :name="['跟进记录', index, '跟进方式']" label="跟进方式" placeholder="请选择跟进方式"
             :options="followUpTypeOptions" :rules="['required']" />
-          <ns-select v-if="item.跟进方式 === '电话'" v-model="item.通话状态" :name="['跟进记录', index, '通话状态']" label="通话状态" placeholder="请选择通话状态"
-            :options="callStatusOptions" :rules="['required']" />
           <ns-date-input v-model="item.跟进时间" :name="['跟进记录', index, '跟进时间']" label="跟进时间" placeholder="请选择跟进时间" :rules="['required']" />
           <ns-textarea v-model="item.跟进内容" :name="['跟进记录', index, '跟进内容']" label="跟进内容" placeholder="请输入跟进内容" :maxlength="500" hasCount :rules="['required']" />
         </ns-card>
       </template>
-      <ns-card fill="#fff" class="mb-md" v-if="imageVisible">
-        <h3 class="mb-sm">影像资料</h3>
-        <div class="image-btns">
-          <ns-select v-model="imageForm.category" placeholder="请选择资料类别" :options="topLevelCategories" @change="handleCategoryChange" />
-          <ns-select v-model="imageForm.subCategory" placeholder="请选择资料名称" :options="subCategories" />
-          <ns-button color="primary">上传</ns-button>
-          <ns-button color="primary">批量下载</ns-button>
-          <ns-button color="negtive">批量删除</ns-button>
-        </div>
-        <ns-files style="margin-top: 15px;" :items="fileItems" downloadable deletable @delete="onUploadDelete"  @download="onUploadDownload" />
-      </ns-card>
     </ns-form>
-    <div style="margin-top: 15px; margin-left: 480px;">
+    <div>
       <ns-button color="primary" variant="outlined" @click="formData.财产信息.push({})">财产信息</ns-button>
       <ns-button color="primary" variant="outlined" @click="formData.跟进记录.push({})">跟进记录</ns-button>
-      <ns-button color="primary" variant="outlined" v-if="!imageVisible" @click="handleImageClick">影像资料</ns-button>
+      <ns-button color="primary" variant="outlined">影像资料</ns-button>
     </div>
     <template #footer>
       <ns-button variant="outlined" @click="visible = false">取消</ns-button>
@@ -89,73 +76,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, watch } from 'vue';
-import { useNutshell } from '@uxda/nutshell'
+import { ref, reactive } from 'vue';
 
-const $n = useNutshell()
-const visible = ref(true);
-const imageVisible = ref(false);
+const visible = ref(false);
 const form = ref();
-
-const imageForm = reactive({
-  category: null,
-  subCategory: null
-});
-
-// 处理一级分类变化
-const handleCategoryChange = (value: string) => {
-  const category = imageCategories.find(item => item.value === value);
-  subCategories.value = category?.children || [];
-  imageForm.subCategory = null;
-};
-const imageCategories = [
-  {
-    label: '客户基础资料',
-    value: 'basic',
-    children: [
-      { label: '身份证正面', value: 'id_front' },
-      { label: '身份证反面', value: 'id_back' },
-      { label: '银行卡', value: 'bank_card' }
-    ]
-  },
-  {
-    label: '财产信息',
-    value: 'property',
-    children: [
-      { label: '房产证', value: 'house_cert' },
-      { label: '车辆登记证', value: 'vehicle_cert' },
-      { label: '其他财产证明', value: 'other_property' }
-    ]
-  },
-  {
-    label: '合同信息',
-    value: 'contract',
-    children: [
-      { label: '贷款合同', value: 'loan_contract' },
-      { label: '担保合同', value: 'guarantee_contract' },
-      { label: '其他合同', value: 'other_contract' }
-    ]
-  },
-  {
-    label: '其他资料',
-    value: 'other',
-    children: [
-      { label: '其他证明材料', value: 'other_cert' }
-    ]
-  }
-];
-// 一级分类选项
-const topLevelCategories = imageCategories.map(item => ({
-  label: item.label,
-  value: item.value
-}));
-
-// 二级分类选项
-const subCategories = ref([]);
-
-const handleImageClick = () => {
-  imageVisible.value = true;
-};
 
 const formData = reactive({
   客户姓名: '',
@@ -231,52 +155,10 @@ const propertyTypeOptions = [
 // 跟进方式选项
 const followUpTypeOptions = [
   { label: '电话', value: '电话' },
+  { label: '微信', value: '微信' },
+  { label: '上门', value: '上门' },
   { label: '其他', value: '其他' }
 ];
-
-// 通话状态选项
-const callStatusOptions = [
-  { label: '已接通', value: '已接通' },
-  { label: '未接通', value: '未接通' },
-  { label: '无人接听', value: '无人接听' }
-];
-
-// 上传后的文件列表
-const fileItems = [
-  {
-    id: '65d6e700febeec0001323135',
-    name: '方案.pdf',
-    type: 'pdf',
-    url: 'https://images-test-oss.ddjf.info/loankit/document/2024/0222/65d6e700febeec0001323135.pdf?Expires=1711123199&OSSAccessKeyId=LTAI5tRQ5chXmPpX4szHdiG2&Signature=%2FHcsmP4u5Q77DGv2t%2B9EvBxrqIg%3D',
-  },
-  {
-    id: '65d6e705febeec0001323136',
-    name: 'cab367f61edfee609b0e2b2a1dddfdb4.pdf',
-    type: 'pdf',
-    url: 'https://images-test-oss.ddjf.info/loankit/document/2024/0222/65d6e705febeec0001323136.pdf?Expires=1711123199&OSSAccessKeyId=LTAI5tRQ5chXmPpX4szHdiG2&Signature=JHvj12S9%2FpXwsfPDMHsW6T5G%2FDY%3D',
-  },
-  {
-    id: '65d6e705febeec0001323137',
-    name: '证件照.jpeg',
-    type: 'image',
-    url: 'https://images.unsplash.com/photo-1541182388496-ac92a3230e4c',
-    thumb: 'https://images.unsplash.com/photo-1541182388496-ac92a3230e4c?q=80&w=480&auto=format&fit=crop'
-  },
-  {
-    id: '65d6e705febeec0001323139',
-    name: '1653152566529.jpeg',
-    type: 'image',
-    url: 'https://images.unsplash.com/photo-1653152566529-c3b44fd5efea',
-    thumb: 'https://images.unsplash.com/photo-1653152566529-c3b44fd5efea?q=80&w=480&auto=format&fit=crop'
-  }
-]
-const onUploadDelete = () => {
-  $n.toast('删除成功，这里写删除请求', {})
-}
-
-const onUploadDownload = () => {
-  $n.toast('下载成功，这里写下载请求', {})
-}
 
 // 地区数据
 const regions = [
@@ -319,47 +201,9 @@ const handleSubmit = async () => {
 defineExpose({
   open: () => visible.value = true
 });
-
-const handleReset = () => {
-  // 重置表单校验状态
-  form.value?.resetFields();
-
-  // 重置表单数据到初始状态
-  Object.assign(formData, {
-    客户姓名: '',
-    手机号码: '',
-    证件号码: '',
-    证件地址: [],
-    婚姻状态: null,
-    备注: '',
-    客户来源: null,
-    业务意向: null,
-    客户标签: [],
-    意向等级: null,
-    财产信息: [],
-    跟进记录: []
-  });
-};
-
-// 监听弹框关闭事件
-watch(() => visible.value, (newVal) => {
-  if (!newVal) {
-    handleReset();
-  }
-});
 </script>
 
 <style scoped lang="scss">
-.image-btns {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-  .ns-form-item {
-    width: 160px;
-    margin-bottom: 0;
-  }
-}
-
 .customer-form {
   h3 {
     display: flex;

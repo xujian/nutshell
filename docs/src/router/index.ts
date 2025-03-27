@@ -67,6 +67,7 @@ const FileListPage = () => import('../pages/scenarios/data/user-list.vue')
 const ContractFormPage = () => import('../pages/scenarios/form/contract-form.vue')
 const CustomerFormPage = () => import('../pages/scenarios/form/customer-form.vue')
 const ImageFormPage = () => import('../pages/scenarios/form/image-form.vue')
+const ApplicantFormPage = () => import('../pages/scenarios/form/applicant-form.vue')
 const AccountInfoPage = () => import('../pages/scenarios/presentation/account-info.vue')
 const BusinessInfoPage = () => import('../pages/scenarios/presentation/business-info.vue')
 const FollowInfoPage = () => import('../pages/scenarios/presentation/follow-info.vue')
@@ -406,6 +407,11 @@ const router = createRouter({
           path: '/scenarios/image-form',
           name: 'scenarios-image-form',
           component: ImageFormPage
+        },
+        {
+          path: '/scenarios/applicant-form',
+          name: 'scenarios-applicant-form',
+          component: ApplicantFormPage
         },
         {
           path: '/scenarios/account-info',

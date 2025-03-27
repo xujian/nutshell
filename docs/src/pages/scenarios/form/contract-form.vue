@@ -43,8 +43,8 @@
             <ns-table-column field="是否必填" label="是否必填" align="left" />
             <ns-table-column-custom field="参数内容" label="参数内容" align="left">
               <template #content="{ row, rowIndex }">
-                <ns-select v-if="row.参数类型 === '系统参数'" v-model="row.参数内容" :options="系统参数选项[row.参数名] || []" placeholder="请选择参数内容" @change="onTableColumnChange(row.参数内容, rowIndex, '参数内容')" />
-                <ns-input v-else v-model="row.参数内容" placeholder="请输入参数内容"  @change="onTableColumnChange(row.参数内容, rowIndex, '参数内容')" />
+                <ns-select v-if="row.参数类型 === '系统参数'" name="参数内容" v-model="row.参数内容" :options="系统参数选项[row.参数名] || []" placeholder="请选择参数内容" @change="onTableColumnChange(row.参数内容, rowIndex, '参数内容')" />
+                <ns-input v-else v-model="row.参数内容"  name="参数内容" placeholder="请输入参数内容"  @change="onTableColumnChange(row.参数内容, rowIndex, '参数内容')" />
               </template>
             </ns-table-column-custom>
           </ns-table>

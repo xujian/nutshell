@@ -384,6 +384,10 @@ const menuData = computed(() => [
             label: '影像资料',
             key: '/scenarios/image-form',
           },
+          {
+            label: '申请人信息',
+            key: '/scenarios/applicant-form',
+          },
         ]
       },
       {
