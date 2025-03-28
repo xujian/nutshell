@@ -13,6 +13,7 @@ export const CascadingSelect = defineComponent({
   props: cascadingSelectProps,
   setup (props, { emit, slots }) {
 
+    const $bus = useBus()
     const $form = useForm()
 
     const
@@ -29,6 +30,7 @@ export const CascadingSelect = defineComponent({
 
     const onCancel = () => {
         pickerOpen.value = false
+        $bus.emit('picker.close')
         $form?.validate(props.name as string)
       },
       onConfirm = ({ selectedValue, selectedOptions }: any) => {
@@ -41,6 +43,7 @@ export const CascadingSelect = defineComponent({
             .filter(Boolean)
             .join(props.seperator ?? '/')
         pickerOpen.value = false
+        $bus.emit('picker.close')
       }
 
     // 原始数据容错
@@ -76,6 +79,7 @@ export const CascadingSelect = defineComponent({
 
     const openPicker = () => {
       pickerOpen.value = true
+      $bus.emit('picker.open')
     }
 
     return () => renderFormItem(props, slots,
