@@ -78,7 +78,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
 
-const visible = ref(false);
+const visible = ref(true);
 const form = ref();
 
 const formData = reactive({
