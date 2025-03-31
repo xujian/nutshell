@@ -1,6 +1,6 @@
 <template>
   <ns-page class="file-list">
-    <ns-card style="background-color: #fff; padding: 10px 10px 0; margin-bottom: 20px;">
+    <ns-card style="background-color: #fff; padding: 10px 10px 0; margin-bottom: 20px;" class="search-bar1">
       <ns-form ref="formRef" v-model="formData" class="flex-row wrap">
         <ns-input variant="solid" label="合同编号" v-model="formData.contractNo" name="contractNo" placeholder="请输入合同编号" />
         <ns-input variant="solid" label="合同名称" v-model="formData.name" name="name" placeholder="请输入合同名称" />
@@ -19,13 +19,11 @@
         <ns-button color="primary" variant="outlined" @click="onBatchDownload">批量下载</ns-button>
       </div>
       <ns-table
-        :rows="flatTableData"
+        :rows="tableData"
         borders="all"
         cache-columns="1"
         :hasPagination="false"
-        :tree-config="{
-          enable: true
-        }"
+        :tree-config="{ enable: true }"
         :filter-handler="filterHandler"
       >
         <ns-table-column-checkbox width="48" @change="onTableRowSelected" fixed="left" />
@@ -34,7 +32,7 @@
             {{ row.parentId ? '' : rowIndex + 1 }}
           </template>
         </ns-table-column-custom>
-        <ns-table-column-custom field="contractNo" width="120" label="合同编号" :tree="true" align="left">
+        <ns-table-column-custom field="contractNo" width="140" label="合同编号" :tree="true" align="left">
           <template #content="{ row }">
               <a href="javascript:void(0)" class="link">
                 {{ row.contractNo }}
@@ -43,13 +41,17 @@
         </ns-table-column-custom>
         <ns-table-column field="name" label="合同名称" align="left"  />
         <ns-table-column field="contractType" label="合同签署类型" align="left"  />
-        <ns-table-column field="signers" label="签署方名称" width="180" align="left"  />
+        <ns-table-column-custom field="signers" label="签署方名称" align="left">
+              <template #content="{ row }">
+                {{ row.signers.join(',') }}
+              </template>
+            </ns-table-column-custom>
         <ns-table-column field="contractStatus" label="合同状态" align="left" />
-        <ns-table-column field="stateDate" label="状态更新时间" align="left" />
-        <ns-table-column field="createTime" label="创建时间" align="left" />
+        <ns-table-column-datetime field="stateDate" label="状态更新时间" align="left" />
+        <ns-table-column-datetime field="createTime" label="创建时间" align="left" />
         <ns-table-column field="createBy" label="创建用户" align="left" />
         <ns-table-column field="fromByCode" label="创建来源" align="left" />
-        <ns-table-column-custom field="id"  align="left" width="200" fixed="right" label="操作">
+        <ns-table-column-custom align="left" width="200" fixed="right" label="操作">
           <template #content="{ row }">
             <template v-if="!row.parentId">
               <ns-button variant="plain" color="primary">预览</ns-button>
@@ -158,28 +160,20 @@ async function fetchTableData(){
   axios
     .get('/json/table-data-contract.json')
     .then((response) => response.data)
-    // pipes to translate keys to labels
-    .then((result) => {
-      pagination.total = result.result.total
-      tableData.value = result.result.list.map((it, index) => {
-        return {...it, no: index + 1}
+    .then(({result}) => {
+      pagination.total = result.total
+      const flatData: any = []
+      result.list.forEach((item: any) => {
+        flatData.push({...item, parentId: null})
+        item.subContractList?.forEach((child: any) => {
+          flatData.push({ ...child, parentId: item.id })
+        })
       })
-
-      console.log(tableData.value)
+      console.log(flatData)
+      tableData.value = flatData
     })
 }
 fetchTableData()
-
-const flatTableData = computed(() => {
-  const flatData: any = []
-  tableData.value.forEach((item: any) => {
-    flatData.push(item)
-    item.subContractList?.forEach((child: any) => {
-      flatData.push({ ...child, parentId: item.id })
-    })
-  })
-  return flatData
-})
 </script>
 
 <style scoped lang="scss">
