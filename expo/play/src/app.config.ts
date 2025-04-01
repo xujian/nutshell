@@ -48,6 +48,11 @@ const scenarios = [
   'form/house-information', // 房产信息
   'form/material', // 影像资料
   'presentation/client', // 客户详情
+  'presentation/contract', // 合同详情
+  'interaction/share', // 分享
+  'interaction/upload', // 上传
+  'interaction/batch', // 批量操作
+  'interaction/filter', // 数据筛选
   'presentation/order',   // 订单详情
 ]
 
