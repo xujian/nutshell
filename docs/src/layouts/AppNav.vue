@@ -420,10 +420,10 @@ const menuData = computed(() => [
             label: '多级标签栏',
             key: '/scenarios/tabs',
           },
-          {
-            label: '上传',
-            key: '/scenarios/upload',
-          },
+          // {
+          //   label: '上传',
+          //   key: '/scenarios/upload',
+          // },
         ]
       },
     ]

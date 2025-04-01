@@ -47,18 +47,18 @@ export const NsSearch = defineComponent({
       class: ['icon']
     })
 
-    const input = () => h('input', {
+    const input = () => h(NutInput, {
       class: [
         'input'
       ],
       name: 'search',
-      value: props.modelValue,
+      modelValue: props.modelValue,
       placeholder: props.placeholder,
       onConfirm: () => {
         ctx.emit('enter')
       },
-      onInput: (e: any) => {
-        props['onUpdate:modelValue']?.(e.detail.value)
+      "onUpdate:modelValue": (val: string) => {
+        props['onUpdate:modelValue']?.(val)
       },
     })
 
