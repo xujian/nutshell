@@ -2,6 +2,7 @@ import { PropType, defineComponent, h } from 'vue'
 import { MakePropsType } from '../../utils'
 import { getMediaType, MediaType, resolveFileName } from '../../types'
 import { NsImage } from '../image'
+import { useLayoutProps, useSizeProps } from '../../props'
 
 export const fileProps = {
   id: {
@@ -34,7 +35,9 @@ export const fileProps = {
   downloadable: {
     type: Boolean,
     default: false
-  }
+  },
+  ...useSizeProps(),
+  ...useLayoutProps(),
 }
 
 export type FileEmits = {
@@ -113,6 +116,7 @@ export const NsFile = defineComponent({
       }, [
         h(NsImage, {
           class: 'image preview-item',
+          aspectRatio: 1,
           'data-id': props.id,
           'data-url': props.url,
           'data-type': props.type,
@@ -141,6 +145,8 @@ export const NsFile = defineComponent({
     return () => h('div', {
       class: [
         'ns-file',
+        `size-${props.size}`,
+        props.direction || 'column',
       ]
     }, [
       props.type === 'pdf' ? icon() : thumb(),

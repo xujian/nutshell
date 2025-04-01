@@ -2,6 +2,7 @@ import { PropType, computed, defineComponent, h, onMounted, ref } from 'vue'
 import { MakePropsType } from '../../utils'
 import { NsFile } from './File'
 import { getMediaType, Media } from '../../types'
+import { useLayoutProps, useSizeProps } from '../../props'
 
 export const filesProps = {
   data: {
@@ -15,7 +16,9 @@ export const filesProps = {
   downloadable: {
     type: Boolean,
     default: false
-  }
+  },
+  ...useLayoutProps(),
+  ...useSizeProps(),
 }
 
 export type FilesEmits = {
@@ -58,9 +61,12 @@ export const NsFiles = defineComponent({
       class: [
         'files-item',
         `type-${item.type}`,
-        'm-xs'
       ],
       key: index,
+      size: props.size,
+      direction: props.direction === 'row'
+        ? 'column'
+        : 'row',
       deletable: props.deletable,
       downloadable: props.downloadable,
       onDelete (id: string) {
@@ -78,10 +84,12 @@ export const NsFiles = defineComponent({
     return () => h('div', {
       ref: me,
       class: [
+        props.direction || 'row',
         'ns-files',
-        'row',
-        'justify-start'
-      ]
+        `justify-${'start'}`,
+        'align-stretch',
+        'gap'
+      ],
     },
     items.value.map(item))
   }

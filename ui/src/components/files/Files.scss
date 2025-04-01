@@ -1,6 +1,7 @@
 
 .ns-file {
-  width: 100px;
+  height: 100px;
+  padding-inline: 0 !important;
   .icon-item {
     background-size: 32px;
     background-repeat: no-repeat;
@@ -9,10 +10,50 @@
   }
   .thumb-item {
     .image {
-      width: 100%;
-      height: 100%;
+      aspect-ratio: 1;
       object-fit: cover;
       object-position: center;
+    }
+  }
+  &.column {
+    .image {
+      width: 100%;
+    }
+  }
+  &.row {
+    --gap: var(--ns-spacing);
+    .image {
+      height: 100%;
+    }
+  }
+  &.size-xs {
+    height: 32px;
+    .image {
+      height: 32px;
+    }
+  }
+  &.size-sm {
+    height: 64px;
+    .image {
+      height: 64px;
+    }
+  }
+  &.size-md {
+    height: 96px;
+    .image {
+      height: 96px;
+    }
+  }
+  &.size-lg {
+    height: 128px;
+    .image {
+      height: 128px;
+    }
+  }
+  &.size-xl {
+    height: 192px;
+    .image {
+      height: 192px;
     }
   }
   .toolbar {
@@ -51,8 +92,6 @@
     }
   }
   .icon-item, .thumb-item {
-    width: 100px;
-    height: 100px;
     overflow: hidden;
     position: relative;
     border-radius: var(--ns-r);
@@ -93,5 +132,5 @@
 }
 
 .ns-files {
-  margin-inline: calc(-1 * var(--ns-spacing-xs));
+  --gap: var(--ns-spacing);
 }
