@@ -18,6 +18,7 @@
 }
 
 .ns-repeator-item {
+  display: flex;
   &.selectable {
     --gap: 0;
     &::before {

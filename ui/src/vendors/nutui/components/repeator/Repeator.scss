@@ -1,4 +1,8 @@
 .ns-repeator {
+  overflow: hidden;
+  .ns-repeator-item {
+    width: 100%;
+  }
   &.has-seperator {
     .ns-repeator-item {
       position: relative;
@@ -15,6 +19,12 @@
         }
       }
     }
+  }
+  .repeator-swipe {
+    overflow: hidden;
+  }
+  .nut-swipe {
+    width: 100%;
   }
   .nut-swipe__right {
     display: flex;

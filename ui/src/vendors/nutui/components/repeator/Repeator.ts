@@ -22,7 +22,6 @@ export const Repeator = defineComponent({
     const classes = [
       'ns-repeator-item',
       'flex-item',
-      'row',
       'align-center',
       ...buildDesignClasses(props),
     ]
@@ -37,7 +36,7 @@ export const Repeator = defineComponent({
 
     const swipe = (data: any, index: number) => h('div', {
         class: [
-          classes
+          'row', 'repeator-swipe'
         ],
         style: buildDesignStyles(props),
         key: data.id || index
@@ -93,6 +92,7 @@ export const Repeator = defineComponent({
       class: [
         'ns-repeator',
         'ns-selectable',
+        props.direction === 'row' ? 'row' : 'column',
         ...props.divides ? ['has-divides'] : [],
         ...buildFlexClasses(props),
         ...props.swipable ? ['swipable'] : [],
