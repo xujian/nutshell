@@ -43,39 +43,6 @@ export type AvatarProps = MakePropsType<typeof avatarProps, AvatarEmits>
 
 const isImage = (src?: string) => src?.startsWith('http')
 
-const render: (props: AvatarProps) => VNode = (props: AvatarProps) => {
-
-  const classes = buildDesignClasses(props),
-    styles = buildDesignStyles(props)
-  return h('div', {
-      class: [
-        'ns-avatar',
-        `text-${isImage(props.src) ? 'image' : 'text'}`,
-        'row',
-        'justify-center',
-        'align-center',
-        ...props.circle ? ['circle'] : [],
-        props.size && `size-${props.size}`,
-        props.clickable && 'clickable',
-        ...classes,
-      ],
-      style: {
-        '--size': props.size,
-        ...styles,
-        ...isImage(props.src)
-          ? {
-              backgroundImage: `url(${props.src})`
-            }
-          : {}
-      }
-    }, {
-      default: isImage(props.src)
-        ? ''
-        : props.src
-    }
-  )
-}
-
 /**
  * 头像组件 <ns-avatar>
  */
@@ -85,6 +52,36 @@ export const NsAvatar = defineComponent({
   props: avatarProps,
   emits: avatarEmits,
   setup(props) {
-    return () => render(props)
-  }
+
+    const classes = buildDesignClasses(props),
+      styles = buildDesignStyles(props)
+
+    return () => h('div', {
+          class: [
+            'ns-avatar',
+            `text-${isImage(props.src) ? 'image' : 'text'}`,
+            'row',
+            'justify-center',
+            'align-center',
+            ...props.circle ? ['circle'] : [],
+            props.size && `size-${props.size}`,
+            props.clickable && 'clickable',
+            ...classes,
+          ],
+          style: {
+            '--size': props.size,
+            ...styles,
+            ...isImage(props.src)
+              ? {
+                  backgroundImage: `url(${props.src})`
+                }
+              : {}
+          }
+        }, {
+          default: () => isImage(props.src)
+            ? null
+            : props.src
+        }
+      )
+    }
 })
