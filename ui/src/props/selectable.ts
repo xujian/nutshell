@@ -1,6 +1,7 @@
 import { ref, computed, type PropType } from 'vue'
 import { useNutshell } from '../types'
 import { buildProps } from '../utils/private/props'
+
 export const selectableProps = ({
   /**
    * Enable selection mode

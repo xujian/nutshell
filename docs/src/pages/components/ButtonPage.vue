@@ -60,7 +60,6 @@
 
 <script lang="ts" setup>
 import { brands } from '@uxda/nutshell'
-import { MobileMockup } from '@/components'
 
 </script>
 

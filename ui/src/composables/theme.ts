@@ -83,6 +83,11 @@ export function isGradient (color?: Color) {
   return color.includes(',')
 }
 
+/**
+ * Color 转换为 CSS 可用的色值
+ * @param color 
+ * @returns 
+ */
 export function makeColor (color: Color): string {
   return brands.includes(color as typeof brands[number]) ||
     ESSENTIALS.includes(color as typeof ESSENTIALS[number])
