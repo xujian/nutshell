@@ -133,6 +133,10 @@ const plainRefs = [
 ]
 
 
+/**
+ * Formats a type definition into a readable string representation
+ * @param definition The type definition to format
+ */
 function formatDefinition (definition: Definition) {
   let formatted = ''
   switch (definition.type) {
@@ -193,7 +197,14 @@ function formatDefinition (definition: Definition) {
   }
 }
 
-// step-in #02
+/**
+ * Generates a type definition object from a TypeScript node or type
+ * @param node The TypeScript AST node
+ * @param recursed Array of types already processed to prevent infinite recursion
+ * @param project The TypeScript Project instance
+ * @param type Optional explicit type to use instead of node's type
+ * @returns A Definition object representing the type structure
+ */
 function generateDefinition (
     node: Node<ts.Node>,
     recursed: string[],
@@ -366,7 +377,12 @@ function generateDefinition (
     return definition
 }
 
-// step-in #01
+/**
+ * Inspects a TypeScript node and generates its type definition
+ * @param project The TypeScript Project instance
+ * @param node The node to inspect
+ * @returns Promise resolving to the processed type definition
+ */
 async function inspect (project: Project, node?: Node<ts.Node>) {
   if (!node) throw new Error('No node provided')
   const kind = node.getKind()
@@ -394,7 +410,11 @@ async function inspect (project: Project, node?: Node<ts.Node>) {
 }
 
 
-// poll.run entry point
+/**
+ * Generates component data from TypeScript type definitions
+ * @param component The component name to process
+ * @returns Promise resolving to an object containing props, events and other component metadata
+ */
 export async function generateComponentDataFromTypes (component: string) {
   const sourceFile = project.addSourceFileAtPath(`./templates/tmp/${component}.d.ts`)
   const data = await inspect(project, sourceFile.getTypeAlias('ComponentProps'))
@@ -419,11 +439,21 @@ export async function generateComponentDataFromTypes (component: string) {
 }
 
 
+/**
+ * Removes import statements from type text
+ * @param text The type text to clean
+ * @returns Cleaned type text
+ */
 function getCleanText (text: string) {
   return text.replaceAll(/import\(.*?\)\./g, '')
 }
 
 
+/**
+ * Gets the source file location for a declaration
+ * @param declaration The node declaration
+ * @returns Source file path and line numbers, or undefined if internal
+ */
 function getSource (declaration?: Node<ts.Node>) {
   const filePath = declaration?.getSourceFile().getFilePath()
     .replace(/.*\/node_modules\//, '')
@@ -439,6 +469,12 @@ function getSource (declaration?: Node<ts.Node>) {
 }
 
 
+/**
+ * Formats a type definition using prettier
+ * @param name The property name
+ * @param item The type definition to format
+ * @returns Promise resolving to formatted type definition
+ */
 export async function prettifyType (name: string, item: Definition) {
   const prefix = 'type Type = '
   const [str, stripped] = stripLinks(item.formatted)
@@ -463,6 +499,11 @@ export async function prettifyType (name: string, item: Definition) {
 }
 
 
+/**
+ * Extracts HTML links from a string and returns the stripped string and link mapping
+ * @param str String containing HTML links
+ * @returns Tuple of [stripped string, link mapping object]
+ */
 export function stripLinks (str: string): [string, Record<string, string>] {
   let out = str.slice()
   const obj: Record<string, string> = {}
@@ -477,6 +518,12 @@ export function stripLinks (str: string): [string, Record<string, string>] {
 }
 
 
+/**
+ * Reinserts HTML links into a formatted string
+ * @param str The formatted string
+ * @param stripped The link mapping object
+ * @returns String with links reinserted
+ */
 export function insertLinks (str: string, stripped: Record<string, string>) {
   for (const [key, value] of Object.entries(stripped)) {
     str = str.replaceAll(new RegExp(`(^|\\W)(${key})(\\W|$)`, 'g'), `$1${value}$3`)
@@ -485,6 +532,12 @@ export function insertLinks (str: string, stripped: Record<string, string>) {
 }
 
 
+/**
+ * Counts occurrences of a string in an array
+ * @param arr The array to search
+ * @param needle The string to count
+ * @returns Number of occurrences
+ */
 function count (arr: string[], needle: string) {
   return arr.reduce((count, str) => {
     return str === needle ? count + 1 : count
@@ -492,6 +545,12 @@ function count (arr: string[], needle: string) {
 }
 
 
+/**
+ * Checks if a declaration is from an external package
+ * @param declaration The node declaration
+ * @param definitionText The type definition text
+ * @returns Boolean indicating if declaration is external
+ */
 function isExternalDeclaration (declaration?: Node<ts.Node>, definitionText?: string) {
   const filePath = declaration?.getSourceFile().getFilePath()
   // Some internal typescript types should be processed (Array etc)
@@ -506,11 +565,22 @@ function isExternalDeclaration (declaration?: Node<ts.Node>, definitionText?: st
 }
 
 
+/**
+ * Adds new recursive types to the existing array
+ * @param recursiveTypes Existing array of recursive types
+ * @param type The type to process
+ * @returns New array with additional recursive types
+ */
 function getRecursiveTypes (recursiveTypes: string[], type: Type<ts.Type>) {
   return recursiveTypes.slice().concat(findPotentialRecursiveTypes(type))
 }
 
 
+/**
+ * Finds potential recursive types within a type
+ * @param type The type to analyze
+ * @returns Array of type strings that could be recursive
+ */
 function findPotentialRecursiveTypes (type?: Type<ts.Type>): string[] {
   if (type == null) return []
   const recursiveTypes = []
@@ -527,7 +597,11 @@ function findPotentialRecursiveTypes (type?: Type<ts.Type>): string[] {
 }
 
 
-/** type.getUnionTypes() but without unwrapping named string unions */
+/**
+ * Gets union types without unwrapping named string unions
+ * @param type The union type to process
+ * @returns Array of union member types
+ */
 function getUnionTypes (type: Type<ts.Type>): Type<ts.Type>[] {
   if (!type.isUnion()) return [type]
   const compilerType = (type as any).compilerType
