@@ -68,7 +68,9 @@
               <ns-checkbox v-model="isAllSelected" label="全选" style="margin-left: 10px;"></ns-checkbox>
             </template>
           </div>
-          <ns-files style="margin-top: 15px;" :items="fileItems" downloadable deletable @delete="onUploadDelete"  @download="onUploadDownload" />
+          <ns-files style="margin-top: 15px;"
+            :data="fileItems" downloadable deletable
+            @delete="onUploadDelete"  @download="onUploadDownload" />
         </ns-card>
       </template>
 

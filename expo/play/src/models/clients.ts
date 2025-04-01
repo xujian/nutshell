@@ -28,11 +28,3 @@ export type 跟进记录 = {
   跟进人: string,
   内容: string
 }
-
-export type 合同 = {
-  id: string,
-  名称: string,
-  金额: number,
-  合状态: string,
-  创建时间: string
-}
