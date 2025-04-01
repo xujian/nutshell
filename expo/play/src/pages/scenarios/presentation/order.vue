@@ -13,14 +13,34 @@
     </ns-page-header>
     <ns-page-content>
       <template v-if="activeTab==='detail'">
-        我是详情
+        <ns-card fill="#fff" class="mb-md detail" :title="info.productName">
+          <ns-plank :key="it" v-for="it in info.children" :title="it.label" :content="it.value"></ns-plank>
+        </ns-card>
+      </template>
+      <template v-if="activeTab === 'flow'">
+        <ns-row justify="stretch" class="mb-md" v-for="item in flowButtons" :key="item">
+          <ns-button
+            variant="outlined"
+            style="flex: 1;"
+            color="primary"
+            @click="item.handleClick" >
+            + {{ item.label }}
+          </ns-button>
+        </ns-row>
+        <ns-card fill="#fff" class="flow-box mb-md">
+          <ns-stepper :items="steps" :model-value="stage" />
+        </ns-card>
+        <ns-card fill="#fff" class="mb-md">
+          <ns-timeline variant="icon" :data="mockFollowups">
+          </ns-timeline>
+        </ns-card>
       </template>
       <template v-if="activeTab==='file'">
         <ns-card fill="#fff" class="mb-md material-box" v-for="item in files" :key="item">
           <h4>{{item.name}}</h4>
           <ns-plank :key="it" v-for="it in item.children" :title="`${it.name}(${it.count})`">
             <template #content>
-              <div style="display: flex; align-items: center;justify-content: right;">
+              <div class="icon-list">
                 <span>上传资料</span>
                 <ns-icon name="https://cdn.ddjf.com/static/images/fnfundkit/m-arrow.png"></ns-icon>
               </div>
@@ -54,9 +74,23 @@
 import { useNutshell } from '@uxda/nutshell/taro';
 import { computed, ref } from 'vue';
 import { OrderFooterButtonType } from './types';
+import Taro from '@tarojs/taro'
 
 const $n = useNutshell()
 const activeTab = ref<string>('detail')
+
+const info = ref({
+  productName: '交易周转',
+  children: [
+    { label: '客户姓名', value: '蒋颖'},
+    { label: '业务经理', value: '测试1'},
+    { label: '市场团队', value: '测试蜂鸟周转'},
+    { label: '跟单人', value: '李四'},
+    { label: '订单状态', value: '审批中'},
+    { label: '放款机构', value: '博能小贷'}
+  ]
+})
+
 const isFlowOrder = ref<boolean>(false)
 const files = [
   {
@@ -103,6 +137,56 @@ const items = [
 function tabChange({paneKey}){
   activeTab.value = paneKey
 }
+
+// 按钮组
+const flowButtons = [
+  {
+    label: '备注信息',
+    handleClick: () => {
+      Taro.navigateTo({
+        url: `remark-form`,
+      })
+    }
+  }
+]
+const stage = ref(3)
+const steps = [
+  { title: '业务进件', value: 'lead' },
+  { title: '审批', value: 'opportunity' },
+  { title: '放款', value: 'visit' },
+  { title: '回款', value: 'open' },
+  { title: '归档', value: 'deal' }
+]
+const mockFollowups = [
+  {
+    title: '操作风险控制',
+    time: '2024/03/10 14:30',
+    caption: '办理人：张三、李四、王五、某某某',
+    assignee: '李敏克',
+    status: 'normal'
+  },
+  {
+    title: '抵押跟进',
+    time: '2024/03/12 10:15',
+    caption: '办理人：张三、李四、王五、某某某',
+    assignee: '李敏克',
+    status: 'normal'
+  },
+  {
+    title: '面谈面签',
+    time: '2024/03/13 15:40',
+    caption: '办理人：张三、李四、王五、某某某',
+    assignee: '王大地',
+    status: 'normal'
+  },
+  {
+    title: '同贷登记',
+    time: '2024/03/15 09:30',
+    caption: '办理人：张三、李四、王五、某某某',
+    assignee: '李敏克',
+    status: 'normal'
+  }
+]
 
 const commands = [
   { label: '派单', name: 'cancel' },
@@ -167,11 +251,21 @@ const buttons = computed(()=>{
   }
   .icon-list {
     display: flex;
-    justify-content: end;
-    text-align: right;
+    justify-content: flex-end;
+    align-items: center;
     .ns-icon {
-      margin-left: 8px;
+      margin-left: 4px;
     }
   }
 }
+.flow-box{
+  --text: #909ca4;
+  .ns-stepper.nut-steps .nut-step.nut-step-finish .nut-step-icon.is-icon {
+    background-color: var(--nut-primary-color) !important;
+  }
+  .ns-stepper.nut-steps .nut-step.nut-step-process .nut-step-icon.is-icon{
+    background-color: var(--nut-primary-color) !important;
+  }
+}
+
 </style>

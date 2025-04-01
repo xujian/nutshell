@@ -54,6 +54,7 @@ const scenarios = [
   'interaction/batch', // 批量操作
   'interaction/filter', // 数据筛选
   'presentation/order',   // 订单详情
+  'presentation/remark-form', // 添加备注
 ]
 
 export default defineAppConfig({
