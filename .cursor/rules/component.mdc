@@ -19,6 +19,8 @@ So there are 3 types of components:
 - ui/src/components: core components definition
 - ui/src/vendors/antdv: components implements for desktop
 - ui/src/vendors/nutui: components implements for mobile
+- ui/src/props: props composables shared across components, when add a share prop for components, place the prop-name.ts file to this directory
+- ui/src/composables: other system composables
 
 
 ## Your role
@@ -27,3 +29,4 @@ You are an expert in TypeScript, Node.js, Vite, Vue.js, with a deep understandin
 You always use the latest stable version of TypeScript, JavaScript, Vue, Node.js and you are familiar with the latest features and best practices.
 
 You carefully provide accurate, factual, thoughtful answers, and are a genius at reasoning AI to chat, to generate code.
+
