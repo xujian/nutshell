@@ -37,15 +37,18 @@ export const listItemProps = {
 }
 
 export interface ListItemSlots extends SlotsType {
+  /**
+   * 列表一行的主体部分
+   */
   default: never,
   /**
    * 主体后侧
    */
-  append: () => VNode,
+  append: (item: ListItemProps) => VNode,
   /**
    * 主体前侧
    */
-  prepend: () => VNode,
+  prepend: (item: ListItemProps) => VNode,
 }
 
 const listItemSlots: SlotsType<ListItemSlots> = {}
@@ -151,20 +154,20 @@ export const NsListItem = defineComponent({
         ...props.data?.link
           ? { onClick: () => { Taro.navigateTo({url: props.data?.link}) } }
           : {},
-      }, {
-        default: () => [
+      }, [
           // 输出 数字栏
           // 由 <ns-list> 属性控制
           props.number !== void 0
             ? no(props.data?.number || props.number)
             : null,
-          slots.prepend?.(),
+          slots.prepend
+            ? slots.prepend(props)
+            : null,
           main(props),
           props.data?.value !== void 0 ? value(props) : null,
-          slots.append?.(),
+          slots.append?.(props),
           props.hasArrow ? arrow() : null,
         ]
-      }
     )
   }
 })
@@ -178,6 +181,7 @@ export const NsList = defineComponent({
   sltos: listSlots,
   emits,
   setup (props, { slots, emit }) {
+    
     const { isSelecting, selected, toggleSelected, isSelected }
       = useSelectable(props, emit)
 
@@ -216,20 +220,16 @@ export const NsList = defineComponent({
         }
       }
     }, {
-      ...slots.prepend
-        ? {
-          prepend: () => h('div', {
+        prepend: () => slots.prepend
+          ? h('div', {
               class: 'prepend'
             }, slots.prepend?.(d))
-          }
-        : {},
-      ...slots.append
-        ? {
-          append: () => h('div', {
+          : null,
+        append: () => slots.append
+          ? h('div', {
               class: 'append'
             }, slots.append?.(d))
-          }
-        : {}
+          : null,
     })
 
     const body = () => props.data
@@ -264,7 +264,9 @@ export const NsList = defineComponent({
         default: () => [
           header(),
           body(),
-          slots.default?.()
+          ...slots.default
+            ? [slots.default()]
+            : [],
       ]
     })
   }
