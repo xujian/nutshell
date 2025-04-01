@@ -7,7 +7,9 @@
         <ns-upload-button class="upload-button" :handler/>
       </ns-row>
       <h2>已上传资料 ({{ files.length }})</h2>
-      <ns-files :data="files" />
+      <ns-card fill="#ffffff80" class="breakout" r="xl">
+        <ns-files :data="files" deletable size="xs" direction="column" />
+      </ns-card>
     </ns-page-content>
   </ns-page>
 </template>
@@ -30,6 +32,13 @@ const files = ref<Media[]>([
     type: 'image',
     url: 'https://simple.shensi.tech/upload/flowers.jpg',
     thumb: 'https://simple.shensi.tech/upload/flowers.jpg',
+  },
+  {
+    id: '65d6e705febeec0001323138',
+    name: 'asimo.jpg',
+    type: 'image',
+    url: 'https://simple.shensi.tech/upload/asimo.jpg',
+    thumb: 'https://simple.shensi.tech/upload/asimo.jpg',
   }
 ])
 
@@ -46,6 +55,11 @@ const openUpload = () => {
 .upload-page {
   .upload-button {
     width: 240px;
+  }
+  .ns-files {
+    .file-item {
+      width: 25%;
+    }
   }
 }
 </style>
