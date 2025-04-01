@@ -30,8 +30,8 @@ import { NsRepeator } from './repeator'
 import { NsTable, NsTableColumn, NsTableColumnSelector } from './table'
 import { NsPopover, NsPopoverConfirm } from './popover'
 import { NsFacts, NsFactsItem } from './facts'
-import { NsFiles } from './files'
-import { NsUpload, NsCropUpload } from './upload'
+import { NsFiles, NsFile } from './files'
+import { NsUpload, NsUploadButton, NsCropUpload } from './upload'
 import { NsTimeline } from './timeline'
 import { NsDivider } from './divider'
 import { NsNumber } from './number'
@@ -99,7 +99,9 @@ const components = {
   NsFacts,
   NsFactsItem,
   NsFiles,
+  NsFile,
   NsUpload,
+  NsUploadButton,
   NsNumber,
   NsCropUpload,
   NsImage,
