@@ -2,6 +2,7 @@ node_modules/
 .DS_Store
 .Thumbs.db
 ui/dist/
+api/dist/
 docs/dist/
 plot/dist/
 docs/public/svg/
