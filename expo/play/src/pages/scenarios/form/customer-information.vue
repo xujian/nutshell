@@ -3,8 +3,7 @@
     <ns-page-header title="客户资料" has-back-button reveal :blur="10" />
     <ns-page-content>
       <ns-form class="contract-form" v-model="formData" ref="form" failed="notice">
-        <ns-card fill="#fff" class="mb-md">
-          <h3 class="mb-sm">基本信息</h3>
+        <ns-card fill="#fff" class="mb-md" title="基本信息">
           <ns-input label="客户姓名" placeholder="请输入客户姓名" required name="客户姓名">
             <template #append>
               <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/file-views.png" size="xl" />

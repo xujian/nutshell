@@ -3,8 +3,7 @@
     <ns-page-header title="房产信息" has-back-button reveal :blur="10" />
     <ns-page-content>
       <ns-form class="contract-form" v-model="formData" ref="form" failed="notice">
-        <ns-card fill="#fff" class="mb-md">
-          <h3 class="mb-sm">财产信息</h3>
+        <ns-card fill="#fff" class="mb-md" title="财产信息">
           <ns-select v-model="formData.财产类别" name="财产类别" label="财产类别" placeholder="请选择财产类别"
             :rules="['required']"
             :options="asset" />

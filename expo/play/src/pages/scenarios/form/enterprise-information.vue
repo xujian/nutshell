@@ -3,8 +3,7 @@
     <ns-page-header title="企业资料" has-back-button reveal :blur="10" />
     <ns-page-content>
       <ns-form class="contract-form" v-model="formData" ref="form" failed="notice">
-        <ns-card fill="#fff" class="mb-md">
-          <h3 class="mb-sm">企业认证信息</h3>
+        <ns-card fill="#fff" class="mb-md" title="企业认证信息">
           <ns-input v-model="formData.公司名称" label="公司名称" placeholder="请输入公司名称名" required name="公司名称"></ns-input>
           <ns-input v-model="formData.统一社会信用代码" label="统一社会信用代码" placeholder="请输入统一社会信用代码" required name="统一社会信用代码"></ns-input>
           <ns-input v-model="formData.法人姓名" label="法人姓名" placeholder="请输入法人姓名" required name="法人姓名">
