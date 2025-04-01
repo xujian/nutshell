@@ -4,7 +4,11 @@
     <ns-page-content>
       <ns-form :model="formData">
         <ns-card fill="#ffffff" shadow>
-          <ns-upload name="logo" label="企业LOGO" :rules="['required']" v-model="formData.logo" :handler="uploadHandler"
+          <ns-upload name="logo"
+            label="企业LOGO"
+            :rules="['required']"
+            v-model="formData.logo"
+            :handler="uploadHandler"
             preview-mode="circle" />
         </ns-card>
       </ns-form>

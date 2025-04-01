@@ -3,7 +3,7 @@ import { uploadEmits, uploadProps } from '../../../../components/upload'
 import { renderFormItem } from '../../utils'
 import { Media } from '../../../../types/media'
 import { PreviewMediaParam, useNutshell } from '../../../../types'
-import { NsButton } from '../../../../components/button'
+import { NsImage, NsUploadButton, NsButton } from '../../../../components'
 
 
 export const Upload = defineComponent({
@@ -86,21 +86,31 @@ export const Upload = defineComponent({
     }
 
     return () => renderFormItem(props, slots,
-      () => h('div', {
-        class: [
-          'ns-upload-item',
-          ...props.modelValue?.length ? ['uploaded'] : ['empty'],
-        ],
-        style: getStyle(),
-        onClick
-      }, props.deletable !== false ? h(NsButton, {
-            icon: 'delete',
-            class: 'delete-button',
-            fill: 'negtive',
-            size: 'xs',
-            onClick: onDeleteClick
-          }) : void 0
+      () => props.modelValue?.length
+        ? h(NsUploadButton, {
+            modelValue: props.modelValue,
+            maxFileSize: props.maxFileSize,
+            handler: props.handler,
+            deletable: props.deletable,
+            previewMode: props.previewMode,
+            disabled: props.disabled,
+            onUpdate: props['onUpdate:modelValue']
+          })
+        : h(NsImage, {
+            class: [
+              'ns-upload-item',
+              ...props.modelValue?.length ? ['uploaded'] : ['empty'],
+            ],
+            style: getStyle(),
+            onClick
+          }, props.deletable !== false ? h(NsButton, {
+                icon: 'delete',
+                class: 'delete-button',
+                fill: 'negtive',
+                size: 'xs',
+                onClick: onDeleteClick
+              }) : void 0
+            )
         )
-    )
   }
 })

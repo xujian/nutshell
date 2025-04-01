@@ -5,7 +5,7 @@
       :has-files="false"
       @complete="onUploadComplete" />
     <p class="caption">其他内容</p>
-    <ns-files :items="files" />
+    <ns-files :data="files" />
   </ns-column>
 </template>
 

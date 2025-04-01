@@ -1,20 +1,20 @@
 <template>
-  <ns-page class="input-page">
+  <ns-page class="files-page">
     <ns-page-header title="文件表"
       caption="<ns-files>"
       :blur="10" reveal has-back-button />
     <ns-page-content>
       <h2>基础用法</h2>
       <ns-card fill="#fff" title="文件表" class="files-card">
-        <ns-files :items="filesItems"/>
+        <ns-files :data="filesItems"/>
       </ns-card>
       <h2>支持下载</h2>
       <ns-card fill="#fff" title="文件表" class="files-card">
-        <ns-files :items="filesItems" downloadable/>
+        <ns-files :data="filesItems" downloadable/>
       </ns-card>
       <h2>支持删除</h2>
       <ns-card fill="#fff" title="文件表" class="files-card">
-        <ns-files :items="filesItems" deletable/>
+        <ns-files :data="filesItems" deletable/>
       </ns-card>
   </ns-page-content>
   </ns-page>

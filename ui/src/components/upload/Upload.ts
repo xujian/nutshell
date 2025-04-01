@@ -4,10 +4,24 @@ import { useDisplayProps, useModelValuePropsForArray, useFieldProps } from '../.
 import { Media } from '../../types'
 import { FullValidationRule, ValidationRule, formatRules } from '../../props/field'
 import { PreviewMode } from '../preview'
+import { buildProps } from '../../utils/private/props'
 
 export type BeforeUploadMethod = ((file: Media) => Promise<Blob>)
 
 export type UploadHandler = (file: Media) => Promise<Media>
+
+export const uploadButtonProps = {
+  maxFileSize: {
+    type: Number,
+    default: 1,
+  },
+  handler: {
+    type: Function as PropType<UploadHandler>
+  },
+}
+
+export const useUploadButtonProps = buildProps(uploadButtonProps)
+
 
 export const uploadProps = {
 
@@ -23,10 +37,6 @@ export const uploadProps = {
    */
   accept: {
     type: String,
-  },
-  maxFileSize: {
-    type: Number,
-    default: 30,
   },
   /**
    * 上传数量限制
@@ -53,12 +63,10 @@ export const uploadProps = {
   beforeUpload: {
     type: Function as PropType<BeforeUploadMethod>
   },
-  handler: {
-    type: Function as PropType<UploadHandler>
-  },
   previewMode: {
     type: String as PropType<PreviewMode>,
   },
+  ...useUploadButtonProps(),
   ...useModelValuePropsForArray(),
   ...useDisplayProps(),
   ...useFieldProps(),

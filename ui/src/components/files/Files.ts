@@ -2,10 +2,9 @@ import { PropType, computed, defineComponent, h, onMounted, ref } from 'vue'
 import { MakePropsType } from '../../utils'
 import { NsFile } from './File'
 import { getMediaType, Media } from '../../types'
-import { usePreview } from '../../composables'
 
 export const filesProps = {
-  items: {
+  data: {
     type: Array as PropType<Media[]>,
     default: []
   },
@@ -41,15 +40,14 @@ export const NsFiles = defineComponent({
   setup (props, ctx) {
 
     const me = ref<HTMLElement>()
-    const { preview } = usePreview(me)
 
     const getRealUrlFromId = (id?: string) => {
-      const item = props.items.find((f: any) => f.id === id)
+      const item = props.data.find((f: any) => f.id === id)
       return item!.url
     }
 
     const items = computed<Media[]>(() =>
-      props.items.map(item => ({
+      props.data.map(item => ({
         ...item,
         type: item.type
           || getMediaType(item.name!)
@@ -66,15 +64,13 @@ export const NsFiles = defineComponent({
       deletable: props.deletable,
       downloadable: props.downloadable,
       onDelete (id: string) {
-        console.log('===NsFile onDelete id', id)
         ctx.emit('delete', id)
       },
       onDownload (id: string) {
-        console.log('===NsFile onDownload id', id)
         ctx.emit('download', id)
       },
       onPreview (id: string) {
-        preview(id)
+       
       },
       ...item,
     })

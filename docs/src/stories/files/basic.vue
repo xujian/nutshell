@@ -1,5 +1,5 @@
 <template>
-  <ns-files :items="items" downloadable deletable />
+  <ns-files :data="items" downloadable deletable />
 </template>
 
 <script lang="ts" setup>

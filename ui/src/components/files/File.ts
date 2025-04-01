@@ -1,6 +1,7 @@
 import { PropType, defineComponent, h } from 'vue'
 import { MakePropsType } from '../../utils'
 import { getMediaType, MediaType, resolveFileName } from '../../types'
+import { NsImage } from '../image'
 
 export const fileProps = {
   id: {
@@ -110,7 +111,7 @@ export const NsFile = defineComponent({
           emit('preview', props.id!)
         }
       }, [
-        h('img', {
+        h(NsImage, {
           class: 'image preview-item',
           'data-id': props.id,
           'data-url': props.url,

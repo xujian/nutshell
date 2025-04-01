@@ -198,13 +198,13 @@
         </ns-repeator>
       </ns-card>
       <ns-card gradient="101" title="时间线" class="timeline-card">
-        <ns-timeline :items="timelineItems" />
+        <ns-timeline :data="timelineItems" />
       </ns-card>
       <ns-card gradient="101" title="详表" class="facts-card">
         <ns-facts direction="column" :items="factsItems" />
       </ns-card>
       <ns-card gradient="101" title="文件表" class="files-card">
-        <ns-files :items="filesItems" downloadable deletable />
+        <ns-files :data="filesItems" downloadable deletable />
       </ns-card>
     </ns-row>
     <p>&nbsp;</p>
