@@ -102,12 +102,10 @@
         <h2 class="h2">影像资料</h2>
         <div class="files">
           <ns-empty v-if="影像资料.length === 0" text="暂无影像资料" />
-          <ns-grid :columns="3" :gap="10">
             <ns-card v-for="file in 影像资料" :key="file.id" class="file-card" fill="#ffffff22">
               <ns-image :src="file.thumb" class="file-thumb" />
               <p class="file-name">{{ file.name }}</p>
             </ns-card>
-          </ns-grid>
         </div>
         <ns-button color="primary" block @click="onUploadFile">上传资料</ns-button>
       </div>

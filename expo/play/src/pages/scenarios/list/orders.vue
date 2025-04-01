@@ -22,6 +22,7 @@
         gap
         v-slot="item">
           <ns-card :title="item.type"
+            class="full-width"
             :caption="`进件时间: ${item.进件时间}`"
             fill="#ffffff"
             body-fill="#00000022"
