@@ -1,7 +1,7 @@
 import { PropType } from 'vue'
 import { buildProps } from '../utils/private/props'
 
-export type Direction = 'horizontal' | 'vertical'
+export type Direction = 'row' | 'column'
 
 const layoutProps = {
   /**
