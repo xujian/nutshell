@@ -127,6 +127,7 @@ const contactPersonOptions = [
   { label: '其他', value: '其他' }
 ]
 
+const showDialog = ref(false)
 const showFollowDrawer = ref(true)
 const followFormData = reactive({
   followTime: '',
