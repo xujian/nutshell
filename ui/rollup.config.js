@@ -86,12 +86,12 @@ const TaroHookResolver = (name) => {
       from: '@tarojs/taro',
     }
   }
-  if (taroComponents.includes(name)) {
-    return {
-      name: name,
-      from: '@tarojs/components',
-    }
-  }
+  // if (taroComponents.includes(name)) {
+  //   return {
+  //     name: name,
+  //     from: '@tarojs/components',
+  //   }
+  // }
 }
 
 // 返回一个假的Taro

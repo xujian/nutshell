@@ -3,7 +3,7 @@ import { MakePropsType } from '../../utils'
 import { useBus } from '../../composables'
 import { usePage } from './Page'
 import { buildDesignClasses, buildDesignStyles, useDesignProps } from '../../props'
-import { ScrollView } from '@tarojs/components'
+// import { ScrollView } from '@tarojs/components'
 
 export const pageContentProps = {
   /**
@@ -53,7 +53,7 @@ export const NsPageContent = defineComponent({
       })
     }
 
-    const renderScrollview = (content: any) => h(ScrollView, {
+    const renderScrollview = (content: any) => h('scroll-view', {
         class: ['page-content-scroll-view', 'scroll'],
         'scroll-y': true,
         onScroll,
