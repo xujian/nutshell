@@ -1,0 +1,153 @@
+{
+  "code": "200",
+  "msg": "成功",
+  "result": {
+      "pageNum": 1,
+      "pageSize": 10,
+      "size": 9,
+      "startRow": 1,
+      "endRow": 9,
+      "total": 9,
+      "pages": 1,
+      "list": [
+          {
+              "id": "1840562864875016193",
+              "clueNo": "CL202409300004",
+              "clueName": "CEAC4bEb-8b5F-8Fdf-fed1-bdBcCDCbcF29",
+              "keyPersonName": "",
+              "keyPersonPhone": "{\"secretKey\":\"cb0f567379f0b7c1e1f2125b148062482c387f37b7965f18a35b3a58726311e5a506d5370adb113f6f2255ba0055f99e4ef0f1471e1c963d07a6d3e9cc857f77\",\"mask\":\"133****4444\"}",
+              "keyPersonPosition": "",
+              "intentionLevel": 0,
+              "clueSource": "create",
+              "nowFollowPerson": "周666",
+              "createTime": "2024-09-30 09:22:38",
+              "updateTime": "2024-09-30 09:22:38"
+          },
+          {
+              "id": "1840562362061852674",
+              "clueNo": "CL202409300003",
+              "clueName": "fDF6cCC3-30B6-A61d-6383-C4DFB3dBc5bc",
+              "keyPersonName": "",
+              "keyPersonPhone": "{\"secretKey\":\"cb0f567379f0b7c1e1f2125b148062489d9b447141b15c0bffe6ed075f0c7bfe7bed4852f7cbcb3a1038722ea328148f57f543de154a936e29f2c6bd50aa7c07\",\"mask\":\"133****4444\"}",
+              "keyPersonPosition": "",
+              "intentionLevel": 0,
+              "clueSource": "create",
+              "nowFollowPerson": "周666",
+              "createTime": "2024-09-30 09:20:38",
+              "updateTime": "2024-11-28 11:01:16",
+              "tagOptionList": [
+                  {
+                      "value": "1751865100990730242",
+                      "label": "232"
+                  }
+              ]
+          },
+          {
+              "id": "1840562071820210178",
+              "clueNo": "CL202409300002",
+              "clueName": "4CE07E8e-8eDD-28d6-0f3E-4D687e31BadD",
+              "keyPersonName": "",
+              "keyPersonPhone": "{\"secretKey\":\"cb0f567379f0b7c1e1f2125b148062483741a91967c44433c4c155af75eb89d6df9d024807b218617e5e2d7d63aa10d6a3acca563cd3f199d359771f226a6792\",\"mask\":\"133****4444\"}",
+              "keyPersonPosition": "",
+              "intentionLevel": 0,
+              "clueSource": "create",
+              "nowFollowPerson": "周666",
+              "createTime": "2024-09-30 09:19:29",
+              "updateTime": "2024-09-30 09:19:29"
+          },
+          {
+              "id": "1840553474704969730",
+              "clueNo": "CL202409300001",
+              "clueName": "4C4c5cD1-BEE9-e8b1-eb5D-b43bd3143e7E",
+              "keyPersonName": "",
+              "keyPersonPhone": "{\"secretKey\":\"cb0f567379f0b7c1e1f2125b14806248ed205028792ebc1f93b8fe292b8409e26c7671108c7845930b9544962ca1efed8dca1b6b1c31c99b07351dcddb0608e8\",\"mask\":\"133****4444\"}",
+              "keyPersonPosition": "",
+              "intentionLevel": 0,
+              "clueSource": "create",
+              "nowFollowPerson": "周666",
+              "lastFollowTime": "2025-04-02 10:54:46",
+              "createTime": "2024-09-30 08:45:19",
+              "updateTime": "2025-04-02 10:54:46"
+          },
+          {
+              "id": "1820772904826146818",
+              "clueNo": "CL202408060005",
+              "clueName": "888888",
+              "keyPersonPhone": "{\"secretKey\":\"ff6f3254d413c4e25c21e1f0d52f3ba1dace96c856107b0651b7490c387a33ece13524a0fe9ac9aadf00ea42644ef9de\",\"mask\":\"132****2222\"}",
+              "intentionLevel": 0,
+              "clueSource": "marketing",
+              "nowFollowPerson": "周666",
+              "createTime": "2024-08-06 18:44:23",
+              "updateTime": "2024-08-06 18:44:23"
+          },
+          {
+              "id": "1820766046015033346",
+              "clueNo": "CL202408060003",
+              "clueName": "11",
+              "keyPersonPhone": "{}",
+              "intentionLevel": 0,
+              "clueSource": "marketing",
+              "nowFollowPerson": "周666",
+              "createTime": "2024-08-06 18:17:08",
+              "updateTime": "2024-08-06 18:17:08"
+          },
+          {
+              "id": "1820378947998814209",
+              "clueNo": "CL202408050001",
+              "clueName": "快快快",
+              "keyPersonPhone": "{\"secretKey\":\"fa1d96d452916823372799fdba4997e27d3b7a8eee0967e86537f599917673ae2d22a3f213096d46c7194409382697f0\",\"mask\":\"136****5111\"}",
+              "intentionLevel": 0,
+              "clueSource": "marketing",
+              "nowFollowPerson": "蒋颖3",
+              "createTime": "2024-08-05 16:38:57",
+              "updateTime": "2024-08-05 16:38:57"
+          },
+          {
+              "id": "1818566856241418242",
+              "clueNo": "CL202407310001",
+              "clueName": "蒋笑",
+              "keyPersonPhone": "{\"secretKey\":\"72ffcf5ba2b6433f02a6b66d91e4e54d2b78d8e8c0010735ad690ff8b428d1ace13524a0fe9ac9aadf00ea42644ef9de\",\"mask\":\"135****2493\"}",
+              "intentionLevel": 0,
+              "clueSource": "marketing",
+              "nowFollowPerson": "蒋颖3",
+              "createTime": "2024-07-31 16:38:21",
+              "updateTime": "2024-07-31 16:38:21"
+          },
+          {
+              "id": "1727260356234616833",
+              "clueNo": "CL202311220013",
+              "clueName": "壹号2",
+              "keyPersonName": "试试",
+              "keyPersonPhone": "{\"secretKey\":\"62b396ba9c35447386e8a967ae57ef3b95df3ac3c8126d4e42ff9bb810171653cddf618c33837894f022f25358cbdd56\",\"mask\":\"152****3088\"}",
+              "keyPersonPosition": "",
+              "intentionLevel": 5,
+              "clueSource": "marketing",
+              "returnReason": "autoReturnBack",
+              "nowFollowPerson": "测一（已禁用）",
+              "lastFollowPerson": "卓晖（已禁用）",
+              "lastFollowTime": "2024-03-13 16:44:06",
+              "createTime": "2023-11-22 17:38:55",
+              "updateTime": "2024-07-22 16:39:34",
+              "tagOptionList": [
+                  {
+                      "value": "1751865100990730242",
+                      "label": "232"
+                  }
+              ]
+          }
+      ],
+      "prePage": 0,
+      "nextPage": 0,
+      "isFirstPage": true,
+      "isLastPage": true,
+      "hasPreviousPage": false,
+      "hasNextPage": false,
+      "navigatePages": 8,
+      "navigatepageNums": [
+          1
+      ],
+      "navigateFirstPage": 1,
+      "navigateLastPage": 1
+  },
+  "success": true
+}
