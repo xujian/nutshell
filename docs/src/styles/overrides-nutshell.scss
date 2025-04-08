@@ -281,6 +281,7 @@
     --row-height: 50px;
     --ns-stroke: #f0f0f0;
     --vxe-table-resizable-line-color: rgba(216, 216, 216, 0.5);
+    --vxe-table-border-color: #f0f0f0;
     .vxe-body--row:nth-child(2n):not(.row--hover) .vxe-body--column {
       &:not([class*="fill-"]) {
         background-color: #F7F7F7;

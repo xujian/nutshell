@@ -50,26 +50,14 @@
           </template>
         </ns-card>
       </template>
-      <template v-for="(item, index) in formData.跟进记录" :key="index">
-        <ns-card fill="#fff" class="mb-md">
-          <h3 class="mb-sm d-flex align-items-center justify-content-between">
-            跟进记录<span v-if="index !== 0"> {{ index + 1 }}</span>
-            <img class="icon" src="https://cdn.ddjf.com/static/images/loan-manage/icon-delete@4x.png" alt="" @click="formData.跟进记录.splice(index, 1)" />
-          </h3>
-          <ns-select v-model="item.跟进方式" :name="['跟进记录', index, '跟进方式']" label="跟进方式" placeholder="请选择跟进方式"
-            :options="followUpTypeOptions" :rules="['required']" />
-          <ns-date-input v-model="item.跟进时间" :name="['跟进记录', index, '跟进时间']" label="跟进时间" placeholder="请选择跟进时间" :rules="['required']" />
-          <ns-textarea v-model="item.跟进内容" :name="['跟进记录', index, '跟进内容']" label="跟进内容" placeholder="请输入跟进内容" :maxlength="500" hasCount :rules="['required']" />
-        </ns-card>
-      </template>
     </ns-form>
     <div>
       <ns-button color="primary" variant="outlined" @click="formData.财产信息.push({})">财产信息</ns-button>
-      <ns-button color="primary" variant="outlined" @click="formData.跟进记录.push({})">跟进记录</ns-button>
+      <ns-button color="primary" variant="outlined">跟进记录</ns-button>
       <ns-button color="primary" variant="outlined">影像资料</ns-button>
     </div>
     <template #footer>
-      <ns-button variant="outlined" @click="visible = false">取消</ns-button>
+      <ns-button @click="visible = false">取消</ns-button>
       <ns-button color="primary" @click="handleSubmit">确定</ns-button>
     </template>
   </ns-dialog>
@@ -78,7 +66,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
 
-const visible = ref(true);
+const visible = ref(false);
 const form = ref();
 
 const formData = reactive({
@@ -92,8 +80,7 @@ const formData = reactive({
   业务意向: null,
   客户标签: [],
   意向等级: null,
-  财产信息: [],
-  跟进记录: []
+  财产信息: []
 });
 
 // 房产类型选项
@@ -149,14 +136,6 @@ const customerTagOptions = [
 const propertyTypeOptions = [
   { label: '房产', value: '房产' },
   { label: '车辆', value: '车辆' },
-  { label: '其他', value: '其他' }
-];
-
-// 跟进方式选项
-const followUpTypeOptions = [
-  { label: '电话', value: '电话' },
-  { label: '微信', value: '微信' },
-  { label: '上门', value: '上门' },
   { label: '其他', value: '其他' }
 ];
 

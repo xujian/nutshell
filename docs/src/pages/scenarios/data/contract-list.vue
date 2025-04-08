@@ -23,6 +23,7 @@
         borders="all"
         cache-columns="1"
         :hasPagination="false"
+        :tooltipMethod="tooltipMethod"
         :tree-config="{ enable: true }"
         :filter-handler="filterHandler"
       >
@@ -174,6 +175,10 @@ async function fetchTableData(){
     })
 }
 fetchTableData()
+
+function tooltipMethod(row: any) {
+ console.log(row)
+}
 </script>
 
 <style scoped lang="scss">
