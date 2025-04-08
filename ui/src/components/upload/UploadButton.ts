@@ -6,14 +6,12 @@ export const NsUploadButton = defineComponent({
   name: 'NsUploadButton',
   props: useUploadButtonProps(),
   setup(props, { emit }) {
-    
+
     const onClick = (callback?: (medias: Media[]) => void) => {
       Taro.chooseMedia({
         count: props.maxFileSize || 1,
-        mediaType: ['image'],
-        soruceType: ['album', 'camera'],
+        sourceType: ['album'],
         maxDuration: 30,
-        camera: 'back',
         success: async (selected: any) => {
           const {tempFiles: files} = selected
           for (const f of files) {

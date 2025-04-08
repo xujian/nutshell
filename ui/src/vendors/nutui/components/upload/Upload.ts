@@ -5,7 +5,6 @@ import { Media } from '../../../../types/media'
 import { PreviewMediaParam, useNutshell } from '../../../../types'
 import { NsImage, NsUploadButton, NsButton } from '../../../../components'
 
-
 export const Upload = defineComponent({
   name: 'NutuiUpload',
   props: uploadProps,
@@ -32,10 +31,8 @@ export const Upload = defineComponent({
     const reUpload = (callback?: (medias: Media[]) => void) => {
       Taro.chooseMedia({
         count: props.maxFileSize || 1,
-        mediaType: ['image'],
-        soruceType: ['album', 'camera'],
+        sourceType: ['album'],
         maxDuration: 30,
-        camera: 'back',
         success: async (selected: any) => {
           const {tempFiles: files} = selected
           for (const f of files) {
@@ -86,31 +83,31 @@ export const Upload = defineComponent({
     }
 
     return () => renderFormItem(props, slots,
-      () => props.modelValue?.length
-        ? h(NsUploadButton, {
-            modelValue: props.modelValue,
-            maxFileSize: props.maxFileSize,
-            handler: props.handler,
-            deletable: props.deletable,
-            previewMode: props.previewMode,
-            disabled: props.disabled,
-            onUpdate: props['onUpdate:modelValue']
-          })
-        : h(NsImage, {
-            class: [
-              'ns-upload-item',
-              ...props.modelValue?.length ? ['uploaded'] : ['empty'],
-            ],
-            style: getStyle(),
-            onClick
-          }, props.deletable !== false ? h(NsButton, {
-                icon: 'delete',
-                class: 'delete-button',
-                fill: 'negtive',
-                size: 'xs',
-                onClick: onDeleteClick
-              }) : void 0
-            )
+      () => !props.modelValue?.length
+      ? h(NsUploadButton, {
+          modelValue: props.modelValue,
+          maxFileSize: props.maxFileSize,
+          handler: props.handler,
+          deletable: props.deletable,
+          previewMode: props.previewMode,
+          disabled: props.disabled,
+          onUpdate: props['onUpdate:modelValue']
+        })
+      : h(NsImage, {
+          class: [
+            'ns-upload-item',
+            ...props.modelValue?.length ? ['uploaded'] : ['empty'],
+          ],
+          style: getStyle(),
+          onClick
+        }, props.deletable !== false ? h(NsButton, {
+              icon: 'delete',
+              class: 'delete-button',
+              fill: 'negtive',
+              size: 'xs',
+              onClick: onDeleteClick
+            }) : void 0
+          )
         )
   }
 })

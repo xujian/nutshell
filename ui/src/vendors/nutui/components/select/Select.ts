@@ -33,6 +33,7 @@ export const Select = (props: SelectProps, { slots }: Omit<SetupContext, 'expose
       return
     }
     pickerOpen.value = true
+    $bus.emit('picker.open')
   }
   const closePicker = () => {
     pickerOpen.value = false
