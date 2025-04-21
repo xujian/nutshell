@@ -526,6 +526,9 @@
 .search-bar1 {
   .ns-form-item {
     width: 320px;
+    .ant-form-item-label {
+      min-width: auto;
+    }
   }
 }
 .table-bar {

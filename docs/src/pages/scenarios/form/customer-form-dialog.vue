@@ -57,7 +57,7 @@
       <ns-button color="primary" variant="outlined">影像资料</ns-button>
     </div>
     <template #footer>
-      <ns-button @click="visible = false">取消</ns-button>
+      <ns-button variant="outlined" color="neutral" @click="visible = false">取消</ns-button>
       <ns-button color="primary" @click="handleSubmit">确定</ns-button>
     </template>
   </ns-dialog>
@@ -66,7 +66,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue';
 
-const visible = ref(false);
+const visible = ref(true);
 const form = ref();
 
 const formData = reactive({

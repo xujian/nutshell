@@ -139,7 +139,7 @@
     </ns-card>
 
 
-    <ns-dialog v-model="showDialog" centered title="创建用户" width="940px">
+    <ns-dialog v-model="showDialog" centered title="创建用户" width="980px">
       <ns-form ref="dialogFormRef" v-model="dialogFormData">
         <ns-input label="姓名" v-model="dialogFormData.name" name="name" placeholder="请输入姓名" :rules="['required']" />
         <ns-input label="手机号" v-model="dialogFormData.phone" name="phone" placeholder="请输入手机号" :rules="['required']" />

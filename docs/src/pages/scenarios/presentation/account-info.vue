@@ -72,7 +72,7 @@
     </ns-card>
 
     <ns-card style="margin-top: 20px; --ns-spacing: 20px; background: #fff; flex: 1" class="table-bar">
-      <ns-form ref="formRef" v-model="formData" class="flex-row wrap">
+      <ns-form ref="formRef" v-model="formData" class="search-bar1 flex-row wrap">
         <ns-input variant="solid" label="订单编号" v-model="formData.orderId" name="orderId" placeholder="请输入订单编号" />
         <ns-select variant="solid" label="产品名称" v-model="formData.productName" name="productName" :options="productOptions" placeholder="请选择产品名称" />
         <ns-select variant="solid" label="市场团队" v-model="formData.marketTeam" name="marketTeam" :options="marketTeamOptions" placeholder="请选择市场团队" />

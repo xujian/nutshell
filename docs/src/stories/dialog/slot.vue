@@ -33,7 +33,7 @@
     </ns-form>
     <template #footer>
       <ns-row justify="end">
-        <ns-button color="warning" @click="onPostponeClick">延后跟进</ns-button>
+        <ns-button variant="outlined" color="neutral" @click="onPostponeClick">延后跟进</ns-button>
         <ns-button color="primary" @click="onFollowupClick">立即跟进</ns-button>
       </ns-row>
     </template>

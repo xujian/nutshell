@@ -32,6 +32,23 @@
       <ns-list dense :data="specs" variant="plain">
       </ns-list>
     </ns-card>
+    <ns-card fill="#fff" class="card-5">
+      <ns-column align="stretch" justify="between">
+        <div class="flex-grow">
+          <h3>Estee Lauder Blockbuster</h3>
+          <ns-number :value="512" prefix="$" size="sm" class="my-md"></ns-number>
+          <ns-row justify="between">
+            <ns-chip color="#000" foreground="#fff">海外直邮</ns-chip>
+            <ns-chip>亚马逊</ns-chip>
+          </ns-row>
+        </div>
+        <ns-image class="picture"
+          :r="12"
+          ratio="2"
+          src="https://simple.shensi.tech/system-assets/pictures/perfume.jpg"
+          />
+      </ns-column>
+    </ns-card>
   </ns-row>
 </template>
 
