@@ -21,7 +21,7 @@
 
         <ns-card fill="#fff" class="mb-md">
           <h3 class="mb-sm">签署方信息</h3>
-          <ns-table :rows="formData.签署方列表" :hasPagination="false">
+          <ns-table :rows="formData.签署方列表" :hasPagination="false" :tooltipMethod="tooltipMethod">
             <ns-table-column field="签署主体" label="签署主体" align="left" />
             <ns-table-column field="签署方代号" label="签署方代号" align="left" />
             <ns-table-column field="签署数量" label="签署数量" align="left" />
@@ -36,7 +36,7 @@
 
         <ns-card fill="#fff" class="mb-md">
           <h3 class="mb-sm">合同金额</h3>
-          <ns-table :rows="formData.参数列表" :hasPagination="false">
+          <ns-table :rows="formData.参数列表" :hasPagination="false" :tooltipMethod="tooltipMethod">
             <ns-table-column-number label="序号" width="55" align="center" fixed="left" />
             <ns-table-column field="参数类型" label="参数类型" align="left" />
             <ns-table-column field="参数名" label="参数名" align="left" />
@@ -176,6 +176,10 @@ const 提交合同 = async () => {
 
   // TODO: 调用提交合同接口
   $n.toast('提交成功', { type: 'success' })
+}
+
+function tooltipMethod(row: any) {
+ return ['操作', '参数内容'].includes(row.column.id) ? '' : null
 }
 </script>
 

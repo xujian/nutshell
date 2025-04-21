@@ -134,6 +134,9 @@
         flex-wrap: nowrap;
       }
     }
+    &:not(:last-child) {
+      margin-inline-end: 40px;
+    }
   }
   .ns-search {
     width: 300px;

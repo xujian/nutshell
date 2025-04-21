@@ -110,6 +110,7 @@
         borders="all"
         cache-columns="1"
         :hasPagination="false"
+        :tooltipMethod="tooltipMethod"
         has-column-control
         :filter-handler="filterHandler"
       >
@@ -229,8 +230,6 @@ function fetchTableData(){
 }
 fetchTableData()
 
-
-
 const showDialog = ref(false)
 const showImportDrawer = ref(false)
 const currentStep = ref(0)
@@ -345,6 +344,10 @@ const roleOptions = ref([
   { label: '管理员', value: 'admin' },
   { label: '普通用户', value: 'user' }
 ])
+
+function tooltipMethod(row: any) {
+ return ['操作'].includes(row.column.id) ? '' : null
+}
 </script>
 
 <style scoped lang="scss">

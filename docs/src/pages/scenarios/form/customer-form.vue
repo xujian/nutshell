@@ -18,6 +18,7 @@
         borders="all"
         cache-columns="1"
         :hasPagination="false"
+        :tooltipMethod="tooltipMethod"
         has-column-control
         :filter-handler="filterHandler"
       >
@@ -388,6 +389,10 @@ const handleDelete = (row) => {
 const customerFormDialogRef = ref()
 const handleAdd = () => {
   customerFormDialogRef.value.open()
+}
+
+function tooltipMethod(row: any) {
+ return ['操作'].includes(row.column.id) ? '' : null
 }
 </script>
 

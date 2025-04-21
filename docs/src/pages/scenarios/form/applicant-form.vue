@@ -317,7 +317,7 @@
           </template>
         </ns-form>
 
-        <div v-if="isEditing" class="mt-lg flex flex-col gap-md">
+        <div v-if="isEditing" class="flex flex-col gap-md" style="padding: 20px">
           <ns-button variant="outlined" color="primary" class="w-full" @click="addCoApplicant">
             添加共同申请人
           </ns-button>

@@ -82,7 +82,7 @@
         <ns-button color="primary">搜索</ns-button>
       </ns-form>
 
-      <ns-table :rows="tableData" :hasPagination="false">
+      <ns-table :rows="tableData" :hasPagination="false" :tooltipMethod="tooltipMethod">
         <ns-table-column field="category" label="权益类目" />
         <ns-table-column field="priceType" label="定价类型" />
         <ns-table-column field="price" label="定价" />
@@ -191,6 +191,10 @@ const handleReset = () => {
     salesman: null,
     dateRange: []
   }
+}
+
+function tooltipMethod(row: any) {
+ return ['操作'].includes(row.column.id) ? '' : null
 }
 </script>
 

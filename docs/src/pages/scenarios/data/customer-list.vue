@@ -14,6 +14,7 @@
         borders="all"
         cache-columns="1"
         :hasPagination="false"
+        :tooltipMethod="tooltipMethod"
         has-column-control
         :filter-handler="filterHandler"
       >
@@ -82,7 +83,7 @@
         <ns-table-column field="submitUserId" label="邀约提交人员" width="180" />
         <ns-table-column-datetime field="inputDate" label="邀约提交时间" width="170" />
         <ns-table-column field="userIds" :hidden="true" label="协助谈单人员" width="180" />
-        <ns-table-column field="userIds" label="是否确认" width="180" />
+        <ns-table-column field="invitePlace" label="是否确认" width="180" />
         <ns-table-column field="num" label="客户人数" width="100" />
         <ns-table-column-datetime field="confirmStart" label="确定上门时间" width="200" />
         <ns-table-column field="confirmUserId" label="确定提交人员" width="160" />
@@ -228,14 +229,14 @@ async function lookupNamesFromId(source: any[], columns: string[]) {
 
 function getStageStyle(value: string) {
   const styles: Record<string, string> = {
-    线索: 'color: #2dab49;background: rgba(45, 171, 73, 0.1);',
-    上门: 'color: #4185e1;background: rgba(65, 133, 225, 0.1);',
-    submitOrder: 'color: #efc50d;background: rgba(242, 205, 43, 0.1);',
-    confirmOrder: 'color: #7734d3;background: rgba(198, 162, 248, 0.1);',
-    loan: 'color: #f96188;background: rgba(252, 149, 176, 0.1);',
-    finishOrder: 'color: #fd6433;background: rgba(255, 169, 142, 0.1);',
-    终止: 'color: #767676;background: rgba(205, 205, 205, 0.1);',
-    结单: 'color: #1AC095;background: rgba(44, 192, 154, 0.1);'
+    线索: 'color: #2dab49;background: rgba(45, 171, 73, 0.1);border-color: #2dab49;',
+    上门: 'color: #4185e1;background: rgba(65, 133, 225, 0.1);border-color: #4185e1;',
+    submitOrder: 'color: #efc50d;background: rgba(242, 205, 43, 0.1);bordrer-color: #efc50d;',
+    confirmOrder: 'color: #7734d3;background: rgba(198, 162, 248, 0.1);border-color: #7734d3;',
+    loan: 'color: #f96188;background: rgba(252, 149, 176, 0.1);border-color: #f96188;',
+    finishOrder: 'color: #fd6433;background: rgba(255, 169, 142, 0.1);border-color: #fd6433;',
+    终止: 'color: #767676;background: rgba(205, 205, 205, 0.1);border-color: #767676;',
+    结单: 'color: #1AC095;background: rgba(44, 192, 154, 0.1);border-color: #1AC095;'
   }
   return styles[value] ?? styles.intention
 }
@@ -380,6 +381,10 @@ const handleExport = () => {
 // 删除
 const handleDelete = (row) => {
   console.log(row)
+}
+
+function tooltipMethod(row: any) {
+ return ['操作', '标签'].includes(row.column.id) ? '' : null
 }
 </script>
 

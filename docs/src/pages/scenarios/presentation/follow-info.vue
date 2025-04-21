@@ -18,6 +18,7 @@
         class="no-border"
         cache-columns="1"
         :hasPagination="false"
+        :tooltipMethod="tooltipMethod"
         has-column-control
         :filter-handler="filterHandler"
       >
@@ -216,6 +217,10 @@ const handleSubmitFollow = async () => {
     content: '',
     attachments: []
   })
+}
+
+function tooltipMethod(row: any) {
+ return ['操作'].includes(row.column.id) ? '' : null
 }
 
 onMounted(() => {

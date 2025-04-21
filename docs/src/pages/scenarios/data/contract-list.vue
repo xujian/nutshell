@@ -177,7 +177,7 @@ async function fetchTableData(){
 fetchTableData()
 
 function tooltipMethod(row: any) {
- console.log(row)
+ return ['操作'].includes(row.column.id) ? '' : null
 }
 </script>
 

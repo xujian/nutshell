@@ -12,6 +12,7 @@ export default function chips (props: TableColumnChipsProps) {
   const style = props.extraStyle
   const chip = (value: UniDataItem, row: Record<string, any>) => h(NsChip, {
     label: value.label,
+    variant: props.variant ??  'outlined',
     color: props.color ?? 'primary',
     ...style && {
         style: typeof style === 'string'
@@ -83,7 +84,9 @@ export default function chips (props: TableColumnChipsProps) {
     //     }
     //   )
     return h(NsChips, {
-      items
+      items,
+      variant: props.variant ??  'outlined',
+      color: props.color ?? 'primary',
     })
   }
 }
