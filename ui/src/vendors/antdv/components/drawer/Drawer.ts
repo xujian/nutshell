@@ -16,7 +16,7 @@ export const Drawer = (props: DrawerProps, ctx: SetupContext) => {
     ].join(' '),
     open: props.modelValue,
     title: props.title,
-    closable: false,
+    closable: props.closable,
     width: props.width,
     style: styles,
     destroyOnClose: props.destroyOnClose,
