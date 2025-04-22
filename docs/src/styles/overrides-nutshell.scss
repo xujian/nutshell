@@ -202,11 +202,34 @@
     }
   }
   // file
+  .ns-files {
+    --gap: 10px;
+  }
   .ns-file {
     --ns-r: 4px;
     --ns-fill: #f7f8fa;
     .icon-item, .thumb-item {
       border: 1px solid #efefef;
+      width: 100px;
+      height: 100px;
+      .ns-image {
+        height: 100%;
+      }
+    }
+    &.files-item {
+      width: 100px;
+      height: auto;
+      flex-direction: column;
+      gap: 2px;
+      .filename {
+        width: 100%;
+        gap: 0;
+        justify-content: start;
+        .base {
+          flex: none;
+          max-width: 77%;
+        }
+      }
     }
   }
 

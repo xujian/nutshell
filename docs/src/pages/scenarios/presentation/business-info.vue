@@ -4,15 +4,15 @@
     <ns-row justify="start" :gap="20">
       <ns-card fill="#fff" r="10" title="当前在途订单" style="width: 380px;">
         <template #titleAfter> (已进件未归档) </template>
-        <ns-number :value="25361.32" header="35笔" prefix="￥" suffix="万"> </ns-number>
+        <ns-number :value="25361.32" :fontSize="22" header="35笔" suffix="万"> </ns-number>
       </ns-card>
       <ns-card fill="#fff" r="10" title="待放款" style="width: 380px;">
         <template #titleAfter> (较昨日 ↓ 0.00%) </template>
-        <ns-number :value="1050.0" header="2笔" prefix="￥" suffix="万"> </ns-number>
+        <ns-number :value="1050.0":fontSize="22"  header="2笔" suffix="万"> </ns-number>
       </ns-card>
       <ns-card fill="#fff" r="10" title="已放款" style="width: 380px;">
         <template #titleAfter> (较昨日 ↓ 0.00%) </template>
-        <ns-number :value="0" header="0笔" prefix="￥" suffix="万"> </ns-number>
+        <ns-number :value="0" :fontSize="22" header="0笔" suffix="万"> </ns-number>
       </ns-card>
     </ns-row>
 
@@ -50,13 +50,13 @@
     <ns-card fill="#fff" r="10" title="放款统计" style="margin-top: 20px;">
       <ns-row justify="start" :gap="20">
         <ns-card fill="#f1f6fa" r="10" title="今日/Day" style="width: 230px;">
-          <ns-number :value="0" header="0笔" prefix="￥" suffix="万"> </ns-number>
+          <ns-number :value="12.3" :fontSize="22" header="0笔" suffix="万"> </ns-number>
         </ns-card>
         <ns-card fill="#f1f6fa" r="10" title="本周/Week" style="width: 230px;">
-          <ns-number :value="0" header="0笔" prefix="￥" suffix="万"> </ns-number>
+          <ns-number :value="13.4" :fontSize="22" header="0笔" suffix="万"> </ns-number>
         </ns-card>
         <ns-card fill="#f1f6fa" r="10" title="本月/Month" style="width: 230px;">
-          <ns-number :value="0" header="0笔" prefix="￥" suffix="万"> </ns-number>
+          <ns-number :value="14.5" :fontSize="22" header="0笔" suffix="万"> </ns-number>
         </ns-card>
       </ns-row>
     </ns-card>
@@ -65,13 +65,13 @@
     <ns-card fill="#fff" r="10" title="回款统计" style="margin-top: 20px;">
       <ns-row justify="start" :gap="20">
         <ns-card fill="#f1f6fa" r="10" title="今日/Day" style="width: 230px;">
-          <ns-number :value="0" header="0笔" prefix="￥" suffix="万"> </ns-number>
+          <ns-number :value="21.6" :fontSize="22" header="0笔" suffix="万"> </ns-number>
         </ns-card>
         <ns-card fill="#f1f6fa" r="10" title="本周/Week" style="width: 230px;">
-          <ns-number :value="0" header="0笔" prefix="￥" suffix="万"> </ns-number>
+          <ns-number :value="24.8" :fontSize="22" header="0笔" suffix="万"> </ns-number>
         </ns-card>
         <ns-card fill="#f1f6fa" r="10" title="本月/Month" style="width: 230px;">
-          <ns-number :value="0" header="0笔" prefix="￥" suffix="万"> </ns-number>
+          <ns-number :value="29.7" :fontSize="22" header="0笔" suffix="万"> </ns-number>
         </ns-card>
       </ns-row>
     </ns-card>

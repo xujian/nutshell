@@ -1,26 +1,28 @@
 <template>
   <ns-page class="account-info">
     <ns-card title="数据概览" fill="#fff" style="padding: 10px;">
-      <ns-row :gap="20" justify="start">
+      <ns-row :gap="16" justify="start">
         <ns-card fill="#F5F8FF" :r="5" class="account-card">
-          <ns-row justify="start" :gap="5">
-            <img style="width: 20px; height: 20px;" src="https://cdn.ddjf.com/static/images/CRM/money.png" alt="">
-            <div>云豆余额</div>
-          </ns-row>
-          <ns-row justify="start">
-            <ns-number :value="567288" :fontSize="20" header="" prefix="" suffix=""> </ns-number>
-            <ns-button color="primary" size="xs">充值</ns-button>
-          </ns-row>
+          <ns-column justify="between">
+            <ns-row justify="start" :gap="5">
+              <img style="width: 20px; height: 20px;" src="https://cdn.ddjf.com/static/images/CRM/money.png" alt="">
+              <div>云豆余额</div>
+            </ns-row>
+            <ns-row justify="start">
+              <ns-number :value="567288" :fontSize="22" header="" prefix="" suffix="" style="padding: 0;"> </ns-number>
+              <ns-button color="primary" size="xs">充值</ns-button>
+            </ns-row>
+          </ns-column>
         </ns-card>
         <ns-card fill="#F9F9F9" :r="5" class="account-card">
           <ns-row justify="start" :gap="5">
             <div style="width: 6px; height: 6px; border-radius: 50%; background: #0CC991;"></div>
             <div>企业风险查询报告</div>
           </ns-row>
-          <ns-row align="end" justify="start">
-            <ns-number :value="567288" :fontSize="20" prefix="" suffix="笔" style="padding: 0;">
+          <ns-row align="end" justify="start" style="padding-left: 10px">
+            <ns-number :value="567288" :fontSize="22" prefix="" suffix="笔" style="padding: 0;">
               <template #header>
-                <ns-chip variant="soft" style="width: fit-content; margin-bottom: 5px">企明星</ns-chip>
+                <ns-chip variant="soft" style="margin-bottom: 4px; zoom: 0.9; width: fit-content; margin-bottom: 5px">企明星</ns-chip>
               </template>
             </ns-number>
             <ns-button variant="plain" color="primary" size="xs">调整</ns-button>
@@ -31,10 +33,10 @@
             <div style="width: 6px; height: 6px; border-radius: 50%; background: #0CC991;"></div>
             <div>风险查询-初审</div>
           </ns-row>
-          <ns-row align="end" justify="start">
-            <ns-number :value="567288" :fontSize="20" prefix="" suffix="笔" style="padding: 0;">
+          <ns-row align="end" justify="start" style="padding-left: 10px">
+            <ns-number :value="567288" :fontSize="22" prefix="" suffix="笔" style="padding: 0;">
               <template #header>
-                <ns-chip variant="soft" style="width: fit-content; margin-bottom: 5px">AI审批</ns-chip>
+                <ns-chip variant="soft" style="margin-bottom: 4px; zoom: 0.9; width: fit-content; margin-bottom: 5px">AI审批</ns-chip>
               </template>
             </ns-number>
             <ns-button variant="plain" color="primary" size="xs">调整</ns-button>
@@ -45,10 +47,10 @@
             <div style="width: 6px; height: 6px; border-radius: 50%; background: #0CC991;"></div>
             <div>风险查询-终审</div>
           </ns-row>
-          <ns-row align="end" justify="start">
-            <ns-number :value="81" :fontSize="20" prefix="" suffix="笔" style="padding: 0;">
+          <ns-row align="end" justify="start" style="padding-left: 10px">
+            <ns-number :value="81" :fontSize="22" prefix="" suffix="笔" style="padding: 0;">
               <template #header>
-                <ns-chip variant="soft" style="width: fit-content; margin-bottom: 5px">AI审批</ns-chip>
+                <ns-chip variant="soft" style="margin-bottom: 4px; zoom: 0.9; width: fit-content; margin-bottom: 5px">AI审批</ns-chip>
               </template>
             </ns-number>
             <ns-button variant="plain" color="primary" size="xs">调整</ns-button>
@@ -59,10 +61,10 @@
             <div style="width: 6px; height: 6px; border-radius: 50%; background: #0CC991;"></div>
             <div>风险查询-核婚</div>
           </ns-row>
-          <ns-row align="end" justify="start">
-            <ns-number :value="81" :fontSize="20" prefix="" suffix="笔" style="padding: 0;">
+          <ns-row align="end" justify="start" style="padding-left: 10px">
+            <ns-number :value="81" :fontSize="22" prefix="" suffix="笔" style="padding: 0;">
               <template #header>
-                <ns-chip variant="soft" style="width: fit-content; margin-bottom: 5px">AI审批</ns-chip>
+                <ns-chip variant="soft" style="margin-bottom: 4px; zoom: 0.9; width: fit-content; margin-bottom: 5px">AI审批</ns-chip>
               </template>
             </ns-number>
             <ns-button variant="plain" color="primary" size="xs">调整</ns-button>
