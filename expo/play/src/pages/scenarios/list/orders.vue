@@ -11,6 +11,7 @@
       <ns-tabs :items="tabs"
         :r="0"
         fill="#ffffff88"
+        size="lg"
         v-model="tab" />
       </ns-page-header>
     <ns-page-content>
