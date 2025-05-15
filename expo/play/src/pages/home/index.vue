@@ -258,6 +258,11 @@ const groups: { title: string, data: ListItemProps[] }[] = [
         link: '/pages/components/card/card',
       },
       {
+        title: '可滚动区域',
+        caption: '<ns-scrollable>',
+        link: '/pages/components/scrollable/scrollable',
+      },
+      {
         title: '横向排列',
         caption: '<ns-row>',
         link: '/pages/components/row/row',

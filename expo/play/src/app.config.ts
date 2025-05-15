@@ -31,6 +31,7 @@ const components = [
   'checkbox/checkbox',
   'files/files',
   'list/list',
+  'scrollable/scrollable',
 ]
 
 const scenarios = [
