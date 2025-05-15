@@ -25,6 +25,7 @@ import { Upload } from './upload'
 import { Empty } from './empty'
 import { Popover } from './popover'
 import { Plank } from './plank'
+import { Scrollable } from './scrollable'
 import { VendorComponent } from '../../../shared'
 
 const components: Record<string, VendorComponent> = {
@@ -90,7 +91,9 @@ const components: Record<string, VendorComponent> = {
   Empty,
   // @ts-ignore
   Popover,
-  Plank
+  Plank,
+  // @ts-ignore
+  Scrollable,
 }
 
 export default components

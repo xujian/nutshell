@@ -24,6 +24,7 @@ import { Pagination } from './pagination'
 import { Facts, FactsItem } from './facts'
 import { Upload } from './upload'
 import { Page } from './page'
+import { Scrollable } from './scrollable'
 
 const components = {
   Form,
@@ -67,7 +68,8 @@ const components = {
   FactsItem,
   Upload,
   Display,
-  Page,
+  Scrollable,
+  Page
 }
 
 export default components
