@@ -23,6 +23,12 @@ export const factsProps = {
   columns: {
     type: Number,
   },
+  /**
+   * 字体大小
+   */
+  fontSize: {
+    type: String
+  },
   ...useVariantProps(),
   ...useDesignProps(),
   ...useFlexProps(),
@@ -37,6 +43,7 @@ const factsEmits: FactsEmits = {
 export type FactsSlots = {
   default: never,
   item: never
+  fontSize: String
 }
 
 export type FactsProps = MakePropsType<typeof factsProps, FactsEmits>
@@ -64,6 +71,9 @@ export const factsItemProps = {
   },
   value: {
     type: String,
+  },
+  fontSize: {
+    type: String
   },
   ...useFlexProps(),
 }

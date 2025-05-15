@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="list-messages-page panel-page" fill="neutral">
+  <ns-page class="list-messages-page panel-page" fill="#f1f2f4">
     <ns-page-header title="订单" fill="#ffffff"
       :blur="40" has-back-button>
       <ns-row justify="stretch" gap>
@@ -18,7 +18,6 @@
       <ns-repeator class="demo-repeator"
         direction="column"
         :data
-        :group-by
         align="stretch"
         gap
         v-slot="item">
@@ -26,9 +25,9 @@
             class="full-width"
             :caption="`进件时间: ${item.进件时间}`"
             fill="#ffffff"
-            body-fill="#00000022"
-            shadow>
-            <ns-facts :items="toFact(item)" />
+            :body-fill="getBgColor(item)"
+            >
+            <ns-facts fontSize="font-md" :items="toFact(item)" />
             <template #icon>
               <ns-avatar :fill="colors[item.type]" :edge="10" :src="images[item.type]" />
             </template>
@@ -178,6 +177,12 @@ const toFact = (item) => {
       value: item[key]
     }
   }).filter(f => !['type', 'status'].includes(f.label))
+}
+
+const getBgColor = (item) => {
+  let isJy = item.type === '交易周转'
+  return isJy ? 'linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(241.09, 247.15, 255, 1) 117.45%)' :
+  'linear-gradient(270deg, rgba(255, 255, 255, 1), rgba(241.29, 251.58, 246.83, 1) 163.889%)'
 }
 </script>
 

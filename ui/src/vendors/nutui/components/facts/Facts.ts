@@ -15,7 +15,7 @@ export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose
       ...props.direction ==='column'
         ? ['column', 'align-stretch', 'justify-start']
         : ['row', 'align-center', 'justify-between'],
-      'font-sm'
+      props.fontSize || 'font-sm'
     ]
   }, [
     h('div', {
@@ -31,10 +31,9 @@ export const FactsItem = (props: FactsItemProps, ctx: Omit<SetupContext, 'expose
 }
 
 export const Facts = (props: FactsProps & MarginProps, ctx: Omit<SetupContext, 'expose'>) => {
-
+  const fontSize = props.fontSize
   const slots = ctx.slots.default
-    || (() => props.items?.map((item) => h(FactsItem, item as FactsItemProps)))
-
+    || (() => props.items?.map((item) => h(FactsItem, {...item, fontSize} as FactsItemProps)))
   return h('div', {
     class: [
       'ns-facts',
