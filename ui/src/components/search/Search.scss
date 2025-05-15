@@ -1,15 +1,18 @@
 .ns-search.with-design {
-  border-radius: var(--ns-r);
-  border-color: var(--stroke, transparent);
+  border-color: #ccc;
   border-style: solid;
   border-width: 1px;
-  background-color: var(--fill, var(--ns-fill));
+  background-color: #fff;
   .content {
     padding: 2px 6px;
     gap: var(--ns-spacing-sm);
+    box-sizing: border-box;
+    .nut-input{
+      padding: 3px 2px;
+    }
   }
   .icon {
-    background-image: url(https://cdn.ddjf.com/static/images/wx-yunservice/search-icon.png);
+    background-image: url(https://cdn.ddjf.com/static/images/fnfundkit/m-search.png);
     width: 16px;
     height: 16px;
     background-position: center;
@@ -18,9 +21,6 @@
   .input {
     background-color: transparent;
     border: none;
-    height: 24px;
-    line-height: 24px;
-    padding: 0 10px;
     flex-grow: 1;
     font-size: 14px;
     color: var(--ns-text);

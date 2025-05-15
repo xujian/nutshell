@@ -6,7 +6,7 @@
         <ns-dropdown label="筛选" :items="filters"
           variant="plain"
           fill="#fff" v-model="filter" class="shrink" />
-        <ns-search placeholder="搜索订单" color="#fff" variant="outlined" />
+        <ns-search placeholder="搜索订单" color="#fff" variant="outlined" style="margin-right: 20px;" />
       </ns-row>
       <ns-tabs :items="tabs"
         :r="0"

@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "订单列表",
+          "pathName": "pages/scenarios/list/orders",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
           "name": "pages/scenarios/presentation/order",
           "pathName": "pages/scenarios/presentation/order",
           "query": "",
