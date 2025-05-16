@@ -29,7 +29,7 @@ export const Dropdown = defineComponent({
         color: props.fill || 'primary',
         iconPosition: 'end',
         onClick: open,
-        icon: 'dropdown'
+        icon: 'https://cdn.ddjf.com/static/images/fnfundkit/arrow-down.png'
       })
 
     const menu = () => h(NsMenu, {
