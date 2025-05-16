@@ -200,7 +200,9 @@ export const Scrollable = defineComponent({
             indicator(),
             content(),
           ]
-        : content()
+        : [ 
+            content(),
+          ]
     })
   }
 })
