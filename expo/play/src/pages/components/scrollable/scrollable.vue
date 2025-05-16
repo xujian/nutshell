@@ -105,9 +105,10 @@ const onScrollBottomReached = () => {
   console.log('onScrollBottomReached')
 }
 
-const onRefresh = async () => {
-  console.log('onRefresh')
-  return new Promise(resolve => setTimeout(resolve, 1000))
+const onRefresh = async (callback: () => void) => {
+  setTimeout(() => {
+    callback()
+  }, 1000)
 }
 
 const codes = [
