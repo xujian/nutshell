@@ -42,6 +42,8 @@ import { NsImage } from './image'
 import { NsPreview } from './preview'
 import { NsAvatar } from './avatar'
 import { NsPlank } from './plank'
+import { NsLoading } from './loading'
+import { NsScrollable } from './scrollable'
 
 const components = {
   NsApp,
@@ -119,7 +121,9 @@ const components = {
   NsSearch,
   NsPreview,
   NsAvatar,
-  NsPlank
+  NsPlank,
+  NsLoading,
+  NsScrollable,
 }
 
 const properties = Object.fromEntries(

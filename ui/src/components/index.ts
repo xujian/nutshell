@@ -16,13 +16,10 @@ export * from './tabbar'
 export * from './card'
 export * from './list'
 export * from './menu'
-// move table to the last for
-// table uses other basic components
 export * from './stepper'
 export * from './drawer'
 export * from './sheet'
 export * from './radio'
-export * from './table'
 export * from './empty'
 export * from './pagination'
 export * from './repeator'
@@ -41,3 +38,7 @@ export * from './preview'
 export * from './avatar'
 export * from './plank'
 export * from './scrollable'
+export * from './loading'
+// move table to the last for
+// table uses other basic components
+export * from './table'

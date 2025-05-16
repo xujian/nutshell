@@ -1,0 +1,50 @@
+.loading {
+  .dots,
+  .dots::before,
+  .dots::after {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    animation: loading-dots 1s infinite linear alternate;
+    background-color: #667085;
+    content: "";
+    display: inline-block;
+    top: 0;
+  }
+  .dots {
+    position: relative;
+    animation-delay: 0.5s;
+    &::before {
+      left: -12px;
+      animation-delay: 0s;
+    }
+    &::after {
+      left: 12px;
+      animation-delay: 1s;
+    }
+  }
+  .dots::before,
+  .dots::after {
+    position: absolute;
+  }
+}
+
+@keyframes loading-dots {
+  0% {
+    background-color: #667085;
+  }
+  50%,
+  100% {
+    background-color: rgba(102, 112, 133, 0.3);
+  }
+}
+
+@keyframes loading-dots-avatar {
+  0% {
+    background-color: #155EEF;
+  }
+  50%,
+  100% {
+    background-color: rgba(21, 94, 239, 0.3);
+  }
+}
