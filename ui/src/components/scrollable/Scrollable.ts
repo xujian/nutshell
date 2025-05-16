@@ -30,7 +30,7 @@ export type ScrollableEmits = {
   /**
    * 下拉刷新时
    */
-  refresh: () => void,
+  refresh: (callback: () => void) => void,
   /**
    * 上拉加载
    */
@@ -38,7 +38,7 @@ export type ScrollableEmits = {
 }
 
 export const scrollableEmits: ScrollableEmits = {
-  refresh: () => true,
+  refresh: (callback: () => void) => true,
   bottomReached: () => true,
 }
 
