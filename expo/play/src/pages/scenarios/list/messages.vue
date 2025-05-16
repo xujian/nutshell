@@ -1,8 +1,8 @@
 <template>
-  <ns-page class="messages-page" fill="neutral">
-    <ns-page-header title="消息中心" fill="#ffffff66"
+  <ns-page class="messages-page" fill="#f1f2f4">
+    <ns-page-header title="消息中心" fill="#ffffff"
       :blur="40" has-back-button>
-      <ns-tabs v-model="currentTab" :items="tabs" />
+      <ns-tabs v-model="currentTab" :items="tabs"  size="lg" />
     </ns-page-header>
     <ns-page-content>
       <ns-repeator
@@ -14,33 +14,16 @@
           fill="#ffffff"
           :class="['message-card', message.read ? 'read' : 'unread']"
           :title="message.title"
-          :caption="message.time"
           @click="handleReadMessage(message)">
           <ns-column justify="stretch" align="stretch" class="grow" :gap="4">
             <p class="message-content justify">{{ message.content }}</p>
           </ns-column>
           <template #corner>
-            <ns-chip 
-              size="xs" 
-              :label="message.type" 
-              :fill="getMessageColor(message.type)" />
+            <div class="time">{{ message.time }}</div>
           </template>
         </ns-card>
       </ns-repeator>
-      
-      <h3>数据规格</h3>
-      <code-view language="javascript" :code="JSON.stringify(messages, null, 2)" />
-      <callout title="说明" fill="#ffffff">
-        <p>消息中心使用 &lt;ns-repeator&gt; 和 &lt;ns-card&gt; 组件实现</p>
-      </callout>
     </ns-page-content>
-    <ns-page-footer :blur="40">
-      <ns-button class="mark-all-button full-width" 
-        label="标记全部已读" 
-        color="primary"
-        block 
-        @click="handleMarkAllRead" />
-    </ns-page-footer>
   </ns-page>
 </template>
 
@@ -254,13 +237,6 @@ const handleReadMessage = (message) => {
   console.log('阅读消息', message.id)
 }
 
-const handleMarkAllRead = () => {
-  messages.value.forEach(msg => {
-    msg.read = true
-  })
-  console.log('标记全部已读')
-}
-
 const handleClearAll = () => {
   console.log('清空所有消息')
 }
@@ -269,21 +245,22 @@ const handleClearAll = () => {
 <style lang="scss">
 .messages-page {
   .message-card {
+    .time{
+      color: rgba(#353535, 0.4);
+      font-size: 12px;
+    }
     &.read {
-      background-color: #ffffff88;
       --foreground: #999;
       .title {
         .h5 {
           font-weight: normal;
+          color: var(--ns-neutral)
         }
       }
       .message-content {
         color: var(--ns-neutral);
       }
     }
-    &.unread {
-      background-color: #ffffff;
-    }
   }
 }
-</style> 
+</style>
