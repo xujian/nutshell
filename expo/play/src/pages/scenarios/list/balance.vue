@@ -1,11 +1,11 @@
 <template>
-  <ns-page class="withdraw-page" fill="neutral">
+  <ns-page class="withdraw-page" fill="#f1f2f4">
     <ns-page-header curved
       fill="#3B393C"
       title="余额" has-back-button>
     </ns-page-header>
     <ns-page-content>
-      <ns-card class="balance-card relative" fill="#FFD700">
+      <ns-card class="balance-card relative" gradient="#FFEBC1,#FFB875/90">
         <ns-row justify="between" align="end">
           <ns-number :value="余额"
             header="可提现余额(元)"
@@ -93,7 +93,7 @@ const 交易记录 = ref([
     id: 'w13',
     变更类型: '收益',
     金额: 3,
-    客户: '陈大郎', 
+    客户: '陈大郎',
     余额: 75,
     时间: '2024-12-20 09:15:00'
   },
@@ -223,6 +223,19 @@ const 交易记录 = ref([
       background-position: right center;
       background-size: 12px;
       white-space: nowrap;
+    }
+  }
+  .sheet-scroll-view-content{
+    padding: 0 !important;
+    height: 400px !important;
+    .list-filter-picker-title{
+      line-height: 44px;
+    }
+    .list-filter-picker-btn{
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
     }
   }
 }
