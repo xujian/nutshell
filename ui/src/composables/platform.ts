@@ -23,7 +23,8 @@ export interface PlatformInstance {
   weixin?: boolean,
   dingding?: boolean,
   screen?: Screen,
-  mock?: Device
+  mock?: Device,
+  h5?: boolean,
 }
 
 const $platform = reactive<PlatformInstance>({})
@@ -61,6 +62,7 @@ function getPlatform (): PlatformInstance {
         height: window.innerHeight,
       },
       mock: app.mock,
+      h5: true,
     }
   } else {
     const win = Taro.getWindowInfo()
@@ -80,6 +82,7 @@ function getPlatform (): PlatformInstance {
         height: win.screenHeight,
       },
       mock: app.mock,
+      h5: false,
     }
   }
 }
