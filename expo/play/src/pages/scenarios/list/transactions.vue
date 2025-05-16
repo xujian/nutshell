@@ -18,7 +18,7 @@
         align="stretch"
         gap>
         <template #prepend="item">
-          <ns-avatar :src="item.type" color="negtive" />
+          <ns-avatar :src="item.type" circle />
         </template>
       </ns-list>
     </ns-page-content>
@@ -121,5 +121,16 @@ const data = ref([
 
 </script>
 
-<style scoped>
+<style lang="scss">
+.demo-list{
+  .list-item{
+    .number{
+      color: #9E7B5A
+    }
+    .ns-avatar{
+      background: linear-gradient(113.95deg, #F4E2CE 1.2%, #DEBB9B 77.63%);
+    }
+  }
+}
 </style>
+
