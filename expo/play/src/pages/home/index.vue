@@ -38,7 +38,7 @@ const scenarios = [
     items: [
       { title: '订单表', link: 'list/orders' },
       { title: '消费记录', link: 'list/transactions' },
-      { title: '客户表', link: 'list/clients' },
+      // { title: '客户表', link: 'list/clients' },
       { title: '合同表', link: 'list/contracts' },
       { title: '跟进记录', link: 'list/followups' },
       { title: '系统消息', link: 'list/messages' },
