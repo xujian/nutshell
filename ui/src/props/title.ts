@@ -1,8 +1,7 @@
 import { h, PropType, VNode } from 'vue'
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
-
-type FontSizeType = 'font-xs' | 'font-sm' | 'font-md' | 'font-lg'
+import { FontSizeType } from '../types/css'
 
 export const titleProps = {
   /**

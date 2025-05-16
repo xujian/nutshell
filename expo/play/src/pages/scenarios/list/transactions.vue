@@ -1,17 +1,20 @@
 <template>
-  <ns-page class="list-transactions-page panel-page" fill="neutral">
+  <ns-page class="list-transactions-page panel-page" fill="#f1f2f4">
     <ns-page-header title="消费记录" fill="#ffffff"
       :blur="40" has-back-button>
       <ns-tabs :items="tabs"
         :r="0"
         fill="#ffffff88"
+        size="lg"
         v-model="tab" />
       </ns-page-header>
     <ns-page-content>
       <ns-list class="demo-list"
         :data
-        item-fill="#ffffff99"
+        item-fill="#fff"
         direction="column"
+        captionfontSize= "font-xs"
+        titleFontSize = "font-lg"
         align="stretch"
         gap>
         <template #prepend="item">

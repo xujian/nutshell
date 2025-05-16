@@ -5,6 +5,7 @@ import { buildDesignClasses, buildDesignStyles, TitleProps, useDesignProps, useG
 import { MakePropsType } from '../../utils'
 import { NsColumn } from '../flex'
 import { useSelectable, useSelectableProps, selectableEmits, SelectableEmits } from '../../props'
+import { FontSizeType } from '../../types/css'
 
 export type ListItemData = {
   number?: number,
@@ -33,6 +34,12 @@ export const listItemProps = {
   },
   data: {
     type: Object as PropType<ListItemData>
+  },
+  titleFontSize: {
+    type: String as PropType<FontSizeType>
+  },
+  captionfontSize: {
+    type: String as PropType<FontSizeType>
   }
 }
 
@@ -111,7 +118,7 @@ export const NsListItem = defineComponent({
   slots: listItemSlots,
   setup (props, { slots, emit }) {
 
-    const title = useTitle(props.data as TitleProps)
+    const title = useTitle({...props.data, titleFontSize: props.titleFontSize, captionfontSize: props.captionfontSize} as TitleProps)
 
     const main = ({ data }: ListItemProps) => {
       return h('div', {
@@ -181,7 +188,7 @@ export const NsList = defineComponent({
   sltos: listSlots,
   emits,
   setup (props, { slots, emit }) {
-    
+
     const { isSelecting, selected, toggleSelected, isSelected }
       = useSelectable(props, emit)
 
