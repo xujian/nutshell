@@ -145,7 +145,7 @@ export const NsFile = defineComponent({
     return () => h('div', {
       class: [
         'ns-file',
-        `size-${props.size}`,
+        ...props.size ? [`size-${props.size}`] : [],
         props.direction || 'column',
       ]
     }, [

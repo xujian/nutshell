@@ -2,27 +2,40 @@
 .ns-file {
   height: 100px;
   padding-inline: 0 !important;
+  .icon-item, .thumb-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--ns-r);
+    cursor: pointer;
+    .toolbar {
+      transform: translate3d(0, 32px, 0);
+    }
+    &:hover {
+      .toolbar {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
   .icon-item {
     background-size: 32px;
     background-repeat: no-repeat;
     background-position: center;
     background-color: var(--ns-fill);
   }
-  .thumb-item {
-    .image {
-      aspect-ratio: 1;
-      object-fit: cover;
-      object-position: center;
-    }
+  .image {
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
   }
   &.column {
-    .image {
+    .icon-item, .thumb-item {
       width: 100%;
     }
   }
   &.row {
     --gap: var(--ns-spacing);
-    .image {
+    .image-item, .thumb-item {
       height: 100%;
     }
   }
@@ -89,20 +102,6 @@
     }
     .icon-download {
       background-image: url(https://cdn.ddjf.com/static/images/loan-manage/yunduanxiazai@3x.png);
-    }
-  }
-  .icon-item, .thumb-item {
-    overflow: hidden;
-    position: relative;
-    border-radius: var(--ns-r);
-    cursor: pointer;
-    .toolbar {
-      transform: translate3d(0, 32px, 0);
-    }
-    &:hover {
-      .toolbar {
-        transform: translate3d(0, 0, 0);
-      }
     }
   }
   .filename {

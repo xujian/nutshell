@@ -64,9 +64,9 @@ export const NsFiles = defineComponent({
       ],
       key: index,
       size: props.size,
-      direction: props.direction === 'row'
-        ? 'column'
-        : 'row',
+      direction: props.direction === 'column'
+        ? 'row'
+        : 'column',
       deletable: props.deletable,
       downloadable: props.downloadable,
       onDelete (id: string) {
