@@ -1,6 +1,8 @@
-import { h, VNode } from 'vue'
+import { h, PropType, VNode } from 'vue'
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
+
+type FontSizeType = 'font-xs' | 'font-sm' | 'font-md'
 
 export const titleProps = {
   /**
@@ -15,6 +17,9 @@ export const titleProps = {
   caption: {
     type: String,
   },
+  captionfontSize: {
+    type: String as PropType<FontSizeType>
+  }
 }
 
 /**
@@ -47,7 +52,7 @@ export const useTitle: UseTitleFunction = (props: TitleProps) => {
           : null,
         props.caption
           ? h('h6', {
-              class: ['caption', 'h6'],
+              class: ['caption', 'h6', props.captionfontSize || 'font-md'],
             }, props.caption)
           : null
       ]

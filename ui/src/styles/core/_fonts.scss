@@ -21,7 +21,7 @@ h4, h5, h6 {
 }
 
 .caption {
-  font-size: var(--ns-font-sm);
+  // font-size: var(--ns-font-sm); 副标题改为默认 font-sm  可以支持属性修改
   color: var(--ns-caption, #999);
 }
 

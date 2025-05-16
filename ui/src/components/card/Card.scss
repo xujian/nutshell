@@ -11,6 +11,9 @@
     .title {
       display: flex;
       align-items: flex-start;
+      .caption{
+        line-height: 16px;
+      }
     }
   }
   .card-header {
