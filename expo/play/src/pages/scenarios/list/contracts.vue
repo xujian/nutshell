@@ -1,23 +1,23 @@
 <template>
-  <ns-page class="contracts-page panel-page" fill="neutral">
+  <ns-page class="contracts-page panel-page" fill="#f1f2f4">
     <ns-page-header title="合同" fill="#ffffff"
       :blur="40" has-back-button>
       <ns-row justify="stretch" gap>
         <ns-dropdown label="筛选" :items="filters"
           variant="plain"
           fill="#fff" v-model="filter" class="shrink" />
-        <ns-search placeholder="搜索合同" color="#fff" variant="outlined" />
+        <ns-search placeholder="搜索合同" color="#fff" variant="outlined"  style="margin-right: 20px;" />
       </ns-row>
       <ns-tabs :items="tabs"
         :r="0"
         fill="#ffffff88"
+        size="lg"
         v-model="tab" />
       </ns-page-header>
     <ns-page-content>
       <ns-repeator class="contracts-repeator"
         direction="column"
         :data="data"
-        :group-by
         align="stretch"
         gap>
         <template #default="item">
@@ -25,24 +25,24 @@
             class="contract-card full-width"
             :title="item.合同类型"
             :caption="`${item.签订日期}`"
-            fill="#ffffff" body-fill="#00000022"
-            :edge="5"
-            shadow>
-            <ns-facts :items="toFact(item)" />
+            fill="#ffffff"
+            :body-fill="getBgColor(item)"
+            >
+            <ns-facts fontSize="font-md" :items="toFact(item)" />
             <template #corner>
-              <h6>{{ item.状态 }}</h6>
+              <span>{{ item.状态 }}</span>
             </template>
             <template #footer>
               <ns-row gap justify="end">
                 <ns-button variant="outlined"
                   round
-                  size="xs"
+                  size="md"
                   color="primary"
                   :label="`推送签约`" />
                 <ns-button variant="solid"
                   color="primary"
                   round
-                  size="xs"
+                  size="md"
                   :label="`确认签署`" />
               </ns-row>
             </template>
@@ -190,6 +190,12 @@ const toFact = (item) => {
       value: item[key]
     }
   }).filter(f => !['合同类型', '状态'].includes(f.label))
+}
+
+const getBgColor = (item) => {
+  let isJy = item.type === '交易周转'
+  return isJy ? 'linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(241.09, 247.15, 255, 1) 117.45%)' :
+  'linear-gradient(270deg, rgba(255, 255, 255, 1), rgba(241.29, 251.58, 246.83, 1) 163.889%)'
 }
 </script>
 
