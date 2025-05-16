@@ -76,7 +76,7 @@ export const NsCard = defineComponent({
 
     const corner = () => slots.corner
       ? h('div', {
-          class: 'title-corner'
+          class: ['title-corner', 'font-md']
         }, [
           h('div', {class: 'spacer'}),
           slots.corner()

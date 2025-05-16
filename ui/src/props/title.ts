@@ -2,7 +2,7 @@ import { h, PropType, VNode } from 'vue'
 import { buildProps } from '../utils/private/props'
 import { MakePropsType } from '../utils'
 
-type FontSizeType = 'font-xs' | 'font-sm' | 'font-md'
+type FontSizeType = 'font-xs' | 'font-sm' | 'font-md' | 'font-lg'
 
 export const titleProps = {
   /**
@@ -10,6 +10,9 @@ export const titleProps = {
    */
   title: {
     type: String,
+  },
+  titleFontSize: {
+    type: String as PropType<FontSizeType>
   },
   /**
    * 副标题
@@ -47,7 +50,7 @@ export const useTitle: UseTitleFunction = (props: TitleProps) => {
       }, [
         props.title
           ? h('h5', {
-              class: ['h5'],
+              class: ['h5', props.titleFontSize || 'font-md'],
             }, props.title)
           : null,
         props.caption

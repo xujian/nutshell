@@ -25,6 +25,7 @@
             class="full-width"
             :caption="`进件时间: ${item.进件时间}`"
             captionfontSize= "font-xs"
+            titleFontSize = "font-lg"
             fill="#ffffff"
             :body-fill="getBgColor(item)"
             >
@@ -33,7 +34,7 @@
               <ns-avatar :fill="colors[item.type]" :edge="10" :src="images[item.type]" />
             </template>
             <template #corner>
-              <h6>{{ item.status }}</h6>
+              <span>{{ item.status }}</span>
             </template>
           </ns-card>
         </ns-repeator>
