@@ -4,3 +4,8 @@
 @use './styles/page.scss';
 @use './styles/components';
 @use './styles/overrides-nutshell';
+
+#app {
+  max-width: 375px;
+  margin: 0 auto;
+}
