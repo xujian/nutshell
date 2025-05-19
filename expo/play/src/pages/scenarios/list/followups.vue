@@ -1,10 +1,10 @@
 <template>
-  <ns-page class="followups-page" fill="neutral">
+  <ns-page class="followups-page" fill="#f1f2f4">
     <ns-page-header title="跟进记录" fill="#ffffffff"
       :blur="40" has-back-button>
     </ns-page-header>
     <ns-page-content>
-      <ns-card class="customer-card" fill="#ffffff88" body-fill="#ffffff">
+      <ns-card class="customer-card" fill="#fff">
         <ns-row justify="stretch" align="start" gap class="padding">
           <ns-avatar :src="customerInfo.avatar" color="#eee" class="shrink" />
           <ns-column justify="stretch" align="stretch" class="grow" :gap="4">
@@ -13,7 +13,7 @@
             <ns-row gap="4" justify="start">
               <ns-chip v-for="(tag, index) in customerInfo.tags"
                 size="xs"
-                :key="index" 
+                :key="index"
                 :label="tag" fill="#FFC107" />
             </ns-row>
             <ns-row justify="between">
@@ -34,25 +34,20 @@
           </ns-repeator>
         </template>
       </ns-card>
-      <h2>跟进记录</h2>
-      <ns-card fill="#ffffff">
+      <ns-card fill="#ffffff" title="跟进记录">
         <ns-timeline
-          variant="icon"
+          variant="dot"
+          dotted
           :data="followupRecords"
           v-model="currentRecord">
         </ns-timeline>
       </ns-card>
-      <h3>数据规格</h3>
-      <code-view language="javascript" :code="JSON.stringify(followupRecords, null, 2)" />
-      <callout title="说明" fill="#ffffff">
-        <p>跟进记录使用 &lt;ns-timeline&gt; 组件实现</p>
-      </callout>
     </ns-page-content>
     <ns-page-footer :blur="40">
-      <ns-button class="add-button full-width" 
-        label="添加跟进" 
+      <ns-button class="add-button full-width"
+        label="添加跟进"
         color="primary"
-        block 
+        block
         @click="handleAddFollowup" />
     </ns-page-footer>
   </ns-page>
@@ -77,7 +72,7 @@ const customerInfo = ref({
 
 const customerFields = ref([
   { label: '电话', value: '138****5678' },
-  { label: '贷款需求', value: '房产抵押贷款 50万' },
+  { label: '贷款需求', value: '抵押贷款50万' },
   { label: '跟进人', value: '李敏克' }
 ])
 
@@ -129,7 +124,13 @@ const handleAddFollowup = () => {
   .customer-fields {
     .ns-repeator-item {
       width: 33.3%;
+      .ns-column{
+        width :100%;
+      }
     }
+  }
+  .customer-card{
+    margin-bottom: 12px;
   }
 }
 </style>
