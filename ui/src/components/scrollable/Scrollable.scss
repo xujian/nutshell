@@ -5,6 +5,11 @@
   overflow-x: hidden;
   overflow-y: auto;
 
+  &.dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
   &.refreshing {
     .refresh-indicator {
     }

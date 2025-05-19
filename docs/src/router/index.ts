@@ -48,6 +48,7 @@ const BarChartPage = () => import('../pages/plot/BarChartPage.vue')
 const PieChartPage = () => import('../pages/plot/PieChartPage.vue')
 const DialogPage = () => import('../pages/interactive/DialogPage.vue')
 const SheetPage = () => import('../pages/interactive/SheetPage.vue')
+const ScrollablePage = () => import('../pages/components/ScrollablePage.vue')
 const ToastPage = () => import('../pages/interactive/ToastPage.vue')
 const DrawerPage = () => import('../pages/interactive/DrawerPage.vue')
 const FontPage = () => import('../pages/tokens/FontPage.vue')
@@ -287,6 +288,11 @@ const router = createRouter({
           path: '/components/avatar',
           name: 'components-avatar',
           component: AvatarPage
+        },
+        {
+          path: '/components/scrollable',
+          name: 'components-scrollable',
+          component: ScrollablePage
         },
         {
           path: '/plot/line',

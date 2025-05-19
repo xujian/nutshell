@@ -207,13 +207,17 @@ const menuData = computed(() => [
             key: '/components/card'
           },
           {
+            label: '可滚动区域 scrollable',
+            key: '/components/scrollable'
+          },
+          {
             label: '横向排列 row',
             key: '/layout/row'
           },
           {
             label: '纵向排列 column',
             key: '/layout/column'
-          }
+          },
         ],
       },
       {
