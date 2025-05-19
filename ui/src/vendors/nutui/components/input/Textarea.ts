@@ -26,7 +26,7 @@ export const Textarea = defineComponent({
           autosize: props.autoSize as boolean,
           limitShow: props.hasCount,
           rows: props.rows,  // 仅支持H5
-          placeholderClass: 'input-placeholder',
+          'placeholder-class': 'input-placeholder',
           'onUpdate:modelValue': (value: number | string) => {
             props['onUpdate:modelValue']?.(value)
           },
