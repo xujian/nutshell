@@ -1,5 +1,4 @@
 import { defineComponent, h, onMounted, reactive, ref, SetupContext } from 'vue'
-import { ScrollView } from '@tarojs/components'
 import { scrollableProps, scrollableEmits, scrollableSlots } from '../../../../components/scrollable'
 import { buildDimensionStyles } from '../../../../props'
 import { NsLoading } from '../../../../components'

@@ -12,14 +12,13 @@ import terser from '@rollup/plugin-terser'
 import { babel } from '@rollup/plugin-babel'
 import { visualizer } from 'rollup-plugin-visualizer'
 import packageJson from '../package.json' with { type: 'json' }
-import { log } from 'console'
 // import alias from '@rollup/plugin-alias'
 // import NutUIResolver from '@nutui/nutui/dist/resolver'
 // import path from 'path'
 
-// const __filename = fileURLToPath(import.meta.url),
-//   __dirname = path.dirname(__filename),
-//   __root = path.resolve(__dirname)
+const __filename = fileURLToPath(import.meta.url),
+  __dirname = path.dirname(__filename),
+  __root = path.resolve(__dirname)
 
 const banner = `/*!
 * @uxda/nutshell v${packageJson.version}
@@ -79,6 +78,24 @@ const taroComponents = [
   'ScrollView',
 ]
 
+const TaroComponentsResolverForNutui = (name) => {
+  if (taroComponents.includes(name)) {
+    return {
+      name: name,
+      from: '@tarojs/components',
+    }
+  }
+}
+
+const TaroComponentsResolverForAntdv = (name) => {
+  if (taroComponents.includes(name)) {
+    return {
+      name,
+      from: path.resolve(__dirname, './src/Taro.ts'),
+    }
+  }
+}
+
 const TaroHookResolver = (name) => {
   if (taroEvents.includes(name)) {
     return {
@@ -107,6 +124,8 @@ const TaroHookResolver = (name) => {
 //     }
 //   }
 // }
+
+
 
 const NutTaroResolver = (name) => {
   if (nutRegex.test(name)) {
@@ -176,6 +195,7 @@ export default [
           NutResolver,
           // NutTypeResolver,
           // PsuedoTaroResolver
+          TaroComponentsResolverForAntdv
         ]
       }),
       postcss({
@@ -265,6 +285,7 @@ export default [
           // OnlyTaroResolver,
           NutTaroResolver,
           TaroHookResolver,
+          TaroComponentsResolverForNutui
         ]
       }),
       // dts(),

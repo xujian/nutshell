@@ -1,3 +1,5 @@
+import { h } from "vue"
+
 const Taro: any = {
   showToast (options: any) {},
   navigateBack: () => {},
@@ -7,6 +9,12 @@ const Taro: any = {
   chooseMedia: (options: any) => {}
 }
 
+const ScrollView = (props: any) => {
+  return h('div', {
+  })
+}
+
 export {
-  Taro
+  Taro,
+  ScrollView
 }
