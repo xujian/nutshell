@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="create-contract-page">
+  <ns-page class="create-contract-page" fill="#f1f2f4">
     <ns-page-header title="提现" has-back-button
       fill="#ffffff" />
     <ns-page-content>
@@ -102,10 +102,9 @@
             ]">
             <template #append>
               <ns-button
-                size="xs"
+                size="sm"
                 label="全部提现"
                 color="primary"
-                variant="soft"
                 class="all-btn"
                 @click="withdrawAll"
               />
@@ -116,7 +115,7 @@
           </template>
         </ns-card>
       </ns-form>
-      
+
     </ns-page-content>
     <ns-page-footer>
       <ns-row justify="stretch">
@@ -125,11 +124,13 @@
           variant="outlined"
           class="shrink"
           size="lg"
+          style="flex: 1"
           @click="handleCancel" />
         <ns-button
           label="提现"
           color="primary"
           size="lg"
+          style="flex: 1;"
           @click="handleSubmit" />
       </ns-row>
     </ns-page-footer>
@@ -140,7 +141,7 @@
 import { reactive, ref } from 'vue'
 
 const formRef = ref<any>(null)
-const 余额 = ref(18760) 
+const 余额 = ref(18760)
 
 const formData = reactive<{
   amount: number | undefined,
@@ -181,14 +182,18 @@ const withdrawAll = () => {
   .amount-input {
     .input-text {
       text-align: left;
-      font-size: 24px;
+      font-size: 20px;
       &::placeholder {
-        color: #f99;
+        color: #ccc;
       }
     }
     .nut-form-item__label {
-      font-size: 24px;
+      font-size: 35px;
     }
+  }
+  .all-btn{
+    background: #EEF5FF;
+    color: #017FFF;
   }
 }
 
