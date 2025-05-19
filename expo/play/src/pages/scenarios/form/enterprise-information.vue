@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="create-contact-page">
+  <ns-page class="create-contact-page" fill="#f1f2f4">
     <ns-page-header title="企业资料" has-back-button reveal :blur="10" />
     <ns-page-content>
       <ns-form class="contract-form" v-model="formData" ref="form" failed="notice">
@@ -8,7 +8,7 @@
           <ns-input v-model="formData.统一社会信用代码" label="统一社会信用代码" placeholder="请输入统一社会信用代码" required name="统一社会信用代码"></ns-input>
           <ns-input v-model="formData.法人姓名" label="法人姓名" placeholder="请输入法人姓名" required name="法人姓名">
             <template #append>
-              <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/file-views.png" size="xl" />
+              <ns-icon name="https://cdn.ddjf.com/static/images/nutshell/camera.png" size="xl" />
             </template>
           </ns-input>
           <ns-id-input v-model="formData.法人证件号码" required placeholder="请输入法人证件号码" name="法人证件号码" label="法人证件号码"/>
@@ -19,7 +19,7 @@
           </ns-radio-group>
           <ns-input v-model="formData.代理人姓名" label="代理人姓名" placeholder="请输入代理人姓名" required name="代理人姓名">
             <template #append>
-              <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/file-views.png" size="xl" />
+              <ns-icon name="https://cdn.ddjf.com/static/images/nutshell/camera.png" size="xl" />
             </template>
           </ns-input>
           <ns-id-input v-model="formData.代理人证件号码" required placeholder="请输入代理人证件号码" name="代理人证件号码" label="代理人证件号码"/>

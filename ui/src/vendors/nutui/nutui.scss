@@ -46,4 +46,8 @@
       border-radius: var(--ns-r);
     }
   }
+  .nut-cell:after{
+    left: 0;
+    right: 0;
+  }
 }

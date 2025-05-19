@@ -5,12 +5,9 @@
     border-style: solid;
     border-color: transparent;
     border-radius: var(--ns-r);
-    .input-text {
-      .input-placeholder {
-        color: var(--ns-neutral--50);
-      }
-
-    }
+  }
+  .input-text::placeholder {
+    color: #ccc;
   }
   &.variant-outline {
     .nut-input {
