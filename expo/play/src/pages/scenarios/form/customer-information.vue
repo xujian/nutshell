@@ -1,12 +1,12 @@
 <template>
-  <ns-page class="create-contact-page">
+  <ns-page class="create-contact-page" fill="#f1f2f4">
     <ns-page-header title="客户资料" has-back-button reveal :blur="10" />
     <ns-page-content>
       <ns-form class="contract-form" v-model="formData" ref="form" failed="notice">
         <ns-card fill="#fff" class="mb-md" title="基本信息">
           <ns-input label="客户姓名" placeholder="请输入客户姓名" required name="客户姓名">
             <template #append>
-              <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/file-views.png" size="xl" />
+              <ns-icon name="https://cdn.ddjf.com/static/images/nutshell/camera.png" size="xl" />
             </template>
           </ns-input>
           <ns-mobile-input name="手机号码" label="手机号码" placeholder="请输入手机号码" v-model="formData.手机号码" />
