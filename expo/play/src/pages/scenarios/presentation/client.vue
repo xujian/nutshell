@@ -1,6 +1,6 @@
 <template>
-  <ns-page class="client-detail-page">
-    <ns-page-header 
+  <ns-page class="client-detail-page" fill="#f1f2f4">
+    <ns-page-header
       title="客户"
       color-scheme="dark"
       fill="#33333399"
@@ -8,15 +8,25 @@
       has-back-button>
     </ns-page-header>
     <ns-page-content>
-      <div class="hero cover align-end breakout">
-        <ns-row class="full-height" align="end" justify="start">
-          <h1 class="name h1 text-gradient">{{ client.姓名 }}</h1>
+      <ns-card class="customer-card" fill="#fff">
+        <ns-row justify="stretch" align="start" gap class="padding">
+          <ns-avatar size="lg" src="https://randomuser.me/api/portraits/men/32.jpg" color="#eee" class="shrink" circle />
+          <ns-column justify="stretch" align="stretch" class="grow" :gap="4">
+            <ns-row justify="start" class="title">
+              <div class="label">张三</div>
+              <div>13138866215</div>
+            </ns-row>
+            <ns-row justify="start">
+              <div class="label caption">跟进人</div>
+              <div class="caption">张三</div>
+            </ns-row>
+          </ns-column>
         </ns-row>
-      </div>
-      <ns-card class="stage-card overlap mb-md" fill="#000" :blur="50" shadow="2">
-        <ns-stepper :items="steps" :model-value="stage" />
+        <ns-row justify="start">
+          <ns-chips :items="tags" color="#F2F3FF" textColor="#007FFF" size="md"/>
+        </ns-row>
       </ns-card>
-      <ns-button-group fill="#00000080" v-model="tab" :items="tabs" round />
+      <ns-button-group fill="#fff" v-model="tab" :items="tabs" />
 
       <div v-if="tab === '1'">
         <h2 class="h3">基本信息</h2>
@@ -230,7 +240,7 @@ const mockFiles: File[] = [
 
 const mockMedias: Media[] = [
   {
-    id: '1',  
+    id: '1',
     name: '文件1',
     type: 'image',
     createdAt: '2021-01-01'
@@ -261,7 +271,7 @@ const tabs = [
 ]
 
 const tags = [
-  { label: '经营企业', value: '1' },
+  { label: '经营企业', value: '1', textColor: '#007FFF' },
   { label: '房地产', value: '2' },
   { label: '海外资产', value: '3' },
 ]
@@ -324,51 +334,14 @@ onMounted(() => {
 .client-detail-page {
   color: #fff;
   --text: #fff;
-  
-  .hero {
-    top: calc(var(--status) + var(--nav));
-    height: 240px;
-    background-image: url(http://simple.shensi.tech/upload/asimo.jpg);
-    padding: 2em 1em;
-    transition: height 1s;
-    box-sizing: border-box;
-  }
-  
-  .name {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .follow-records, .orders, .files {
-    min-height: 200px;
-    margin-bottom: 16px;
-  }
-  
-  .file-card {
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .file-thumb {
-    width: 60%;
-    height: 60%;
-    object-fit: cover;
-  }
-  
-  .file-name {
-    font-size: 12px;
-    margin-top: 8px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    max-width: 100%;
-  }
-  
-  .flex-spacer {
-    flex: 1;
+  .customer-card{
+    .title{
+      font-size: 16px;
+      line-height: 14px;
+    }
+    .label{
+      width: 52px;
+    }
   }
 }
 </style>
