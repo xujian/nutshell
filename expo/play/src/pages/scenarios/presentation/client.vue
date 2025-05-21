@@ -26,7 +26,18 @@
           <ns-chips :items="tags" color="#F2F3FF" textColor="#007FFF" size="md"/>
         </ns-row>
       </ns-card>
-      <ns-button-group fill="#fff" v-model="tab" :items="tabs" />
+      <ns-card class="content-card" fill="#fff">
+        <ns-tabs :items="[
+          { label: '记录', value: '0', },
+          { label: '资料', value: '1', }
+        ]"
+          :r="0"
+          fill="#fff"
+          size="xl"
+          v-model="activeTab" />
+        <ns-button-group fill="#F0F1F4" v-model="tab" :items="tabs" class="button-group" size="md" />
+      </ns-card>
+
 
       <div v-if="tab === '1'">
         <h2 class="h3">基本信息</h2>
@@ -135,6 +146,8 @@ import { 订单, type 客户 } from '../../../models'
 import Taro from '@tarojs/taro'
 
 const $n = useNutshell()
+
+const activeTab = ref(0)
 
 const client = ref<客户>({
   id: '1001',
@@ -341,6 +354,32 @@ onMounted(() => {
     }
     .label{
       width: 52px;
+    }
+  }
+  .content-card{
+    margin-top: 10px;
+    .nut-tabs__titles-item{
+      flex: 1 !important;
+    }
+    .button-group{
+      width: 100%;
+      margin: 12px 0px;
+      padding:4px;
+      box-sizing: border-box;
+      .button-group-scroll-view{
+        width: 100%;
+        .buttons{
+          width: 100%;
+          display: flex;
+          .nut-button{
+            flex: 1;
+            &.active{
+              background: #fff;
+              color: #007FFF;
+            }
+          }
+        }
+      }
     }
   }
 }

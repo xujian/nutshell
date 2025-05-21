@@ -11,6 +11,12 @@
     margin: 0;
     transition: backdrop-filter .5s;
     color: var(--foreground, #fff);
+    &.size-md{
+      height: 26px;
+      line-height: 26px;
+      padding:0 10px;
+      font-size: 12px;
+    }
     &.active {
       font-weight: bold;
       background-color: #ffffff33;
