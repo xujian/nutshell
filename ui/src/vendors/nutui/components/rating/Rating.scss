@@ -2,7 +2,7 @@
   margin-right: 4px;
 }
 .nut-rate-item__icon {
-  color: #FA8C16;
+  color: var(ns-primary);
 }
 .nut-rate-item__icon--disabled {
   color: var(--nut-rate-icon-void-color, var(--nut-disable-color, #cccccc));

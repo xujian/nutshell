@@ -40,43 +40,44 @@
 
 
       <div v-if="tab === '1'">
-        <h2 class="h3">基本信息</h2>
-        <ns-facts>
-          <ns-facts-item label="手机号码">
-            {{ client.手机号码 }}
-          </ns-facts-item>
-          <ns-facts-item label="证件号码">
-            {{ client.证件号码 }}
-          </ns-facts-item>
-          <ns-facts-item label="证件地址">
-            {{ client.证件地址 }}
-          </ns-facts-item>
-          <ns-facts-item label="婚姻状态">
-            {{ client.婚姻状态 }}
-          </ns-facts-item>
-        </ns-facts>
-
-        <h2 class="h3">意向信息</h2>
-        <ns-facts>
-          <ns-facts-item label="意向等级">
-            <ns-rating :value="client.意向等级 || 3" />
-          </ns-facts-item>
-          <ns-facts-item label="业务意向">
-            {{ client.业务意向 }}
-          </ns-facts-item>
-          <ns-facts-item label="客户标签" direction="column">
-            <ns-chips :items="tags" color="#ff9800" justify="end" />
-          </ns-facts-item>
-          <ns-facts-item label="客户来源">
-            {{ client.客户来源 }}
-          </ns-facts-item>
-          <ns-facts-item label="意向产品" direction="column">
-            <ns-chips :items="interests" color="#ff9800" justify="end" />
-          </ns-facts-item>
-          <ns-facts-item label="备注">
-            {{ client.备注 }}
-          </ns-facts-item>
-        </ns-facts>
+        <ns-card fill="#fff" class="base-card">
+          <div class="title">基本信息</div>
+          <ns-facts fontSize="font-md">
+            <ns-facts-item label="手机号码">
+              {{ client.手机号码 }}
+            </ns-facts-item>
+            <ns-facts-item label="证件号码">
+              {{ client.证件号码 }}
+            </ns-facts-item>
+            <ns-facts-item label="证件地址">
+              {{ client.证件地址 }}
+            </ns-facts-item>
+            <ns-facts-item label="婚姻状态">
+              {{ client.婚姻状态 }}
+            </ns-facts-item>
+          </ns-facts>
+          <div class="title">意向信息</div>
+          <ns-facts fontSize="font-md">
+            <ns-facts-item label="意向等级">
+              <ns-rating :value="client.意向等级 || 3" color='#007FFF' />
+            </ns-facts-item>
+            <ns-facts-item label="业务意向">
+              {{ client.业务意向 }}
+            </ns-facts-item>
+            <ns-facts-item label="客户标签" direction="column">
+              <ns-chips :items="tags" color="#F2F3FF" textColor="#007FFF" justify="end" />
+            </ns-facts-item>
+            <ns-facts-item label="客户来源">
+              {{ client.客户来源 }}
+            </ns-facts-item>
+            <ns-facts-item label="意向产品" direction="column">
+              <ns-chips :items="interests" color="#F2F3FF" textColor="#007FFF" justify="end" />
+            </ns-facts-item>
+            <ns-facts-item label="备注">
+              {{ client.备注 }}
+            </ns-facts-item>
+          </ns-facts>
+        </ns-card>
       </div>
 
       <div v-if="tab === '2'">
@@ -92,7 +93,6 @@
       </div>
 
       <div v-if="tab === '3'">
-        <h2 class="h2">关联订单</h2>
         <div class="orders">
           <ns-empty v-if="关联订单.length === 0" text="暂无关联订单" />
           <ns-repeator class="demo-repeator"
@@ -102,18 +102,20 @@
             gap
             v-slot="item">
             <ns-card
-              :title="item.type"
+              class="full-width"
               :caption="`进件时间: ${item.createdAt}`"
+              :title="item.type"
+              captionfontSize= "font-xs"
+              titleFontSize = "font-lg"
               fill="#ffffff"
-              body-fill="#f7f7f7"
-              shadow>
-              <ns-facts :items="toFact(item)" />
-              <template #icon>
-                <ns-avatar :fill="colors[item.type!]" :edge="10" :src="images[item.type!]" />
-              </template>
-              <template #corner>
-                <h6>{{ item.status }}</h6>
-              </template>
+              :body-fill="getBgColor(item)">
+                <ns-facts fontSize="font-md" :items="toFact(item)" />
+                <template #icon>
+                  <ns-avatar :fill="colors[item.type]" :edge="10" :src="images[item.type]" />
+                </template>
+                <template #corner>
+                  <span>{{ item.status }}</span>
+                </template>
             </ns-card>
           </ns-repeator>
         </div>
@@ -335,12 +337,17 @@ const toFact = (item) => {
       label: key,
       value: item[key]
     }
-  }).filter(f => !['type', 'status'].includes(f.label))
+  }).filter(f => !['type', 'createdAt', 'id'].includes(f.label))
 }
 
 onMounted(() => {
 })
 
+const getBgColor = (item) => {
+  let isJy = item.type === '交易周转'
+  return isJy ? 'linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(241.09, 247.15, 255, 1) 117.45%)' :
+  'linear-gradient(270deg, rgba(255, 255, 255, 1), rgba(241.29, 251.58, 246.83, 1) 163.889%)'
+}
 </script>
 
 <style lang="scss">
@@ -348,6 +355,7 @@ onMounted(() => {
   color: #fff;
   --text: #fff;
   .customer-card{
+    margin-bottom: 10px;
     .title{
       font-size: 16px;
       line-height: 14px;
@@ -357,13 +365,13 @@ onMounted(() => {
     }
   }
   .content-card{
-    margin-top: 10px;
+    margin-bottom: 10px;
     .nut-tabs__titles-item{
       flex: 1 !important;
     }
     .button-group{
       width: 100%;
-      margin: 12px 0px;
+      margin: 12px 0px 0px;
       padding:4px;
       box-sizing: border-box;
       .button-group-scroll-view{
@@ -379,6 +387,31 @@ onMounted(() => {
             }
           }
         }
+      }
+    }
+  }
+  .base-card{
+    .title{
+      position: relative;
+      padding-left: 6px;
+      font-size: 16px;
+      line-height: 22px;
+    }
+    .title::after{
+      position: absolute;
+      left: 0px;
+      width: 2px;
+      height: 8px;
+      background: var(--ns-primary);
+      border-radius: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      content: "";
+    }
+    .ns-facts{
+      margin: 10px 0;
+      .ns-facts-item{
+        font-size: 14px;
       }
     }
   }
