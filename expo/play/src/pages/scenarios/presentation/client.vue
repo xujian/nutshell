@@ -81,15 +81,14 @@
       </div>
 
       <div v-if="tab === '2'">
-        <h2 class="h2">跟进记录</h2>
-        <div class="follow-records">
-          <ns-empty v-if="跟进记录.length === 0" text="暂无跟进记录" />
-          <ns-timeline v-else
-            variant="icon"
-            :data="跟进记录">
+        <ns-card fill="#ffffff" title="跟进记录">
+          <ns-timeline
+            variant="dot"
+            dotted
+            :data="followupRecords"
+            v-model="currentRecord">
           </ns-timeline>
-        </div>
-        <ns-button color="primary" block @click="onAddFollowRecord">添加跟进记录</ns-button>
+        </ns-card>
       </div>
 
       <div v-if="tab === '3'">
@@ -122,32 +121,25 @@
       </div>
 
       <div v-if="tab === '4'">
-        <h2 class="h2">影像资料</h2>
-        <div class="files">
-          <ns-empty v-if="影像资料.length === 0" text="暂无影像资料" />
-            <ns-card v-for="file in 影像资料" :key="file.id" class="file-card" fill="#ffffff22">
-              <ns-image :src="file.thumb" class="file-thumb" />
-              <p class="file-name">{{ file.name }}</p>
-            </ns-card>
-        </div>
-        <ns-button color="primary" block @click="onUploadFile">上传资料</ns-button>
+        <ns-card fill="#fff" class="mb-md material-box" v-for="item in files" :key="item">
+          <h4>{{item.name}}</h4>
+          <ns-plank :key="it" v-for="it in item.children" :title="`${it.name}(${it.count})`">
+            <template #content>
+              <div class="icon-list">
+                <span>上传资料</span>
+                <ns-icon name="https://cdn.ddjf.com/static/images/fnfundkit/m-arrow.png"></ns-icon>
+              </div>
+            </template>
+          </ns-plank>
+        </ns-card>
       </div>
-
-      <ns-row justify="space-between" class="mt-lg">
-        <ns-button color="negtive" @click="onDeleteClick">删除</ns-button>
-        <ns-button class="grow" color="primary" @click="onEditClick">编辑</ns-button>
-      </ns-row>
     </ns-page-content>
   </ns-page>
 </template>
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
-import { useNutshell, type Media, type File } from '@uxda/nutshell/taro'
 import { 订单, type 客户 } from '../../../models'
-import Taro from '@tarojs/taro'
-
-const $n = useNutshell()
 
 const activeTab = ref(0)
 
@@ -174,7 +166,80 @@ const images: Record<string, string> = {
   非交易周转: 'https://cdn.ddjf.com/static/images/fnfundkit/icon-FJYZZ.png'
 }
 
-const mockFollowups = [
+const mockOrders: 订单[] = [
+  {
+    id: 'o0001',
+    type: '交易周转',
+    createdAt: '2025/10/08 10:32',
+    客户姓名: '李华明',
+    渠道经理: '王伟强',
+    放款机构: '联银小贷',
+    订单编号: 'SZS0420230220001',
+    状态: '待审核'
+  },
+  {
+    id: 'o0002',
+    type: '交易周转',
+    createdAt: '2025/10/08 11:45',
+    客户姓名: '张敏杰',
+    渠道经理: '李娜丽',
+    放款机构: '中信银行',
+    订单编号: 'SZS0420230220002',
+    sta状态tus: '待审核'
+  },
+  {
+    id: 'o0003',
+    type: '交易周转',
+    createdAt: '2025/10/08 12:50',
+    客户姓名: '王强军',
+    渠道经理: '刘洋明',
+    放款机构: '招商银行',
+    订单编号: 'SZS0420230220003',
+    状态: '待审核'
+  },
+]
+
+const tab = ref('1')
+const 关联订单 = ref(mockOrders)
+
+const tabs = [
+  { value: '1', label: '基本资料' },
+  { value: '2', label: '跟进记录' },
+  { value: '3', label: '关联订单' },
+  { value: '4', label: '影像资料' }
+]
+
+const tags = [
+  { label: '经营企业', value: '1', textColor: '#007FFF' },
+  { label: '房地产', value: '2' },
+  { label: '海外资产', value: '3' },
+]
+
+const interests = [
+  { label: '支付宝', value: '1' },
+  { label: '提放宝', value: '2' },
+]
+
+const toFact = (item) => {
+  return Object.keys(item).map(key => {
+    return {
+      label: key,
+      value: item[key]
+    }
+  }).filter(f => !['type', 'createdAt', 'id'].includes(f.label))
+}
+
+onMounted(() => {
+})
+
+const getBgColor = (item) => {
+  let isJy = item.type === '交易周转'
+  return isJy ? 'linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(241.09, 247.15, 255, 1) 117.45%)' :
+  'linear-gradient(270deg, rgba(255, 255, 255, 1), rgba(241.29, 251.58, 246.83, 1) 163.889%)'
+}
+
+const currentRecord = ref(0)
+const followupRecords = ref([
   {
     title: '首次接触',
     time: '2024/03/10 14:30',
@@ -210,150 +275,41 @@ const mockFollowups = [
     assignee: '徐晋语',
     status: 'normal'
   }
-]
+])
 
-const mockOrders: 订单[] = [
+const files = [
   {
-    id: 'o0001',
-    type: '交易周转',
-    createdAt: '2025/10/08 10:32',
-    客户姓名: '李华明',
-    渠道经理: '王伟强',
-    放款机构: '联银小贷',
-    订单编号: 'SZS0420230220001',
-    状态: '待审核'
+    name: '原贷款资料',
+    children: [
+      {
+        name: '原贷款合同',
+        count: 0
+      },
+      {
+        name: '原贷款还款记录',
+        count: 0
+      }
+    ]
   },
   {
-    id: 'o0002',
-    type: '交易周转',
-    createdAt: '2025/10/08 11:45',
-    客户姓名: '张敏杰',
-    渠道经理: '李娜丽',
-    放款机构: '中信银行',
-    订单编号: 'SZS0420230220002',
-    sta状态tus: '待审核'
-  },
-  {
-    id: 'o0003',
-    type: '交易周转',
-    createdAt: '2025/10/08 12:50',
-    客户姓名: '王强军',
-    渠道经理: '刘洋明',
-    放款机构: '招商银行',
-    订单编号: 'SZS0420230220003',
-    状态: '待审核'
-  },
-]
-
-const mockFiles: File[] = [
-  {
-    id: '1',
-    name: '文件1',
-    thumb: 'http://simple.shensi.tech/upload/asimo.jpg'
+    name: '账户资料',
+    children: [
+      {
+        name: '赎楼账户',
+        count: 3
+      },
+      {
+        name: '赎楼周转账户',
+        count: 0
+      }
+    ]
   }
 ]
-
-const mockMedias: Media[] = [
-  {
-    id: '1',
-    name: '文件1',
-    type: 'image',
-    createdAt: '2021-01-01'
-  }
-]
-
-const tab = ref('1')
-const stage = ref(2)
-const 跟进记录 = ref(mockFollowups)
-const 关联订单 = ref(mockOrders)
-const 影像资料 = ref(mockMedias)
-
-const steps = [
-  { title: '线索', value: 'lead' },
-  { title: '意向', value: 'opportunity' },
-  { title: '上门', value: 'visit' },
-  { title: '签单', value: 'open' },
-  { title: '做单', value: 'deal' },
-  { title: '放款', value: 'payment' },
-  { title: '结单', value: 'done' },
-]
-
-const tabs = [
-  { value: '1', label: '基本资料' },
-  { value: '2', label: '跟进记录' },
-  { value: '3', label: '关联订单' },
-  { value: '4', label: '影像资料' }
-]
-
-const tags = [
-  { label: '经营企业', value: '1', textColor: '#007FFF' },
-  { label: '房地产', value: '2' },
-  { label: '海外资产', value: '3' },
-]
-
-const interests = [
-  { label: '支付宝', value: '1' },
-  { label: '提放宝', value: '2' },
-]
-
-const onDeleteClick = () => {
-  $n.confirm('确定要删除该客户吗?', {
-    onOk: () => {
-
-    }
-  })
-}
-
-const onEditClick = () => {
-  Taro.navigateTo({
-    url: `/pages/clients/edit?id=${client.value.id}`
-  })
-}
-
-const onAddFollowRecord = () => {
-  Taro.navigateTo({
-    url: `/pages/follow-records/create?clientId=${client.value.id}`
-  })
-}
-
-const onUploadFile = () => {
-  Taro.chooseImage({
-    count: 1,
-    success: (res) => {
-      const tempFilePaths = res.tempFilePaths
-      $n.toast('上传成功')
-      // files.value.push({
-      //   id: Date.now().toString(),
-      //   name: '新上传文件',
-      //   thumb: tempFilePaths[0]
-      // })
-    }
-  })
-}
-
-const toFact = (item) => {
-  return Object.keys(item).map(key => {
-    return {
-      label: key,
-      value: item[key]
-    }
-  }).filter(f => !['type', 'createdAt', 'id'].includes(f.label))
-}
-
-onMounted(() => {
-})
-
-const getBgColor = (item) => {
-  let isJy = item.type === '交易周转'
-  return isJy ? 'linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(241.09, 247.15, 255, 1) 117.45%)' :
-  'linear-gradient(270deg, rgba(255, 255, 255, 1), rgba(241.29, 251.58, 246.83, 1) 163.889%)'
-}
 </script>
 
 <style lang="scss">
 .client-detail-page {
   color: #fff;
-  --text: #fff;
   .customer-card{
     margin-bottom: 10px;
     .title{
