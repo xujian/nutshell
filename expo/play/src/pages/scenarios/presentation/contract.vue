@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="contract-detail-page" fill="#fff">
+  <ns-page class="contract-detail-page">
     <ns-page-header title="排行榜"></ns-page-header>
     <ns-page-content>
       <div class="rank" :class="'rank-'+ tab">
@@ -175,7 +175,7 @@ const info = computed(()=>{
   .ns-page-content{
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
   }
   .rank{
     width: 100%;
@@ -184,6 +184,7 @@ const info = computed(()=>{
     background-size: 100% 100%;
     background-repeat: no-repeat;
     position: relative;
+    z-index: -1;
     .button-group{
       width: 280px;
       margin: 0px auto;
@@ -256,10 +257,13 @@ const info = computed(()=>{
     flex: 1;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 20px 20px 0px 0px;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    background: #fff;
+    margin-top: -30px;
     &-search{
       margin: 10px 15px 0px;
       .ns-search{
