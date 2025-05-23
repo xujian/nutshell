@@ -37,16 +37,20 @@ interface optionType{
 
 export interface columnType{
   key: string
-  name: string
+  title: string
+  width?: string
 }
 export interface dataType{
   sort: number
-  name: string
+  title: string
   desc?: string
-  kyx: number
-  zsy: number
-  zx: number
-  zjf: number
+  kyx?: number
+  zsy?: number
+  zx?: number
+  zjf?: number
+  yw?: number
+  zl?: number
+  dk?: number
 }
 
 const Table = defineAsyncComponent(()=> import('./table/index.vue'))
@@ -60,35 +64,36 @@ const pageData = ref<pageDataType[]>([
     time: '2020-10-10',
     title: '经营单位榜',
     column: [
-      { key: 'name', name: '名称' },
-      { key: 'kyx', name: '扩影响' },
-      { key: 'zsy', name: '增收益' },
-      { key: 'zx', name: '支线' },
-      { key: 'zjf', name: '总积分' }
+      { key: 'sort', title: '排名', width: '40px' },
+      { key: 'title', title: '名称', width: '80px' },
+      { key: 'kyx', title: '扩影响' },
+      { key: 'zsy', title: '增收益' },
+      { key: 'zx', title: '支线' },
+      { key: 'zjf', title: '总积分' }
     ],
     data: [
-      { sort: 1, name: '昆明分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 2, name: '深圳分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 2, name: '广州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 4, name: '东莞分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 5, name: '惠州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 6, name: '河源分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 7, name: '汕尾分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 8, name: '汕头分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 9, name: '潮州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 10, name: '揭阳分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 11, name: '清远分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 12, name: '韶关分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 13, name: '梅州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 14, name: '阳江分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 15, name: '云浮分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 16, name: '茂名分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 17, name: '湛江分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 18, name: '长沙分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 19, name: '襄阳分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 20, name: '黑龙江分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 21, name: '新疆分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 22, name: '上海分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000}
+      { sort: 1, title: '昆明分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 1, title: '深圳分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 2, title: '广州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 4, title: '东莞分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 5, title: '惠州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 6, title: '河源分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 7, title: '汕尾分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 8, title: '汕头分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 9, title: '潮州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 10, title: '揭阳分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 11, title: '清远分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 12, title: '韶关分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 13, title: '梅州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 14, title: '阳江分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 15, title: '云浮分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 16, title: '茂名分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 17, title: '湛江分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 18, title: '长沙分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 19, title: '襄阳分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 20, title: '黑龙江分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 21, title: '新疆分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 22, title: '上海分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000}
     ]
   },
   {
@@ -97,21 +102,22 @@ const pageData = ref<pageDataType[]>([
     time: '2020-02-10',
     title: '合作商榜',
     column: [
-      { key: 'name', name: '名称' },
-      { key: 'kyx', name: '扩影响' },
-      { key: 'zsy', name: '增收益' },
-      { key: 'zx', name: '支线' },
-      { key: 'zjf', name: '总积分' }
+      { key: 'sort', title: '排名', width: '40px' },
+      { key: 'title', title: '名称', width: '80px' },
+      { key: 'kyx', title: '扩影响' },
+      { key: 'zsy', title: '增收益' },
+      { key: 'zx', title: '支线' },
+      { key: 'zjf', title: '总积分' }
     ],
     data: [
-      { sort: 1, name: '昆明分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 2, name: '深圳分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 2, name: '广州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 4, name: '东莞分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 5, name: '惠州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 6, name: '河源分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 7, name: '汕尾分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 8, name: '汕头分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 1, title: '昆明分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 2, title: '深圳分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 2, title: '广州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 4, title: '东莞分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 5, title: '惠州分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 6, title: '河源分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 7, title: '汕尾分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 8, title: '汕头分部', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
     ]
   },
   {
@@ -120,29 +126,30 @@ const pageData = ref<pageDataType[]>([
     time: '2010-01-02',
     title: '个人榜',
     column: [
-      { key: 'name', name: '名称' },
-      { key: 'kyx', name: '业务' },
-      { key: 'zsy', name: '战略' },
-      { key: 'zx', name: '打卡' },
-      { key: 'zjf', name: '总积分' }
+      { key: 'sort', title: '排名', width: '40px' },
+      { key: 'title', title: '名称', width: '80px' },
+      { key: 'yw', title: '业务' },
+      { key: 'zl', title: '战略' },
+      { key: 'dk', title: '打卡' },
+      { key: 'zjf', title: '总积分' }
     ],
     data: [
-      { sort: 1, name: '昆明分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 2, name: '深圳分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 2, name: '广州分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 4, name: '东莞分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 5, name: '惠州分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 6, name: '河源分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 7, name: '汕尾分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 8, name: '汕头分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 9, name: '潮州分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 10, name: '揭阳分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 11, name: '清远分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 12, name: '韶关分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 13, name: '梅州分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 14, name: '阳江分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 15, name: '云浮分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
-      { sort: 16, name: '茂名分部', desc: '昆明第三营业厅', kyx: 10000, zsy: 10000, zx: 100, zjf: 1000},
+      { sort: 1, title: '昆明分部', desc: '昆明第三营业厅43434324', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 2, title: '深圳分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 3, title: '广州分部', desc: '昆明第三营业厅324444', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 4, title: '东莞分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 5, title: '惠州分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 6, title: '河源分部43242', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 7, title: '汕尾分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 8, title: '汕头分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 9, title: '潮州分部43244', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 10, title: '揭阳分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 11, title: '清远分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 12, title: '韶关分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 13, title: '梅州分部', desc: '', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 14, title: '阳江分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 15, title: '云浮分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
+      { sort: 16, title: '茂名分部', desc: '昆明第三营业厅', yw: 10000, zl: 10000, dk: 100, zjf: 1000},
     ]
   }
 ])
@@ -265,7 +272,6 @@ const info = computed(()=>{
     }
     &-info{
       flex: 1;
-      background: red;
       overflow: hidden;
     }
   }
