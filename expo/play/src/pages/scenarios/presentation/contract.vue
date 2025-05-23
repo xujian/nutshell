@@ -255,13 +255,13 @@ const info = computed(()=>{
   .table{
     flex: 1;
     width: 100%;
-    padding: 10px 15px;
     box-sizing: border-box;
     border-radius: 20px 20px 0px 0px;
     display: flex;
     flex-direction: column;
-     overflow: hidden;
+    overflow: hidden;
     &-search{
+      margin: 10px 15px 0px;
       .ns-search{
         background: #F1F7FE;
         border:none;
@@ -273,6 +273,7 @@ const info = computed(()=>{
     &-info{
       flex: 1;
       overflow: hidden;
+      margin: 0px 15px;
     }
   }
 }

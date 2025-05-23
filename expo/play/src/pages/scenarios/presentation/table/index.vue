@@ -76,6 +76,7 @@ onMounted(() => {
       text-align: left;
       color: #35353599;
       font-size: 12px;
+      padding: 1px;
     }
   }
   &-body{
@@ -87,6 +88,7 @@ onMounted(() => {
       height: 40px;
       align-items: center;
       &-column{
+        padding: 1px;
         overflow: hidden;      /* 隐藏溢出内容 */
         white-space: nowrap;   /* 强制文本不换行 */
         text-overflow: ellipsis; /* 超出部分显示省略号 */
