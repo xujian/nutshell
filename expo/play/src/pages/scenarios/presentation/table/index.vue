@@ -17,12 +17,12 @@
           :key="index"
           :style="it.width ? {width: it.width} : { flex: 1}"
           :class="getClasses(it, item)">
-          <template v-if="it.key === 'sort' && [1, 2, 3].includes(item[it.key])">
-            <img class="rank-table-body-row-column-icon" :src="`https://cdn.ddjf.com/static/images/fnfundkit/rank-${item[it.key]}.png`" />
-          </template>
           <template v-if="item.desc && it.key === 'title'">
             <div class="rank-table-body-row-column-title">{{item.title}}</div>
             <div class="rank-table-body-row-column-desc">{{item.desc}}</div>
+          </template>
+          <template v-else-if="it.key === 'sort' && [1, 2, 3].includes(item[it.key])">
+            <img class="rank-table-body-row-column-icon" :src="`https://cdn.ddjf.com/static/images/fnfundkit/rank-${item[it.key]}.png`" />
           </template>
           <template v-else> {{ item[it.key] }}</template>
         </div>
@@ -85,7 +85,7 @@ onMounted(() => {
     &-row{
       display: flex;
       height: 40px;
-      line-height: 40px;
+      align-items: center;
       &-column{
         overflow: hidden;      /* 隐藏溢出内容 */
         white-space: nowrap;   /* 强制文本不换行 */
