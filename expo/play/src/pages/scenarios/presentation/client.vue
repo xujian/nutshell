@@ -104,8 +104,6 @@
               class="full-width"
               :caption="`进件时间: ${item.createdAt}`"
               :title="item.type"
-              captionfontSize= "font-xs"
-              titleFontSize = "font-lg"
               fill="#ffffff"
               :body-fill="getBgColor(item)">
                 <ns-facts fontSize="font-md" :items="toFact(item)" />

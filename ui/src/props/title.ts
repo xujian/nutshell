@@ -10,17 +10,11 @@ export const titleProps = {
   title: {
     type: String,
   },
-  titleFontSize: {
-    type: String as PropType<FontSizeType>
-  },
   /**
    * 副标题
    */
   caption: {
     type: String,
-  },
-  captionfontSize: {
-    type: String as PropType<FontSizeType>
   }
 }
 
@@ -49,12 +43,12 @@ export const useTitle: UseTitleFunction = (props: TitleProps) => {
       }, [
         props.title
           ? h('h5', {
-              class: ['h5', props.titleFontSize || 'font-md'],
+              class: ['h5'],
             }, props.title)
           : null,
         props.caption
           ? h('h6', {
-              class: ['caption', 'h6', props.captionfontSize || 'font-md'],
+              class: ['caption', 'h6'],
             }, props.caption)
           : null
       ]

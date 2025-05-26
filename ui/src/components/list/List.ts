@@ -34,12 +34,6 @@ export const listItemProps = {
   },
   data: {
     type: Object as PropType<ListItemData>
-  },
-  titleFontSize: {
-    type: String as PropType<FontSizeType>
-  },
-  captionfontSize: {
-    type: String as PropType<FontSizeType>
   }
 }
 
@@ -118,7 +112,7 @@ export const NsListItem = defineComponent({
   slots: listItemSlots,
   setup (props, { slots, emit }) {
 
-    const title = useTitle({...props.data, titleFontSize: props.titleFontSize, captionfontSize: props.captionfontSize} as TitleProps)
+    const title = useTitle({...props.data } as TitleProps)
 
     const main = ({ data }: ListItemProps) => {
       return h('div', {

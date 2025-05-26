@@ -13,8 +13,6 @@
         :data
         item-fill="#fff"
         direction="column"
-        captionfontSize= "font-xs"
-        titleFontSize = "font-lg"
         align="stretch"
         gap>
         <template #prepend="item">

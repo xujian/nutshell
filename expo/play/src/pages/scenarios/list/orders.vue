@@ -24,8 +24,6 @@
           <ns-card :title="item.type"
             class="full-width"
             :caption="`进件时间: ${item.进件时间}`"
-            captionfontSize= "font-xs"
-            titleFontSize = "font-lg"
             fill="#ffffff"
             :body-fill="getBgColor(item)"
             >
