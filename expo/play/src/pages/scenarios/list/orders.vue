@@ -186,5 +186,10 @@ const getBgColor = (item) => {
 }
 </script>
 
-<style scoped>
+<style  lang="scss">
+.ns-card{
+  .h5{
+    font-size: 14px;
+  }
+}
 </style>

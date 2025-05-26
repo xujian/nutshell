@@ -9,7 +9,7 @@
             :options="asset" />
           <ns-input label="房产面积(m²)" placeholder="请手动输入或拍照识别" required name="房产面积">
             <template #append>
-              <ns-icon name="https://cdn.ddjf.com/static/images/risk_manage/file-views.png" size="xl" />
+              <ns-icon name="https://cdn.ddjf.com/static/images/nutshell/camera.png" size="xl" />
             </template>
           </ns-input>
           <ns-cascading-select v-model.value="formData.房产区域" name="房产区域" :options="regions" placeholder="请选择房产区域" label="房产区域" />

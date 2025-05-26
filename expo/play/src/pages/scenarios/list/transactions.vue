@@ -129,6 +129,11 @@ const data = ref([
       background: linear-gradient(113.95deg, #F4E2CE 1.2%, #DEBB9B 77.63%);
     }
   }
+  .list-item{
+    .h5{
+      font-size: 14px;
+    }
+  }
 }
 </style>
 

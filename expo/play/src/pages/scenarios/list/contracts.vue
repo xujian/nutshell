@@ -204,5 +204,10 @@ const getBgColor = (item) => {
   .contracts-repeator {
     padding-bottom: 20px;
   }
+  .ns-card{
+    .h5{
+      font-size: 14px;
+    }
+  }
 }
 </style>
