@@ -1,5 +1,5 @@
 <template>
-  <ns-page class="batch-page" fill="neutral">
+  <ns-page class="batch-page" fill="#f1f2f4">
     <ns-page-header title="批量操作"
       fill="#ffffff80"
       :blur="40"
@@ -8,7 +8,7 @@
     <ns-page-content>
       <ns-row class="batch-header" justify="between" gap>
         <ns-column align="start" :gap="0">
-          <h5>选择</h5>
+          <h5>类型一</h5>
         </ns-column>
         <div class="spacer"></div>
         <ns-button icon="options" v-show="operatable">
@@ -31,6 +31,67 @@
         gap>
       </ns-list>
       {{ selected }}
+
+      <ns-row class="batch-header" justify="between" gap>
+        <ns-column align="start" :gap="0">
+          <h5>类型二</h5>
+        </ns-column>
+        <ns-switch label="批量选择" v-model="selectable2" @change="onToggleSelectable2" />
+      </ns-row>
+      <ns-repeator class="demo-repeator"
+        direction="column"
+        v-slot="item"
+        :data="orderData"
+        align="stretch"
+        gap>
+        <ns-card :title="item.type"
+          @click="batchOrder(item)"
+          :class="item.selected ? 'selected' : ''"
+          class="full-width"
+          :caption="`进件时间: ${item.进件时间}`"
+          fill="#ffffff"
+          :body-fill="getBgColor(item)"
+          >
+          <ns-facts fontSize="font-md" :items="toFact(item)" />
+          <template #icon>
+            <ns-avatar :fill="colors[item.type]" :edge="10" :src="images[item.type]" />
+          </template>
+          <template #corner>
+            <span>{{ item.status }}</span>
+          </template>
+        </ns-card>
+      </ns-repeator>
+      <ns-card fill="#fff">
+        <ns-row class="batch-header" justify="between" gap>
+          <ns-column align="start" :gap="0">
+            <h5>类型三</h5>
+          </ns-column>
+          <ns-switch label="批量选择" v-model="selectable3" @change="onToggleSelectable3" />
+        </ns-row>
+        <ns-repeator class="demo-repeator batch-three"
+          direction="column"
+          v-slot="item"
+          :data="cardData"
+          align="stretch"
+          gap>
+          <img
+            v-show="selectable3"
+            @click="batchCard(item)"
+            :src="`https://cdn.ddjf.com/static/images/fnfundkit/file-${item.selected ? 'selected' : 'notSelected'}.png`"
+            class="img" />
+          <ns-card
+            class="full-width"
+            :title="item.卡类型"
+            @click="batchCard(item)"
+            :caption="`${item.开户行} | ${item.办理人员}`"
+            >
+            <template #corner>
+              <ns-chip :color="item.卡状态 === '查封' ? '#f92b18' : '#2cd288'">{{ item.卡状态 }}</ns-chip>
+            </template>
+            <div>{{item.卡号}}</div>
+          </ns-card>
+        </ns-repeator>
+      </ns-card>
     </ns-page-content>
   </ns-page>
 </template>
@@ -72,7 +133,7 @@ const data = ref<any>([
     caption: '2024-10-11 15:00'
   },
   {
-    id: '2', 
+    id: '2',
     title: '小贷结清证明',
     caption: '2024-10-15 9:24',
     swipable: false
@@ -81,103 +142,154 @@ const data = ref<any>([
     id: '3',
     title: '赎楼交易通用合同',
     caption: '2024-10-18 10:45'
-  },
-  {
-    id: '4',
-    title: '房屋买卖合同',
-    caption: '2024-10-19 11:30'
-  },
-  {
-    id: '5',
-    title: '装修施工协议',
-    caption: '2024-10-20 14:15'
-  },
-  {
-    id: '6',
-    title: '租赁合同',
-    caption: '2024-10-21 16:45'
-  },
-  {
-    id: '7',
-    title: '物业服务协议',
-    caption: '2024-10-22 09:30'
-  },
-  {
-    id: '8',
-    title: '车位使用协议',
-    caption: '2024-10-23 10:20'
-  },
-  {
-    id: '9',
-    title: '装修保证金协议',
-    caption: '2024-10-24 13:40'
-  },
-  {
-    id: '10',
-    title: '验房交接单',
-    caption: '2024-10-25 15:50'
-  },
-  {
-    id: '11',
-    title: '中介服务协议',
-    caption: '2024-10-26 09:15'
-  },
-  {
-    id: '12',
-    title: '贷款申请书',
-    caption: '2024-10-27 11:20'
-  },
-  {
-    id: '13',
-    title: '产权转让协议',
-    caption: '2024-10-28 14:30'
-  },
-  {
-    id: '14',
-    title: '抵押合同',
-    caption: '2024-10-29 16:40'
-  },
-  {
-    id: '15',
-    title: '装修设计合同',
-    caption: '2024-10-30 10:25'
-  },
-  {
-    id: '16',
-    title: '家具采购协议',
-    caption: '2024-10-31 13:45'
-  },
-  {
-    id: '17',
-    title: '物业装修备案',
-    caption: '2024-11-01 15:20'
-  },
-  {
-    id: '18',
-    title: '水电安装协议',
-    caption: '2024-11-02 09:40'
-  },
-  {
-    id: '19',
-    title: '消防验收报告',
-    caption: '2024-11-03 11:35'
-  },
-  {
-    id: '20',
-    title: '质量保修书',
-    caption: '2024-11-04 14:50'
   }
 ])
 
 const openBatch = () => {
   console.log('批量操作')
 }
+
+// 批量操作类型二开始
+const selectable2 = ref(false),
+  orderData = ref([
+    {
+      type: '交易周转',
+      进件时间: '2025/10/08 10:32',
+      客户姓名: '李华明',
+      渠道经理: '王伟强',
+      放款机构: '联银小贷',
+      订单编号: 'SZS0420230220001',
+      status: '待审核'
+    },
+    {
+      type: '交易周转',
+      进件时间: '2025/10/08 11:45',
+      客户姓名: '张敏杰',
+      渠道经理: '李娜丽',
+      放款机构: '中信银行',
+      订单编号: 'SZS0420230220002',
+      status: '待审核'
+    }
+  ]),
+  onToggleSelectable2 = () => {
+    orderData.value = orderData.value.map((item: any) => {return {...item, selected: false}})
+  },
+  colors = {
+    交易周转: 'primary',
+    非交易周转: 'positive'
+  },
+  images: Record<string, string> = {
+    交易周转: 'https://cdn.ddjf.com/static/images/fnfundkit/icon-JYZZ.png',
+    非交易周转: 'https://cdn.ddjf.com/static/images/fnfundkit/icon-FJYZZ.png'
+  }
+
+
+const toFact = (item) => {
+  return Object.keys(item).map(key => {
+    return {
+      label: key,
+      value: item[key]
+    }
+  }).filter(f => !['type', 'status', 'selected'].includes(f.label))
+}
+
+const getBgColor = (item) => {
+  let isJy = item.type === '交易周转'
+  return isJy ? 'linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(241.09, 247.15, 255, 1) 117.45%)' :
+  'linear-gradient(270deg, rgba(255, 255, 255, 1), rgba(241.29, 251.58, 246.83, 1) 163.889%)'
+}
+
+const batchOrder = (item: any) => {
+  if(!selectable2.value){
+    // 非批量情况下执行其他操作（例如跳转）
+    return console.log('非批量操作情况')
+  }
+  item.selected = !item.selected
+}
+// 批量操作类型二结束
+
+// 批量操作类三开始
+const selectable3 = ref(false),
+  cardData = ref([
+    {
+      卡类型: '赎楼账户',
+      开户行: '工商银行',
+      办理人员: '李华明',
+      卡状态: '正常',
+      卡号: '6228480402564829999',
+      id: '1'
+    },
+    {
+      卡类型: '回款账户',
+      开户行: '招商银行',
+      办理人员: '李华明',
+      卡状态: '查封',
+      卡号: '6228480402564828889',
+      id: '2'
+    }
+  ]),
+  onToggleSelectable3 = () => {
+    cardData.value = cardData.value.map((item: any) => {return {...item, selected: false}})
+  }
+
+const batchCard = (item: any) => {
+  if(!selectable3.value){
+    // 非批量情况下执行其他操作（例如跳转）
+    return console.log('非批量操作情况')
+  }
+  item.selected = !item.selected
+}
+// 批量操作类三结束
+
 </script>
 
 <style lang="scss">
 .batch-page {
   .batch-header {
     height: 48px;
+  }
+  .ns-repeator{
+    margin-bottom: 12px;
+  }
+  .ns-card{
+    border:1px solid transparent;
+    &.selected{
+      border:1px solid var(--ns-primary);
+      position: relative;
+      overflow: hidden;
+    }
+    &.selected::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: url('https://cdn.ddjf.com/static/images/fnfundkit/card-selected.png')
+        no-repeat;
+      background-size:  100% 100%;
+    }
+    .h5{
+      font-size: 14px;
+    }
+  }
+  .batch-three{
+    .img{
+      display: block;
+      font-size: 0;
+      height: 14px;
+      width: 14px;
+      margin-right: 5px;
+    }
+    .ns-card{
+      background: url(https://cdn.ddjf.com/static/images/fnfundkit/card-bg.png)
+        no-repeat;
+      background-color: #f7f7f7;
+      background-size: 100% 100%;
+      .card-body{
+        text-align: right;
+      }
+    }
   }
 }
 </style>

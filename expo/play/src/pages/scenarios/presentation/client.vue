@@ -65,13 +65,13 @@
               {{ client.业务意向 }}
             </ns-facts-item>
             <ns-facts-item label="客户标签" direction="column">
-              <ns-chips :items="tags" color="#F2F3FF" textColor="#007FFF" justify="end" />
+              <ns-chips :items="tags" color="#F2F3FF" justify="end" />
             </ns-facts-item>
             <ns-facts-item label="客户来源">
               {{ client.客户来源 }}
             </ns-facts-item>
             <ns-facts-item label="意向产品" direction="column">
-              <ns-chips :items="interests" color="#F2F3FF" textColor="#007FFF" justify="end" />
+              <ns-chips :items="interests" color="#F2F3FF" justify="end" />
             </ns-facts-item>
             <ns-facts-item label="备注">
               {{ client.备注 }}
