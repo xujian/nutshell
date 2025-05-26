@@ -26,8 +26,7 @@ export const Chip = (props: ChipProps & MarginProps, { slots, emit }: Omit<Setup
       ...props.closable ? ['closable'] : [],
       ...props.size ? [`size-${props.size}`] : [],
     ],
-    round: props.round ?? true,
-    'text-color': props.textColor
+    round: props.round ?? true
   }, {
     default: () => [
       props.iconPosition !== 'end' && icon(),

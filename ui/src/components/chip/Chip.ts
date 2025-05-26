@@ -22,12 +22,6 @@ export const useChipProps = buildProps({
     default: 'primary'
   },
   /**
-   * 字色
-   */
-  textColor: {
-    type: String as PropType<Color>,
-  },
-  /**
    * 带关闭
    */
   closable: {

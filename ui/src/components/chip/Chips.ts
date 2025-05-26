@@ -17,12 +17,6 @@ export const chipsProps = {
     type: Boolean,
     default: false,
   },
-  /**
-   * 字色
-   */
-  textColor: {
-    type: String as PropType<Color>,
-  },
   ...useVariantProps(),
   ...useSizeProps(),
   ...useFlexProps(),
