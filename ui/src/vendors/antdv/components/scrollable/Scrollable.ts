@@ -148,7 +148,8 @@ export const Scrollable = defineComponent({
       ],
       style: {
         ...buildDimensionStyles(props),
-        overflowX: props.enabledX ? 'auto' : 'hidden',
+        overflowX: props.direction === 'x' ? 'auto' : 'hidden',
+        overflowY: props.direction === 'y' ? 'auto' : 'hidden',
       },
       onMousemove: (e: MouseEvent) => {
         if (!props.refreshable) return

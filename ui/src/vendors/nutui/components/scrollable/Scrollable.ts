@@ -147,8 +147,8 @@ export const Scrollable = defineComponent({
 
     return () => h(ScrollView, {
       ref: scrollableRef,
-      scrollY: props.enabledY ?? true,
-      scrollX: props.enabledX ?? false,
+      'scroll-y': props.direction !== 'x',
+      'scroll-x': props.direction === 'x',
       style: {
         ...buildDimensionStyles(props),
       },

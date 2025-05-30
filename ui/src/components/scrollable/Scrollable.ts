@@ -2,20 +2,15 @@ import { PropType, SlotsType, VNode } from 'vue'
 import { define, MakePropsType } from '../../utils'
 import { useDimensionProps } from '../../props'
 
+export type ScrollableDirection = 'x' | 'y'
+
 export const scrollableProps = {
   /**
-   * 可纵向滚动
+   * 滚动方向
    */
-  enabledY: {
-    type: Boolean,
-    default: true,
-  },
-  /**
-   * 可横向滚动
-   */
-  enabledX: {
-    type: Boolean,
-    default: false,
+  direction: {
+    type: String as PropType<ScrollableDirection>,
+    default: 'y',
   },
   /**
    * 可下拉刷新

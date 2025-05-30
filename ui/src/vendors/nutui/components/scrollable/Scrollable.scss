@@ -1,0 +1,7 @@
+.ns-scrollable {
+  &.scroll-x {
+    .scrollable-content {
+      width: fit-content;
+    }
+  }
+}
