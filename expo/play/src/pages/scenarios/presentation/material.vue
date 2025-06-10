@@ -1,51 +1,47 @@
 <template>
-  <ns-page fill="#f1f2f4">
-    <ns-page-header fill='#fff' title="影像资料" has-back-button reveal :blur="10">
-    </ns-page-header>
-    <ns-page-content  class="material-content">
-      <div class="material-card">
-        <div class="material-card-box">
-          <div class="type">
-            <div class="title">文件名称</div>
-            <div class="del-box">
-              <img
-                v-if="!isDelStatus"
-                @click="isDelStatus = !isDelStatus"
-                src="https://cdn.ddjf.com/static/images/fnfundkit/m-delete-icon.png" />
-              <span v-else @click="cancelDel">完成</span>
-            </div>
+  <div  class="material-content">
+    <div class="material-card">
+      <div class="material-card-box">
+        <div class="type">
+          <div class="title">文件名称</div>
+          <div class="del-box">
+            <img
+              v-if="!isDelStatus"
+              @click="isDelStatus = !isDelStatus"
+              src="https://cdn.ddjf.com/static/images/fnfundkit/m-delete-icon.png" />
+            <span v-else @click="cancelDel">完成</span>
           </div>
-          <div class="file">
-            <div class="img-card img-upload" @click="chooseImage()">
-              <img
-                class="img"
-                src="https://cdn.ddjf.com/static/images/fnfundkit/m-upload.png" />
-              <div>上传资料</div>
-            </div>
-            <div v-for="(item, index) in imageList" :key="index" class="img-card">
-              <img class="img" :src="getImg(item)" @click.self="openView(item)" />
-              <div
-                @click.self="item.selected = !item.selected"
-                v-show="isDelStatus"
-                class="img-checkbox"
-                :class="[item.selected ? 'checked' : '']"></div>
-            </div>
+        </div>
+        <div class="file">
+          <div class="img-card img-upload" @click="chooseImage()">
+            <img
+              class="img"
+              src="https://cdn.ddjf.com/static/images/fnfundkit/m-upload.png" />
+            <div>上传资料</div>
+          </div>
+          <div v-for="(item, index) in imageList" :key="index" class="img-card">
+            <img class="img" :src="getImg(item)" @click.self="openView(item)" />
+            <div
+              @click.self="item.selected = !item.selected"
+              v-show="isDelStatus"
+              class="img-checkbox"
+              :class="[item.selected ? 'checked' : '']"></div>
           </div>
         </div>
       </div>
-      <div class="materiral-bottom" v-show="isDelStatus">
-        <div class="num">
-          已选（
-          <span>2</span>
-          ）
-        </div>
-        <ns-button  color="primary" @click="cancelDel" variant="outlined">取消</ns-button>
-        <ns-button  color="primary" @click="delFile">
-          删除
-        </ns-button>
+    </div>
+    <div class="materiral-bottom" v-show="isDelStatus">
+      <div class="num">
+        已选（
+        <span>2</span>
+        ）
       </div>
-    </ns-page-content>
-  </ns-page>
+      <ns-button  color="primary" @click="cancelDel" variant="outlined">取消</ns-button>
+      <ns-button  color="primary" @click="delFile">
+        删除
+      </ns-button>
+    </div>
+  </div>
 </template>
 <script setup lang="ts">
 import Taro from '@tarojs/taro'
@@ -235,155 +231,155 @@ const imageList = ref<FileType[]>([
     "fileIds":"",
     "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
     },
-    // {
-    // "id":"420450390902865922",
-    // "applyNo":"FFZZ25060956002",
-    // "custNo":"420339382960635905",
-    // "typeNo":"M01002",
-    // "fileId":"6846ae9714bf9a0001301321",
-    // "fileName":"户口本(首页+个人页)",
-    // "fileSuffix":".jpeg",
-    // "fileSize":3818388,
-    // "fileType":"image",
-    // "sortNo":10,
-    // "remarks":"upload",
-    // "fileIds":"",
-    // "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
-    // },
-    // {
-    // "id":"420450390902865922",
-    // "applyNo":"FFZZ25060956002",
-    // "custNo":"420339382960635905",
-    // "typeNo":"M01002",
-    // "fileId":"6846ae9714bf9a0001301321",
-    // "fileName":"户口本(首页+个人页)",
-    // "fileSuffix":".jpeg",
-    // "fileSize":3818388,
-    // "fileType":"image",
-    // "sortNo":10,
-    // "remarks":"upload",
-    // "fileIds":"",
-    // "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
-    // },
-    // {
-    // "id":"420450390902865922",
-    // "applyNo":"FFZZ25060956002",
-    // "custNo":"420339382960635905",
-    // "typeNo":"M01002",
-    // "fileId":"6846ae9714bf9a0001301321",
-    // "fileName":"户口本(首页+个人页)",
-    // "fileSuffix":".jpeg",
-    // "fileSize":3818388,
-    // "fileType":"image",
-    // "sortNo":10,
-    // "remarks":"upload",
-    // "fileIds":"",
-    // "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
-    // },
-    // {
-    // "id":"420450390902865922",
-    // "applyNo":"FFZZ25060956002",
-    // "custNo":"420339382960635905",
-    // "typeNo":"M01002",
-    // "fileId":"6846ae9714bf9a0001301321",
-    // "fileName":"户口本(首页+个人页)",
-    // "fileSuffix":".jpeg",
-    // "fileSize":3818388,
-    // "fileType":"image",
-    // "sortNo":10,
-    // "remarks":"upload",
-    // "fileIds":"",
-    // "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
-    // },
-    // {
-    // "id":"420450390902865922",
-    // "applyNo":"FFZZ25060956002",
-    // "custNo":"420339382960635905",
-    // "typeNo":"M01002",
-    // "fileId":"6846ae9714bf9a0001301321",
-    // "fileName":"户口本(首页+个人页)",
-    // "fileSuffix":".jpeg",
-    // "fileSize":3818388,
-    // "fileType":"image",
-    // "sortNo":10,
-    // "remarks":"upload",
-    // "fileIds":"",
-    // "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
-    // },
-    // {
-    // "id":"420450390902865922",
-    // "applyNo":"FFZZ25060956002",
-    // "custNo":"420339382960635905",
-    // "typeNo":"M01002",
-    // "fileId":"6846ae9714bf9a0001301321",
-    // "fileName":"户口本(首页+个人页)",
-    // "fileSuffix":".jpeg",
-    // "fileSize":3818388,
-    // "fileType":"image",
-    // "sortNo":10,
-    // "remarks":"upload",
-    // "fileIds":"",
-    // "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
-    // },
-    // {
-    // "id":"420450390902865922",
-    // "applyNo":"FFZZ25060956002",
-    // "custNo":"420339382960635905",
-    // "typeNo":"M01002",
-    // "fileId":"6846ae9714bf9a0001301321",
-    // "fileName":"户口本(首页+个人页)",
-    // "fileSuffix":".jpeg",
-    // "fileSize":3818388,
-    // "fileType":"image",
-    // "sortNo":10,
-    // "remarks":"upload",
-    // "fileIds":"",
-    // "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
-    // },{
-    // "id":"420450390902865922",
-    // "applyNo":"FFZZ25060956002",
-    // "custNo":"420339382960635905",
-    // "typeNo":"M01002",
-    // "fileId":"6846ae9714bf9a0001301321",
-    // "fileName":"户口本(首页+个人页)",
-    // "fileSuffix":".jpeg",
-    // "fileSize":3818388,
-    // "fileType":"image",
-    // "sortNo":10,
-    // "remarks":"upload",
-    // "fileIds":"",
-    // "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
-    // },
-    // {
-    // "id":"420450390902865922",
-    // "applyNo":"FFZZ25060956002",
-    // "custNo":"420339382960635905",
-    // "typeNo":"M01002",
-    // "fileId":"6846ae9714bf9a0001301321",
-    // "fileName":"户口本(首页+个人页)",
-    // "fileSuffix":".jpeg",
-    // "fileSize":3818388,
-    // "fileType":"image",
-    // "sortNo":10,
-    // "remarks":"upload",
-    // "fileIds":"",
-    // "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
-    // },
-    // {
-    // "id":"420450390902865922",
-    // "applyNo":"FFZZ25060956002",
-    // "custNo":"420339382960635905",
-    // "typeNo":"M01002",
-    // "fileId":"6846ae9714bf9a0001301321",
-    // "fileName":"户口本(首页+个人页)",
-    // "fileSuffix":".jpeg",
-    // "fileSize":3818388,
-    // "fileType":"image",
-    // "sortNo":10,
-    // "remarks":"upload",
-    // "fileIds":"",
-    // "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
-    // }
+    {
+    "id":"420450390902865922",
+    "applyNo":"FFZZ25060956002",
+    "custNo":"420339382960635905",
+    "typeNo":"M01002",
+    "fileId":"6846ae9714bf9a0001301321",
+    "fileName":"户口本(首页+个人页)",
+    "fileSuffix":".jpeg",
+    "fileSize":3818388,
+    "fileType":"image",
+    "sortNo":10,
+    "remarks":"upload",
+    "fileIds":"",
+    "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
+    },
+    {
+    "id":"420450390902865922",
+    "applyNo":"FFZZ25060956002",
+    "custNo":"420339382960635905",
+    "typeNo":"M01002",
+    "fileId":"6846ae9714bf9a0001301321",
+    "fileName":"户口本(首页+个人页)",
+    "fileSuffix":".jpeg",
+    "fileSize":3818388,
+    "fileType":"image",
+    "sortNo":10,
+    "remarks":"upload",
+    "fileIds":"",
+    "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
+    },
+    {
+    "id":"420450390902865922",
+    "applyNo":"FFZZ25060956002",
+    "custNo":"420339382960635905",
+    "typeNo":"M01002",
+    "fileId":"6846ae9714bf9a0001301321",
+    "fileName":"户口本(首页+个人页)",
+    "fileSuffix":".jpeg",
+    "fileSize":3818388,
+    "fileType":"image",
+    "sortNo":10,
+    "remarks":"upload",
+    "fileIds":"",
+    "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
+    },
+    {
+    "id":"420450390902865922",
+    "applyNo":"FFZZ25060956002",
+    "custNo":"420339382960635905",
+    "typeNo":"M01002",
+    "fileId":"6846ae9714bf9a0001301321",
+    "fileName":"户口本(首页+个人页)",
+    "fileSuffix":".jpeg",
+    "fileSize":3818388,
+    "fileType":"image",
+    "sortNo":10,
+    "remarks":"upload",
+    "fileIds":"",
+    "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
+    },
+    {
+    "id":"420450390902865922",
+    "applyNo":"FFZZ25060956002",
+    "custNo":"420339382960635905",
+    "typeNo":"M01002",
+    "fileId":"6846ae9714bf9a0001301321",
+    "fileName":"户口本(首页+个人页)",
+    "fileSuffix":".jpeg",
+    "fileSize":3818388,
+    "fileType":"image",
+    "sortNo":10,
+    "remarks":"upload",
+    "fileIds":"",
+    "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
+    },
+    {
+    "id":"420450390902865922",
+    "applyNo":"FFZZ25060956002",
+    "custNo":"420339382960635905",
+    "typeNo":"M01002",
+    "fileId":"6846ae9714bf9a0001301321",
+    "fileName":"户口本(首页+个人页)",
+    "fileSuffix":".jpeg",
+    "fileSize":3818388,
+    "fileType":"image",
+    "sortNo":10,
+    "remarks":"upload",
+    "fileIds":"",
+    "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
+    },
+    {
+    "id":"420450390902865922",
+    "applyNo":"FFZZ25060956002",
+    "custNo":"420339382960635905",
+    "typeNo":"M01002",
+    "fileId":"6846ae9714bf9a0001301321",
+    "fileName":"户口本(首页+个人页)",
+    "fileSuffix":".jpeg",
+    "fileSize":3818388,
+    "fileType":"image",
+    "sortNo":10,
+    "remarks":"upload",
+    "fileIds":"",
+    "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
+    },{
+    "id":"420450390902865922",
+    "applyNo":"FFZZ25060956002",
+    "custNo":"420339382960635905",
+    "typeNo":"M01002",
+    "fileId":"6846ae9714bf9a0001301321",
+    "fileName":"户口本(首页+个人页)",
+    "fileSuffix":".jpeg",
+    "fileSize":3818388,
+    "fileType":"image",
+    "sortNo":10,
+    "remarks":"upload",
+    "fileIds":"",
+    "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
+    },
+    {
+    "id":"420450390902865922",
+    "applyNo":"FFZZ25060956002",
+    "custNo":"420339382960635905",
+    "typeNo":"M01002",
+    "fileId":"6846ae9714bf9a0001301321",
+    "fileName":"户口本(首页+个人页)",
+    "fileSuffix":".jpeg",
+    "fileSize":3818388,
+    "fileType":"image",
+    "sortNo":10,
+    "remarks":"upload",
+    "fileIds":"",
+    "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
+    },
+    {
+    "id":"420450390902865922",
+    "applyNo":"FFZZ25060956002",
+    "custNo":"420339382960635905",
+    "typeNo":"M01002",
+    "fileId":"6846ae9714bf9a0001301321",
+    "fileName":"户口本(首页+个人页)",
+    "fileSuffix":".jpeg",
+    "fileSize":3818388,
+    "fileType":"image",
+    "sortNo":10,
+    "remarks":"upload",
+    "fileIds":"",
+    "url":"https://tech-sit.ddjf.info/eis//view/process/6846ae9714bf9a0001301321?styleType=image%2Fresize%2Cw_1800%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Ctype_ZmFuZ3poZW5nc2h1c29uZw%2Crotate_316%2Cw%3D1800%2Ch_1100%2Csize_20%2Cfill_1%2Ctext_MjAyNS0wNi0wOSAxNzo1MToyOSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg%2Ccolor_808080%2Ct_55%2Cg_se%2Cx_10%2Cy_10&systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&version=0","thumbnailUrl":"https://tech-sit.ddjf.info/eis//view/redirect/thumbnail/6846ae9714bf9a0001301321?systemCode=fundkit&authKey=c97edaa67ff9ef0e5542f5513a393deb&width=120&height=120&save=0&protocol=1",
+    }
   ])
 
 // 取消删除
@@ -468,13 +464,17 @@ async function openView(item: FileType) {
   padding: 0px;
   display: flex;
   flex-direction: column;
+  background: #f1f2f4;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   .material-card{
     padding: 10px;
     flex: 1;
     display: flex;
-    align-items: stretch;
     box-sizing: border-box;
     width: 100%;
+    overflow: hidden;
     &-box{
       border-radius: 8px;
       padding: 10px;
@@ -482,6 +482,7 @@ async function openView(item: FileType) {
       background: #fff;
       width: 100%;
       display: flex;
+      max-height: 100%; // 限制最大高度为父级高度
       flex-direction: column;
       .type {
         display: flex;
@@ -489,6 +490,7 @@ async function openView(item: FileType) {
         justify-content: space-between;
         border-bottom: 1px solid #e5e5e5;
         margin-bottom: 4px;
+        color: #333;
         .title {
           line-height: 30px;
         }
@@ -505,16 +507,14 @@ async function openView(item: FileType) {
         }
       }
       .file {
-        flex: 1;
-        overflow-y: scroll;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px; // 可根据需要调整卡片之间的间距
+        max-height: 100%; // 限制最大高度为父级高度
+        overflow-y: auto; // 超出父级高度时出现垂直滚动条
         .img-card {
           position: relative;
-          width: 30%;
+          width: 100%;
           height: 100px;
           margin: 5px 0px;
           &.img-upload {
