@@ -32,6 +32,7 @@ const components = [
   'files/files',
   'list/list',
   'scrollable/scrollable',
+  'grid/grid',
 ]
 
 const scenarios = [
@@ -68,6 +69,7 @@ export default defineAppConfig({
     'pages/interactive/sheet',
     'pages/guide/scroll',
     'pages/tokens/spacing',
+    'pages/design/props',
     ...components.map(x => `pages/components/${x}`),
     ...scenarios.map(x => `pages/scenarios/${x}`),
   ],

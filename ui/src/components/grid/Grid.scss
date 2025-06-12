@@ -1,0 +1,9 @@
+.ns-grid {
+  display: grid;
+  grid-template-columns: var(--columns, repeat(2, 1fr));
+  grid-template-rows: var(--rows, repeat(2, 1fr));
+  gap: var(--gap, 10px);
+}
+
+.ns-grid-item {
+}

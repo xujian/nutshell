@@ -10,7 +10,8 @@
         <ns-card v-for="(group, index) in scenarios"
           :key="index" class="scene-card" fill="#FF980099"
           :blur="40"
-          stroke="#d8870f" :title="group.title">
+          stroke="#d8870f" :title="group.title"
+          foreground="white">
           <ns-column class="fit" align="end" justify="end" gap>
             <ns-button r="sm" v-for="(s) in group.items"
               class="link-button"
@@ -139,11 +140,11 @@ const groups: { title: string, data: ListItemProps[] }[] = [
     ]
   },
   {
-    title: '视觉效果',
+    title: '视觉风格',
     data: [
       {
         title: '总述',
-        caption: '视觉效果相关属性',
+        caption: '视觉风格属性',
         link: '/pages/design/props',
       },
       {
@@ -270,6 +271,11 @@ const groups: { title: string, data: ListItemProps[] }[] = [
         title: '纵向排列',
         caption: '<ns-column>',
         link: '/pages/components/column/column',
+      },
+      {
+        title: '网格',
+        caption: '<ns-grid>',
+        link: '/pages/components/grid/grid',
       }
     ]
   },

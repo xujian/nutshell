@@ -44,6 +44,7 @@ import { NsAvatar } from './avatar'
 import { NsPlank } from './plank'
 import { NsLoading } from './loading'
 import { NsScrollable } from './scrollable'
+import { NsGrid } from './grid'
 
 const components = {
   NsApp,
@@ -124,6 +125,7 @@ const components = {
   NsPlank,
   NsLoading,
   NsScrollable,
+  NsGrid,
 }
 
 const properties = Object.fromEntries(

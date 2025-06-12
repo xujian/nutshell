@@ -39,6 +39,7 @@ export * from './avatar'
 export * from './plank'
 export * from './scrollable'
 export * from './loading'
+export * from './grid'
 // move table to the last for
 // table uses other basic components
 export * from './table'
