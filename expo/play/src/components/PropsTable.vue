@@ -11,7 +11,7 @@ export interface PropsTableData {
   name: string
   description: string
   type: string
-  default: string
+  default: any
 }
 
 const columns: PropsTableColumn[] = [
@@ -73,7 +73,7 @@ export default defineComponent({
   }
   .nut-table__main__head__tr,
   .nut-table__main__body__tr {
-    display: flex;
+    display: table-row;
     flex-direction: row;
     justify-content: stretch;
     .h5-span {
@@ -99,6 +99,15 @@ export default defineComponent({
         font-weight: bold;
       }
     }
+  }
+  .nut-table__main__head__tr__th,
+  .nut-table__main__body__tr__th,
+  .nut-table__main__head__tr__td,
+  .nut-table__main__body__tr__td {
+    padding: 4px 10px;
+  }
+  .caption {
+    font-size: 12px;
   }
 }
 </style>
