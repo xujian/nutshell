@@ -1,4 +1,4 @@
-import { defineComponent, h, PropType, VNode } from 'vue'
+import { defineComponent, h, PropType, useSlots, VNode } from 'vue'
 import { useGapProps, buildGapStyles } from '../../props/gap'
 import { useBoxProps, buildBoxStyles } from '../../props/box'
 import { useDimensionProps, buildDimensionStyles } from '../../props/dimension'
@@ -48,7 +48,12 @@ export const NsGrid = defineComponent({
   props: gridProps,
   setup(props, { slots }) {
     
-    const items = slots.default?.() as VNode[]
+    let items = slots.default?.() as VNode[]
+    console.log('items', items)
+    if (items.length == 1 && items[0]?.type === Symbol.for('v-fgt')) {
+      console.log('items|||', items)
+      items = items[0].children as VNode[]
+    }
 
     /**
      * 用法
