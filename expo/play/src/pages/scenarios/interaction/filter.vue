@@ -81,7 +81,7 @@ const 累积收益 = ref(43508.10),
   今日收益 = ref(90.00),
   本月收益 = ref(3870.90),
   上月收益 = ref(2548.60)
-  
+
 const 起止日期 = ref<{ from: string; to: string }>()
 const 筛选条件 = ref({
   status: 'all',
@@ -108,7 +108,7 @@ const 交易记录 = ref([
     id: 'w13',
     变更类型: '收益',
     金额: 3,
-    客户: '陈大郎', 
+    客户: '陈大郎',
     余额: 75,
     时间: '2024-12-20 09:15:00'
   },
@@ -238,6 +238,19 @@ const 交易记录 = ref([
       background-position: right center;
       background-size: 12px;
       white-space: nowrap;
+    }
+  }
+  .sheet-scroll-view-content{
+    padding: 0 !important;
+    height: 400px !important;
+    .list-filter-picker-title{
+      line-height: 44px;
+    }
+    .list-filter-picker-btn{
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
     }
   }
 }
