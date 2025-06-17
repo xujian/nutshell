@@ -25,7 +25,7 @@ export const buildGapClasses = (props: GapProps) => [
 ]
 
 export const buildGapStyles = (props: GapProps) => ({
-  ...props.gap
+  ...props.gap !== void 0 && props.gap !== false
     ? {
         '--gap': typeof props.gap === 'number'
           ? `${props.gap}px`
