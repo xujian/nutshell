@@ -28,3 +28,4 @@ expo/play/dist/*
 taro-plugin/dist/*
 vite-plugin/dist/index.cjs
 ui/stats.html
+.trae
