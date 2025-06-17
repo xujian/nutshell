@@ -6,7 +6,7 @@
       fill="#ffffff99"
       :blur="40"
       :reveal="pageHeaderReveal"></ns-page-header>
-    <ns-page-content :scrollable="contentScrollable">
+    <ns-page-content :scrollable="contentScrollable" :refreshable="contentRefreshable">
       <h2>页面</h2>
       <p></p>
       <code-view language="html" :code="codes[0]" />
@@ -14,6 +14,10 @@
         <ns-row justify="between">
           <label>Page content scrollable</label>
           <ns-switch v-model="contentScrollable" />
+        </ns-row>
+        <ns-row justify="between">
+          <label>Page content refreshable</label>
+          <ns-switch v-model="contentRefreshable" />
         </ns-row>
         <ns-row justify="between">
           <label>Dark</label>
@@ -26,7 +30,8 @@
       </ns-column>
       <p>&nbsp;</p>
       <ns-button color="primary" class="full-width" @click="openSheet">打开 SHEET</ns-button>
-      <ns-card fill="#fff" title="卡片" caption="副标题" class="my-md">
+      <ns-card fill="#ffffff55" blur="40" stroke="#ffffff99"
+        :thick="1" title="卡片" caption="副标题" class="my-md">
         <lorem />
       </ns-card>
       <ns-row :gap="10">
@@ -53,6 +58,7 @@ import { useBus, useNutshell } from '@uxda/nutshell/taro'
 import DemoSheet from '../../../components/DemoSheet.vue'
 
 const contentScrollable = ref(false),
+  contentRefreshable = ref(false),
   darkScheme = ref(false),
   footerSunk = ref(false),
   pageHeaderReveal = ref(true),

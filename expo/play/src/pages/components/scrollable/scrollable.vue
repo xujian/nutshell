@@ -70,6 +70,28 @@
         </ns-scrollable>
         <p>&nbsp;</p>
       </template>
+      <template v-if="activeTab === '4'">
+        <h2>水平滚动</h2>
+        <p class="caption">:horizontal="true"</p>
+        <code-view :code="codes[3]" language="html" />
+        <ns-scrollable
+          class="scroll-d"
+          direction="x"
+          @bottom-reached="onScrollBottomReached">
+          <ns-row :gap="10" class="fit-width">
+            <ns-number :height="120" :width="40" justify="center" fill="neutral" :value="1" />
+            <ns-number :height="120" :width="40" justify="center" fill="neutral" :value="2" />
+            <ns-number :height="120" :width="40" justify="center" fill="neutral" :value="3" />
+            <ns-number :height="120" :width="40" justify="center" fill="neutral" :value="4" />
+            <ns-number :height="120" :width="40" justify="center" fill="neutral" :value="5" />
+            <ns-number :height="120" :width="40" justify="center" fill="neutral" :value="6" />
+            <ns-number :height="120" :width="40" justify="center" fill="neutral" :value="7" />
+            <ns-number :height="120" :width="40" justify="center" fill="neutral" :value="8" />
+            <ns-number :height="120" :width="40" justify="center" fill="neutral" :value="9" />
+            <ns-number :height="120" :width="40" justify="center" fill="neutral" :value="10" />
+          </ns-row>
+        </ns-scrollable>
+      </template>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
@@ -83,6 +105,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
+const date = ref(new Date())
 
 const activeTab = ref('1')
 
@@ -98,6 +121,10 @@ const tabs = [
   {
     value: '3',
     label: '滑动到底部',
+  },
+  {
+    value: '4',
+    label: '水平滚动',
   },
 ]
 
@@ -133,9 +160,13 @@ const codes = [
     ...
   </ns-column>
 </ns-scrollable>`,
+`<ns-scrollable
+  class="scroll-d"
+  :height="200" horizontal>
+  <ns-date-select v-model="date" />
+</ns-scrollable>`
 ]
 </script>
 
 <style lang="scss">
 </style>
-
