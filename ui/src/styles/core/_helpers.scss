@@ -19,6 +19,14 @@
   height: 100%;
 }
 
+.fit-width {
+  width: fit-content;
+}
+
+.fit-height {
+  height: fit-content;
+}
+
 .number {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "trum";
