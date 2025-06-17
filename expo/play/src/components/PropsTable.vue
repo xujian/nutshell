@@ -49,7 +49,8 @@ export default defineComponent({
     return () => h(NutTable, {
       class: [
         'props-table',
-        'breakout'
+        'breakout',
+        'color-scheme-light'
       ],
       columns,
       data: rows.value,
@@ -63,6 +64,7 @@ export default defineComponent({
 <style lang="scss">
 .props-table {
   margin-top: 0;
+  color: var(--foreground);
   --nut-table-tr-even-bg-color: #f7f7f7;
   .nut-table__main__head__tr {
     border-bottom: solid 1px #e8e8e8;
@@ -105,6 +107,7 @@ export default defineComponent({
   .nut-table__main__head__tr__td,
   .nut-table__main__body__tr__td {
     padding: 4px 10px;
+    font-size: 12px;
   }
   .caption {
     font-size: 12px;

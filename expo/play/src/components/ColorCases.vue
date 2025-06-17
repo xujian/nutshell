@@ -1,19 +1,23 @@
 <template>
-  <div
-    class="case-list color-cases flex"
-    :class="[direction]">
-    <div class="item flex align-center justify-center" v-for="color in brands"
+  <ns-grid
+    class="case-list size-cases"
+    :columns="direction === 'row' ? 2 : 1"
+    :gap="1">
+    <ns-row class="item align-center justify-center" v-for="color in brands"
       :key="color">
       <h6 class="title">color="<span class="b">{{ color }}</span>"</h6>
       <slot :color="color"></slot>
-    </div>
-  </div>
+    </ns-row>
+  </ns-grid>
 </template>
 
 <script lang="ts" setup>
 import { brands } from '@uxda/nutshell/taro'
 
 defineProps({
-  direction: String
+  direction: {
+    type: String,
+    default: 'row'
+  }
 })
 </script>

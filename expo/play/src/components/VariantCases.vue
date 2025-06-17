@@ -1,21 +1,25 @@
 <template>
-  <div
-    class="case-list variant-cases flex"
-    :class="[direction]">
-    <div class="item flex align-center justify-center"
+  <ns-grid
+    class="case-list size-cases"
+    :columns="direction === 'row' ? 2 : 1"
+    :gap="1">
+    <ns-row class="item align-center justify-center"
       v-for="variant in variants"
       :key="variant">
       <h6 class="title">variant="<span class="b">{{ variant }}</span>"</h6>
       <slot :variant="variant"></slot>
-    </div>
-  </div>
+    </ns-row>
+  </ns-grid>
 </template>
 
 <script lang="ts" setup>
 import { variants } from '@uxda/nutshell/taro'
 
 defineProps({
-  direction: String
+  direction: {
+    type: String,
+    default: 'row'
+  }
 })
 </script>
 

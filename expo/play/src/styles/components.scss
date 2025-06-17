@@ -7,10 +7,12 @@
     background-color: #fff;
     display: flex;
     position: relative;
-    min-width: 50vw;
-    min-height: 50vw;
+    aspect-ratio: 1/1;
+    max-height: 400px;
     box-sizing: border-box;
     padding: var(--ns-spacing);
+    align-content: center;
+    flex-wrap: wrap;
     .title {
       font-size: 12px;
       position: absolute;

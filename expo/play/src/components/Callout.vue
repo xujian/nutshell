@@ -1,17 +1,16 @@
 <template>
-  <div class="callout">
+  <ns-card class="callout my-md"
+    fill="#34C75999"
+    :brightness="1.5"
+    :blur="50" stroke="#34C759">
     <slot></slot>
-  </div>
+  </ns-card>
 </template>
 
 <style lang="scss">
 .callout {
-  border-radius: 10px;
-  border-style: solid;
-  border-color: #34C759;
-  border-width: 1px;
-  background-color: #34C75966;
-  color: #148430;
+  .card-body {
+  color: #0b5c1f;
   font-size: 12px;
   padding: var(--ns-spacing);
   margin: var(--ns-spacing) 0;
@@ -20,12 +19,14 @@
   background-repeat: no-repeat;
   padding: 8px;
   padding-left: 36px;
+  color-interpolation-filters: auto;
   .b {
     font-weight: bold;
   }
   code {
     font-weight: bold;
-    color: #7a6e0c;
+      color: #7a6e0c;
+    }
   }
 }
 </style>

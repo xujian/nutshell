@@ -17,7 +17,8 @@
       </color-cases>
       <h2>Variants</h2>
       <p class="caption">形态</p>
-      <variant-cases v-slot="{variant}" class="breakout column">
+      <variant-cases v-slot="{variant}" direction="column"
+        class="breakout column">
         <ns-row align="start" wrap :gap="10">
           <ns-button v-for="(color) in colors"
             :key="color"
