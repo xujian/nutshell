@@ -229,3 +229,20 @@
     background-color: transparent !important;
   }
 }
+
+
+.color-scheme-dark {
+  &:not(.variant-outlined) {
+    &:not(.variant-plain) {
+      --ns-text: var(--ns-text-dark, #fff);
+      --foreground: var(--ns-text-dark, #fff);
+    }
+  }
+}
+.color-scheme-light {
+  &:not(.variant-outlined) {
+    &:not(.variant-plain) {
+      --foreground: var(--ns-text-light, var(--ns-text));
+    }
+  }
+}
