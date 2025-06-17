@@ -54,10 +54,6 @@ export const NsCard = defineComponent({
       ...props.edge ? ['has-edge'] : [],
     ])
 
-    const style = computed(() => ({
-      ...buildDesignStyles(props),
-    }))
-
     const icon = () => slots.icon
       ? h('div', {
           class: [
@@ -127,7 +123,7 @@ export const NsCard = defineComponent({
 
     return () => h('div', {
       class: classes.value,
-      style: style.value,
+      style: buildDesignStyles(props),
     }, [
       header(),
       body(),
