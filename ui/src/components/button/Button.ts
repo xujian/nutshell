@@ -1,7 +1,9 @@
 import { computed, PropType } from 'vue'
-import { useDesignProps, useSizeProps, useVariantProps,
+import {
+  useDesignProps, useSizeProps, useVariantProps,
   useDimensionProps, useLoadingProps, useHasIconProps,
-  buildHasIconClasses } from '../../props'
+  buildHasIconClasses
+} from '../../props'
 import { type IconSlots } from '../../props'
 import { define, MakePropsType } from '../../utils'
 import { Color } from '../../composables/theme'
@@ -17,6 +19,7 @@ export const useButtonProps = buildProps({
   },
   color: {
     type: String as PropType<Color>,
+    
   },
   /**
    * 禁用
@@ -67,9 +70,8 @@ export const NsButton = define({
           ? ['has-icon']
           : ['icon']
         : [],
-      ...props.round ? ['round'] : [],
       ...buildHasIconClasses(props),
-      ...popover.classes
+      ...popover.classes,
     ])
 
     const popover = usePopover()

@@ -1,7 +1,6 @@
 import { computed, SetupContext, h } from 'vue'
 import { DialogProps, NsRow, NsButton, NsCard } from '../../../../components'
 import { buildDesignClasses } from '../../../../props'
-// import { ScrollView } from '@tarojs/components'
 
 export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, 'expose'>) => {
 
@@ -86,7 +85,6 @@ export const Dialog = (props: DialogProps, { slots, emit }: Omit<SetupContext, '
       class: [
         'full-height'
       ]
-
     }, card())
   }
 

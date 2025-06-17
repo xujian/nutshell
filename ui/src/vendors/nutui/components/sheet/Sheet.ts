@@ -3,7 +3,6 @@ import { sheetEmits, sheetProps } from '../../../../components/sheet'
 import { buildDesignClasses, PopupState, PopupStateSymbol, useTitle } from '../../../../props'
 import { NsRow } from '../../../..//components/flex'
 import { NsButton } from '../../../..//components/button'
-// import { ScrollView } from '@tarojs/components'
 
 export const Sheet = defineComponent(
   (props, { slots, emit }) => {

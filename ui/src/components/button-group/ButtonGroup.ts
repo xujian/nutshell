@@ -1,12 +1,12 @@
 import { PropType, defineComponent, h, } from 'vue'
 import {  MakePropsType } from '../../utils'
-import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDesignProps, useDimensionProps, useFlexProps, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
+import { buildDesignClasses, buildDesignStyles, buildFlexClasses, buildFlexStyles, useDesignProps, useDimensionProps, useFlexProps, useModelValuePropsForInput, useModelValuePropsForString, useModelValuePropsForStringArray, useSizeProps, useVariantProps } from '../../props'
 import { UniDataItem } from '../../shared'
 import { Color } from '../../composables/theme'
 import { NsButton } from '../button/Button'
 
 export const buttonGroupProps = {
-  ...useModelValuePropsForStringArray(),
+  ...useModelValuePropsForInput(),
   /**
    * 按钮底色
    */

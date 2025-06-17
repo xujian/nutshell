@@ -16,7 +16,6 @@ export const Repeator = defineComponent({
     const { isSelecting, selected, toggleSelected, isSelected } = 
       useSelectable(props, emit)
 
-
     const refs: Ref[] = props.data.map((item) => ref())
 
     const classes = [
