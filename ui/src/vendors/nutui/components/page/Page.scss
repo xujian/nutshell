@@ -76,16 +76,16 @@
     }
   }
   .page-footer {
-    position: fixed;
-    z-index: 10;
+    position: sticky;
     left: 0;
     bottom: 0;
+    z-index: 10;
     background-color: var(--fill, #ffffffbb);
     --blur: 40;
     padding: var(--ns-spacing);
     padding-bottom: max(var(--bottom), var(--ns-spacing));
     box-sizing: border-box;
-    width: 100vw;
+    width: 100%;
     border-radius: var(--ns-r);
     transform: translate3d(0, 0, 0);
     transition: transform .3s;
@@ -104,6 +104,10 @@
       background-color: var(--fill, #000000bb);
     }
   }
+}
+
+:root .page.ns-page:not(.radius) {
+  border-radius: 0;
 }
 
 /**
