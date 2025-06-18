@@ -20,6 +20,7 @@ export const Repeator = defineComponent({
 
     const classes = [
       'ns-repeator-item',
+      'selectable-item',
       'flex-item',
       'align-center',
       ...buildDesignClasses(props),
@@ -55,12 +56,9 @@ export const Repeator = defineComponent({
     const item = (data: any, key: string, index: number) => h('div', {
       class: [
         ...classes,
-        ...isSelecting.value ? ['selectable'] : [],
-        ...props.selectable
-          ? isSelected(data)
-            ? ['selected']
-            : []
-          : [],
+        isSelected(data)
+          ? ['selected']
+          : []
       ],
       style: {
         ...buildDesignStyles(props),
@@ -91,6 +89,8 @@ export const Repeator = defineComponent({
       class: [
         'ns-repeator',
         'ns-selectable',
+        ...isSelecting.value ? ['selecting'] : [],
+        `select-type-${props.selectType}`,
         props.direction === 'row' ? 'row' : 'column',
         ...props.divides ? ['has-divides'] : [],
         ...buildFlexClasses(props),

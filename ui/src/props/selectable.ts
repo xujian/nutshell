@@ -2,6 +2,8 @@ import { ref, computed, type PropType } from 'vue'
 import { useNutshell } from '../types'
 import { buildProps } from '../utils/private/props'
 
+export type SelectType = 'check' | 'ribbon'
+
 export const selectableProps = ({
   /**
    * Enable selection mode
@@ -16,6 +18,15 @@ export const selectableProps = ({
   selected: {
     type: Array as PropType<any[]>,
     default: () => []
+  },
+  /**
+   * Select type
+   * - check: 左侧显示复选框
+   * - ribbon: 角标显示选中状态
+   */
+  selectType: {
+    type: String as PropType<SelectType>  ,
+    default: 'check'
   }
 })
 
@@ -42,7 +53,15 @@ export const selectableEmits: SelectableEmits = {
  */
 export function useSelectable (props: any, emit: any) {
   const $n = useNutshell()
-  const selected = ref<any[]>(props.selected || [])
+
+  // selected 值的初始计算
+  // 如果直接给了 props.selected, 以此为准
+  // 否则计算 props.data 中 selected 为 true 的项
+  const selected = ref<any[]>(
+    props.selected && props.selected.length > 0
+      ? props.selected
+      : props.data.filter((item: any) => item.selected)
+  )
   
   const isSelecting = computed(() => props.selectable)
 

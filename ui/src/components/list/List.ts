@@ -5,7 +5,6 @@ import { buildDesignClasses, buildDesignStyles, TitleProps, useDesignProps, useG
 import { MakePropsType } from '../../utils'
 import { NsColumn } from '../flex'
 import { useSelectable, useSelectableProps, selectableEmits, SelectableEmits } from '../../props'
-import { FontSizeType } from '../../types/css'
 
 export type ListItemData = {
   number?: number,
@@ -197,12 +196,10 @@ export const NsList = defineComponent({
     const row = (d: ListItemData, index: number) => h(NsListItem, {
       key: d.id || index,
       class: [
-        ...isSelecting.value ? ['selectable'] : [],
-        ...props.selectable
-          ? isSelected(d)
-            ? ['selected']
-            : []
-          : [],
+        'selectable-item',
+        ...isSelected(d)
+          ? ['selected']
+          : []
       ],
       ...props,
       data: d,
@@ -252,6 +249,8 @@ export const NsList = defineComponent({
         'ns-list',
         'ns-selectable',
         'column',
+        ...isSelecting.value ? ['selecting'] : [],
+        `select-type-${props.selectType}`,
         ...props.variant ? [`variant-${props.variant}`] : [],
         ...props.dense ? ['dense'] : [],
         ...buildDesignClasses(props),

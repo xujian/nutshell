@@ -8,15 +8,12 @@
     <ns-page-content>
       <ns-row class="batch-header" justify="between" gap>
         <ns-column align="start" :gap="0">
-          <h5>类型一</h5>
+          <h3>用于 &lt;ns-list&gt;</h3>
+          <p class="caption">已选 ({{ selected.length }})</p>
         </ns-column>
         <div class="spacer"></div>
-        <ns-button icon="options" v-show="operatable">
-          <ns-popover>
-            <ns-menu :items="commands" />
-          </ns-popover>
-        </ns-button>
-        <ns-button icon="delete" v-show="operatable"
+        <ns-dropdown v-show="operatable" label="操作" fill="neutral" :items="commands" />
+        <ns-button icon="delete" v-show="operatable" variant="plain"
           @click="onDelete" />
         <ns-switch label="批量选择" v-model="selectable" @change="onToggleSelectable" />
       </ns-row>
@@ -30,17 +27,16 @@
         has-numbers
         gap>
       </ns-list>
-      {{ selected }}
-
+      <code-view language="html" :code="codes[0]" />
+      <p>&nbsp;</p>
       <ns-row class="batch-header" justify="between" gap>
-        <ns-column align="start" :gap="0">
-          <h5>类型二</h5>
-        </ns-column>
-        <ns-switch label="批量选择" v-model="selectable2" @change="onToggleSelectable2" />
+        <h3>用于 &lt;ns-repeator&gt;</h3>
+        <ns-switch label="批量选择" v-model="selectable2" />
       </ns-row>
       <ns-repeator class="demo-repeator"
         direction="column"
         v-slot="item"
+        :selectable="selectable2"
         :data="orderData"
         align="stretch"
         gap>
@@ -61,24 +57,22 @@
           </template>
         </ns-card>
       </ns-repeator>
+      <code-view language="html" :code="codes[1]" />
+      <p>&nbsp;</p>
       <ns-card fill="#fff">
-        <ns-row class="batch-header" justify="between" gap>
-          <ns-column align="start" :gap="0">
-            <h5>类型三</h5>
-          </ns-column>
-          <ns-switch label="批量选择" v-model="selectable3" @change="onToggleSelectable3" />
-        </ns-row>
-        <ns-repeator class="demo-repeator batch-three"
+        <template #header>
+          <h3>可以用另外一种选中样式</h3>
+          <ns-flex-item grow />
+          <ns-switch label="批量选择" v-model="selectable3" />
+        </template>
+        <ns-repeator class="batch-three"
           direction="column"
           v-slot="item"
           :data="cardData"
+          :selectable="selectable3"
+          select-type="ribbon"
           align="stretch"
           gap>
-          <img
-            v-show="selectable3"
-            @click="batchCard(item)"
-            :src="`https://cdn.ddjf.com/static/images/fnfundkit/file-${item.selected ? 'selected' : 'notSelected'}.png`"
-            class="img" />
           <ns-card
             class="full-width"
             :title="item.卡类型"
@@ -92,6 +86,8 @@
           </ns-card>
         </ns-repeator>
       </ns-card>
+      <code-view language="html" :code="codes[2]" />
+      <p>&nbsp;</p>
     </ns-page-content>
   </ns-page>
 </template>
@@ -130,7 +126,8 @@ const data = ref<any>([
   {
     id: '1',
     title: '居间借贷服务合同协议',
-    caption: '2024-10-11 15:00'
+    caption: '2024-10-11 15:00',
+    selected: true
   },
   {
     id: '2',
@@ -149,10 +146,10 @@ const openBatch = () => {
   console.log('批量操作')
 }
 
-// 批量操作类型二开始
 const selectable2 = ref(false),
   orderData = ref([
     {
+      id: '1',
       type: '交易周转',
       进件时间: '2025/10/08 10:32',
       客户姓名: '李华明',
@@ -162,6 +159,7 @@ const selectable2 = ref(false),
       status: '待审核'
     },
     {
+      id: '2',
       type: '交易周转',
       进件时间: '2025/10/08 11:45',
       客户姓名: '张敏杰',
@@ -171,9 +169,6 @@ const selectable2 = ref(false),
       status: '待审核'
     }
   ]),
-  onToggleSelectable2 = () => {
-    orderData.value = orderData.value.map((item: any) => {return {...item, selected: false}})
-  },
   colors = {
     交易周转: 'primary',
     非交易周转: 'positive'
@@ -206,31 +201,27 @@ const batchOrder = (item: any) => {
   }
   item.selected = !item.selected
 }
-// 批量操作类型二结束
 
-// 批量操作类三开始
 const selectable3 = ref(false),
   cardData = ref([
     {
+      id: '1',
       卡类型: '赎楼账户',
       开户行: '工商银行',
       办理人员: '李华明',
       卡状态: '正常',
       卡号: '6228480402564829999',
-      id: '1'
+      selected: true
     },
     {
+      id: '2',
       卡类型: '回款账户',
       开户行: '招商银行',
       办理人员: '李华明',
       卡状态: '查封',
       卡号: '6228480402564828889',
-      id: '2'
     }
-  ]),
-  onToggleSelectable3 = () => {
-    cardData.value = cardData.value.map((item: any) => {return {...item, selected: false}})
-  }
+  ])
 
 const batchCard = (item: any) => {
   if(!selectable3.value){
@@ -239,54 +230,53 @@ const batchCard = (item: any) => {
   }
   item.selected = !item.selected
 }
-// 批量操作类三结束
+
+const codes = [
+`<ns-list :data
+  item-fill="#ffffff"
+  direction="column"
+  :selectable
+  @update:selected="onSelected"
+  align="stretch"
+  has-numbers
+  gap>
+</ns-list>`,
+`<ns-repeator
+  direction="column"
+  v-slot="item"
+  :data="orderData"
+  align="stretch"
+  gap>
+  <ns-card fill="#ffffff">
+    ...
+  <ns-card>
+</ns-repeator>`,
+`<ns-repeator
+  direction="column"
+  v-slot="item"
+  :data="cardData"
+  :selectable="selectable3"
+  select-type="ribbon"
+  align="stretch"
+  gap>
+  <ns-card>
+    ...
+  </ns-card>
+</ns-repeator>`
+]
 
 </script>
 
 <style lang="scss">
 .batch-page {
-  .batch-header {
-    height: 48px;
-  }
-  .ns-repeator{
-    margin-bottom: 12px;
-  }
-  .ns-card{
-    border:1px solid transparent;
-    &.selected{
-      border:1px solid var(--ns-primary);
-      position: relative;
-      overflow: hidden;
-    }
-    &.selected::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 20px;
-      height: 20px;
-      background: url('https://cdn.ddjf.com/static/images/fnfundkit/card-selected.png')
-        no-repeat;
-      background-size:  100% 100%;
-    }
-    .h5{
-      font-size: 14px;
-    }
-  }
-  .batch-three{
-    .img{
-      display: block;
-      font-size: 0;
-      height: 14px;
-      width: 14px;
-      margin-right: 5px;
-    }
-    .ns-card{
+  .batch-three {
+    .ns-card {
+      margin: 1px;
       background: url(https://cdn.ddjf.com/static/images/fnfundkit/card-bg.png)
         no-repeat;
       background-color: #f7f7f7;
       background-size: 100% 100%;
-      .card-body{
+      .card-body {
         text-align: right;
       }
     }

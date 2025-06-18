@@ -20,9 +20,8 @@
 .ns-repeator-item {
   display: flex;
   &.selectable {
-    --gap: 0;
     &::before {
-      margin-left: 10px;
+      margin: 10px;
     }
   }
 }
