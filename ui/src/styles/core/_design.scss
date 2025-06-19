@@ -65,10 +65,12 @@
     //   var(--foreground, var(--ns-text-dark, #fff))
     // );
     // color: var(--foreground, lch(from var(--fill) calc((49.44 - l) * infinity) 0 0));
-    background-color: var(--fill);
     border-color: var(--stroke, transparent);
     border-style: solid;
     border-width: var(--thick);
+    &.has-fill {
+      background-color: var(--fill);
+    }
     &:not(.square):not(.round) {
       border-radius: var(--r, var(--ns-r));
     }

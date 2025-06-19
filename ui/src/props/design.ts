@@ -31,6 +31,11 @@ export type ColorScheme =
    */
   'dark'
 
+export type ColorObject = {
+  type: 'named' | 'valued',
+  value: string
+}
+
 const designProps = {
   /**
    * 填色
@@ -206,27 +211,43 @@ export function hasDesignProps (props: any): props is DesignProps {
   return props.__design === true
 }
 
-const getFillColor = (props: DesignProps) => {
-  const fill: Color | undefined = props.fill || Reflect.get(props, 'color'),
-    colorValue: Color | undefined = 
-      fill !== void 0
-        ? isBrand(fill) || isEssential(fill)
-          ? Reflect.get(theme, fill as string) as Color
-          : fill
-        : void 0
-  return colorValue
+const getFill = (props: DesignProps): ColorObject | undefined => {
+  const fill: Color | undefined = props.fill || Reflect.get(props, 'color')
+  return fill
+    ? isBrand(fill) || isEssential(fill)
+      ? {
+          type: 'named',
+          value: fill as string
+        }
+      : {
+          type: 'valued',
+          value: fill as string
+        }
+    : void 0
+
+}
+
+const getFillValue = (fill: ColorObject) => {
+  return fill
+    ? fill.type === 'named'
+      ? Reflect.get(theme, fill.value as string) as Color
+      : fill.value
+    : void 0
 }
 
 const getColorScheme = (props: DesignProps) => {
-  const colorValue = getFillColor(props),
+  const fill = getFill(props),
+    fillValue = fill ? getFillValue(fill) : void 0,
     variant = Reflect.get(props, 'variant')
   const scheme: ColorScheme | undefined =
-    colorValue !== void 0
+    fill
       // 在 variant=plain 时不计算 colorScheme
       ? variant !== 'plain'
-        ? chroma(colorValue).get('lab.l') > 70
-          ? 'light'
-          : 'dark'
+        ? fillValue
+          ? chroma(fillValue).get('lab.l') > 70
+            ? 'light'
+            : 'dark'
+          : void 0
         : void 0
       : void 0
     // 依据填色值确定 color scheme
@@ -238,7 +259,7 @@ const getColorScheme = (props: DesignProps) => {
 const buildDesignClasses: (props: DesignProps) => string[]
   = (props: DesignProps) => {
   const
-    fill = getFillColor(props),
+    fill = getFill(props),
     // 依据 colorValue 自动计算 colorScheme
     // 从 fill color 的亮度自动计算是 dark 还是 light
     colorScheme = getColorScheme(props),
@@ -249,11 +270,11 @@ const buildDesignClasses: (props: DesignProps) => string[]
         : []
   const result = [
     'with-design',
-    ...(fill !== void 0
-      ? (isBrand(fill) || isEssential(fill))
-        ? [`fill-${fill}`]
-        : []
-      : []),
+    ...fill
+      ? fill.type === 'named'
+        ? [`fill-${fill.value}`]
+        : ['has-fill']
+      : [],
     ...(colorScheme ? [`color-scheme-${colorScheme}`] : []),
     ...(props.borders ? [`borders-${props.borders}`] : []),
     ...(props.round ? ['round'] : []),
@@ -291,20 +312,18 @@ const buildDesignClasses: (props: DesignProps) => string[]
 }
 
 const buildDesignStyles: (props: DesignProps) => StyleObject = (props: DesignProps) => {
-  const fill = getFillColor(props),
+  const fill = getFill(props),
+    fillValue = fill ? getFillValue(fill) : void 0,// 仅取具体色值
     colorScheme = getColorScheme(props)
   const style = {
     ...colorScheme ? {
         colorScheme
       }: {},
-    ...(fill ? { '--fill': makeColor(fill) } : {}),
-    .../^(#|rgb)/.test(fill as string)
-      ? {
-          colorScheme: chroma(fill as string).get('lab.l') > 70
-            ? 'light'
-            : 'dark'
-        }
-      : {},
+    ...fill
+        ? fill.type === 'valued'
+          ? { '--fill': fill.value }
+          : {}
+        : {},
     ...(props.surface ? { '--surface': makeColor(props.surface) } : {}),
     ...(props.accent ? { '--accent': makeColor(props.accent) } : {}),
     ...(props.stroke !== void 0 ? {

@@ -7,7 +7,7 @@
   &.nut-button {
     --icon-size: calc(var(--height - 8px));
     --padding-for-icon: calc(var(--icon-size) + 4px + 4px);
-    background-color: var(--fill, #fff);
+    // background-color: var(--fill, #fff);
     // color: lch(from var(--fill) calc((49.44 - l) * infinity) 0 0);
     line-height: 1em;
     &:not(.full-width) {
