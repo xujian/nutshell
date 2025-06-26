@@ -24,6 +24,7 @@ h4, h5, h6 {
 .caption {
   // font-size: var(--ns-font-sm); 副标题改为默认 font-sm  可以支持属性修改
   color: var(--ns-caption, #999);
+  font-size: var(--ns-font-sm);
 }
 
 h1 {
@@ -31,6 +32,7 @@ h1 {
   + .caption {
     margin-top: calc(var(--ns-font-xl) * -1);
     margin-bottom: var(--ns-font-xl);
+    line-height: 1em;
   }
 }
 
@@ -39,6 +41,7 @@ h2 {
   + .caption {
     margin-top: calc(var(--ns-font-lg) * -1);
     margin-bottom: var(--ns-font-xl);
+    line-height: 1em;
   }
 }
 
@@ -47,7 +50,8 @@ h3 {
   font-size: var(--ns-font-md);
   + .caption {
     margin-top: calc(var(--ns-font-md) * -1);
-    margin-bottom: var(--ns-font-md)
+    margin-bottom: var(--ns-font-md);
+    line-height: 1em;
   }
 }
 
@@ -55,7 +59,8 @@ h4 {
   font-size: var(--ns-font-sm);
   + .caption {
     margin-top: calc(var(--ns-font-sm) * -1);
-    margin-bottom: var(--ns-font-sm)
+    margin-bottom: var(--ns-font-sm);
+    line-height: 1em;
   }
 }
 

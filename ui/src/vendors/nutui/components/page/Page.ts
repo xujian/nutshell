@@ -45,16 +45,23 @@ export const Page = defineComponent({
       dialogOptions = shallowRef<any>({}),
       dialogComponentRef = ref()
 
-    const showToast = ({message, options}: {message: string, options: ToastOptions}) => {
-      // if (platform?.weixin) {
-      Taro.showToast({
-        title: message,
-        duration: options.duration || 2000,
-        icon: options.type || 'none'
-      })
-      // } else {
-      //   $toast.info(message)
-      // }
+    const showToast = ({message, options}: {message: string, options?: ToastOptions}) => {
+      console.log('===showToast===', message, options, platform)
+      if (platform?.weixin && !platform?.h5) {
+        Taro.showToast({
+          title: message,
+          duration: options?.duration || 2000,
+          icon: options?.type || 'none'
+        })
+      } else {
+        const type = options?.type || 'info'
+        const o = {
+          duration: options?.duration || 20000,
+          type
+        }
+        // @ts-ignore
+        $toast(message, o)
+      }
     }
 
     const showNotice = (payload: Notice) => {

@@ -104,7 +104,7 @@ export type ToastOptions = {
   /**
    * Toast 形式 'success' | 'error' | 'warning'
    */
-  type?: string,
+  type?: 'success' | 'error' | 'warning' | 'info',
   /**
    * 停留时间
    */

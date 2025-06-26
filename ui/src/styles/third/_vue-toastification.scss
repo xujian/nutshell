@@ -9,11 +9,15 @@
 // @import 'vue-toastification/src/scss/_progressBar';
 // @import 'vue-toastification/src/scss/_icon';
 // @import 'vue-toastification/src/scss/animations/_bounce';
+@import 'vue-toastification/dist/index.css';
 
 .Vue-Toastification__container.toast {
   border-radius: var(--ns-r);
   align-items: center;
   padding: var(--ns-spacing-md);
+  .Vue-Toastification__toast-body {
+    font-size: 14px;
+  }
   .Vue-Toastification__toast {
     width: fit-content;
     min-width: auto;
@@ -23,7 +27,16 @@
     background-color: #000;
     color: #fff;
   }
-  .Vue-Toastification__toast-body {
-    font-size: 14px;
+  .Vue-Toastification__toast--success {
+    background-color: var(--ns-positive);
+    color: #fff;
+  }
+  .Vue-Toastification__toast--error {
+    background-color: var(--ns-negtive);
+    color: #fff;
+  }
+  .Vue-Toastification__toast--warning {
+    background-color: var(--ns-warning);
+    color: #fff;
   }
 }

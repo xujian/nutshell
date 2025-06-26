@@ -2,8 +2,8 @@
   <div class="page design-props-page">
     <h1 class="mt-lg">Design Props</h1>
     <p class="caption">视觉风格属性组</p>
-    <p>视觉效果是现代UI设计的核心,
-      赏心悦目的视觉效果来自于<b>色彩</b>、<b>线条</b>、<b>字型</b>、<b>透明度</b>、<b>渐变</b>、<b>动画</b>的组合与映衬。</p>
+    <p>视觉风格是现代UI设计的核心,
+      赏心悦目的视觉风格来自于<b>色彩</b>、<b>线条</b>、<b>字型</b>、<b>透明度</b>、<b>渐变</b>、<b>动画</b>的组合与映衬。</p>
     <p>&nbsp;</p>
     <p><b>视觉风格属性组</b></p>
     <ul>

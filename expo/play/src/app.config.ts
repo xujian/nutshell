@@ -60,16 +60,21 @@ const scenarios = [
   'presentation/material', // 影像资料
 ]
 
+const interactives = [
+  'dialog',
+  'drawer',
+  'sheet',
+  'toast',
+]
+
 export default defineAppConfig({
   pages: [
     'pages/home/index',
     'pages/home/report',
-    'pages/interactive/dialog',
-    'pages/interactive/drawer',
-    'pages/interactive/sheet',
     'pages/guide/scroll',
     'pages/tokens/spacing',
     'pages/design/props',
+    ...interactives.map(x => `pages/interactive/${x}`),
     ...components.map(x => `pages/components/${x}`),
     ...scenarios.map(x => `pages/scenarios/${x}`),
   ],
